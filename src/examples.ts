@@ -62,7 +62,7 @@ export const examples: Example[] = [
     source:
       '; Skręty i wznoszenie tworzą spiralę.\nkolor "#a478c0"\ngrubosc 3\npowtorz 90 [\n  np 12\n  pw 18\n  gora 90 np 2 dol 90\n]',
   },
-  {id: "procedure-rosette", mode: "2d", name: "Rozeta z procedury", description: "Zdefiniuj kwadrat i użyj go osiem razy.", level: "PROCEDURY", source: 'oto kwadrat :bok\n  powtorz 4 [np :bok pw 90]\njuż\n\npowtorz 8 [kwadrat 90 lw 45]'},
+  {id: "procedure-rosette", mode: "2d", name: "Rozeta z procedury", description: "Zdefiniuj kwadrat i użyj go osiem razy.", level: "PROCEDURY", source: 'oto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż\n\npowtorz 8 [kwadrat 90 lw 45]'},
 ];
 export const defaults: Record<Mode, string> = {
   "2d": examples[0].source,

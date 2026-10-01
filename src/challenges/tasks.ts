@@ -36,7 +36,7 @@ export const challenges: readonly Challenge[] = [
     version: 1,
     description:
       "Narysuj kwadrat od punktu (0, 0). Jego kolejne wierzchołki to (0, 0), (0, bok), (bok, bok), (bok, 0), a ostatni odcinek wraca do początku.",
-    contract: "oto kwadrat :bok · bok: liczba całkowita od 10 do 120",
+    contract: "oto kwadrat ma: bok · bok: liczba całkowita od 10 do 120",
     hints: [
       "Potrzebujesz czterech boków o tej samej długości.",
       "Po każdym boku obróć żółwia w prawo o 90°.",
@@ -53,7 +53,7 @@ export const challenges: readonly Challenge[] = [
     version: 1,
     description:
       "Narysuj pięcioramienną gwiazdę z pięciu równych odcinków. Zacznij w (0, 0), pierwszy odcinek poprowadź w górę osi Y. Po każdym odcinku obróć się w prawo o 144°.",
-    contract: "oto gwiazda :bok · bok: liczba całkowita od 10 do 120",
+    contract: "oto gwiazda ma: bok · bok: liczba całkowita od 10 do 120",
     hints: [
       "Każde ramię ma tę samą długość.",
       "Powtórz pięć razy: naprzód o bok i w prawo o 144°.",
@@ -71,7 +71,7 @@ export const challenges: readonly Challenge[] = [
     description:
       "Narysuj n stopni od (0, 0). Każdy stopień prowadzi najpierw o bok w górę osi Y, a potem o bok w prawo osi X. Odcinki łączą się bez przerw.",
     contract:
-      "oto schody :n :bok · n: 1–12 · bok: 10–120 · tylko liczby całkowite",
+      "oto schody ma: n, bok · n: 1–12 · bok: 10–120 · tylko liczby całkowite",
     hints: [
       "Jeden stopień tworzą dwa odcinki pod kątem prostym.",
       "Po ruchu w górę obróć w prawo, przejdź bok i znów skieruj żółwia w górę.",
@@ -89,7 +89,7 @@ export const challenges: readonly Challenge[] = [
     description:
       "Narysuj n oddzielnych kwadratów. Lewy dolny róg k-tego kwadratu ma współrzędne (2 × k × bok, 0), licząc k od zera. Boki są równoległe do osi; nie rysuj linii między kwadratami.",
     contract:
-      "oto rzad :n :bok · n: 1–12 · bok: 10–120 · tylko liczby całkowite",
+      "oto rzad ma: n, bok · n: 1–12 · bok: 10–120 · tylko liczby całkowite",
     hints: [
       "Po zamknięciu kwadratu wrócisz do jego lewego dolnego rogu.",
       "Podnieś pisak przed przejściem o 2 × bok do następnego początku.",
@@ -106,7 +106,7 @@ export const challenges: readonly Challenge[] = [
     version: 1,
     description:
       "Narysuj osiem kwadratów o wspólnym początku (0, 0). Pierwszy ma wierzchołki (0, 0), (0, bok), (bok, bok), (bok, 0). Każdy następny kwadrat obróć w lewo o 45° wokół początku.",
-    contract: "oto rozeta :bok · bok: liczba całkowita od 10 do 120",
+    contract: "oto rozeta ma: bok · bok: liczba całkowita od 10 do 120",
     hints: [
       "Po zamknięciu kwadratu żółw stoi znów w początku.",
       "Przed kolejnym kwadratem obróć się w lewo o 45°. Powtórz osiem razy.",
@@ -131,7 +131,7 @@ export const challenges: readonly Challenge[] = [
     description:
       "Narysuj n stopni w przestrzeni od (0, 0, 0). Każdy stopień biegnie najpierw o dlugosc wzdłuż dodatniej osi Y, a potem o wysokosc wzdłuż dodatniej osi Z. Wszystkie odcinki łączą się.",
     contract:
-      "oto schody3d :n :dlugosc :wysokosc · n: 1–12 · długość i wysokość: 10–120 · tylko liczby całkowite",
+      "oto schody3d ma: n, dlugosc, wysokosc · n: 1–12 · długość i wysokość: 10–120 · tylko liczby całkowite",
     hints: [
       "Pierwszy ruch jest zgodny z początkowym kierunkiem żółwia.",
       "Po ruchu wzdłuż Y użyj nachylenia w górę o 90°, narysuj wysokość, potem wróć do kierunku Y.",
@@ -140,7 +140,8 @@ export const challenges: readonly Challenge[] = [
 ];
 
 export function starter(task: Challenge): string {
-  return `; Napisz procedurę ${task.id}.\noto ${task.id} ${task.params.map((p) => `:${p}`).join(" ")}\n  ; Twój kod tutaj\njuż`;
+  const params = task.params.length ? ` ma: ${task.params.join(", ")}` : "";
+  return `; Napisz procedurę ${task.id}.\noto ${task.id}${params}\n  ; Twój kod tutaj\njuż`;
 }
 
 type Edge = { from: Vec3; to: Vec3 };

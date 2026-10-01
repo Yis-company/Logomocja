@@ -60,13 +60,19 @@ export function Commands() {
         <FramePanel>
           <h2>Twoje własne polecenia</h2>
           <p>
-            Zdefiniuj procedurę raz, potem używaj jej nazwy. Parametr zaczyna
-            się od dwukropka. Nazwy i polecenia nie rozróżniają wielkości liter.
+            Zdefiniuj procedurę raz, potem używaj jej nazwy. Po <code>ma:</code>{" "}
+            wymień parametry, oddzielając je przecinkami. W środku używaj ich
+            nazw, a przy wywołaniu podaj wartości w tej samej kolejności,
+            oddzielone spacjami. Nazwy i polecenia nie rozróżniają wielkości liter.
           </p>
-          <pre>{`oto kwadrat :bok\n  powtorz 4 [np :bok pw 90]\njuż\n\npowtorz 8 [kwadrat 90 lw 45]`}</pre>
+          <pre>{`oto kwadrat ma: bok, kąt\n  powtorz 4 [np bok pw kąt]\njuż\n\nkwadrat 80 90`}</pre>
           <p>
             Alias: <code>to / end</code>. Działa też <code>juz</code>. Nagłówek
-            i zakończenie zajmują osobne wiersze. Definicje są poza
+            i zakończenie zajmują osobne wiersze; nazwa i cała lista parametrów
+            są w wierszu nagłówka. Bez parametrów wystarczy <code>oto nazwa</code>.
+            Działa też starszy zapis <code>oto kwadrat :bok</code> i odwołanie{" "}
+            <code>:bok</code> w środku. Parametry są lokalne dla procedury.
+            Definicje są poza
             powtórzeniami; możesz je umieścić przed lub po wywołaniu. Procedury
             nie mogą wywoływać siebie, nawet przez pomocnika.
           </p>

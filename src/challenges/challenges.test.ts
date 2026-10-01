@@ -98,23 +98,43 @@ describe("challenge source and execution", () => {
       schody3d:
         "oto schody3d :ile :dl :h\npowtorz :ile [np :dl gora 90 np :h dol 90]\njuż",
     };
+    const polishSolutions: Record<string, string> = {
+      kwadrat: "oto kwadrat ma: x\npowtorz 4 [np x pw 90]\njuż",
+      gwiazda: "oto gwiazda ma: x\npowtorz 5 [np x pw 144]\njuż",
+      schody: "oto schody ma: ile, dl\npowtorz ile [np dl pw 90 np dl lw 90]\njuż",
+      rzad: "oto rzad ma: ile, dl\npowtorz ile [powtorz 4 [np dl pw 90] pod pw 90 np dl np dl lw 90 opu]\njuż",
+      rozeta: "oto rozeta ma: dl\npowtorz 8 [powtorz 4 [np dl pw 90] lw 45]\njuż",
+      schody3d: "oto schody3d ma: ile, dl, h\npowtorz ile [np dl gora 90 np h dol 90]\njuż",
+    };
     for (const challenge of challenges) {
-      const answer = await runChallenge(
-        solutions[challenge.id],
-        challenge,
-        challenge.cases,
-      );
-      expect(answer?.error, challenge.id).toBeUndefined();
-      expect(answer?.passed, challenge.id).toBe(6);
-      expect(
-        answer?.cases.every(
-          (item) =>
-            compareGeometry(expectedDrawing(challenge, item.args), item.actual)
-              .passed,
-        ),
-        challenge.id,
-      ).toBe(true);
+      for (const source of [solutions[challenge.id], polishSolutions[challenge.id]]) {
+        const answer = await runChallenge(
+          source,
+          challenge,
+          challenge.cases,
+        );
+        expect(answer?.error, challenge.id).toBeUndefined();
+        expect(answer?.passed, challenge.id).toBe(6);
+        expect(
+          answer?.cases.every(
+            (item) =>
+              compareGeometry(expectedDrawing(challenge, item.args), item.actual)
+                .passed,
+          ),
+          challenge.id,
+        ).toBe(true);
+      }
     }
+  });
+
+  it("generates parseable Polish signatures for all starters and omits ma: without parameters", () => {
+    for (const challenge of [...challenges, { ...square, params: [] }]) {
+      const source = starter(challenge);
+      const header = `oto ${challenge.id}${challenge.params.length ? ` ma: ${challenge.params.join(", ")}` : ""}`;
+      expect(source.split("\n")[1]).toBe(header);
+      expect(validateSource(source, challenge).definitions[challenge.id].params).toEqual(challenge.params);
+    }
+    expect(() => validateSource("", task("schody3d"))).toThrow(/oto schody3d ma: n, dlugosc, wysokosc/);
   });
 
   it("requires only definitions with the exact procedure contract", () => {
@@ -174,6 +194,13 @@ describe("challenge source and execution", () => {
 });
 
 describe("challenge storage", () => {
+  it("preserves a legacy draft byte for byte without changing completion", () => {
+    const draft = "; zachowaj spacje\nOTO kwadrat :Bok\n  np :bok  ; szkic\njuż\n";
+    const record = { version: 1, draft, completed: true };
+    let saved = "";
+    writeChallenges({ setItem: (_key, value) => { saved = value; } }, { kwadrat: record });
+    expect(recordFor(readChallenges({ getItem: () => saved }), square)).toEqual(record);
+  });
   it("keeps drafts and completions by task and version", () => {
     const data = new Map<string, string>();
     const store = {

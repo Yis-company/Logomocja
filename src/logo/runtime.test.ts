@@ -140,6 +140,85 @@ describe("finite execution and source errors", () => {
 });
 
 describe("procedures", () => {
+  it("draws the requested square with a Polish comma-separated header", () => {
+    const drawing = run("oto kwadrat ma: bok, kąt\n  powtorz 4 [np bok pw kąt]\njuż\nkwadrat 80 90");
+    expect(drawing.segments).toHaveLength(4);
+    expect(drawing.segments[0].to).toEqual([0, 80, 0]);
+    expect(drawing.segments[1].to[0]).toBeCloseTo(80);
+    drawing.turtle.position.forEach((value) => {
+      expect(value).toBeCloseTo(0);
+    });
+    expect(drawing.turtle.forward[1]).toBeCloseTo(1);
+  });
+  it.each(["ma:bok,kąt", "MA: Bok , KĄT", "ma: bok, kąt ; complete header"])(
+    "accepts compact lists, Unicode, case and header comments: %s",
+    (header) => {
+      const drawing = run(`ŻÓŁW 7 90\nto Żółw ${header}\nnp BOK pw :kąt np bok\nend`);
+      expect(drawing.segments).toHaveLength(2);
+      expect(drawing.turtle.position[0]).toBeCloseTo(7);
+      expect(drawing.turtle.position[1]).toBeCloseTo(7);
+    },
+  );
+  it("keeps zero and single parameter procedures and the identifier ma usable", () => {
+    const drawing = run("oto ma\nnp 1\njuż\noto rysuj ma: ma\nnp ma\njuż\nma rysuj 4");
+    expect(drawing.turtle.position).toEqual([0, 5, 0]);
+  });
+  it("resolves both reference forms in nested repeats and helper calls with fresh locals", () => {
+    const drawing = run("rysuj 2 5\noto rysuj ma: ile, krok\npowtorz ile [powtorz 2 [helper :krok]]\nhelper 2 np krok\njuż\nto helper :krok\nfd krok\nend\nrysuj 1 3");
+    expect(drawing.segments).toHaveLength(10);
+    expect(drawing.turtle.position).toEqual([0, 38, 0]);
+  });
+  it("gives callable procedure names precedence after a complete call", () => {
+    const drawing = run("oto rysuj ma: bok\nhelper bok bok np bok\njuż\noto helper ma: x\nnp x\njuż\noto bok\nnp 1\njuż\nrysuj 5");
+    expect(drawing.segments).toHaveLength(3);
+    expect(drawing.turtle.position).toEqual([0, 11, 0]);
+  });
+  it("counts compact markers and commas toward the token bound", () => {
+    // Eleven tokens, including the compact marker and comma.
+    const definition = "oto x ma:a,b\nnp a np b\nend";
+    expect(() => parse(`${definition}\n${"pu ".repeat(LIMITS.tokens - 11)}`, "2d")).not.toThrow();
+    expect(() => parse(`${definition}\n${"pu ".repeat(LIMITS.tokens - 10)}`, "2d")).toThrow(/tokenów/);
+  });
+  it.each([
+    ["oto x ma:\njuż", 1, 7],
+    ["oto x ma: bok,\njuż", 1, 14],
+    ["oto x ma: bok,\n kąt\njuż", 1, 14],
+    ["oto x ma: ,bok\njuż", 1, 11],
+    ["oto x ma: bok,,kąt\njuż", 1, 15],
+    ["oto x ma: bok kąt\njuż", 1, 15],
+    ["oto x ma: :bok\njuż", 1, 11],
+    ["oto x :bok, :kąt\njuż", 1, 11],
+    ["oto x ma : bok\njuż", 1, 7],
+    ["oto x ma: bok, BOK\njuż", 1, 16],
+    ["oto x ma: np\njuż", 1, 11],
+    ["oto x ma: bok np bok\njuż", 1, 15],
+    ["oto x ma: bok\nnp missing\njuż", 2, 4],
+    ["np bok", 1, 4],
+    ["oto x ma: bok\nnp bok\njuż\nnp bok", 4, 4],
+    ["oto x ma: bok\nhelper bok bok\njuż\nto helper :x\nend", 2, 12],
+    ["oto x ma: bok, kąt\njuż\nx 5, 90", 3, 4],
+  ])("rejects invalid syntax at the responsible token: %s", (source, line, column) => {
+    try {
+      parse(source as string, "2d");
+      throw new Error("expected rejection");
+    } catch (error) {
+      expect(error).toBeInstanceOf(LogoError);
+      expect((error as LogoError).span).toEqual({ line, column });
+    }
+  });
+  it.each([
+    "oto x ma: bok\njuż\nx",
+    "oto x ma: bok\njuż\nx 1 2",
+    "oto x ma: bok\njuż\nx 1 :bok",
+    "oto x ma: bok\nnp :missing\njuż",
+    "oto x ma: bok\nx bok\njuż",
+    "oto x ma: bok\npowtorz 0 [np missing]\njuż",
+    "oto x ma: bok\nnp bok\njuż\noto y ma: krok\nnp bok\njuż",
+    "oto xma:bok\njuż",
+    "oto x ma: bok\nend x 1",
+  ])("keeps numeric slots, call arity and body validation strict: %s", (source) => {
+    expect(() => parse(source, "2d")).toThrow(LogoError);
+  });
   it("accepts forward calls, aliases, Unicode names, case-insensitive parameters and fresh local scope", () => {
     const drawing = run("RYSUJ 2 5\nto Rysuj :Ile :Dystans\nrepeat :ILE [ fd :dystans ]\nend\nrysuj 1 3");
     expect(drawing.segments).toHaveLength(3);

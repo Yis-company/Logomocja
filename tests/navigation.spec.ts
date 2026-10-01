@@ -170,7 +170,7 @@ test("parameters and nested procedures execute in the studio", async ({
 }) => {
   await page.goto("/");
   await editor(page).fill(
-    "oto kwadrat :bok\n powtorz 4 [np :bok lw 90]\njuż\npowtorz 8 [kwadrat 90 lw 45]",
+    "oto kwadrat ma: bok\n powtorz 4 [np bok lw 90]\njuż\npowtorz 8 [kwadrat 90 lw 45]",
   );
   await page.getByRole("slider").focus();
   await page.keyboard.press("End");

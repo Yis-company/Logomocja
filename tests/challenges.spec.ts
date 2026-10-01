@@ -3,6 +3,20 @@ import { expect, test } from "@playwright/test";
 const editor = (page: import("@playwright/test").Page) =>
   page.getByRole("textbox", { name: "Kod programu Logo" });
 
+test("fresh challenge starters use Polish comma-separated signatures", async ({ page }) => {
+  for (const [id, params] of [
+    ["kwadrat", "bok"],
+    ["gwiazda", "bok"],
+    ["schody", "n, bok"],
+    ["rzad", "n, bok"],
+    ["rozeta", "bok"],
+    ["schody3d", "n, dlugosc, wysokosc"],
+  ]) {
+    await page.goto(`/challenges/${id}`);
+    await expect(editor(page)).toHaveValue(`; Napisz procedurę ${id}.\noto ${id} ma: ${params}\n  ; Twój kod tutaj\njuż`);
+  }
+});
+
 test("catalog filters by mode, difficulty and completion", async ({ page }) => {
   await page.goto("/challenges");
   await expect(page.locator(".challenge-grid [data-slot=frame]")).toHaveCount(
@@ -31,13 +45,16 @@ test("solve, preserve historical completion and isolate drafts", async ({
   await page.goto("/");
   await editor(page).fill("fd 73");
   await page.goto("/challenges/kwadrat");
-  await editor(page).fill(
-    "oto kwadrat :dlugosc\npowtorz 4 [np :dlugosc pw 90]\njuż",
-  );
+  const solution = "oto kwadrat ma: dlugosc\npowtorz 4 [np dlugosc pw 90]\njuż";
+  await editor(page).fill(solution);
   await page.getByRole("button", { name: "Sprawdź rozwiązanie" }).click();
   await expect(page.getByText("6/6 przypadków poprawnych")).toBeVisible();
   await expect(page.getByText("Ukończono wcześniej")).toBeVisible();
-  await editor(page).fill("oto kwadrat :bok\nnp :bok\njuż");
+  await page.reload();
+  await expect(editor(page)).toHaveValue(solution);
+  await expect(page.getByText("Ukończono wcześniej")).toBeVisible();
+  const legacyDraft = "; zachowaj szkic\nOTO kwadrat :Bok\n  np :bok  ; starsza składnia\njuż\n";
+  await editor(page).fill(legacyDraft);
   await expect(
     page.getByRole("heading", { name: "Wyniki sprawdzania" }),
   ).toHaveCount(0);
@@ -59,11 +76,13 @@ test("solve, preserve historical completion and isolate drafts", async ({
     })
     .getByRole("link", { name: "Otwórz wyzwanie" })
     .click();
-  await expect(editor(page)).toContainText("oto gwiazda :bok");
+  await expect(editor(page)).toContainText("oto gwiazda ma: bok");
   await page.reload();
-  await expect(editor(page)).toContainText("oto gwiazda :bok");
+  await expect(editor(page)).toContainText("oto gwiazda ma: bok");
   await page.goto("/challenges/kwadrat");
-  await expect(editor(page)).toContainText("np :bok");
+  await expect(editor(page)).toHaveValue(legacyDraft);
+  await page.reload();
+  await expect(editor(page)).toHaveValue(legacyDraft);
   await page.goto("/");
   await expect(editor(page)).toHaveValue("fd 73");
 });

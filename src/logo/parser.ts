@@ -45,7 +45,7 @@ function tokenize(source: string): Token[] {
   let line = 1;
   let column = 1;
   for (const match of source.matchAll(
-    /;[^\n]*|\s+|\[|\]|"[^"\n]*"|[^\s[\];]+/gu,
+    /;[^\n]*|\s+|\[|\]|"[^"\n]*"|,|ma:|[^\s[\];,]+/giu,
   )) {
     const text = match[0];
     if (!/^\s|^;/.test(text)) {
@@ -83,12 +83,30 @@ export function parse(source: string, mode: Mode): Program {
     if (reserved.has(normalized) || definitions[normalized])
       throw new LogoError(`Nazwa „${name.text}” jest zastrzeżona lub powtórzona.`, name.span);
     const params: string[] = [];
-    while (tokens[i + 1]?.span.line === start.span.line) {
-      const param = tokens[++i];
-      const paramName = param.text.startsWith(":") ? key(param.text.slice(1)) : "";
+    function addParameter(param: Token, paramName: string) {
       if (!identifier.test(paramName) || reserved.has(paramName) || params.includes(paramName))
         throw new LogoError(`Nieprawidłowy lub powtórzony parametr „${param.text}”.`, param.span);
       params.push(paramName);
+    }
+    if (tokens[i + 1]?.span.line === start.span.line && key(tokens[i + 1].text) === "ma:") {
+      const marker = tokens[++i];
+      let separator = marker;
+      while (true) {
+        const param = tokens[i + 1];
+        if (!param || param.span.line !== start.span.line)
+          throw new LogoError("Po ma: i każdym przecinku podaj nazwę parametru w tym samym wierszu.", separator.span);
+        i++;
+        addParameter(param, key(param.text));
+        if (tokens[i + 1]?.span.line !== start.span.line) break;
+        separator = tokens[++i];
+        if (separator.text !== ",")
+          throw new LogoError("Oddziel nazwy parametrów przecinkiem.", separator.span);
+      }
+    } else {
+      while (tokens[i + 1]?.span.line === start.span.line) {
+        const param = tokens[++i];
+        addParameter(param, param.text.startsWith(":") ? key(param.text.slice(1)) : "");
+      }
     }
     definitions[normalized] = { name: normalized, params, body: [], span: start.span };
     headers.set(startIndex, i);
@@ -104,8 +122,8 @@ export function parse(source: string, mode: Mode): Program {
   }
   function number(command: Token): Numeric {
     const token = argument(command);
-    if (token.text.startsWith(":")) {
-      const parameter = key(token.text.slice(1));
+    if (token.text.startsWith(":") || identifier.test(token.text)) {
+      const parameter = key(token.text.startsWith(":") ? token.text.slice(1) : token.text);
       if (current?.params.includes(parameter)) return { parameter, span: token.span };
       throw new LogoError(`Nieznany parametr „${token.text}”.`, token.span);
     }
@@ -158,7 +176,11 @@ export function parse(source: string, mode: Mode): Program {
         const definition = definitions[word];
         const args = definition.params.map(() => number(token));
         const surplus = tokens[index];
-        if (surplus && (numberPattern.test(surplus.text) || surplus.text.startsWith(":")))
+        const surplusWord = surplus ? key(surplus.text) : "";
+        if (surplus && (
+          numberPattern.test(surplus.text) || surplus.text.startsWith(":") ||
+          (current?.params.includes(surplusWord) && !aliases[surplusWord] && !definitions[surplusWord])
+        ))
           throw new LogoError(`Procedura „${token.text}” oczekuje ${args.length} argumentów.`, surplus.span);
         instructions.push({ kind: "call", name: word, args, span: token.span });
       } else

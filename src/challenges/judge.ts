@@ -93,7 +93,7 @@ export function validateSource(source: string, task: Challenge): Program {
   const definition = program.definitions[task.id];
   if (!definition)
     throw new LogoError(
-      `Zdefiniuj procedurę „${task.id}” z parametrami ${task.params.map((p) => `:${p}`).join(" ")}.`,
+      `Zdefiniuj procedurę: oto ${task.id}${task.params.length ? ` ma: ${task.params.join(", ")}` : ""}.`,
     );
   if (definition.params.length !== task.params.length)
     throw new LogoError(

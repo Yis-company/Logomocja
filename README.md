@@ -100,7 +100,17 @@ Browser verification uses Chromium with software WebGL rendering. Physical GPU/o
 
 The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges` and `/challenges/:slug`. Static hosting must serve `index.html` for unknown paths so deep links can load. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
 
-Named Logo procedures use `oto name :parameter` and a standalone `już` (also `juz`, or `to`/`end`). Numeric parameters can be used in commands, loops and helper calls; recursion, arithmetic and globals are outside this grammar. Definitions are validated even when unused. Execution remains bounded and cancellable.
+Named Logo procedures list parameters after `ma:`, separated by commas. The name and complete parameter list stay on the same header line; the body follows on later lines and ends with a standalone `już` (also `juz`, or `to`/`end`). Use `oto name` without `ma:` for a procedure with no parameters.
+
+```logo
+oto kwadrat ma: bok, kąt
+  powtorz 4 [np bok pw kąt]
+już
+
+kwadrat 80 90
+```
+
+Calls still take positional values separated by whitespace. Parameters are local to the current procedure and can replace numbers in commands, repeat counts and helper calls. Names ignore case. Legacy headers such as `oto kwadrat :bok` and references such as `:bok` remain supported; plain references work in either header form. Recursion, arithmetic and globals are outside this grammar. Definitions are validated even when unused. Execution remains bounded and cancellable.
 
 Six original practice tasks take procedure-only submissions and test geometry against varied inputs. Checks compare unions of collinear segments, accepting reversed, subdivided and retraced strokes. Test cases are local practice checks, not protected competition infrastructure. Drafts and historical completion stay in this browser under separate storage from studio drafts; there are no accounts or leaderboard.
 
