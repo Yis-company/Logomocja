@@ -1,11 +1,13 @@
 import { expect, test } from "@playwright/test";
+import packageJson from "../package.json" with { type: "json" };
+const { version } = packageJson;
 const editor = (page: import("@playwright/test").Page) =>
   page.getByRole("textbox", { name: "Kod programu Logo" });
 test("real routes, history, legacy hash and package version", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.getByText("v0.1.0", { exact: true })).toBeVisible();
+  await expect(page.getByText(`v${version}`, { exact: true })).toBeVisible();
   await page.getByRole("link", { name: "Przykłady", exact: true }).click();
   await expect(page).toHaveURL(/\/examples$/);
   await expect(

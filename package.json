@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:pages": "tsc --noEmit && vite build --mode pages",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "biome lint src tests",
+    "lint": "biome lint src tests scripts",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:pages": "playwright test --config playwright.pages.config.ts",
     "changeset": "changeset",
     "changeset:status": "changeset status",
     "changeset:version": "changeset version && bun install --lockfile-only"
