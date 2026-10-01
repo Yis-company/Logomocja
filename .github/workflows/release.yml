@@ -13,14 +13,27 @@ concurrency:
   group: release-pages
   cancel-in-progress: false
 jobs:
-  build:
+  dispatch-release:
     if: >-
-      github.ref == 'refs/heads/main' &&
-      (github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true &&
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'main' &&
       github.event.pull_request.user.login == 'github-actions[bot]' &&
       github.event.pull_request.head.ref == 'changeset-release/main' &&
-      github.event.pull_request.head.repo.full_name == github.repository))
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.base.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      # Dispatch on main so Pages evaluates the main-only environment rule.
+      - name: Start release on main
+        run: gh workflow run release.yml --repo "$GITHUB_REPOSITORY" --ref main -f "pr-number=$PR_NUMBER"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+  build:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
