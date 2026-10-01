@@ -98,7 +98,7 @@ Browser verification uses Chromium with software WebGL rendering. Physical GPU/o
 
 ## Navigation and local practice
 
-The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges` and `/challenges/:slug`. Static hosting must serve `index.html` for unknown paths so deep links can load. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
+The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges` and `/challenges/:slug`. The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
 
 Named Logo procedures use `oto name :parameter` and a standalone `już` (also `juz`, or `to`/`end`). Numeric parameters can be used in commands, loops and helper calls; recursion, arithmetic and globals are outside this grammar. Definitions are validated even when unused. Execution remains bounded and cancellable.
 
@@ -110,4 +110,26 @@ Light/dark mode follows the operating system until a manual choice. The choice p
 
 Controls use the authentic shadcn Base UI `base-nova` registry sources in `src/components/ui`; `src/components/reui/frame.tsx` comes from the public free ReUI Frame registry. Imports, icons, translations, orientation attributes and sidebar preference behavior are adapted to this app and the installed Base UI API. Tailwind utilities are layered without importing its broad preflight reset. `components.json` records registry paths and aliases.
 
-The sidebar displays the version imported from `package.json`. Run `bun run changeset` to describe a change, `bun run changeset:status` to inspect pending releases, and `bun run changeset:version` when intentionally updating the local version and refreshing bun.lock. Private package versioning is enabled; tagging/publishing is not. The pending minor changeset proposes `0.2.0`, while the current app remains `0.1.0`.
+The sidebar displays the version imported from `package.json`. Run `bun run changeset` to describe a change, `bun run changeset:status` to inspect pending releases, and `bun run changeset:version` when intentionally updating the local version and refreshing bun.lock. Changesets versions the private app without npm publication; the release workflow creates the version tag after Pages deployment succeeds. The pending minor changeset proposes `0.2.0`, while the current app remains `0.1.0`.
+
+
+## GitHub Actions and releases
+
+- **PR checks**: one Ubuntu Validation job installs with Bun's frozen lockfile, checks a newly added changeset, and runs lint, type checking and unit tests. An empty changeset is valid for maintenance. Existing pending changesets do not satisfy a new PR's requirement.
+- **Version PR**: main pushes with pending releases open/update `changeset-release/main`. Changesets updates the package version/changelog, consumes changesets and refreshes the Bun lockfile. The built-in GitHub token dispatches validation on the exact version-PR head; verified version PRs are exempt only from adding another changeset.
+- **Release**: merging the automation version PR triggers checks, a Pages build and Chromium acceptance against the static output. Successful Pages deployment is followed by `v<version>`, a GitHub Release with changelog notes and a ZIP of that same build. Ordinary PR merges do not deploy. No npm publication or extra secret is needed.
+
+Pages uses GitHub Actions as its source. The published URL is [Logomocja](https://yis-company.github.io/Logomocja/). The version displayed in the sidebar comes from the released package version. Browser drafts stay on their own origin; localhost drafts are separate from published-site drafts.
+
+To verify the Pages build locally:
+
+```sh
+bun run build:pages
+bun run test:pages
+```
+
+The Pages test server serves only actual files under `/Logomocja/`, with no SPA fallback. It uses port 5182, separately from development. The release suite checks assets, routes/history/refresh, legacy links, dark mode, procedures, stepping, lazy WebGL and challenge solutions. The full development browser suite remains available with `bun run test:e2e`.
+
+Retry a failed release using the Release workflow's manual dispatch with the **merged Changesets PR number** on main. The workflow resolves its merge SHA, verifies version metadata and tag ownership, and rejects older releases superseded by a newer version. It builds once, safely reuses matching tags/releases and replaces matching ZIP assets. An arbitrary ref or ordinary merged PR cannot trigger publication.
+
+After merging the workflow setup PR, merge the generated version PR to publish the first `0.2.0` release. Workflow setup itself does not publish. Branch protection and required-check settings are managed separately.

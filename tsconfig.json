@@ -30,7 +30,9 @@
   "include": [
     "src",
     "tests",
+    "scripts",
     "vite.config.ts",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "playwright.pages.config.ts"
   ]
 }
