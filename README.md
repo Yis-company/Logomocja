@@ -4,7 +4,7 @@ A Polish-language, Logo-inspired web studio with **2D turtle drawing** and **rea
 
 ## Run locally
 
-Use Bun 1.4.0 or later. The package manager is pinned to Bun 1.4.0; Node.js 22.12+ remains required by tools with Node entry points.
+Use Bun 1.4.0 or later. The package manager is pinned to Bun 1.4.4; Node.js 22.12+ remains required by tools with Node entry points.
 
 ```sh
 bun install --frozen-lockfile
