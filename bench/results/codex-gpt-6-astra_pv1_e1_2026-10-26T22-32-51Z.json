@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "45223521e4bff564f97a39edf629668425a3762e",
+  "runner": "codex",
+  "cliVersion": "0.164.0",
+  "model": "gpt-6-astra",
+  "settings": {
+    "effort": null,
+    "argv": [
+      "codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--sandbox",
+      "read-only",
+      "--json",
+      "--color",
+      "never",
+      "-c",
+      "model_instructions_file=\"/tmp/logomocja-bench-jrttOF/instructions.md\"",
+      "--model",
+      "gpt-6-astra",
+      "-"
+    ]
+  },
+  "startedAt": "2026-10-26T22:32:51.722Z",
+  "durationMs": 25279,
+  "partial": false,
+  "tasks": [
+    {
+      "id": "kwadrat",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż",
+          "response": "```logo\noto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż\n```",
+          "usage": {
+            "input": 10844,
+            "cachedInput": 8064,
+            "output": 31,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 5156,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "gwiazda",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż",
+          "response": "```logo\noto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż\n```",
+          "usage": {
+            "input": 10860,
+            "cachedInput": 8064,
+            "output": 32,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3997,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż",
+          "response": "```logo\noto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż\n```",
+          "usage": {
+            "input": 15760,
+            "cachedInput": 0,
+            "output": 37,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3859,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rzad",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż",
+          "response": "```logo\noto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż\n```",
+          "usage": {
+            "input": 10790,
+            "cachedInput": 8064,
+            "output": 66,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 4076,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rozeta",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż",
+          "response": "```logo\noto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż\n```",
+          "usage": {
+            "input": 10783,
+            "cachedInput": 8064,
+            "output": 45,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3752,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody3d",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [\n    np dlugosc\n    gora 90\n    np wysokosc\n    dol 90\n  ]\njuż",
+          "response": "```logo\noto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [\n    np dlugosc\n    gora 90\n    np wysokosc\n    dol 90\n  ]\njuż\n```",
+          "usage": {
+            "input": 15799,
+            "cachedInput": 8064,
+            "output": 56,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 4406,
+          "humanScore": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "samples": 6,
+    "taskPassRate": 1,
+    "casePassRate": 1,
+    "meanLatencyMs": 4208
+  }
+}
