@@ -203,6 +203,8 @@ export type JudgeOptions = {
   signal?: AbortSignal;
   onProgress?: (progress: JudgeProgress) => void;
   onSample?: (segments: Segment[]) => void;
+  /** Yields between work slices. Defaults to the next animation frame. */
+  schedule?: () => Promise<void>;
 };
 const nextFrame = () =>
   new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
@@ -227,6 +229,7 @@ export async function runChallenge(
     };
   }
   const cases: CaseResult[] = [];
+  const schedule = options.schedule ?? nextFrame;
   let ticks = 0;
   let comparisons = 0;
   for (const args of argsList) {
@@ -243,7 +246,7 @@ export async function runChallenge(
             "Przekroczono łączny limit 60 000 kroków sprawdzania.",
           );
         if (performance.now() - lastYield >= 4) {
-          await nextFrame();
+          await schedule();
           if (options.signal?.aborted) return null;
           lastYield = performance.now();
         }
@@ -266,7 +269,7 @@ export async function runChallenge(
           break;
         }
         if (performance.now() - lastYield >= 4) {
-          await nextFrame();
+          await schedule();
           if (options.signal?.aborted) return null;
           lastYield = performance.now();
         }
@@ -286,7 +289,7 @@ export async function runChallenge(
       total: argsList.length,
       latest: result,
     });
-    await nextFrame();
+    await schedule();
   }
   if (options.signal?.aborted) return null;
   return { cases, passed: cases.filter((result) => result.passed).length };

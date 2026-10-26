@@ -92,6 +92,10 @@ Unit tests cover grammar, geometry, local 3D rotations, aliases, pen styles, bou
 
 Browser verification uses Chromium with software WebGL rendering. Physical GPU/other-browser coverage is separate. The production build warns about the main UI chunk (approximately 508 kB minified / 165 kB gzip) and the Three.js chunk (approximately 585 kB minified / 146 kB gzip). Three.js loads only in 3D mode.
 
+## AI benchmark
+
+`bench/` turns the six practice tasks into a benchmark for language models: each task is sent to a model through the Claude Code or Codex CLI inside a versioned Docker image, and the answer is scored headlessly by the same geometry judge. Prompts and the environment are versioned separately and recorded in every result. See [bench/README.md](bench/README.md).
+
 ## Structure
 
 `src/logo/` owns parsing and a lazy, finite executor independent of React/Three.js. React schedules cancellable animation frames and owns the controls. Segment records feed Canvas2D or batched Three.js thick-line geometry. Renderer teardown disposes GPU resources, controls, observers and the WebGL context. UI styling combines semantic CSS with scoped Tailwind utilities and the existing font stack.

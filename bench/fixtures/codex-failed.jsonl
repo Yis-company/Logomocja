@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"01a17a18"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `gpt-6.1-luna` not found."}}
+{"type":"turn.started"}
+{"type":"error","message":"{\"type\":\"error\",\"status\":400,\"error\":{\"code\":\"model_not_found\"}}"}
+{"type":"turn.failed","error":{"message":"The 'gpt-6.1-luna' model is not supported when using Codex with a ChatGPT account."}}

@@ -1,0 +1,1 @@
+{"duration_api_ms":2012,"stop_reason":"end_turn","session_id":"576ee128","total_cost_usd":0.0051954,"usage":{"input_tokens":2,"cache_creation_input_tokens":623,"cache_read_input_tokens":0,"output_tokens":4,"output_tokens_details":{"thinking_tokens":0},"service_tier":"standard"},"is_error":false,"num_turns":1,"subtype":"success","result":"OK","type":"result","duration_ms":1310}
