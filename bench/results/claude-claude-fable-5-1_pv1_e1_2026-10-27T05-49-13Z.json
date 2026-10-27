@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "fa1c2a6fbe7f81951d65e8b6d27e8a57977aa21e",
+  "appVersion": "0.2.0",
+  "runner": "claude",
+  "cliVersion": "2.1.310",
+  "model": "claude-fable-5-1",
+  "settings": {
+    "effort": null,
+    "argv": [
+      "claude",
+      "-p",
+      "--restricted",
+      "--tools",
+      "",
+      "--setting-sources",
+      "",
+      "--no-session-persistence",
+      "--output-format",
+      "json",
+      "--model",
+      "claude-fable-5-1",
+      "--system-prompt",
+      "You are solving a programming task in Logomocja, a small Polish Logo dialect for turtle drawing. The task and the language reference follow in the user message.\n\nRules:\n- Answer with exactly one fenced code block tagged `logo`. It must contain only the procedure definition the task asks for: nothing before the block, nothing after it, no commands outside the procedure.\n- Use only the commands in the language reference. The dialect has no variables, arithmetic, conditionals or recursion. Parameters may replace numbers directly.\n- Do not run commands, use tools or ask questions. Work the geometry out yourself and answer once."
+    ]
+  },
+  "startedAt": "2026-10-27T05:49:13.250Z",
+  "durationMs": 23440,
+  "partial": false,
+  "tasks": [
+    {
+      "id": "kwadrat",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż",
+          "response": "Start facing +Y, go to (0,bok), turn right to face +X, go to (bok,bok), turn right, etc.\n\n```logo\noto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1663,
+            "output": 81,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3581,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "gwiazda",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż",
+          "response": "```logo\noto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1672,
+            "output": 40,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3039,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż",
+          "response": "Turtle starts facing +Y. Each step: forward `bok` (up), turn right 90, forward `bok` (right along +X), turn left 90 to face +Y again.\n\n```logo\noto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1664,
+            "output": 102,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3306,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rzad",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż",
+          "response": "```logo\noto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1689,
+            "output": 323,
+            "reasoning": 241
+          },
+          "toolCalls": 0,
+          "latencyMs": 5436,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rozeta",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rozeta ma: bok\n  powtorz 8 [powtorz 4 [np bok pw 90] lw 45]\njuż",
+          "response": "```logo\noto rozeta ma: bok\n  powtorz 8 [powtorz 4 [np bok pw 90] lw 45]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1679,
+            "output": 237,
+            "reasoning": 185
+          },
+          "toolCalls": 0,
+          "latencyMs": 4711,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody3d",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [np dlugosc gora 90 np wysokosc dol 90]\njuż",
+          "response": "Turtle faces +Y. Each step: forward dlugosc along +Y, pitch up 90 to face +Z, forward wysokosc, pitch down 90 to face +Y again.\n\n```logo\noto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [np dlugosc gora 90 np wysokosc dol 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1725,
+            "output": 124,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 3345,
+          "humanScore": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "samples": 6,
+    "taskPassRate": 1,
+    "casePassRate": 1,
+    "meanLatencyMs": 3903
+  }
+}

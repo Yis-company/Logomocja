@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "fa1c2a6fbe7f81951d65e8b6d27e8a57977aa21e",
+  "appVersion": "0.2.0",
+  "runner": "claude",
+  "cliVersion": "2.1.310",
+  "model": "claude-sonnet-5-5",
+  "settings": {
+    "effort": null,
+    "argv": [
+      "claude",
+      "-p",
+      "--restricted",
+      "--tools",
+      "",
+      "--setting-sources",
+      "",
+      "--no-session-persistence",
+      "--output-format",
+      "json",
+      "--model",
+      "claude-sonnet-5-5",
+      "--system-prompt",
+      "You are solving a programming task in Logomocja, a small Polish Logo dialect for turtle drawing. The task and the language reference follow in the user message.\n\nRules:\n- Answer with exactly one fenced code block tagged `logo`. It must contain only the procedure definition the task asks for: nothing before the block, nothing after it, no commands outside the procedure.\n- Use only the commands in the language reference. The dialect has no variables, arithmetic, conditionals or recursion. Parameters may replace numbers directly.\n- Do not run commands, use tools or ask questions. Work the geometry out yourself and answer once."
+    ]
+  },
+  "startedAt": "2026-10-27T05:48:27.677Z",
+  "durationMs": 21619,
+  "partial": false,
+  "tasks": [
+    {
+      "id": "kwadrat",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż",
+          "response": "```logo\noto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1667,
+            "output": 40,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 2955,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "gwiazda",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż",
+          "response": "```logo\noto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1678,
+            "output": 40,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 2832,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż",
+          "response": "```logo\noto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1668,
+            "output": 45,
+            "reasoning": 0
+          },
+          "toolCalls": 0,
+          "latencyMs": 2756,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rzad",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż",
+          "response": "```logo\noto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1694,
+            "output": 338,
+            "reasoning": 256
+          },
+          "toolCalls": 0,
+          "latencyMs": 5211,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "rozeta",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż",
+          "response": "```logo\noto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1682,
+            "output": 213,
+            "reasoning": 154
+          },
+          "toolCalls": 0,
+          "latencyMs": 3968,
+          "humanScore": null
+        }
+      ]
+    },
+    {
+      "id": "schody3d",
+      "samples": [
+        {
+          "index": 0,
+          "passed": true,
+          "casesPassed": 6,
+          "casesTotal": 6,
+          "failure": null,
+          "code": "oto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [np dlugosc gora 90 np wysokosc dol 90]\njuż",
+          "response": "```logo\noto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [np dlugosc gora 90 np wysokosc dol 90]\njuż\n```",
+          "usage": {
+            "input": 2,
+            "cachedInput": 1728,
+            "output": 196,
+            "reasoning": 134
+          },
+          "toolCalls": 0,
+          "latencyMs": 3872,
+          "humanScore": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "samples": 6,
+    "taskPassRate": 1,
+    "casePassRate": 1,
+    "meanLatencyMs": 3599
+  }
+}
