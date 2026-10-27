@@ -1,0 +1,14 @@
+import {chromium} from '@playwright/test';
+import assert from 'node:assert/strict';
+const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto(process.env.TEST_URL||'http://localhost:5173/');
+await page.waitForFunction(()=>window.logomocja);
+assert.equal(await page.evaluate(()=>window.logomocja.run('np 20','2d').segments.length),1);
+await page.locator('#code').fill('powtórz 4 [np 80 pw 90]');await page.locator('#play').click();await page.waitForFunction(()=>document.querySelector('#status').textContent==='Rysunek gotowy');assert.equal(await page.locator('#count').textContent(),'4 odcinków');
+await page.reload();assert.equal(await page.locator('#code').inputValue(),'powtórz 4 [np 80 pw 90]');
+await page.locator('#step').click();await page.locator('#step').click();assert.equal(await page.locator('#count').textContent(),'1 odcinków');
+await page.locator('#help').click();assert.equal(await page.locator('dialog').isVisible(),true);await page.locator('#close').click();
+await page.screenshot({path:'/tmp/logomocja-desktop.png'});
+await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.screenshot({path:'/tmp/logomocja-mobile.png',fullPage:true});
+assert.deepEqual(errors,[]);await browser.close();console.log('Browser checks passed: execution, stepping, persistence, help, mobile, no JS errors.');
