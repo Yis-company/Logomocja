@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { RunResult } from "../bench/score";
-import { groupByVersion, humanScore } from "./benchmark";
+import { groupByVersion, humanScore, tokenTotals } from "./benchmark";
 
 const run = (
   appVersion: string,
@@ -33,7 +33,7 @@ const run = (
         failure: null,
         code: "",
         response: "",
-        usage: {},
+        usage: { input: 2, cachedInput: 1000, output: 50, reasoning: 20 },
         toolCalls: 0,
         latencyMs: meanLatencyMs,
         humanScore: score,
@@ -58,5 +58,15 @@ describe("benchmark groups", () => {
   it("averages human scores and reports none when unfilled", () => {
     expect(humanScore(run("0.2.0", "m", 1, 1, [null, null]))).toBeNull();
     expect(humanScore(run("0.2.0", "m", 1, 1, [4, null, 5]))).toBe(4.5);
+  });
+});
+
+describe("token totals", () => {
+  it("sums input with cached input, output and reasoning over samples", () => {
+    expect(tokenTotals(run("0.2.0", "m", 1, 1, [null, null]))).toEqual({
+      input: 2004,
+      output: 100,
+      reasoning: 40,
+    });
   });
 });

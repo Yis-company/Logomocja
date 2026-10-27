@@ -45,7 +45,7 @@
           "code": "oto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż",
           "response": "```logo\noto kwadrat ma: bok\n  powtorz 4 [np bok pw 90]\njuż\n```",
           "usage": {
-            "input": 10848,
+            "input": 2784,
             "cachedInput": 8064,
             "output": 31,
             "reasoning": 0
@@ -68,7 +68,7 @@
           "code": "oto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż",
           "response": "```logo\noto gwiazda ma: bok\n  powtorz 5 [np bok pw 144]\njuż\n```",
           "usage": {
-            "input": 10858,
+            "input": 2794,
             "cachedInput": 8064,
             "output": 32,
             "reasoning": 0
@@ -91,7 +91,7 @@
           "code": "oto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż",
           "response": "```logo\noto schody ma: n, bok\n  powtorz n [np bok pw 90 np bok lw 90]\njuż\n```",
           "usage": {
-            "input": 10855,
+            "input": 2791,
             "cachedInput": 8064,
             "output": 37,
             "reasoning": 0
@@ -114,7 +114,7 @@
           "code": "oto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż",
           "response": "```logo\noto rzad ma: n, bok\n  powtorz n [\n    powtorz 4 [np bok pw 90]\n    pod\n    pw 90\n    np bok\n    np bok\n    lw 90\n    opu\n  ]\njuż\n```",
           "usage": {
-            "input": 10871,
+            "input": 2807,
             "cachedInput": 8064,
             "output": 66,
             "reasoning": 0
@@ -137,7 +137,7 @@
           "code": "oto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż",
           "response": "```logo\noto rozeta ma: bok\n  powtorz 8 [\n    powtorz 4 [np bok pw 90]\n    lw 45\n  ]\njuż\n```",
           "usage": {
-            "input": 10783,
+            "input": 2719,
             "cachedInput": 8064,
             "output": 45,
             "reasoning": 0
@@ -160,7 +160,7 @@
           "code": "oto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [\n    np dlugosc\n    gora 90\n    np wysokosc\n    dol 90\n  ]\njuż",
           "response": "```logo\noto schody3d ma: n, dlugosc, wysokosc\n  powtorz n [\n    np dlugosc\n    gora 90\n    np wysokosc\n    dol 90\n  ]\njuż\n```",
           "usage": {
-            "input": 10809,
+            "input": 2745,
             "cachedInput": 8064,
             "output": 56,
             "reasoning": 0

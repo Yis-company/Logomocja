@@ -151,8 +151,10 @@ export const codex: Runner = {
     const usage = events.find((e) => e.type === "turn.completed")?.usage ?? {};
     return {
       text: message.text,
+      // Codex counts cached tokens inside input_tokens; store uncached input
+      // so `input` and `cachedInput` mean the same thing as for Claude.
       usage: {
-        input: usage.input_tokens ?? 0,
+        input: (usage.input_tokens ?? 0) - (usage.cached_input_tokens ?? 0),
         cachedInput: usage.cached_input_tokens ?? 0,
         output: usage.output_tokens ?? 0,
         reasoning: usage.reasoning_output_tokens ?? 0,

@@ -1,5 +1,5 @@
 import type { RunResult } from "../../bench/score";
-import { groupByVersion, humanScore } from "../benchmark";
+import { groupByVersion, humanScore, tokenTotals } from "../benchmark";
 import { Frame, FramePanel } from "../components/reui/frame";
 
 const results = Object.values(
@@ -17,6 +17,7 @@ function RunRows({ runs, taskIds }: { runs: RunResult[]; taskIds: string[] }) {
     <>
       {runs.map((run) => {
         const score = humanScore(run);
+        const tokens = tokenTotals(run);
         return (
           <tr key={`${run.startedAt}-${run.model}`}>
             <td>
@@ -31,6 +32,9 @@ function RunRows({ runs, taskIds }: { runs: RunResult[]; taskIds: string[] }) {
             <td>{percent(run.summary.taskPassRate)}</td>
             <td>{percent(run.summary.casePassRate)}</td>
             <td>{seconds(run.summary.meanLatencyMs)}</td>
+            <td>{tokens.input.toLocaleString("pl-PL")}</td>
+            <td>{tokens.output.toLocaleString("pl-PL")}</td>
+            <td>{tokens.reasoning.toLocaleString("pl-PL")}</td>
             <td>{score === null ? "—" : score.toFixed(1)}</td>
             <td>
               {date(run.startedAt)}
@@ -91,6 +95,9 @@ export function Benchmark() {
                       <th>Zadania</th>
                       <th>Przypadki</th>
                       <th>Średni czas</th>
+                      <th>Tokeny wejścia</th>
+                      <th>Tokeny wyjścia</th>
+                      <th>Rozumowanie</th>
                       <th>Ocena</th>
                       <th>Data</th>
                       {taskIds.map((id) => (
@@ -105,8 +112,10 @@ export function Benchmark() {
               </div>
               <p>
                 Zadanie liczy się jako zaliczone tylko wtedy, gdy wszystkie jego przypadki
-                przechodzą. Przypadki pokazują częściowy wynik. Ocena to średnia ocen
-                ludzkich, jeśli zostały wpisane w plikach wyników.
+                przechodzą. Przypadki pokazują częściowy wynik. Tokeny to sumy z całego
+                przebiegu według narzędzia; wejście obejmuje tokeny z pamięci podręcznej
+                i własną otoczkę narzędzia, więc porównuj je w obrębie jednego narzędzia.
+                Ocena to średnia ocen ludzkich, jeśli zostały wpisane w plikach wyników.
               </p>
             </FramePanel>
           </Frame>

@@ -43,3 +43,16 @@ export function humanScore(run: RunResult): number | null {
     ? scores.reduce((sum, score) => sum + score, 0) / scores.length
     : null;
 }
+
+export type TokenTotals = { input: number; output: number; reasoning: number };
+
+/** Token totals over every sample of a run, as reported by the CLI. Input includes cached tokens. */
+export function tokenTotals(run: RunResult): TokenTotals {
+  const totals = { input: 0, output: 0, reasoning: 0 };
+  for (const sample of run.tasks.flatMap((task) => task.samples)) {
+    totals.input += (sample.usage.input ?? 0) + (sample.usage.cachedInput ?? 0);
+    totals.output += sample.usage.output ?? 0;
+    totals.reasoning += sample.usage.reasoning ?? 0;
+  }
+  return totals;
+}

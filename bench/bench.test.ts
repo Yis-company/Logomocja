@@ -102,7 +102,7 @@ describe("runners", () => {
   it("parses Codex JSONL events and counts tool calls", () => {
     const completion = codex.parse(fixture("codex-ok.jsonl"));
     expect(completion.text).toContain("oto kwadrat");
-    expect(completion.usage).toEqual({ input: 13659, cachedInput: 8064, output: 5, reasoning: 0 });
+    expect(completion.usage).toEqual({ input: 5595, cachedInput: 8064, output: 5, reasoning: 0 });
     expect(completion.toolCalls).toBe(1);
     expect(() => codex.parse(fixture("codex-failed.jsonl"))).toThrow(/not supported/);
   });
@@ -171,6 +171,6 @@ describe("scoring and report", () => {
     const summary = renderSummary([weak, strong]);
     expect(summary.indexOf("| strong |")).toBeLessThan(summary.indexOf("| weak |"));
     expect(summary).toContain("| weak | v1 | 1 | 2/6 geometry | 6/6 |");
-    expect(summary).toContain("| strong | 0.2.0 | claude | v1 | 1 | default | 2 | 100% | 100% | 2.0s | 5.0s | 2026-10-26 10:20 |  |");
+    expect(summary).toContain("| strong | 0.2.0 | claude | v1 | 1 | default | 2 | 100% | 100% | 2.0s | 5.0s | 0 | 0 | 0 | 2026-10-26 10:20 |  |");
   });
 });
