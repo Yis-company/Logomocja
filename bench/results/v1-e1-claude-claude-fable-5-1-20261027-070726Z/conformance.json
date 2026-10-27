@@ -1,0 +1,20 @@
+{
+  "hook": true,
+  "suites": {
+    "claude-fable-5-1": {
+      "passed": 153,
+      "total": 153,
+      "failures": []
+    },
+    "gpt-6-astra": {
+      "passed": 117,
+      "total": 118,
+      "failures": [
+        {
+          "name": "procedure call requires numeric arguments",
+          "reason": "expected error at column 3, got 1"
+        }
+      ]
+    }
+  }
+}

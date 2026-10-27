@@ -1,0 +1,51 @@
+{
+  "schema": 2,
+  "id": "v1-e1-claude-claude-fable-5-1-20261027-070726Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-fable-5-1",
+  "cliVersion": "2.1.310",
+  "effort": null,
+  "startedAt": "2026-10-27T07:07:26.968Z",
+  "agentMs": 1771850,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 1474,
+    "cachedInput": 5284514,
+    "output": 139787,
+    "reasoning": 46254
+  },
+  "costUsd": 11.842673749999998,
+  "turns": 60,
+  "toolCalls": 59,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 7,
+    "distBytes": 637920
+  },
+  "cases": null,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "3050eb3b8a709d56881b504698fc81d7a3be05e9",
+  "repoVersion": "0.2.0",
+  "totalMs": 1774984,
+  "conformance": {
+    "claude-fable-5-1": {
+      "passed": 153,
+      "total": 153,
+      "hook": true
+    },
+    "gpt-6-astra": {
+      "passed": 117,
+      "total": 118,
+      "hook": true
+    }
+  },
+  "humanScore": null,
+  "notes": ""
+}
