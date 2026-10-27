@@ -1,0 +1,15 @@
+{
+  "hook": true,
+  "suites": {
+    "claude-fable-5-1": {
+      "passed": 153,
+      "total": 153,
+      "failures": []
+    },
+    "gpt-6-astra": {
+      "passed": 118,
+      "total": 118,
+      "failures": []
+    }
+  }
+}

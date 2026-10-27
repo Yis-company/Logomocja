@@ -1,0 +1,33 @@
+{
+  "hook": true,
+  "suites": {
+    "claude-fable-5-1": {
+      "passed": 150,
+      "total": 153,
+      "failures": [
+        {
+          "name": "direct recursion",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "recursion in never-run repeat",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "recursion in uncalled procedure",
+          "reason": "expected error on line 2, got line 1"
+        }
+      ]
+    },
+    "gpt-6-astra": {
+      "passed": 117,
+      "total": 118,
+      "failures": [
+        {
+          "name": "direct recursion even in zero repeat",
+          "reason": "expected error on line 2, got line 1"
+        }
+      ]
+    }
+  }
+}

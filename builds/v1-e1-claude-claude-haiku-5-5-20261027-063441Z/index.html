@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Logomocja — studio grafiki żółwia Logo w 2D i 3D" />
+    <title>Logomocja</title>
+    <script type="module" crossorigin src="/Logomocja/builds/v1-e1-claude-claude-haiku-5-5-20261027-063441Z/assets/index-BvA8peD1.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v1-e1-claude-claude-haiku-5-5-20261027-063441Z/assets/index-Cs6H7D-s.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <h1>Logomocja</h1>
+        <span class="tagline">żółw w 2D i 3D</span>
+      </div>
+      <div class="mode" role="group" aria-label="Tryb rysowania">
+        <button type="button" id="mode-2d" data-mode="2d" aria-pressed="true">2D</button>
+        <button type="button" id="mode-3d" data-mode="3d" aria-pressed="false">3D</button>
+      </div>
+      <div class="examples">
+        <label for="example-select">Przykład</label>
+        <select id="example-select"></select>
+        <button type="button" id="example-load">Wczytaj</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-pane" aria-labelledby="editor-title">
+        <h2 id="editor-title">Program</h2>
+        <textarea id="source" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="diagnostic"></textarea>
+        <button type="button" id="diagnostic" class="diagnostic" hidden></button>
+        <details class="reference">
+          <summary>Polecenia</summary>
+          <dl>
+            <dt><code>np</code> / <code>naprzod</code> / <code>fd</code> <em>d</em></dt><dd>Idź naprzód o <em>d</em></dd>
+            <dt><code>ws</code> / <code>wstecz</code> / <code>bk</code> <em>d</em></dt><dd>Cofnij się o <em>d</em></dd>
+            <dt><code>pw</code> / <code>prawo</code> / <code>rt</code> <em>a</em></dt><dd>Obróć w prawo o <em>a</em> stopni</dd>
+            <dt><code>lw</code> / <code>lewo</code> / <code>lt</code> <em>a</em></dt><dd>Obróć w lewo o <em>a</em> stopni</dd>
+            <dt><code>pod</code> / <code>podnies</code> / <code>pu</code></dt><dd>Podnieś pisak</dd>
+            <dt><code>opu</code> / <code>opusc</code> / <code>pd</code></dt><dd>Opuść pisak</dd>
+            <dt><code>kolor</code> / <code>color</code> <em>"#rrggbb"</em></dt><dd>Ustaw kolor pisaka</dd>
+            <dt><code>grubosc</code> / <code>width</code> <em>1–12</em></dt><dd>Ustaw grubość linii</dd>
+            <dt><code>powtorz</code> / <code>repeat</code> <em>n [ … ]</em></dt><dd>Powtórz blok <em>n</em> razy (0–10 000)</dd>
+            <dt><code>gora</code> / <code>pitchup</code> <em>a</em> <span class="tag">3D</span></dt><dd>Pochyl nos w górę o <em>a</em> stopni</dd>
+            <dt><code>dol</code> / <code>pitchdown</code> <em>a</em> <span class="tag">3D</span></dt><dd>Pochyl nos w dół o <em>a</em> stopni</dd>
+            <dt><code>oto</code> <em>nazwa ma: a, b</em> … <code>już</code></dt><dd>Definicja procedury (także <code>:a</code> w starym stylu)</dd>
+          </dl>
+          <p>Średnik zaczyna komentarz. Słowa kluczowe nie rozróżniają wielkości liter.</p>
+        </details>
+      </section>
+
+      <section class="stage-pane" aria-label="Rysunek">
+        <div class="toolbar">
+          <button type="button" id="run" class="primary" title="Uruchom całość (Ctrl+Enter)">Uruchom</button>
+          <button type="button" id="step" title="Wykonaj jedno polecenie">Krok</button>
+          <button type="button" id="play" title="Odtwarzaj krok po kroku">Odtwórz</button>
+          <button type="button" id="reset" title="Wyczyść rysunek i zatrzymaj program">Reset</button>
+          <label class="speed">Tempo
+            <input type="range" id="speed" min="2" max="400" step="1" value="30" />
+            <output id="speed-value">30</output>
+          </label>
+          <button type="button" id="fit" title="Dopasuj widok do rysunku">Dopasuj</button>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="plane" aria-label="Rysunek 2D"></canvas>
+          <div id="space" class="space" hidden></div>
+          <p id="stage-notice" class="stage-notice" hidden></p>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Gotowe.</p>
+      </section>
+    </main>
+
+  </body>
+</html>

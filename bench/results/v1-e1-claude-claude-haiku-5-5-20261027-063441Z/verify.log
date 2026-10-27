@@ -1,0 +1,89 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@7.0.2
++ vite@8.3.5
++ three@0.186.1
+
+29 packages installed [70.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   4.46 kB │ gzip:   1.60 kB
+dist/assets/index-Cs6H7D-s.css    4.55 kB │ gzip:   1.57 kB
+dist/assets/index-BvA8peD1.js    25.97 kB │ gzip:   9.63 kB
+dist/assets/space-BkRRltm2.js   579.60 kB │ gzip: 144.56 kB
+
+✓ built in 151ms
+$ tsc --noEmit && vite build
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/logo.test.ts:
+(pass) flat drawing > square turns right and closes [1.61ms]
+(pass) flat drawing > left turns and backward moves [0.07ms]
+(pass) flat drawing > zero moves and pen up draw nothing [0.06ms]
+(pass) flat drawing > pen state, colour and width persist and apply to segments [1.05ms]
+(pass) flat drawing > aliases and accented spellings are equivalent, keywords ignore case [0.12ms]
+(pass) flat drawing > numbers: signs, decimals and leading dot [0.04ms]
+(pass) flat drawing > comments run to the end of the line [0.05ms]
+(pass) flat drawing > empty program draws nothing [0.01ms]
+(pass) flat drawing > negative angles turn the other way [0.04ms]
+(pass) flat drawing > colour literals are validated [0.19ms]
+(pass) repeat > zero runs nothing and nesting works [0.11ms]
+(pass) repeat > count must be an integer in range [0.07ms]
+(pass) repeat > unbalanced brackets are reported at the opening bracket [0.06ms]
+(pass) parameters and procedures > definition after the call and parameters in repeat counts [0.40ms]
+(pass) parameters and procedures > legacy header with colon-prefixed parameters [0.10ms]
+(pass) parameters and procedures > parameters pass through to other procedure calls [0.12ms]
+(pass) parameters and procedures > parameters are local and procedures can be called many times [0.15ms]
+(pass) parameters and procedures > wrong argument count is reported at the call [0.10ms]
+(pass) parameters and procedures > a name may be defined once [0.03ms]
+(pass) parameters and procedures > recursion is an error even if never run [0.06ms]
+(pass) parameters and procedures > definitions inside bodies and missing już are errors [0.05ms]
+(pass) parameters and procedures > już must stand on its own line [0.02ms]
+(pass) parameters and procedures > unknown parameters and parameters used as commands [0.21ms]
+(pass) parameters and procedures > reserved words cannot name procedures or parameters [0.03ms]
+(pass) parameters and procedures > definitions must start a line and headers must be well formed [0.07ms]
+(pass) parameters and procedures > stray już is an error [0.02ms]
+(pass) numeric arguments > missing and non-numeric arguments [0.05ms]
+(pass) numeric arguments > numbers are not expressions [0.02ms]
+(pass) numeric arguments > width is an integer 1–12 [0.05ms]
+(pass) numeric arguments > unknown commands report line and column [0.09ms]
+(pass) 2D and 3D > pitch commands are errors in 2D [0.06ms]
+(pass) 2D and 3D > flat programs give identical segments in 2D and 3D [0.13ms]
+(pass) 2D and 3D > pitch up turns the nose towards the up vector [0.17ms]
+(pass) 2D and 3D > pitch down and back restores the plane [0.04ms]
+(pass) 2D and 3D > right turn after pitch keeps the right vector [0.06ms]
+(pass) run-time limits > operations limit keeps what was drawn [4.87ms]
+(pass) run-time limits > operations count repeat and call bookkeeping [4.11ms]
+(pass) run-time limits > coordinates are limited to ±100 000 [1.40ms]
+(pass) run-time limits > run-time width and repeat values from parameters are checked when used [0.13ms]
+(pass) run-time limits > nesting depth is limited to 32 [0.21ms]
+(pass) run-time limits > source length is limited [0.42ms]
+(pass) examples > Rozeta z kwadratów runs without error [0.14ms]
+(pass) examples > Gwiazda pięcioramienna runs without error [0.02ms]
+(pass) examples > Okrąg runs without error [0.03ms]
+(pass) examples > Skręcona wieża runs without error [0.12ms]
+
+ 45 pass
+ 0 fail
+ 207 expect() calls
+Ran 45 tests across 1 file. [25.00ms]
+(exit 0)
