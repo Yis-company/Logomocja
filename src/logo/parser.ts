@@ -215,8 +215,9 @@ export function parse(source: string, mode: Mode): Program {
   }
   function primary(owner: Token): Expr {
     const token = tokens[index];
+    // A missing argument is reported at the token found in its place, or at the command at the end.
     if (!token || "[])".includes(token.text) || starts.has(key(token.text)) || ends.has(key(token.text)))
-      throw new LogoError(`Brakuje argumentu dla „${owner.text}”.`, owner.span);
+      throw new LogoError(`Brakuje argumentu dla „${owner.text}”.`, token?.span ?? owner.span);
     index++;
     if (token.text === "(") {
       const inner = expression(owner);
