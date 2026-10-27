@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "build:pages": "tsc --noEmit && vite build --mode pages",
+    "build:pages": "tsc --noEmit && vite build --mode pages && mkdir -p builds && cp -R builds dist/",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "biome lint src tests scripts",
+    "lint": "biome lint src tests scripts bench",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:pages": "playwright test --config playwright.pages.config.ts",
+    "bench": "bash bench/bench.sh",
+    "bench:conformance": "bun bench/conformance/run.ts",
     "changeset": "changeset",
     "changeset:status": "changeset status",
     "changeset:version": "changeset version && bun install --lockfile-only"

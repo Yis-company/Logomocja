@@ -92,13 +92,17 @@ Unit tests cover grammar, geometry, local 3D rotations, aliases, pen styles, bou
 
 Browser verification uses Chromium with software WebGL rendering. Physical GPU/other-browser coverage is separate. The production build warns about the main UI chunk (approximately 508 kB minified / 165 kB gzip) and the Three.js chunk (approximately 585 kB minified / 146 kB gzip). Three.js loads only in 3D mode.
 
+## AI benchmark
+
+`bench/` benchmarks AI coding agents by having each build the whole app from a product brief inside a versioned Docker container, then verifying the build, running language conformance suites against it through the `window.logomocja.run` hook, and publishing the built app on Pages. See [bench/README.md](bench/README.md).
+
 ## Structure
 
 `src/logo/` owns parsing and a lazy, finite executor independent of React/Three.js. React schedules cancellable animation frames and owns the controls. Segment records feed Canvas2D or batched Three.js thick-line geometry. Renderer teardown disposes GPU resources, controls, observers and the WebGL context. UI styling combines semantic CSS with scoped Tailwind utilities and the existing font stack.
 
 ## Navigation and local practice
 
-The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges` and `/challenges/:slug`. The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
+The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges`, `/challenges/:slug` and `/benchmark` (agent benchmark results, bundled from `bench/results/` at build time; the agents' built apps are served under `/builds/<run-id>/`). The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
 
 Named Logo procedures list parameters after `ma:`, separated by commas. The name and complete parameter list stay on the same header line; the body follows on later lines and ends with a standalone `już` (also `juz`, or `to`/`end`). Use `oto name` without `ma:` for a procedure with no parameters.
 

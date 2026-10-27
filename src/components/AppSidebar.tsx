@@ -18,6 +18,7 @@ const destinations = [
   ["/examples", "Przykłady", "grid"],
   ["/commands", "Polecenia", "book"],
   ["/challenges", "Wyzwania", "trophy"],
+  ["/benchmark", "Benchmark", "spark"],
 ] as const;
 export function AppSidebar({
   theme,

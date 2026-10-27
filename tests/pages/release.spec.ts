@@ -24,6 +24,10 @@ test("static Pages assets, navigation, history, refresh and legacy links", async
   ).toBeVisible();
   await page.goto("./#examples");
   await expect(page).toHaveURL(/#\/examples$/);
+  await page.goto("./#/benchmark");
+  await expect(
+    page.getByRole("heading", { name: "Benchmark", exact: true }),
+  ).toBeVisible();
   await page.goto("./#/missing");
   await expect(
     page.getByRole("heading", { name: "Nie znaleziono strony" }),
