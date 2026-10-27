@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { type Case, compareCase, type Outcome, parseSuite, type Segment } from "./conformance/compare";
+import { cost } from "./prices";
 import { renderPrompt } from "./prompt";
 import { claude, codex, parseModelSpec } from "./runners";
 
@@ -63,6 +64,15 @@ describe("runners", () => {
     });
     expect(codex.parse('{"type":"turn.failed","error":{"message":"rate limit reached"}}').status).toBe("partial");
     expect(codex.parse('{"type":"error","message":"boom"}').status).toBe("failed");
+  });
+});
+
+describe("cost", () => {
+  it("keeps the CLI figure, else prices tokens from the table", () => {
+    const tokens = { input: 1_000_000, cachedInput: 2_000_000, output: 100_000, reasoning: 0 };
+    expect(cost("gpt-6-astra", { costUsd: 1.25, tokens })).toEqual({ costUsd: 1.25, costBasis: "cli" });
+    expect(cost("gpt-6-astra", { costUsd: null, tokens })).toEqual({ costUsd: 17, costBasis: "list" });
+    expect(cost("unknown", { costUsd: null, tokens })).toEqual({ costUsd: null, costBasis: null });
   });
 });
 

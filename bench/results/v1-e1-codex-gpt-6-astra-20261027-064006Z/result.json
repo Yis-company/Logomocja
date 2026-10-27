@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "id": "v1-e1-codex-gpt-6-astra-20261027-064006Z",
   "task": "app",
   "runner": "codex",
@@ -17,7 +17,8 @@
     "output": 34720,
     "reasoning": 5030
   },
-  "costUsd": null,
+  "costUsd": 3.435968,
+  "costBasis": "list",
   "turns": 1,
   "toolCalls": 26,
   "verify": {

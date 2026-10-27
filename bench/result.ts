@@ -14,7 +14,7 @@ export type Verify = {
 export type SuiteScore = { passed: number; total: number; hook: boolean };
 export type RunStatus = "completed" | "partial" | "failed";
 export type RunResult = {
-  schema: 2;
+  schema: 3;
   id: string;
   task: "app" | "tests";
   prompt: string;
@@ -33,6 +33,8 @@ export type RunResult = {
   statusDetail: string;
   tokens: Tokens;
   costUsd: number | null;
+  /** "cli": reported by the CLI; "list": estimated from bench/prices.ts. */
+  costBasis: "cli" | "list" | null;
   turns: number;
   toolCalls: number;
   verify: Verify | null;

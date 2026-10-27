@@ -3,7 +3,7 @@ import type { RunResult } from "../bench/result";
 import { conformanceRate, groupByVersion } from "./benchmark";
 
 const run = (overrides: Partial<RunResult>): RunResult => ({
-  schema: 2,
+  schema: 3,
   id: "x",
   task: "app",
   prompt: "v1",
@@ -22,6 +22,7 @@ const run = (overrides: Partial<RunResult>): RunResult => ({
   statusDetail: "success",
   tokens: { input: 1, cachedInput: 2, output: 3, reasoning: 4 },
   costUsd: null,
+  costBasis: null,
   turns: 1,
   toolCalls: 0,
   verify: { installed: true, built: true, tests: "none", distFiles: 1, distBytes: 1 },

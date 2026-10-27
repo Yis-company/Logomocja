@@ -123,7 +123,7 @@ if (task === "tests" && existsSync(join(out, "cases.json"))) {
 
 const { hasCommit, ...rest } = inner;
 const result: RunResult = {
-  schema: 2,
+  schema: 3,
   id,
   ...rest,
   prompt: values.prompt,

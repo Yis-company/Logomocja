@@ -13,6 +13,7 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import type { Verify } from "./result";
+import { cost } from "./prices";
 import { parseModelSpec } from "./runners";
 
 const WORK = "/work";
@@ -138,7 +139,7 @@ writeFileSync(
       status: parsed.status,
       statusDetail: parsed.detail,
       tokens: parsed.tokens,
-      costUsd: parsed.costUsd,
+      ...cost(model, parsed),
       turns: parsed.turns,
       toolCalls: parsed.toolCalls,
       verify,

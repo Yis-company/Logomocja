@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "id": "v1-e1-codex-gpt-6.1-terra-20261027-065748Z",
   "task": "app",
   "runner": "codex",
@@ -17,7 +17,8 @@
     "output": 10247,
     "reasoning": 172
   },
-  "costUsd": null,
+  "costUsd": 0.074774,
+  "costBasis": "list",
   "turns": 1,
   "toolCalls": 6,
   "verify": {

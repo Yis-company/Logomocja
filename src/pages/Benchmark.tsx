@@ -9,6 +9,10 @@ const repo = "https://github.com/Yis-company/Logomocja";
 const minutes = (ms: number) => `${(ms / 60_000).toFixed(1)} min`;
 const n = (value: number) => value.toLocaleString("pl-PL");
 const percent = (value: number | null) => (value === null ? "—" : `${Math.round(value * 100)}%`);
+const usd = (run: RunResult) =>
+  run.costUsd === null
+    ? "—"
+    : `${run.costBasis === "list" ? "≈" : ""}${run.costUsd.toLocaleString("pl-PL", { style: "currency", currency: "USD" })}`;
 
 function AppRows({ runs, suites }: { runs: RunResult[]; suites: string[] }) {
   return (
@@ -25,6 +29,7 @@ function AppRows({ runs, suites }: { runs: RunResult[]; suites: string[] }) {
           <td>{n(run.tokens.input + run.tokens.cachedInput)}</td>
           <td>{n(run.tokens.output)}</td>
           <td>{n(run.tokens.reasoning)}</td>
+          <td>{usd(run)}</td>
           <td>{n(run.toolCalls)}</td>
           <td>{run.verify?.built ? "tak" : "nie"}</td>
           <td>{run.verify?.tests === "none" ? "brak" : run.verify?.tests === "pass" ? "ok" : "błąd"}</td>
@@ -93,6 +98,7 @@ export function Benchmark() {
                       <th>Tokeny wejścia</th>
                       <th>Tokeny wyjścia</th>
                       <th>Rozumowanie</th>
+                      <th>Koszt</th>
                       <th>Wywołania narzędzi</th>
                       <th>Build</th>
                       <th>Własne testy</th>
@@ -111,7 +117,8 @@ export function Benchmark() {
               </div>
               <p>
                 Wersja to para: wersja opisu i wersja środowiska. Tokeny wejścia obejmują pamięć
-                podręczną. Zgodność to udział przypadków testowych języka, które zbudowana
+                podręczną. Koszt to cena katalogowa API: podana przez narzędzie Claude, a dla
+                Codex oszacowana (≈) z liczby tokenów. Zgodność to udział przypadków testowych języka, które zbudowana
                 aplikacja przechodzi. Ocena to ocena ludzka wpisana w pliku wyniku.
               </p>
             </FramePanel>
@@ -132,6 +139,7 @@ export function Benchmark() {
                     <th>Czas agenta</th>
                     <th>Tokeny wejścia</th>
                     <th>Tokeny wyjścia</th>
+                    <th>Koszt</th>
                     <th>Linki</th>
                   </tr>
                 </thead>
@@ -146,6 +154,7 @@ export function Benchmark() {
                       <td>{minutes(run.agentMs)}</td>
                       <td>{n(run.tokens.input + run.tokens.cachedInput)}</td>
                       <td>{n(run.tokens.output)}</td>
+                      <td>{usd(run)}</td>
                       <td>
                         <a className="text-link" href={`${repo}/tree/build/${run.id}`}>
                           Kod
