@@ -47,7 +47,7 @@ Deliver a single file `cases.json` in the working directory:
 ```
 
 - `expect.segments` is the complete ordered list of segments; the comparison is exact in count and order, with a numeric tolerance of 0.0001 on coordinates. Give at least six decimal places for values that are not exact.
-- `expect.error` means an error is required; `line` is checked and `column` is checked when you give it. Give `column` only when the specification makes it unambiguous.
+- `expect.error` means an error is required; `line` is checked and `column` is checked when you give it. Give `column` only when the specification makes it unambiguous. You may give `segments` together with `error` for run-time errors: they are then the segments that must have been drawn before the error.
 - Every case must be independent and must not rely on any implementation detail beyond the specification. Do not test error message wording.
 - Keep each case small enough that a failure points at one rule.
 

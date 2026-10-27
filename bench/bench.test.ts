@@ -92,5 +92,8 @@ describe("conformance", () => {
     expect(compareCase(errorCase, { segments: [], error: { message: "x", line: 2, column: 1 } })).toBeNull();
     expect(compareCase(errorCase, { segments: [], error: { message: "x", line: 1, column: 1 } })).toMatch(/line 2/);
     expect(compareCase(errorCase, drawn)).toMatch(/expected an error/);
+    const runtime: Case = { ...square, expect: { error: { line: 2 }, segments: segments.slice(0, 1) } };
+    expect(compareCase(runtime, { segments: segments.slice(0, 1), error: { message: "x", line: 2, column: 1 } })).toBeNull();
+    expect(compareCase(runtime, { segments, error: { message: "x", line: 2, column: 1 } })).toMatch(/expected 1 segments/);
   });
 });

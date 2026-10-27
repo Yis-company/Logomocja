@@ -117,7 +117,8 @@ if (task === "tests" && existsSync(join(out, "cases.json"))) {
   const target = join(root, "bench/conformance", values.prompt, `${model}.json`);
   mkdirSync(join(root, "bench/conformance", values.prompt), { recursive: true });
   cpSync(join(out, "cases.json"), target);
-  log(`cases written to ${target} (review before use)`);
+  cpSync(join(out, "cases.json"), join(resultsDir, "cases.json"));
+  log(`cases written to ${target} (review before use; untouched copy in results)`);
 }
 
 const { hasCommit, ...rest } = inner;
