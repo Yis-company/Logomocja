@@ -1,0 +1,26 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Logomocja – pracownia żółwia Logo w przeglądarce (2D i 3D)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "test": "bun test tests",
+    "test:e2e": "bun run build && node scripts/e2e.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "@types/node": "^26.6.5",
+    "@types/three": "^0.186.0",
+    "playwright": "^1.58.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5"
+  }
+}
