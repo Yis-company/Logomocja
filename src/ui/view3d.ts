@@ -39,6 +39,7 @@ export class View3D implements Stage {
   private joints: THREE.InstancedMesh;
   private capacity = 0;
   private uploaded = 0;
+  private countStale = true;
   private segments: Segment[] = [];
   private turtle: TurtleState | null = null;
   private dirty = true;
@@ -110,6 +111,7 @@ export class View3D implements Stage {
   setSegments(segments: Segment[]): void {
     this.segments = segments;
     this.uploaded = 0;
+    this.countStale = true;
     this.dirty = true;
   }
 
@@ -248,6 +250,7 @@ export class View3D implements Stage {
     this.joints = this.makeInstanced(this.jointGeometry, cap * 2);
     this.capacity = cap;
     this.uploaded = 0;
+    this.countStale = true;
   }
 
   // ---- per-frame work --------------------------------------------------------
@@ -285,7 +288,8 @@ export class View3D implements Stage {
       this.joints.setMatrixAt(2 * i + 1, this.tmpM);
       this.joints.setColorAt(2 * i + 1, this.tmpC);
     }
-    if (this.uploaded !== segs.length) {
+    if (this.uploaded !== segs.length || this.countStale) {
+      this.countStale = false;
       this.tubes.count = segs.length;
       this.joints.count = segs.length * 2;
       this.tubes.instanceMatrix.needsUpdate = true;
@@ -293,6 +297,7 @@ export class View3D implements Stage {
       if (this.tubes.instanceColor) this.tubes.instanceColor.needsUpdate = true;
       if (this.joints.instanceColor) this.joints.instanceColor.needsUpdate = true;
       this.uploaded = segs.length;
+      this.element.dataset.segments = String(segs.length);
     }
   }
 

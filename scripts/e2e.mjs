@@ -177,6 +177,11 @@ async function main() {
     await loadExample(page, 'spirala3d', 'sprężynę');
     await page.waitForTimeout(400);
     await page.screenshot({ path: join(SHOTS, 'desktop-3d-spirala.png') });
+    assert((await page.getAttribute('.stage-3d', 'data-segments')) === '240', '3D view uploaded 240 segments');
+    await page.click('#btn-reset');
+    await page.waitForFunction(() => document.querySelector('.stage-3d').dataset.segments === '0', null, { timeout: 5000 });
+    await page.click('#btn-run');
+    await page.waitForFunction(() => document.querySelector('.stage-3d').dataset.segments === '240', null, { timeout: 5000 });
 
     // Reload while in 3D mode: the stored draft must run in 3D (no pitch error) once the view is ready.
     await page.reload({ waitUntil: 'load' });
@@ -237,7 +242,10 @@ async function main() {
     });
     await noGl.goto(url, { waitUntil: 'load' });
     await noGl.click('#mode-3d');
-    await noGl.waitForFunction(() => !document.getElementById('stage-notice').hidden && document.getElementById('stage-notice').textContent.includes('3D'));
+    await noGl.waitForFunction(() => {
+      const n = document.getElementById('stage-notice');
+      return !n.hidden && n.dataset.kind === 'warn' && n.textContent.includes('WebGL');
+    });
     assert((await noGl.getAttribute('#mode-3d', 'aria-disabled')) === 'true', '3D button disabled without WebGL');
     assert((await noGl.getAttribute('#mode-2d', 'aria-pressed')) === 'true', 'stays in 2D without WebGL');
     await noGl.fill('#editor textarea', 'powtórz 6 [np 60 pw 60]');
