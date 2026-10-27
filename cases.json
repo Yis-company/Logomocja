@@ -1,0 +1,7593 @@
+{
+ "version": 2,
+ "cases": [
+  {
+   "name": "tabs separate tokens like spaces",
+   "mode": "2d",
+   "source": "np\t10\tpw\t90\tnp\t5",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "binary operator with tabs on both sides",
+   "mode": "2d",
+   "source": "np 10\t-\t5 pw 90 np 2\t*\t3",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       6,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "tab-indented repeat body across lines",
+   "mode": "2d",
+   "source": "powtorz 2 [\n\tnp 10\n\tpw 90\n]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "tab-indented procedure body with legacy header",
+   "mode": "2d",
+   "source": "oto k :a\n\tnp :a\n\tpw 90\njuż\nk 10 k 20",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       20,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "operator with whitespace only on its left before a tab",
+   "mode": "2d",
+   "source": "np 10 -5\tnp 1",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 7
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "operator with a tab only on its left is a stray value",
+   "mode": "2d",
+   "source": "np\t10\t-5",
+   "expect": {
+    "error": {
+     "line": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "operand continues on the next line before the operator",
+   "mode": "2d",
+   "source": "np 10\n+ 5 pw 90 np 1",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       15,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       15,
+       0
+      ],
+      "to": [
+       1,
+       15,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "call arguments split across lines",
+   "mode": "2d",
+   "source": "oto k ma: a, b\nnp a pw b\njuż\nk 10\n90\nk 5 90",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "ifelse bodies on separate lines",
+   "mode": "2d",
+   "source": "jeżeli 1 < 2\n[np 10]\n[np 20]\njeżeli 1 > 2\n[np 10]\n[np 20]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       30,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "comment directly after a number and after a header",
+   "mode": "2d",
+   "source": "oto f ma: a ; draws a\nnp a;pw 90\npw 90\njuż\nf 10;f 20\nf 5",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "uppercase MA: and parameters in a header",
+   "mode": "2d",
+   "source": "OTO K MA: A, B\nNP A PW B\nJUŻ\nk 10 90 K 5 90",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "33 nested parentheses are not brackets",
+   "mode": "2d",
+   "source": "np (((((((((((((((((((((((((((((((((7)))))))))))))))))))))))))))))))))",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "error column after an accented word on the same line",
+   "mode": "2d",
+   "source": "naprzód 10 ]",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 12
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "missing argument reported at the command when the program ends there",
+   "mode": "2d",
+   "source": "np 1\nnaprzód",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "missing call argument reported at the command when the program ends there",
+   "mode": "2d",
+   "source": "oto f ma: a\nnp a\njuż\nf 1 f",
+   "expect": {
+    "error": {
+     "line": 4,
+     "column": 5
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "missing argument reported at a bracket on the next line",
+   "mode": "2d",
+   "source": "powtorz 1 [np\n]",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "colour literal where an expression is expected",
+   "mode": "2d",
+   "source": "np \"#123456\"",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 4
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "number where a colour literal is expected",
+   "mode": "2d",
+   "source": "np 1 kolor 5",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 12
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "command word inside an expression",
+   "mode": "2d",
+   "source": "np 10 + pw 90",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 9
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "variable name in command position",
+   "mode": "2d",
+   "source": "niech x 5\nx",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "procedure name used as a value",
+   "mode": "2d",
+   "source": "oto f\nnp 1\njuż\nnp f",
+   "expect": {
+    "error": {
+     "line": 4,
+     "column": 4
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "parse error later in the source beats an earlier run-time error",
+   "mode": "2d",
+   "source": "np 1 / 0\nfoo",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "literal width in a never-called procedure is checked at parse time",
+   "mode": "2d",
+   "source": "oto f\ngrubosc 0\njuż\nnp 1",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 9
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "literal repeat count in a never-called procedure is checked at parse time",
+   "mode": "2d",
+   "source": "np 1\noto f\npowtorz 10001 [np 1]\njuż",
+   "expect": {
+    "error": {
+     "line": 3,
+     "column": 9
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "unknown command in a never-called procedure after drawing commands",
+   "mode": "2d",
+   "source": "np 5\noto f\nnp 1\nblah 2\njuż",
+   "expect": {
+    "error": {
+     "line": 4,
+     "column": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "mixed multiply and divide associate to the left",
+   "mode": "2d",
+   "source": "np 8 / 4 * 2 pw 90 np 2 * 9 / 4",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       4.5,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "mixed plus and minus associate to the left",
+   "mode": "2d",
+   "source": "np 10 - 2 + 3 pw 90 np 1 + 2 - 5",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       -2,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "unary minus on a legacy reference and on nrpowt",
+   "mode": "2d",
+   "source": "niech x 4 np -:x pw 90 powtorz 2 [np -nrpowt]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       -4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       -4,
+       0
+      ],
+      "to": [
+       -1,
+       -4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -1,
+       -4,
+       0
+      ],
+      "to": [
+       -3,
+       -4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "legacy reference inside arithmetic and parentheses",
+   "mode": "2d",
+   "source": "niech x 3 np (:x + 1) * :x pw 90 np :x/:x",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       12,
+       0
+      ],
+      "to": [
+       1,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "division by a computed zero is a run-time error after drawing",
+   "mode": "2d",
+   "source": "np 1\nnp 1 / (2 - 2)",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 4
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "comparisons with expressions on both sides and tight operators",
+   "mode": "2d",
+   "source": "jeśli 2 * 3 >= 7 - 1 [np 10] jeśli 2*3>7-1 [np 100] jeśli 2*3<>7-2 [pw 90 np 5]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "comparison operators with whitespace on one side only",
+   "mode": "2d",
+   "source": "jeśli 1 <>2 [np 10] jeśli 2<= 2 [np 10] jeśli 2 =2 [np 10] jeśli 3> 2 [np 10] jeśli 1 <2 [np 10]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       20,
+       0
+      ],
+      "to": [
+       0,
+       30,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       30,
+       0
+      ],
+      "to": [
+       0,
+       40,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       40,
+       0
+      ],
+      "to": [
+       0,
+       50,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "0.1 times 3 is not 0.3 but greater",
+   "mode": "2d",
+   "source": "jeśli 0.1 * 3 = 0.3 [np 100] jeśli 0.1 * 3 > 0.3 [np 1]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "1 minus 0.9 is less than 0.1",
+   "mode": "2d",
+   "source": "jeśli 1 - 0.9 = 0.1 [np 100] jeśli 1 - 0.9 < 0.1 [np 1]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "0.1 plus 0.7 differs from 0.8",
+   "mode": "2d",
+   "source": "jeśli 0.1 + 0.7 <> 0.8 [np 1] jeśli 0.1 + 0.7 = 0.8 [np 100]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "one third times three is exactly one",
+   "mode": "2d",
+   "source": "jeśli 1 / 3 * 3 = 1 [np 1] jeśli 1 / 3 * 3 <> 1 [np 100]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "integers beyond 2 to the 53 lose precision",
+   "mode": "2d",
+   "source": "jeśli 9007199254740992 + 1 = 9007199254740992 [np 1] jeśli 9007199254740992 + 2 > 9007199254740992 [pw 90 np 1]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       1,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "repeat count from a float expression that is exactly integral",
+   "mode": "2d",
+   "source": "powtorz 0.5 * 6 [np 1] powtorz 7 - 1 / 2 * 2 [pw 90 np 1]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "width from nrpowt across every allowed value",
+   "mode": "2d",
+   "source": "powtorz 12 [grubosc nrpowt np 1]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 1
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 2
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 4
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 5
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 7
+     },
+     {
+      "from": [
+       0,
+       7,
+       0
+      ],
+      "to": [
+       0,
+       8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 8
+     },
+     {
+      "from": [
+       0,
+       8,
+       0
+      ],
+      "to": [
+       0,
+       9,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       0,
+       9,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 10
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 11
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "width from nrpowt one past the maximum",
+   "mode": "2d",
+   "source": "powtorz 13 [grubosc nrpowt np 1]",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 21
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 1
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 2
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 4
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 5
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 7
+     },
+     {
+      "from": [
+       0,
+       7,
+       0
+      ],
+      "to": [
+       0,
+       8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 8
+     },
+     {
+      "from": [
+       0,
+       8,
+       0
+      ],
+      "to": [
+       0,
+       9,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       0,
+       9,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 10
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 11
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "repeat count from a global that is not an integer",
+   "mode": "2d",
+   "source": "niech n 1 np 1 powtorz 2 [niech n n + 0.5 powtorz n [np 1]]",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 51
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "niech reading its own variable before assignment",
+   "mode": "2d",
+   "source": "np 1\nniech x x + 1",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 9
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "unassigned global in a call argument inside a repeat",
+   "mode": "2d",
+   "source": "oto f ma: a\nnp a\njuż\npowtorz 2 [f nrpowt jeśli nrpowt = 2 [f g * 2]]\nniech g 1",
+   "expect": {
+    "error": {
+     "line": 4,
+     "column": 41
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "non-finite result from a parameter inside a procedure",
+   "mode": "2d",
+   "source": "oto f ma: a\nnp 1\nnp a * a\njuż\nf 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+   "expect": {
+    "error": {
+     "line": 3,
+     "column": 4
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "global is read inside a procedure until the local niech shadows it",
+   "mode": "2d",
+   "source": "niech x 1\noto f\nnp x niech x 5 np x\njuż\nf pw 90 np x",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       1,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "callee local does not change the caller local of the same name",
+   "mode": "2d",
+   "source": "oto g\nniech x 100 np x\njuż\noto f\nniech x 2 g np x\njuż\nf",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       100,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       100,
+       0
+      ],
+      "to": [
+       0,
+       102,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "global declared inside a top-level repeat body is visible in a procedure",
+   "mode": "2d",
+   "source": "powtorz 1 [niech g 4]\noto f\nnp g\njuż\nf",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "local declared inside a nested body of the procedure",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz n [jeśli nrpowt = 2 [niech k nrpowt * 10]]\nnp k\njuż\nf 3",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "local declared in a nested body but unassigned on this call",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz n [jeśli nrpowt = 2 [niech k nrpowt * 10]]\nnp k\njuż\nf 3 f 1",
+   "expect": {
+    "error": {
+     "line": 3,
+     "column": 4
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "parameter reassigned inside a repeat accumulates",
+   "mode": "2d",
+   "source": "oto f ma: d\npowtorz 3 [np d niech d d * 2]\nnp d\njuż\nf 1",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       7,
+       0
+      ],
+      "to": [
+       0,
+       15,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "global updated inside a repeat body drives a spiral",
+   "mode": "2d",
+   "source": "niech d 2 powtorz 20 [np d pw 90 niech d d + 2]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       4,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4,
+       2,
+       0
+      ],
+      "to": [
+       4,
+       -4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4,
+       -4,
+       0
+      ],
+      "to": [
+       -4,
+       -4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -4,
+       -4,
+       0
+      ],
+      "to": [
+       -4,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -4,
+       6,
+       0
+      ],
+      "to": [
+       8,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       8,
+       6,
+       0
+      ],
+      "to": [
+       8,
+       -8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       8,
+       -8,
+       0
+      ],
+      "to": [
+       -8,
+       -8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -8,
+       -8,
+       0
+      ],
+      "to": [
+       -8,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -8,
+       10,
+       0
+      ],
+      "to": [
+       12,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12,
+       10,
+       0
+      ],
+      "to": [
+       12,
+       -12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12,
+       -12,
+       0
+      ],
+      "to": [
+       -12,
+       -12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -12,
+       -12,
+       0
+      ],
+      "to": [
+       -12,
+       14,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -12,
+       14,
+       0
+      ],
+      "to": [
+       16,
+       14,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16,
+       14,
+       0
+      ],
+      "to": [
+       16,
+       -16,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16,
+       -16,
+       0
+      ],
+      "to": [
+       -16,
+       -16,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -16,
+       -16,
+       0
+      ],
+      "to": [
+       -16,
+       18,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -16,
+       18,
+       0
+      ],
+      "to": [
+       20,
+       18,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       20,
+       18,
+       0
+      ],
+      "to": [
+       20,
+       -20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       20,
+       -20,
+       0
+      ],
+      "to": [
+       -20,
+       -20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "recursion keeps a separate local per call across returns",
+   "mode": "2d",
+   "source": "oto f ma: n\nniech k n * 10\njeśli n > 0 [f n - 1]\nnp k pw 90\njuż\nf 3",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       -20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       -20,
+       0
+      ],
+      "to": [
+       -20,
+       -20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "global niech inside a procedure call does not exist so top level keeps its own",
+   "mode": "2d",
+   "source": "niech x 1\noto f ma: x\nniech x x + 1 np x\njuż\nf 10 f x pw 90 np x",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       13,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       13,
+       0
+      ],
+      "to": [
+       1,
+       13,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "nrpowt restored after a recursive call inside a conditional",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz 4 [jeśli nrpowt = n [np nrpowt pw 90 f n - 1]]\njuż\nf 4",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       3,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3,
+       4,
+       0
+      ],
+      "to": [
+       3,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3,
+       2,
+       0
+      ],
+      "to": [
+       2,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "nrpowt inside a repeat inside a conditional inside a repeat",
+   "mode": "2d",
+   "source": "powtorz 3 [jeśli nrpowt = 2 [powtorz 3 [np nrpowt]] pw 90 np nrpowt]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       1,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       0,
+       0
+      ],
+      "to": [
+       2,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       0,
+       0
+      ],
+      "to": [
+       4,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4,
+       0,
+       0
+      ],
+      "to": [
+       7,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       7,
+       0,
+       0
+      ],
+      "to": [
+       7,
+       -2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       7,
+       -2,
+       0
+      ],
+      "to": [
+       4,
+       -2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "three nested repeats with nrpowt at each level",
+   "mode": "2d",
+   "source": "powtorz 3 [powtorz 2 [powtorz 2 [np nrpowt] pw 90 np nrpowt] pw 90 np nrpowt]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       3,
+       0
+      ],
+      "to": [
+       2,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       3,
+       0
+      ],
+      "to": [
+       4,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4,
+       3,
+       0
+      ],
+      "to": [
+       4,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4,
+       1,
+       0
+      ],
+      "to": [
+       3,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3,
+       1,
+       0
+      ],
+      "to": [
+       2,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       2,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       5,
+       0
+      ],
+      "to": [
+       2,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       3,
+       0
+      ],
+      "to": [
+       2,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       2,
+       0
+      ],
+      "to": [
+       2,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       0,
+       0
+      ],
+      "to": [
+       1,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       -2,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -2,
+       0,
+       0
+      ],
+      "to": [
+       -2,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -2,
+       2,
+       0
+      ],
+      "to": [
+       1,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "stop inside a procedure called from a repeat leaves the outer repeat running",
+   "mode": "2d",
+   "source": "oto f\npowtorz 3 [np nrpowt jeśli nrpowt = 2 [stop]]\nnp 100\njuż\npowtorz 3 [f pw 90]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       1,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1,
+       3,
+       0
+      ],
+      "to": [
+       3,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3,
+       3,
+       0
+      ],
+      "to": [
+       3,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3,
+       2,
+       0
+      ],
+      "to": [
+       3,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "czyść inside a repeat whose count is an expression of a global",
+   "mode": "2d",
+   "source": "niech n 2 powtorz n * 2 - 1 [np 10 pw 90 jeśli nrpowt = 2 [czyść]] np 5",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       10,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       5,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "czyść inside a procedure called from a conditional then a run-time error keeps later segments",
+   "mode": "2d",
+   "source": "niech z 0\noto wyczysc\nnp 1 czyść np 2\njuż\nnp 10\njeśli 1 < 2 [wyczysc]\nnp 3\nnp 1 / z",
+   "expect": {
+    "error": {
+     "line": 8,
+     "column": 4
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       13,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       13,
+       0
+      ],
+      "to": [
+       0,
+       16,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "dom inside a repeat with the pen toggled",
+   "mode": "2d",
+   "source": "powtorz 3 [np 10 pw 90 jeśli nrpowt = 2 [pod] dom opu]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "repeat count of zero inside a procedure skips a bad name-dependent width",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz n [grubosc 99 - 99 + n]\nnp 1\njuż\nf 0",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "bad name-dependent width inside a procedure reported inside the body",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz n [grubosc 99 - 99 + n]\nnp 1\njuż\nf 0 f 13",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 20
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "koch curve by recursion with ifelse and expression arguments",
+   "mode": "2d",
+   "source": "oto koch ma: d, n\njeżeli n = 0 [np d] [koch d / 3 n - 1 lw 60 koch d / 3 n - 1 pw 120 koch d / 3 n - 1 lw 60 koch d / 3 n - 1]\njuż\nkoch 81 2",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       9,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       9,
+       0
+      ],
+      "to": [
+       -7.794228634,
+       13.5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -7.794228634,
+       13.5,
+       0
+      ],
+      "to": [
+       0,
+       18,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       18,
+       0
+      ],
+      "to": [
+       0,
+       27,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       27,
+       0
+      ],
+      "to": [
+       -7.794228634,
+       31.5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -7.794228634,
+       31.5,
+       0
+      ],
+      "to": [
+       -15.588457268,
+       27,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -15.588457268,
+       27,
+       0
+      ],
+      "to": [
+       -15.588457268,
+       36,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -15.588457268,
+       36,
+       0
+      ],
+      "to": [
+       -23.382685902,
+       40.5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -23.382685902,
+       40.5,
+       0
+      ],
+      "to": [
+       -15.588457268,
+       45,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -15.588457268,
+       45,
+       0
+      ],
+      "to": [
+       -15.588457268,
+       54,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -15.588457268,
+       54,
+       0
+      ],
+      "to": [
+       -7.794228634,
+       49.5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -7.794228634,
+       49.5,
+       0
+      ],
+      "to": [
+       0,
+       54,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       54,
+       0
+      ],
+      "to": [
+       0,
+       63,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       63,
+       0
+      ],
+      "to": [
+       -7.794228634,
+       67.5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -7.794228634,
+       67.5,
+       0
+      ],
+      "to": [
+       0,
+       72,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       72,
+       0
+      ],
+      "to": [
+       0,
+       81,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "binary tree by recursion with back moves",
+   "mode": "2d",
+   "source": "oto drzewo ma: d\njeśli d < 5 [stop]\nnp d\nlw 30 drzewo d / 2\npw 60 drzewo d / 2\nlw 30\nws d\njuż\ndrzewo 40",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       40,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       40,
+       0
+      ],
+      "to": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       -23.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -23.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       -21.160254038,
+       66.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -21.160254038,
+       66.650635095,
+       0
+      ],
+      "to": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       -12.5,
+       71.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -12.5,
+       71.650635095,
+       0
+      ],
+      "to": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       -7.5,
+       71.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -7.5,
+       71.650635095,
+       0
+      ],
+      "to": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       0,
+       40,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       40,
+       0
+      ],
+      "to": [
+       10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       7.5,
+       71.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       7.5,
+       71.650635095,
+       0
+      ],
+      "to": [
+       10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       12.5,
+       71.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12.5,
+       71.650635095,
+       0
+      ],
+      "to": [
+       10,
+       67.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       67.320508076,
+       0
+      ],
+      "to": [
+       10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       21.160254038,
+       66.650635095,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       21.160254038,
+       66.650635095,
+       0
+      ],
+      "to": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       23.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       23.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       18.660254038,
+       62.320508076,
+       0
+      ],
+      "to": [
+       10,
+       57.320508076,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       57.320508076,
+       0
+      ],
+      "to": [
+       0,
+       40,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       40,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "parameters passed down three levels with arithmetic",
+   "mode": "2d",
+   "source": "oto c ma: x\nnp x pw 90\njuż\noto b ma: x, y\nc x + y c x - y\njuż\noto a ma: x\nb x * 2 x / 2\njuż\na 10 a -4",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       25,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       25,
+       0
+      ],
+      "to": [
+       15,
+       25,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       15,
+       25,
+       0
+      ],
+      "to": [
+       15,
+       35,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       15,
+       35,
+       0
+      ],
+      "to": [
+       21,
+       35,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "procedure called from a conditional inside a repeat inside a procedure",
+   "mode": "2d",
+   "source": "oto krok ma: d\nnp d pw 90\njuż\noto f ma: n\npowtorz n [jeżeli nrpowt > 2 [krok nrpowt * 10] [krok nrpowt]]\njuż\nf 4",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       2,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       1,
+       0
+      ],
+      "to": [
+       2,
+       -29,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2,
+       -29,
+       0
+      ],
+      "to": [
+       -38,
+       -29,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "polygon procedure using parameter as repeat count and in the angle",
+   "mode": "2d",
+   "source": "oto wielokat ma: n, bok\npowtorz n [np bok pw 360 / n]\njuż\nwielokat 5 20 wielokat 3 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       20,
+       0
+      ],
+      "to": [
+       19.021130326,
+       26.180339887,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       19.021130326,
+       26.180339887,
+       0
+      ],
+      "to": [
+       30.776835372,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       30.776835372,
+       10,
+       0
+      ],
+      "to": [
+       19.021130326,
+       -6.180339887,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       19.021130326,
+       -6.180339887,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       8.660254038,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       8.660254038,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "mutual recursion through a repeat body",
+   "mode": "2d",
+   "source": "oto a ma: n\njeśli n = 0 [stop]\npowtorz 2 [np n b n - 1]\njuż\noto b ma: n\njeśli n = 0 [stop]\npw 90 a n - 1\njuż\na 2",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       2,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "call with too few arguments inside a repeat body before the bracket",
+   "mode": "2d",
+   "source": "oto f ma: a, b\nnp a\njuż\npowtorz 1 [f 1]",
+   "expect": {
+    "error": {
+     "line": 4,
+     "column": 15
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "repeat at the deepest call is the 33rd frame reported at the repeat",
+   "mode": "2d",
+   "source": "oto f ma: n\nnp 1 jeśli n > 1 [f n - 1] powtorz 1 [np 1]\njuż\nf 32",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 28
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       7,
+       0
+      ],
+      "to": [
+       0,
+       8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       8,
+       0
+      ],
+      "to": [
+       0,
+       9,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       9,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       12,
+       0
+      ],
+      "to": [
+       0,
+       13,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       13,
+       0
+      ],
+      "to": [
+       0,
+       14,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       14,
+       0
+      ],
+      "to": [
+       0,
+       15,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       15,
+       0
+      ],
+      "to": [
+       0,
+       16,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       16,
+       0
+      ],
+      "to": [
+       0,
+       17,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       17,
+       0
+      ],
+      "to": [
+       0,
+       18,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       18,
+       0
+      ],
+      "to": [
+       0,
+       19,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       19,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       20,
+       0
+      ],
+      "to": [
+       0,
+       21,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       21,
+       0
+      ],
+      "to": [
+       0,
+       22,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       22,
+       0
+      ],
+      "to": [
+       0,
+       23,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       23,
+       0
+      ],
+      "to": [
+       0,
+       24,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       24,
+       0
+      ],
+      "to": [
+       0,
+       25,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       25,
+       0
+      ],
+      "to": [
+       0,
+       26,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       26,
+       0
+      ],
+      "to": [
+       0,
+       27,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       27,
+       0
+      ],
+      "to": [
+       0,
+       28,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       28,
+       0
+      ],
+      "to": [
+       0,
+       29,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       29,
+       0
+      ],
+      "to": [
+       0,
+       30,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       30,
+       0
+      ],
+      "to": [
+       0,
+       31,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       31,
+       0
+      ],
+      "to": [
+       0,
+       32,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "repeat at the deepest call is the 32nd frame and unwinding draws again",
+   "mode": "2d",
+   "source": "oto f ma: n\nnp 1 jeśli n > 1 [f n - 1] powtorz 1 [np 1]\njuż\nf 31",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       4,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       4,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       0,
+       7,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       7,
+       0
+      ],
+      "to": [
+       0,
+       8,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       8,
+       0
+      ],
+      "to": [
+       0,
+       9,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       9,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       11,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       11,
+       0
+      ],
+      "to": [
+       0,
+       12,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       12,
+       0
+      ],
+      "to": [
+       0,
+       13,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       13,
+       0
+      ],
+      "to": [
+       0,
+       14,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       14,
+       0
+      ],
+      "to": [
+       0,
+       15,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       15,
+       0
+      ],
+      "to": [
+       0,
+       16,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       16,
+       0
+      ],
+      "to": [
+       0,
+       17,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       17,
+       0
+      ],
+      "to": [
+       0,
+       18,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       18,
+       0
+      ],
+      "to": [
+       0,
+       19,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       19,
+       0
+      ],
+      "to": [
+       0,
+       20,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       20,
+       0
+      ],
+      "to": [
+       0,
+       21,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       21,
+       0
+      ],
+      "to": [
+       0,
+       22,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       22,
+       0
+      ],
+      "to": [
+       0,
+       23,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       23,
+       0
+      ],
+      "to": [
+       0,
+       24,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       24,
+       0
+      ],
+      "to": [
+       0,
+       25,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       25,
+       0
+      ],
+      "to": [
+       0,
+       26,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       26,
+       0
+      ],
+      "to": [
+       0,
+       27,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       27,
+       0
+      ],
+      "to": [
+       0,
+       28,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       28,
+       0
+      ],
+      "to": [
+       0,
+       29,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       29,
+       0
+      ],
+      "to": [
+       0,
+       30,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       30,
+       0
+      ],
+      "to": [
+       0,
+       31,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       31,
+       0
+      ],
+      "to": [
+       0,
+       32,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       32,
+       0
+      ],
+      "to": [
+       0,
+       33,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       33,
+       0
+      ],
+      "to": [
+       0,
+       34,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       34,
+       0
+      ],
+      "to": [
+       0,
+       35,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       35,
+       0
+      ],
+      "to": [
+       0,
+       36,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       36,
+       0
+      ],
+      "to": [
+       0,
+       37,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       37,
+       0
+      ],
+      "to": [
+       0,
+       38,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       38,
+       0
+      ],
+      "to": [
+       0,
+       39,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       39,
+       0
+      ],
+      "to": [
+       0,
+       40,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       40,
+       0
+      ],
+      "to": [
+       0,
+       41,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       41,
+       0
+      ],
+      "to": [
+       0,
+       42,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       42,
+       0
+      ],
+      "to": [
+       0,
+       43,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       43,
+       0
+      ],
+      "to": [
+       0,
+       44,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       44,
+       0
+      ],
+      "to": [
+       0,
+       45,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       45,
+       0
+      ],
+      "to": [
+       0,
+       46,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       46,
+       0
+      ],
+      "to": [
+       0,
+       47,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       47,
+       0
+      ],
+      "to": [
+       0,
+       48,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       48,
+       0
+      ],
+      "to": [
+       0,
+       49,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       49,
+       0
+      ],
+      "to": [
+       0,
+       50,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       50,
+       0
+      ],
+      "to": [
+       0,
+       51,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       51,
+       0
+      ],
+      "to": [
+       0,
+       52,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       52,
+       0
+      ],
+      "to": [
+       0,
+       53,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       53,
+       0
+      ],
+      "to": [
+       0,
+       54,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       54,
+       0
+      ],
+      "to": [
+       0,
+       55,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       55,
+       0
+      ],
+      "to": [
+       0,
+       56,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       56,
+       0
+      ],
+      "to": [
+       0,
+       57,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       57,
+       0
+      ],
+      "to": [
+       0,
+       58,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       58,
+       0
+      ],
+      "to": [
+       0,
+       59,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       59,
+       0
+      ],
+      "to": [
+       0,
+       60,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       60,
+       0
+      ],
+      "to": [
+       0,
+       61,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       61,
+       0
+      ],
+      "to": [
+       0,
+       62,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "exactly ten thousand operations without a body",
+   "mode": "2d",
+   "source": "pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod",
+   "expect": {
+    "segments": []
+   }
+  },
+  {
+   "name": "ten thousand and one operations inside a repeat",
+   "mode": "2d",
+   "source": "powtorz 2 [pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod pod]",
+   "expect": {
+    "error": {
+     "line": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "repeat of ten thousand single commands exceeds the operation limit",
+   "mode": "2d",
+   "source": "powtorz 10000 [pod]",
+   "expect": {
+    "error": {
+     "line": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "coordinate limit exceeded on the z axis",
+   "mode": "3d",
+   "source": "dol 90 np 100000 np 1",
+   "expect": {
+    "error": {
+     "line": 1
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       -100000
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "coordinate limit exceeded by a diagonal move",
+   "mode": "2d",
+   "source": "pw 45 np 141422",
+   "expect": {
+    "error": {
+     "line": 1
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "coordinate just inside the limit by a diagonal move",
+   "mode": "2d",
+   "source": "pw 45 np 141421",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       99999.748102183,
+       99999.748102183,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "pitch yaw inverse pitch inverse roll compose to the identity",
+   "mode": "3d",
+   "source": "gora 90 pw 90 dol 90 pl 90 np 10 pw 90 np 10 gora 90 np 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       10
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "full turns of roll pitch and yaw in 36 steps compose to the identity",
+   "mode": "3d",
+   "source": "powtorz 36 [pp 10] powtorz 36 [gora 10] powtorz 36 [lw 10] np 10 pw 90 np 10 gora 90 np 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       10
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "roll of 180 flips yaw direction",
+   "mode": "3d",
+   "source": "pp 180 pw 90 np 10 pl 180 pw 90 np 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       -10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -10,
+       0,
+       0
+      ],
+      "to": [
+       -10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "back move after a pitch",
+   "mode": "3d",
+   "source": "gora 60 ws 10 pw 180 ws 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       -5,
+       -8.660254038
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       -5,
+       -8.660254038
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "helix with pitch and yaw in a repeat",
+   "mode": "3d",
+   "source": "gora 30 powtorz 12 [np 5 pl 30 pw 30 pp 30]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       4.330127019,
+       2.5
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       4.330127019,
+       2.5
+      ],
+      "to": [
+       2.165063509,
+       7.455127019,
+       5.747595264
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2.165063509,
+       7.455127019,
+       5.747595264
+      ],
+      "to": [
+       5.915063509,
+       8.537658774,
+       8.872595264
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.915063509,
+       8.537658774,
+       8.872595264
+      ],
+      "to": [
+       10.245190528,
+       7.287658774,
+       11.037658774
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10.245190528,
+       7.287658774,
+       11.037658774
+      ],
+      "to": [
+       13.995190528,
+       4.040063509,
+       11.662658774
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       13.995190528,
+       4.040063509,
+       11.662658774
+      ],
+      "to": [
+       16.160254038,
+       -0.334936491,
+       10.580127019
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.160254038,
+       -0.334936491,
+       10.580127019
+      ],
+      "to": [
+       16.160254038,
+       -4.665063509,
+       8.080127019
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.160254038,
+       -4.665063509,
+       8.080127019
+      ],
+      "to": [
+       13.995190528,
+       -7.790063509,
+       4.832531755
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       13.995190528,
+       -7.790063509,
+       4.832531755
+      ],
+      "to": [
+       10.245190528,
+       -8.872595264,
+       1.707531755
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10.245190528,
+       -8.872595264,
+       1.707531755
+      ],
+      "to": [
+       5.915063509,
+       -7.622595264,
+       -0.457531755
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.915063509,
+       -7.622595264,
+       -0.457531755
+      ],
+      "to": [
+       2.165063509,
+       -4.375,
+       -1.082531755
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       2.165063509,
+       -4.375,
+       -1.082531755
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "roll then pitch then square draws a tilted square",
+   "mode": "3d",
+   "source": "pp 90 gora 90 powtorz 4 [np 10 pw 90]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       -10
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       -10
+      ],
+      "to": [
+       0,
+       0,
+       -10
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       -10
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "non-commuting pitch and yaw",
+   "mode": "3d",
+   "source": "gora 30 pw 60 np 10 dom pw 60 gora 30 np 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       8.660254038,
+       4.330127019,
+       2.5
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       8.660254038,
+       4.330127019,
+       2.5
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       7.5,
+       4.330127019,
+       5
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "dom draws a segment from a point above the plane and resets the up vector",
+   "mode": "3d",
+   "source": "gora 90 np 10 pw 90 dom pp 90 pw 90 np 10",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       10
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       10
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       -10
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "3D commands with expression arguments from parameters",
+   "mode": "3d",
+   "source": "oto f ma: a, b\ngora a pp b pw a + b np 10\njuż\nf 30 60",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       5,
+       4.330127019,
+       -7.5
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "rolled polygon returns to the origin",
+   "mode": "3d",
+   "source": "pp 60 gora 30 powtorz 8 [np 10 pw 45]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       4.330127019,
+       8.660254038,
+       2.5
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4.330127019,
+       8.660254038,
+       2.5
+      ],
+      "to": [
+       10.927523103,
+       14.783978395,
+       -1.855957404
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10.927523103,
+       14.783978395,
+       -1.855957404
+      ],
+      "to": [
+       15.927523103,
+       14.783978395,
+       -10.516211442
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       15.927523103,
+       14.783978395,
+       -10.516211442
+      ],
+      "to": [
+       16.401194831,
+       8.660254038,
+       -18.407702752
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.401194831,
+       8.660254038,
+       -18.407702752
+      ],
+      "to": [
+       12.071067812,
+       0,
+       -20.907702752
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12.071067812,
+       0,
+       -20.907702752
+      ],
+      "to": [
+       5.473671727,
+       -6.123724357,
+       -16.551745348
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.473671727,
+       -6.123724357,
+       -16.551745348
+      ],
+      "to": [
+       0.473671727,
+       -6.123724357,
+       -7.89149131
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0.473671727,
+       -6.123724357,
+       -7.89149131
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "2D sequence of 36 turns closes a circle in 3D mode",
+   "mode": "3d",
+   "source": "powtorz 36 [np 10 pw 10]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       1.736481777,
+       19.84807753,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1.736481777,
+       19.84807753,
+       0
+      ],
+      "to": [
+       5.15668321,
+       29.245003738,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.15668321,
+       29.245003738,
+       0
+      ],
+      "to": [
+       10.15668321,
+       37.905257776,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10.15668321,
+       37.905257776,
+       0
+      ],
+      "to": [
+       16.584559307,
+       45.565702207,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.584559307,
+       45.565702207,
+       0
+      ],
+      "to": [
+       24.245003738,
+       51.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       24.245003738,
+       51.993578304,
+       0
+      ],
+      "to": [
+       32.905257776,
+       56.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       32.905257776,
+       56.993578304,
+       0
+      ],
+      "to": [
+       42.302183984,
+       60.413779737,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       42.302183984,
+       60.413779737,
+       0
+      ],
+      "to": [
+       52.150261514,
+       62.150261514,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       52.150261514,
+       62.150261514,
+       0
+      ],
+      "to": [
+       62.150261514,
+       62.150261514,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       62.150261514,
+       62.150261514,
+       0
+      ],
+      "to": [
+       71.998339044,
+       60.413779737,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       71.998339044,
+       60.413779737,
+       0
+      ],
+      "to": [
+       81.395265252,
+       56.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       81.395265252,
+       56.993578304,
+       0
+      ],
+      "to": [
+       90.05551929,
+       51.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       90.05551929,
+       51.993578304,
+       0
+      ],
+      "to": [
+       97.715963721,
+       45.565702207,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       97.715963721,
+       45.565702207,
+       0
+      ],
+      "to": [
+       104.143839818,
+       37.905257776,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       104.143839818,
+       37.905257776,
+       0
+      ],
+      "to": [
+       109.143839818,
+       29.245003738,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       109.143839818,
+       29.245003738,
+       0
+      ],
+      "to": [
+       112.564041251,
+       19.84807753,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       112.564041251,
+       19.84807753,
+       0
+      ],
+      "to": [
+       114.300523028,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       114.300523028,
+       10,
+       0
+      ],
+      "to": [
+       114.300523028,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       114.300523028,
+       0,
+       0
+      ],
+      "to": [
+       112.564041251,
+       -9.84807753,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       112.564041251,
+       -9.84807753,
+       0
+      ],
+      "to": [
+       109.143839818,
+       -19.245003738,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       109.143839818,
+       -19.245003738,
+       0
+      ],
+      "to": [
+       104.143839818,
+       -27.905257776,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       104.143839818,
+       -27.905257776,
+       0
+      ],
+      "to": [
+       97.715963721,
+       -35.565702207,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       97.715963721,
+       -35.565702207,
+       0
+      ],
+      "to": [
+       90.05551929,
+       -41.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       90.05551929,
+       -41.993578304,
+       0
+      ],
+      "to": [
+       81.395265252,
+       -46.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       81.395265252,
+       -46.993578304,
+       0
+      ],
+      "to": [
+       71.998339044,
+       -50.413779737,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       71.998339044,
+       -50.413779737,
+       0
+      ],
+      "to": [
+       62.150261514,
+       -52.150261514,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       62.150261514,
+       -52.150261514,
+       0
+      ],
+      "to": [
+       52.150261514,
+       -52.150261514,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       52.150261514,
+       -52.150261514,
+       0
+      ],
+      "to": [
+       42.302183984,
+       -50.413779737,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       42.302183984,
+       -50.413779737,
+       0
+      ],
+      "to": [
+       32.905257776,
+       -46.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       32.905257776,
+       -46.993578304,
+       0
+      ],
+      "to": [
+       24.245003738,
+       -41.993578304,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       24.245003738,
+       -41.993578304,
+       0
+      ],
+      "to": [
+       16.584559307,
+       -35.565702207,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.584559307,
+       -35.565702207,
+       0
+      ],
+      "to": [
+       10.15668321,
+       -27.905257776,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10.15668321,
+       -27.905257776,
+       0
+      ],
+      "to": [
+       5.15668321,
+       -19.245003738,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.15668321,
+       -19.245003738,
+       0
+      ],
+      "to": [
+       1.736481777,
+       -9.84807753,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1.736481777,
+       -9.84807753,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "pitch in 2D mode inside a procedure called from a repeat",
+   "mode": "2d",
+   "source": "oto f\nnp 1 gora 10\njuż\npowtorz 2 [f]",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 6
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "roll in 2D mode in an ifelse second body",
+   "mode": "2d",
+   "source": "np 1 jeżeli 1 < 2 [np 1] [pl 90]",
+   "expect": {
+    "error": {
+     "line": 1,
+     "column": 27
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "nested repeats drawing four squares with nrpowt widths",
+   "mode": "2d",
+   "source": "powtorz 4 [grubosc nrpowt * 3 powtorz 4 [np 10 pw 90] pw 90]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       10,
+       -10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       10,
+       -10,
+       0
+      ],
+      "to": [
+       0,
+       -10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       0,
+       -10,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 6
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       -10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       0,
+       -10,
+       0
+      ],
+      "to": [
+       -10,
+       -10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       -10,
+       -10,
+       0
+      ],
+      "to": [
+       -10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       -10,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 9
+     },
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       -10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     },
+     {
+      "from": [
+       -10,
+       0,
+       0
+      ],
+      "to": [
+       -10,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     },
+     {
+      "from": [
+       -10,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "colour and width changes interleaved with repeats and procedures",
+   "mode": "2d",
+   "source": "oto k ma: d\nkolor \"#FF0000\" np d kolor \"#00FF00\" pw 90\njuż\ngrubosc 2 powtorz 2 [k 10 grubosc nrpowt + 4 np 5]\nnp 1",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#ff0000",
+      "width": 2
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#00ff00",
+      "width": 5
+     },
+     {
+      "from": [
+       5,
+       10,
+       0
+      ],
+      "to": [
+       15,
+       10,
+       0
+      ],
+      "color": "#ff0000",
+      "width": 5
+     },
+     {
+      "from": [
+       15,
+       10,
+       0
+      ],
+      "to": [
+       15,
+       5,
+       0
+      ],
+      "color": "#00ff00",
+      "width": 6
+     },
+     {
+      "from": [
+       15,
+       5,
+       0
+      ],
+      "to": [
+       15,
+       4,
+       0
+      ],
+      "color": "#00ff00",
+      "width": 6
+     }
+    ]
+   }
+  },
+  {
+   "name": "pen state toggled inside a procedure across repeat iterations",
+   "mode": "2d",
+   "source": "oto t\njeżeli 1 < 2 [pod] [opu]\njuż\npowtorz 4 [opu np 5 jeśli nrpowt = 2 [t] np 5 pw 90]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       10,
+       0
+      ],
+      "to": [
+       5,
+       10,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       10,
+       0
+      ],
+      "to": [
+       10,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       5,
+       0
+      ],
+      "to": [
+       10,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       10,
+       0,
+       0
+      ],
+      "to": [
+       5,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "33 nested brackets inside a procedure body",
+   "mode": "2d",
+   "source": "oto f\njeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [np 1]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]\njuż\nf",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 429
+    },
+    "segments": []
+   }
+  },
+  {
+   "name": "32 nested brackets inside a procedure body called twice",
+   "mode": "2d",
+   "source": "oto f\njeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [jeśli 1 = 1 [np 1]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]\njuż\nf f",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       1,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "tight operators around parentheses",
+   "mode": "2d",
+   "source": "np (1+2)*(3+4) pw 90 np 2*(3+4)-(1+1)/2",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       21,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       21,
+       0
+      ],
+      "to": [
+       13,
+       21,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "legacy references and unary plus in a condition",
+   "mode": "2d",
+   "source": "niech x 2 niech y 3 jeśli :x < :y [np +x] jeśli -:x > -:y [pw 90 np +:y]",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       2,
+       0
+      ],
+      "to": [
+       3,
+       2,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "24 steps of yaw and pitch in 3D",
+   "mode": "3d",
+   "source": "powtorz 24 [np 5 pw 15 gora 15] dom",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       1.25,
+       9.665063509,
+       1.294095226
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1.25,
+       9.665063509,
+       1.294095226
+      ],
+      "to": [
+       3.536985218,
+       13.370579406,
+       3.751502508
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       3.536985218,
+       13.370579406,
+       3.751502508
+      ],
+      "to": [
+       6.507807204,
+       15.621605654,
+       7.084233755
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       6.507807204,
+       15.621605654,
+       7.084233755
+      ],
+      "to": [
+       9.716906785,
+       16.119753614,
+       10.886013401
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       9.716906785,
+       16.119753614,
+       10.886013401
+      ],
+      "to": [
+       12.686524994,
+       14.803510988,
+       14.687180727
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12.686524994,
+       14.803510988,
+       14.687180727
+      ],
+      "to": [
+       14.971265331,
+       11.856554317,
+       18.018157758
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       14.971265331,
+       11.856554317,
+       18.018157758
+      ],
+      "to": [
+       16.21828271,
+       7.682927742,
+       20.472905987
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.21828271,
+       7.682927742,
+       20.472905987
+      ],
+      "to": [
+       16.214965407,
+       2.85244223,
+       21.763796654
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       16.214965407,
+       2.85244223,
+       21.763796654
+      ],
+      "to": [
+       14.917666482,
+       -1.976326194,
+       21.760479641
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       14.917666482,
+       -1.976326194,
+       21.760479641
+      ],
+      "to": [
+       12.457602038,
+       -6.145033546,
+       20.507498419
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       12.457602038,
+       -6.145033546,
+       20.507498419
+      ],
+      "to": [
+       9.123119245,
+       -9.084533621,
+       18.218270641
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       9.123119245,
+       -9.084533621,
+       18.218270641
+      ],
+      "to": [
+       5.320730364,
+       -10.39178993,
+       15.246247805
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       5.320730364,
+       -10.39178993,
+       15.246247805
+      ],
+      "to": [
+       1.520178444,
+       -9.884340304,
+       12.037151363
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       1.520178444,
+       -9.884340304,
+       12.037151363
+      ],
+      "to": [
+       -1.809041703,
+       -7.624954027,
+       9.068739857
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -1.809041703,
+       -7.624954027,
+       9.068739857
+      ],
+      "to": [
+       -4.261128989,
+       -3.913149477,
+       6.78624672
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -4.261128989,
+       -3.913149477,
+       6.78624672
+      ],
+      "to": [
+       -5.548814241,
+       0.75528149,
+       5.542213359
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -5.548814241,
+       0.75528149,
+       5.542213359
+      ],
+      "to": [
+       -5.542180507,
+       5.755272687,
+       5.548848253
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -5.542180507,
+       5.755272687,
+       5.548848253
+      ],
+      "to": [
+       -4.286219466,
+       10.416952323,
+       6.849350015
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -4.286219466,
+       10.416952323,
+       6.849350015
+      ],
+      "to": [
+       -1.994751449,
+       14.116166558,
+       9.312069726
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       -1.994751449,
+       14.116166558,
+       9.312069726
+      ],
+      "to": [
+       0.978469307,
+       16.358824935,
+       12.648301393
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0.978469307,
+       16.358824935,
+       12.648301393
+      ],
+      "to": [
+       4.187559471,
+       16.847669612,
+       16.451296423
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       4.187559471,
+       16.847669612,
+       16.451296423
+      ],
+      "to": [
+       7.154761348,
+       15.522445496,
+       20.251229852
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       7.154761348,
+       15.522445496,
+       20.251229852
+      ],
+      "to": [
+       9.43500497,
+       12.568042849,
+       23.578690449
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       9.43500497,
+       12.568042849,
+       23.578690449
+      ],
+      "to": [
+       0,
+       0,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "stop in the else branch of a recursive procedure",
+   "mode": "2d",
+   "source": "oto f ma: n\njeżeli n > 0 [np n f n - 1] [pw 90 stop]\nnp 100\njuż\nf 3 np 1",
+   "expect": {
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       3,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       3,
+       0
+      ],
+      "to": [
+       0,
+       5,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       5,
+       0
+      ],
+      "to": [
+       0,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       0,
+       6,
+       0
+      ],
+      "to": [
+       100,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       100,
+       6,
+       0
+      ],
+      "to": [
+       200,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       200,
+       6,
+       0
+      ],
+      "to": [
+       300,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     },
+     {
+      "from": [
+       300,
+       6,
+       0
+      ],
+      "to": [
+       301,
+       6,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  },
+  {
+   "name": "repeat count from a parameter above the maximum on a later call",
+   "mode": "2d",
+   "source": "oto f ma: n\npowtorz n * 1000 [np 1 stop]\njuż\nf 10 f 11",
+   "expect": {
+    "error": {
+     "line": 2,
+     "column": 9
+    },
+    "segments": [
+     {
+      "from": [
+       0,
+       0,
+       0
+      ],
+      "to": [
+       0,
+       1,
+       0
+      ],
+      "color": "#16866a",
+      "width": 3
+     }
+    ]
+   }
+  }
+ ]
+}
