@@ -182,3 +182,15 @@ test("parameters and nested procedures execute in the studio", async ({
     page.getByRole("status").filter({ hasText: "Program zakończony" }),
   ).toBeVisible();
 });
+test("benchmark page lists runs grouped by app version", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "Benchmark", exact: true }).click();
+  await expect(page).toHaveURL(/\/benchmark$/);
+  await expect(
+    page.getByRole("heading", { name: "Benchmark", exact: true }),
+  ).toBeFocused();
+  await expect(
+    page.getByRole("heading", { name: /^Wersja \d/ }).first(),
+  ).toBeVisible();
+  await expect(page.getByRole("cell", { name: "gpt-6.1-terra" }).first()).toBeVisible();
+});

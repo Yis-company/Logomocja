@@ -22,6 +22,7 @@ elif [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
   printf 'CLAUDE_CODE_OAUTH_TOKEN=%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" >> "$AUTH/env"
 fi
 
+echo "Benchmarking app version $(jq -r .version package.json) at $(git rev-parse --short HEAD) ($(git branch --show-current || echo detached)) with $IMAGE" >&2
 docker run --rm \
   --env-file "$AUTH/env" \
   -e BENCH_COMMIT="$(git rev-parse HEAD)" \

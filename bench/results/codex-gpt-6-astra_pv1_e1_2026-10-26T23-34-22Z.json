@@ -4,6 +4,7 @@
   "env": "1",
   "image": "logomocja-bench:env-1",
   "commit": "96947020d95ef4cbffbd848f8cfa50753a066001",
+  "appVersion": "0.2.0",
   "runner": "codex",
   "cliVersion": "0.164.0",
   "model": "gpt-6-astra",

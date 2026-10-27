@@ -29,6 +29,8 @@ export type RunResult = {
   env: string;
   image: string;
   commit: string;
+  /** package.json version of the app the run was scored against. */
+  appVersion: string;
   runner: string;
   cliVersion: string;
   model: string;

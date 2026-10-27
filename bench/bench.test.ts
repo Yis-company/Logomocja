@@ -146,6 +146,7 @@ describe("scoring and report", () => {
       env: "1",
       image: "logomocja-bench:env-1",
       commit: "abc",
+      appVersion: "0.2.0",
       runner: "claude",
       cliVersion: "2.1.310",
       model,
@@ -169,6 +170,6 @@ describe("scoring and report", () => {
     const summary = renderSummary([weak, strong]);
     expect(summary.indexOf("| strong |")).toBeLessThan(summary.indexOf("| weak |"));
     expect(summary).toContain("| weak | v1 | 1 | 2/6 geometry | 6/6 |");
-    expect(summary).toContain("| strong | claude | v1 | 1 | default | 2 | 100% | 100% | 2.0s | 5.0s | 2026-10-26 10:20 |  |");
+    expect(summary).toContain("| strong | 0.2.0 | claude | v1 | 1 | default | 2 | 100% | 100% | 2.0s | 5.0s | 2026-10-26 10:20 |  |");
   });
 });

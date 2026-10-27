@@ -102,7 +102,7 @@ Browser verification uses Chromium with software WebGL rendering. Physical GPU/o
 
 ## Navigation and local practice
 
-The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges` and `/challenges/:slug`. The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
+The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges`, `/challenges/:slug` and `/benchmark` (model results grouped by app version, bundled from `bench/results/` at build time). The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
 
 Named Logo procedures list parameters after `ma:`, separated by commas. The name and complete parameter list stay on the same header line; the body follows on later lines and ends with a standalone `już` (also `juz`, or `to`/`end`). Use `oto name` without `ma:` for a procedure with no parameters.
 

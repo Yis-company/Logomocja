@@ -4,6 +4,7 @@
   "env": "1",
   "image": "logomocja-bench:env-1",
   "commit": "45223521e4bff564f97a39edf629668425a3762e",
+  "appVersion": "0.2.0",
   "runner": "codex",
   "cliVersion": "0.164.0",
   "model": "gpt-6.1-sol",

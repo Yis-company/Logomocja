@@ -53,6 +53,11 @@ if (values.probe) {
 
 const prompt = loadPrompt(values.prompt);
 const env = readFileSync(join(here, "env/VERSION"), "utf8").trim();
+const appVersion = (
+  JSON.parse(readFileSync(join(here, "../package.json"), "utf8")) as {
+    version: string;
+  }
+).version;
 const startedAt = new Date().toISOString();
 const started = performance.now();
 const tasks: TaskResult[] = [];
@@ -112,6 +117,7 @@ const result: RunResult = {
   env,
   image: `logomocja-bench:env-${env}`,
   commit: process.env.BENCH_COMMIT ?? "unknown",
+  appVersion,
   runner: runner.name,
   cliVersion: runner.version(),
   model,

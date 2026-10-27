@@ -36,6 +36,14 @@ Claude runs with `--bare --restricted --tools ""` and no settings sources. Codex
 
 Every result records both versions, the image tag, the commit, the CLI version and the exact argv, so any two rows in the summary are comparable only when prompt and env match.
 
+## Re-running a release
+
+Every result records `appVersion`, the `package.json` version of the checkout it ran on, and the site groups runs by it. To benchmark a released version on the same models, run from the released code, not from a feature branch:
+
+1. Merge the PR and let Changesets open and merge its version PR, so `main` carries the new version (and the `v<version>` tag).
+2. On `main` (or `git checkout v<version>`), run the models: `bun run bench -- --model codex:gpt-6.1-terra`, and so on. `bench.sh` prints the version, commit and branch it is about to attribute the run to; stop if it is not the one you mean.
+3. `bun run bench:report`, commit `bench/results/` on a branch together with an empty changeset (`bun run changeset` → no bump), and open a PR. The next release then ships the new rows.
+
 ## Results
 
-One JSON file per run in `results/`, named `<runner>-<model>_p<prompt>_e<env>_<started>.json`, with the raw response, extracted code, cases passed, failure kind (`no-code`, `parse`, `runtime`, `geometry`, `cli`), token usage, tool calls and wall-clock time per sample. `humanScore` is `null` until a person fills it in. `results/SUMMARY.md` is generated from these files; regenerate it after every run and commit both.
+One JSON file per run in `results/`, named `<runner>-<model>_p<prompt>_e<env>_<started>.json`, with the raw response, extracted code, cases passed, failure kind (`no-code`, `parse`, `runtime`, `geometry`, `cli`), token usage, tool calls and wall-clock time per sample. `humanScore` is `null` until a person fills it in. `results/SUMMARY.md` is generated from these files; regenerate it after every run and commit both. The published site's `/benchmark` page is built from the same files, grouped by `appVersion`.
