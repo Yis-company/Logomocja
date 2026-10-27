@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { type Case, compareCase, type Outcome, parseSuite, type Segment } from "./conformance/compare";
 import { cost } from "./prices";
 import { run } from "../src/hook";
+import { mergeSuites } from "./conformance/merge";
 import { loadExpected, loadPrograms } from "./programs";
 import { renderPrompt } from "./prompt";
 import { claude, codex, parseModelSpec } from "./runners";
@@ -99,6 +100,15 @@ describe("cost", () => {
     expect(cost("gpt-6-astra", { costUsd: 1.25, tokens })).toEqual({ costUsd: 1.25, costBasis: "cli" });
     expect(cost("gpt-6-astra", { costUsd: null, tokens })).toEqual({ costUsd: 17, costBasis: "list" });
     expect(cost("unknown", { costUsd: null, tokens })).toEqual({ costUsd: null, costBasis: null });
+  });
+});
+
+describe("merge", () => {
+  it("prefixes names with the file and drops later duplicates by mode and source", () => {
+    const a: Case = { name: "x", mode: "2d", source: "np 1", expect: { error: { line: 1 } } };
+    const { cases, dropped } = mergeSuites({ one: [a], two: [{ ...a, name: "y" }, { ...a, mode: "3d" }] });
+    expect(cases.map((c) => c.name)).toEqual(["one: x", "two: x"]);
+    expect(dropped).toEqual([{ file: "two", name: "y", duplicateOf: "one: x" }]);
   });
 });
 

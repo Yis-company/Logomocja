@@ -17,3 +17,7 @@ Reference result after review: 196 of 196.
 ## Round 1: claude-fable-5-1 (220 cases, run `v2-e2-claude-claude-fable-5-1-20261027-203902Z`)
 
 Reference result: 220 of 220, nothing to adjudicate.
+
+## Round 2: gpt-6-astra (79 new cases, run `v2-e2-codex-gpt-6-astra-20261027-205623Z`)
+
+`review.json`: no disputes against Fable's suite, no own mistakes. Reference result: 79 of 79. The file writes `error: null` on drawing cases; the case parser now treats that as no error required.

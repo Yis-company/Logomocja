@@ -35,7 +35,8 @@ export function parseSuite(json: unknown): Case[] {
       if (!expect.segments.every(isSegment)) throw new Error(`${where}: malformed expected segment`);
       result.expect.segments = expect.segments;
     }
-    if (error !== undefined) {
+    // An explicit `error: null` means the same as leaving it out.
+    if (error !== undefined && error !== null) {
       if (typeof error?.line !== "number") throw new Error(`${where}: error.line must be a number`);
       result.expect.error = { line: error.line, ...(typeof error.column === "number" ? { column: error.column } : {}) };
     }
