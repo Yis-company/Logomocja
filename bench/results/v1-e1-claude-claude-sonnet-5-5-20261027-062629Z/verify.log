@@ -1,0 +1,30 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Built dist/ (BASE_PATH=/Logomocja/builds/v1-e1-claude-claude-sonnet-5-5-20261027-062629Z/)
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/lang.test.ts:
+(pass) square closes and uses defaults [0.89ms]
+(pass) procedures, both header styles, params [0.72ms]
+(pass) pitch [0.14ms]
+(pass) errors have positions and draw nothing [0.35ms]
+(pass) runtime errors keep drawn segments [4.77ms]
+(pass) pen up, zero moves, comments [0.10ms]
+
+ 6 pass
+ 0 fail
+ 42 expect() calls
+Ran 6 tests across 1 file. [8.00ms]
+(exit 0)

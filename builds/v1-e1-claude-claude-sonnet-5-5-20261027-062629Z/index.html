@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Logomocja – polska pracownia żółwia: rysowanie w 2D i 3D.">
+<title>Logomocja</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <h1><span class="logo" aria-hidden="true">🐢</span> Logomocja</h1>
+    <div class="group" role="group" aria-label="Tryb rysowania">
+      <button id="m2" aria-pressed="true">2D</button><button id="m3" aria-pressed="false">3D</button>
+    </div>
+    <label class="ex">Przykład
+      <select id="examples"></select>
+    </label>
+  </header>
+  <main>
+    <section class="stage" aria-label="Rysunek">
+      <canvas id="cv" aria-label="Płótno z rysunkiem żółwia" role="img"></canvas>
+      <div class="stagebar">
+        <span id="hint"></span>
+        <button id="fit" class="small">Dopasuj widok</button>
+      </div>
+    </section>
+    <section class="editor-pane" aria-label="Program">
+      <div class="toolbar">
+        <button id="run" class="primary" title="Ctrl+Enter">▶ Uruchom</button>
+        <button id="step" title="Wykonaj jedno polecenie">⏭ Krok</button>
+        <button id="pause" disabled>⏸ Pauza</button>
+        <button id="reset">⟲ Reset</button>
+        <label class="speed">Szybkość <input id="speed" type="range" min="0" max="11" value="7" aria-describedby="speedv"><output id="speedv"></output></label>
+      </div>
+      <div class="editor">
+        <div class="gutter" aria-hidden="true"><pre id="nums"></pre></div>
+        <div class="bars" aria-hidden="true"><div id="hlCur" class="bar cur"></div><div id="hlErr" class="bar err"></div></div>
+        <textarea id="src" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off" aria-label="Kod programu Logo"></textarea>
+      </div>
+      <div id="status" role="status" aria-live="polite"></div>
+      <details class="help">
+        <summary>Ściąga z poleceń</summary>
+        <table>
+          <tr><td><code>np</code> <code>fd</code> n</td><td>naprzód</td><td><code>ws</code> <code>bk</code> n</td><td>wstecz</td></tr>
+          <tr><td><code>pw</code> <code>rt</code> a</td><td>w prawo (°)</td><td><code>lw</code> <code>lt</code> a</td><td>w lewo (°)</td></tr>
+          <tr><td><code>pod</code> <code>pu</code></td><td>podnieś pisak</td><td><code>opu</code> <code>pd</code></td><td>opuść pisak</td></tr>
+          <tr><td><code>kolor</code> "#rrggbb"</td><td>kolor</td><td><code>grubosc</code> 1–12</td><td>grubość</td></tr>
+          <tr><td><code>gora</code> a</td><td>nos w górę (3D)</td><td><code>dol</code> a</td><td>nos w dół (3D)</td></tr>
+          <tr><td colspan="4"><code>powtorz</code> n [ … ] &nbsp;·&nbsp; <code>oto</code> nazwa <code>ma:</code> a, b … <code>już</code> &nbsp;·&nbsp; komentarz po <code>;</code></td></tr>
+        </table>
+      </details>
+    </section>
+  </main>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "hook": true,
+  "suites": {
+    "claude-fable-5-1": {
+      "passed": 152,
+      "total": 153,
+      "failures": [
+        {
+          "name": "non-integer repeat count via parameter",
+          "reason": "expected error on line 2, got line 4"
+        }
+      ]
+    },
+    "gpt-6-astra": {
+      "passed": 118,
+      "total": 118,
+      "failures": []
+    }
+  }
+}
