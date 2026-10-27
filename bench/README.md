@@ -27,7 +27,7 @@ Runs are sequential. When a CLI reports an auth or usage-limit error the run sto
 - `prompts/<version>/system.md` as the system prompt (Claude: `--system-prompt`; Codex: `model_instructions_file`).
 - `prompts/<version>/task.md` rendered with the task's own Polish description and contract plus `prompts/<version>/reference.md`, sent as the user message on stdin.
 
-Claude runs with `--bare --restricted --tools ""` and no settings sources. Codex runs with `--ignore-user-config --ignore-rules --ephemeral` in a read-only sandbox in an empty directory; its shell tool cannot be removed, so the prompt forbids commands and every tool call is counted in `toolCalls`. Both CLIs still add their own fixed scaffolding around the prompt; it is identical across runs and pinned by the CLI versions in the Dockerfile.
+Claude runs with `--restricted --tools ""` and no settings sources, in a fresh home directory (`--bare` would be stricter still, but it also skips reading `CLAUDE_CODE_OAUTH_TOKEN`). Codex runs with `--ignore-user-config --ignore-rules --ephemeral` in a read-only sandbox in an empty directory; its shell tool cannot be removed, so the prompt forbids commands and every tool call is counted in `toolCalls`. Both CLIs still add their own fixed scaffolding around the prompt; it is identical across runs and pinned by the CLI versions in the Dockerfile.
 
 ## Versioning
 

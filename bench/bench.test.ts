@@ -110,8 +110,9 @@ describe("runners", () => {
   it("builds argv that strips host configuration and marks fatal errors", () => {
     const request = { model: "m", effort: "high", system: "SYS", user: "U" };
     const claudeArgv = claude.argv(request);
-    expect(claudeArgv).toEqual(expect.arrayContaining(["--bare", "--restricted", "--tools", "", "--model", "m", "--effort", "high", "--system-prompt", "SYS"]));
+    expect(claudeArgv).toEqual(expect.arrayContaining(["--restricted", "--tools", "", "--model", "m", "--effort", "high", "--system-prompt", "SYS"]));
     const codexArgv = codex.argv(request);
+    expect(claudeArgv).not.toContain("--bare");
     expect(codexArgv).toEqual(expect.arrayContaining(["--ignore-user-config", "--ephemeral", "--model", "m", "-"]));
     const file = codexArgv[codexArgv.indexOf("-c") + 1].replace(/^model_instructions_file=/, "");
     expect(readFileSync(JSON.parse(file), "utf8")).toBe("SYS\n");

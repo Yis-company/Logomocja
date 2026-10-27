@@ -56,7 +56,7 @@ export const claude: Runner = {
   argv: ({ model, effort, system }) => [
     "claude",
     "-p",
-    "--bare",
+    // Not --bare: it skips credential reads, including CLAUDE_CODE_OAUTH_TOKEN.
     "--restricted",
     "--tools",
     "",
