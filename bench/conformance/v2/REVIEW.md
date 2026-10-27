@@ -4,6 +4,7 @@ The reference app implements dialect v2 (`bench/prompts/v2/dialect.md`). Before 
 
 - `recursion in never-run repeat`, `recursion in uncalled procedure` (Fable), `direct recursion even in zero repeat` (Astra): recursion is legal in v2.
 - `invalid number 1+2` (Astra): `fd 1+2` is the expression 3 in v2.
+- `wrong argument count inside another procedure` (Fable): since the round-1 amendment below, a missing argument is reported at the token found in its place, here the `już` on the next line, where v1 expected the line of the call.
 
 ## Round 1: gpt-6-astra (196 cases, run `v2-e2-codex-gpt-6-astra-20261027-203902Z`)
 
