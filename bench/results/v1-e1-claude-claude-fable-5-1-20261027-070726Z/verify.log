@@ -1,0 +1,103 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/node@26.6.5
++ @types/three@0.186.0
++ playwright@1.64.1
++ typescript@5.9.3
++ vite@8.3.5
++ three@0.186.1
+
+30 packages installed [72.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 25 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   8.13 kB │ gzip:   2.22 kB
+dist/assets/index-_t92yOA-.css   10.67 kB │ gzip:   3.23 kB
+dist/assets/view3d-C7MqPp_J.js    7.48 kB │ gzip:   2.86 kB
+dist/assets/index-C8Ujrx_G.js    22.78 kB │ gzip:   8.44 kB
+dist/assets/app-CWfxc-pF.js      28.24 kB │ gzip:  10.22 kB
+dist/assets/three-CS99BcJM.js   560.04 kB │ gzip: 138.85 kB
+
+✓ built in 158ms
+$ tsc --noEmit -p tsconfig.json && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/lexer.test.ts:
+(pass) lexer > splits words, numbers, brackets and colours with positions [0.41ms]
+(pass) lexer > numbers: signed decimals only [0.07ms]
+(pass) lexer > comments run to end of line [0.02ms]
+(pass) lexer > params and ma: keyword [0.07ms]
+(pass) lexer > malformed colours are tokens with empty colour [0.02ms]
+(pass) lexer > CRLF line endings [0.01ms]
+
+tests/interpreter.test.ts:
+(pass) basic movement > starts at origin heading +Y, pen down, default colour and width [0.54ms]
+(pass) basic movement > square with exact right angles [0.40ms]
+(pass) basic movement > right turn is clockwise seen from above; left is counter-clockwise [0.10ms]
+(pass) basic movement > back moves opposite to heading [0.02ms]
+(pass) basic movement > zero-length moves draw nothing [0.04ms]
+(pass) basic movement > pen up suppresses drawing but moves the turtle [0.05ms]
+(pass) basic movement > colour and width persist [0.08ms]
+(pass) basic movement > decimal angles and distances [0.05ms]
+(pass) basic movement > all aliases are equivalent [0.31ms]
+(pass) basic movement > newlines are insignificant between a command and its argument [0.06ms]
+(pass) basic movement > comments are ignored [0.01ms]
+(pass) basic movement > empty program draws nothing [0.01ms]
+(pass) repeat > zero runs nothing [0.12ms]
+(pass) repeat > nested repeats [0.03ms]
+(pass) repeat > count limits [1.47ms]
+(pass) procedures > ma: header with parameters [0.31ms]
+(pass) procedures > legacy header and colon references [0.17ms]
+(pass) procedures > definition may follow the call [0.10ms]
+(pass) procedures > case-insensitive names and keywords; accented aliases [0.19ms]
+(pass) procedures > to / end aliases [0.02ms]
+(pass) procedures > parameters can be repeat counts and call arguments [0.07ms]
+(pass) procedures > parameters are local [0.21ms]
+(pass) procedures > procedure with no parameters [0.06ms]
+(pass) procedures > wrong argument count [0.13ms]
+(pass) procedures > direct recursion is an error even if never executed [0.05ms]
+(pass) procedures > indirect recursion is an error [0.04ms]
+(pass) procedures > duplicate definition [0.02ms]
+(pass) procedures > definition inside a body is an error [0.03ms]
+(pass) procedures > missing już [0.02ms]
+(pass) procedures > oto must start a line; już must be alone [0.05ms]
+(pass) procedures > bad headers [0.08ms]
+(pass) procedures > unknown parameter and parameter outside procedure [0.04ms]
+(pass) 3D > pitch rotates heading towards up [0.09ms]
+(pass) 3D > pitch is an error in 2D at the token [0.02ms]
+(pass) 3D > right vector follows the heading; up follows pitch [0.08ms]
+(pass) 3D > flat programs produce identical coordinates in 2D and 3D [0.22ms]
+(pass) errors: positions and messages > unknown command [0.03ms]
+(pass) errors: positions and messages > missing and non-numeric arguments [0.15ms]
+(pass) errors: positions and messages > colour errors [0.06ms]
+(pass) errors: positions and messages > width errors [0.05ms]
+(pass) errors: positions and messages > brackets [0.04ms]
+(pass) errors: positions and messages > parse errors draw nothing even after valid commands [0.01ms]
+(pass) errors: positions and messages > run-time parameter validation keeps earlier drawing [0.18ms]
+(pass) limits > source length [0.26ms]
+(pass) limits > token count [8.74ms]
+(pass) limits > bracket nesting depth [0.21ms]
+(pass) limits > frame depth across procedures [0.30ms]
+(pass) limits > operation limit stops execution and keeps segments [3.01ms]
+(pass) limits > segment limit [0.83ms]
+(pass) limits > coordinate limit [0.04ms]
+(pass) run() contract > returns plain data [0.06ms]
+(pass) run() contract > rejects bad mode [0.05ms]
+
+ 58 pass
+ 0 fail
+ 256 expect() calls
+Ran 58 tests across 2 files. [24.00ms]
+(exit 0)

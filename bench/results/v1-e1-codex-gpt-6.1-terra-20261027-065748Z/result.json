@@ -1,0 +1,52 @@
+{
+  "schema": 3,
+  "id": "v1-e1-codex-gpt-6.1-terra-20261027-065748Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-terra",
+  "cliVersion": "0.164.0",
+  "effort": null,
+  "startedAt": "2026-10-27T06:57:49.250Z",
+  "agentMs": 134609,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 16531,
+    "cachedInput": 140160,
+    "output": 10247,
+    "reasoning": 172
+  },
+  "costUsd": 0.074774,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 6,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 3,
+    "distBytes": 515446
+  },
+  "cases": null,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "9f3062a676a018bc028ae93c371622e1b9f256b3",
+  "repoVersion": "0.2.0",
+  "totalMs": 136568,
+  "conformance": {
+    "claude-fable-5-1": {
+      "passed": 150,
+      "total": 153,
+      "hook": true
+    },
+    "gpt-6-astra": {
+      "passed": 117,
+      "total": 118,
+      "hook": true
+    }
+  },
+  "humanScore": null,
+  "notes": ""
+}

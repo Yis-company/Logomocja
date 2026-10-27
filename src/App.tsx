@@ -15,6 +15,7 @@ import { parse } from "./logo/parser";
 import { Executor } from "./logo/runtime";
 import { emptyDrawing, LogoError, type Mode } from "./logo/types";
 import { Examples } from "./pages/Examples";
+import { Benchmark } from "./pages/Benchmark";
 import { Commands } from "./pages/Commands";
 import { ChallengeCatalog, ChallengePage } from "./pages/Challenges";
 import { readDrafts, writeDrafts } from "./persistence";
@@ -373,6 +374,7 @@ export default function App() {
             element={<Examples onChoose={chooseExample} />}
           />
           <Route path="/commands" element={<Commands />} />
+          <Route path="/benchmark" element={<Benchmark />} />
           <Route path="/challenges" element={<ChallengeCatalog />} />
           <Route
             path="/challenges/:slug"

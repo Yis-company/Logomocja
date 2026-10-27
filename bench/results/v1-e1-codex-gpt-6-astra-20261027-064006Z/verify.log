@@ -1,0 +1,99 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/three@0.180.0
++ typescript@5.9.3
++ vite@7.3.7
++ @fontsource-variable/dm-sans@5.3.0
++ @fontsource/ibm-plex-mono@5.3.0
++ three@0.180.0
+
+28 packages installed [44.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                  0.89 kB │ gzip:   0.55 kB
+dist/assets/ibm-plex-mono-latin-ext-400-normal-D3D2R8hC.woff    11.77 kB
+dist/assets/ibm-plex-mono-latin-400-normal-CvHOgSBP.woff        13.14 kB
+dist/assets/ibm-plex-mono-latin-ext-400-normal-BmRBH3aV.woff2   13.35 kB
+dist/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2       14.71 kB
+dist/assets/dm-sans-latin-ext-wght-normal-BOFOeGcA.woff2        18.23 kB
+dist/assets/dm-sans-latin-wght-normal-Xz1IZZA0.woff2            36.93 kB
+dist/assets/index-CckiWuv7.css                                  20.64 kB │ gzip:   5.43 kB
+dist/assets/index-4ivBoBWd.js                                  552.34 kB │ gzip: 144.31 kB
+✓ built in 682ms
+$ tsc --noEmit && vite build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests/interpreter.test.ts
+
+tests/interpreter.test.ts:
+(pass) geometria > początek, pisak i zerowy krok [0.97ms]
+(pass) geometria > prawo, lewo, wstecz i ułamki [0.14ms]
+(pass) geometria > kwadrat zamyka się w obu trybach [0.37ms]
+(pass) geometria > obrót w lokalnym układzie 3D [0.12ms]
+(pass) geometria > kolor, grubość i podniesiony pisak [0.05ms]
+(pass) geometria > wszystkie aliasy [0.72ms]
+(pass) procedury i powtórzenia > wywołanie przed definicją, lokalne parametry i wielkość liter [0.36ms]
+(pass) procedury i powtórzenia > legacy i zagnieżdżone wywołania [0.10ms]
+(pass) procedury i powtórzenia > parametry repeat i width oraz cienie nazw [0.05ms]
+(pass) procedury i powtórzenia > zero i puste bloki [0.02ms]
+(pass) procedury i powtórzenia > nazwy odziedziczone z Object nie są wbudowane [0.03ms]
+(pass) walidacja całego programu > np 10 / nieznane [0.07ms]
+(pass) walidacja całego programu > np 10 / np [0.01ms]
+(pass) walidacja całego programu > np 10 / np abc
+(pass) walidacja całego programu > np 10 / np 1e2
+(pass) walidacja całego programu > np 10 / np 1+2
+(pass) walidacja całego programu > np 10 / color "red" [0.01ms]
+(pass) walidacja całego programu > np 10 / width 0 [0.02ms]
+(pass) walidacja całego programu > np 10 / width 1.5
+(pass) walidacja całego programu > np 10 / repeat -1 [] [0.01ms]
+(pass) walidacja całego programu > np 10 / repeat 10001 []
+(pass) walidacja całego programu > np 10 / repeat .5 []
+(pass) walidacja całego programu > np 10 / repeat 3 np 2
+(pass) walidacja całego programu > np 10 / repeat 2 [np 3
+(pass) walidacja całego programu > np 10 / ]
+(pass) walidacja całego programu > np 10 / góra 0
+(pass) walidacja całego programu > np 10 / repeat 0 [góra 90] [0.01ms]
+(pass) walidacja całego programu > np 10 / oto a / np 2
+(pass) walidacja całego programu > oto a / end / oto A / end
+(pass) walidacja całego programu > repeat 0 [ / oto a / end / ]
+(pass) walidacja całego programu > oto a / oto b / end / end
+(pass) walidacja całego programu > oto a ma: x x / end
+(pass) walidacja całego programu > oto a ma: x, / end
+(pass) walidacja całego programu > oto a / end np 2
+(pass) walidacja całego programu > oto a :n / np n / end / a [0.01ms]
+(pass) walidacja całego programu > oto a :n / np n / end / a 2 3 [0.01ms]
+(pass) walidacja całego programu > oto a :n / np n / end / np n
+(pass) walidacja całego programu > pozycja błędu [0.03ms]
+(pass) walidacja całego programu > rekurencja także w nieużywanych procedurach i pustych pętlach [0.05ms]
+(pass) walidacja całego programu > komentarze oraz nowa linia między argumentami [0.02ms]
+(pass) limity i stan wykonania > współrzędne zachowują poprzednie odcinki [0.03ms]
+(pass) limity i stan wykonania > limit operacji [2.60ms]
+(pass) limity i stan wykonania > puste pętle również liczą operacje [1.95ms]
+(pass) limity i stan wykonania > limit źródła i tokenów [1.00ms]
+(pass) limity i stan wykonania > limit nawiasów [0.23ms]
+(pass) limity i stan wykonania > limit aktywnych procedur [0.76ms]
+(pass) limity i stan wykonania > zakres parametru jest błędem wykonania [0.05ms]
+(pass) limity i stan wykonania > wykonanie krokowe jest identyczne [0.05ms]
+(pass) długi graf wywołań waliduje się bez przepełnienia stosu [22.28ms]
+
+ 49 pass
+ 0 fail
+ 204 expect() calls
+Ran 49 tests across 1 file. [34.00ms]
+(exit 0)

@@ -1,0 +1,57 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@5.9.3
++ vite@8.3.5
++ three@0.186.1
+
+28 packages installed [67.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 31 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  11.52 kB │ gzip:   3.72 kB
+dist/assets/index-BpYdB0zL.css   12.56 kB │ gzip:   3.73 kB
+dist/assets/index-B5xmCykn.js    52.46 kB │ gzip:  18.69 kB
+dist/assets/view3d-ZOve5iJY.js  589.34 kB │ gzip: 147.08 kB
+
+✓ built in 294ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/lang.test.ts:
+(pass) geometry > square from the brief [3.60ms]
+(pass) geometry > left, back, negative angles [1.35ms]
+(pass) geometry > zero move draws nothing; pen up moves without drawing [0.36ms]
+(pass) geometry > pitch in 3D follows the up vector [0.27ms]
+(pass) geometry > flat programs match in 2D and 3D [5.88ms]
+(pass) geometry > colour and width persist; colour is lowercased [0.06ms]
+(pass) lexical rules > aliases and case-insensitivity [0.18ms]
+(pass) lexical rules > number formats [0.33ms]
+(pass) lexical rules > comments and brackets without spaces [0.03ms]
+(pass) procedures > legacy header, :param references, definitions after calls [0.06ms]
+(pass) procedures > parameters as repeat counts and nested call arguments [0.11ms]
+(pass) procedures > case-insensitive names and params [0.02ms]
+(pass) procedures > errors [0.28ms]
+(pass) errors > parse errors draw nothing [0.39ms]
+(pass) errors > positions of common mistakes [1.36ms]
+(pass) errors > pitch error in 2D even inside an unused procedure [0.08ms]
+(pass) errors > run-time errors keep what was drawn [0.19ms]
+(pass) errors > limits [19.82ms]
+
+ 18 pass
+ 0 fail
+ 134 expect() calls
+Ran 18 tests across 1 file. [40.00ms]
+(exit 0)

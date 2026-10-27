@@ -1,0 +1,44 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ vite@7.3.7
++ three@0.180.0
+
+14 packages installed [18.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 8 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.55 kB │ gzip:   0.36 kB
+dist/assets/index-DN4vgNC2.css    6.60 kB │ gzip:   2.18 kB
+dist/assets/index-Elww6LJn.js   508.30 kB │ gzip: 129.96 kB
+✓ built in 617ms
+$ vite build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+src/logo.test.js:
+(pass) kwadrat i zgodność 2D / 3D [1.87ms]
+(pass) procedury i parametry [0.44ms]
+(pass) błąd przed rysowaniem [0.05ms]
+(pass) pochylenie w przestrzeni [0.04ms]
+(pass) rekurencja w nieużywanej procedurze [0.04ms]
+
+ 5 pass
+ 0 fail
+ 9 expect() calls
+Ran 5 tests across 1 file. [4.00ms]
+(exit 0)

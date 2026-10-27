@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Logomocja – polskie studio rysowania żółwiem w 2D i 3D." />
+    <meta name="theme-color" content="#16866a" />
+    <link rel="icon" type="image/svg+xml" href="/Logomocja/builds/v1-e1-claude-claude-opus-5-5-20261027-064518Z/favicon.svg" />
+    <title>Logomocja – studio żółwia</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var t = JSON.parse(localStorage.getItem("logomocja.v1") || "{}").theme;
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v1-e1-claude-claude-opus-5-5-20261027-064518Z/assets/index-B5xmCykn.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v1-e1-claude-claude-opus-5-5-20261027-064518Z/assets/index-BpYdB0zL.css">
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="currentColor" />
+            <g fill="var(--paper)">
+              <ellipse cx="32" cy="35" rx="13" ry="16" /><ellipse cx="32" cy="14" rx="6" ry="7" />
+              <ellipse cx="18" cy="25" rx="5" ry="3.5" /><ellipse cx="46" cy="25" rx="5" ry="3.5" />
+              <ellipse cx="18" cy="46" rx="5" ry="3.5" /><ellipse cx="46" cy="46" rx="5" ry="3.5" />
+            </g>
+            <path d="M32 20v30M20 30h24M20 40h24" stroke="currentColor" stroke-width="2.5" fill="none" />
+          </svg>
+          <h1>Logomocja</h1>
+          <span class="brand-tag">studio żółwia</span>
+        </div>
+        <div class="top-actions">
+          <label class="select">
+            <span class="sr-only">Wczytaj przykład</span>
+            <select id="examples">
+              <option value="">Przykłady…</option>
+            </select>
+          </label>
+          <div class="seg" role="radiogroup" aria-label="Tryb rysowania">
+            <button type="button" id="mode2d" role="radio" aria-checked="true">2D</button>
+            <button type="button" id="mode3d" role="radio" aria-checked="false">3D</button>
+          </div>
+          <button type="button" id="themeBtn" class="icon-btn" aria-label="Motyw">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" id="helpBtn" class="icon-btn" aria-label="Pomoc" title="Pomoc">?</button>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Widok">
+        <button type="button" role="tab" data-tab="code" aria-selected="true">Program</button>
+        <button type="button" role="tab" data-tab="canvas" aria-selected="false">Rysunek</button>
+      </nav>
+
+      <main id="workspace" class="workspace" data-tab="code">
+        <div class="toolbar" role="toolbar" aria-label="Sterowanie programem">
+          <button type="button" id="runBtn" class="btn primary" title="Uruchom cały program (Ctrl+Enter)">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span class="label">Uruchom</span>
+          </button>
+          <button type="button" id="pauseBtn" class="btn" disabled title="Pauza / wznów (Esc wstrzymuje)">
+            <span class="ico ico-pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" fill="currentColor"/></svg></span><span class="ico ico-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span><span class="label">Pauza</span>
+          </button>
+          <button type="button" id="stepBtn" class="btn" title="Wykonaj jedno polecenie (Ctrl+.)">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l10-7z" fill="currentColor"/><path d="M16.5 5h3v14h-3z" fill="currentColor"/></svg></span><span class="label">Krok</span>
+          </button>
+          <button type="button" id="resetBtn" class="btn" disabled title="Wyczyść rysunek i ustaw żółwia na środku">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12a6.5 6.5 0 1 0 2-4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4 3.5v5h5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="label">Reset</span>
+          </button>
+          <label class="speed">
+            <span class="speed-title">Tempo</span>
+            <input id="speed" type="range" min="0" max="5" step="1" value="3" />
+            <span id="speedLabel" class="speed-label"></span>
+          </label>
+        </div>
+
+        <section class="pane pane-code" aria-label="Edytor programu">
+          <div id="editorHost" class="editor-host"></div>
+        </section>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+
+        <section class="pane pane-canvas" aria-label="Rysunek">
+          <div id="viewHost" class="view-host"></div>
+          <div id="hud" class="hud" aria-live="off"></div>
+          <div class="view-tools" role="toolbar" aria-label="Widok rysunku">
+            <button type="button" id="zoomInBtn" class="icon-btn" aria-label="Przybliż" title="Przybliż">+</button>
+            <button type="button" id="zoomOutBtn" class="icon-btn" aria-label="Oddal" title="Oddal">−</button>
+            <button type="button" id="fitBtn" class="icon-btn" aria-label="Dopasuj widok do rysunku" title="Dopasuj widok do rysunku">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <button type="button" id="homeBtn" class="icon-btn" aria-label="Widok początkowy" title="Widok początkowy">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7M6 10v10h12V10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <button type="button" id="pngBtn" class="icon-btn" aria-label="Zapisz obraz PNG" title="Zapisz obraz PNG">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+          </div>
+          <p class="view-hint view-hint-2d">Przeciągnij, aby przesunąć · kółko lub dwa palce, aby przybliżyć</p>
+          <p class="view-hint view-hint-3d">Przeciągnij, aby obracać · prawy przycisk lub dwa palce, aby przesuwać · kółko, aby przybliżyć</p>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="help" class="help" aria-labelledby="helpTitle">
+      <div class="help-head">
+        <h2 id="helpTitle">Jak rozmawiać z żółwiem</h2>
+        <button type="button" id="helpClose" class="icon-btn" aria-label="Zamknij pomoc">✕</button>
+      </div>
+      <div class="help-body">
+        <p>
+          Żółw startuje na środku, patrzy w górę ekranu (oś +Y) i ma opuszczony pisak w kolorze
+          <code>"#16866a"</code> o grubości 3. Wielkość liter nie ma znaczenia, a polskie znaki można pominąć
+          (<code>naprzód</code> = <code>naprzod</code>). Średnik zaczyna komentarz.
+        </p>
+        <table>
+          <thead><tr><th>Polecenie</th><th>Po angielsku</th><th>Co robi</th></tr></thead>
+          <tbody>
+            <tr><td><code>np 100</code>, <code>naprzód</code></td><td><code>fd</code>, <code>forward</code></td><td>idzie naprzód o 100</td></tr>
+            <tr><td><code>ws 50</code>, <code>wstecz</code></td><td><code>bk</code>, <code>back</code></td><td>cofa się</td></tr>
+            <tr><td><code>pw 90</code>, <code>prawo</code></td><td><code>rt</code>, <code>right</code></td><td>obraca się w prawo o 90°</td></tr>
+            <tr><td><code>lw 45</code>, <code>lewo</code></td><td><code>lt</code>, <code>left</code></td><td>obraca się w lewo</td></tr>
+            <tr><td><code>pod</code>, <code>podnieś</code></td><td><code>pu</code>, <code>penup</code></td><td>podnosi pisak (chodzi bez rysowania)</td></tr>
+            <tr><td><code>opu</code>, <code>opuść</code></td><td><code>pd</code>, <code>pendown</code></td><td>opuszcza pisak</td></tr>
+            <tr><td><code>kolor "#d9480f"</code></td><td><code>color</code></td><td>zmienia kolor pisaka</td></tr>
+            <tr><td><code>grubość 5</code>, <code>grubosc</code></td><td><code>width</code></td><td>grubość linii: liczba całkowita 1–12</td></tr>
+            <tr><td><code>powtórz 4 [ … ]</code>, <code>powtorz</code></td><td><code>repeat</code></td><td>powtarza polecenia w nawiasie (0–10&nbsp;000 razy)</td></tr>
+            <tr><td><code>góra 30</code>, <code>gora</code></td><td><code>pitchup</code></td><td>tylko 3D: unosi nos żółwia</td></tr>
+            <tr><td><code>dół 30</code>, <code>dol</code></td><td><code>pitchdown</code></td><td>tylko 3D: opuszcza nos żółwia</td></tr>
+          </tbody>
+        </table>
+        <h3>Procedury</h3>
+<pre>oto kwadrat ma: bok, kąt
+  powtórz 4 [np bok pw kąt]
+już
+
+kwadrat 80 90</pre>
+        <p>
+          Definicja zaczyna się od <code>oto</code> (lub <code>to</code>) na początku wiersza, a kończy słowem
+          <code>już</code> (<code>juz</code>, <code>end</code>) w osobnym wierszu. Działa też stary zapis
+          <code>oto kwadrat :bok :kąt</code>, a parametr można pisać jako <code>:bok</code> lub <code>bok</code>.
+          Procedury mogą wywoływać inne procedury, ale nie same siebie. Nie ma zmiennych ani działań
+          arytmetycznych – liczby podaje się wprost albo przez parametry.
+        </p>
+        <h3>Uruchamianie</h3>
+        <ul>
+          <li><kbd>Ctrl</kbd>+<kbd>Enter</kbd> – uruchom cały program od nowa,</li>
+          <li><kbd>Ctrl</kbd>+<kbd>.</kbd> – wykonaj jedno polecenie (praca krokowa),</li>
+          <li><kbd>Esc</kbd> – wstrzymaj rysowanie, „Wznów” – kontynuuj.</li>
+        </ul>
+        <p>
+          Przed rysowaniem program jest sprawdzany w całości – jeśli zawiera błąd, nic nie zostanie narysowane,
+          a komunikat wskaże wiersz i kolumnę. Jeśli zmienisz kod w trakcie rysowania, żółw dokończy poprzednią
+          wersję; „Od nowa” uruchomi nową.
+        </p>
+        <h3>Tryb 3D</h3>
+        <p>
+          W 3D żółw porusza się w przestrzeni: <code>góra</code> i <code>dół</code> obracają go wokół jego prawego boku.
+          Program złożony tylko z poleceń płaskich rysuje to samo w 2D i w 3D (na płaszczyźnie z = 0).
+        </p>
+        <h3>Limity</h3>
+        <p>
+          50&nbsp;000 znaków, 10&nbsp;000 słów i liczb, 32 poziomy zagnieżdżenia, 10&nbsp;000 wykonanych operacji
+          (liczą się też powtórzenia i wywołania procedur), 10&nbsp;000 odcinków, współrzędne w zakresie ±100&nbsp;000.
+        </p>
+        <p class="help-foot">Twój program zapisuje się tylko w tej przeglądarce. Logomocja nie łączy się z internetem.</p>
+      </div>
+    </dialog>
+
+  </body>
+</html>

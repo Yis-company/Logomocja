@@ -182,3 +182,16 @@ test("parameters and nested procedures execute in the studio", async ({
     page.getByRole("status").filter({ hasText: "Program zakończony" }),
   ).toBeVisible();
 });
+test("benchmark page is reachable and exposes the testing hook", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "Benchmark", exact: true }).click();
+  await expect(page).toHaveURL(/\/benchmark$/);
+  await expect(
+    page.getByRole("heading", { name: "Benchmark", exact: true }),
+  ).toBeFocused();
+  const outcome = await page.evaluate(() =>
+    window.logomocja?.run("powtorz 4 [np 100 pw 90]", "2d"),
+  );
+  expect(outcome?.segments).toHaveLength(4);
+  expect(outcome?.error).toBeNull();
+});

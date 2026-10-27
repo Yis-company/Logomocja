@@ -7,5 +7,5 @@ export default defineConfig(({ mode }) => ({
   define: { 'import.meta.env.VITE_PAGES': JSON.stringify(mode === 'pages') },
   plugins: [react(), tailwindcss()],
   resolve: {alias: {'@': fileURLToPath(new URL('./src', import.meta.url))}},
-  test: {include: ['src/**/*.test.ts', 'scripts/**/*.test.ts']},
+  test: {include: ['src/**/*.test.ts', 'scripts/**/*.test.ts', 'bench/**/*.test.ts']},
 }));

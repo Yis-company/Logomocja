@@ -1,0 +1,52 @@
+{
+  "schema": 3,
+  "id": "v1-e1-claude-claude-haiku-5-5-20261027-063441Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-haiku-5-5",
+  "cliVersion": "2.1.310",
+  "effort": null,
+  "startedAt": "2026-10-27T06:34:42.155Z",
+  "agentMs": 632234,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 68,
+    "cachedInput": 4291633,
+    "output": 138908,
+    "reasoning": 85964
+  },
+  "costUsd": 0.47526406000000004,
+  "costBasis": "cli",
+  "turns": 34,
+  "toolCalls": 33,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 4,
+    "distBytes": 614600
+  },
+  "cases": null,
+  "prompt": "v1",
+  "env": "1",
+  "image": "logomocja-bench:env-1",
+  "commit": "9f3062a676a018bc028ae93c371622e1b9f256b3",
+  "repoVersion": "0.2.0",
+  "totalMs": 634099,
+  "conformance": {
+    "claude-fable-5-1": {
+      "passed": 153,
+      "total": 153,
+      "hook": true
+    },
+    "gpt-6-astra": {
+      "passed": 117,
+      "total": 118,
+      "hook": true
+    }
+  },
+  "humanScore": null,
+  "notes": ""
+}
