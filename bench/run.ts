@@ -15,6 +15,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { runConformance } from "./conformance/run";
+import { captureGallery } from "./gallery";
+import { programsDir } from "./programs";
 import { renderPrompt, type Task } from "./prompt";
 import type { RunResult } from "./result";
 import { parseModelSpec } from "./runners";
@@ -24,17 +26,21 @@ const { values } = parseArgs({
   options: {
     model: { type: "string" },
     task: { type: "string", default: "app" },
-    prompt: { type: "string", default: "v1" },
+    prompt: { type: "string", default: "v2" },
     effort: { type: "string" },
     "no-push": { type: "boolean", default: false },
+    own: { type: "string" },
+    other: { type: "string" },
   },
 });
-if (!values.model) {
-  console.error("Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests] [--prompt v1] [--effort high] [--no-push]");
+const task = values.task as Task;
+if (!values.model || !["app", "tests", "tests-round2"].includes(task) || (task === "tests-round2" && !(values.own && values.other))) {
+  console.error(
+    "Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests|tests-round2] [--prompt v2] [--effort high] [--no-push]\n" +
+      "       tests-round2 also needs --own <round-1 cases.json of this model> --other <the other author's>",
+  );
   process.exit(2);
 }
-const task = values.task as Task;
-if (task !== "app" && task !== "tests") throw new Error("--task must be app or tests");
 const { runner, model } = parseModelSpec(values.model);
 const effort = values.effort ?? null;
 const git = (...args: string[]) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
@@ -56,6 +62,11 @@ const auth = join(scratch, "codex");
 mkdirSync(out);
 mkdirSync(auth);
 writeFileSync(join(out, "prompt.md"), renderPrompt(values.prompt, task));
+if (task === "tests-round2") {
+  mkdirSync(join(out, "round1"));
+  cpSync(values.own as string, join(out, "round1/own.json"));
+  cpSync(values.other as string, join(out, "round1/other.json"));
+}
 const codexAuth = join(homedir(), ".codex/auth.json");
 if (existsSync(codexAuth)) cpSync(codexAuth, join(auth, "auth.json"));
 const token =
@@ -93,13 +104,14 @@ rmSync(auth, { recursive: true, force: true });
 if (container.status !== 0 || !existsSync(join(out, "result.json")))
   throw new Error(`container exited with ${container.status} and no result.json`);
 
-const inner = JSON.parse(readFileSync(join(out, "result.json"), "utf8")) as Omit<RunResult, "schema" | "id" | "prompt" | "env" | "image" | "commit" | "repoVersion" | "totalMs" | "conformance" | "humanScore" | "notes"> & { hasCommit: boolean };
+const inner = JSON.parse(readFileSync(join(out, "result.json"), "utf8")) as Omit<RunResult, "schema" | "id" | "prompt" | "env" | "image" | "commit" | "repoVersion" | "totalMs" | "conformance" | "gallery" | "humanScore" | "notes"> & { hasCommit: boolean };
 const resultsDir = join(root, "bench/results", id);
 mkdirSync(resultsDir, { recursive: true });
 for (const name of ["transcript.jsonl", "agent.stderr.log", "verify.log"])
   if (existsSync(join(out, name))) cpSync(join(out, name), join(resultsDir, name));
 
 let conformance: RunResult["conformance"] = null;
+let gallery: RunResult["gallery"] = null;
 if (task === "app" && inner.verify?.built) {
   const buildDir = join(root, "builds", id);
   cpSync(join(out, "dist"), buildDir, { recursive: true });
@@ -112,18 +124,26 @@ if (task === "app" && inner.verify?.built) {
       Object.entries(report.suites).map(([name, suite]) => [name, { passed: suite.passed, total: suite.total, hook: report.hook }]),
     );
   }
+  if (existsSync(programsDir(values.prompt))) {
+    log("capturing the standard programs");
+    const report = await captureGallery(buildDir, basePath, values.prompt, join(resultsDir, "gallery"));
+    writeFileSync(join(resultsDir, "gallery.json"), `${JSON.stringify(report, null, 2)}\n`);
+    gallery = Object.fromEntries(Object.entries(report.programs).map(([name, p]) => [name, p.matches]));
+  }
 }
-if (task === "tests" && existsSync(join(out, "cases.json"))) {
-  const target = join(root, "bench/conformance", values.prompt, `${model}.json`);
+if (task !== "app" && existsSync(join(out, "cases.json"))) {
+  const suffix = task === "tests-round2" ? "-round2" : "";
+  const target = join(root, "bench/conformance", values.prompt, `${model}${suffix}.json`);
   mkdirSync(join(root, "bench/conformance", values.prompt), { recursive: true });
   cpSync(join(out, "cases.json"), target);
   cpSync(join(out, "cases.json"), join(resultsDir, "cases.json"));
+  if (existsSync(join(out, "review.json"))) cpSync(join(out, "review.json"), join(resultsDir, "review.json"));
   log(`cases written to ${target} (review before use; untouched copy in results)`);
 }
 
 const { hasCommit, ...rest } = inner;
 const result: RunResult = {
-  schema: 3,
+  schema: 4,
   id,
   ...rest,
   prompt: values.prompt,
@@ -133,6 +153,7 @@ const result: RunResult = {
   repoVersion,
   totalMs: Math.round(performance.now() - started),
   conformance,
+  gallery,
   humanScore: null,
   notes: "",
 };

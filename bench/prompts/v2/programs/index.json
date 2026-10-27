@@ -1,0 +1,15 @@
+[
+  { "id": "kwadrat", "mode": "2d", "name": "Kwadrat", "description": "Cztery kroki do pierwszego rysunku.", "level": "PIERWSZE KROKI" },
+  { "id": "gwiazda", "mode": "2d", "name": "Gwiazda", "description": "Mała zmiana kąta, wielka różnica.", "level": "GEOMETRIA" },
+  { "id": "rozeta", "mode": "2d", "name": "Rozeta", "description": "Jeden kwadrat. Wiele możliwości.", "level": "POWTÓRZENIA" },
+  { "id": "spirala", "mode": "2d", "name": "Spirala", "description": "Licznik powtórzeń i zmienna zmieniają kolor.", "level": "WYRAŻENIA" },
+  { "id": "wielokaty", "mode": "2d", "name": "Wielokąty", "description": "Procedura liczy kąt z liczby boków.", "level": "PROCEDURY" },
+  { "id": "drzewo", "mode": "2d", "name": "Drzewo", "description": "Gałąź rysuje dwie mniejsze gałęzie.", "level": "REKURENCJA" },
+  { "id": "sniezynka", "mode": "2d", "name": "Śnieżynka", "description": "Krzywa Kocha z czterech poziomów.", "level": "REKURENCJA" },
+  { "id": "schody", "mode": "3d", "name": "Schody", "description": "Pierwszy krok w trzeci wymiar.", "level": "PIERWSZE KROKI" },
+  { "id": "szescian", "mode": "3d", "name": "Sześcian", "description": "Zbuduj bryłę z prostych poleceń.", "level": "GEOMETRIA" },
+  { "id": "pierscien", "mode": "3d", "name": "Pierścień", "description": "Okrąg przechylony w przestrzeni.", "level": "GEOMETRIA" },
+  { "id": "kula", "mode": "3d", "name": "Kula", "description": "Okręgi obrócone wokół kierunku żółwia.", "level": "PRZECHYŁ" },
+  { "id": "helisa", "mode": "3d", "name": "Helisa", "description": "Spirala wznosi się obrót po obrocie.", "level": "POWTÓRZENIA" },
+  { "id": "drzewo3d", "mode": "3d", "name": "Drzewo 3D", "description": "Gałęzie obracają się wokół pnia.", "level": "REKURENCJA" }
+]

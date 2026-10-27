@@ -6,8 +6,8 @@ describe("benchmark hook", () => {
     const { segments, error } = run('kolor "#FF0000"\npowtorz 2 [np 10 pw 90]', "2d");
     expect(error).toBeNull();
     expect(segments).toEqual([
-      { from: [0, 0, 0], to: [0, 10, 0], color: "#FF0000", width: 3 },
-      { from: [0, 10, 0], to: [10, 10, 0], color: "#FF0000", width: 3 },
+      { from: [0, 0, 0], to: [0, 10, 0], color: "#ff0000", width: 3 },
+      { from: [0, 10, 0], to: [10, 10, 0], color: "#ff0000", width: 3 },
     ]);
   });
 

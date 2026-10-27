@@ -1,0 +1,10 @@
+; Obróć kwadrat i zobacz, co powstanie.
+kolor "#16866a"
+grubosc 2
+powtorz 12 [
+  powtorz 4 [
+    np 100
+    pw 90
+  ]
+  pw 30
+]

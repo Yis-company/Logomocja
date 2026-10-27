@@ -1,7 +1,15 @@
 export type Mode = "2d" | "3d";
 export type Vec3 = [number, number, number];
 export type Span = { line: number; column: number };
-export type Numeric = number | { parameter: string; span: Span };
+/** A numeric argument. `span` is the first token of the expression. */
+export type Expr =
+  | { kind: "number"; value: number; span: Span }
+  | { kind: "name"; name: string; span: Span }
+  | { kind: "counter"; span: Span }
+  | { kind: "unary"; sign: 1 | -1; operand: Expr; span: Span }
+  | { kind: "binary"; op: "+" | "-" | "*" | "/"; left: Expr; right: Expr; span: Span };
+export type Comparison = "<" | ">" | "=" | "<=" | ">=" | "<>";
+export type Condition = { op: Comparison; left: Expr; right: Expr; span: Span };
 export type Primitive = (
   | {
       kind:
@@ -11,16 +19,21 @@ export type Primitive = (
         | "left"
         | "width"
         | "pitchup"
-        | "pitchdown";
-      value: Numeric;
+        | "pitchdown"
+        | "rollright"
+        | "rollleft";
+      value: Expr;
     }
-  | { kind: "penup" | "pendown" }
+  | { kind: "penup" | "pendown" | "home" | "clear" }
   | { kind: "color"; value: string }
 ) & { span: Span };
 export type Instruction =
   | Primitive
-  | { kind: "repeat"; count: Numeric; body: Instruction[]; span: Span }
-  | { kind: "call"; name: string; args: Numeric[]; span: Span };
+  | { kind: "repeat"; count: Expr; body: Instruction[]; span: Span }
+  | { kind: "call"; name: string; args: Expr[]; span: Span }
+  | { kind: "let"; name: string; value: Expr; span: Span }
+  | { kind: "if"; condition: Condition; body: Instruction[]; otherwise: Instruction[] | null; span: Span }
+  | { kind: "stop"; span: Span };
 export type Definition = {
   readonly name: string;
   readonly params: readonly string[];

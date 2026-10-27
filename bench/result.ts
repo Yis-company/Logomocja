@@ -14,9 +14,9 @@ export type Verify = {
 export type SuiteScore = { passed: number; total: number; hook: boolean };
 export type RunStatus = "completed" | "partial" | "failed";
 export type RunResult = {
-  schema: 3;
+  schema: 4;
   id: string;
-  task: "app" | "tests";
+  task: "app" | "tests" | "tests-round2";
   prompt: string;
   env: string;
   image: string;
@@ -39,6 +39,8 @@ export type RunResult = {
   toolCalls: number;
   verify: Verify | null;
   conformance: Record<string, SuiteScore> | null;
+  /** Standard programs captured through `open`: whether each matched the reference outcome. */
+  gallery: Record<string, boolean> | null;
   cases: number | null;
   humanScore: number | null;
   notes: string;

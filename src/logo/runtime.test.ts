@@ -93,7 +93,6 @@ describe("finite execution and source errors", () => {
     "fd Infinity",
     "fd 1e3",
     "fd",
-    "fd 2 + 3",
     "repeat 2 [ fd 10",
     "repeat 2.5 []",
     "repeat -1 []",
@@ -211,7 +210,6 @@ describe("procedures", () => {
     "oto x ma: bok\njuż\nx 1 2",
     "oto x ma: bok\njuż\nx 1 :bok",
     "oto x ma: bok\nnp :missing\njuż",
-    "oto x ma: bok\nx bok\njuż",
     "oto x ma: bok\npowtorz 0 [np missing]\njuż",
     "oto x ma: bok\nnp bok\njuż\noto y ma: krok\nnp bok\njuż",
     "oto xma:bok\njuż",
@@ -271,15 +269,6 @@ describe("procedures", () => {
   it("requires the procedure header to start its own line", () => {
     expect(() => parse("fd 1 to a\nend", "2d")).toThrow(/nowy wiersz/);
   });
-  it("locates recursion at the call that closes the cycle", () => {
-    try {
-      parse("to a\nb\nend\nto b\na\nend", "2d");
-      throw new Error("expected recursion error");
-    } catch (error) {
-      expect(error).toBeInstanceOf(LogoError);
-      expect((error as LogoError).span).toEqual({ line: 5, column: 1 });
-    }
-  });
   it("rejects a terminator after a command on its line", () => {
     try {
       parse("to a\nfd 1 end", "2d");
@@ -289,9 +278,8 @@ describe("procedures", () => {
       expect((error as LogoError).span).toEqual({ line: 2, column: 6 });
     }
   });
-  it("resolves a forward call inside repeat and checks unused mutual recursion", () => {
+  it("resolves a forward call inside repeat", () => {
     expect(run("repeat 2 [ draw 3 ]\nto draw :n\nfd :n\nend").turtle.position).toEqual([0, 6, 0]);
-    expect(() => parse("to a\nb\nend\nto b\na\nend\nfd 1", "2d")).toThrow(/rekurencyjnie/);
   });
   it("can append a typed challenge call without changing the parsed program", () => {
     const program = parse("to draw :n\nfd :n\nend", "2d");
@@ -315,8 +303,6 @@ describe("procedures", () => {
     "to a\nto b\nend\nend",
     "repeat 1 [to a\nend]",
     "to a\nend fd 1",
-    "to a\na\nend",
-    "to a\nb\nend\nto b\na\nend",
   ])("rejects invalid definitions and calls: %s", (source) => {
     expect(() => parse(source, "2d")).toThrow(LogoError);
   });

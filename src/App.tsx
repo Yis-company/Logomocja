@@ -11,6 +11,7 @@ import { Slider } from "./components/ui/slider";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { Frame, FramePanel } from "./components/reui/frame";
 import { defaults, type Example } from "./examples";
+import type { HookOutcome, OpenRequest } from "./hook";
 import { parse } from "./logo/parser";
 import { Executor } from "./logo/runtime";
 import { emptyDrawing, LogoError, type Mode } from "./logo/types";
@@ -45,6 +46,7 @@ export default function App() {
   const [speed, setSpeed] = useState(35);
   const speedRef = useRef(speed);
   const [viewVersion, setViewVersion] = useState(0);
+  const [fitVersion, setFitVersion] = useState(0);
   const [pendingExample, setPendingExample] = useState<Example | null>(null);
   const cleanSources = useRef<Record<Mode, string>>({ ...defaults });
   const executor = useRef<Executor | null>(null);
@@ -185,6 +187,54 @@ export default function App() {
     stop();
     setStatus("paused");
   }
+  // The testing hook's open(): load, run to the end, fit the view, resolve once drawn.
+  useEffect(() => {
+    const handler = ({ detail }: CustomEvent<OpenRequest>) => {
+      if (frame.current !== null) cancelAnimationFrame(frame.current);
+      frame.current = null;
+      executor.current = null;
+      cleanSources.current[detail.mode] = detail.source;
+      setDrafts((d) => ({ ...d, mode: detail.mode, sources: { ...d.sources, [detail.mode]: detail.source } }));
+      navigate("/");
+      const runtime = new Executor(parse(detail.source, detail.mode));
+      let outcome: HookOutcome;
+      try {
+        while (!runtime.done) runtime.tick();
+        setError(null);
+        setStatus("done");
+        outcome = { segments: runtime.snapshot().segments, error: null };
+      } catch (cause) {
+        const error = cause instanceof LogoError ? cause : new LogoError("Nie udało się wykonać programu.");
+        setError(error);
+        setStatus("error");
+        outcome = { segments: runtime.snapshot().segments, error: { message: error.message, ...error.span } };
+      }
+      setDrawing(runtime.snapshot());
+      setFitVersion((v) => v + 1);
+      const started = performance.now();
+      const settle = () => {
+        const stage = document.querySelector<HTMLElement>(".stage");
+        const canvas = stage?.querySelector("canvas");
+        const drawn = stage?.dataset.segments === String(outcome.segments.length) && canvas?.checkVisibility();
+        if (drawn || performance.now() - started > 15_000)
+          requestAnimationFrame(() => requestAnimationFrame(() => detail.resolve(outcome)));
+        else setTimeout(settle, 50);
+      };
+      settle();
+    };
+    const listener = (event: Event) => {
+      try {
+        handler(event as CustomEvent<OpenRequest>);
+      } catch (cause) {
+        const error = cause instanceof LogoError ? cause : new LogoError("Nie udało się odczytać programu.");
+        setError(error);
+        setStatus("error");
+        (event as CustomEvent<OpenRequest>).detail.resolve({ segments: [], error: { message: error.message, ...error.span } });
+      }
+    };
+    window.addEventListener("logomocja:open", listener);
+    return () => window.removeEventListener("logomocja:open", listener);
+  }, [navigate]);
 
   useEffect(() => {
     if (pathname === "/" && hash === "#examples") {
@@ -269,6 +319,7 @@ export default function App() {
             mode={mode}
             theme={theme}
             viewVersion={viewVersion}
+            fitVersion={fitVersion}
           />
           <div className="stage-status">
             <div className="status-label" role="status" aria-live="polite">

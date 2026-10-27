@@ -3,6 +3,8 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { type Case, compareCase, type Outcome, parseSuite, type Segment } from "./conformance/compare";
 import { cost } from "./prices";
+import { run } from "../src/hook";
+import { loadExpected, loadPrograms } from "./programs";
 import { renderPrompt } from "./prompt";
 import { claude, codex, parseModelSpec } from "./runners";
 
@@ -22,6 +24,30 @@ describe("prompts", () => {
     expect(app).toContain("BASE_PATH");
     expect(tests).toContain("cases.json");
     expect(() => renderPrompt("../x", "app")).toThrow(/v1/);
+  });
+
+  it("renders the v2 briefs with the standard programs and the round-2 inputs", () => {
+    const app = renderPrompt("v2", "app");
+    expect(app).toContain("open(source, mode)");
+    expect(app).toContain("### Kula (`kula`, 3D)");
+    expect(app).toContain("powtorz 36 [np 10 gora 10]");
+    expect(app).not.toContain("{{");
+    expect(renderPrompt("v2", "tests")).toContain("nrpowt");
+    expect(renderPrompt("v2", "tests-round2")).toContain("round1/other.json");
+  });
+});
+
+describe("standard programs", () => {
+  it("are listed, run on the reference without error and match the frozen outcomes", () => {
+    const programs = loadPrograms("v2");
+    const expected = loadExpected("v2");
+    expect(programs).toHaveLength(13);
+    for (const program of programs) {
+      const outcome = run(program.source, program.mode);
+      expect(outcome.error, program.id).toBeNull();
+      expect(outcome.segments.length, program.id).toBeGreaterThan(3);
+      expect(compareCase({ name: program.id, mode: program.mode, source: program.source, expect: { segments: expected[program.id].segments } }, outcome)).toBeNull();
+    }
   });
 });
 

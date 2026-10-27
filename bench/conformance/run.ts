@@ -21,7 +21,7 @@ const types: Record<string, string> = {
   ".wasm": "application/wasm",
 };
 
-function serve(dist: string, basePath: string) {
+export function serve(dist: string, basePath: string) {
   const root = resolve(dist);
   const server = createServer((request, response) => {
     const pathname = decodeURIComponent(new URL(request.url ?? "/", "http://x").pathname);

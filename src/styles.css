@@ -1020,3 +1020,23 @@
     }
   }
 }
+
+/* Benchmark gallery: one screenshot per model and standard program. */
+.gallery-table td,
+.gallery-table th {
+  padding: 0.3rem;
+  vertical-align: middle;
+  text-align: center;
+}
+.gallery-table img {
+  display: block;
+  width: 128px;
+  height: 80px;
+  object-fit: cover;
+  object-position: right top;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+.gallery-table .gallery-mismatch img {
+  border-color: #c0392b;
+}

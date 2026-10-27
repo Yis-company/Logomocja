@@ -7,10 +7,12 @@ Models run through the Claude Code and Codex CLIs under the existing subscriptio
 ## Run
 
 ```sh
-bun run bench -- --model claude:claude-sonnet-5-5             # build the app
-bun run bench -- --model codex:gpt-6-astra --task tests       # author a conformance suite
+bun run bench -- --model claude:claude-sonnet-5-5             # build the app (prompt v2 by default)
+bun run bench -- --model codex:gpt-6-astra --task tests       # author a conformance suite, round 1
+bun run bench -- --model codex:gpt-6-astra --task tests-round2 --own <its round-1 cases.json> --other <the other author's>
 bun run bench -- --model claude:claude-opus-5-5 --effort high --no-push
 bun run bench:conformance -- --dist builds/<run-id> --base /Logomocja/builds/<run-id>/
+bun bench/gallery.ts --dist builds/<run-id> --base /Logomocja/builds/<run-id>/ --out results/<run-id>/gallery
 ```
 
 Authentication: `CLAUDE_CODE_OAUTH_TOKEN` (or `CLAUDE_CODE_OAUTH_TOKEN_FILE`) from `claude setup-token` for Claude; `~/.codex/auth.json` (ChatGPT login) is copied into a temporary `CODEX_HOME` for the run and deleted afterwards.
@@ -18,23 +20,29 @@ Authentication: `CLAUDE_CODE_OAUTH_TOKEN` (or `CLAUDE_CODE_OAUTH_TOKEN_FILE`) fr
 ## What one run does
 
 1. Builds `logomocja-bench:env-<VERSION>` from `env/Dockerfile` if missing: Node, Bun, pinned Claude Code and Codex, git, a non-root `agent` user, an empty `/work`.
-2. Renders the brief (`prompts/<version>/spec.md` or `tests.md`, with `dialect.md` filled in) and starts the container with `bench/` mounted read-only and an output directory mounted at `/out`.
+2. Renders the brief (`prompts/<version>/spec.md`, `tests.md` or `tests-round2.md`, with `dialect.md` and the standard programs filled in) and starts the container with `bench/` mounted read-only and an output directory mounted at `/out`.
 3. Inside, `agent.ts` launches the CLI with the brief on stdin, fully autonomous (`--dangerously-skip-permissions` for Claude, `--dangerously-bypass-approvals-and-sandbox` for Codex; the container is the sandbox), and streams the CLI's events to `transcript.jsonl`. Host configuration is excluded: fresh home, `--setting-sources ""`, `--ignore-user-config --ignore-rules`. The CLIs keep their own default system prompts; they are part of what is measured and are pinned by version.
 4. When the agent stops, the harness commits whatever is in `/work`, bundles it, and for the `app` task verifies it in a clean shell: `bun install`, `BASE_PATH=/Logomocja/builds/<run-id>/ bun run build`, and `bun run test` if the project defines one.
-5. Back on the host: the source becomes branch `build/<run-id>` (pushed unless `--no-push`), the verified `dist/` is copied to `builds/<run-id>/`, the conformance suites in `conformance/<prompt version>/` are run against it headlessly, and `results/<run-id>/` receives `result.json`, `transcript.jsonl`, `verify.log` and `conformance.json`. For the `tests` task the agent's `cases.json` is copied to `conformance/<prompt version>/<model>.json` for review.
+5. Back on the host: the source becomes branch `build/<run-id>` (pushed unless `--no-push`), the verified `dist/` is copied to `builds/<run-id>/`, the conformance suites in `conformance/<prompt version>/` are run against it headlessly, the standard programs are captured through `open` into `results/<run-id>/gallery/` (WebP when `cwebp` is installed, PNG otherwise; `brew install webp`), and `results/<run-id>/` receives `result.json`, `transcript.jsonl`, `verify.log`, `conformance.json` and `gallery.json`. For the test-author tasks the agent's `cases.json` (and `review.json` in round 2) is copied to `conformance/<prompt version>/<model>[-round2].json` for review.
 
 Run id: `<prompt>-e<env>-<runner>-<model>-<UTC stamp>`.
 
 ## Conformance suites
 
-The brief requires every build to expose `window.logomocja.run(source, mode)` returning the drawn segments and any error. Suites are case files (see `prompts/v1/tests.md` for the format) authored by agents from the dialect specification alone, then checked against the reference app (this repository, which exposes the same hook): cases that fail there are reviewed and either dropped, with the reason in `conformance/<version>/REVIEW.md`, or kept when they reveal a reference bug that then gets fixed. A build without the hook scores zero on every suite.
+The brief requires every build to expose `window.logomocja.run(source, mode)` returning the drawn segments and any error. Suites are case files (see `prompts/<version>/tests.md` for the format) authored by agents from the dialect specification alone, then checked against the reference app (this repository, which exposes the same hook): cases that fail there are reviewed and either dropped, with the reason in `conformance/<version>/REVIEW.md`, or kept when they reveal a reference bug that then gets fixed. A build without the hook scores zero on every suite.
+
+From v2 the suite is written in two rounds by two authors: round 1 from the specification alone, round 2 with both round-1 files as input, delivering new cases plus a `review.json` disputing the other author's cases. The four files are merged into `conformance/<version>/combined.json`.
+
+## Standard programs and gallery
+
+`prompts/<version>/programs/` holds the programs every build must ship as examples (`index.json` lists id, mode, name) and `expected.json`, their outcomes on the reference app. They are also the reference app's own examples. After a build is verified the harness calls `window.logomocja.open(source, mode)` for each program in Chromium, screenshots the page, and records whether the returned segments match `expected.json`. The benchmark page shows the screenshots as a grid, with the reference app as the row `wzorzec` (`results/reference-<version>/gallery/`, captured with `bun bench/gallery.ts --dist dist --out bench/results/reference-<version>/gallery` after `bun run build`).
 
 ## Versioning
 
-- **Prompt.** `prompts/v1/` is immutable once a result references it; change anything by copying to `v2/`. Conformance suites belong to the prompt version they were authored from.
-- **Environment.** `env/VERSION` bumps whenever a change could alter an outcome: the Dockerfile and pinned CLI versions, the CLI flags in `runners.ts`, `agent.ts`, the verification steps, the conformance runner or its tolerance.
+- **Prompt.** `prompts/<version>/` is immutable once a result references it; change anything, including the standard programs, by copying to the next version. Conformance suites belong to the prompt version they were authored from.
+- **Environment.** `env/VERSION` bumps whenever a change could alter an outcome: the Dockerfile and pinned CLI versions, the CLI flags in `runners.ts`, `agent.ts`, the verification steps, the conformance runner or its tolerance, the gallery capture.
 
-A run's benchmark version is the pair `v1/e1`. The repo's own package version is recorded too, since every merged PR is a new version of the project. To re-run the same models after a change, bump the version that changed and run again; the page groups runs by benchmark version.
+Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dialect with expressions, variables, conditionals, recursion, roll, home and clear; a fixed feature list and the standard programs in the brief; gallery capture). A run's benchmark version is the pair `v2/e2`. The repo's own package version is recorded too, since every merged PR is a new version of the project. To re-run the same models after a change, bump the version that changed and run again; the page groups runs by benchmark version.
 
 ## Scoring by hand
 

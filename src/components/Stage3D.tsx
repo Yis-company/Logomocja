@@ -35,9 +35,11 @@ function disposeGroup(group: THREE.Object3D) {
 export default function Stage3D({
   drawing,
   theme = "light",
+  fitVersion = 0,
 }: {
   drawing: Drawing;
   theme?: Theme;
+  fitVersion?: number;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const state = useRef<SceneState | null>(null);
@@ -190,6 +192,22 @@ export default function Stage3D({
     context.grid.geometry = replacement.geometry;
     replacement.material.dispose();
   }, [theme]);
+  const fitted = useRef(0);
+  useEffect(() => {
+    const context = state.current;
+    if (!context || fitted.current === fitVersion) return;
+    fitted.current = fitVersion;
+    const box = new THREE.Box3().setFromPoints(
+      [[0, 0, 0] as const, ...drawing.segments.flatMap((s) => [s.from, s.to])].map((p) => new THREE.Vector3(...p)),
+    );
+    const sphere = box.getBoundingSphere(new THREE.Sphere());
+    const radius = Math.max(sphere.radius, 50);
+    const distance = (radius * 1.25) / Math.sin((context.camera.fov * Math.PI) / 360);
+    const direction = context.camera.position.clone().sub(context.controls.target).normalize();
+    context.controls.target.copy(sphere.center);
+    context.camera.position.copy(sphere.center).addScaledVector(direction, distance);
+    context.controls.update();
+  }, [fitVersion, drawing]);
   function view(preset: "perspective" | "top" | "front") {
     const context = state.current;
     if (!context) return;

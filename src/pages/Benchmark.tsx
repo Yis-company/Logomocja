@@ -5,7 +5,77 @@ import { Frame, FramePanel } from "../components/reui/frame";
 const results = Object.values(
   import.meta.glob("../../bench/results/*/result.json", { eager: true, import: "default" }),
 ) as RunResult[];
+const shots = import.meta.glob("../../bench/results/*/gallery/*.{png,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
 const repo = "https://github.com/Yis-company/Logomocja";
+/** Screenshot URLs by run id and program, from the files captured by the harness. */
+function galleryOf(runId: string): Record<string, string> {
+  const prefix = `../../bench/results/${runId}/gallery/`;
+  return Object.fromEntries(
+    Object.entries(shots)
+      .filter(([path]) => path.startsWith(prefix))
+      .map(([path, url]) => [path.slice(prefix.length).replace(/\.(png|webp)$/, ""), url]),
+  );
+}
+
+function Gallery({ version, runs }: { version: string; runs: RunResult[] }) {
+  const reference = { id: `reference-${version.split("/")[0]}`, label: "wzorzec", gallery: null as RunResult["gallery"] };
+  const rows = [reference, ...runs.map((run) => ({ id: run.id, label: run.model, gallery: run.gallery }))]
+    .map((row) => ({ ...row, shots: galleryOf(row.id) }))
+    .filter((row) => Object.keys(row.shots).length);
+  const programs = [...new Set(rows.flatMap((row) => Object.keys(row.shots)))].sort(
+    (a, b) => Number(a.startsWith("mobile-")) - Number(b.startsWith("mobile-")) || a.localeCompare(b),
+  );
+  if (!rows.length) return null;
+  return (
+    <>
+      <h3>Programy wzorcowe</h3>
+      <div className="table-scroll">
+        <table className="gallery-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              {programs.map((program) => (
+                <th key={program}>{program.replace("mobile-", "telefon: ")}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.id}>
+                <th scope="row">
+                  <code>{row.label}</code>
+                </th>
+                {programs.map((program) => {
+                  const url = row.shots[program];
+                  const mismatch = row.gallery?.[program] === false;
+                  return (
+                    <td key={program} className={mismatch ? "gallery-mismatch" : undefined}>
+                      {url ? (
+                        <a href={url} target="_blank" rel="noreferrer" title={mismatch ? `${program}: odcinki różne od wzorca` : program}>
+                          <img src={url} alt={`${row.label}: ${program}`} loading="lazy" />
+                        </a>
+                      ) : (
+                        "—"
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Zrzuty ekranu każdej aplikacji po wczytaniu programu wzorcowego przez <code>open</code>.
+        Czerwona ramka: odcinki zwrócone przez aplikację różnią się od wzorca.
+      </p>
+    </>
+  );
+}
 const minutes = (ms: number) => `${(ms / 60_000).toFixed(1)} min`;
 const n = (value: number) => value.toLocaleString("pl-PL");
 const percent = (value: number | null) => (value === null ? "—" : `${Math.round(value * 100)}%`);
@@ -121,6 +191,7 @@ export function Benchmark() {
                 Codex oszacowana (≈) z liczby tokenów. Zgodność to udział przypadków testowych języka, które zbudowana
                 aplikacja przechodzi. Ocena to ocena ludzka wpisana w pliku wyniku.
               </p>
+              <Gallery version={version} runs={runs} />
             </FramePanel>
           </Frame>
         );
@@ -135,6 +206,7 @@ export function Benchmark() {
                   <tr>
                     <th>Model</th>
                     <th>Narzędzie</th>
+                    <th>Runda</th>
                     <th>Przypadki</th>
                     <th>Czas agenta</th>
                     <th>Tokeny wejścia</th>
@@ -150,6 +222,7 @@ export function Benchmark() {
                         <code>{run.model}</code>
                       </td>
                       <td>{run.runner}</td>
+                      <td>{run.task === "tests-round2" ? 2 : 1}</td>
                       <td>{run.cases ?? 0}</td>
                       <td>{minutes(run.agentMs)}</td>
                       <td>{n(run.tokens.input + run.tokens.cachedInput)}</td>

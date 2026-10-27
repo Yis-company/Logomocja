@@ -1,0 +1,8 @@
+; Spirala wznosi się ku górze.
+kolor "#c1763d"
+grubosc 3
+powtorz 120 [
+  np 10
+  pw 15
+  gora 90 np 1.5 dol 90
+]

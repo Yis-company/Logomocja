@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "id": "v1-e1-claude-claude-opus-5-5-20261027-064518Z",
   "task": "app",
   "runner": "claude",
@@ -47,6 +47,7 @@
       "hook": true
     }
   },
+  "gallery": null,
   "humanScore": null,
   "notes": ""
 }

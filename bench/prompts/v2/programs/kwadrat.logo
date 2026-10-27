@@ -1,0 +1,7 @@
+; Cztery boki, cztery skręty.
+kolor "#16866a"
+grubosc 3
+powtorz 4 [
+  np 120
+  pw 90
+]

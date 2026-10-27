@@ -1,0 +1,9 @@
+; Każdy bok jest dłuższy od poprzedniego, kolory na zmianę.
+grubosc 2
+niech zmiana 1
+powtorz 90 [
+  jeżeli zmiana > 0 [kolor "#16866a"] [kolor "#c1763d"]
+  niech zmiana -zmiana
+  np nrpowt * 2.5
+  pw 89
+]
