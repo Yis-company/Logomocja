@@ -13,3 +13,7 @@ Reference result before review: 194 passed. Decisions:
 - **Reference fixed, cases kept (2):** `missing argument before bracket` (`repeat 1 [fd ]`) and `malformed expression operand` (`fd (2 * )`). The suite places a missing argument at the token found in its place (`]`, `)`); the reference placed it at the command. The dialect text said only "the offending token". The author's reading matches the stray-value and missing-bracket rules, so the reference now reports the token found in its place, or the command when the program ends there, and the dialect text says so explicitly (amended 2026-10-27 before any v2 app build).
 
 Reference result after review: 196 of 196.
+
+## Round 1: claude-fable-5-1 (220 cases, run `v2-e2-claude-claude-fable-5-1-20261027-203902Z`)
+
+Reference result: 220 of 220, nothing to adjudicate.
