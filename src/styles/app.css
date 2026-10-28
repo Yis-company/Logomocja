@@ -1177,7 +1177,32 @@ textarea {
 .progress-line progress {
   width: 220px;
   height: 10px;
-  accent-color: var(--accent);
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-3);
+  appearance: none;
+  overflow: hidden;
+}
+
+.progress-line progress::-webkit-progress-bar {
+  background: var(--surface-3);
+  border-radius: 999px;
+}
+
+.progress-line progress::-webkit-progress-value {
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+.progress-line progress::-moz-progress-bar {
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+.page-foot {
+  margin-top: 48px;
+  color: var(--text-3);
+  font-size: 14px;
 }
 
 .empty {

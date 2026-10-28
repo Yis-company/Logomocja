@@ -561,6 +561,9 @@ export function ReferencePage({ section }: { section: string | null }) {
           <Section id="skroty" title="Skróty klawiszowe">
             <ShortcutList />
           </Section>
+          <p class="page-foot">
+            Logomocja {__APP_VERSION__}. Wszystko działa w tej przeglądarce: programy i postępy zapisują się tylko na tym urządzeniu.
+          </p>
         </div>
       </div>
     </main>
