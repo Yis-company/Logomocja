@@ -549,8 +549,15 @@ export function enterChallenge(id: string): boolean {
     stats.value = null;
     dirty.value = false;
   });
+  const saved = challengeProgress.peek()[id]?.code;
   whenViewport().then((v) => {
     if (activeChallenge.peek()?.id !== id) return;
+    // Show the earlier attempt next to the target; a fresh challenge shows only the target.
+    if (saved !== undefined && saved !== ch.starter) {
+      const out = run({ instant: true, fit: true, resetCamera: true });
+      if (out.error) shownError.value = { ...shownError.peek()!, phase: 'live' };
+      return;
+    }
     v.setScene(idleScene());
     v.fitTo(idleScene(), true);
   });
