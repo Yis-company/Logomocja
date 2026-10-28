@@ -13,7 +13,7 @@ import {
 } from '../state/studio';
 import { ask, shareOpen, shortcutsOpen, toast } from '../state/ui';
 import { DrawingView } from './DrawingView';
-import { downloadBlob, downloadText, pickTextFile, slug } from './files';
+import { downloadBlob, downloadText, pickTextFile, readFileText, slug } from './files';
 import { Icon } from './icons';
 import { isMac, SHORTCUTS } from './shortcuts';
 
@@ -138,7 +138,18 @@ function currentName(): string {
 
 async function openFile(): Promise<void> {
   const file = await pickTextFile();
+  if (file) await openText(file.name, file.text);
+}
+
+async function openDropped(e: DragEvent): Promise<void> {
+  const file = e.dataTransfer?.files?.[0];
   if (!file) return;
+  e.preventDefault();
+  await openText(file.name, await readFileText(file));
+}
+
+async function openText(name: string, text: string): Promise<void> {
+  const file = { name, text };
   if (file.text.length > 200_000) {
     toast('Ten plik jest za duży, by był programem Logo.', { tone: 'error' });
     return;
@@ -297,7 +308,14 @@ export function Studio() {
   return (
     <main class="studio" id="main" tabIndex={-1}>
       <h1 class="sr-only">Logomocja — studio{ch ? `: wyzwanie ${ch.title}` : ''}</h1>
-      <section class="pane pane-code" aria-label="Program">
+      <section
+        class="pane pane-code"
+        aria-label="Program"
+        onDragOver={(e) => {
+          if (e.dataTransfer?.types.includes('Files')) e.preventDefault();
+        }}
+        onDrop={openDropped}
+      >
         {ch && <ChallengePanel />}
         <Toolbar />
         <Editor

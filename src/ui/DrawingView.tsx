@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import { plural } from '../lang/errors';
 import { Viewport } from '../render/viewport';
 import type { CameraPreset } from '../render/view3d';
 import { attachViewport, detachViewport, mode, stats, status } from '../state/studio';
@@ -17,8 +18,16 @@ export function DrawingView() {
   const m = mode.value;
   const t = theme.value;
 
+  const [failed, setFailed] = useState(false);
+
   useEffect(() => {
-    const vp = new Viewport(canvasRef.current!);
+    let vp: Viewport;
+    try {
+      vp = new Viewport(canvasRef.current!);
+    } catch {
+      setFailed(true);
+      return;
+    }
     vpRef.current = vp;
     vp.onPaint = () => {
       const el = infoRef.current;
@@ -52,7 +61,7 @@ export function DrawingView() {
   const s = stats.value;
   const st = status.value;
   const label = s
-    ? `Rysunek ${m === '2d' ? '2D' : '3D'}: ${s.segments} ${s.segments === 1 ? 'odcinek' : 'odcinków'}.`
+    ? `Rysunek ${m === '2d' ? '2D' : '3D'}: ${s.segments} ${plural(s.segments, 'odcinek', 'odcinki', 'odcinków')}.`
     : `Rysunek ${m === '2d' ? '2D' : '3D'}${st === 'running' ? ' w trakcie rysowania' : ''}.`;
 
   return (
@@ -88,6 +97,12 @@ export function DrawingView() {
         </div>
       )}
       <div class="drawing-info" ref={infoRef} aria-hidden="true" />
+      {failed && (
+        <p class="drawing-failed" role="alert">
+          Ta przeglądarka nie pozwala rysować na elemencie canvas, więc rysunku nie da się pokazać. Program nadal można pisać, sprawdzać i
+          pobierać.
+        </p>
+      )}
       <p class="drawing-help" id="drawing-help">
         {m === '2d'
           ? 'Przeciągnij, aby przesunąć; kółko myszy lub dwa palce — powiększenie. Klawisze: strzałki, + i −, 0 dopasowuje.'

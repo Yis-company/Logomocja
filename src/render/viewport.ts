@@ -39,7 +39,9 @@ export class Viewport {
   private readonly cleanup: (() => void)[] = [];
 
   constructor(readonly canvas: HTMLCanvasElement) {
-    this.ctx = canvas.getContext('2d', { alpha: false })!;
+    const ctx = canvas.getContext('2d', { alpha: false });
+    if (!ctx) throw new Error('Canvas 2D is not available');
+    this.ctx = ctx;
     this.palette = readPalette();
     this.ro = new ResizeObserver(() => this.measure());
     this.ro.observe(canvas);

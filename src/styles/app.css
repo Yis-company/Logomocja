@@ -44,7 +44,7 @@
 
   --ed-bg: #fffdf8;
   --ed-gutter: #f3eee3;
-  --ed-gutter-text: #a39b8a;
+  --ed-gutter-text: #6f685a;
   --tk-move: #0d6b52;
   --tk-pen: #9a4d12;
   --tk-control: #7a3a9e;
@@ -54,7 +54,7 @@
   --tk-str: #1e6f8a;
   --tk-var: #24221d;
   --tk-proc: #a12c62;
-  --tk-comment: #8b8473;
+  --tk-comment: #6f6859;
   --tk-op: #6d6250;
   --tk-br0: #7a3a9e;
   --tk-br1: #0d6b52;
@@ -108,7 +108,7 @@
 
   --ed-bg: #171d20;
   --ed-gutter: #1c2326;
-  --ed-gutter-text: #5f6b67;
+  --ed-gutter-text: #8a948f;
   --tk-move: #5ed8b2;
   --tk-pen: #f0a868;
   --tk-control: #cf9bf2;
@@ -118,7 +118,7 @@
   --tk-str: #7ccfe6;
   --tk-var: #e6e2d8;
   --tk-proc: #ff8fbd;
-  --tk-comment: #7f8a85;
+  --tk-comment: #95a09b;
   --tk-op: #b3aa98;
   --tk-br0: #cf9bf2;
   --tk-br1: #5ed8b2;
@@ -929,6 +929,17 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
   pointer-events: none;
+}
+
+.drawing-failed {
+  position: absolute;
+  inset: 30% 10% auto;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--danger);
+  text-align: center;
+  box-shadow: var(--shadow);
 }
 
 .drawing-info:empty {

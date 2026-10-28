@@ -582,8 +582,10 @@ export function checkActiveChallenge(): CheckResult | null {
   const result = checkChallenge(ch, source.peek());
   marks = result.missing.length ? result.missing : null;
   checkResult.value = result;
+  const wasSolved = challengeProgress.peek()[ch.id]?.solved;
   saveChallengeCode(ch.id, source.peek(), result.pass || undefined);
   run({ instant: speed.peek() >= SPEED_MAX });
+  if (result.pass && !wasSolved) toast(`Brawo! Wyzwanie „${ch.title}” rozwiązane.`, { tone: 'success' });
   announce(`${result.title}. ${result.reasons.join(' ')}`);
   return result;
 }

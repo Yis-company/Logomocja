@@ -458,7 +458,10 @@ export function ReferencePage({ section }: { section: string | null }) {
               <Code>jeśli warunek [ … ]</Code> wykonuje nawias, gdy warunek jest spełniony. <Code>jeżeli warunek [ … ] [ … ]</Code> wykonuje
               pierwszy nawias, gdy jest spełniony, a drugi — gdy nie jest.
             </p>
-            <Example title="Na zmianę" code={'powtorz 20 [\n  jeżeli nrpowt / 2 = 10 [kolor "#c1763d"] [kolor "#16866a"]\n  jeżeli nrpowt < 11 [pw 18] [lw 18]\n  np 20\n]'} />
+            <Example
+              title="Na zmianę"
+              code={'niech parzysty 0\npowtorz 12 [\n  jeżeli parzysty = 0 [kolor "#c1763d"] [kolor "#16866a"]\n  niech parzysty 1 - parzysty\n  np 40\n  pw 30\n]'}
+            />
           </Section>
 
           <Section id="procedury" title="Procedury">
