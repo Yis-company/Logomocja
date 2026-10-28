@@ -1,0 +1,19 @@
+; Krzywa Kocha: każdy odcinek dzieli się na cztery.
+oto koch ma: dł, poziom
+  jeśli poziom = 0 [np dł stop]
+  koch dł / 3 poziom - 1
+  lw 60
+  koch dł / 3 poziom - 1
+  pw 120
+  koch dł / 3 poziom - 1
+  lw 60
+  koch dł / 3 poziom - 1
+już
+
+kolor "#2b6fb3"
+grubosc 1
+pod pw 90 ws 135 lw 90 np 80 opu
+powtorz 3 [
+  koch 270 4
+  pw 120
+]

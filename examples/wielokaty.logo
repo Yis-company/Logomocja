@@ -1,0 +1,12 @@
+; Jedna procedura, wiele figur: kąt liczy się sam.
+oto wielokąt ma: boki, bok
+  powtorz boki [np bok pw 360 / boki]
+już
+
+grubosc 2
+niech n 3
+powtorz 7 [
+  wielokąt n 60
+  niech n n + 1
+  pw 360 / 7
+]

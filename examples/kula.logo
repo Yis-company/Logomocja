@@ -1,0 +1,9 @@
+; Dwanaście okręgów, każdy przechylony o 15 stopni.
+grubosc 2
+niech zmiana 1
+powtorz 12 [
+  jeżeli zmiana > 0 [kolor "#16866a"] [kolor "#2b6fb3"]
+  niech zmiana -zmiana
+  powtorz 36 [np 10 gora 10]
+  pp 15
+]

@@ -1,0 +1,9 @@
+; Żółw wspina się w przestrzeni.
+kolor "#16866a"
+grubosc 4
+powtorz 6 [
+  np 35
+  gora 90
+  np 20
+  dol 90
+]

@@ -1,0 +1,13 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Logomocja – polska pracownia żółwia: rysowanie 2D i przestrzenne 3D w języku Logo.",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run scripts/dev.ts",
+    "build": "bun run scripts/build.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  }
+}
