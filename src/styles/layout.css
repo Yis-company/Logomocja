@@ -1,0 +1,172 @@
+.app {
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    'brand nav actions'
+    'main main main';
+  background: var(--bg);
+}
+
+.appbar {
+  display: contents;
+}
+
+.brand,
+.mainnav,
+.appbar-actions {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+}
+
+.brand {
+  grid-area: brand;
+  gap: 10px;
+  padding: 0 18px 0 16px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand-mark {
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+}
+.brand-name {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.mainnav {
+  grid-area: nav;
+  gap: 4px;
+  padding: 0 8px;
+}
+.navlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+.navlink:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.navlink[aria-current='page'] {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.appbar-actions {
+  grid-area: actions;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.main {
+  grid-area: main;
+  min-height: 0;
+  position: relative;
+  outline: none;
+}
+
+.page,
+.page-wrap {
+  position: absolute;
+  inset: 0;
+}
+.page-scroll {
+  overflow: auto;
+  padding: 28px 20px 60px;
+}
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+@media (max-width: 899px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'brand actions'
+      'main main'
+      'nav nav';
+  }
+  .brand,
+  .appbar-actions {
+    min-height: 50px;
+  }
+  .brand {
+    padding-left: 12px;
+  }
+  .mainnav {
+    border-bottom: 0;
+    border-top: 1px solid var(--line);
+    justify-content: space-around;
+    padding: 4px 4px calc(4px + env(safe-area-inset-bottom));
+    gap: 0;
+  }
+  .navlink {
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 4px;
+    font-size: 0.74rem;
+    min-height: 52px;
+    justify-content: center;
+  }
+  .page-scroll {
+    padding: 18px 14px 40px;
+  }
+}
+
+/* telefon w poziomie: pasek nawigacji u góry (same ikony), cała wysokość dla pracowni */
+@media (max-height: 520px) and (orientation: landscape) and (max-width: 1100px) {
+  .app {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas:
+      'brand nav actions'
+      'main main main';
+  }
+  .brand,
+  .mainnav,
+  .appbar-actions {
+    min-height: 44px;
+    border-top: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-name {
+    display: none;
+  }
+  .mainnav {
+    justify-content: flex-start;
+    padding: 0 6px;
+  }
+  .navlink {
+    flex: none;
+    flex-direction: row;
+    min-height: 40px;
+    padding: 6px 12px;
+  }
+  .navlink span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .toasts {
+    bottom: 12px;
+  }
+}

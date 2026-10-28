@@ -1,0 +1,15 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "description": "Logomocja — polska pracownia żółwia: rysowanie w 2D i w przestrzeni 3D",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run scripts/dev.ts",
+    "build": "bun run build.ts",
+    "test": "bun test tests",
+    "preview": "bun run scripts/preview.ts",
+    "e2e": "bun run e2e/smoke.ts"
+  }
+}

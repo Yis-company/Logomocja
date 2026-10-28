@@ -1,0 +1,105 @@
+:root {
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
+
+  --bg: #f4f1e8;
+  --surface: #fffdf8;
+  --surface-2: #f0ece1;
+  --ink: #1d2a2c;
+  --muted: #58686b;
+  --line: #ddd7c8;
+  --line-strong: #c4bca8;
+  --accent: #0c6c54;
+  --accent-hover: #095a45;
+  --on-accent: #ffffff;
+  --accent-soft: #dcf0e8;
+  --amber: #a85a14;
+  --danger: #b3261e;
+  --danger-soft: #fbe6e3;
+  --ok: #1a7343;
+  --ok-soft: #dff1e6;
+  --focus: #1a64c8;
+  --code-bg: #faf7ef;
+  --shadow: 0 1px 2px rgba(30, 40, 30, 0.08), 0 8px 24px rgba(30, 40, 30, 0.1);
+  --radius: 12px;
+  --logo-detail: #fffdf8;
+
+  --active-line: rgba(15, 122, 95, 0.16);
+  --err-line: rgba(179, 38, 30, 0.1);
+  --t-move: #0b6a53;
+  --t-3d: #09668a;
+  --t-pen: #96510f;
+  --t-flow: #6a3fb0;
+  --t-def: #a3246a;
+  --t-num: #1e5fb3;
+  --t-str: #7a5600;
+  --t-com: #5b6d66;
+  --t-op: #5b6b6e;
+  --t-br0: #8a6500;
+  --t-br1: #1f7f5e;
+  --t-br2: #8a3fb0;
+
+  --code-fs: 14px;
+  --lh: 22px;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #12171a;
+  --surface: #192024;
+  --surface-2: #20292e;
+  --ink: #e6eded;
+  --muted: #9db0b4;
+  --line: #2b373d;
+  --line-strong: #3b4a51;
+  --accent: #36b996;
+  --accent-hover: #4cc9a7;
+  --on-accent: #05211a;
+  --accent-soft: #173229;
+  --amber: #f0a45d;
+  --danger: #ff8f86;
+  --danger-soft: #3b201e;
+  --ok: #62d392;
+  --ok-soft: #173325;
+  --focus: #78b0ff;
+  --code-bg: #161d21;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --logo-detail: #12171a;
+
+  --active-line: rgba(54, 185, 150, 0.2);
+  --err-line: rgba(255, 143, 134, 0.12);
+  --t-move: #4fd1b0;
+  --t-3d: #5cc9e8;
+  --t-pen: #f0a45d;
+  --t-flow: #b99aff;
+  --t-def: #ff7eb6;
+  --t-num: #86b6ff;
+  --t-str: #e6c76a;
+  --t-com: #7f969b;
+  --t-op: #9db0b4;
+  --t-br0: #e0c36a;
+  --t-br1: #6fd0a3;
+  --t-br2: #c9a0ff;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #12171a;
+    --surface: #192024;
+    --surface-2: #20292e;
+    --ink: #e6eded;
+    --muted: #9db0b4;
+    --line: #2b373d;
+    --accent: #36b996;
+    --on-accent: #05211a;
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 899px) {
+  :root {
+    --code-fs: 16px;
+    --lh: 24px;
+  }
+}

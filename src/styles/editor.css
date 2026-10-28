@@ -1,0 +1,187 @@
+.editor {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--surface);
+}
+.editor:focus-within {
+  box-shadow: inset 0 0 0 2px var(--focus);
+}
+.editor-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.editor-inner {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  min-height: 100%;
+}
+.editor-gutter {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  flex: none;
+  min-width: calc(var(--digits, 1) * 1ch + 24px);
+  padding: 10px 8px 10px 10px;
+  text-align: right;
+  background: var(--surface-2);
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+  font: var(--code-fs) / var(--lh) var(--mono);
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+.gl {
+  height: var(--lh);
+}
+.gl-active {
+  color: var(--accent);
+  font-weight: 700;
+  background: var(--active-line);
+  margin: 0 -8px 0 -10px;
+  padding: 0 8px 0 10px;
+}
+.gl-err {
+  color: var(--danger);
+  font-weight: 700;
+  background: var(--err-line);
+  margin: 0 -8px 0 -10px;
+  padding: 0 8px 0 10px;
+}
+.gl-err::before {
+  content: '●';
+  float: left;
+  font-size: 0.7em;
+  line-height: var(--lh);
+}
+
+.editor-code {
+  position: relative;
+  flex: 1 0 auto;
+}
+.editor-overlay,
+.editor-input {
+  margin: 0;
+  padding: 10px 0;
+  border: 0;
+  font: var(--code-fs) / var(--lh) var(--mono);
+  letter-spacing: 0;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  tab-size: 2;
+  white-space: pre;
+  word-spacing: 0;
+  text-rendering: auto;
+  text-transform: none;
+}
+.editor-overlay {
+  position: relative;
+  min-height: 100%;
+  color: var(--ink);
+  pointer-events: none;
+  display: block;
+}
+.editor-input {
+  padding: 10px 56px 10px 12px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: hidden;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: var(--ink);
+  outline: none;
+  border-radius: 0;
+}
+.editor-input::placeholder {
+  color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+  opacity: 0.8;
+}
+.editor-input::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  -webkit-text-fill-color: transparent;
+}
+.editor-probe {
+  position: absolute;
+  visibility: hidden;
+}
+.ln {
+  min-height: var(--lh);
+  height: var(--lh);
+  padding: 0 56px 0 12px;
+}
+.ln-active {
+  background: var(--active-line);
+}
+.ln-err {
+  background: var(--err-line);
+}
+.ln-msg {
+  display: inline-block;
+  max-width: 70ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  margin-left: 2.5ch;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-family: var(--font);
+  font-size: 0.82em;
+  line-height: var(--lh);
+  user-select: none;
+}
+.ln-msg::before {
+  content: '⚠ ';
+}
+.mk-err {
+  text-decoration: underline wavy var(--danger) 1.5px;
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: none;
+  background: color-mix(in srgb, var(--danger) 16%, transparent);
+  border-radius: 2px;
+}
+
+.t-move { color: var(--t-move); }
+.t-3d { color: var(--t-3d); }
+.t-pen { color: var(--t-pen); }
+.t-flow { color: var(--t-flow); }
+.t-def { color: var(--t-def); }
+.t-rep { color: var(--t-flow); font-style: italic; }
+.t-num { color: var(--t-num); }
+.t-str { color: var(--t-str); text-decoration: underline 3px var(--sw, var(--t-str)); text-underline-offset: 3px; text-decoration-skip-ink: none; }
+.t-bad { text-decoration: none; color: var(--danger); }
+.t-com { color: var(--t-com); font-style: italic; }
+.t-op, .t-par { color: var(--t-op); }
+.t-name { color: var(--ink); }
+.t-proc { color: var(--ink); text-decoration: underline dotted var(--muted) 1.5px; text-underline-offset: 3px; }
+.t-err { color: var(--danger); }
+.t-br0 { color: var(--t-br0); }
+.t-br1 { color: var(--t-br1); }
+.t-br2 { color: var(--t-br2); }
+
+/* kod w stronach opisu (statyczny) */
+.code {
+  margin: 0 0 1em;
+  padding: 12px 14px;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: 13.5px / 1.65 var(--mono);
+  overflow: auto;
+  color: var(--ink);
+  tab-size: 2;
+  white-space: pre;
+}
+.code .code-line {
+  display: inline;
+}

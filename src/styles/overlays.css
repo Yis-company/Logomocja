@@ -1,0 +1,158 @@
+/* powiadomienia */
+.toasts {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 120;
+  display: grid;
+  gap: 8px;
+  width: min(520px, calc(100vw - 24px));
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px 8px 16px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-size: 0.92rem;
+  animation: toast-in 0.18s ease-out;
+}
+.toast-msg {
+  flex: 1;
+}
+.toast-ok {
+  background: #14543f;
+  color: #f2fffa;
+}
+.toast-error {
+  background: #8f1f18;
+  color: #fff;
+}
+.toast.leaving {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s, transform 0.18s;
+}
+.toast .btn {
+  color: inherit;
+  border-color: color-mix(in srgb, currentColor 45%, transparent);
+  background: transparent;
+}
+.toast .btn:hover {
+  background: color-mix(in srgb, currentColor 18%, transparent);
+  color: inherit;
+}
+.toast .icon-btn {
+  color: inherit;
+  width: 32px;
+  height: 32px;
+}
+.toast .icon-btn:hover {
+  background: color-mix(in srgb, currentColor 18%, transparent);
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (max-width: 899px) {
+  .toasts {
+    bottom: calc(66px + env(safe-area-inset-bottom));
+  }
+}
+
+/* okna dialogowe */
+.dialog {
+  border: 0;
+  padding: 0;
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--ink);
+  width: min(560px, calc(100vw - 24px));
+  max-height: min(86dvh, 760px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+.dialog::backdrop {
+  background: rgba(10, 18, 20, 0.55);
+  backdrop-filter: blur(2px);
+}
+.dialog-wide {
+  width: min(720px, calc(100vw - 24px));
+}
+.dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 14px 6px 22px;
+}
+.dialog-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.dialog-body {
+  padding: 4px 22px 14px;
+  overflow: auto;
+}
+.dialog-body h3 {
+  margin-top: 18px;
+}
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 12px 22px 18px;
+  border-top: 1px solid var(--line);
+}
+.stash-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.stash-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 6px;
+}
+.stash-meta {
+  display: flex;
+  flex-direction: column;
+}
+.stash-preview {
+  margin: 0;
+  padding: 8px 10px;
+  background: var(--code-bg);
+  border-radius: 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  max-height: 6.4em;
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
+}
+.stash-actions {
+  display: flex;
+  gap: 6px;
+}
+noscript {
+  display: block;
+  padding: 24px;
+  text-align: center;
+}
