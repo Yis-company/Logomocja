@@ -19,6 +19,7 @@ export const SHORTCUTS = {
 export const EXTRA_SHORTCUTS: { keys: string; description: string }[] = [
   { keys: `${MOD}+Shift+Enter`, description: 'Krok (zamiennik)' },
   { keys: 'Tab / Shift+Tab', description: 'W edytorze: wcięcie i cofnięcie wcięcia zaznaczonych linii' },
+  { keys: 'Esc', description: 'W edytorze: ukryj dymek z błędem' },
   { keys: 'Esc, potem Tab', description: 'Wyjście z edytora klawiaturą (Tab przestaje wstawiać wcięcie)' },
   { keys: `${MOD}+/`, description: 'Zamień zaznaczone linie na komentarz i z powrotem' },
   { keys: 'Strzałki', description: 'Na rysunku: przesuwanie (2D) lub obracanie kamery (3D)' },

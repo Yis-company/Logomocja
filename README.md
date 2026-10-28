@@ -52,7 +52,7 @@ BASE_PATH=/Logomocja/builds/x/ bun run build
   - `Alt+K`: step
   - `Alt+P`: pause / resume
   - `Alt+R`: reset
-  - `Tab` / `Shift+Tab`: indent; `Esc` then `Tab`: leave the editor
+  - `Tab` / `Shift+Tab`: indent; `Esc`: hide the error bubble; `Esc` then `Tab`: leave the editor
   - `Ctrl+/`: comment toggle
 - **Accessibility**:
   - Every control is a labelled button or input and works with the keyboard; focus is always visible.
