@@ -1,0 +1,108 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 585,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: left associativity of divide: 24 / 4 / 2 = 3",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 3, 0), got (0, 0, 0)→(0, 12, 0)"
+        },
+        {
+          "name": "gpt-6-astra: divide left associative",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 4, 0), got (0, 0, 0)→(0, 36, 0)"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "claude-fable-5-1-round2: mixed multiply and divide associate to the left",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 4, 0), got (0, 0, 0)→(0, 1, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: one third times three is exactly one",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 1, 0), got (0, 0, 0)→(0, 100, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count from a float expression that is exactly integral",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być liczbą całkowitą od 0 do 10000."
+        },
+        {
+          "name": "claude-fable-5-1-round2: call with too few arguments inside a repeat body before the bracket",
+          "reason": "expected error at column 15, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: mixed left associative multiply divide",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 15, 0), got (0, 0, 0)→(0, 60, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: call missing second argument at parenthesis",
+          "reason": "expected error at column 13, got 6"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 585,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: left associativity of divide: 24 / 4 / 2 = 3",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 3, 0), got (0, 0, 0)→(0, 12, 0)"
+        },
+        {
+          "name": "gpt-6-astra: divide left associative",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 4, 0), got (0, 0, 0)→(0, 36, 0)"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "claude-fable-5-1-round2: mixed multiply and divide associate to the left",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 4, 0), got (0, 0, 0)→(0, 1, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: one third times three is exactly one",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 1, 0), got (0, 0, 0)→(0, 100, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count from a float expression that is exactly integral",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być liczbą całkowitą od 0 do 10000."
+        },
+        {
+          "name": "claude-fable-5-1-round2: call with too few arguments inside a repeat body before the bracket",
+          "reason": "expected error at column 15, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: mixed left associative multiply divide",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 15, 0), got (0, 0, 0)→(0, 60, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: call missing second argument at parenthesis",
+          "reason": "expected error at column 13, got 6"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

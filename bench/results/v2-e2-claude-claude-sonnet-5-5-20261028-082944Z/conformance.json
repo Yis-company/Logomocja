@@ -1,0 +1,15 @@
+{
+  "hook": true,
+  "suites": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "failures": []
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

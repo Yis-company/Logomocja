@@ -1,0 +1,63 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
+
+16 packages installed [11.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 7 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.60 kB │ gzip:  0.37 kB
+dist/assets/index-CH6StcHy.css  14.99 kB │ gzip:  4.18 kB
+dist/assets/index-BDWnJ4Jh.js   38.51 kB │ gzip: 16.41 kB
+✓ built in 115ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+src/interpreter.test.js:
+(pass) standard programs > Kwadrat [2.40ms]
+(pass) standard programs > Gwiazda [0.40ms]
+(pass) standard programs > Rozeta [0.43ms]
+(pass) standard programs > Spirala [0.98ms]
+(pass) standard programs > Wielokąty [0.60ms]
+(pass) standard programs > Drzewo [5.20ms]
+(pass) standard programs > Śnieżynka [6.42ms]
+(pass) standard programs > Schody [0.10ms]
+(pass) standard programs > Sześcian [0.06ms]
+(pass) standard programs > Pierścień [0.03ms]
+(pass) standard programs > Kula [0.41ms]
+(pass) standard programs > Helisa [0.22ms]
+(pass) standard programs > Drzewo 3D [2.23ms]
+(pass) all aliases and case insensitivity [1.16ms]
+(pass) arithmetic precedence, unary signs and whitespace [0.31ms]
+(pass) forbidden numeric forms [0.12ms]
+(pass) whole-program validation [0.15ms]
+(pass) runtime errors preserve drawing and report argument start [0.09ms]
+(pass) unassigned and undeclared variables [0.09ms]
+(pass) variables, scopes and forward procedures [0.12ms]
+(pass) repeat lexical count [0.06ms]
+(pass) conditionals exact comparison and stop [0.06ms]
+(pass) procedure syntax and nested definitions rejected [0.43ms]
+(pass) right handed local basis [0.07ms]
+(pass) pen, home, clear, lowercase colors and width [0.07ms]
+(pass) limits [8.50ms]
+(pass) missing args and stray values location [0.21ms]
+(pass) stepping and synchronous run are identical [8.90ms]
+(pass) parameter sharing procedure name can be reassigned [0.09ms]
+
+ 29 pass
+ 0 fail
+ 313 expect() calls
+Ran 29 tests across 1 file. [46.00ms]
+(exit 0)

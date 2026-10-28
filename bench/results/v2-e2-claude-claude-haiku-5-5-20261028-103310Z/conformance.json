@@ -1,0 +1,316 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 559,
+      "total": 595,
+      "failures": [
+        {
+          "name": "gpt-6-astra: unary name",
+          "reason": "unexpected error: line 2: Nieznana nazwa „side”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: name sign and precedence",
+          "reason": "unexpected error: line 1: Nieznana nazwa „side”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Nieznana nazwa „Length”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: later declaration on skipped path",
+          "reason": "unexpected error: line 1: Nieznana nazwa „later”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: local shadow and lifetime",
+          "reason": "unexpected error: line 3: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra: locals discarded between calls",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: locals usable as repeat and call arguments",
+          "reason": "unexpected error: line 5: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: global reassignment case insensitive",
+          "reason": "unexpected error: line 1: Nieznana nazwa „Size”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: pitch expression from variable",
+          "reason": "unexpected error: line 1: Nieznana nazwa „a”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid width",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid repeat",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: repeat count evaluated once",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: float inequality selects else with no epsilon",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: binary fractions are exact after reassignment",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: legacy operands adjacent to operators",
+          "reason": "unexpected error: line 1: Nieznana nazwa „:x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token repeat with name",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Nieznana nazwa „amount”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: parameter argument values copied before reassignment",
+          "reason": "unexpected error: line 5: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 5: Nieznana nazwa „saved”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: top declaration after stop allows skipped read",
+          "reason": "unexpected error: line 1: Nieznana nazwa „future”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: clearing in repeat preserves global count and counter",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: global assignment in branch visible after body",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 559,
+      "total": 595,
+      "failures": [
+        {
+          "name": "gpt-6-astra: unary name",
+          "reason": "unexpected error: line 2: Nieznana nazwa „side”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: name sign and precedence",
+          "reason": "unexpected error: line 1: Nieznana nazwa „side”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Nieznana nazwa „Length”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: later declaration on skipped path",
+          "reason": "unexpected error: line 1: Nieznana nazwa „later”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: local shadow and lifetime",
+          "reason": "unexpected error: line 3: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra: locals discarded between calls",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: locals usable as repeat and call arguments",
+          "reason": "unexpected error: line 5: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: global reassignment case insensitive",
+          "reason": "unexpected error: line 1: Nieznana nazwa „Size”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: pitch expression from variable",
+          "reason": "unexpected error: line 1: Nieznana nazwa „a”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid width",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid repeat",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: repeat count evaluated once",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: float inequality selects else with no epsilon",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: binary fractions are exact after reassignment",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: legacy operands adjacent to operators",
+          "reason": "unexpected error: line 1: Nieznana nazwa „:x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token repeat with name",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Nieznana nazwa „amount”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: parameter argument values copied before reassignment",
+          "reason": "unexpected error: line 5: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 5: Nieznana nazwa „saved”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: top declaration after stop allows skipped read",
+          "reason": "unexpected error: line 1: Nieznana nazwa „future”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: clearing in repeat preserves global count and counter",
+          "reason": "unexpected error: line 1: Nieznana nazwa „n”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: global assignment in branch visible after body",
+          "reason": "unexpected error: line 1: Nieznana nazwa „x”: nie jest parametrem ani zmienną ustawioną poleceniem „niech”."
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

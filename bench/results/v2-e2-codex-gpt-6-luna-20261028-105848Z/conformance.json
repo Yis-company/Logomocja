@@ -1,0 +1,1422 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 425,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: spec example: procedure with ma: header and accented parameter",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: unary minus on a name and a parameter",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operator after parenthesis with whitespace on one side",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operator before parenthesis with whitespace on one side",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside a repeat body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside an indented procedure body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: call arguments are expressions",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 4.35 * 100 / 100 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 0 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 13 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 2.5 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal width expression out of range reported at its first token",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count 2.5 rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count 10001 rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: negative repeat count rejected at the sign",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal repeat count expression out of range reported at its first token",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width from a parameter is checked at run time",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: bad repeat count inside a procedure reported at the name",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: global read inside a procedure",
+          "reason": "unexpected error: line 3: Zmienna „d” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1: global declared after the procedure that reads it",
+          "reason": "unexpected error: line 2: Zmienna „d” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1: parameter of another procedure is not visible",
+          "reason": "expected error on line 5, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: reassigning a parameter",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: variable declared in a procedure but unassigned on this path",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure defined later",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: parameter sharing the name of its procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: each recursive call has its own locals",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: parameter as repeat count and as call argument",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: stop inside a conditional inside a repeat inside a procedure",
+          "reason": "expected 3 segments, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 1: Nieznane polecenie: kw."
+        },
+        {
+          "name": "claude-fable-5-1: recursive spiral with base case",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: mutual recursion",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: stop inside a top-level repeat ends the program",
+          "reason": "expected 1 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: stop in a nested call returns only from that call",
+          "reason": "expected 2 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: procedure called from a repeat using nrpowt as argument",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: too many arguments: the extra is a stray value",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: too few arguments",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: wrong argument count inside a never-called procedure",
+          "reason": "expected error on line 5, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed expression: two operators",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: stray value after a complete procedure call inside a body",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: repcount alias ignoring case",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: exactly 32 active call frames through conditional bodies",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: 33 active call frames exceed the limit",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: exactly 32 frames mixing calls and repeats",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: 33 frames mixing calls and repeats",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 353"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operation limit reached through recursion",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: parameter shadows a global of the same name",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: parameter list without spaces after the commas",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: unary signs in call arguments and products of negatives",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: + rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: + rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: - rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: - rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: * rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: * rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: / rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: / rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: call expression argument boundaries",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: call signed arguments",
+          "reason": "unexpected error: line 4: Brakuje argumentu."
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Zmienna „length” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra: parameter reassignment",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra: stop exits procedure through nested bodies",
+          "reason": "expected 2 segments, got 8"
+        },
+        {
+          "name": "gpt-6-astra: top stop retains drawing",
+          "reason": "expected 1 segments, got 5"
+        },
+        {
+          "name": "gpt-6-astra: recursive countdown",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: mutual recursion forward definition",
+          "reason": "unexpected error: line 5: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: 32 procedure frames accepted",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: conditional does not consume frame",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: 31 calls plus repeat frame accepted",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: innermost repcount restored",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: case insensitive Polish procedure and params",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 1: Nieznane polecenie: kreska."
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 0",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 13",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 1.5",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: dead literal width is validated",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid -1",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 10001",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 2.5",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: dead literal repeat is validated",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: malformed expression operand",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "gpt-6-astra: definition in procedure",
+          "reason": "expected error on line 2, got line 4"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 321"
+        },
+        {
+          "name": "gpt-6-astra: maximum repeat count accepted with stop",
+          "reason": "unexpected error: line 1: Przekroczono limit 10 000 operacji."
+        },
+        {
+          "name": "gpt-6-astra: recursive parameters retained after return",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with whitespace only on its left before a tab",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with a tab only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: call arguments split across lines",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comment directly after a number and after a header",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: uppercase MA: and parameters in a header",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Przekroczono limit zagnieżdżenia 32."
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error at column 1, got 8"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing call argument reported at the command when the program ends there",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal width in a never-called procedure is checked at parse time",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal repeat count in a never-called procedure is checked at parse time",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: unassigned global in a call argument inside a repeat",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: non-finite result from a parameter inside a procedure",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global declared inside a top-level repeat body is visible in a procedure",
+          "reason": "unexpected error: line 3: Zmienna „g” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: local declared inside a nested body of the procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: local declared in a nested body but unassigned on this call",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: parameter reassigned inside a repeat accumulates",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: recursion keeps a separate local per call across returns",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global niech inside a procedure call does not exist so top level keeps its own",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: nrpowt restored after a recursive call inside a conditional",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: stop inside a procedure called from a repeat leaves the outer repeat running",
+          "reason": "expected 6 segments, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count of zero inside a procedure skips a bad name-dependent width",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: bad name-dependent width inside a procedure reported inside the body",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: koch curve by recursion with ifelse and expression arguments",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: binary tree by recursion with back moves",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: parameters passed down three levels with arithmetic",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: procedure called from a conditional inside a repeat inside a procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: polygon procedure using parameter as repeat count and in the angle",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: mutual recursion through a repeat body",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: call with too few arguments inside a repeat body before the bracket",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat at the deepest call is the 33rd frame reported at the repeat",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat at the deepest call is the 32nd frame and unwinding draws again",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 3D commands with expression arguments from parameters",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: colour and width changes interleaved with repeats and procedures",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: stop in the else branch of a recursive procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count from a parameter above the maximum on a later call",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary +",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary +",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary -",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary -",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary *",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary *",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary /",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary /",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: signed call boundary with tabs",
+          "reason": "unexpected error: line 4: Brakuje argumentu."
+        },
+        {
+          "name": "gpt-6-astra-round2: call arguments can span lines",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected error at column 8, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Zmienna „amount” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 4: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 4: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: stop preserves callee style for caller",
+          "reason": "segment 0: expected colour #aabbcc, got #000000"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal width after procedure stop",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error at column 1, got 3"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected an error, got none"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 19,
+      "total": 23,
+      "failures": [
+        {
+          "name": "recursion 32 deep with a repeat at every level",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "procedure called 2,000 times with expression arguments",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "CRLF line endings and tabs separate tokens",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "unicode case folding of accented names",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        }
+      ]
+    },
+    "combined@open": {
+      "passed": 425,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: spec example: procedure with ma: header and accented parameter",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: unary minus on a name and a parameter",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its right is an error",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operator after parenthesis with whitespace on one side",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operator before parenthesis with whitespace on one side",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside a repeat body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside an indented procedure body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: call arguments are expressions",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 4.35 * 100 / 100 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 0 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 13 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 2.5 rejected at its argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal width expression out of range reported at its first token",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count 2.5 rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count 10001 rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: negative repeat count rejected at the sign",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: literal repeat count expression out of range reported at its first token",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width from a parameter is checked at run time",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: bad repeat count inside a procedure reported at the name",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: global read inside a procedure",
+          "reason": "unexpected error: line 3: Zmienna „d” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1: global declared after the procedure that reads it",
+          "reason": "unexpected error: line 2: Zmienna „d” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1: parameter of another procedure is not visible",
+          "reason": "expected error on line 5, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: reassigning a parameter",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: variable declared in a procedure but unassigned on this path",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure defined later",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: parameter sharing the name of its procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: each recursive call has its own locals",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: parameter as repeat count and as call argument",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: stop inside a conditional inside a repeat inside a procedure",
+          "reason": "expected 3 segments, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 1: Nieznane polecenie: kw."
+        },
+        {
+          "name": "claude-fable-5-1: recursive spiral with base case",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: mutual recursion",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: stop inside a top-level repeat ends the program",
+          "reason": "expected 1 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: stop in a nested call returns only from that call",
+          "reason": "expected 2 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: procedure called from a repeat using nrpowt as argument",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: too many arguments: the extra is a stray value",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: too few arguments",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: wrong argument count inside a never-called procedure",
+          "reason": "expected error on line 5, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed expression: two operators",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: stray value after a complete procedure call inside a body",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: repcount alias ignoring case",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: exactly 32 active call frames through conditional bodies",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: 33 active call frames exceed the limit",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: exactly 32 frames mixing calls and repeats",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: 33 frames mixing calls and repeats",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 353"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: operation limit reached through recursion",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: parameter shadows a global of the same name",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: parameter list without spaces after the commas",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1: unary signs in call arguments and products of negatives",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: + rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: + rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: - rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: - rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: * rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: * rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: / rejects left space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: / rejects right space only",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: call expression argument boundaries",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: call signed arguments",
+          "reason": "unexpected error: line 4: Brakuje argumentu."
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Zmienna „length” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra: parameter reassignment",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra: stop exits procedure through nested bodies",
+          "reason": "expected 2 segments, got 8"
+        },
+        {
+          "name": "gpt-6-astra: top stop retains drawing",
+          "reason": "expected 1 segments, got 5"
+        },
+        {
+          "name": "gpt-6-astra: recursive countdown",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: mutual recursion forward definition",
+          "reason": "unexpected error: line 5: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: 32 procedure frames accepted",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: conditional does not consume frame",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: 31 calls plus repeat frame accepted",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: innermost repcount restored",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: case insensitive Polish procedure and params",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 1: Nieznane polecenie: kreska."
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 0",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 13",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 1.5",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: dead literal width is validated",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid -1",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 10001",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 2.5",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: dead literal repeat is validated",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: malformed expression operand",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "gpt-6-astra: definition in procedure",
+          "reason": "expected error on line 2, got line 4"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 321"
+        },
+        {
+          "name": "gpt-6-astra: maximum repeat count accepted with stop",
+          "reason": "unexpected error: line 1: Przekroczono limit 10 000 operacji."
+        },
+        {
+          "name": "gpt-6-astra: recursive parameters retained after return",
+          "reason": "unexpected error: line 2: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with whitespace only on its left before a tab",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with a tab only on its left is a stray value",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: call arguments split across lines",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comment directly after a number and after a header",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: uppercase MA: and parameters in a header",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Przekroczono limit zagnieżdżenia 32."
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error at column 1, got 8"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing call argument reported at the command when the program ends there",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 4"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal width in a never-called procedure is checked at parse time",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal repeat count in a never-called procedure is checked at parse time",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: unassigned global in a call argument inside a repeat",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: non-finite result from a parameter inside a procedure",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global declared inside a top-level repeat body is visible in a procedure",
+          "reason": "unexpected error: line 3: Zmienna „g” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: local declared inside a nested body of the procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: local declared in a nested body but unassigned on this call",
+          "reason": "expected error on line 3, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: parameter reassigned inside a repeat accumulates",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: recursion keeps a separate local per call across returns",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global niech inside a procedure call does not exist so top level keeps its own",
+          "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: nrpowt restored after a recursive call inside a conditional",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: stop inside a procedure called from a repeat leaves the outer repeat running",
+          "reason": "expected 6 segments, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count of zero inside a procedure skips a bad name-dependent width",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: bad name-dependent width inside a procedure reported inside the body",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: koch curve by recursion with ifelse and expression arguments",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: binary tree by recursion with back moves",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: parameters passed down three levels with arithmetic",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: procedure called from a conditional inside a repeat inside a procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: polygon procedure using parameter as repeat count and in the angle",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: mutual recursion through a repeat body",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: call with too few arguments inside a repeat body before the bracket",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat at the deepest call is the 33rd frame reported at the repeat",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat at the deepest call is the 32nd frame and unwinding draws again",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 3D commands with expression arguments from parameters",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: colour and width changes interleaved with repeats and procedures",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: stop in the else branch of a recursive procedure",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count from a parameter above the maximum on a later call",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary +",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary +",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary -",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary -",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary *",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary *",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary /",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary /",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: signed call boundary with tabs",
+          "reason": "unexpected error: line 4: Brakuje argumentu."
+        },
+        {
+          "name": "gpt-6-astra-round2: call arguments can span lines",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected error at column 8, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Zmienna „amount” nie ma jeszcze wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 4: Przekroczono limit 32 aktywnych powtórzeń i wywołań."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 4: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Zmienna „repcount” nie została zadeklarowana."
+        },
+        {
+          "name": "gpt-6-astra-round2: stop preserves callee style for caller",
+          "reason": "segment 0: expected colour #aabbcc, got #000000"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal width after procedure stop",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error at column 1, got 3"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected an error, got none"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 19,
+      "total": 23,
+      "failures": [
+        {
+          "name": "recursion 32 deep with a repeat at every level",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "procedure called 2,000 times with expression arguments",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "CRLF line endings and tabs separate tokens",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        },
+        {
+          "name": "unicode case folding of accented names",
+          "reason": "unexpected error: line 1: Nieprawidłowy nagłówek procedury."
+        }
+      ]
+    }
+  }
+}

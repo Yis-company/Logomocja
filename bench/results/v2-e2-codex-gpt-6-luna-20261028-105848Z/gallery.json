@@ -1,0 +1,57 @@
+{
+  "hook": true,
+  "programs": {
+    "kwadrat": {
+      "matches": true,
+      "reason": null
+    },
+    "gwiazda": {
+      "matches": true,
+      "reason": null
+    },
+    "rozeta": {
+      "matches": true,
+      "reason": null
+    },
+    "spirala": {
+      "matches": true,
+      "reason": null
+    },
+    "wielokaty": {
+      "matches": false,
+      "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+    },
+    "drzewo": {
+      "matches": false,
+      "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+    },
+    "sniezynka": {
+      "matches": false,
+      "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+    },
+    "schody": {
+      "matches": true,
+      "reason": null
+    },
+    "szescian": {
+      "matches": true,
+      "reason": null
+    },
+    "pierscien": {
+      "matches": true,
+      "reason": null
+    },
+    "kula": {
+      "matches": true,
+      "reason": null
+    },
+    "helisa": {
+      "matches": true,
+      "reason": null
+    },
+    "drzewo3d": {
+      "matches": false,
+      "reason": "unexpected error: line 2: Nieprawidłowy nagłówek procedury."
+    }
+  }
+}

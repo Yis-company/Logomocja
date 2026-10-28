@@ -1,0 +1,510 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@7.0.2
++ vite@8.3.5
++ three@0.186.1
+
+29 packages installed [58.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 39 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.67 kB │ gzip:   0.85 kB
+dist/assets/index-BVHOMgHl.css   22.11 kB │ gzip:   5.90 kB
+dist/assets/index-DGc1Sqx_.js   120.21 kB │ gzip:  42.05 kB
+dist/assets/view3d-wzCpvr9j.js  593.32 kB │ gzip: 148.59 kB
+
+✓ built in 155ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/lexical.test.ts:
+(pass) case-insensitivity > keywords ignore case [1.29ms]
+(pass) case-insensitivity > accented keywords ignore case [0.26ms]
+(pass) case-insensitivity > variable names ignore case [0.07ms]
+(pass) case-insensitivity > procedure names, parameter names and header keywords ignore case [0.37ms]
+(pass) case-insensitivity > nrpowt ignores case [0.10ms]
+(pass) whitespace and newlines > newline between command and argument is fine [0.04ms]
+(pass) whitespace and newlines > tabs and multiple spaces separate tokens [0.03ms]
+(pass) whitespace and newlines > repeat may span lines [0.05ms]
+(pass) whitespace and newlines > brackets need no surrounding whitespace [0.03ms]
+(pass) whitespace and newlines > empty program is fine [0.01ms]
+(pass) comments > semicolon comment runs to end of line [0.04ms]
+(pass) comments > comment-only program [0.01ms]
+(pass) comments > comment directly after a token [0.03ms]
+(pass) comments > brackets and junk in a comment are ignored [0.02ms]
+(pass) comments > comment at end of program without newline [0.01ms]
+(pass) comments > error positions after a comment line [0.11ms]
+(pass) numbers > integer, decimal, and leading-dot literals [0.08ms]
+(pass) numbers > sign is an operator, not part of the literal [0.08ms]
+(pass) numbers > 1e3 is not a number (parse-time error) [0.06ms]
+(pass) numbers > 1E3 is not a number (parse-time error) [0.03ms]
+(pass) numbers > 0x10 is not a number (parse-time error) [0.03ms]
+(pass) numbers > NaN is not a number (parse-time error) [0.03ms]
+(pass) numbers > Infinity is not a number (parse-time error) [0.02ms]
+(pass) numbers > nan is not a number (parse-time error) [0.01ms]
+(pass) numbers > infinity is not a number (parse-time error) [0.02ms]
+(pass) numbers > NaN and Infinity are rejected at their position [0.03ms]
+(pass) colour literals > lowercase hex [0.08ms]
+(pass) colour literals > uppercase / mixed hex is accepted and reported lowercase [0.09ms]
+(pass) colour literals > malformed colour "#12345" is a parse-time error at the argument [0.04ms]
+(pass) colour literals > malformed colour "#1234567" is a parse-time error at the argument [0.04ms]
+(pass) colour literals > malformed colour "#12345g" is a parse-time error at the argument [0.01ms]
+(pass) colour literals > malformed colour "123456" is a parse-time error at the argument [0.02ms]
+(pass) colour literals > malformed colour #123456 is a parse-time error at the argument [0.02ms]
+(pass) colour literals > malformed colour 5 is a parse-time error at the argument [0.02ms]
+(pass) colour literals > malformed colour "#123456 is a parse-time error at the argument [0.01ms]
+(pass) colour literals > malformed colour "#" is a parse-time error at the argument [0.01ms]
+(pass) colour literals > malformed colour "" is a parse-time error at the argument [0.02ms]
+(pass) colour literals > malformed colour abc is a parse-time error at the argument [0.02ms]
+(pass) colour literals > colour literal is not an expression [0.02ms]
+(pass) operators and parentheses > parentheses group [0.04ms]
+(pass) operators and parentheses > all six comparisons are recognised [0.13ms]
+(pass) operators and parentheses > unknown characters are errors [0.04ms]
+(pass) basic segment shape > forward from origin [0.03ms]
+
+tests/commands.test.ts:
+(pass) command aliases > np moves forward [0.03ms]
+(pass) command aliases > naprzod moves forward [0.02ms]
+(pass) command aliases > naprzód moves forward
+(pass) command aliases > fd moves forward [0.03ms]
+(pass) command aliases > forward moves forward [0.01ms]
+(pass) command aliases > ws moves backward [0.02ms]
+(pass) command aliases > wstecz moves backward [0.01ms]
+(pass) command aliases > bk moves backward [0.01ms]
+(pass) command aliases > back moves backward [0.01ms]
+(pass) command aliases > pw turns right [0.07ms]
+(pass) command aliases > prawo turns right [0.01ms]
+(pass) command aliases > rt turns right [0.01ms]
+(pass) command aliases > right turns right [0.01ms]
+(pass) command aliases > lw turns left [0.02ms]
+(pass) command aliases > lewo turns left [0.01ms]
+(pass) command aliases > lt turns left [0.01ms]
+(pass) command aliases > left turns left
+(pass) command aliases > pod raises the pen [0.01ms]
+(pass) command aliases > podnies raises the pen
+(pass) command aliases > podnieś raises the pen [0.02ms]
+(pass) command aliases > pu raises the pen
+(pass) command aliases > penup raises the pen
+(pass) command aliases > opu lowers the pen [0.02ms]
+(pass) command aliases > opusc lowers the pen [0.02ms]
+(pass) command aliases > opuść lowers the pen [0.01ms]
+(pass) command aliases > pd lowers the pen
+(pass) command aliases > pendown lowers the pen [0.01ms]
+(pass) command aliases > kolor sets the colour [0.02ms]
+(pass) command aliases > color sets the colour
+(pass) command aliases > grubosc sets the width [0.03ms]
+(pass) command aliases > grubość sets the width [0.02ms]
+(pass) command aliases > width sets the width
+(pass) command aliases > powtorz repeats [0.03ms]
+(pass) command aliases > powtórz repeats [0.02ms]
+(pass) command aliases > repeat repeats [0.03ms]
+(pass) command aliases > niech assigns [0.02ms]
+(pass) command aliases > let assigns [0.02ms]
+(pass) command aliases > jeśli conditional [0.04ms]
+(pass) command aliases > jesli conditional [0.01ms]
+(pass) command aliases > if conditional [0.01ms]
+(pass) command aliases > jeżeli two-branch conditional [0.04ms]
+(pass) command aliases > jezeli two-branch conditional [0.02ms]
+(pass) command aliases > ifelse two-branch conditional [0.02ms]
+(pass) command aliases > dom returns home [0.02ms]
+(pass) command aliases > home returns home [0.01ms]
+(pass) command aliases > czyść clears the screen [0.02ms]
+(pass) command aliases > czysc clears the screen [0.01ms]
+(pass) command aliases > cs clears the screen [0.02ms]
+(pass) command aliases > clearscreen clears the screen [0.01ms]
+(pass) command aliases > gora pitches up (3D) [0.03ms]
+(pass) command aliases > góra pitches up (3D) [0.01ms]
+(pass) command aliases > pitchup pitches up (3D) [0.02ms]
+(pass) command aliases > dol pitches down (3D) [0.02ms]
+(pass) command aliases > dół pitches down (3D)
+(pass) command aliases > pitchdown pitches down (3D)
+(pass) command aliases > pp rolls right (3D) [0.02ms]
+(pass) command aliases > przechylprawo rolls right (3D) [0.02ms]
+(pass) command aliases > rr rolls right (3D)
+(pass) command aliases > rollright rolls right (3D)
+(pass) command aliases > pl rolls left (3D) [0.02ms]
+(pass) command aliases > przechyllewo rolls left (3D) [0.01ms]
+(pass) command aliases > rl rolls left (3D)
+(pass) command aliases > rollleft rolls left (3D)
+(pass) command aliases > gora is a parse-time error in 2D [0.03ms]
+(pass) command aliases > góra is a parse-time error in 2D [0.03ms]
+(pass) command aliases > pitchup is a parse-time error in 2D [0.01ms]
+(pass) command aliases > dol is a parse-time error in 2D
+(pass) command aliases > dół is a parse-time error in 2D [0.01ms]
+(pass) command aliases > pitchdown is a parse-time error in 2D [0.01ms]
+(pass) command aliases > pp is a parse-time error in 2D
+(pass) command aliases > przechylprawo is a parse-time error in 2D
+(pass) command aliases > rr is a parse-time error in 2D [0.01ms]
+(pass) command aliases > rollright is a parse-time error in 2D [0.02ms]
+(pass) command aliases > pl is a parse-time error in 2D [0.02ms]
+(pass) command aliases > przechyllewo is a parse-time error in 2D [0.02ms]
+(pass) command aliases > rl is a parse-time error in 2D [0.02ms]
+(pass) command aliases > rollleft is a parse-time error in 2D [0.02ms]
+(pass) command aliases > pitch/roll in a never-called procedure body is an error in 2D [0.03ms]
+(pass) command aliases > stop alias [0.02ms]
+(pass) initial state and pen > default colour #16866a, width 3, pen down [0.02ms]
+(pass) initial state and pen > zero move draws nothing [0.02ms]
+(pass) initial state and pen > turns draw nothing [0.02ms]
+(pass) initial state and pen > backward then forward draws two segments [0.03ms]
+(pass) initial state and pen > pen up moves without drawing, state persists [0.02ms]
+(pass) initial state and pen > opu when pen already down is harmless
+(pass) colour > colour persists and applies only to later segments [0.04ms]
+(pass) colour > missing colour at end of program reported at the command [0.02ms]
+(pass) colour > missing colour before another command reported at that token [0.02ms]
+(pass) width > width persists [0.02ms]
+(pass) width > boundary widths 1 and 12 accepted [0.02ms]
+(pass) width > literal expressions are evaluated [0.04ms]
+(pass) width > integral decimal literal accepted [0.01ms]
+(pass) width > literal width 0 is a parse-time error at the argument [0.03ms]
+(pass) width > literal width 13 is a parse-time error at the argument [0.02ms]
+(pass) width > literal width 2.5 is a parse-time error at the argument [0.05ms]
+(pass) width > literal width -1 is a parse-time error at the argument [0.02ms]
+(pass) width > literal width 2 * 6.5 is a parse-time error at the argument [0.03ms]
+(pass) width > literal width 100 is a parse-time error at the argument [0.01ms]
+(pass) width > literal width - 3 is a parse-time error at the argument [0.02ms]
+(pass) width > literal width 7 / 2 is a parse-time error at the argument [0.02ms]
+(pass) width > width from a name is checked at run time, at the argument [0.05ms]
+(pass) width > computed width reported at first token of the argument [0.03ms]
+(pass) width > valid computed width [0.03ms]
+(pass) width > missing width at end reported at command [0.02ms]
+(pass) dom (home) > returns to origin drawing a segment and resets heading [0.04ms]
+(pass) dom (home) > at origin draws nothing [0.04ms]
+(pass) dom (home) > pen up: moves home without drawing, pen stays up [0.03ms]
+(pass) dom (home) > colour and width untouched [0.03ms]
+(pass) dom (home) > resets full 3D orientation [0.04ms]
+(pass) dom (home) > resets up vector after roll [0.02ms]
+(pass) dom (home) > resets right vector after roll [0.01ms]
+(pass) czyść (clear screen) > keeps position and heading [0.02ms]
+(pass) czyść (clear screen) > keeps pen, colour and width [0.04ms]
+(pass) czyść (clear screen) > at end leaves nothing [0.01ms]
+(pass) czyść (clear screen) > repeated clears [0.02ms]
+(pass) czyść (clear screen) > run-time error after czyść keeps only later segments [0.03ms]
+(pass) stop at top level > ends the program without error [0.02ms]
+(pass) stop at top level > stop inside a top-level repeat ends the program [0.03ms]
+(pass) stop at top level > stop inside a top-level conditional ends the program [0.02ms]
+
+tests/expressions.test.ts:
+(pass) precedence and associativity > spec examples [0.02ms]
+(pass) precedence and associativity > more cases [0.08ms]
+(pass) precedence and associativity > intermediate values may exceed coordinate range [0.01ms]
+(pass) binary-operator whitespace rule > both sides or neither [0.05ms]
+(pass) binary-operator whitespace rule > np 10 -5 is an error at the -, nothing drawn [0.07ms]
+(pass) binary-operator whitespace rule > whitespace only on the left of + is an error at the operator [0.02ms]
+(pass) binary-operator whitespace rule > whitespace only on the left of * is an error at the operator [0.01ms]
+(pass) binary-operator whitespace rule > whitespace only on the left of / is an error at the operator
+(pass) binary-operator whitespace rule > whitespace only on the right of - is an error at the operator [0.01ms]
+(pass) binary-operator whitespace rule > whitespace only on the right of + is an error at the operator
+(pass) binary-operator whitespace rule > whitespace only on the right of * is an error at the operator [0.01ms]
+(pass) binary-operator whitespace rule > whitespace only on the right of / is an error at the operator [0.01ms]
+(pass) binary-operator whitespace rule > stray -5 inside parentheses is a parse-time error [0.02ms]
+(pass) binary-operator whitespace rule > stray -(5) [0.01ms]
+(pass) binary-operator whitespace rule > rule does not apply to comparisons [0.07ms]
+(pass) binary-operator whitespace rule > rule applies inside conditions [0.02ms]
+(pass) unary signs > spec examples [0.03ms]
+(pass) unary signs > unary after binary operators [0.05ms]
+(pass) unary signs > stacked and mixed [0.03ms]
+(pass) unary signs > unary binds to operand, tighter than * [0.01ms]
+(pass) unary signs > unary on nrpowt and legacy names [0.03ms]
+(pass) names in expressions > variable and legacy :name [0.02ms]
+(pass) division by zero and non-finite values > division by zero is a run-time error at the argument [0.02ms]
+(pass) division by zero and non-finite values > reported at first token of the argument expression [0.04ms]
+(pass) division by zero and non-finite values > reported at a leading unary sign [0.02ms]
+(pass) division by zero and non-finite values > division by zero in a turn [0.02ms]
+(pass) division by zero and non-finite values > not raised when the code is not executed [0.02ms]
+(pass) division by zero and non-finite values > non-finite result is a run-time error at the argument [0.04ms]
+(pass) division by zero and non-finite values > 0 / 0 is a run-time error [0.02ms]
+(pass) comparisons > 1 < 2 is true [0.01ms]
+(pass) comparisons > 2 < 1 is false
+(pass) comparisons > 1 < 1 is false
+(pass) comparisons > 2 > 1 is true
+(pass) comparisons > 1 > 2 is false [0.01ms]
+(pass) comparisons > 1 > 1 is false
+(pass) comparisons > 1 = 1 is true
+(pass) comparisons > 1 = 2 is false
+(pass) comparisons > 1 <= 1 is true [0.01ms]
+(pass) comparisons > 1 <= 2 is true
+(pass) comparisons > 2 <= 1 is false [0.02ms]
+(pass) comparisons > 1 >= 1 is true [0.01ms]
+(pass) comparisons > 2 >= 1 is true
+(pass) comparisons > 1 >= 2 is false
+(pass) comparisons > 1 <> 2 is true
+(pass) comparisons > 1 <> 1 is false
+(pass) comparisons > 2 + 3 = 5 is true [0.01ms]
+(pass) comparisons > 2 * 3 > 5 + 0.5 is true [0.02ms]
+(pass) comparisons > -3 = 0 - 3 is true
+(pass) comparisons > 3 = -3 is false
+(pass) comparisons > comparisons are exact [0.03ms]
+(pass) comparisons > comparison outside a condition is an error [0.02ms]
+(pass) comparisons > condition without comparison is an error [0.02ms]
+(pass) expression errors > missing operand at ) [0.05ms]
+(pass) expression errors > missing argument before a command reported at that command [0.02ms]
+(pass) expression errors > missing argument at end of program reported at command [0.02ms]
+(pass) expression errors > missing operand after operator at end [0.01ms]
+(pass) expression errors > unbalanced parenthesis [0.02ms]
+(pass) expression errors > stray closing parenthesis [0.02ms]
+
+tests/geometry.test.ts:
+(pass) 2D turning > square returns to the origin [0.03ms]
+(pass) 2D turning > right 30 / left 30 [0.03ms]
+(pass) 2D turning > negative angles turn the other way [0.02ms]
+(pass) 2D turning > angles beyond 360 and decimals [0.04ms]
+(pass) 2D turning > ws after turn
+(pass) 2D turning > all 2D coordinates have z = 0 [0.03ms]
+(pass) 3D pitch > gora 90 heads along former up (+Z) [0.01ms]
+(pass) 3D pitch > dol 90 heads -Z
+(pass) 3D pitch > gora 30 / dol 30 [0.02ms]
+(pass) 3D pitch > negative pitch goes the other way [0.02ms]
+(pass) 3D pitch > up vector follows: second gora 90 heads -Y [0.01ms]
+(pass) 3D pitch > pitch keeps the right vector [0.02ms]
+(pass) 3D pitch > turning keeps up vector [0.01ms]
+(pass) 3D pitch > turn, pitch, turn [0.02ms]
+(pass) 3D pitch > turn after pitch rotates around the new up [0.01ms]
+(pass) 3D roll > roll does not change heading [0.02ms]
+(pass) 3D roll > after pp 90 right is former down (-Z) [0.02ms]
+(pass) 3D roll > after pp 90 up is former right (+X) [0.02ms]
+(pass) 3D roll > after pl 90 up is former left (-X), right is former up (+Z) [0.03ms]
+(pass) 3D roll > negative roll goes the other way [0.01ms]
+(pass) 3D roll > pp 30 then pitch up 90 [0.03ms]
+(pass) 3D roll > upside down turtle: pp 180 then right turns towards -X [0.01ms]
+(pass) 3D roll > pp 90 then dol 90 heads -X [0.01ms]
+(pass) 3D roll > roll, pitch, turn [0.02ms]
+(pass) 3D roll > roll after turning rolls around current heading [0.04ms]
+(pass) 2D and 3D agree on flat programs > identical coordinates [0.13ms]
+
+tests/control.test.ts:
+(pass) repeat > basic [0.03ms]
+(pass) repeat > zero runs nothing [0.02ms]
+(pass) repeat > empty body [0.01ms]
+(pass) repeat > count from expressions [0.03ms]
+(pass) repeat > nested repeats [0.01ms]
+(pass) repeat > literal count 10001 is a parse-time error at the argument [0.05ms]
+(pass) repeat > literal count -1 is a parse-time error at the argument [0.01ms]
+(pass) repeat > literal count 2.5 is a parse-time error at the argument [0.02ms]
+(pass) repeat > literal count 20000 / 2 + 1 is a parse-time error at the argument [0.01ms]
+(pass) repeat > literal count 7 / 2 is a parse-time error at the argument [0.01ms]
+(pass) repeat > literal count - 1 is a parse-time error at the argument [0.01ms]
+(pass) repeat > literal count 10000 passes parsing (fails later only on the op limit) [0.34ms]
+(pass) repeat > count from a name checked at run time [0.10ms]
+(pass) repeat > missing body [0.05ms]
+(pass) repeat > missing count [0.03ms]
+(pass) repeat > unbalanced brackets [0.05ms]
+(pass) repeat > missing argument at ] inside body [0.01ms]
+(pass) nrpowt > iteration number starting at 1 [0.03ms]
+(pass) nrpowt > innermost enclosing repeat [0.02ms]
+(pass) nrpowt > after an inner repeat finishes it refers to the outer one [0.02ms]
+(pass) nrpowt > inside a conditional inside a repeat [0.02ms]
+(pass) nrpowt > count of a nested repeat refers to the outer repeat [0.02ms]
+(pass) nrpowt > outside any repeat at top level is a parse-time error [0.04ms]
+(pass) nrpowt > in a procedure body not inside a repeat is a parse-time error, even if called from a repeat [0.05ms]
+(pass) nrpowt > in a procedure body inside a repeat is fine [0.04ms]
+(pass) variables > assign and reassign [0.02ms]
+(pass) variables > assigned from expressions with other variables [0.08ms]
+(pass) variables > global assigned inside a top-level repeat [0.05ms]
+(pass) variables > top-level assignment after use is declared but unassigned at run time [0.07ms]
+(pass) variables > unassigned on the current path [0.07ms]
+(pass) variables > unassigned reported at the first token of the argument [0.09ms]
+(pass) variables > undeclared name is a parse-time error [0.08ms]
+(pass) variables > command words cannot be variable names [0.07ms]
+(pass) variables > procedure names cannot be variable names [0.07ms]
+(pass) variables > niech without value at end of program is reported at the command [0.04ms]
+(pass) variables > niech without value before ] is reported at ] [0.02ms]
+(pass) variables > missing or malformed niech arguments [0.05ms]
+(pass) conditionals > jeśli runs body only when condition holds [0.03ms]
+(pass) conditionals > jeżeli picks a branch [0.03ms]
+(pass) conditionals > bodies may contain repeats, conditionals, calls and nrpowt (in repeat) [0.04ms]
+(pass) conditionals > conditions with variables [0.02ms]
+(pass) conditionals > missing body before a command [0.01ms]
+(pass) conditionals > missing second body at end of program reported at the command [0.02ms]
+(pass) conditionals > missing body at end reported at the command [0.03ms]
+(pass) conditionals > missing second body before a command [0.02ms]
+
+tests/procedures.test.ts:
+(pass) definitions and calls > spec example: square [0.09ms]
+(pass) definitions and calls > arguments are expressions: kwadrat 40 * 2 90 [0.05ms]
+(pass) definitions and calls > legacy header with :params, referenced both ways [0.03ms]
+(pass) definitions and calls > ma: header params may be referenced as :name [0.02ms]
+(pass) definitions and calls > ma: params without spaces after comma [0.03ms]
+(pass) definitions and calls > procedure with no parameters [0.02ms]
+(pass) definitions and calls > aliases to / end / juz [0.04ms]
+(pass) definitions and calls > definition after use [0.02ms]
+(pass) definitions and calls > unary argument after a whitespace-separated value is a new argument [0.03ms]
+(pass) definitions and calls > binary argument expression consumes the following value [0.04ms]
+(pass) definitions and calls > parenthesised arguments [0.03ms]
+(pass) definitions and calls > parameters as repeat counts and as arguments of other calls [0.04ms]
+(pass) definitions and calls > parameter may share its name with a procedure [0.03ms]
+(pass) definitions and calls > procedure name in argument position is not a value [0.03ms]
+(pass) arity > too few at end of program reported at the call [0.03ms]
+(pass) arity > too few before a command reported at that command [0.02ms]
+(pass) arity > too few before ] reported at ] [0.02ms]
+(pass) arity > too many: stray value reported at that value [0.03ms]
+(pass) arity > zero-parameter procedure given an argument [0.02ms]
+(pass) arity > arity checked even when the definition comes after the call [0.02ms]
+(pass) recursion > direct recursion [0.04ms]
+(pass) recursion > mutual recursion [0.05ms]
+(pass) recursion > each call has its own locals [0.04ms]
+(pass) stop > ends the current call, caller continues [0.02ms]
+(pass) stop > only the innermost call ends [0.02ms]
+(pass) stop > inside repeat and conditional bodies it ends the whole call [0.03ms]
+(pass) stop > inside jeżeli body in a procedure [0.02ms]
+(pass) stop > called from a repeat it does not stop the repeat [0.02ms]
+(pass) scoping > local niech shadows global and is discarded [0.02ms]
+(pass) scoping > shadowing applies for the rest of the call only [0.03ms]
+(pass) scoping > procedure reads a global [0.02ms]
+(pass) scoping > global assigned after definition but before call [0.02ms]
+(pass) scoping > global updated between calls [0.03ms]
+(pass) scoping > global assigned only after the call is unassigned at run time [0.04ms]
+(pass) scoping > parameter shadows a global [0.04ms]
+(pass) scoping > parameter can be reassigned [0.03ms]
+(pass) scoping > locals of one procedure are not visible in another [0.04ms]
+(pass) scoping > locals are not visible at top level [0.02ms]
+(pass) scoping > parameters are not visible at top level [0.04ms]
+(pass) scoping > locals are discarded when the call ends [0.05ms]
+(pass) scoping > unassigned local is a run-time error [0.02ms]
+(pass) scoping > top-level niech inside repeat creates a global visible in procedures [0.03ms]
+(pass) scoping > niech inside procedure does not change the global [0.02ms]
+(pass) definition errors > a name may be defined once [0.03ms]
+(pass) definition errors > duplicate definitions differing only in case [0.02ms]
+(pass) definition errors > definition inside a repeat body [0.02ms]
+(pass) definition errors > definition inside a conditional body [0.02ms]
+(pass) definition errors > definition inside another procedure [0.02ms]
+(pass) definition errors > missing już [0.04ms]
+(pass) definition errors > już must be alone on its line [0.02ms]
+(pass) definition errors > oto must start a line [0.01ms]
+(pass) definition errors > procedure name may not be a command word [0.02ms]
+(pass) definition errors > unknown command in a never-called procedure is a parse-time error [0.02ms]
+(pass) definition errors > run-time error inside a procedure keeps earlier drawing [0.03ms]
+(pass) definition errors > call of an undefined procedure [0.02ms]
+(pass) definition errors > header without a name [0.01ms]
+
+tests/limits.test.ts:
+(pass) source character limit (50,000) > exactly 50,000 characters is fine [0.93ms]
+(pass) source character limit (50,000) > 50,001 characters is an error, nothing drawn [0.92ms]
+(pass) token limit (10,000) > exactly 10,000 tokens is fine [5.23ms]
+(pass) token limit (10,000) > 10,001 tokens is an error, nothing drawn [2.86ms]
+(pass) token limit (10,000) > comments are not tokens [4.15ms]
+(pass) token limit (10,000) > operators are tokens (10,000 ok) [2.84ms]
+(pass) token limit (10,000) > operators are tokens (10,001 fails) [2.71ms]
+(pass) token limit (10,000) > parentheses are tokens (10,000 ok) [2.67ms]
+(pass) token limit (10,000) > parentheses are tokens (10,001 fails) [2.93ms]
+(pass) token limit (10,000) > brackets are tokens (10,000 ok) [3.52ms]
+(pass) token limit (10,000) > brackets are tokens (10,001 fails) [3.74ms]
+(pass) bracket nesting limit (32) > 32 nested conditional bodies are fine [0.12ms]
+(pass) bracket nesting limit (32) > 33 nested brackets is a parse-time error at the 33rd [ [0.15ms]
+(pass) bracket nesting limit (32) > 32 nested repeats are fine (32 brackets, 32 frames) [0.06ms]
+(pass) bracket nesting limit (32) > 32 nested parentheses are fine [0.03ms]
+(pass) frame limit (32 active calls and repeats) > 32 nested calls are fine (conditional bodies are not frames) [0.07ms]
+(pass) frame limit (32 active calls and repeats) > 33 nested calls is a run-time error at the 33rd call [0.09ms]
+(pass) frame limit (32 active calls and repeats) > 16 calls + 16 repeats = 32 frames is fine [0.04ms]
+(pass) frame limit (32 active calls and repeats) > 17 calls + 16 repeats = 33 frames fails at the call [0.09ms]
+(pass) frame limit (32 active calls and repeats) > 31 repeats + 1 call = 32 frames is fine [0.06ms]
+(pass) frame limit (32 active calls and repeats) > 32 repeats + 1 call = 33 frames fails at the call [0.08ms]
+(pass) frame limit (32 active calls and repeats) > unbounded recursion is an error, not a crash [0.05ms]
+(pass) operation limit (10,000) > commands in a repeat: exactly 10,000 [0.44ms]
+(pass) operation limit (10,000) > commands in a repeat: 10,001 fails at the extra command, keeping the drawing [0.54ms]
+(pass) operation limit (10,000) > true conditional counts 1 + body + 1 [1.45ms]
+(pass) operation limit (10,000) > false conditional counts 1 [0.42ms]
+(pass) operation limit (10,000) > jeżeli counts 1 + chosen body + 1 [1.62ms]
+(pass) operation limit (10,000) > procedure call counts 1 + body + 1 [0.92ms]
+(pass) operation limit (10,000) > niech counts 1 [0.37ms]
+(pass) operation limit (10,000) > czyść counts as a command [0.25ms]
+(pass) operation limit (10,000) > nested repeats [0.86ms]
+(pass) operation limit (10,000) > finishing a repeat iteration counts (nested 2 x 2499 exceeds) [0.39ms]
+(pass) operation limit (10,000) > empty repeat iterations count [0.18ms]
+(pass) operation limit (10,000) > evaluating expressions is not an operation [1.51ms]
+(pass) segment limit (10,000 kept) > a large drawing within all limits works [4.65ms]
+(pass) coordinate limit (±100,000) > exactly at the limit is fine [0.04ms]
+(pass) coordinate limit (±100,000) > beyond the limit is a run-time error keeping earlier segments [0.06ms]
+(pass) coordinate limit (±100,000) > cumulative overflow [0.03ms]
+(pass) coordinate limit (±100,000) > pen-up moves are also limited [0.02ms]
+(pass) coordinate limit (±100,000) > x and z coordinates are limited [0.05ms]
+(pass) coordinate limit (±100,000) > error line on a later line [0.02ms]
+
+tests/examples.test.ts:
+(pass) every standard example runs without error and draws something [1.88ms]
+
+tests/misc.test.ts:
+(pass) error positions > unknown command [0.08ms]
+(pass) error positions > stray values where a command is expected [0.05ms]
+(pass) error positions > columns count characters, accented letters included [0.09ms]
+(pass) error positions > parse-time error anywhere means nothing is drawn [0.02ms]
+(pass) run-time argument checks through parameters > repeat count from a parameter [0.04ms]
+(pass) run-time argument checks through parameters > width from a parameter [0.07ms]
+(pass) run-time argument checks through parameters > unassigned variable in a call argument is reported at the argument [0.03ms]
+(pass) run-time argument checks through parameters > nrpowt passed as an argument [0.03ms]
+(pass) miscellaneous semantics > ws with a negative distance moves forward [0.01ms]
+(pass) miscellaneous semantics > turn by an expression [0.01ms]
+(pass) miscellaneous semantics > dom in 3D draws back to the origin [0.02ms]
+(pass) miscellaneous semantics > accented variable names [0.01ms]
+(pass) miscellaneous semantics > name declared inside nested bodies of a procedure [0.02ms]
+(pass) miscellaneous semantics > sequential (non-nested) frames do not accumulate [0.10ms]
+(pass) miscellaneous semantics > 33 nested repeats is a parse-time error [0.07ms]
+(pass) miscellaneous semantics > procedure body may use a procedure defined later [0.02ms]
+(pass) miscellaneous semantics > 3D mode reports the same whitespace-rule error [0.02ms]
+(pass) miscellaneous semantics > run-time error in 3D keeps segments [0.02ms]
+
+tests/content.test.ts:
+(pass) dokumentacja > ma przykłady
+(pass) dokumentacja > przykład „pierwsze-kroki#0” działa bez błędu i coś rysuje [0.04ms]
+(pass) dokumentacja > przykład „np” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „ws” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „pw” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „lw” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „pod” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „opu” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „kolor” działa bez błędu i coś rysuje [0.02ms]
+(pass) dokumentacja > przykład „grubosc” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „powtorz” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „nrpowt” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „niech” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „wyrazenia#0” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „wyrazenia#1” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „jesli” działa bez błędu i coś rysuje [0.02ms]
+(pass) dokumentacja > przykład „jezeli” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „oto” działa bez błędu i coś rysuje [0.02ms]
+(pass) dokumentacja > przykład „wywolanie” działa bez błędu i coś rysuje [0.03ms]
+(pass) dokumentacja > przykład „stop” działa bez błędu i coś rysuje [0.03ms]
+(pass) dokumentacja > przykład „gora” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „dol” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „pp” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „pl” działa bez błędu i coś rysuje [0.02ms]
+(pass) dokumentacja > przykład „dom” działa bez błędu i coś rysuje [0.01ms]
+(pass) dokumentacja > przykład „czysc” działa bez błędu i coś rysuje
+(pass) dokumentacja > przykład „komentarz” działa bez błędu i coś rysuje
+(pass) dokumentacja > identyfikatory są unikalne [0.03ms]
+(pass) wyzwania > jest co najmniej pięć wyzwań
+(pass) wyzwania > „trojkat”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.80ms]
+(pass) wyzwania > „prostokat”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.49ms]
+(pass) wyzwania > „szesciokat”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.60ms]
+(pass) wyzwania > „schodki”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.28ms]
+(pass) wyzwania > „dwa-kwadraty”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.34ms]
+(pass) wyzwania > „gwiazda-8”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [1.16ms]
+(pass) wyzwania > „wiatraczek”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [2.29ms]
+(pass) wyzwania > „trzy-osie”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.59ms]
+(pass) wyzwania > „kwadrat-pionowy”: wzorcowe rozwiązanie przechodzi, szkic startowy nie [0.21ms]
+(pass) wyzwania > położenie startu nie ma znaczenia [0.11ms]
+(pass) wyzwania > kolejność i podział odcinków nie mają znaczenia [0.07ms]
+(pass) wyzwania > zły rozmiar, lustrzane odbicie i błąd są odrzucane z powodem [0.28ms]
+(pass) wyzwania > brakujący fragment jest wykrywany [0.08ms]
+(pass) wyzwania > wymagania: powtórz i procedura [0.19ms]
+(pass) wyzwania > porównanie działa w 3D [0.04ms]
+(pass) odnośniki > program przechodzi przez kodowanie bez zmian [0.68ms]
+(pass) odnośniki > uszkodzony odnośnik daje null [0.04ms]
+
+ 453 pass
+ 0 fail
+ 2169 expect() calls
+Ran 453 tests across 10 files. [79.00ms]
+(exit 0)

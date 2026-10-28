@@ -1,0 +1,163 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[1.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano dist/ (BASE_PATH=/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/): main-9c9bdkrz.js, main-wbdsk9yz.css
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/language.test.ts:
+(pass) leksyka > słowa kluczowe ignorują wielkość liter, także polskie litery [2.13ms]
+(pass) leksyka > wszystkie aliasy polskie i angielskie są równoważne [2.07ms]
+(pass) leksyka > komentarze, białe znaki i końce wierszy [0.05ms]
+(pass) leksyka > liczby: 80, 12.5, .5; inne zapisy są błędami [0.25ms]
+(pass) leksyka > znak jest operatorem, a nie częścią liczby [1.11ms]
+(pass) leksyka > kolory: wielkość cyfr szesnastkowych nie ma znaczenia, wynik jest małymi literami [0.09ms]
+(pass) leksyka > nazwy ze znakami diakrytycznymi i dawny zapis :nazwa [0.14ms]
+(pass) wyrażenia > priorytety i łączność lewostronna [0.16ms]
+(pass) wyrażenia > odstępy wokół operatora: po obu stronach albo po żadnej [0.26ms]
+(pass) wyrażenia > odstęp może być nową linią [0.03ms]
+(pass) wyrażenia > operatory unarne można układać w stosy i stosować wszędzie [0.10ms]
+(pass) wyrażenia > argumenty procedur: kolejna wartość może zaczynać się od znaku [0.39ms]
+(pass) wyrażenia > porównania są dokładne i nie mają reguły odstępów [0.84ms]
+(pass) wyrażenia > dzielenie przez zero i wyniki nieskończone to błędy wykonania [0.51ms]
+(pass) geometria > stan początkowy i kierunki: +Y do przodu, +X w prawo [0.10ms]
+(pass) geometria > kąty dziesiętne i ujemne [0.03ms]
+(pass) geometria > ruch o zero niczego nie rysuje; pióro w górze też nie [1.73ms]
+(pass) geometria > kolor i grubość utrzymują się do zmiany [0.16ms]
+(pass) geometria > dom: wraca do początku (rysując), przywraca orientację, zostawia pióro, kolor i grubość [0.09ms]
+(pass) geometria > czyść usuwa odcinki i niczego innego nie zmienia [0.03ms]
+(pass) geometria > polecenia 3D: góra, dół, przechył [0.13ms]
+(pass) geometria > dom w 3D przywraca wszystkie wektory [0.08ms]
+(pass) geometria > polecenia płaskie dają te same współrzędne w 2D i w 3D [0.23ms]
+(pass) geometria > w 2D polecenia gora, dol, pp, pl są błędami analizy [0.20ms]
+(pass) powtarzanie i nrpowt > powtorz n [...] wykonuje ciało n razy; 0 nie robi nic [0.05ms]
+(pass) powtarzanie i nrpowt > liczba powtórzeń: całkowita 0–10000 [6.54ms]
+(pass) powtarzanie i nrpowt > liczba powtórzeń zależna od nazwy jest sprawdzana w czasie wykonania [0.09ms]
+(pass) powtarzanie i nrpowt > nrpowt liczy od 1 w najbliższym powtórzeniu [0.13ms]
+(pass) powtarzanie i nrpowt > nrpowt w liczbie powtórzeń odnosi się do zewnętrznego powtórzenia [0.03ms]
+(pass) powtarzanie i nrpowt > nrpowt poza powtórzeniem to błąd analizy — także w procedurze wywoływanej z powtórzenia [0.14ms]
+(pass) powtarzanie i nrpowt > stop w powtórzeniu kończy procedurę albo program [0.08ms]
+(pass) zmienne > niech tworzy i zmienia zmienną globalną [0.08ms]
+(pass) zmienne > użycie przed przypisaniem w kodzie to błąd wykonania z pozycją argumentu [0.03ms]
+(pass) zmienne > nazwa nigdzie niezadeklarowana to błąd analizy [0.04ms]
+(pass) zmienne > zmienne nie mogą nazywać się jak polecenia ani procedury [0.06ms]
+(pass) zmienne > niech w procedurze jest lokalne i przesłania globalną [0.04ms]
+(pass) zmienne > zmienna lokalna nie jest widoczna w wywoływanej procedurze, parametry można nadpisać [0.05ms]
+(pass) zmienne > nazwa lokalna używana przed przypisaniem bez globalnej to błąd wykonania [0.03ms]
+(pass) warunki > jeśli / jeżeli [0.06ms]
+(pass) warunki > ciała mogą zawierać wszystko [0.04ms]
+(pass) warunki > brak operatora porównania i brak drugiego bloku to błędy [0.07ms]
+(pass) procedury > definicja, wywołanie, parametry i argumenty-wyrażenia [0.11ms]
+(pass) procedury > zapis dawny nagłówka i odwołania :nazwa [0.13ms]
+(pass) procedury > procedura bez parametrów; wywołanie przed definicją [0.04ms]
+(pass) procedury > parametr o nazwie procedury można przypisać od nowa, zmiennej o takiej nazwie utworzyć nie można [0.06ms]
+(pass) procedury > parametr może mieć nazwę procedury: w poleceniu to wywołanie, w argumencie parametr [0.03ms]
+(pass) procedury > parametry mogą stać w miejscu licznika powtórzeń i argumentów innych procedur [0.04ms]
+(pass) procedury > rekurencja bezpośrednia i pośrednia; stop kończy wywołanie [0.14ms]
+(pass) procedury > stop w procedurze nie kończy programu [0.02ms]
+(pass) procedury > definicja musi być na początku wiersza i tylko na najwyższym poziomie [0.07ms]
+(pass) procedury > nazwa tylko raz; brak „już”; „już” musi stać samo [0.10ms]
+(pass) procedury > wywołanie z błędną liczbą argumentów [0.12ms]
+(pass) procedury > nagłówki: słowa zarezerwowane i powtórzone parametry [0.10ms]
+(pass) błędy: pozycje i komunikaty > nieznane polecenie, zbłąkana wartość [0.15ms]
+(pass) błędy: pozycje i komunikaty > brakujący argument: w miejscu, gdzie powinien się zaczynać; przy poleceniu, gdy program się kończy [0.18ms]
+(pass) błędy: pozycje i komunikaty > nawiasy [0.09ms]
+(pass) błędy: pozycje i komunikaty > kolor [0.09ms]
+(pass) błędy: pozycje i komunikaty > grubość: całkowita od 1 do 12 [0.77ms]
+(pass) błędy: pozycje i komunikaty > wyrażenie z nazwą jest sprawdzane przy wykonaniu, wskazuje pierwszy symbol argumentu [0.22ms]
+(pass) błędy: pozycje i komunikaty > błąd leksykalny wskazuje znak [0.07ms]
+(pass) błędy: pozycje i komunikaty > pierwszy błąd w kodzie źródłowym [0.06ms]
+(pass) błędy: pozycje i komunikaty > błąd analizy w procedurze nic nie rysuje, nawet gdy program zaczyna się od poleceń [0.03ms]
+(pass) błędy: pozycje i komunikaty > błąd wykonania zachowuje narysowane odcinki — po czyść tylko późniejsze [0.04ms]
+(pass) interfejs testowy > tryb 3d / 2d bez względu na wielkość liter, nieznany tryb to 2d [0.03ms]
+(pass) interfejs testowy > odcinki mają postać { from, to, color, width } [0.04ms]
+(pass) parser wyrażeń: zgodność z JavaScriptem na losowych wyrażeniach > wartość wyrażenia równa się wartości liczonej przez JavaScript (te same priorytety) [24.37ms]
+
+tests/examples.test.ts:
+(pass) programy wzorcowe > jest trzynaście programów w odpowiednich trybach [0.03ms]
+(pass) programy wzorcowe > każdy działa bez błędu we własnym trybie [10.17ms]
+(pass) programy wzorcowe > programy 2D działają też w trybie 3D i dają to samo [7.69ms]
+(pass) programy wzorcowe > programy 3D w trybie 2D są błędem analizy [0.18ms]
+(pass) programy wzorcowe > liczba odcinków [5.07ms]
+(pass) programy wzorcowe > Kwadrat to kwadrat o boku 120 [0.12ms]
+(pass) programy wzorcowe > Gwiazda domyka się w punkcie startowym [0.04ms]
+(pass) programy wzorcowe > Spirala zmienia kolory na przemian, a Kula także [0.39ms]
+(pass) programy wzorcowe > Wielokąty rysują wielokąty foremne o boku 60 [0.10ms]
+(pass) programy wzorcowe > Śnieżynka: trzy krzywe Kocha tworzą zamknięty kontur [2.11ms]
+(pass) programy wzorcowe > Sześcian ma 12 krawędzi długości 100 i wierzchołki w narożnikach [0.16ms]
+(pass) programy wzorcowe > Pierścień jest okręgiem przechylonym o 30° (36 boków po 12) [0.07ms]
+(pass) programy wzorcowe > Schody wznoszą się o 20 na stopień [0.03ms]
+
+tests/share.test.ts:
+(pass) adres do udostępniania > program z polskimi znakami wraca bez zmian [3.46ms]
+(pass) adres do udostępniania > permalink zawiera tryb i program, a odczyt z hasha działa [0.15ms]
+(pass) adres do udostępniania > uszkodzony adres daje czytelny błąd, a nie wyjątek silnika [0.23ms]
+(pass) adres do udostępniania > brak kodu w adresie to brak programu [0.03ms]
+(pass) pliki > nazwy plików [0.06ms]
+(pass) pliki > tryb z nazwy pliku i z treści [0.23ms]
+
+tests/challenges.test.ts:
+(pass) wyzwania > jest co najmniej pięć, z unikalnymi identyfikatorami, w obu trybach [0.02ms]
+(pass) wyzwania > rozwiązanie wzorcowe przechodzi, a szablon startowy nie [5.36ms]
+(pass) wyzwania > inne poprawne rozwiązania są akceptowane (kolejność, kierunek, podział odcinków) [1.40ms]
+(pass) wyzwania > błędne rysunki są odrzucane z powodem [7.27ms]
+(pass) wyzwania > poprawny kształt w złym ułożeniu dostaje wskazówkę, co jest nie tak [1.86ms]
+(pass) wyzwania > kolor ma znaczenie tylko tam, gdzie go wymagamy [0.11ms]
+(pass) wyzwania > wydajność: duże rysunki sprawdzają się szybko [37.35ms]
+
+tests/reference.test.ts:
+(pass) strona poleceń > każde polecenie ma przykład, który działa we wskazanym trybie [0.98ms]
+(pass) strona poleceń > opisano wszystkie polecenia języka [0.04ms]
+
+tests/fuzz.test.ts:
+(pass) odporność na dowolne dane wejściowe > losowe programy nigdy nie wyrzucają wyjątku i dają poprawny kształt wyniku [82.98ms]
+(pass) odporność na dowolne dane wejściowe > programy płaskie dają identyczny wynik w obu trybach [30.33ms]
+(pass) odporność na dowolne dane wejściowe > dziwne znaki, bardzo długie słowa i liczby nie psują analizy [0.48ms]
+
+tests/highlight.test.ts:
+(pass) podświetlanie składni > liczba wierszy zgadza się z edytorem (LF, CRLF, CR, pusty koniec) [0.26ms]
+(pass) podświetlanie składni > tekst wiersza jest zachowany bez zmian (nic nie ginie ani się nie dubluje) [0.17ms]
+(pass) podświetlanie składni > klasy: polecenia, liczby, nawiasy, komentarze, procedury, nazwy [0.09ms]
+(pass) podświetlanie składni > kolory polecenia kolor mają próbkę, a zepsute literały są oznaczone [0.06ms]
+(pass) podświetlanie składni > nawiasy kwadratowe dostają kolor wg głębokości, nadmiarowy zamykający jest błędem [0.02ms]
+(pass) podświetlanie składni > HTML jest bezpiecznie zamieniany [0.09ms]
+
+tests/store.test.ts:
+(pass) magazyn lokalny > ustawienia mają rozsądne wartości domyślne i się zapisują [0.13ms]
+(pass) magazyn lokalny > szkice każdego trybu są osobne [0.03ms]
+(pass) magazyn lokalny > szkice zachowane: dodawanie bez duplikatów, usuwanie, nazwa z komentarza [0.69ms]
+(pass) magazyn lokalny > postęp w wyzwaniach [0.14ms]
+(pass) ochrona niezapisanego szkicu > przykłady, pusty tekst i szablony nie są szkicem użytkownika [0.20ms]
+(pass) ochrona niezapisanego szkicu > zmieniony przykład lub własny kod jest szkicem, o ile nie ma go już w „Szkicach” [0.07ms]
+
+tests/version.test.ts:
+(pass) wersja w kodzie zgadza się z package.json
+
+tests/limits.test.ts:
+(pass) limity > 50 000 znaków: dokładnie tyle jest dozwolone, więcej to błąd [0.90ms]
+(pass) limity > 10 000 symboli: operatory, nawiasy i przecinki też się liczą [16.17ms]
+(pass) limity > zagnieżdżenie nawiasów [ ] do 32 [0.34ms]
+(pass) limity > zagnieżdżone nawiasy okrągłe nie przewracają stosu [6.20ms]
+(pass) limity > 32 aktywne ramki: wywołania i powtórzenia razem [0.52ms]
+(pass) limity > zagnieżdżone powtórzenia liczą się do 32 ramek [0.06ms]
+(pass) limity > 10 000 wykonanych operacji: każda iteracja i wywołanie liczą się dodatkowo [3.65ms]
+(pass) limity > wywołanie procedury: 1 + 1 operacji + ciało [1.39ms]
+(pass) limity > jeśli: 1 operacja + 1 za zakończone ciało (tylko gdy wykonano) [2.99ms]
+(pass) limity > współrzędne w zakresie ±100 000 [0.14ms]
+(pass) limity > wyrażenia nie są operacjami [0.76ms]
+
+ 121 pass
+ 0 fail
+ 37248 expect() calls
+Ran 121 tests across 10 files. [292.00ms]
+(exit 0)

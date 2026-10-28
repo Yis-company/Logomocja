@@ -1,0 +1,52 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
+
+16 packages installed [11.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 8 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.59 kB │ gzip:  0.36 kB
+dist/assets/index-DRYNXjbE.css  21.01 kB │ gzip:  5.16 kB
+dist/assets/index-D4BHDYHH.js   50.38 kB │ gzip: 20.08 kB
+✓ built in 115ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+src/interpreter.test.js:
+(pass) 13 standard programs and flat parity [26.06ms]
+(pass) arithmetic precedence, unary and whitespace [0.32ms]
+(pass) invalid numeric formats and tokens [0.09ms]
+(pass) whole validation and runtime preservation [0.14ms]
+(pass) variables and paths [0.10ms]
+(pass) procedure declarations, parameters, forward calls, scope [0.14ms]
+(pass) stop unwinds procedures and repeats [0.05ms]
+(pass) lexical repeat counter and nested loops [0.05ms]
+(pass) home, pen, clear, colors and widths [0.06ms]
+(pass) 3D basis rotations [0.16ms]
+(pass) all movement aliases [0.34ms]
+(pass) limits [3.63ms]
+(pass) missing arguments point to actual token or command at EOF [0.10ms]
+(pass) stepping shares synchronous execution [0.31ms]
+(pass) long expressions stay within language limits without JS stack errors [9.98ms]
+(pass) ordinary identifiers never collide with JavaScript object prototypes [0.11ms]
+(pass) local assignments shadow globals from execution until the call ends [0.09ms]
+(pass) large finite angles cannot overflow the degree conversion [0.03ms]
+
+ 18 pass
+ 0 fail
+ 339 expect() calls
+Ran 18 tests across 1 file. [44.00ms]
+(exit 0)

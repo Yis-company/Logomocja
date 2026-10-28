@@ -1,0 +1,943 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ typescript@7.0.2
++ vite@8.3.5
++ @preact/signals@2.11.4
++ preact@11.1.0
+
+24 packages installed [42.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 48 modules transformed.
+rendering chunks...
+dist/index.html                   1.40 kB
+dist/assets/index-BlHqec4A.css   24.74 kB
+dist/assets/index-CcWdhnbg.js   155.75 kB
+
+✓ built in 60ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/spec.test.ts:
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: np [1.15ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: NP [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: nP [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: Np
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: naprzod [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: NAPRZOD [0.07ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: nApRzOd [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: NaPrZoD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: naprzód
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: NAPRZÓD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: nApRzÓd
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: NaPrZóD [0.06ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: fd [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: FD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: fD [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: Fd [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: forward [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: FORWARD [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: fOrWaRd
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > fd: FoRwArD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: ws [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: WS [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: wS [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: Ws
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: wstecz
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: WSTECZ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: wStEcZ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: WsTeCz
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: bk
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: BK
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: bK
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: Bk
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: back
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: BACK [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: bAcK [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > bk: BaCk [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: pw [0.13ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: PW [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: pW [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: Pw [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: prawo [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: PRAWO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: pRaWo [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: PrAwO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: rt [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: RT [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: rT [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: Rt [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: right [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: RIGHT [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: rIgHt [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rt: RiGhT [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lw [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LW [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lW [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: Lw [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lewo [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LEWO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lEwO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LeWo [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lt [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lT [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: Lt [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: left
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LEFT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: lEfT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > lt: LeFt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pod [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: POD [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pOd [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PoD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: podnies
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PODNIES
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pOdNiEs [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PoDnIeS [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: podnieś [0.13ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PODNIEŚ [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pOdNiEś
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PoDnIeŚ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pu
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PU [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pU
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: Pu [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: penup [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PENUP [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: pEnUp
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pu: PeNuP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: opu [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OPU
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: oPu [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OpU
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: opusc
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OPUSC [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: oPuSc [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OpUsC [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: opuść [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OPUŚĆ [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: oPuŚć
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: OpUśĆ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: pd [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: PD [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: pD
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: Pd
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: pendown
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: PENDOWN
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: pEnDoWn
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pd: PeNdOwN
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: kolor [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: KOLOR [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: kOlOr
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: KoLoR
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: color [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: COLOR
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: cOlOr
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > color: CoLoR
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: grubosc [0.05ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: GRUBOSC [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: gRuBoSc
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: GrUbOsC [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: grubość
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: GRUBOŚĆ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: gRuBoŚć
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: GrUbOśĆ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: width
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: WIDTH [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: wIdTh
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > width: WiDtH
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: powtorz [0.11ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: POWTORZ [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: pOwToRz [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: PoWtOrZ [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: powtórz [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: POWTÓRZ [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: pOwTóRz [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: PoWtÓrZ [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: repeat [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: REPEAT [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: rEpEaT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repeat: RePeAt [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: niech [0.06ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: NIECH [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: nIeCh [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: NiEcH
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: let
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: LET
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: lEt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > let: LeT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: jeśli [0.09ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: JEŚLI [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: jEśLi [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: JeŚlI [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: jesli [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: JESLI [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: jEsLi [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: JeSlI
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: if [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: IF [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: iF [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > if: If [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: jeżeli [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: JEŻELI [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: jEżElI [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: JeŻeLi [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: jezeli [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: JEZELI [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: jEzElI [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: JeZeLi [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: ifelse [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: IFELSE [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: iFeLsE [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ifelse: IfElSe [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > stop: stop [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > stop: STOP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > stop: sToP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > stop: StOp
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: dom [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: DOM [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: dOm
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: DoM [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: home [0.74ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: HOME [0.18ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: hOmE [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > home: HoMe
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: czyść [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CZYŚĆ [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: cZyŚć
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CzYśĆ [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: czysc
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CZYSC
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: cZySc
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CzYsC
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: cs [0.22ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CS
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: cS
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: Cs
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: clearscreen
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: CLEARSCREEN
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: cLeArScReEn
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > cs: ClEaRsCrEeN
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: gora [0.05ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: GORA [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: gOrA [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: GoRa
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: góra
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: GÓRA
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: gÓrA
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: GóRa
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: pitchup
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: PITCHUP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: pItChUp
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > up: PiTcHuP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: dol [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: DOL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: dOl
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: DoL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: dół
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: DÓŁ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: dÓł
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: DóŁ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: pitchdown
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: PITCHDOWN [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: pItChDoWn
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > down: PiTcHdOwN
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: pp [0.07ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: PP [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: pP
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: Pp
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: przechylprawo
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: PRZECHYLPRAWO
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: pRzEcHyLpRaWo
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: PrZeChYlPrAwO
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: rr
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: RR
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: rR
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: Rr
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: rollright
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: ROLLRIGHT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: rOlLrIgHt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rr: RoLlRiGhT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: pl [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: PL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: pL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: Pl
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: przechyllewo
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: PRZECHYLLEWO
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: pRzEcHyLlEwO
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: PrZeChYlLeWo
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: rl
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: RL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: rL
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: Rl
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: rollleft
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: ROLLLEFT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: rOlLlEfT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > rl: RoLlLeFt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: nrpowt [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: NRPOWT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: nRpOwT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: NrPoWt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: repcount
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: REPCOUNT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: rEpCoUnT
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > repcount: RePcOuNt
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: oto [0.23ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: OTO [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: oTo [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: OtO
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: to
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: TO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: tO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > to: To [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: już [0.06ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: JUŻ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: jUż
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: JuŻ
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: juz
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: JUZ [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: jUz [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: JuZ [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: end
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: END
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: eNd
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > end: EnD [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > ma: is case-insensitive in headers [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > 3D commands in 3D mode under every alias are equivalent [0.08ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > gora [0.16ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > GORA [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > gOrA [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > GoRa [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > góra [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > GÓRA [0.81ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > gÓrA [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > GóRa [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pitchup [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PITCHUP [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pItChUp [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PiTcHuP [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > dol [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > DOL [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > dOl [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > DoL [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > dół [0.36ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > DÓŁ [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > dÓł [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > DóŁ [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pitchdown [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PITCHDOWN [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pItChDoWn [0.31ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PiTcHdOwN [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pp [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PP [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pP [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > Pp [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > przechylprawo [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PRZECHYLPRAWO [0.57ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pRzEcHyLpRaWo [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PrZeChYlPrAwO [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rr [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > RR [0.11ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rR [0.28ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > Rr [0.04ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rollright [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > ROLLRIGHT [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rOlLrIgHt [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > RoLlRiGhT [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pl [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PL [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pL [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > Pl [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > przechyllewo [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PRZECHYLLEWO [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > pRzEcHyLlEwO [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > PrZeChYlLeWo [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rl [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > RL [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rL [0.03ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > Rl [0.07ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rollleft [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > ROLLLEFT [0.01ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > rOlLlEfT [0.02ms]
+(pass) command aliases (Polish/English, accented/unaccented, mixed case) > pitch and roll commands are parse-time errors in 2D, at the command > RoLlLeFt [0.03ms]
+(pass) numbers > 80 [0.04ms]
+(pass) numbers > 12.5 [0.04ms]
+(pass) numbers > .5 [0.02ms]
+(pass) numbers > 0.25
+(pass) numbers > leading zeros are decimal: 007 [0.02ms]
+(pass) numbers > a sign is an operator: np -5 [0.05ms]
+(pass) numbers > a sign is an operator: np +5 [0.01ms]
+(pass) numbers > invalid number 1e3 is an error at the literal [0.05ms]
+(pass) numbers > invalid number 1E3 is an error at the literal [0.02ms]
+(pass) numbers > invalid number 1e-3 is an error at the literal [0.02ms]
+(pass) numbers > invalid number 0x10 is an error at the literal [0.02ms]
+(pass) numbers > invalid number 1.2.3 is an error at the literal [0.02ms]
+(pass) numbers > invalid number 12a is an error at the literal [0.02ms]
+(pass) numbers > invalid number 1_0 is an error at the literal [0.01ms]
+(pass) numbers > invalid number . is an error at the literal [0.01ms]
+(pass) numbers > invalid number ..5 is an error at the literal [0.01ms]
+(pass) numbers > NaN is not a number [0.03ms]
+(pass) numbers > Infinity is not a number [0.02ms]
+(pass) numbers > nan is not a number [0.01ms]
+(pass) numbers > infinity is not a number [0.01ms]
+(pass) numbers > 1,5 is not a number (comma is a stray token) [0.03ms]
+(skip) numbers > AMBIGUOUS: trailing-dot literal 5.
+(pass) precedence and associativity > np 20 - 5 - 3 moves 12 [0.03ms]
+(pass) precedence and associativity > np 2 + 3 * 4 moves 14
+(pass) precedence and associativity > np 100 / 10 / 2 moves 5
+(pass) precedence and associativity > np 8 / 4 * 2 moves 4
+(pass) precedence and associativity > np 2 - 3 + 4 moves 3
+(pass) precedence and associativity > np 2 * 3 + 4 * 5 moves 26
+(pass) precedence and associativity > np (2 + 3) * 4 moves 20
+(pass) precedence and associativity > np 20 - (5 - 3) moves 18
+(pass) precedence and associativity > np 10-2*3 moves 4
+(pass) precedence and associativity > np 2*3-4/2 moves 4
+(pass) precedence and associativity > np -2 * -3 moves 6
+(pass) precedence and associativity > np - 2 + 5 moves 3
+(pass) precedence and associativity > np -2 + 5 moves 3
+(pass) precedence and associativity > np 2 * -3 + 10 moves 4
+(pass) precedence and associativity > np 2 - -3 * 2 moves 8
+(pass) precedence and associativity > np ((((7)))) moves 7
+(pass) precedence and associativity > np 3 * (2 + (4 - 1)) / 5 moves 3 [0.01ms]
+(pass) precedence and associativity > np 1 + 2 - 3 + 4 - 5 + 6 moves 5
+(pass) precedence and associativity > np 64 / 4 / 2 / 2 moves 4
+(pass) whitespace rule for binary operators > np 10 + 5 (both sides)
+(pass) whitespace rule for binary operators > np 10+5 (neither side)
+(pass) whitespace rule for binary operators > np 10 +5 (left only) is np 10 then a stray token, error at the operator [0.06ms]
+(pass) whitespace rule for binary operators > np 10+ 5 (right only) is an error at the operator [0.02ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 + 5) and np (10+5) [0.02ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 +5) is an error [0.04ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10+ 5) is an error [0.02ms]
+(pass) whitespace rule for binary operators > after a parenthesis: np (10) +5 is an error at the operator [0.03ms]
+(pass) whitespace rule for binary operators > newline counts as whitespace: np 10\n+ 5 [0.03ms]
+(pass) whitespace rule for binary operators > np 10 - 5 (both sides)
+(pass) whitespace rule for binary operators > np 10-5 (neither side)
+(pass) whitespace rule for binary operators > np 10 -5 (left only) is np 10 then a stray token, error at the operator [0.02ms]
+(pass) whitespace rule for binary operators > np 10- 5 (right only) is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 - 5) and np (10-5) [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 -5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10- 5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > after a parenthesis: np (10) -5 is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > newline counts as whitespace: np 10\n- 5 [0.01ms]
+(pass) whitespace rule for binary operators > np 10 * 5 (both sides)
+(pass) whitespace rule for binary operators > np 10*5 (neither side)
+(pass) whitespace rule for binary operators > np 10 *5 (left only) is np 10 then a stray token, error at the operator [0.02ms]
+(pass) whitespace rule for binary operators > np 10* 5 (right only) is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 * 5) and np (10*5)
+(pass) whitespace rule for binary operators > inside parentheses: np (10 *5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10* 5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > after a parenthesis: np (10) *5 is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > newline counts as whitespace: np 10\n* 5
+(pass) whitespace rule for binary operators > np 10 / 5 (both sides)
+(pass) whitespace rule for binary operators > np 10/5 (neither side)
+(pass) whitespace rule for binary operators > np 10 /5 (left only) is np 10 then a stray token, error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > np 10/ 5 (right only) is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10 / 5) and np (10/5)
+(pass) whitespace rule for binary operators > inside parentheses: np (10 /5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > inside parentheses: np (10/ 5) is an error [0.01ms]
+(pass) whitespace rule for binary operators > after a parenthesis: np (10) /5 is an error at the operator [0.01ms]
+(pass) whitespace rule for binary operators > newline counts as whitespace: np 10\n/ 5
+(pass) whitespace rule for binary operators > procedure arguments: p 10 -5 passes two arguments (10, -5) [0.06ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 +5 passes two arguments (10, 5) [0.02ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10-5 3 passes (5, 3) [0.04ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 * 2 3 passes (20, 3) [0.02ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 / 2 3 passes (5, 3) [0.03ms]
+(pass) whitespace rule for binary operators > procedure arguments: p (10) -5 passes (10, -5) [0.02ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 -(5) passes (10, -5) [0.02ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 - 5 is one argument; missing second reported at the call (program ends) [0.05ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 *2 3 — second argument cannot start at "*" [0.04ms]
+(pass) whitespace rule for binary operators > procedure arguments: p 10 /2 3 — second argument cannot start at "/" [0.10ms]
+(pass) whitespace rule for binary operators > kwadrat 40 * 2 90 passes 80 and 90 (spec example) [0.05ms]
+(pass) whitespace rule for binary operators > the rule does not apply to comparisons [0.04ms]
+(pass) whitespace rule for binary operators > the rule applies to operators inside conditions: jeśli 5 -3 > 0 is an error [0.04ms]
+(pass) whitespace rule for binary operators > inside a repeat body: [np 10 -5] is an error at "-" [0.04ms]
+(pass) stacked unary signs > np - -2 moves 2 [0.05ms]
+(pass) stacked unary signs > np --2 moves 2
+(pass) stacked unary signs > np -(3 - 5) moves 2
+(pass) stacked unary signs > np - - - 3 moves -3
+(pass) stacked unary signs > np ---3 moves -3
+(pass) stacked unary signs > np -+-+3 moves 3
+(pass) stacked unary signs > np + + 4 moves 4
+(pass) stacked unary signs > np 3 - -2 moves 5
+(pass) stacked unary signs > np 3--2 moves 5
+(pass) stacked unary signs > np 3 * -2 moves -6
+(pass) stacked unary signs > np 3*-2 moves -6
+(pass) stacked unary signs > np 2 * - - 3 moves 6
+(pass) stacked unary signs > np 2 - - - 1 moves 1
+(pass) stacked unary signs > np -(-(-(2))) moves -2
+(pass) stacked unary signs > np -bok [0.01ms]
+(pass) stacked unary signs > np - -:bok [0.03ms]
+(pass) stacked unary signs > np -nrpowt [0.02ms]
+(pass) stacked unary signs > unary signs in procedure arguments: p - -2 -3 [0.03ms]
+(pass) comparisons > jeśli 2 < 3 [0.01ms]
+(pass) comparisons > jeżeli 2 < 3 [0.01ms]
+(pass) comparisons > jeśli 3 < 3
+(pass) comparisons > jeżeli 3 < 3
+(pass) comparisons > jeśli 3 > 2
+(pass) comparisons > jeżeli 3 > 2 [0.01ms]
+(pass) comparisons > jeśli 3 > 3
+(pass) comparisons > jeżeli 3 > 3
+(pass) comparisons > jeśli 3 = 3
+(pass) comparisons > jeżeli 3 = 3
+(pass) comparisons > jeśli 3 = 4
+(pass) comparisons > jeżeli 3 = 4
+(pass) comparisons > jeśli 3 <= 3
+(pass) comparisons > jeżeli 3 <= 3
+(pass) comparisons > jeśli 4 <= 3
+(pass) comparisons > jeżeli 4 <= 3
+(pass) comparisons > jeśli 3 >= 3
+(pass) comparisons > jeżeli 3 >= 3
+(pass) comparisons > jeśli 2 >= 3
+(pass) comparisons > jeżeli 2 >= 3
+(pass) comparisons > jeśli 3 <> 4
+(pass) comparisons > jeżeli 3 <> 4
+(pass) comparisons > jeśli 3 <> 3
+(pass) comparisons > jeżeli 3 <> 3
+(pass) comparisons > jeśli 2 * 3 > 1 + 4
+(pass) comparisons > jeżeli 2 * 3 > 1 + 4 [0.02ms]
+(pass) comparisons > jeśli -1 < 0
+(pass) comparisons > jeżeli -1 < 0
+(pass) comparisons > jeśli 2-1=1
+(pass) comparisons > jeżeli 2-1=1
+(pass) comparisons > jeśli 0.1 + 0.2 = 0.3 [0.03ms]
+(pass) comparisons > jeżeli 0.1 + 0.2 = 0.3
+(pass) comparisons > jeśli 0.1 + 0.2 <> 0.3
+(pass) comparisons > jeżeli 0.1 + 0.2 <> 0.3
+(pass) geometry 2D > initial state: origin, heading +Y, pen down, colour #16866a, width 3
+(pass) geometry 2D > pw rotates clockwise seen from above [0.01ms]
+(pass) geometry 2D > lw rotates counter-clockwise
+(pass) geometry 2D > negative angles turn the other way [0.01ms]
+(pass) geometry 2D > ws moves -d
+(pass) geometry 2D > np of a negative distance moves backwards
+(pass) geometry 2D > pw 30 [0.02ms]
+(pass) geometry 2D > pw 45 [0.01ms]
+(pass) geometry 2D > lw 45 [0.01ms]
+(pass) geometry 2D > pw 120
+(pass) geometry 2D > pw 360 and pw 450 [0.01ms]
+(pass) geometry 2D > decimal angles [0.02ms]
+(pass) geometry 2D > a square closes exactly [0.01ms]
+(pass) geometry 2D > a move of zero draws nothing [0.02ms]
+(pass) geometry 2D > pen up moves without drawing; pen down draws again
+(pass) geometry 2D > pen state, colour and width persist until changed [0.03ms]
+(pass) geometry 2D > flat programs produce identical coordinates in 2D and 3D [0.28ms]
+(pass) geometry 3D > gora 90 heads along the former up; up follows (becomes former back); right unchanged [0.09ms]
+(pass) geometry 3D > dol 90 rotates the opposite way [0.03ms]
+(pass) geometry 3D > pp 90: up is former right, right is former down, heading unchanged [0.02ms]
+(pass) geometry 3D > pl 90 rotates the opposite way [0.02ms]
+(pass) geometry 3D > pw rotates around up, right follows [0.02ms]
+(pass) geometry 3D > pp does not change the heading
+(pass) geometry 3D > gora keeps the right vector [0.01ms]
+(pass) geometry 3D > pw keeps the up vector
+(pass) geometry 3D > gora 30 / dol 30 [0.02ms]
+(pass) geometry 3D > pp 30 / pl 30 then pw 90 [0.03ms]
+(pass) geometry 3D > pw then gora / gora then pw [0.03ms]
+(pass) geometry 3D > matches a reference rigid-body turtle (sequence 1) [0.23ms]
+(pass) geometry 3D > orientation stays orthonormal and right-handed (sequence 1) [0.14ms]
+(pass) geometry 3D > matches a reference rigid-body turtle (sequence 2) [0.04ms]
+(pass) geometry 3D > orientation stays orthonormal and right-handed (sequence 2) [0.06ms]
+(pass) geometry 3D > matches a reference rigid-body turtle (sequence 3) [0.03ms]
+(pass) geometry 3D > orientation stays orthonormal and right-handed (sequence 3) [0.06ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 1 [0.06ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 2 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 3 [0.08ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 4 [0.08ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 5 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 6 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 7 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 8 [0.06ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 9 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 10 [0.05ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 11 [0.06ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 12 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 13 [0.05ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 14 [0.02ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 15 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 16 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 17 [0.02ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 18 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 19 [0.02ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 20 [0.01ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 21 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 22 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 23 [0.06ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 24 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 25 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 26 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 27 [0.01ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 28 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 29 [0.07ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 30 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 31 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 32 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 33
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 34 [0.02ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 35 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 36 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 37 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 38 [0.04ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 39 [0.03ms]
+(pass) geometry 3D: seeded random command sequences against the reference turtle > random sequence 40 [0.03ms]
+(pass) dom > returns to origin drawing a segment, resets heading [0.02ms]
+(pass) dom > no segment when already at origin
+(pass) dom > no segment when the pen is up; pen state untouched
+(pass) dom > colour and width untouched [0.02ms]
+(pass) dom > 3D: resets heading +Y, right +X, up +Z and returns to origin [0.04ms]
+(pass) czyść > removes every segment drawn so far [0.01ms]
+(pass) czyść > changes nothing else (position, heading, pen, colour, width) [0.01ms]
+(pass) czyść > pen up survives czyść
+(pass) czyść > only segments drawn afterwards are returned [0.01ms]
+(pass) repeat > 0 runs nothing [0.02ms]
+(pass) repeat > n times [0.01ms]
+(pass) repeat > count may be an expression [0.02ms]
+(pass) repeat > count from a variable [0.01ms]
+(pass) repeat > 10000 passes the count check (it then exceeds the operation limit at run time) [0.23ms]
+(pass) repeat > nested repeats [0.01ms]
+(pass) repeat > literal count 10001 is a parse-time error at the count [0.07ms]
+(pass) repeat > literal count 2.5 is a parse-time error at the count [0.04ms]
+(pass) repeat > literal count -1 is a parse-time error at its first token [0.03ms]
+(pass) repeat > literal count expression 5 / 2 is a parse-time error at its first token [0.02ms]
+(pass) repeat > literal count in unexecuted code is still checked at parse time [0.03ms]
+(pass) repeat > count from a name checked at run time, at the first token of the argument [0.03ms]
+(pass) repeat > negative count from a name [0.02ms]
+(pass) repeat > count from a name above 10000 [0.03ms]
+(pass) repeat > bad name-dependent count in a branch not taken is not an error [0.01ms]
+(pass) nrpowt > iteration number of the current repeat starting at 1 [0.01ms]
+(pass) nrpowt > innermost enclosing repeat [0.04ms]
+(pass) nrpowt > after an inner repeat ends, refers to the outer one again [0.01ms]
+(pass) nrpowt > inner repeat count can use the outer nrpowt [0.01ms]
+(pass) nrpowt > inside a conditional inside a repeat [0.01ms]
+(pass) nrpowt > inside a repeat in a procedure body [0.02ms]
+(pass) nrpowt > in a procedure body outside a repeat is a parse-time error even if called from a repeat [0.03ms]
+(pass) nrpowt > at top level outside a repeat is a parse-time error [0.02ms]
+(pass) nrpowt > in the count of its own (top-level) repeat it is outside any repeat [0.02ms]
+(pass) nrpowt > repcount alias outside a repeat [0.02ms]
+(pass) nrpowt > nrpowt cannot be a command [0.03ms]
+(pass) variables > assign and reassign [0.01ms]
+(pass) variables > names ignore case [0.01ms]
+(pass) variables > Polish letters ignore case [0.01ms]
+(pass) variables > legacy :name reference to a variable [0.01ms]
+(pass) variables > top-level niech inside a repeat updates the global [0.01ms]
+(pass) variables > undeclared name is a parse-time error at the name [0.02ms]
+(pass) variables > use before the top-level niech: declared, but unassigned at run time [0.02ms]
+(pass) variables > unassigned variable reported at the first token of the argument [0.02ms]
+(pass) variables > niech in a branch not taken declares but does not assign [0.02ms]
+(pass) variables > assigned on the current path (second iteration) [0.01ms]
+(pass) variables > not yet assigned on the current path (first iteration) [0.03ms]
+(pass) variables > procedure reads a global assigned at top level after the definition [0.02ms]
+(pass) variables > procedure called before the global is assigned: run-time error [0.04ms]
+(pass) variables > local shadows a global for the rest of the call and is discarded [0.02ms]
+(pass) variables > a procedure cannot modify a global [0.01ms]
+(pass) variables > locals do not survive between calls [0.02ms]
+(pass) variables > locals are per call in recursion [0.03ms]
+(pass) variables > declared local read before assignment, no global: run-time error [0.02ms]
+(pass) variables > parameter reassigned [0.02ms]
+(pass) variables > reassigning a parameter does not change the caller variable [0.01ms]
+(pass) variables > name assigned only in another procedure is a parse-time error [0.03ms]
+(pass) variables > procedure local is not visible at top level (parse-time) [0.02ms]
+(pass) variables > variables are lexical, not dynamic: callee sees the global, not the caller local [0.01ms]
+(pass) variables > variable may not be a command word [0.06ms]
+(pass) variables > variable may not be the name of a procedure (procedure defined later) [0.03ms]
+(pass) variables > variable may not be the name of a procedure (procedure defined earlier, other case) [0.02ms]
+(pass) variables > niech needs a name [0.03ms]
+(pass) procedures > ma: header form [0.02ms]
+(pass) procedures > ma: header without spaces after commas [0.02ms]
+(pass) procedures > legacy header form with :param references [0.02ms]
+(pass) procedures > legacy header with plain references [0.02ms]
+(pass) procedures > :param references with a ma: header [0.02ms]
+(pass) procedures > to / end English forms [0.02ms]
+(pass) procedures > procedure, parameter and keyword names ignore case [0.02ms]
+(pass) procedures > procedure without parameters [0.01ms]
+(pass) procedures > definition after use [0.02ms]
+(pass) procedures > parameter named like a procedure: call in command position, parameter in argument position [0.02ms]
+(pass) procedures > parameters stand in for repeat counts and call arguments [0.02ms]
+(pass) procedures > recursion [0.05ms]
+(pass) procedures > mutual recursion, defined after use [0.04ms]
+(pass) procedures > stop inside a repeat ends the procedure call, not just the body [0.04ms]
+(pass) procedures > stop inside nested repeats ends the whole call [0.02ms]
+(pass) procedures > stop inside an else body ends the call [0.01ms]
+(pass) procedures > stop in a called procedure does not stop the caller repeat [0.01ms]
+(pass) procedures > stop at top level ends the program
+(pass) procedures > stop at top level inside repeat and conditional ends the program [0.01ms]
+(pass) procedures > duplicate definition is an error [0.02ms]
+(pass) procedures > duplicate definition differing only in case is an error [0.02ms]
+(pass) procedures > definition inside a repeat body [0.03ms]
+(pass) procedures > definition inside a conditional body [0.02ms]
+(pass) procedures > definition inside another procedure [0.02ms]
+(pass) procedures > oto not at the beginning of a line [0.02ms]
+(pass) procedures > missing już [0.02ms]
+(pass) procedures > już not alone on its line [0.02ms]
+(pass) procedures > body on the header line [0.04ms]
+(pass) procedures > procedure name may not be a keyword [0.02ms]
+(pass) procedures > too few arguments, program ends: reported at the call [0.03ms]
+(pass) procedures > too few arguments: reported where the argument should start [0.02ms]
+(pass) procedures > too few arguments before a ] [0.02ms]
+(pass) procedures > too many arguments: the extra value is stray [0.03ms]
+(pass) procedures > argument missing because the next line starts a definition [0.02ms]
+(pass) procedures > unknown procedure [0.39ms]
+(pass) procedures > procedure name used as a value is an error [0.03ms]
+(pass) error positions: missing arguments > np at end of program → at np [0.02ms]
+(pass) error positions: missing arguments > second command missing its argument at end [0.02ms]
+(pass) error positions: missing arguments > next line [0.02ms]
+(pass) error positions: missing arguments > powtorz at end [0.02ms]
+(pass) error positions: missing arguments > powtorz count, no body, at end [0.02ms]
+(pass) error positions: missing arguments > jeśli at end [0.02ms]
+(pass) error positions: missing arguments > jeśli condition, no body, at end [0.02ms]
+(pass) error positions: missing arguments > jeżeli missing second body at end [0.02ms]
+(pass) error positions: missing arguments > niech at end [0.01ms]
+(pass) error positions: missing arguments > niech name at end [0.02ms]
+(pass) error positions: missing arguments > kolor at end [0.02ms]
+(pass) error positions: missing arguments > grubosc at end [0.01ms]
+(pass) error positions: missing arguments > gora at end (3D) [0.02ms]
+(pass) error positions: missing arguments > missing argument inside an unclosed bracket at end → at the command [0.02ms]
+(pass) error positions: missing arguments > before ] [0.02ms]
+(pass) error positions: missing arguments > before )  [0.01ms]
+(pass) error positions: missing arguments > before ] [0.01ms]
+(pass) error positions: missing arguments > before another command [0.01ms]
+(pass) error positions: missing arguments > niech x before ] [0.02ms]
+(pass) error positions: missing arguments > kolor before ] [0.02ms]
+(pass) error positions: missing arguments > powtorz count missing before [ [0.01ms]
+(pass) error positions: missing arguments > jeśli condition missing before [ [0.02ms]
+(pass) error positions: missing arguments > powtorz body missing before another command [0.02ms]
+(pass) error positions: missing arguments > jeżeli second body missing before another command [0.02ms]
+(pass) error positions: missing arguments > operand missing before ) [0.03ms]
+(pass) error positions: missing arguments > empty parentheses [0.02ms]
+(pass) error positions: missing arguments > argument missing before już in a procedure body [0.02ms]
+(pass) error positions: missing arguments > program ends in a comment after the command → at the command [0.02ms]
+(pass) error positions: missing arguments > before a comparison [0.02ms]
+(pass) error positions: missing arguments > before a comma [0.02ms]
+(pass) error positions: missing arguments > before a colour literal [0.02ms]
+(pass) error positions: missing arguments > procedure argument before a colour literal [0.02ms]
+(pass) error positions: missing arguments > jeśli body missing before ] [0.02ms]
+(pass) error positions: missing arguments > jeśli comparison missing before ] [0.02ms]
+(pass) error positions: missing arguments > grubosc before ] [0.01ms]
+(skip) error positions: missing arguments > AMBIGUOUS: np 10 + (end) — implementation reports at "+" (1,7)
+(skip) error positions: missing arguments > AMBIGUOUS: jeśli 1 = (end) — implementation reports at "=" (1,9)
+(skip) error positions: missing arguments > AMBIGUOUS: np ( (end) — implementation reports at "(" (1,4)
+(skip) error positions: missing arguments > AMBIGUOUS: np - (end) — implementation reports at "-" (1,4)
+(pass) error positions: stray values > np 10 20 [0.02ms]
+(pass) error positions: stray values > a number at the start [0.03ms]
+(pass) error positions: stray values > stray parenthesised value [0.02ms]
+(pass) error positions: stray values > stray -5 [0.02ms]
+(pass) error positions: stray values > stray +5 [0.01ms]
+(pass) error positions: stray values > stray value in a body [0.02ms]
+(pass) error positions: stray values > stray :x [0.02ms]
+(pass) error positions: stray values > stray .5 [0.01ms]
+(pass) error positions: stray values > stray colour literal [0.01ms]
+(pass) error positions: stray values > stray nrpowt [0.02ms]
+(pass) error positions: stray values > stray value on the next line [0.01ms]
+(pass) error positions: other errors > unknown command [0.14ms]
+(pass) error positions: other errors > malformed colour: 7 digits [0.02ms]
+(pass) error positions: other errors > malformed colour: 5 digits [0.01ms]
+(pass) error positions: other errors > malformed colour: non-hex [0.01ms]
+(pass) error positions: other errors > malformed colour: no # [0.02ms]
+(pass) error positions: other errors > malformed colour: unquoted [0.04ms]
+(pass) error positions: other errors > malformed colour: a number [0.02ms]
+(pass) error positions: other errors > colour hex digits are case-insensitive, output lowercase [0.01ms]
+(pass) error positions: other errors > width 13 (literal) at parse time, at the argument [0.03ms]
+(pass) error positions: other errors > width 0 [0.03ms]
+(pass) error positions: other errors > width 2.5 [0.02ms]
+(pass) error positions: other errors > width -3 at its first token [0.02ms]
+(pass) error positions: other errors > width (13) at its first token [0.02ms]
+(pass) error positions: other errors > width literal expression 2 * 7 [0.02ms]
+(pass) error positions: other errors > width 1 and 12 accepted, 3 * 4 accepted [0.05ms]
+(pass) error positions: other errors > literal width in unexecuted code is checked at parse time [0.02ms]
+(pass) error positions: other errors > width from a name checked at run time, at the first token of the argument [0.02ms]
+(pass) error positions: other errors > width from a name: first token is a literal [0.02ms]
+(pass) error positions: other errors > width from a name: first token is a parenthesis [0.01ms]
+(pass) error positions: other errors > unbalanced ] [0.01ms]
+(pass) error positions: other errors > unclosed [ reported at the [ [0.03ms]
+(pass) error positions: other errors > unbalanced ) [0.01ms]
+(pass) error positions: other errors > unclosed ( reported at the ( [0.01ms]
+(pass) error positions: other errors > stray [ [0.02ms]
+(pass) error positions: other errors > undeclared name in a procedure [0.03ms]
+(pass) error positions: other errors > division by zero: run time, at the first token of the argument [0.02ms]
+(pass) error positions: other errors > division by zero through a variable [0.03ms]
+(pass) error positions: other errors > division by zero in a literal width is still a run-time error [0.01ms]
+(pass) error positions: other errors > division by zero in a literal repeat count is a run-time error [0.02ms]
+(pass) error positions: other errors > division by zero in niech [0.01ms]
+(pass) error positions: other errors > division by zero in a procedure argument [0.02ms]
+(pass) error positions: other errors > unassigned variable in a procedure argument [0.02ms]
+(pass) error positions: other errors > non-finite result (literal) is a run-time error at the first token [0.03ms]
+(pass) error positions: other errors > non-finite result via a variable [0.05ms]
+(skip) error positions: other errors > AMBIGUOUS: unassigned variable on the right side of a condition
+(pass) parse-time versus run-time > a late parse error draws nothing [0.15ms]
+(pass) parse-time versus run-time > a parse error in a procedure never called draws nothing [0.02ms]
+(pass) parse-time versus run-time > run-time error keeps what was drawn [0.02ms]
+(pass) parse-time versus run-time > run-time error keeps what was drawn after czyść [0.02ms]
+(pass) parse-time versus run-time > run-time error after czyść with nothing drawn since [0.01ms]
+(pass) limits: source length > 50000 characters accepted [0.26ms]
+(pass) limits: source length > 50001 characters rejected (nothing drawn) [0.37ms]
+(pass) limits: source length > comments count as source characters [0.53ms]
+(pass) limits: tokens > 10000 tokens accepted [6.59ms]
+(pass) limits: tokens > 10001 tokens rejected [1.93ms]
+(pass) limits: tokens > parentheses and operators are tokens [1.96ms]
+(pass) limits: tokens > brackets are tokens [4.78ms]
+(pass) limits: tokens > commas are tokens [6.70ms]
+(pass) limits: tokens > comparisons are tokens; comments are not [4.56ms]
+(pass) limits: bracket nesting > 32 nested repeat brackets accepted [0.07ms]
+(pass) limits: bracket nesting > 33 nested repeat brackets rejected at the 33rd [ [0.08ms]
+(pass) limits: bracket nesting > conditional brackets count: 32 accepted [0.04ms]
+(pass) limits: bracket nesting > conditional brackets count: 33 rejected [0.09ms]
+(pass) limits: bracket nesting > mixed: 16 repeats + 16 conditionals accepted, one more rejected [0.11ms]
+(pass) limits: bracket nesting > inside a procedure body: 32 accepted, 33 rejected [1.49ms]
+(pass) limits: bracket nesting > the second body of jeżeli is at the same depth [0.05ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > 32 nested calls accepted (conditional bodies are not frames) [0.03ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > 33 nested calls rejected at run time [0.04ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > calls and repeats together: 32 accepted [0.03ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > calls and repeats together: 33 rejected [0.03ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > 32 nested repeats accepted [0.04ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > frames are released: sequential deep recursions are fine [0.03ms]
+(pass) limits: frames (calls + repeats; conditionals do not count) > frames released after stop inside a repeat [0.05ms]
+(skip) limits: frames (calls + repeats; conditionals do not count) > AMBIGUOUS: powtorz 0 [...] at depth 32
+(pass) limits: operations > commands + repeat + iteration ends: exactly 10000 accepted [0.38ms]
+(pass) limits: operations > 10001 rejected at run time, keeping what was drawn [0.43ms]
+(pass) limits: operations > repeat 0 counts one operation [0.25ms]
+(pass) limits: operations > niech counts [0.35ms]
+(pass) limits: operations > conditional (true) counts itself and its body end [0.33ms]
+(pass) limits: operations > conditional (false, no body) counts only itself [0.43ms]
+(pass) limits: operations > jeżeli else body end counts [0.33ms]
+(pass) limits: operations > empty conditional body still counts its end [0.32ms]
+(pass) limits: operations > call counts itself and its end [0.29ms]
+(pass) limits: operations > call with a body [0.29ms]
+(pass) limits: operations > evaluating expressions is not an operation [1.86ms]
+(pass) limits: operations > nested repeats [0.28ms]
+(pass) limits: operations > stop is a command and counts; reaching the end of the program does not [0.24ms]
+(pass) limits: operations > powtorz 10000 [] needs 10001 operations [0.09ms]
+(pass) limits: operations > pure commands: 10000 accepted [3.48ms]
+(skip) limits: operations > AMBIGUOUS: operation counting when stop ends a call / an iteration
+(pass) limits: segments > 9996 kept segments are fine [2.28ms]
+(pass) limits: segments > czyść releases kept segments [2.96ms]
+(pass) limits: coordinates > ±100000 is within bounds [0.08ms]
+(pass) limits: coordinates > beyond +100000 is a run-time error keeping earlier segments [0.06ms]
+(pass) limits: coordinates > beyond -100000 on x [0.03ms]
+(pass) limits: coordinates > beyond on z [0.02ms]
+(pass) limits: coordinates > also when the pen is up [0.01ms]
+(pass) output format > segment shape: from/to arrays of 3 numbers, lowercase colour, numeric width [0.11ms]
+(pass) output format > default colour is lowercase #16866a [0.01ms]
+(pass) output format > segments are in drawing order [0.01ms]
+(pass) output format > error object shape [0.10ms]
+(pass) output format > no error is null
+(pass) output format > empty program and comment-only program draw nothing [0.01ms]
+(pass) lexical rules > comments run to the end of the line [0.01ms]
+(pass) lexical rules > arguments may be on the next line
+(pass) lexical rules > commands may share a line or not
+(pass) lexical rules > header and body lines may carry comments [0.02ms]
+(pass) lexical rules > brackets may touch their contents [0.01ms]
+(pass) lexical rules > tokens without separating whitespace where unambiguous [0.05ms]
+(pass) lexical rules > a number glued to a name is not a number [0.04ms]
+(pass) lexical rules > unary signs in repeat counts and widths [0.02ms]
+(pass) lexical rules > CRLF and CR line endings count as one line break [0.28ms]
+(skip) lexical rules > AMBIGUOUS: operator followed directly by a comment
+(skip) lexical rules > AMBIGUOUS: procedure arguments not separated by whitespace, p (1)(2)
+(skip) lexical rules > AMBIGUOUS: allowed name characters
+(skip) lexical rules > AMBIGUOUS: characters vs UTF-16 code units
+(skip) ambiguous points (not asserted) > AMBIGUOUS: niech on a parameter that shares its name with a procedure
+(skip) ambiguous points (not asserted) > AMBIGUOUS: position of a missing już
+(skip) ambiguous points (not asserted) > AMBIGUOUS: position of a duplicate definition
+(skip) ambiguous points (not asserted) > AMBIGUOUS: positions of limit errors
+(skip) ambiguous points (not asserted) > AMBIGUOUS: missing argument vs missing już at end of program
+(pass) standard examples > kwadrat runs without error [0.05ms]
+(pass) standard examples > gwiazda runs without error [0.02ms]
+(pass) standard examples > rozeta runs without error [0.03ms]
+(pass) standard examples > spirala runs without error [0.08ms]
+(pass) standard examples > wielokaty runs without error [0.04ms]
+(pass) standard examples > drzewo runs without error [0.43ms]
+(pass) standard examples > sniezynka runs without error [0.62ms]
+(pass) standard examples > schody runs without error [0.02ms]
+(pass) standard examples > szescian runs without error [0.04ms]
+(pass) standard examples > pierscien runs without error [0.02ms]
+(pass) standard examples > kula runs without error [0.14ms]
+(pass) standard examples > helisa runs without error [0.07ms]
+(pass) standard examples > drzewo3d runs without error [0.53ms]
+(pass) standard examples > kwadrat: closed square of side 120 [0.09ms]
+(pass) standard examples > schody: exact staircase [0.04ms]
+(pass) standard examples > gwiazda: 5 segments [0.02ms]
+(pass) standard examples > rozeta: 48 segments [0.02ms]
+(pass) standard examples > spirala: 90 segments [0.05ms]
+(pass) standard examples > wielokaty: 42 segments [0.05ms]
+(pass) standard examples > drzewo: 255 segments [1.34ms]
+(pass) standard examples > sniezynka: 768 segments [0.41ms]
+(pass) standard examples > szescian: 17 segments [0.02ms]
+(pass) standard examples > pierscien: 36 segments [0.01ms]
+(pass) standard examples > kula: 432 segments [0.11ms]
+(pass) standard examples > helisa: 240 segments [0.07ms]
+(pass) standard examples > drzewo3d: 121 segments [0.24ms]
+(pass) standard examples > pierscien matches the reference turtle [0.10ms]
+
+tests/app-logic.test.ts:
+(pass) standard programs > there are exactly the thirteen standard programs [0.02ms]
+(pass) standard programs > kwadrat runs without errors in its mode [0.08ms]
+(pass) standard programs > gwiazda runs without errors in its mode [0.02ms]
+(pass) standard programs > rozeta runs without errors in its mode [0.04ms]
+(pass) standard programs > spirala runs without errors in its mode [0.08ms]
+(pass) standard programs > wielokaty runs without errors in its mode [0.05ms]
+(pass) standard programs > drzewo runs without errors in its mode [0.37ms]
+(pass) standard programs > sniezynka runs without errors in its mode [0.59ms]
+(pass) standard programs > schody runs without errors in its mode [0.02ms]
+(pass) standard programs > szescian runs without errors in its mode [0.03ms]
+(pass) standard programs > pierscien runs without errors in its mode [0.02ms]
+(pass) standard programs > kula runs without errors in its mode [0.21ms]
+(pass) standard programs > helisa runs without errors in its mode [0.11ms]
+(pass) standard programs > drzewo3d runs without errors in its mode [0.26ms]
+(pass) standard programs > 2D programs draw identical coordinates in 3D mode [1.83ms]
+(pass) standard programs > 3D programs are rejected in 2D mode with a parse error [0.16ms]
+(pass) standard programs > the square closes exactly [0.04ms]
+(pass) standard programs > the star returns to the start [0.04ms]
+(pass) standard programs > stairs climb 20 per step in 3D [0.02ms]
+(pass) standard programs > the cube spans 100 in every direction [0.14ms]
+(pass) standard programs > examples can be found by name [0.02ms]
+(pass) trace used for animation and stepping > the last recorded step matches the final result [2.70ms]
+(pass) trace used for animation and stepping > steps that draw add exactly one segment [0.05ms]
+(pass) trace used for animation and stepping > czyść moves the start of the kept segments [0.02ms]
+(pass) trace used for animation and stepping > a run-time error keeps the steps drawn before it [0.05ms]
+(pass) challenge checker > every reference solution passes its own challenge [1.15ms]
+(pass) challenge checker > there are at least five challenges with unique ids [0.02ms]
+(pass) challenge checker > starter programs do not pass [0.28ms]
+(pass) challenge checker > a square drawn turning left, or side by side in pieces, still matches [0.12ms]
+(pass) challenge checker > wrong sizes and missing sides are explained [0.13ms]
+(pass) challenge checker > extra requirements are checked [0.18ms]
+(pass) challenge checker > 3D challenges compare all three dimensions [0.06ms]
+(pass) challenge checker > collinear pieces are merged [0.05ms]
+(pass) syntax highlighting > marks every kind of token and escapes HTML [0.20ms]
+(pass) syntax highlighting > highlighting preserves the text exactly [0.72ms]
+(pass) syntax highlighting > the error token gets a marker [0.02ms]
+(pass) permalinks > programs survive encoding, including Polish letters [1.68ms]
+(pass) permalinks > long programs are compressed [0.69ms]
+(pass) permalinks > a damaged link is rejected [0.03ms]
+
+17 tests skipped:
+(skip) numbers > AMBIGUOUS: trailing-dot literal 5.
+(skip) error positions: missing arguments > AMBIGUOUS: np 10 + (end) — implementation reports at "+" (1,7)
+(skip) error positions: missing arguments > AMBIGUOUS: jeśli 1 = (end) — implementation reports at "=" (1,9)
+(skip) error positions: missing arguments > AMBIGUOUS: np ( (end) — implementation reports at "(" (1,4)
+(skip) error positions: missing arguments > AMBIGUOUS: np - (end) — implementation reports at "-" (1,4)
+(skip) error positions: other errors > AMBIGUOUS: unassigned variable on the right side of a condition
+(skip) limits: frames (calls + repeats; conditionals do not count) > AMBIGUOUS: powtorz 0 [...] at depth 32
+(skip) limits: operations > AMBIGUOUS: operation counting when stop ends a call / an iteration
+(skip) lexical rules > AMBIGUOUS: operator followed directly by a comment
+(skip) lexical rules > AMBIGUOUS: procedure arguments not separated by whitespace, p (1)(2)
+(skip) lexical rules > AMBIGUOUS: allowed name characters
+(skip) lexical rules > AMBIGUOUS: characters vs UTF-16 code units
+(skip) ambiguous points (not asserted) > AMBIGUOUS: niech on a parameter that shares its name with a procedure
+(skip) ambiguous points (not asserted) > AMBIGUOUS: position of a missing już
+(skip) ambiguous points (not asserted) > AMBIGUOUS: position of a duplicate definition
+(skip) ambiguous points (not asserted) > AMBIGUOUS: positions of limit errors
+(skip) ambiguous points (not asserted) > AMBIGUOUS: missing argument vs missing już at end of program
+
+ 867 pass
+ 17 skip
+ 0 fail
+ 6767 expect() calls
+Ran 884 tests across 2 files. [96.00ms]
+(exit 0)

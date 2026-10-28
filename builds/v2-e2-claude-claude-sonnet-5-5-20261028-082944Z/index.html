@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Logomocja — pracownia żółwia</title>
+    <meta name="description" content="Logomocja: polska pracownia żółwia w stylu klasycznego Logo. Rysuj na płaszczyźnie (2D) i w przestrzeni (3D), uruchamiaj programy krok po kroku, rozwiązuj wyzwania i dziel się rysunkami." />
+    <meta name="theme-color" content="#f4f1e8" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/manifest.webmanifest" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('logomocja:v1:theme');
+          var dark = t === 'dark' || ((t !== 'light') && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+          var r = document.documentElement;
+          r.dataset.theme = dark ? 'dark' : 'light';
+          r.style.colorScheme = dark ? 'dark' : 'light';
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', dark ? '#12171a' : '#f4f1e8');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/assets/main-wbdsk9yz.css" onerror="this.onerror=null;this.href='./assets/main-wbdsk9yz.css'" />
+  </head>
+  <body>
+    <div id="app" class="app"></div>
+    <noscript>Logomocja wymaga włączonej obsługi JavaScript, aby działać w przeglądarce.</noscript>
+    <script defer src="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/assets/main-9c9bdkrz.js" onerror="var s=document.createElement('script');s.src='./assets/main-9c9bdkrz.js';document.body.appendChild(s)"></script>
+  </body>
+</html>

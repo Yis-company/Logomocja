@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja – studio żółwia 2D i 3D</title>
+    <meta name="description" content="Logomocja: polskie studio Logo. Pisz programy, uruchamiaj je i patrz, jak żółw rysuje na płaszczyźnie i w przestrzeni." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4efe4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1514" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script>
+      // Motyw ustawiamy przed pierwszym malowaniem, żeby nie migał.
+      (function () {
+        var pref = 'system';
+        try { pref = localStorage.getItem('logomocja:theme') || 'system'; } catch (e) {}
+        var dark = pref === 'dark' || (pref !== 'light' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-claude-claude-opus-5-5-20261028-122444Z/assets/index-DGc1Sqx_.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-claude-claude-opus-5-5-20261028-122444Z/assets/index-BVHOMgHl.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div id="app">
+      <noscript><p class="noscript">Logomocja potrzebuje JavaScriptu, żeby działać.</p></noscript>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "id": "v2-e2-codex-gpt-6-luna-20261028-111813Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6-luna",
+  "cliVersion": "0.164.0",
+  "effort": "xhigh",
+  "startedAt": "2026-10-28T11:18:13.979Z",
+  "agentMs": 1672228,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 304613,
+    "cachedInput": 13779328,
+    "output": 162244,
+    "reasoning": 71463
+  },
+  "costUsd": 0.249377,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 91,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 3,
+    "distBytes": 247469
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "490883b379b8790e9dd2fbc0e9b31439ae7d23f3",
+  "repoVersion": "0.3.0",
+  "totalMs": 1715235,
+  "conformance": {
+    "combined": {
+      "passed": 584,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 584,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": false,
+    "gwiazda": false,
+    "rozeta": false,
+    "spirala": false,
+    "wielokaty": true,
+    "drzewo": false,
+    "sniezynka": false,
+    "schody": false,
+    "szescian": false,
+    "pierscien": false,
+    "kula": false,
+    "helisa": false,
+    "drzewo3d": false
+  },
+  "humanScore": null,
+  "notes": ""
+}

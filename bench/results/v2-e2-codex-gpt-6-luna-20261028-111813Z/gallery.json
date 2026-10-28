@@ -1,0 +1,57 @@
+{
+  "hook": true,
+  "programs": {
+    "kwadrat": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "gwiazda": {
+      "matches": false,
+      "reason": "segment 0: expected colour #c1763d, got ##c1763d"
+    },
+    "rozeta": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "spirala": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "wielokaty": {
+      "matches": true,
+      "reason": null
+    },
+    "drzewo": {
+      "matches": false,
+      "reason": "segment 0: expected colour #6b4f2a, got ##6b4f2a"
+    },
+    "sniezynka": {
+      "matches": false,
+      "reason": "segment 0: expected colour #2b6fb3, got ##2b6fb3"
+    },
+    "schody": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "szescian": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "pierscien": {
+      "matches": false,
+      "reason": "segment 0: expected colour #a478c0, got ##a478c0"
+    },
+    "kula": {
+      "matches": false,
+      "reason": "segment 0: expected colour #16866a, got ##16866a"
+    },
+    "helisa": {
+      "matches": false,
+      "reason": "segment 0: expected colour #c1763d, got ##c1763d"
+    },
+    "drzewo3d": {
+      "matches": false,
+      "reason": "segment 0: expected colour #6b4f2a, got ##6b4f2a"
+    }
+  }
+}

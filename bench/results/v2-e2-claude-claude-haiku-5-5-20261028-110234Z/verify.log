@@ -1,0 +1,143 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@5.9.3
++ vite@8.3.5
++ three@0.186.1
+
+28 packages installed [70.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.83 kB │ gzip:   0.89 kB
+dist/assets/index-Dj0921Rp.css   14.81 kB │ gzip:   3.98 kB
+dist/assets/index-DqXPh0qy.js   658.91 kB │ gzip: 172.33 kB
+
+✓ built in 175ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) lexical rules > keywords and names ignore case [2.22ms]
+(pass) lexical rules > accented and unaccented spellings are equivalent [0.70ms]
+(pass) lexical rules > a semicolon starts a comment to the end of the line [0.07ms]
+(pass) lexical rules > numbers may be .5, 12.5 or 5. [0.15ms]
+(pass) lexical rules > exponent, hex, NaN and Infinity are errors [0.45ms]
+(pass) lexical rules > colour literal is a quoted six-digit hex string, returned lower-case [0.14ms]
+(pass) lexical rules > an unterminated string is an error [0.03ms]
+(pass) lexical rules > characters outside the dialect are errors [0.05ms]
+(pass) expressions > * and / bind tighter than + and -, left to right [0.25ms]
+(pass) expressions > binary operator with whitespace on both sides or neither side [0.32ms]
+(pass) expressions > a comparison does not follow the spacing rule [0.17ms]
+(pass) expressions > unary signs stack and apply to any operand [2.47ms]
+(pass) expressions > division by zero is a run-time error at the argument [0.19ms]
+(pass) expressions > a missing operand is reported at the command when the program ends [0.07ms]
+(pass) expressions > unbalanced parentheses are reported at the open parenthesis [0.37ms]
+(pass) expressions > a non-finite result is a run-time error [0.12ms]
+(pass) turtle and drawing > starts at the origin heading +Y with pen down, default colour and width [0.07ms]
+(pass) turtle and drawing > the aliases are equivalent [0.82ms]
+(pass) turtle and drawing > pw turns right, lw turns left; the right vector follows the heading [0.28ms]
+(pass) turtle and drawing > a square closes exactly [0.35ms]
+(pass) turtle and drawing > pen up moves without drawing, pen down resumes [0.06ms]
+(pass) turtle and drawing > a move of zero draws nothing [0.03ms]
+(pass) turtle and drawing > dom returns to the origin and the initial orientation, drawing if pen is down [0.13ms]
+(pass) turtle and drawing > dom at the origin draws nothing and keeps pen state [0.04ms]
+(pass) turtle and drawing > czyść removes every drawn segment and changes nothing else [0.07ms]
+(pass) turtle and drawing > colour and width persist until changed [0.10ms]
+(pass) turtle and drawing > a width outside 1 to 12 or not an integer is a parse-time error [0.09ms]
+(pass) turtle and drawing > a width computed from a name is checked when executed [0.26ms]
+(pass) turtle and drawing > coordinates are limited to 100 000 in each direction [5.63ms]
+(pass) repeat and nrpowt > a count of 0 runs nothing [0.08ms]
+(pass) repeat and nrpowt > the count must be an integer from 0 to 10000 when written as a literal [1.69ms]
+(pass) repeat and nrpowt > nrpowt counts the iterations from 1 [0.31ms]
+(pass) repeat and nrpowt > nrpowt refers to the innermost enclosing repeat [0.07ms]
+(pass) repeat and nrpowt > nrpowt outside a repeat is a parse-time error [0.30ms]
+(pass) repeat and nrpowt > a repeat count can come from a variable [0.06ms]
+(pass) repeat and nrpowt > a run-time repeat count that is not an integer is reported at the argument [0.10ms]
+(pass) variables > niech assigns and reassigns a global [0.04ms]
+(pass) variables > a name must be declared somewhere to be used [0.40ms]
+(pass) variables > a variable assigned only inside a procedure is not visible at top level [1.14ms]
+(pass) variables > reading a declared but unassigned variable is a run-time error at the argument [0.33ms]
+(pass) variables > a local niech shadows a global for the rest of the call only [0.13ms]
+(pass) variables > a procedure reads globals [0.06ms]
+(pass) variables > a parameter can be reassigned inside its procedure [0.06ms]
+(pass) variables > a variable may not share the name of a procedure [0.04ms]
+(pass) variables > a parameter may share the name of a procedure [0.05ms]
+(pass) conditionals > jeśli runs its body only when the condition holds [0.06ms]
+(pass) conditionals > jeżeli picks the first or second body [0.11ms]
+(pass) conditionals > all six comparisons [0.11ms]
+(pass) conditionals > a condition needs a comparison [0.03ms]
+(pass) procedures > the legacy header with :name parameters [0.11ms]
+(pass) procedures > a comma-separated parameter list after ma: [0.03ms]
+(pass) procedures > calls take expressions as positional arguments [0.02ms]
+(pass) procedures > a procedure may be called before it is defined [0.03ms]
+(pass) procedures > wrong argument count: missing argument is reported at the call [0.04ms]
+(pass) procedures > wrong argument count: extra argument is reported [0.05ms]
+(pass) procedures > a definition inside a body is an error [0.06ms]
+(pass) procedures > a definition must start a line [0.02ms]
+(pass) procedures > a missing już is reported at the definition [0.03ms]
+(pass) procedures > już must stand alone on its line [0.02ms]
+(pass) procedures > a procedure name may not be a reserved word [0.05ms]
+(pass) procedures > a name may be defined only once [0.02ms]
+(pass) procedures > recursion works [0.16ms]
+(pass) procedures > stop ends the current call, and the caller carries on [0.07ms]
+(pass) procedures > stop inside a repeat ends the whole procedure call [0.06ms]
+(pass) procedures > stop at top level ends the program [0.02ms]
+(pass) procedures > a conditional body that stops ends the procedure call [0.06ms]
+(pass) procedures > frames: 32 nested calls are allowed, 33 are not [1.64ms]
+(pass) nesting and size limits > bracket nesting may reach 32 levels but not 33 [2.87ms]
+(pass) nesting and size limits > operations: 10 000 is allowed, one more is not [6.96ms]
+(pass) nesting and size limits > more than 10 000 tokens is an error [2.85ms]
+(pass) nesting and size limits > more than 50 000 characters is an error [3.05ms]
+(pass) nesting and size limits > parentheses nested beyond the limit are an error, not a crash [0.18ms]
+(pass) dimensions > pitch and roll commands are errors in 2D mode, reported before anything is drawn [0.08ms]
+(pass) dimensions > gora and dol tilt the heading up and down [0.10ms]
+(pass) dimensions > after gora 90 the turtle heads along its former up, and dol 90 brings it back [0.05ms]
+(pass) dimensions > pp rolls the up vector toward the right, leaving the heading alone [0.07ms]
+(pass) dimensions > a flat program draws the same segments in 2D and 3D [0.05ms]
+(pass) dimensions > every standard flat program matches in both modes [14.49ms]
+(pass) dimensions > the staircase climbs to the expected corner [0.09ms]
+(pass) errors and positions > an unknown command is reported at its position [0.04ms]
+(pass) errors and positions > an unclosed bracket is reported at the opening bracket [0.02ms]
+(pass) errors and positions > a stray closing bracket is reported at the bracket [0.01ms]
+(pass) errors and positions > a stray value where a command is expected is reported at that value
+(pass) errors and positions > a missing argument reported at the token found, e.g. a closing bracket [0.02ms]
+(pass) errors and positions > a parse-time error draws nothing [0.02ms]
+(pass) errors and positions > a run-time error keeps what was drawn before it [0.04ms]
+(pass) errors and positions > a run-time error keeps the segments drawn after a czyść that ran [0.02ms]
+(pass) errors and positions > diagnose reports the same first error as run, without running [0.04ms]
+(pass) sessions > steps run one statement at a time and report the next position [0.09ms]
+(pass) sessions > a session that fails at run time stops with the error [0.03ms]
+(pass) sessions > a session over a program with no statements finishes at once
+
+tests/content.test.ts:
+(pass) standard programs > there are thirteen, with the names and modes from the brief [0.02ms]
+(pass) standard programs > each runs without error and draws the expected number of strokes [8.22ms]
+(pass) standard programs > every standard program ends with a newline, as a saved file would [0.04ms]
+(pass) documentation examples > every example in the reference runs without error [1.80ms]
+(pass) challenges > there are at least five, with unique ids [0.03ms]
+(pass) challenges > every reference solution runs and passes its own check [11.87ms]
+(pass) challenges > a square of the wrong size fails with a reason [0.59ms]
+(pass) challenges > a drawing with the right shape but another start point fails [0.49ms]
+(pass) challenges > the same drawing, drawn in another order, passes [1.93ms]
+(pass) challenges > a program with an error fails and says where [0.11ms]
+(pass) challenges > small position differences within tolerance pass; larger ones do not [0.76ms]
+(pass) challenges > the checker is 2D and 3D aware: a vertical square fails as a flat one [0.24ms]
+
+ 103 pass
+ 0 fail
+ 329 expect() calls
+Ran 103 tests across 2 files. [92.00ms]
+(exit 0)

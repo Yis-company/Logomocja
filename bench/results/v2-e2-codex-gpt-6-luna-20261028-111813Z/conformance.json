@@ -1,0 +1,116 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 584,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: colour and width persist until changed",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "claude-fable-5-1: colour and width persist into a procedure and through dom",
+          "reason": "segment 0: expected colour #abcdef, got ##abcdef"
+        },
+        {
+          "name": "claude-fable-5-1: dom keeps colour and width",
+          "reason": "segment 0: expected colour #123456, got ##123456"
+        },
+        {
+          "name": "claude-fable-5-1: czyść keeps position, pen, colour and width",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "claude-fable-5-1: pen state and colour set inside a procedure persist after it returns",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "gpt-6-astra: home pen up preserves state",
+          "reason": "segment 0: expected colour #abcdef, got ##abcdef"
+        },
+        {
+          "name": "gpt-6-astra: clear retains position orientation style",
+          "reason": "segment 0: expected colour #a1b2c3, got ##a1b2c3"
+        },
+        {
+          "name": "gpt-6-astra: Polish style aliases",
+          "reason": "segment 0: expected colour #ab09ef, got ##ab09ef"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: colour and width changes interleaved with repeats and procedures",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "gpt-6-astra-round2: stop preserves callee style for caller",
+          "reason": "segment 0: expected colour #aabbcc, got ##aabbcc"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 584,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: colour and width persist until changed",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "claude-fable-5-1: colour and width persist into a procedure and through dom",
+          "reason": "segment 0: expected colour #abcdef, got ##abcdef"
+        },
+        {
+          "name": "claude-fable-5-1: dom keeps colour and width",
+          "reason": "segment 0: expected colour #123456, got ##123456"
+        },
+        {
+          "name": "claude-fable-5-1: czyść keeps position, pen, colour and width",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "claude-fable-5-1: pen state and colour set inside a procedure persist after it returns",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "gpt-6-astra: home pen up preserves state",
+          "reason": "segment 0: expected colour #abcdef, got ##abcdef"
+        },
+        {
+          "name": "gpt-6-astra: clear retains position orientation style",
+          "reason": "segment 0: expected colour #a1b2c3, got ##a1b2c3"
+        },
+        {
+          "name": "gpt-6-astra: Polish style aliases",
+          "reason": "segment 0: expected colour #ab09ef, got ##ab09ef"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna „x” nie ma jeszcze wartości."
+        },
+        {
+          "name": "claude-fable-5-1-round2: colour and width changes interleaved with repeats and procedures",
+          "reason": "segment 0: expected colour #ff0000, got ##ff0000"
+        },
+        {
+          "name": "gpt-6-astra-round2: stop preserves callee style for caller",
+          "reason": "segment 0: expected colour #aabbcc, got ##aabbcc"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

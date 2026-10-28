@@ -1,0 +1,76 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/bun@1.4.4
++ typescript@5.9.3
++ vite@7.3.7
++ @fontsource-variable/jetbrains-mono@5.3.0
++ @fontsource-variable/manrope@5.3.0
+
+23 packages installed [38.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 11 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                   0.87 kB │ gzip:  0.49 kB
+dist/assets/manrope-latin-ext-wght-normal-Ch3YOpNY.woff2         15.12 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2  15.20 kB
+dist/assets/manrope-latin-wght-normal-DHIcAJRg.woff2             24.84 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2      40.40 kB
+dist/assets/index-Ds1fJSI4.css                                   34.92 kB │ gzip:  7.78 kB
+dist/assets/index-DXMNP4QD.js                                    70.80 kB │ gzip: 26.75 kB
+✓ built in 174ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) wyrażenia i tokeny > precedencja i łączność [2.88ms]
+(pass) wyrażenia i tokeny > długie wyrażenia nie zależą od stosu JavaScript [16.75ms]
+(pass) wyrażenia i tokeny > wszystkie aliasy poleceń [3.03ms]
+(pass) wyrażenia i tokeny > symetria odstępów operatorów [0.19ms]
+(pass) wyrażenia i tokeny > tylko liczby dziesiętne [0.04ms]
+(pass) wyrażenia i tokeny > polskie litery, aliasy, komentarze, kolory [0.08ms]
+(pass) wyrażenia i tokeny > argument wskazuje pierwszy token, także w nawiasie [0.13ms]
+(pass) wyrażenia i tokeny > błąd parsowania nie rysuje, runtime zachowuje rysunek [0.04ms]
+(pass) zmienne, warunki, procedury > deklaracja późniejsza jest rozpoznana, ale niezainicjalizowana [0.03ms]
+(pass) zmienne, warunki, procedury > lokalne zmienne i parametry [0.19ms]
+(pass) zmienne, warunki, procedury > przypisania w innych ścieżkach deklarują nazwę [0.05ms]
+(pass) zmienne, warunki, procedury > porównanie dokładne i sześć operatorów [0.56ms]
+(pass) zmienne, warunki, procedury > rekurencja i stop wychodzący z całego wywołania [0.82ms]
+(pass) zmienne, warunki, procedury > argumenty procedury są pełnymi wyrażeniami [0.22ms]
+(pass) zmienne, warunki, procedury > błędne definicje [0.09ms]
+(pass) zmienne, warunki, procedury > parametry wywołującego nie przeciekają, zmienne w wywołaniach nie przeciekają [0.08ms]
+(pass) powtórzenia i limity > najbliższy leksykalny nrpowt [0.08ms]
+(pass) powtórzenia i limity > zakres i całkowitość [0.05ms]
+(pass) powtórzenia i limity > operacje obejmują końce iteracji i ciał [4.69ms]
+(pass) powtórzenia i limity > nawiasy, tokeny, źródło i współrzędne [4.27ms]
+(pass) geometria > dom, czyść, pióro, zero [0.17ms]
+(pass) geometria > orientacja przestrzenna [0.15ms]
+(pass) geometria > płaskie programy są identyczne w obu trybach [17.68ms]
+(pass) geometria > wszystkie 13 standardowych programów [13.29ms]
+
+tests/challenges.test.ts:
+(pass) sprawdzanie wyzwań > Cztery równe boki [3.16ms]
+(pass) sprawdzanie wyzwań > Trzy to dobry początek [0.56ms]
+(pass) sprawdzanie wyzwań > Schodki na papierze [0.59ms]
+(pass) sprawdzanie wyzwań > Przerwa na oddech [0.17ms]
+(pass) sprawdzanie wyzwań > Coraz dalej [1.12ms]
+(pass) sprawdzanie wyzwań > O jeden wymiar dalej [0.50ms]
+(pass) sprawdzanie wyzwań > podział boków i odwrócona kolejność są dozwolone [0.63ms]
+(pass) sprawdzanie wyzwań > ta sama długość w złym miejscu nie wystarcza [0.10ms]
+
+ 32 pass
+ 0 fail
+ 377 expect() calls
+Ran 32 tests across 2 files. [79.00ms]
+(exit 0)

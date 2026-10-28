@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "id": "v2-e2-claude-claude-opus-5-5-20261028-115143Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-opus-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "medium",
+  "startedAt": "2026-10-28T11:51:44.015Z",
+  "agentMs": 1939049,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 156,
+    "cachedInput": 13210545,
+    "output": 205808,
+    "reasoning": 57738
+  },
+  "costUsd": 8.735779599999999,
+  "costBasis": "cli",
+  "turns": 90,
+  "toolCalls": 88,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 5,
+    "distBytes": 659763
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "490883b379b8790e9dd2fbc0e9b31439ae7d23f3",
+  "repoVersion": "0.3.0",
+  "totalMs": 1978316,
+  "conformance": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": ""
+}

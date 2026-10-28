@@ -1,0 +1,52 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 592,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "gpt-6-astra: variable procedure collision",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów okrągłych – najwyżej 32 poziomy."
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 592,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "gpt-6-astra: variable procedure collision",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów okrągłych – najwyżej 32 poziomy."
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

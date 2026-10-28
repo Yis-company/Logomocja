@@ -1,0 +1,76 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 589,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: parameter sharing the name of its procedure",
+          "reason": "unexpected error: line 2: Brakuje argumentu polecenia „np”."
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 2: Brakuje warunku."
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: parameter may share procedure name",
+          "reason": "unexpected error: line 2: Brakuje argumentu polecenia „fd”."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 589,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: parameter sharing the name of its procedure",
+          "reason": "unexpected error: line 2: Brakuje argumentu polecenia „np”."
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 2: Brakuje warunku."
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: parameter may share procedure name",
+          "reason": "unexpected error: line 2: Brakuje argumentu polecenia „fd”."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

@@ -1,0 +1,160 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.170.0
++ typescript@5.9.3
++ vite@6.4.5
++ three@0.170.0
+
+26 packages installed [64.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.53 kB │ gzip:   0.77 kB
+dist/assets/index-CzXzyASz.css   20.93 kB │ gzip:   5.65 kB
+dist/assets/index-CMgcXC8A.js   107.89 kB │ gzip:  38.54 kB
+dist/assets/view3d-DUW4Et6O.js  529.00 kB │ gzip: 134.34 kB
+✓ built in 775ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests/
+
+tests/interpreter.test.ts:
+(pass) przykłady standardowe > kwadrat (2d) działa bez błędów [2.58ms]
+(pass) przykłady standardowe > gwiazda (2d) działa bez błędów [0.21ms]
+(pass) przykłady standardowe > rozeta (2d) działa bez błędów [0.42ms]
+(pass) przykłady standardowe > spirala (2d) działa bez błędów [0.92ms]
+(pass) przykłady standardowe > wielokaty (2d) działa bez błędów [0.50ms]
+(pass) przykłady standardowe > drzewo (2d) działa bez błędów [3.96ms]
+(pass) przykłady standardowe > sniezynka (2d) działa bez błędów [6.12ms]
+(pass) przykłady standardowe > schody (3d) działa bez błędów [0.16ms]
+(pass) przykłady standardowe > szescian (3d) działa bez błędów [0.08ms]
+(pass) przykłady standardowe > pierscien (3d) działa bez błędów [0.07ms]
+(pass) przykłady standardowe > kula (3d) działa bez błędów [0.60ms]
+(pass) przykłady standardowe > helisa (3d) działa bez błędów [0.35ms]
+(pass) przykłady standardowe > drzewo3d (3d) działa bez błędów [2.28ms]
+(pass) przykłady standardowe > płaskie przykłady dają te same współrzędne w 2D i 3D [16.55ms]
+(pass) przykłady standardowe > przykłady 3D zgłaszają błąd w trybie 2D [0.51ms]
+(pass) przykłady standardowe > kwadrat: dokładne współrzędne [0.08ms]
+(pass) przykłady standardowe > spirala zmienia kolory na przemian, długości rosną z nrpowt [0.36ms]
+(pass) geometria żółwia > stan początkowy [0.04ms]
+(pass) geometria żółwia > pw obraca zgodnie z ruchem wskazówek zegara [0.05ms]
+(pass) geometria żółwia > góra / dół / przechyły w 3D [0.09ms]
+(pass) geometria żółwia > polecenia 3D są błędem w trybie 2D [0.17ms]
+(pass) geometria żółwia > ruch o zero nic nie rysuje, pióro podniesione też nie [0.03ms]
+(pass) geometria żółwia > dom wraca do początku i rysuje, gdy pióro opuszczone [0.09ms]
+(pass) geometria żółwia > dom przywraca orientację 3D, nie zmienia pióra [0.03ms]
+(pass) geometria żółwia > czyść usuwa odcinki i nic więcej [0.07ms]
+(pass) geometria żółwia > kolor i grubość [0.03ms]
+(pass) geometria żółwia > aliasy angielskie i polskie są równoważne [0.07ms]
+(pass) wyrażenia > pierwszeństwo i łączność [0.07ms]
+(pass) wyrażenia > liczby dziesiętne [0.02ms]
+(pass) wyrażenia > reguła spacji wokół operatorów [0.10ms]
+(pass) wyrażenia > znaki jednoargumentowe [0.07ms]
+(pass) wyrażenia > porównania są dokładne [0.12ms]
+(pass) wyrażenia > niepoprawne liczby [0.12ms]
+(pass) wyrażenia > dzielenie przez zero i wynik nieskończony to błędy wykonania [0.23ms]
+(pass) wyrażenia > głębokie nawiasy [1.54ms]
+(pass) wyrażenia > nawiasy niezamknięte i nadmiarowe [0.06ms]
+(pass) powtórz i nrpowt > licznik powtórzeń [0.04ms]
+(pass) powtórz i nrpowt > nrpowt dotyczy najbliższego powtórz [0.03ms]
+(pass) powtórz i nrpowt > zero powtórzeń, liczba spoza zakresu [0.17ms]
+(pass) powtórz i nrpowt > liczba powtórzeń z nazwy sprawdzana w trakcie [0.04ms]
+(pass) powtórz i nrpowt > nrpowt poza powtórz jest błędem przed uruchomieniem [0.08ms]
+(pass) zmienne > przypisanie i ponowne przypisanie [0.04ms]
+(pass) zmienne > globalna przypisana później może być użyta w procedurze [0.03ms]
+(pass) zmienne > nieznana nazwa to błąd przed uruchomieniem [0.05ms]
+(pass) zmienne > odczyt przed przypisaniem to błąd wykonania przy pierwszym tokenie argumentu [0.04ms]
+(pass) zmienne > zmienna lokalna przesłania globalną do końca wywołania [0.05ms]
+(pass) zmienne > lokalna bez globalnej: odczyt przed niech to błąd [0.07ms]
+(pass) zmienne > parametr można przypisać na nowo [0.03ms]
+(pass) zmienne > nazwa zmiennej nie może być poleceniem ani procedurą [0.07ms]
+(pass) warunki > jeśli i jeżeli [0.08ms]
+(pass) warunki > brak porównania lub nawiasu [0.06ms]
+(pass) procedury > przykład z opisu i nagłówek w starym stylu [0.06ms]
+(pass) procedury > argumenty są wyrażeniami [0.02ms]
+(pass) procedury > wywołanie przed definicją, wielkość liter [0.01ms]
+(pass) procedury > parametr o nazwie procedury [0.04ms]
+(pass) procedury > stop kończy wywołanie, także z wnętrza powtórz [0.04ms]
+(pass) procedury > stop na najwyższym poziomie kończy program [0.02ms]
+(pass) procedury > rekurencja [0.02ms]
+(pass) procedury > zła liczba argumentów [0.10ms]
+(pass) procedury > definicje: błędy [0.09ms]
+(pass) procedury > procedura nie zwraca wartości [0.02ms]
+(pass) błędy i ich pozycje > nieznane polecenie [0.40ms]
+(pass) błędy i ich pozycje > brak argumentu [0.06ms]
+(pass) błędy i ich pozycje > wartość zamiast polecenia [0.02ms]
+(pass) błędy i ich pozycje > kolor [0.07ms]
+(pass) błędy i ich pozycje > grubość [0.06ms]
+(pass) błędy i ich pozycje > nawiasy kwadratowe [0.04ms]
+(pass) błędy i ich pozycje > komunikaty są po polsku [0.33ms]
+(pass) błędy i ich pozycje > błąd składni nic nie rysuje, błąd wykonania zachowuje rysunek [0.23ms]
+(pass) błędy i ich pozycje > błąd wykonania po czyść zwraca tylko późniejsze odcinki [0.03ms]
+(pass) błędy i ich pozycje > komentarze
+(pass) błędy i ich pozycje > nieznany znak [0.02ms]
+(pass) limity > długość źródła [7.80ms]
+(pass) limity > liczba tokenów [7.71ms]
+(pass) limity > głębokość nawiasów kwadratowych [0.43ms]
+(pass) limity > ramki: wywołania i powtórzenia [0.51ms]
+(pass) limity > wykonane operacje [26.84ms]
+(pass) limity > liczba odcinków [1.09ms]
+(pass) limity > współrzędne [0.13ms]
+(pass) API run > tryb 3D i 2D dają identyczne płaskie wyniki [0.08ms]
+(pass) API run > brak minus zera w wynikach [0.06ms]
+(pass) API run > przykład geometrii 3D: helisa wznosi się [0.18ms]
+
+tests/challenges.test.ts:
+(pass) wyzwania > jest co najmniej pięć wyzwań, z unikalnymi identyfikatorami [0.06ms]
+(pass) wyzwania > trojkat: wzorzec przechodzi, szkielet nie [0.97ms]
+(pass) wyzwania > domek: wzorzec przechodzi, szkielet nie [0.97ms]
+(pass) wyzwania > schodki: wzorzec przechodzi, szkielet nie [0.33ms]
+(pass) wyzwania > kolorowy-kwadrat: wzorzec przechodzi, szkielet nie [0.41ms]
+(pass) wyzwania > szesciokat: wzorzec przechodzi, szkielet nie [0.52ms]
+(pass) wyzwania > wiatraczek: wzorzec przechodzi, szkielet nie [1.07ms]
+(pass) wyzwania > pionowy-kwadrat: wzorzec przechodzi, szkielet nie [0.84ms]
+(pass) wyzwania > krzyz: wzorzec przechodzi, szkielet nie [0.28ms]
+(pass) wyzwania > kolejność i podział odcinków nie mają znaczenia [0.42ms]
+(pass) wyzwania > lustrzane odbicie nie przechodzi, z powodem [0.23ms]
+(pass) wyzwania > wymagania i kolory [0.29ms]
+(pass) wyzwania > błąd programu jest powodem porażki [0.11ms]
+(pass) wyzwania > dodatkowa linia jest wykrywana [0.23ms]
+(pass) wyzwania > porównanie w 3D [0.13ms]
+
+tests/reference.test.ts:
+(pass) dokumentacja > każde polecenie i każdy alias jest opisany [0.07ms]
+(pass) dokumentacja > przykład polecenia np działa [0.02ms]
+(pass) dokumentacja > przykład polecenia ws działa
+(pass) dokumentacja > przykład polecenia pw działa
+(pass) dokumentacja > przykład polecenia lw działa
+(pass) dokumentacja > przykład polecenia dom działa [0.02ms]
+(pass) dokumentacja > przykład polecenia pod działa
+(pass) dokumentacja > przykład polecenia opu działa
+(pass) dokumentacja > przykład polecenia kolor działa
+(pass) dokumentacja > przykład polecenia grubosc działa [0.01ms]
+(pass) dokumentacja > przykład polecenia czyść działa
+(pass) dokumentacja > przykład polecenia gora działa
+(pass) dokumentacja > przykład polecenia dol działa [0.02ms]
+(pass) dokumentacja > przykład polecenia pp działa [0.01ms]
+(pass) dokumentacja > przykład polecenia pl działa [0.02ms]
+(pass) dokumentacja > przykład polecenia powtorz działa [0.03ms]
+(pass) dokumentacja > przykład polecenia niech działa [0.03ms]
+(pass) dokumentacja > przykład polecenia jeśli działa [0.03ms]
+(pass) dokumentacja > przykład polecenia jeżeli działa [0.01ms]
+(pass) dokumentacja > przykład polecenia stop działa [0.02ms]
+(pass) dokumentacja > przykłady w tekście działają [0.35ms]
+
+ 118 pass
+ 0 fail
+ 6616 expect() calls
+Ran 118 tests across 3 files. [102.00ms]
+(exit 0)

@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "id": "v2-e2-claude-claude-haiku-5-5-20261028-103310Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-haiku-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "high",
+  "startedAt": "2026-10-28T10:33:11.274Z",
+  "agentMs": 1728661,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 202,
+    "cachedInput": 25818830,
+    "output": 309831,
+    "reasoning": 165208
+  },
+  "costUsd": 2.1647930599999996,
+  "costBasis": "cli",
+  "turns": 101,
+  "toolCalls": 100,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 4,
+    "distBytes": 679642
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "490883b379b8790e9dd2fbc0e9b31439ae7d23f3",
+  "repoVersion": "0.3.0",
+  "totalMs": 1761446,
+  "conformance": {
+    "combined": {
+      "passed": 559,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 559,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": ""
+}
