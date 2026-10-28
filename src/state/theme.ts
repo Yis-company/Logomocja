@@ -25,8 +25,11 @@ function apply(): void {
 
 theme.subscribe(apply);
 
+/** system → the opposite of what the system shows → the other one → system. */
 export function cycleTheme(): void {
-  const order: ThemePref[] = ['system', 'light', 'dark'];
+  const sys: 'light' | 'dark' = systemDark.value ? 'dark' : 'light';
+  const other: 'light' | 'dark' = sys === 'dark' ? 'light' : 'dark';
+  const order: ThemePref[] = ['system', other, sys];
   themePref.value = order[(order.indexOf(themePref.value) + 1) % order.length];
   save('theme', themePref.value);
 }

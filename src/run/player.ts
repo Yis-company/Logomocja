@@ -90,7 +90,12 @@ export class Player {
 
   /** Advances by one operation (finishing the current one if it is half-drawn). */
   step(): void {
-    if (!this.outcome || this.finished) return;
+    if (!this.outcome) return;
+    if (this.finished) {
+      // Nothing left to run (e.g. an error at the very first operation).
+      this.toEnd();
+      return;
+    }
     if (this.progress > 0) {
       this.halt();
       this.index++;

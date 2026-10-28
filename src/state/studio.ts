@@ -277,6 +277,9 @@ export function editSource(text: string): void {
       notice.value = 'Kod został zmieniony, więc wykonanie przerwano. Uruchom program ponownie.';
       announce(notice.value);
     }
+    if (status.peek() === 'done' || (status.peek() === 'error' && stats.peek())) {
+      notice.value = 'Kod zmieniono od ostatniego uruchomienia — rysunek pokazuje poprzednią wersję.';
+    }
     const cur = shownError.peek();
     if (cur && cur.phase !== 'live') shownError.value = null;
     if (checkResult.peek()) {
@@ -370,6 +373,10 @@ export function step(): void {
     player.emit();
   }
   player.speed = speed.peek();
+  if (player.finished) {
+    player.toEnd();
+    return;
+  }
   status.value = 'paused';
   player.step();
 }
@@ -555,7 +562,7 @@ export function enterChallenge(id: string): boolean {
     // Show the earlier attempt next to the target; a fresh challenge shows only the target.
     if (saved !== undefined && saved !== ch.starter) {
       const out = run({ instant: true, fit: true, resetCamera: true });
-      if (out.error) shownError.value = { ...shownError.peek()!, phase: 'live' };
+      if (out.error && out.error.phase === 'parse') shownError.value = { ...shownError.peek()!, phase: 'live' };
       return;
     }
     v.setScene(idleScene());

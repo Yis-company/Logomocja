@@ -281,6 +281,8 @@ export function Studio() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Shortcuts never act on the program behind a dialog.
+      if (document.querySelector('dialog[open]')) return;
       const mod = isMac ? e.metaKey : e.ctrlKey;
       if (e.key === 'Enter' && mod && !e.altKey) {
         e.preventDefault();

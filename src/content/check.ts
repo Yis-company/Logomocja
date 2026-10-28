@@ -119,7 +119,8 @@ export interface Comparison {
 export function compareDrawings(target: readonly Segment[], actual: readonly Segment[], mode: Mode): Comparison {
   const tl = mergeLines(target);
   const al = mergeLines(actual);
-  if (al.length === 0) return { equal: false, reasons: ['Nic nie zostało narysowane.'], missing: [...target] };
+  // Nothing drawn: the target itself is already shown, so there is nothing to mark.
+  if (al.length === 0) return { equal: false, reasons: ['Nic nie zostało narysowane.'], missing: [] };
   const tb = bbox(tl);
   const ab = bbox(al);
   const shift = (l: Line, m: P3): Line => ({ a: sub(l.a, m), b: sub(l.b, m) });

@@ -97,7 +97,7 @@ export function App() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== '?' || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key !== '?' || e.ctrlKey || e.metaKey || e.altKey || document.querySelector('dialog[open]')) return;
       const t = e.target as HTMLElement | null;
       if (t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT' || t.isContentEditable)) return;
       e.preventDefault();
@@ -116,7 +116,7 @@ export function App() {
       page = <ChallengesPage />;
       break;
     case 'reference':
-      page = <ReferencePage section={r.section} />;
+      page = <ReferencePage section={r.section} visit={r} />;
       break;
     case 'notfound':
       page = <NotFound />;

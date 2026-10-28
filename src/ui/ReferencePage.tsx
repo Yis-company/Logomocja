@@ -262,7 +262,8 @@ function Section({ id, title, children }: { id: string; title: string; children:
   );
 }
 
-export function ReferencePage({ section }: { section: string | null }) {
+export function ReferencePage({ section, visit }: { section: string | null; visit: object }) {
+  // `visit` changes on every navigation, so clicking the current section's link scrolls again.
   useEffect(() => {
     if (!section) {
       window.scrollTo(0, 0);
@@ -273,10 +274,20 @@ export function ReferencePage({ section }: { section: string | null }) {
       target.scrollIntoView({ block: 'start' });
       target.focus({ preventScroll: true });
     }
-  }, [section]);
+  }, [visit]);
+
+  const onClick = (e: MouseEvent) => {
+    const a = (e.target as HTMLElement).closest?.('a[href^="#/opis"]') as HTMLAnchorElement | null;
+    if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+    const href = a.getAttribute('href')!;
+    if (href !== location.hash) return;
+    e.preventDefault();
+    const sec = href.split('/')[2] ?? null;
+    navigate({ name: 'reference', section: sec ? decodeURIComponent(sec) : null });
+  };
 
   return (
-    <main class="page page-ref" id="main" tabIndex={-1}>
+    <main class="page page-ref" id="main" tabIndex={-1} onClick={onClick}>
       <header class="page-head">
         <h1>Opis języka</h1>
         <p>

@@ -9,7 +9,7 @@ export interface Camera2D {
 }
 
 export const MIN_SCALE_2D = 0.001;
-export const MAX_SCALE_2D = 80;
+export const MAX_SCALE_2D = 5000;
 
 export function defaultCamera2D(): Camera2D {
   return { cx: 0, cy: 0, scale: 1 };
@@ -41,7 +41,7 @@ export function fitCamera2D(scene: Scene, w: number, h: number, padding?: number
   let scale = 1;
   if (!b.empty) {
     scale = Math.min(availW / bw, availH / bh);
-    scale = Math.min(Math.max(scale, MIN_SCALE_2D), 8);
+    scale = Math.min(Math.max(scale, MIN_SCALE_2D), 1000);
   }
   // Put the middle of the drawing at the middle of the free area.
   const sx = left + availW / 2;

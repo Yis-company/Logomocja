@@ -55,6 +55,46 @@ function lineStartOf(text: string, pos: number): number {
   return text.lastIndexOf('\n', pos - 1) + 1;
 }
 
+/** Typing the last letter of "już" (or "juz") alone on an indented line moves it back to the start. */
+function dedentEnd(ta: HTMLTextAreaElement, e: InputEvent): void {
+  if (e.inputType !== 'insertText' || ta.selectionStart !== ta.selectionEnd) return;
+  const text = ta.value;
+  const pos = ta.selectionStart;
+  const start = lineStartOf(text, pos);
+  const nl = text.indexOf('\n', pos);
+  const line = text.slice(start, nl < 0 ? text.length : nl);
+  const m = /^([ \t]+)(już|juz)$/i.exec(line);
+  if (!m || pos !== start + line.length) return;
+  ta.setSelectionRange(start, start + m[1].length);
+  insertText(ta, '');
+  const caret = start + m[2].length;
+  ta.setSelectionRange(caret, caret);
+}
+
+let measureCtx: CanvasRenderingContext2D | null = null;
+
+/** Horizontal position of a text offset inside the textarea (monospaced font, tabs of 2). */
+function offsetX(ta: HTMLTextAreaElement, offset: number): number {
+  const cs = getComputedStyle(ta);
+  measureCtx ??= document.createElement('canvas').getContext('2d');
+  let charW = 8.7;
+  if (measureCtx) {
+    measureCtx.font = `${cs.fontSize} ${cs.fontFamily}`;
+    charW = measureCtx.measureText('0000000000').width / 10 || charW;
+  }
+  const text = ta.value;
+  let col = 0;
+  for (let i = lineStartOf(text, offset); i < offset; i++) col = text[i] === '\t' ? col + 2 - (col % 2) : col + 1;
+  return (parseFloat(cs.paddingLeft) || 0) + col * charW;
+}
+
+/** Scrolls the textarea sideways so that x (in content coordinates) is visible. */
+function revealX(ta: HTMLTextAreaElement, x: number, width = 0): void {
+  if (x < ta.scrollLeft + 8 || x + width > ta.scrollLeft + ta.clientWidth - 8) {
+    ta.scrollLeft = Math.max(0, x - ta.clientWidth / 3);
+  }
+}
+
 export function Editor(props: Props) {
   const taRef = useRef<HTMLTextAreaElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
@@ -125,6 +165,7 @@ export function Editor(props: Props) {
     if (top < ta.scrollTop + lh || top + 2 * lh > ta.scrollTop + ta.clientHeight) {
       ta.scrollTop = Math.max(0, top - ta.clientHeight / 2);
     }
+    revealX(ta, offsetX(ta, offset), 24);
   };
 
   const syncScroll = () => {
@@ -132,6 +173,7 @@ export function Editor(props: Props) {
     if (!ta) return;
     if (layerRef.current) layerRef.current.style.transform = `translate(${-ta.scrollLeft}px, ${-ta.scrollTop}px)`;
     if (gutterRef.current) gutterRef.current.style.transform = `translateY(${-ta.scrollTop}px)`;
+    placeBubbleRef.current();
     if (windowed) {
       const { lh, padTop } = metrics();
       const firstVisible = Math.max(1, Math.floor((ta.scrollTop - padTop) / lh) + 1);
@@ -181,34 +223,41 @@ export function Editor(props: Props) {
     } else {
       box.hidden = true;
     }
-    if (props.follow && exec.line !== lastFollowLine.current) {
-      lastFollowLine.current = exec.line;
+    if (props.follow) {
       const ta = taRef.current!;
-      if (top < ta.scrollTop || top + lh > ta.scrollTop + ta.clientHeight) {
-        ta.scrollTop = Math.max(0, top - ta.clientHeight / 3);
-        syncScroll();
+      if (exec.line !== lastFollowLine.current) {
+        lastFollowLine.current = exec.line;
+        if (top < ta.scrollTop || top + lh > ta.scrollTop + ta.clientHeight) {
+          ta.scrollTop = Math.max(0, top - ta.clientHeight / 3);
+        }
       }
+      if (el) revealX(ta, el.offsetLeft, el.offsetWidth);
+      else revealX(ta, offsetX(ta, exec.offset), 24);
+      syncScroll();
     }
   }, [exec, html, props.follow]);
 
-  // Position the error bubble under the offending token.
-  useLayoutEffect(() => {
+  // Position the error bubble under the offending token (again after every scroll).
+  const [bubbleDismissed, setBubbleDismissed] = useState(false);
+  useEffect(() => setBubbleDismissed(false), [error]);
+  const placeBubble = () => {
     const bubble = bubbleRef.current;
-    if (!bubble) return;
-    if (!error || !props.errorBubble) {
+    const ta = taRef.current;
+    if (!bubble || !ta) return;
+    if (!error || !props.errorBubble || bubbleDismissed) {
       bubble.hidden = true;
       return;
     }
     const { lh, padTop } = metrics();
     const el = tokenEl(error.offset);
-    const ta = taRef.current!;
-    const anchor = el ? el.offsetLeft + Math.min(el.offsetWidth, 24) / 2 : 14;
+    const anchor = el ? el.offsetLeft + Math.min(el.offsetWidth, 24) / 2 : offsetX(ta, error.offset) + 6;
     const top = el ? el.offsetTop + lh : padTop + error.line * lh;
     bubble.hidden = false;
+    bubble.style.maxWidth = `${Math.max(160, Math.min(ta.clientWidth - 16, 480))}px`;
     // Keep the bubble inside the visible part of the editor; the arrow still points at the token.
     const width = bubble.offsetWidth;
     const minLeft = ta.scrollLeft + 4;
-    const maxLeft = ta.scrollLeft + ta.clientWidth - width - 8;
+    const maxLeft = Math.max(minLeft, ta.scrollLeft + ta.clientWidth - width - 8);
     const left = Math.max(minLeft, Math.min(anchor - 18, maxLeft));
     bubble.style.left = `${left}px`;
     // Flip above the line when there is no room below it.
@@ -216,13 +265,19 @@ export function Editor(props: Props) {
     const below = top + 2 + bubble.offsetHeight <= ta.scrollTop + ta.clientHeight || tokenTop - bubble.offsetHeight - 8 < ta.scrollTop;
     bubble.classList.toggle('error-bubble-above', !below);
     bubble.style.top = below ? `${top + 2}px` : `${tokenTop - bubble.offsetHeight - 6}px`;
-    bubble.style.setProperty('--arrow-x', `${Math.max(8, Math.min(width - 20, anchor - left - 6))}px`);
-  }, [error, html, props.errorBubble]);
+    const arrow = anchor - left - 6;
+    bubble.classList.toggle('error-bubble-far', arrow < 0 || arrow > width);
+    bubble.style.setProperty('--arrow-x', `${Math.max(8, Math.min(width - 20, arrow))}px`);
+  };
+  const placeBubbleRef = useRef(placeBubble);
+  placeBubbleRef.current = placeBubble;
+  useLayoutEffect(placeBubble, [error, html, props.errorBubble, bubbleDismissed]);
 
   const onKeyDown = (e: KeyboardEvent) => {
     const ta = taRef.current!;
     if (e.key === 'Escape') {
       tabTrapReleased.current = true;
+      setBubbleDismissed(true);
       return;
     }
     if (e.key === 'Tab' && !e.ctrlKey && !e.metaKey && !e.altKey) {
@@ -332,7 +387,11 @@ export function Editor(props: Props) {
           aria-describedby={props.describedBy}
           aria-invalid={error ? 'true' : 'false'}
           defaultValue={value}
-          onInput={(e) => props.onChange((e.currentTarget as HTMLTextAreaElement).value)}
+          onInput={(e) => {
+            const ta = e.currentTarget as HTMLTextAreaElement;
+            dedentEnd(ta, e as InputEvent);
+            props.onChange(ta.value);
+          }}
           onScroll={syncScroll}
           onKeyDown={onKeyDown}
         />
