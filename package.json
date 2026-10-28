@@ -1,0 +1,14 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build --base=${BASE_PATH:-/}",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "vite": "^6.1.0"
+  }
+}
