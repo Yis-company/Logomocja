@@ -499,12 +499,22 @@ export async function loadProgram(code: string, m: Mode, opts: LoadOptions): Pro
       ? {
           label: 'Przywróć szkic',
           run: () => {
-            drafts[m] = prevDraft;
-            if (mode.peek() !== m && !activeChallenge.peek()) setMode(m);
-            source.value = prevDraft.code;
+            if (activeChallenge.peek()) {
+              drafts[m] = prevDraft;
+              save('drafts', drafts);
+              toast('Szkic przywrócono — zobaczysz go po wyjściu z wyzwania.');
+              return;
+            }
+            if (mode.peek() !== m) {
+              drafts[m] = prevDraft;
+              setMode(m);
+            } else {
+              drafts[m] = prevDraft;
+              source.value = prevDraft.code;
+              run({ instant: true, fit: true });
+            }
             updateDirty();
             save('drafts', drafts);
-            run({ instant: true, fit: true });
           },
         }
       : undefined,

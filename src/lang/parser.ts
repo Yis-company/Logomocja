@@ -327,42 +327,32 @@ class Parser {
     const t = this.peek();
     switch (t.type) {
       case 'error':
-        this.failToken(t);
-      // eslint-disable-next-line no-fallthrough
+        return this.failToken(t);
       case 'name':
         return t.kw ? this.keywordStatement(t, t.kw) : this.call(t);
       case 'num':
       case 'param':
       case '(':
-        this.strayValue(t);
-      // eslint-disable-next-line no-fallthrough
+        return this.strayValue(t);
       case 'op':
-        if (t.text === '+' || t.text === '-') this.strayValue(t);
-        this.fail(`Nieoczekiwany operator „${t.text}”: w tym miejscu powinno stać polecenie.`, t);
-      // eslint-disable-next-line no-fallthrough
+        if (t.text === '+' || t.text === '-') return this.strayValue(t);
+        return this.fail(`Nieoczekiwany operator „${t.text}”: w tym miejscu powinno stać polecenie.`, t);
       case 'cmp':
-        this.fail(`Nieoczekiwany znak porównania „${t.text}”. Porównań używa się w warunkach: jeśli x > 0 [ ... ].`, t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail(`Nieoczekiwany znak porównania „${t.text}”. Porównań używa się w warunkach: jeśli x > 0 [ ... ].`, t);
       case 'str':
-        this.fail(`Nieoczekiwany tekst ${t.text}: w tym miejscu powinno stać polecenie. Kolor ustawia się poleceniem kolor ${t.text}.`, t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail(`Nieoczekiwany tekst ${t.text}: w tym miejscu powinno stać polecenie. Kolor ustawia się poleceniem kolor ${t.text}.`, t);
       case '[':
-        this.fail('Nieoczekiwany nawias „[”. Nawiasy kwadratowe obejmują treść polecenia powtorz, jeśli albo jeżeli.', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('Nieoczekiwany nawias „[”. Nawiasy kwadratowe obejmują treść polecenia powtorz, jeśli albo jeżeli.', t);
       case ']':
-        this.fail('Nawias „]” nie ma pary — brakuje otwierającego nawiasu „[”.', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('Nawias „]” nie ma pary — brakuje otwierającego nawiasu „[”.', t);
       case ')':
-        this.fail('Nawias „)” nie ma pary — brakuje otwierającego nawiasu „(”.', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('Nawias „)” nie ma pary — brakuje otwierającego nawiasu „(”.', t);
       case ',':
-        this.fail('Nieoczekiwany przecinek. Przecinki oddzielają tylko parametry w nagłówku procedury.', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('Nieoczekiwany przecinek. Przecinki oddzielają tylko parametry w nagłówku procedury.', t);
       case 'ma':
-        this.fail('„ma:” może wystąpić tylko w nagłówku procedury, np. „oto kwadrat ma: bok”.', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('„ma:” może wystąpić tylko w nagłówku procedury, np. „oto kwadrat ma: bok”.', t);
       default:
-        this.fail(`Nieoczekiwany ${show(t)}.`, t);
+        return this.fail(`Nieoczekiwany ${show(t)}.`, t);
     }
   }
 
@@ -478,13 +468,11 @@ class Parser {
         };
       }
       case 'repcount':
-        this.fail(`„${t.text}” to wartość (numer powtórzenia), a nie polecenie. Użyj jej jako argumentu, np. „np ${t.text} * 10”.`, t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail(`„${t.text}” to wartość (numer powtórzenia), a nie polecenie. Użyj jej jako argumentu, np. „np ${t.text} * 10”.`, t);
       case 'to':
-        this.fail('Procedury można definiować tylko na najwyższym poziomie programu, a nie wewnątrz nawiasów [ ].', t);
-      // eslint-disable-next-line no-fallthrough
+        return this.fail('Procedury można definiować tylko na najwyższym poziomie programu, a nie wewnątrz nawiasów [ ].', t);
       case 'end':
-        this.fail(`Słowo „${t.text}” może kończyć tylko procedurę i musi stać samo w osobnej linii.`, t);
+        return this.fail(`Słowo „${t.text}” może kończyć tylko procedurę i musi stać samo w osobnej linii.`, t);
     }
   }
 

@@ -266,9 +266,30 @@ export function draw3D(
   if (open) ctx.stroke();
 
   if (scene.turtle) {
-    const c = pr.toCamera(scene.turtle.pos);
+    const tp = scene.turtle.pos;
+    // A dashed drop line and a shadow on the ground help to judge the height.
+    if (Math.abs(tp[2]) > 1e-9) {
+      ctx.save();
+      ctx.setLineDash([3 * px, 4 * px]);
+      ctx.strokeStyle = pal.label;
+      ctx.lineWidth = 1.2 * px;
+      ctx.beginPath();
+      line(tp, [tp[0], tp[1], 0]);
+      ctx.stroke();
+      ctx.restore();
+      const g = pr.project([tp[0], tp[1], 0]);
+      if (g) {
+        ctx.beginPath();
+        ctx.ellipse(g.x, g.y, 5 * px, 2.5 * px, 0, 0, Math.PI * 2);
+        ctx.fillStyle = pal.label;
+        ctx.globalAlpha = 0.5;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+    const c = pr.toCamera(tp);
     if (c[2] > pr.near) {
-      const size = (21 * px * c[2]) / pr.focal;
+      const size = (28 * px * c[2]) / pr.focal;
       drawTurtle3D(ctx, scene.turtle, size, pr.project, (q) => pr.toCamera(q), pal, px);
     }
   }

@@ -134,6 +134,21 @@ export function drawTurtle3D(
     return { ...f, proj: pts, depth };
   });
   if (projected.some((f) => f.proj.some((q) => q === null))) return;
+  // A soft halo marks the position even when the dart is seen edge-on.
+  const centre = project(p);
+  if (centre) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(centre.x, centre.y, 15 * px, 0, Math.PI * 2);
+    ctx.fillStyle = pal.turtle;
+    ctx.globalAlpha = 0.16;
+    ctx.fill();
+    ctx.globalAlpha = 0.55;
+    ctx.lineWidth = 1.2 * px;
+    ctx.strokeStyle = pal.turtle;
+    ctx.stroke();
+    ctx.restore();
+  }
   // Body faces first when the fin is in front, by average depth.
   projected.sort((a, b) => b.depth - a.depth);
   ctx.save();
@@ -146,7 +161,7 @@ export function drawTurtle3D(
     ctx.fillStyle = f.fill;
     ctx.fill();
     ctx.strokeStyle = pal.turtleOutline;
-    ctx.lineWidth = 1.3 * px;
+    ctx.lineWidth = 1.6 * px;
     if (!t.pen) ctx.setLineDash([3 * px, 2.5 * px]);
     ctx.stroke();
     ctx.setLineDash([]);

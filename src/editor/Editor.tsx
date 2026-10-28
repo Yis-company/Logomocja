@@ -177,11 +177,18 @@ export function Editor(props: Props) {
     }
     const { lh, padTop } = metrics();
     const el = tokenEl(error.offset);
-    const left = el ? el.offsetLeft : 14;
+    const ta = taRef.current!;
+    const anchor = el ? el.offsetLeft + Math.min(el.offsetWidth, 24) / 2 : 14;
     const top = el ? el.offsetTop + lh : padTop + error.line * lh;
     bubble.hidden = false;
-    bubble.style.left = `${Math.max(4, left - 6)}px`;
+    // Keep the bubble inside the visible part of the editor; the arrow still points at the token.
+    const width = bubble.offsetWidth;
+    const minLeft = ta.scrollLeft + 4;
+    const maxLeft = ta.scrollLeft + ta.clientWidth - width - 8;
+    const left = Math.max(minLeft, Math.min(anchor - 18, maxLeft));
+    bubble.style.left = `${left}px`;
     bubble.style.top = `${top + 2}px`;
+    bubble.style.setProperty('--arrow-x', `${Math.max(8, Math.min(width - 20, anchor - left - 6))}px`);
   }, [error, html, props.errorBubble]);
 
   const onKeyDown = (e: KeyboardEvent) => {
