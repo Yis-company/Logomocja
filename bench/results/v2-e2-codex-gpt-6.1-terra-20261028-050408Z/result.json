@@ -1,0 +1,77 @@
+{
+  "schema": 4,
+  "id": "v2-e2-codex-gpt-6.1-terra-20261028-050408Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-terra",
+  "cliVersion": "0.164.0",
+  "effort": "xhigh",
+  "startedAt": "2026-10-28T05:04:09.012Z",
+  "agentMs": 254359,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 42963,
+    "cachedInput": 489344,
+    "output": 24425,
+    "reasoning": 2390
+  },
+  "costUsd": 0.189555,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 15,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 3,
+    "distBytes": 47378
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "b47afb05751203d903cbbd74a161dc4692178195",
+  "repoVersion": "0.3.0",
+  "totalMs": 261287,
+  "conformance": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": ""
+}

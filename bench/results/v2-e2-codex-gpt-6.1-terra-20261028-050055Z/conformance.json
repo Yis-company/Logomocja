@@ -1,0 +1,36 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna x nie ma jeszcze wartości."
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna x nie ma jeszcze wartości."
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

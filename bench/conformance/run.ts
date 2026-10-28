@@ -7,7 +7,8 @@ import { parseArgs } from "node:util";
 import { type Case, compareCase, type Outcome, parseSuite } from "./compare";
 
 export type SuiteReport = { passed: number; total: number; failures: { name: string; reason: string }[] };
-export type Report = { hook: boolean; suites: Record<string, SuiteReport> };
+/** `hook`: `run` exists; `open`: `open` exists. Suites named `<file>@open` were run through `open`. */
+export type Report = { hook: boolean; open: boolean; suites: Record<string, SuiteReport> };
 
 const types: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
@@ -55,41 +56,53 @@ export function loadSuites(dir: string): Record<string, Case[]> {
   );
 }
 
+type Entry = "run" | "open";
+const callHook = ([source, mode, entry, budget]: [string, string, Entry, number]) => {
+  const hook = (window as unknown as { logomocja: Record<Entry, (s: string, m: string) => unknown> }).logomocja;
+  const started = performance.now();
+  return Promise.race([
+    Promise.resolve(hook[entry](source, mode)),
+    new Promise((_, reject) => setTimeout(() => reject(new Error(`${entry}() timed out`)), budget)),
+  ]).then((r) => ({ outcome: JSON.parse(JSON.stringify(r ?? null)), ms: performance.now() - started }));
+};
+
+/** Runs every suite through `run`, then again through `open` (the UI path), reporting each as a separate suite. */
 export async function runConformance(dist: string, basePath: string, suitesDir: string): Promise<Report> {
   const suites = loadSuites(suitesDir);
   const { port, close } = await serve(dist, basePath);
   const browser = await chromium.launch();
-  const report: Report = { hook: false, suites: {} };
+  const report: Report = { hook: false, open: false, suites: {} };
   try {
-    const page = await browser.newPage();
+    const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
     await page.goto(`http://127.0.0.1:${port}${basePath}`, { waitUntil: "load" });
     report.hook = await page
       .waitForFunction(() => typeof (window as unknown as { logomocja?: { run?: unknown } }).logomocja?.run === "function", null, { timeout: 20_000 })
       .then(() => true, () => false);
-    for (const [name, cases] of Object.entries(suites)) {
-      const suite: SuiteReport = { passed: 0, total: cases.length, failures: [] };
-      report.suites[name] = suite;
-      for (const c of cases) {
-        let reason: string | null;
-        if (!report.hook) reason = "no window.logomocja.run hook";
-        else
-          try {
-            const outcome = (await page.evaluate(
-              ([source, mode]) =>
-                Promise.race([
-                  Promise.resolve((window as unknown as { logomocja: { run: (s: string, m: string) => unknown } }).logomocja.run(source, mode)),
-                  new Promise((_, reject) => setTimeout(() => reject(new Error("run() timed out")), 10_000)),
-                ]).then((r) => JSON.parse(JSON.stringify(r ?? null))),
-              [c.source, c.mode],
-            )) as Outcome | null;
-            reason = outcome ? compareCase(c, outcome) : "run() returned nothing";
-          } catch (cause) {
-            reason = `run() threw: ${cause instanceof Error ? cause.message : String(cause)}`.slice(0, 300);
-          }
-        if (reason === null) suite.passed++;
-        else suite.failures.push({ name: c.name, reason });
+    report.open = await page.evaluate(() => typeof (window as unknown as { logomocja?: { open?: unknown } }).logomocja?.open === "function");
+    for (const entry of ["run", "open"] as const)
+      for (const [name, cases] of Object.entries(suites)) {
+        const suite: SuiteReport = { passed: 0, total: cases.length, failures: [] };
+        report.suites[entry === "run" ? name : `${name}@open`] = suite;
+        const available = entry === "run" ? report.hook : report.open;
+        for (const c of cases) {
+          let reason: string | null;
+          if (!available) reason = `no window.logomocja.${entry} hook`;
+          else
+            try {
+              const { outcome, ms } = (await page.evaluate(callHook, [c.source, c.mode, entry, entry === "run" ? 10_000 : 30_000] as [string, string, Entry, number])) as {
+                outcome: Outcome | null;
+                ms: number;
+              };
+              reason = outcome ? compareCase(c, outcome) : `${entry}() returned nothing`;
+              if (reason === null && entry === "run" && c.budgetMs && ms > c.budgetMs)
+                reason = `took ${Math.round(ms)} ms, budget ${c.budgetMs} ms`;
+            } catch (cause) {
+              reason = `${entry}() threw: ${cause instanceof Error ? cause.message : String(cause)}`.slice(0, 300);
+            }
+          if (reason === null) suite.passed++;
+          else suite.failures.push({ name: c.name, reason });
+        }
       }
-    }
   } finally {
     await browser.close();
     close();

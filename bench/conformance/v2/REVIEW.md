@@ -33,3 +33,12 @@ Reference result after review: 100 of 100.
 ## Merged suite
 
 `combined.json` is the union of the four files (`bench/conformance/merge.ts`), 595 cases, no duplicates by mode and source; each case name is prefixed with the file it came from. The raw files stay untouched under each run's `results/<run-id>/cases.json`. The reference app passes 595 of 595.
+
+## Scoring extended (2026-10-28, during the e2 app round)
+
+Eight builds in, the merged suite no longer separated the builds (588 to 595 of 595, failures all one-column positions). Two post-hoc measures were added and every v2 build is rescored with `bench/rescore.ts`:
+
+- every suite also runs through `open`, the UI path, reported as `<suite>@open`;
+- `stress.json`: 23 programs at the limits, with a time budget per case and state-leak pairs, expectations from the reference app (segments rounded to six decimals, limit errors checked by line only).
+
+The reference app passes 595 + 23 through both entry points; the full run takes about 35 s.

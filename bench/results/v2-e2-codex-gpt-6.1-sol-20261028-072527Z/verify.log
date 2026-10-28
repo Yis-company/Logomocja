@@ -1,0 +1,59 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
++ three@0.180.0
+
+17 packages installed [28.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 11 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                         0.90 kB │ gzip:   0.57 kB
+dist/assets/DMMono-DbtWzYYn.ttf        49.74 kB
+dist/assets/Manrope-DIRNzeTG.ttf      164.70 kB
+dist/assets/Lora-Italic-DMGr7pHq.ttf  221.23 kB
+dist/assets/index-CdKdi7y2.css         23.96 kB │ gzip:   5.74 kB
+dist/assets/index-Dyf-5yXM.js         549.64 kB │ gzip: 146.34 kB
+✓ built in 727ms
+$ vite build --base=${BASE_PATH:-/}
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) all 13 standard programs [21.76ms]
+(pass) precedence, unary signs, legacy variables and whitespace [0.34ms]
+(pass) all aliases and flat geometry [0.09ms]
+(pass) orientation pitch and roll [0.04ms]
+(pass) whole program validation and literal ranges [0.16ms]
+(pass) runtime errors retain drawing and report argument start [0.18ms]
+(pass) declarations, path and call scopes [0.14ms]
+(pass) procedures, forward calls, recursion and stop [0.98ms]
+(pass) lexical repeat count and exact comparisons [0.48ms]
+(pass) home, clear and zero distance [0.11ms]
+(pass) limits and step equivalence [5.65ms]
+(pass) parameter can share procedure name and be reassigned [0.09ms]
+(pass) names are case insensitive and prototype safe [0.08ms]
+(pass) expressions within token limit do not exhaust JS recursion [5.58ms]
+(pass) exact operation and token boundaries [10.31ms]
+(pass) bad arguments and structural errors have precise positions [0.25ms]
+
+ 16 pass
+ 0 fail
+ 103 expect() calls
+Ran 16 tests across 1 file. [51.00ms]
+(exit 0)

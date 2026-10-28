@@ -1,0 +1,71 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @axe-core/playwright@4.14.0
++ @playwright/test@1.64.1
++ @types/three@0.180.0
++ typescript@5.9.3
++ vite@7.3.7
++ @fontsource-variable/manrope@5.3.0
++ @fontsource/dm-mono@5.3.0
++ three@0.180.0
+
+30 packages installed [55.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 18 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              1.12 kB │ gzip:  0.55 kB
+dist/assets/dm-mono-latin-ext-400-normal-1aZr6b2b.woff       7.50 kB
+dist/assets/manrope-vietnamese-wght-normal-usUDDRr7.woff2    8.52 kB
+dist/assets/manrope-greek-wght-normal-DL7QRZyv.woff2         9.44 kB
+dist/assets/dm-mono-latin-ext-400-normal-C2zvOubV.woff2      9.55 kB
+dist/assets/dm-mono-latin-400-normal--0xN8mdc.woff          11.21 kB
+dist/assets/manrope-cyrillic-wght-normal-Dvxsihut.woff2     14.50 kB
+dist/assets/dm-mono-latin-400-normal-4GdczIuU.woff2         14.82 kB
+dist/assets/manrope-latin-ext-wght-normal-Ch3YOpNY.woff2    15.12 kB
+dist/assets/manrope-latin-wght-normal-DHIcAJRg.woff2        24.84 kB
+dist/assets/index-e-kUzy_d.css                              39.79 kB │ gzip: 11.07 kB
+dist/assets/index-pfWQYK1y.js                               72.75 kB │ gzip: 27.02 kB
+dist/assets/three-core-CwWrHVY2.js                         166.96 kB │ gzip: 46.45 kB
+dist/assets/three-renderer-BUiSsi7V.js                     359.61 kB │ gzip: 87.41 kB
+✓ built in 760ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) wyrażenia i tokeny > priorytety, łączność, nawiasy, znaki [2.07ms]
+(pass) wyrażenia i tokeny > odstępy przy operatorach są symetryczne [0.19ms]
+(pass) wyrażenia i tokeny > brak innych formatów liczb [0.07ms]
+(pass) wyrażenia i tokeny > argumenty i pozycje błędów [0.36ms]
+(pass) wyrażenia i tokeny > case, polskie znaki i komentarze [0.16ms]
+(pass) sterowanie, procedury i zakresy > forward calls, positional expressions, parameter named like procedure [0.27ms]
+(pass) sterowanie, procedury i zakresy > local variables, reassignment, globals [0.16ms]
+(pass) sterowanie, procedury i zakresy > nested repeats and lexical repcount [0.21ms]
+(pass) sterowanie, procedury i zakresy > stop unwinds repeat/conditional to enclosing call [3.94ms]
+(pass) sterowanie, procedury i zakresy > exact comparisons [0.11ms]
+(pass) sterowanie, procedury i zakresy > validate whole program including unreachable code [0.20ms]
+(pass) geometria i limity > flat geometry identical in both modes [0.13ms]
+(pass) geometria i limity > pitch yaw and roll right-handed vectors [0.06ms]
+(pass) geometria i limity > home draws and restores only position/orientation [0.04ms]
+(pass) geometria i limity > clear preserves turtle and zero move draws nothing [0.05ms]
+(pass) geometria i limity > coordinate and operation limits retain previous drawing [9.15ms]
+(pass) geometria i limity > conditional frames do not count, completion counts as an operation [0.17ms]
+(pass) all thirteen standard examples execute in their designated modes [12.30ms]
+(pass) challenge checks accept equivalent geometry and reject missing/extra lines [2.60ms]
+(pass) expressions up to the token limit do not add an implicit nesting limit [11.44ms]
+
+ 20 pass
+ 0 fail
+ 202 expect() calls
+Ran 20 tests across 1 file. [46.00ms]
+(exit 0)

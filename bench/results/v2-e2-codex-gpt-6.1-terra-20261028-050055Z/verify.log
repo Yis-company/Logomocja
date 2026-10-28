@@ -1,0 +1,45 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ vite@6.4.5
++ three@0.173.0
+
+14 packages installed [17.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 9 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.54 kB │ gzip:   0.35 kB
+dist/assets/index-B6Zqbc1R.css    7.41 kB │ gzip:   2.36 kB
+dist/assets/index-CK91kkuQ.js   521.97 kB │ gzip: 135.42 kB
+✓ built in 649ms
+$ vite build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+✔ standard programs execute (22.066264ms)
+✔ expressions, repeats and errors (0.251921ms)
+✔ flat geometry agrees in both modes (1.875029ms)
+✔ pitch goes up and clear keeps subsequent drawing (0.126086ms)
+✔ local declarations shadow globals before assignment (0.192586ms)
+✔ definitions cannot appear inside brackets (0.060543ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 56.440015
+$ node --test tests/*.test.js
+(exit 0)

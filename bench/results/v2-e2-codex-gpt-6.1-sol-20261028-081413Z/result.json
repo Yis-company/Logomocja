@@ -1,0 +1,67 @@
+{
+  "schema": 4,
+  "id": "v2-e2-codex-gpt-6.1-sol-20261028-081413Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-sol",
+  "cliVersion": "0.164.0",
+  "effort": "xhigh",
+  "startedAt": "2026-10-28T08:14:14.042Z",
+  "agentMs": 2163980,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 57072,
+    "cachedInput": 4235392,
+    "output": 78281,
+    "reasoning": 21009
+  },
+  "costUsd": 1.320493,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 50,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 15,
+    "distBytes": 756039
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "b47afb05751203d903cbbd74a161dc4692178195",
+  "repoVersion": "0.3.0",
+  "totalMs": 2174688,
+  "conformance": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": ""
+}

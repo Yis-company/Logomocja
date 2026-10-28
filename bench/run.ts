@@ -121,7 +121,7 @@ if (task === "app" && inner.verify?.built) {
     const report = await runConformance(buildDir, basePath, suitesDir);
     writeFileSync(join(resultsDir, "conformance.json"), `${JSON.stringify(report, null, 2)}\n`);
     conformance = Object.fromEntries(
-      Object.entries(report.suites).map(([name, suite]) => [name, { passed: suite.passed, total: suite.total, hook: report.hook }]),
+      Object.entries(report.suites).map(([name, suite]) => [name, { passed: suite.passed, total: suite.total, hook: name.endsWith("@open") ? report.open : report.hook }]),
     );
   }
   if (existsSync(programsDir(values.prompt))) {

@@ -1,0 +1,84 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 588,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 353"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 387"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 321"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 417"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 481"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 588,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 353"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 387"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 321"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 417"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 481"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

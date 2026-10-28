@@ -1,0 +1,136 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[1.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano dist/ (BASE_PATH=/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-074837Z/): assets/index-v6m72yrn.js, assets/styles-gdj4nv8j.css
+$ bun run scripts/build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/challenges.test.ts:
+(pass) wyzwania > jest co najmniej pięć wyzwań o unikalnych identyfikatorach [0.05ms]
+(pass) wyzwania > kwadrat-100: wzorcowe rozwiązanie przechodzi, szablon nie [1.98ms]
+(pass) wyzwania > trojkat: wzorcowe rozwiązanie przechodzi, szablon nie [0.36ms]
+(pass) wyzwania > schodki: wzorcowe rozwiązanie przechodzi, szablon nie [0.35ms]
+(pass) wyzwania > okrag: wzorcowe rozwiązanie przechodzi, szablon nie [0.65ms]
+(pass) wyzwania > dwa-kolory: wzorcowe rozwiązanie przechodzi, szablon nie [0.19ms]
+(pass) wyzwania > gwiazda-5: wzorcowe rozwiązanie przechodzi, szablon nie [0.19ms]
+(pass) wyzwania > domek: wzorcowe rozwiązanie przechodzi, szablon nie [2.05ms]
+(pass) wyzwania > pionowy-kwadrat: wzorcowe rozwiązanie przechodzi, szablon nie [0.18ms]
+(pass) wyzwania > szescian-80: wzorcowe rozwiązanie przechodzi, szablon nie [0.44ms]
+(pass) wyzwania > rysunek z błędnymi proporcjami nie przechodzi [0.39ms]
+(pass) wyzwania > wymagania: powtórz i procedura, błędy programu [0.36ms]
+(pass) wyzwania > kolory są sprawdzane [0.08ms]
+(pass) wyzwania > cel jest dostępny [0.22ms]
+
+test/reference.test.ts:
+(pass) dokumentacja > każdy przykład z opisu poleceń działa w swoim trybie [0.67ms]
+(pass) dokumentacja > przykłady w sekcjach działają [0.46ms]
+(pass) dokumentacja > opisano wszystkie polecenia i ich aliasy [0.09ms]
+(pass) standardowe programy > jest trzynaście i zgadzają się z plikami [10.38ms]
+(pass) standardowe programy > tryby [0.09ms]
+(pass) standardowe programy > programy z 2D działają identycznie w 3D [8.19ms]
+
+test/app.test.ts:
+(pass) permalink > kodowanie i dekodowanie zachowuje polskie znaki [1.22ms]
+(pass) permalink > adres zawiera tryb i program, a odczyt je odtwarza [0.13ms]
+(pass) permalink > uszkodzony kod nie przechodzi [0.04ms]
+(pass) permalink > długi program [3.16ms]
+(pass) edytor – pomocnicze > offsetOf [0.04ms]
+(pass) edytor – pomocnicze > podświetlanie zachowuje tekst znak po znaku [0.67ms]
+(pass) edytor – pomocnicze > znacznik błędu nie zmienia tekstu [0.06ms]
+(pass) edytor – pomocnicze > klasy tokenów [0.02ms]
+(pass) inne > slug nazwy pliku [0.07ms]
+(pass) inne > leksyka: numery wierszy i flagi odstępów [0.05ms]
+
+test/runner.test.ts:
+(pass) Runner > natychmiastowe wykonanie rysuje całość [0.17ms]
+(pass) Runner > błąd składni nic nie rysuje, błąd wykonania zachowuje rysunek [0.17ms]
+(pass) Runner > krokowanie: każdy krok wykonuje jedno polecenie i wskazuje wiersz [0.06ms]
+(pass) Runner > animacja, pauza i wznowienie [0.93ms]
+(pass) Runner > edycja w trakcie działania przerywa, ale zostawia rysunek [0.10ms]
+(pass) Runner > tryb automatyczny dobiera tempo do wielkości programu [1.41ms]
+(pass) Runner > reset czyści rysunek [0.10ms]
+
+test/lang.test.ts:
+(pass) liczby i leksyka > liczby dziesiętne [0.05ms]
+(pass) liczby i leksyka > niepoprawne liczby to błąd [0.17ms]
+(pass) liczby i leksyka > wielkość liter i aliasy [0.04ms]
+(pass) liczby i leksyka > komentarze [0.03ms]
+(pass) liczby i leksyka > kolor [0.08ms]
+(pass) wyrażenia > priorytety i łączność [0.03ms]
+(pass) wyrażenia > reguła odstępów wokół operatora [0.06ms]
+(pass) wyrażenia > znaki jednoargumentowe [0.05ms]
+(pass) wyrażenia > dzielenie przez zero i brak skończonego wyniku [0.08ms]
+(pass) wyrażenia > porównania są dokładne [0.06ms]
+(pass) wyrażenia > stara forma :nazwa [0.02ms]
+(pass) geometria > stan początkowy i skręty [0.05ms]
+(pass) geometria > lewo i wstecz [0.02ms]
+(pass) geometria > zero nie rysuje, pióro w górze nie rysuje
+(pass) geometria > kolejność i parametry odcinków [0.02ms]
+(pass) geometria > gora / dol (3D) [0.02ms]
+(pass) geometria > pp / pl (3D) [0.03ms]
+(pass) geometria > polecenia przestrzenne w 2D to błąd składni [0.05ms]
+(pass) geometria > programy płaskie dają te same współrzędne w 2D i 3D [0.04ms]
+(pass) geometria > dom [0.44ms]
+(pass) geometria > czyść [0.45ms]
+(pass) powtorz i nrpowt > powtarza i numeruje [0.02ms]
+(pass) powtorz i nrpowt > zagnieżdżone: najbliższe powtórz [0.01ms]
+(pass) powtorz i nrpowt > zero powtórzeń
+(pass) powtorz i nrpowt > poprawność liczby powtórzeń [0.09ms]
+(pass) powtorz i nrpowt > liczba powtórzeń z nazwy sprawdzana w czasie działania [0.03ms]
+(pass) powtorz i nrpowt > nrpowt poza powtórz to błąd składni [0.12ms]
+(pass) zmienne > niech i zmiana wartości [0.02ms]
+(pass) zmienne > nazwa bez deklaracji to błąd składni [0.03ms]
+(pass) zmienne > deklaracja po użyciu jest dozwolona, ale odczyt przed przypisaniem to błąd czasu działania [0.04ms]
+(pass) zmienne > nazwy zastrzeżone i nazwy procedur [1.30ms]
+(pass) zmienne > niech w procedurze jest lokalne i przesłania zmienną globalną [0.09ms]
+(pass) zmienne > zmienna lokalna znika po wywołaniu, a globalna jest czytana [0.04ms]
+(pass) zmienne > parametr można przypisać na nowo [0.04ms]
+(pass) zmienne > wartość niedostępna w wywołaniu rekurencyjnym nie przecieka [0.06ms]
+(pass) warunki > jeśli i jeżeli [0.06ms]
+(pass) warunki > brak drugiego bloku [0.04ms]
+(pass) warunki > stop w bloku kończy program / procedurę [0.06ms]
+(pass) procedury > definicja i wywołanie [0.03ms]
+(pass) procedury > stara forma nagłówka i :parametr [0.05ms]
+(pass) procedury > definicja po wywołaniu [0.01ms]
+(pass) procedury > argumenty to wyrażenia [0.03ms]
+(pass) procedury > parametr o nazwie procedury [0.02ms]
+(pass) procedury > zła liczba argumentów [0.08ms]
+(pass) procedury > błędy definicji [0.11ms]
+(pass) procedury > rekurencja i stop [0.02ms]
+(pass) procedury > nieznane polecenie wskazuje token [0.01ms]
+(pass) procedury > procedura wołana z powtórz ma własne nrpowt [0.02ms]
+(pass) błędy składni – pozycje > brak argumentu [0.06ms]
+(pass) błędy składni – pozycje > nawiasy [0.05ms]
+(pass) błędy składni – pozycje > zbłąkana wartość [0.02ms]
+(pass) błędy składni – pozycje > grubość [0.11ms]
+(pass) błędy składni – pozycje > błąd składni nic nie rysuje [0.01ms]
+(pass) błędy składni – pozycje > wskazanie argumentu w błędzie czasu działania [0.04ms]
+(pass) błędy składni – pozycje > znaki spoza języka [0.04ms]
+(pass) błędy składni – pozycje > CRLF [0.01ms]
+(pass) limity > liczba znaków [0.36ms]
+(pass) limity > liczba tokenów [11.67ms]
+(pass) limity > zagnieżdżenie nawiasów [0.26ms]
+(pass) limity > ramki: powtórz i wywołania [0.46ms]
+(pass) limity > operacje: granica dokładna [3.15ms]
+(pass) limity > odcinki: limit 10000 zachowanych [3.09ms]
+(pass) limity > współrzędne w granicach ±100000 [0.07ms]
+(pass) standardowe programy > Kwadrat zamyka się [0.02ms]
+(pass) standardowe programy > Kula – kierunek po pełnych okręgach [0.02ms]
+(pass) kolejność błędów i skrajne wartości > wcześniejsza nieznana nazwa wygrywa z późniejszym błędem składni [0.07ms]
+(pass) kolejność błędów i skrajne wartości > ogromne literały i kąty [0.20ms]
+
+ 104 pass
+ 0 fail
+ 809 expect() calls
+Ran 104 tests across 5 files. [72.00ms]
+(exit 0)

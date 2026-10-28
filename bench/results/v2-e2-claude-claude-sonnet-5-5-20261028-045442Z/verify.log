@@ -1,0 +1,98 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@5.9.3
++ vite@8.3.5
++ three@0.186.1
+
+28 packages installed [90.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 32 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.12 kB │ gzip:   0.64 kB
+dist/assets/index-BKZRkGVn.css   14.29 kB │ gzip:   4.05 kB
+dist/assets/index-BbVVpvG8.js    85.35 kB │ gzip:  30.47 kB
+dist/assets/view3d-XNCRMm8O.js  589.80 kB │ gzip: 147.59 kB
+
+✓ built in 146ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/lang.test.ts:
+(pass) wyrażenia > priorytety i łączność [2.00ms]
+(pass) wyrażenia > odstępy wokół operatora [0.41ms]
+(pass) wyrażenia > wartości niepoprawne [0.12ms]
+(pass) wyrażenia > dzielenie przez zero w argumencie [0.12ms]
+(pass) wyrażenia > porównania są dokładne [0.25ms]
+(pass) żółw > kierunki [0.26ms]
+(pass) żółw > 3D: gora, pp [0.17ms]
+(pass) żółw > 3D tylko w 3D [0.03ms]
+(pass) żółw > dom i czyść [0.07ms]
+(pass) żółw > pióro i kolor [0.15ms]
+(pass) powtórz i zmienne > nrpowt [0.25ms]
+(pass) powtórz i zmienne > zmienne [0.18ms]
+(pass) powtórz i zmienne > zakresy [0.09ms]
+(pass) powtórz i zmienne > limity argumentów [0.13ms]
+(pass) procedury > definicja i wywołanie [0.17ms]
+(pass) procedury > stara składnia i nazwy z wielkich liter [0.08ms]
+(pass) procedury > stop kończy procedurę [0.05ms]
+(pass) procedury > błędy [0.11ms]
+(pass) procedury > parametr o nazwie procedury [0.05ms]
+(pass) limity > operacje [4.08ms]
+(pass) limity > odcinki, współrzędne i zagnieżdżenie [6.01ms]
+(pass) limity > pozycja błędu limitu [1.26ms]
+
+tests/examples.test.ts:
+(pass) standardowe programy > jest trzynaście
+(pass) standardowe programy > kwadrat działa w trybie 2d [0.06ms]
+(pass) standardowe programy > gwiazda działa w trybie 2d [0.07ms]
+(pass) standardowe programy > rozeta działa w trybie 2d [0.08ms]
+(pass) standardowe programy > spirala działa w trybie 2d [0.37ms]
+(pass) standardowe programy > wielokaty działa w trybie 2d [0.25ms]
+(pass) standardowe programy > drzewo działa w trybie 2d [7.92ms]
+(pass) standardowe programy > sniezynka działa w trybie 2d [3.44ms]
+(pass) standardowe programy > schody działa w trybie 3d [0.11ms]
+(pass) standardowe programy > szescian działa w trybie 3d [0.07ms]
+(pass) standardowe programy > pierscien działa w trybie 3d [0.03ms]
+(pass) standardowe programy > kula działa w trybie 3d [0.37ms]
+(pass) standardowe programy > helisa działa w trybie 3d [0.24ms]
+(pass) standardowe programy > drzewo3d działa w trybie 3d [1.47ms]
+(pass) standardowe programy > programy płaskie są takie same w 2D i 3D [8.45ms]
+(pass) standardowe programy > kwadrat ma współrzędne [0.13ms]
+(pass) standardowe programy > sześcian ma 17 odcinków w obrębie 100 [0.11ms]
+
+tests/misc.test.ts:
+(pass) wyzwania > jest co najmniej pięć
+(pass) wyzwania > kwadrat-100: wzorzec przechodzi, pusty rysunek nie [0.44ms]
+(pass) wyzwania > trojkat-120: wzorzec przechodzi, pusty rysunek nie [0.11ms]
+(pass) wyzwania > szesciokat-60: wzorzec przechodzi, pusty rysunek nie [0.14ms]
+(pass) wyzwania > gwiazda-150: wzorzec przechodzi, pusty rysunek nie [0.09ms]
+(pass) wyzwania > schodki: wzorzec przechodzi, pusty rysunek nie [0.06ms]
+(pass) wyzwania > okrag: wzorzec przechodzi, pusty rysunek nie [0.22ms]
+(pass) wyzwania > domek: wzorzec przechodzi, pusty rysunek nie [0.11ms]
+(pass) wyzwania > spirala-kw: wzorzec przechodzi, pusty rysunek nie [0.50ms]
+(pass) wyzwania > kwadrat-pionowy: wzorzec przechodzi, pusty rysunek nie [0.04ms]
+(pass) wyzwania > trojnog: wzorzec przechodzi, pusty rysunek nie [0.07ms]
+(pass) wyzwania > inny kształt nie przechodzi, równoważny tak [2.20ms]
+(pass) udostępnianie > kodowanie w obie strony [0.65ms]
+(pass) udostępnianie > trasa [0.07ms]
+(pass) instrukcja > każdy przykład działa [0.57ms]
+(pass) instrukcja > wszystkie aliasy są udokumentowane [0.09ms]
+
+ 55 pass
+ 0 fail
+ 535 expect() calls
+Ran 55 tests across 3 files. [56.00ms]
+(exit 0)

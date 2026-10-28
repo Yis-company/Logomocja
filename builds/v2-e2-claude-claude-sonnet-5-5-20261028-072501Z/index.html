@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f1e4" />
+    <meta name="description" content="Logomocja – polska pracownia żółwia: rysuj w Logo na płaszczyźnie i w przestrzeni 3D." />
+    <title>Logomocja</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316866a'/%3E%3Cpath d='M16 5l9 21-9-5-9 5z' fill='%23fffdf7'/%3E%3C/svg%3E" />
+    <script>
+      (function () {
+        try {
+          var p = localStorage.getItem('logomocja.theme');
+          var dark = p === 'dark' || ((p !== 'light') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-072501Z/assets/index-Cy5ZzvvW.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-072501Z/assets/index-D4teDXbT.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="live" class="sr-only" aria-live="polite" role="status"></div>
+    <noscript><p style="padding:1rem">Logomocja wymaga włączonej obsługi JavaScriptu.</p></noscript>
+  </body>
+</html>

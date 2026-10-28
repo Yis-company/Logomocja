@@ -1,0 +1,137 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ typescript@7.0.2
++ vite@8.3.5
+
+21 packages installed [37.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 30 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.48 kB │ gzip:  0.84 kB
+dist/assets/index-D4teDXbT.css   15.75 kB │ gzip:  4.48 kB
+dist/assets/index-Cy5ZzvvW.js   104.27 kB │ gzip: 37.05 kB
+
+✓ built in 55ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/examples.test.ts:
+(pass) standard programs > kwadrat runs without error [1.65ms]
+(pass) standard programs > gwiazda runs without error [0.34ms]
+(pass) standard programs > rozeta runs without error [0.33ms]
+(pass) standard programs > spirala runs without error [0.61ms]
+(pass) standard programs > wielokaty runs without error [0.43ms]
+(pass) standard programs > drzewo runs without error [2.00ms]
+(pass) standard programs > sniezynka runs without error [1.67ms]
+(pass) standard programs > schody runs without error [0.08ms]
+(pass) standard programs > szescian runs without error [0.06ms]
+(pass) standard programs > pierscien runs without error [0.06ms]
+(pass) standard programs > kula runs without error [0.50ms]
+(pass) standard programs > helisa runs without error [0.23ms]
+(pass) standard programs > drzewo3d runs without error [1.60ms]
+(pass) standard programs > 2d examples draw the same in 3d mode [5.90ms]
+(pass) standard programs > kwadrat geometry [0.11ms]
+
+tests/lang.test.ts:
+(pass) lexical rules > case and aliases [0.10ms]
+(pass) lexical rules > comments and numbers [0.19ms]
+(pass) lexical rules > colour literal [0.04ms]
+(pass) expressions > precedence and associativity [0.03ms]
+(pass) expressions > whitespace rule [0.09ms]
+(pass) expressions > unary [0.06ms]
+(pass) expressions > division by zero reported at the argument start [0.06ms]
+(pass) expressions > exact comparison [0.03ms]
+(pass) expressions > legacy colon names [0.04ms]
+(pass) turtle > rotations 2d [0.04ms]
+(pass) turtle > 3d rotations [0.10ms]
+(pass) turtle > 3d commands rejected in 2d [0.09ms]
+(pass) turtle > pen and zero moves [0.02ms]
+(pass) turtle > dom [0.06ms]
+(pass) turtle > czyść [0.02ms]
+(pass) turtle > width [2.31ms]
+(pass) repeat, variables, conditionals > nrpowt [0.21ms]
+(pass) repeat, variables, conditionals > repeat count validation [0.08ms]
+(pass) repeat, variables, conditionals > variables [0.10ms]
+(pass) repeat, variables, conditionals > procedure locals shadow globals [0.06ms]
+(pass) repeat, variables, conditionals > if/ifelse [0.03ms]
+(pass) procedures > definition forms [0.08ms]
+(pass) procedures > calls before definitions and recursion [0.04ms]
+(pass) procedures > stop inside repeat ends the call [0.05ms]
+(pass) procedures > parameter may share a procedure name [0.06ms]
+(pass) procedures > errors [0.12ms]
+(pass) errors and limits > brackets [0.08ms]
+(pass) errors and limits > parse error draws nothing, run error keeps drawing [0.05ms]
+(pass) errors and limits > operation limit [1.68ms]
+(pass) errors and limits > segment limit [2.80ms]
+(pass) errors and limits > frame limit [0.38ms]
+(pass) errors and limits > coordinate limit [0.04ms]
+(pass) errors and limits > source and token limits [3.67ms]
+
+tests/check.test.ts:
+(pass) challenge checker > kwadrat: reference solves itself [1.09ms]
+(pass) challenge checker > trojkat: reference solves itself [0.30ms]
+(pass) challenge checker > szesciokat: reference solves itself [0.38ms]
+(pass) challenge checker > schodki: reference solves itself [0.33ms]
+(pass) challenge checker > gwiazda: reference solves itself [0.64ms]
+(pass) challenge checker > dom: reference solves itself [0.59ms]
+(pass) challenge checker > okrag: reference solves itself [0.35ms]
+(pass) challenge checker > kwadraty: reference solves itself [0.45ms]
+(pass) challenge checker > osie: reference solves itself [0.22ms]
+(pass) challenge checker > szescian: reference solves itself [0.70ms]
+(pass) challenge checker > different drawing fails with a reason [0.38ms]
+(pass) challenge checker > equivalent drawings pass regardless of colour, order and splitting [0.10ms]
+(pass) challenge checker > small numeric noise is tolerated [0.30ms]
+
+tests/reference.test.ts:
+(pass) command reference examples > start #1 [0.03ms]
+(pass) command reference examples > ruch #1
+(pass) command reference examples > ruch #2
+(pass) command reference examples > ruch #3
+(pass) command reference examples > ruch #4
+(pass) command reference examples > ruch #5 [0.02ms]
+(pass) command reference examples > ruch #6 [0.01ms]
+(pass) command reference examples > piorko #1
+(pass) command reference examples > piorko #2
+(pass) command reference examples > piorko #3
+(pass) command reference examples > piorko #4
+(pass) command reference examples > trzy-d #1
+(pass) command reference examples > trzy-d #2
+(pass) command reference examples > trzy-d #3
+(pass) command reference examples > trzy-d #4
+(pass) command reference examples > trzy-d #5 [0.02ms]
+(pass) command reference examples > powtarzanie #1
+(pass) command reference examples > powtarzanie #2
+(pass) command reference examples > powtarzanie #3 [0.03ms]
+(pass) command reference examples > zmienne #1 [1.45ms]
+(pass) command reference examples > wyrazenia #1 [0.03ms]
+(pass) command reference examples > wyrazenia #2 [0.02ms]
+(pass) command reference examples > wyrazenia #3 [0.02ms]
+(pass) command reference examples > wyrazenia #4 [0.02ms]
+(pass) command reference examples > warunki #1 [0.03ms]
+(pass) command reference examples > warunki #2 [0.07ms]
+(pass) command reference examples > procedury #1 [0.03ms]
+(pass) command reference examples > procedury #2 [0.05ms]
+(pass) command reference examples > procedury #3 [0.13ms]
+(pass) command reference examples > procedury #4 [0.03ms]
+(pass) command reference examples > zapis #1 [0.01ms]
+(pass) command reference examples > bledy #1 [0.01ms]
+(pass) command reference examples > bledy #2 [2.74ms]
+(pass) command reference examples > reference covers every command alias [0.45ms]
+
+ 95 pass
+ 0 fail
+ 278 expect() calls
+Ran 95 tests across 4 files. [47.00ms]
+(exit 0)

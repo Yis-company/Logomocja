@@ -1,0 +1,42 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ vite@7.3.7
+
+13 packages installed [8.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 6 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.54 kB │ gzip:  0.36 kB
+dist/assets/index-uIwnCkmO.css  10.69 kB │ gzip:  3.17 kB
+dist/assets/index-B607fkEJ.js   36.15 kB │ gzip: 14.55 kB
+✓ built in 111ms
+$ vite build
+(exit 0)
+
+$ bun run test
+✔ all standard examples execute in their modes (19.041191ms)
+✔ precedence, associativity, unary signs and spacing (0.267836ms)
+✔ parse failures draw nothing and runtime failures preserve strokes (0.147502ms)
+✔ 2D and 3D flat geometry agree (0.527004ms)
+✔ orientation in three dimensions (0.124501ms)
+✔ procedures, recursion, locals and lexical repeat count (0.180793ms)
+✔ unassigned variables, clear, home and conditionals (0.138667ms)
+✔ limits and value validation (2.042891ms)
+✔ definitions are restricted to top level (0.108335ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.999047
+$ node --test
+(exit 0)

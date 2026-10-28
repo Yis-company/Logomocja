@@ -9,6 +9,7 @@ export const prices: Record<string, { input: number; cachedInput: number; output
   "gpt-6-astra": { input: 10, cachedInput: 1, output: 50 },
   "gpt-6.1-sol": { input: 2, cachedInput: 0.1, output: 10 },
   "gpt-6.1-terra": { input: 1, cachedInput: 0.05, output: 5 },
+  "gpt-6-luna": { input: 0.1, cachedInput: 0.01, output: 0.5 },
 };
 
 export type Cost = { costUsd: number | null; costBasis: "cli" | "list" | null };

@@ -6,6 +6,8 @@ export type Case = {
   source: string;
   /** An error, segments, or both: with both, the segments are what must be drawn before the error. */
   expect: { segments?: Segment[]; error?: { line: number; column?: number } };
+  /** Time budget for `run` on this case, milliseconds; over budget fails the case. */
+  budgetMs?: number;
 };
 export type Outcome = {
   segments: Segment[];
@@ -31,6 +33,7 @@ export function parseSuite(json: unknown): Case[] {
     const expect = c.expect as Record<string, unknown>;
     const error = expect?.error as Record<string, unknown> | undefined;
     const result: Case = { name: c.name, mode: c.mode, source: c.source, expect: {} };
+    if (typeof c.budgetMs === "number" && c.budgetMs > 0) result.budgetMs = c.budgetMs;
     if (Array.isArray(expect?.segments)) {
       if (!expect.segments.every(isSegment)) throw new Error(`${where}: malformed expected segment`);
       result.expect.segments = expect.segments;
