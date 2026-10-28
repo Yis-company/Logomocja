@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Logomocja: studio do rysowania żółwiem w języku Logo, w 2D i w 3D." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#16866a" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316866a'/%3E%3Cpath d='M9 22V9h3v10h7v3z' fill='%23f7f4ea'/%3E%3C/svg%3E"
+    />
+    <title>Logomocja</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="Logomocja: studio">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="var(--accent)" />
+          <path d="M9 22V9h3v10h7v3z" fill="var(--on-accent)" />
+        </svg>
+        <span>Logomocja</span>
+      </a>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <a href="#/" data-nav="workspace">Studio</a>
+        <a href="#/pomoc" data-nav="reference">Pomoc</a>
+      </nav>
+      <div id="theme-slot" class="theme-slot"></div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+    <noscript>Logomocja wymaga włączonego JavaScriptu.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
