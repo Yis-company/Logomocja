@@ -1,0 +1,18 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Logomocja: polska aplikacja do rysowania żółwiem w 2D i 3D",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "bun-types": "^1.4.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
