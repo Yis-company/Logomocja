@@ -1,0 +1,11 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {run} from '../src/interpreter.ts';
+test('draws a square',()=>{const r=run('powtorz 4 [ np 10 pw 90 ]');assert.equal(r.error,null);assert.equal(r.segments.length,4);assert.deepEqual(r.segments[0].to,[0,10,0])});
+test('rejects parse errors without drawing',()=>{const r=run('np 10\nwat');assert.equal(r.segments.length,0);assert.ok(r.error)});
+test('supports repeat count and variables',()=>{const r=run('niech n 3\npowtorz n [ np nrpowt ]');assert.equal(r.error,null);assert.deepEqual(r.segments.map(s=>s.to[1]),[1,3,6])});
+test('supports procedures',()=>{const r=run('oto kw ma: a\n np a\njuż\nkw 25');assert.equal(r.error,null);assert.equal(r.segments[0].to[1],25)});
+test('rejects 3d-only commands in 2d',()=>{const r=run('gora 30');assert.ok(r.error);assert.equal(r.segments.length,0)});
+test('all shipped programs execute in their declared mode',async()=>{const {examples}=await import('../src/examples.ts');for(const e of examples){const r=run(e[4],e[2]);assert.equal(r.error,null,`${e[0]}: ${r.error?.message}`);assert.ok(r.segments.length>0,e[0])}});
+test('binary operator spacing is enforced',()=>{assert.equal(run('np 10 - 5').segments[0].to[1],5);assert.ok(run('np 10 -5').error)});
+test('recursive procedures keep drawing after a nested stop',()=>{const r=run('oto lin ma: n\n jeśli n = 0 [stop]\n np 1\n lin n - 1\njuż\nlin 4');assert.equal(r.error,null);assert.equal(r.segments.length,4)});
+test('rejects undeclared variables during parsing',()=>{const r=run('np brak');assert.equal(r.segments.length,0);assert.match(r.error.message,/zadeklarowaną zmienną/)});
+test('allows variables declared later at top level and reports path reads at runtime',()=>{const r=run('np dl\nniech dl 8');assert.equal(r.error.line,1);assert.equal(r.segments.length,0)});
