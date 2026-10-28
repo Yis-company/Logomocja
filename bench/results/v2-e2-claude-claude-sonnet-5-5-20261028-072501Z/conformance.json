@@ -1,0 +1,44 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 593,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów: limit to 32."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 593,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów: limit to 32."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

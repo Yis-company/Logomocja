@@ -1,0 +1,19 @@
+{
+  "name": "Logomocja",
+  "short_name": "Logomocja",
+  "description": "Polska pracownia żółwia: Logo w 2D i 3D.",
+  "lang": "pl",
+  "start_url": "/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-074837Z/",
+  "scope": "/Logomocja/builds/v2-e2-claude-claude-sonnet-5-5-20261028-074837Z/",
+  "display": "standalone",
+  "background_color": "#f4efe4",
+  "theme_color": "#f4efe4",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

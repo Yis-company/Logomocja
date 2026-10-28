@@ -23,7 +23,7 @@ const env = (name: string) => {
   if (!value) throw new Error(`Missing ${name}`);
   return value;
 };
-const task = env("BENCH_TASK") as "app" | "tests";
+const task = env("BENCH_TASK") as "app" | "tests" | "tests-round2";
 const { runner, model } = parseModelSpec(env("BENCH_MODEL"));
 const effort = process.env.BENCH_EFFORT || null;
 const basePath = env("BENCH_BASE_PATH");
@@ -51,6 +51,8 @@ const sh = (
 
 sh(["git", "init", "-q", "-b", "main"]);
 writeFileSync(join(WORK, ".git/info/exclude"), "node_modules/\ndist/\n.bun/\n.cache/\n");
+// Round 2 of test authoring starts from both round-1 suites.
+if (task === "tests-round2") cpSync(join(OUT, "round1"), join(WORK, "round1"), { recursive: true });
 const git = ["git", "-c", "user.name=Logomocja bench", "-c", "user.email=bench@logomocja.invalid"];
 
 const startedAt = new Date().toISOString();
@@ -119,6 +121,7 @@ if (task === "app") {
   } catch {
     cases = 0;
   }
+  if (existsSync(join(WORK, "review.json"))) cpSync(join(WORK, "review.json"), join(OUT, "review.json"));
   log(`cases: ${cases}`);
 }
 

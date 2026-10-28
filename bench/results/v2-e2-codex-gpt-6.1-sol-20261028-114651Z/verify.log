@@ -1,0 +1,74 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
+
+16 packages installed [10.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 8 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.59 kB │ gzip:  0.36 kB
+dist/assets/index-KlizQXLy.css  21.51 kB │ gzip:  5.59 kB
+dist/assets/index-bt1qR8VT.js   48.51 kB │ gzip: 19.34 kB
+✓ built in 115ms
+$ vite build --base=${BASE_PATH:-/}
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) przykłady > kwadrat [1.79ms]
+(pass) przykłady > gwiazda [0.19ms]
+(pass) przykłady > rozeta [0.81ms]
+(pass) przykłady > spirala [1.33ms]
+(pass) przykłady > wielokaty [1.05ms]
+(pass) przykłady > drzewo [10.20ms]
+(pass) przykłady > sniezynka [8.14ms]
+(pass) przykłady > schody [0.10ms]
+(pass) przykłady > szescian [0.08ms]
+(pass) przykłady > pierscien [0.06ms]
+(pass) przykłady > kula [0.53ms]
+(pass) przykłady > helisa [0.21ms]
+(pass) przykłady > drzewo3d [2.50ms]
+(pass) wyrażenia i leksyka > kolejność działań [0.23ms]
+(pass) wyrażenia i leksyka > odstępy operatorów [0.13ms]
+(pass) wyrażenia i leksyka > liczby i komentarze [0.06ms]
+(pass) wyrażenia i leksyka > dokładne porównania [0.04ms]
+(pass) wyrażenia i leksyka > wszystkie porównania [0.08ms]
+(pass) wyrażenia i leksyka > błędy runtime w argumencie [0.07ms]
+(pass) walidacja całego programu > nie rysuje po błędzie składni [0.09ms]
+(pass) walidacja całego programu > pozycje błędów [0.03ms]
+(pass) walidacja całego programu > statyczna i dynamiczna grubość [0.03ms]
+(pass) walidacja całego programu > licznik leksykalny [0.05ms]
+(pass) procedury i zakresy > definicja po wywołaniu [0.05ms]
+(pass) procedury i zakresy > legacy i wielkość liter [0.03ms]
+(pass) procedury i zakresy > globalne i lokalne [0.04ms]
+(pass) procedury i zakresy > nieprzypisana zmienna [0.03ms]
+(pass) procedury i zakresy > stop wychodzi z procedury [0.03ms]
+(pass) procedury i zakresy > parametr o nazwie procedury [0.02ms]
+(pass) procedury i zakresy > rekurencja i limity ramek [0.11ms]
+(pass) procedury i zakresy > niepoprawne definicje i wywołania [0.06ms]
+(pass) geometria i stan > obroty przestrzenne [0.05ms]
+(pass) geometria i stan > pisak, dom i czyść [0.09ms]
+(pass) geometria i stan > błąd runtime zachowuje wynik po czyść [0.03ms]
+(pass) geometria i stan > limity operacji i współrzędnych [1.89ms]
+(pass) geometria i stan > limity źródła, tokenów i nawiasów [1.08ms]
+(pass) geometria i stan > wykonanie krokowe zgodne z run [0.15ms]
+(pass) odporność wyrażeń > pierwszy token argumentu w nawiasach [0.05ms]
+(pass) odporność wyrażeń > długie wyrażenia i znaki bez przepełnienia stosu [8.43ms]
+(pass) odporność wyrażeń > zwykłe nazwy pokrywające się z polami JavaScript [0.08ms]
+
+ 40 pass
+ 0 fail
+ 164 expect() calls
+Ran 40 tests across 1 file. [42.00ms]
+(exit 0)

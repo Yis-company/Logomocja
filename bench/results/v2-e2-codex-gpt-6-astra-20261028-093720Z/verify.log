@@ -1,0 +1,73 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
+
+16 packages installed [12.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 10 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                    0.76 kB │ gzip:  0.44 kB
+dist/assets/font-3-BQ0abr9c.ttf   48.20 kB
+dist/assets/font-4-BYXu76Ss.ttf   48.27 kB
+dist/assets/font-0-CB7WfZ8W.ttf   48.28 kB
+dist/assets/font-2-CYvJJk-g.ttf   48.28 kB
+dist/assets/font-1-DCQhiIS7.ttf   48.31 kB
+dist/assets/font-6-ClCTSiDw.ttf  128.81 kB
+dist/assets/font-7-DyRt3UMW.ttf  129.92 kB
+dist/assets/font-5-B-rAsf59.ttf  136.41 kB
+dist/assets/index-Bt8X4pvk.css    29.99 kB │ gzip:  6.71 kB
+dist/assets/index-mRndaYnG.js     62.38 kB │ gzip: 24.08 kB
+✓ built in 169ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) wyrażenia i składnia > kolejność działań i znaki [1.93ms]
+(pass) wyrażenia i składnia > odstępy przy operatorach [0.56ms]
+(pass) wyrażenia i składnia > nieprawidłowe liczby i kolory [0.74ms]
+(pass) wyrażenia i składnia > cały program walidowany przed wykonaniem [0.19ms]
+(pass) wyrażenia i składnia > pozycje błędów argumentów [0.23ms]
+(pass) wyrażenia i składnia > zagnieżdżenia i nieznane nazwy [0.10ms]
+(pass) zmienne, bloki i procedury > deklaracja późniejsza, lokalność i cieniowanie [0.36ms]
+(pass) zmienne, bloki i procedury > warunki są dokładne [0.07ms]
+(pass) zmienne, bloki i procedury > definicje, legacy, wielkość liter i wyrażenia argumentów [0.35ms]
+(pass) zmienne, bloki i procedury > parametr o nazwie procedury [0.04ms]
+(pass) zmienne, bloki i procedury > nrpowt jest leksykalne i najbliższe [0.20ms]
+(pass) zmienne, bloki i procedury > stop kończy wywołanie z wnętrza bloku [0.13ms]
+(pass) zmienne, bloki i procedury > zła liczba argumentów [0.12ms]
+(pass) zmienne, bloki i procedury > brak zagnieżdżonych definicji [0.04ms]
+(pass) geometria i stan > kwadrat i identyczne płaskie tryby [0.51ms]
+(pass) geometria i stan > osie 3D i przechył [0.11ms]
+(pass) geometria i stan > dom zachowuje pisak, czyszczenie zachowuje stan [0.16ms]
+(pass) geometria i stan > błąd wykonania zachowuje odcinki [0.12ms]
+(pass) geometria i stan > krok i pełne wykonanie są zgodne [0.98ms]
+(pass) geometria i stan > każdy alias polecenia [0.55ms]
+(pass) limity i przykłady > limity znaków, tokenów, ramek, operacji, współrzędnych [6.87ms]
+(pass) limity i przykłady > każdy przykład działa [13.64ms]
+(pass) limity i przykłady > zadania akceptują rozwiązania i odrzucają błędy [8.67ms]
+(pass) granice semantyki > głębokie wyrażenia mieszczące się w limitach nie zależą od stosu JS [8.57ms]
+(pass) granice semantyki > dokładne liczenie końców bloków [1.48ms]
+(pass) granice semantyki > przypisanie parametru o nazwie procedury [0.09ms]
+(pass) granice semantyki > dynamiczna grubość i liczba powtórzeń wskazują początek wyrażenia [0.12ms]
+(pass) granice semantyki > lokalne nazwy nie są widoczne w innych wywołaniach [0.05ms]
+(pass) granice semantyki > trzy obroty po 90 stopni tworzą właściwą bazę [0.03ms]
+(pass) granice semantyki > niezależność uruchomień [0.03ms]
+(pass) definicja nie może pojawić się wewnątrz wyrażenia [0.02ms]
+
+ 31 pass
+ 0 fail
+ 200 expect() calls
+Ran 31 tests across 1 file. [50.00ms]
+(exit 0)

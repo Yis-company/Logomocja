@@ -5,9 +5,11 @@ import { Icon } from "./Icon";
 export default function Stage2D({
   drawing,
   theme = "light",
+  fitVersion = 0,
 }: {
   drawing: Drawing;
   theme?: Theme;
+  fitVersion?: number;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [size, setSize] = useState({ width: 1, height: 1 });
@@ -109,7 +111,13 @@ export default function Stage2D({
     ctx.stroke();
     ctx.restore();
   }, [drawing, size, view, theme]);
-  function fit() {
+  const fitted = useRef(0);
+  useEffect(() => {
+    if (fitted.current === fitVersion || size.width <= 1) return;
+    fitted.current = fitVersion;
+    fitView();
+  });
+  function fitView() {
     const points = [
       drawing.turtle.position,
       [0, 0, 0],
@@ -175,7 +183,7 @@ export default function Stage2D({
           className="icon-button"
           title="Dopasuj rysunek"
           aria-label="Dopasuj rysunek"
-          onClick={fit}
+          onClick={fitView}
         >
           <Icon name="fit" size={17} />
         </button>

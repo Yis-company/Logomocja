@@ -31,11 +31,11 @@ const compareVersions = (a: string, b: string) => {
 
 export type VersionGroup = { version: string; runs: RunResult[] };
 
-/** Groups runs of one task by benchmark version (prompt/env), newest first. */
+/** Groups runs of one task by benchmark version (prompt/env), newest first. "tests" includes its later rounds. */
 export function groupByVersion(runs: readonly RunResult[], task: RunResult["task"]): VersionGroup[] {
   const groups = new Map<string, RunResult[]>();
   for (const run of runs) {
-    if (run.task !== task) continue;
+    if (!run.task.startsWith(task)) continue;
     const key = benchmarkVersion(run);
     groups.set(key, [...(groups.get(key) ?? []), run]);
   }

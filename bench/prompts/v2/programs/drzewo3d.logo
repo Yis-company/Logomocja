@@ -1,0 +1,16 @@
+; Drzewo w przestrzeni: gałęzie obracają się wokół pnia.
+oto gałąź ma: dł
+  jeśli dł < 8 [stop]
+  jeżeli dł > 30 [kolor "#6b4f2a" grubosc 3] [kolor "#2f8f4e" grubosc 1]
+  np dł
+  powtorz 3 [
+    gora 35
+    gałąź dł * 0.6
+    dol 35
+    pp 120
+  ]
+  pod ws dł opu
+już
+
+gora 90
+gałąź 70

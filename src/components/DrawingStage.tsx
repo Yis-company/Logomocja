@@ -8,11 +8,13 @@ export function DrawingStage({
   mode,
   theme,
   viewVersion = 0,
+  fitVersion = 0,
 }: {
   drawing: Drawing;
   mode: Mode;
   theme: Theme;
   viewVersion?: number;
+  fitVersion?: number;
 }) {
   const z =
     Math.abs(drawing.turtle.position[2]) < 0.005
@@ -26,9 +28,9 @@ export function DrawingStage({
         }
       >
         {mode === "2d" ? (
-          <Stage2D key={`2d-${viewVersion}`} drawing={drawing} theme={theme} />
+          <Stage2D key={`2d-${viewVersion}`} drawing={drawing} theme={theme} fitVersion={fitVersion} />
         ) : (
-          <Stage3D key={`3d-${viewVersion}`} drawing={drawing} theme={theme} />
+          <Stage3D key={`3d-${viewVersion}`} drawing={drawing} theme={theme} fitVersion={fitVersion} />
         )}
       </Suspense>
     </div>

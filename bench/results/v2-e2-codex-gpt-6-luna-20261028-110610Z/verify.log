@@ -1,0 +1,33 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Built static site at dist/ (base /Logomocja/builds/v2-e2-codex-gpt-6-luna-20261028-110610Z/)
+$ node build.mjs
+(exit 0)
+
+$ bun run test
+✔ standard examples execute without errors and ship drawing strokes (18.018568ms)
+✔ flat programs produce identical 2D and 3D coordinates (0.558338ms)
+✔ expression precedence, left association and operator spacing (0.767298ms)
+✔ parse errors are preflighted and run errors keep prior drawing (0.145501ms)
+✔ procedures, locals, lexical repeat counter and stop (0.191835ms)
+✔ 3D commands are rejected in 2D, accepted in 3D (0.092ms)
+✔ repeat and width literal validation and unassigned variables (0.139835ms)
+✔ clear screen removes prior strokes (0.078667ms)
+✔ procedures can read globals and local assignment shadows them (1.122468ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59.49233
+$ node --test
+(exit 0)

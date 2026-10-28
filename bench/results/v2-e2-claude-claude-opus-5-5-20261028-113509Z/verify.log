@@ -1,0 +1,100 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.186.0
++ typescript@7.0.2
++ vite@8.3.5
++ three@0.186.1
+
+29 packages installed [81.00ms]
+Saved lockfile
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   7.96 kB │ gzip:   2.58 kB
+dist/assets/index-BhKzUMv3.css   12.20 kB │ gzip:   3.54 kB
+dist/assets/index-BlcLJmLi.js   645.46 kB │ gzip: 169.70 kB
+
+✓ built in 162ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/lang.test.ts:
+(pass) standard programs > kwadrat runs without error [3.07ms]
+(pass) standard programs > gwiazda runs without error [0.94ms]
+(pass) standard programs > rozeta runs without error [0.33ms]
+(pass) standard programs > spirala runs without error [1.28ms]
+(pass) standard programs > wielokaty runs without error [0.57ms]
+(pass) standard programs > drzewo runs without error [5.15ms]
+(pass) standard programs > sniezynka runs without error [6.70ms]
+(pass) standard programs > schody runs without error [0.19ms]
+(pass) standard programs > szescian runs without error [0.07ms]
+(pass) standard programs > pierscien runs without error [0.04ms]
+(pass) standard programs > kula runs without error [1.78ms]
+(pass) standard programs > helisa runs without error [0.36ms]
+(pass) standard programs > drzewo3d runs without error [3.53ms]
+(pass) standard programs > kwadrat draws a closed square [0.50ms]
+(pass) standard programs > flat programs are identical in 2D and 3D [17.42ms]
+(pass) standard programs > examples have no trailing newline and 13 entries [0.07ms]
+(pass) expressions > precedence and associativity [0.13ms]
+(pass) expressions > whitespace rule [0.18ms]
+(pass) expressions > unary signs [0.11ms]
+(pass) expressions > bad numbers [0.07ms]
+(pass) expressions > .5 is a number [0.03ms]
+(pass) expressions > exact comparisons [0.07ms]
+(pass) expressions > division by zero is a run-time error at the argument [0.09ms]
+(pass) expressions > non-finite result [0.05ms]
+(pass) turtle > turns [0.05ms]
+(pass) turtle > 3D pitch and roll [0.06ms]
+(pass) turtle > pitch/roll are errors in 2D [0.13ms]
+(pass) turtle > pen, colour and width [0.03ms]
+(pass) turtle > zero move draws nothing
+(pass) turtle > home draws and resets orientation [0.06ms]
+(pass) turtle > clear screen [0.06ms]
+(pass) turtle > aliases and case [0.04ms]
+(pass) repeat & variables > nrpowt [0.02ms]
+(pass) repeat & variables > nrpowt outside repeat is a parse error [0.04ms]
+(pass) repeat & variables > repeat count checks [0.11ms]
+(pass) repeat & variables > width checks [0.07ms]
+(pass) repeat & variables > undeclared name is a parse error [0.02ms]
+(pass) repeat & variables > global declared later; unassigned read is run-time error at arg start [0.04ms]
+(pass) repeat & variables > legacy :name [0.03ms]
+(pass) repeat & variables > variable names may not be commands or procedures [0.10ms]
+(pass) repeat & variables > locals shadow globals and are discarded [0.11ms]
+(pass) procedures > basic call, forward reference, expression args [0.05ms]
+(pass) procedures > legacy header [0.04ms]
+(pass) procedures > parameter sharing a procedure name [0.02ms]
+(pass) procedures > wrong arg count [0.07ms]
+(pass) procedures > definitions errors [0.06ms]
+(pass) procedures > stop ends the call, also from inside a repeat [0.09ms]
+(pass) procedures > recursion frame limit [0.18ms]
+(pass) errors & limits > unknown command, stray value, brackets [0.09ms]
+(pass) errors & limits > colour errors [0.03ms]
+(pass) errors & limits > ops limit [6.60ms]
+(pass) errors & limits > segment and coordinate limits [2.20ms]
+(pass) errors & limits > nesting limit [0.38ms]
+(pass) errors & limits > source and token limits [3.45ms]
+
+tests/challenges.test.ts:
+(pass) at least five challenges, each solvable by its own solution [2.74ms]
+(pass) checker rejects wrong, partial, empty and broken programs [0.29ms]
+
+tests/share.test.ts:
+(pass) permalink payload round-trips [1.73ms]
+
+ 57 pass
+ 0 fail
+ 269 expect() calls
+Ran 57 tests across 3 files. [67.00ms]
+(exit 0)

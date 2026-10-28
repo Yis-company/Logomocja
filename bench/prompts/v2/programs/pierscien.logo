@@ -1,0 +1,5 @@
+; Okrąg przechylony o 30 stopni.
+kolor "#a478c0"
+grubosc 3
+gora 30
+powtorz 36 [np 12 pw 10]

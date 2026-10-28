@@ -1,0 +1,143 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.170.0
++ happy-dom@21.0.4
++ typescript@7.0.2
++ vite@8.3.5
++ three@0.170.0
+
+36 packages installed [112.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 29 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   2.59 kB │ gzip:   1.16 kB
+dist/assets/index-Ciau2tS1.css   11.99 kB │ gzip:   3.54 kB
+dist/assets/index-CM3DtYm0.js    68.56 kB │ gzip:  23.87 kB
+dist/assets/view3d-DFu0RO8C.js  524.52 kB │ gzip: 131.75 kB
+
+✓ built in 136ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/examples.test.ts:
+(pass) standard programs > there are thirteen of them, with unique names [0.06ms]
+(pass) standard programs > kwadrat (2d) runs without error and draws [1.70ms]
+(pass) standard programs > gwiazda (2d) runs without error and draws [0.20ms]
+(pass) standard programs > rozeta (2d) runs without error and draws [0.46ms]
+(pass) standard programs > spirala (2d) runs without error and draws [0.71ms]
+(pass) standard programs > wielokaty (2d) runs without error and draws [0.49ms]
+(pass) standard programs > drzewo (2d) runs without error and draws [5.10ms]
+(pass) standard programs > sniezynka (2d) runs without error and draws [6.83ms]
+(pass) standard programs > schody (3d) runs without error and draws [0.14ms]
+(pass) standard programs > szescian (3d) runs without error and draws [0.07ms]
+(pass) standard programs > pierscien (3d) runs without error and draws [0.05ms]
+(pass) standard programs > kula (3d) runs without error and draws [0.56ms]
+(pass) standard programs > helisa (3d) runs without error and draws [0.30ms]
+(pass) standard programs > drzewo3d (3d) runs without error and draws [6.16ms]
+
+tests/challenges.test.ts:
+(pass) challenges > there are at least five, with unique ids [0.04ms]
+(pass) challenges > every reference program passes its own challenge [4.14ms]
+(pass) challenges > a different shape fails with a reason [0.19ms]
+(pass) challenges > a square of another size fails [0.12ms]
+(pass) challenges > the same square drawn as four separate strokes still passes [0.98ms]
+(pass) challenges > a program with an error fails and names the position [0.14ms]
+(pass) challenges > an empty drawing fails [0.05ms]
+(pass) challenges > a required keyword is enforced [0.01ms]
+
+tests/interpreter.test.ts:
+(pass) movement and turning > np moves along +Y and draws with defaults [0.05ms]
+(pass) movement and turning > ws moves backwards [0.02ms]
+(pass) movement and turning > pw turns clockwise seen from above; lw turns the other way [0.09ms]
+(pass) movement and turning > a move of zero draws nothing [0.03ms]
+(pass) movement and turning > pen up moves without drawing [0.02ms]
+(pass) movement and turning > gora 90 heads along the former up vector; pitch is 3D only [0.06ms]
+(pass) movement and turning > pp rolls the up vector towards the right: after pp 90 the right vector points down [0.02ms]
+(pass) movement and turning > pl rolls the other way [0.03ms]
+(pass) movement and turning > a flat program gives identical drawings in 2D and 3D [0.05ms]
+(pass) movement and turning > dom returns to the origin and draws the way back when pen is down [0.04ms]
+(pass) movement and turning > dom resets the heading to +Y [0.01ms]
+(pass) movement and turning > czyść forgets earlier segments only [0.03ms]
+(pass) movement and turning > pen state, colour and width persist [0.02ms]
+(pass) expressions > precedence and left association [0.02ms]
+(pass) expressions > binary operators need whitespace on both sides or on neither [0.03ms]
+(pass) expressions > unary signs stack anywhere an operand is expected [0.04ms]
+(pass) expressions > comparisons are exact [0.03ms]
+(pass) expressions > division by zero is a run-time error that keeps the drawing [0.11ms]
+(pass) expressions > an unassigned variable is a run-time error at the first token of its argument [0.05ms]
+(pass) expressions > an undeclared name is a parse-time error [0.02ms]
+(pass) variables and procedures > niech at top level is global [0.02ms]
+(pass) variables and procedures > niech inside a procedure is local and shadows the global [0.04ms]
+(pass) variables and procedures > parameters, legacy :name form and calls with expression arguments [0.07ms]
+(pass) variables and procedures > procedures may be called before they are defined [0.02ms]
+(pass) variables and procedures > a call with the wrong number of arguments is an error at the extra argument [0.02ms]
+(pass) variables and procedures > a name that is neither parameter nor variable is a parse-time error [0.02ms]
+(pass) variables and procedures > stop ends the procedure, and at top level ends the program [0.03ms]
+(pass) variables and procedures > a stop inside a repeat ends the enclosing procedure [0.03ms]
+(pass) variables and procedures > procedures may call themselves [0.03ms]
+(pass) variables and procedures > a definition inside a body is an error [0.01ms]
+(pass) variables and procedures > a missing już is an error [0.02ms]
+(pass) variables and procedures > a name cannot be a command word [0.01ms]
+(pass) repeat and conditionals > nrpowt counts iterations from 1 [0.02ms]
+(pass) repeat and conditionals > nrpowt in a procedure body that is not inside a repeat is a parse error [0.02ms]
+(pass) repeat and conditionals > nrpowt outside any repeat is a parse error [0.01ms]
+(pass) repeat and conditionals > a repeat count must be an integer from 0 to 10000 [0.04ms]
+(pass) repeat and conditionals > ifelse runs one of two bodies [0.02ms]
+(pass) parse-time and run-time errors > a parse-time error draws nothing [0.02ms]
+(pass) parse-time and run-time errors > a run-time error keeps the drawing so far [0.02ms]
+(pass) parse-time and run-time errors > grubosc outside 1-12 is a parse-time error at the argument [0.02ms]
+(pass) parse-time and run-time errors > unknown commands and unbalanced brackets are reported with positions [0.05ms]
+(pass) parse-time and run-time errors > colour literals must be quoted six-digit hex [0.06ms]
+(pass) parse-time and run-time errors > numbers in other notations are errors [0.04ms]
+(pass) parse-time and run-time errors > checkSource reports parse errors only [0.05ms]
+(pass) limits > the operation limit stops execution and keeps the drawing [1.85ms]
+(pass) limits > the segment limit is enforced [2.79ms]
+(pass) limits > coordinates are limited to plus or minus 100000 [0.07ms]
+(pass) limits > recursion depth is limited to 32 frames [0.21ms]
+(pass) limits > source length is limited [0.31ms]
+(pass) limits > bracket nesting is limited to 32 [0.06ms]
+
+tests/reference.test.ts:
+(pass) command reference examples > np example runs [0.04ms]
+(pass) command reference examples > ws example runs [0.02ms]
+(pass) command reference examples > pw example runs
+(pass) command reference examples > lw example runs [0.07ms]
+(pass) command reference examples > pod example runs
+(pass) command reference examples > opu example runs
+(pass) command reference examples > kolor example runs
+(pass) command reference examples > grubość example runs [0.01ms]
+(pass) command reference examples > powtórz example runs
+(pass) command reference examples > niech example runs [0.01ms]
+(pass) command reference examples > jeśli example runs [0.01ms]
+(pass) command reference examples > jeżeli example runs [0.03ms]
+(pass) command reference examples > stop example runs [0.03ms]
+(pass) command reference examples > dom example runs
+(pass) command reference examples > czyść example runs
+(pass) command reference examples > góra example runs
+(pass) command reference examples > dół example runs [0.02ms]
+(pass) command reference examples > pp example runs [0.03ms]
+(pass) command reference examples > pl example runs
+
+tests/studio.smoke.test.ts:
+(pass) studio (DOM smoke test) > mounts, runs, steps and reports a parse error [65.47ms]
+(pass) studio (DOM smoke test) > a parse error shows the Polish message with position [3.20ms]
+(pass) studio (DOM smoke test) > step moves the highlight one statement at a time [3.70ms]
+(pass) studio (DOM smoke test) > a challenge panel checks a solution and records progress [4.66ms]
+
+ 95 pass
+ 0 fail
+ 228 expect() calls
+Ran 95 tests across 5 files. [180.00ms]
+(exit 0)

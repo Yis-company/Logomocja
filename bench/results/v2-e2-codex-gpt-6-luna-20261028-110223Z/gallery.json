@@ -1,0 +1,57 @@
+{
+  "hook": true,
+  "programs": {
+    "kwadrat": {
+      "matches": true,
+      "reason": null
+    },
+    "gwiazda": {
+      "matches": true,
+      "reason": null
+    },
+    "rozeta": {
+      "matches": true,
+      "reason": null
+    },
+    "spirala": {
+      "matches": true,
+      "reason": null
+    },
+    "wielokaty": {
+      "matches": true,
+      "reason": null
+    },
+    "drzewo": {
+      "matches": true,
+      "reason": null
+    },
+    "sniezynka": {
+      "matches": true,
+      "reason": null
+    },
+    "schody": {
+      "matches": true,
+      "reason": null
+    },
+    "szescian": {
+      "matches": false,
+      "reason": "segment 12: expected (100, 100, 100)→(100, 100, 0), got (100, 100, 100)→(200, 100, 100)"
+    },
+    "pierscien": {
+      "matches": true,
+      "reason": null
+    },
+    "kula": {
+      "matches": true,
+      "reason": null
+    },
+    "helisa": {
+      "matches": false,
+      "reason": "segment 1: expected (0, 10, 0)→(0, 10, 1.5), got (0, 10, 0)→(0.3882, 10, 1.4489)"
+    },
+    "drzewo3d": {
+      "matches": false,
+      "reason": "expected 121 segments, got 50"
+    }
+  }
+}

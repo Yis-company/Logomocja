@@ -1,0 +1,15 @@
+; Rekurencja: gałąź rysuje dwie mniejsze gałęzie.
+oto gałąź ma: dł
+  jeśli dł < 6 [stop]
+  jeżeli dł > 30 [kolor "#6b4f2a" grubosc 3] [kolor "#2f8f4e" grubosc 1]
+  np dł
+  lw 25
+  gałąź dł * 0.7
+  pw 50
+  gałąź dł * 0.7
+  lw 25
+  pod ws dł opu
+już
+
+pod ws 120 opu
+gałąź 90

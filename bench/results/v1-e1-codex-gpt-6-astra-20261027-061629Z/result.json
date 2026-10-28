@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "id": "v1-e1-codex-gpt-6-astra-20261027-061629Z",
   "task": "tests",
   "runner": "codex",
@@ -30,6 +30,7 @@
   "repoVersion": "0.2.0",
   "totalMs": 204777,
   "conformance": null,
+  "gallery": null,
   "humanScore": null,
   "notes": ""
 }

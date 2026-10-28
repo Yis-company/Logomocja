@@ -3,6 +3,9 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { type Case, compareCase, type Outcome, parseSuite, type Segment } from "./conformance/compare";
 import { cost } from "./prices";
+import { run } from "../src/hook";
+import { mergeSuites } from "./conformance/merge";
+import { loadExpected, loadPrograms } from "./programs";
 import { renderPrompt } from "./prompt";
 import { claude, codex, parseModelSpec } from "./runners";
 
@@ -22,6 +25,30 @@ describe("prompts", () => {
     expect(app).toContain("BASE_PATH");
     expect(tests).toContain("cases.json");
     expect(() => renderPrompt("../x", "app")).toThrow(/v1/);
+  });
+
+  it("renders the v2 briefs with the standard programs and the round-2 inputs", () => {
+    const app = renderPrompt("v2", "app");
+    expect(app).toContain("open(source, mode)");
+    expect(app).toContain("### Kula (`kula`, 3D)");
+    expect(app).toContain("powtorz 36 [np 10 gora 10]");
+    expect(app).not.toContain("{{");
+    expect(renderPrompt("v2", "tests")).toContain("nrpowt");
+    expect(renderPrompt("v2", "tests-round2")).toContain("round1/other.json");
+  });
+});
+
+describe("standard programs", () => {
+  it("are listed, run on the reference without error and match the frozen outcomes", () => {
+    const programs = loadPrograms("v2");
+    const expected = loadExpected("v2");
+    expect(programs).toHaveLength(13);
+    for (const program of programs) {
+      const outcome = run(program.source, program.mode);
+      expect(outcome.error, program.id).toBeNull();
+      expect(outcome.segments.length, program.id).toBeGreaterThan(3);
+      expect(compareCase({ name: program.id, mode: program.mode, source: program.source, expect: { segments: expected[program.id].segments } }, outcome)).toBeNull();
+    }
   });
 });
 
@@ -73,6 +100,15 @@ describe("cost", () => {
     expect(cost("gpt-6-astra", { costUsd: 1.25, tokens })).toEqual({ costUsd: 1.25, costBasis: "cli" });
     expect(cost("gpt-6-astra", { costUsd: null, tokens })).toEqual({ costUsd: 17, costBasis: "list" });
     expect(cost("unknown", { costUsd: null, tokens })).toEqual({ costUsd: null, costBasis: null });
+  });
+});
+
+describe("merge", () => {
+  it("prefixes names with the file and drops later duplicates by mode and source", () => {
+    const a: Case = { name: "x", mode: "2d", source: "np 1", expect: { error: { line: 1 } } };
+    const { cases, dropped } = mergeSuites({ one: [a], two: [{ ...a, name: "y" }, { ...a, mode: "3d" }] });
+    expect(cases.map((c) => c.name)).toEqual(["one: x", "two: x"]);
+    expect(dropped).toEqual([{ file: "two", name: "y", duplicateOf: "one: x" }]);
   });
 });
 

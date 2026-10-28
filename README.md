@@ -32,9 +32,9 @@ The app has no server, account system or external runtime services. The 3D rende
 
 ## Supported language
 
-This is an original Logo-inspired app with a small explicit command subset. It does **not** implement the full original Logomocja language or import classic project files. Named numeric procedures are supported. Global variables, arithmetic expressions and recursion are outside this version.
+This is an original Logo-inspired app with an explicit command set. It does **not** implement the full original Logomocja language or import classic project files. Procedures, variables, arithmetic expressions, conditionals and recursion are supported; there are no return values or lists.
 
-Keywords ignore case. Corresponding accented Polish spellings also work. Numeric arguments are finite signed decimal literals, for example `80`, `-12.5` or `.5`. Semicolons start line comments. Brackets enclose repeat bodies, including nested repeats.
+Keywords ignore case. Corresponding accented Polish spellings also work. Semicolons start line comments. Brackets enclose repeat and conditional bodies, including nested ones.
 
 | Polish | English | Meaning |
 | --- | --- | --- |
@@ -45,31 +45,42 @@ Keywords ignore case. Corresponding accented Polish spellings also work. Numeric
 | `pod`, `podnies`, `podnieś` | `pu`, `penup` | Raise pen |
 | `opu`, `opusc`, `opuść` | `pd`, `pendown` | Lower pen |
 | `kolor "#16866a"` | `color "#16866a"` | Set six-digit hex color |
-| `grubosc 3`, `grubość 3` | `width 3` | Set integer stroke width, 1–12 pixels |
-| `powtorz 4 [ … ]`, `powtórz` | `repeat` | Repeat a bracketed body |
-| `gora 90`, `góra` | `pitchup` | Pitch upward in 3D |
-| `dol 90`, `dół` | `pitchdown` | Pitch downward in 3D |
+| `grubosc`, `grubość` | `width` | Stroke width, integer 1–12 |
+| `powtorz`, `powtórz` | `repeat` | Repeat `n [ … ]`, integer 0–10,000 |
+| `nrpowt` | `repcount` | Current iteration of the innermost repeat, from 1 |
+| `niech` | `let` | `niech name value`: global at top level, local inside a procedure |
+| `jeśli`, `jesli` | `if` | `jeśli a < b [ … ]` |
+| `jeżeli`, `jezeli` | `ifelse` | `jeżeli a < b [ … ] [ … ]` |
+| `stop` | `stop` | End the current procedure (at top level, the program) |
+| `dom` | `home` | Return to the origin heading +Y, drawing if the pen is down |
+| `czyść`, `czysc` | `cs`, `clearscreen` | Forget the drawn segments |
+| `gora`, `góra` | `pitchup` | Pitch up, 3D only |
+| `dol`, `dół` | `pitchdown` | Pitch down, 3D only |
+| `pp`, `przechylprawo` | `rr`, `rollright` | Roll right around the heading, 3D only |
+| `pl`, `przechyllewo` | `rl`, `rollleft` | Roll left around the heading, 3D only |
+
+Every numeric argument is an expression: numbers, names, `+ - * /`, parentheses and unary minus, with the usual precedence. A binary operator has whitespace on both sides or on neither, so `np 10 - 5` and `np 10-5` move 5 while `np 10 -5` is an error. Conditions compare two expressions with `< > = <= >= <>`.
+
+Procedures are defined with `oto name ma: a, b` (or the legacy `oto name :a :b`) and end with a standalone `już` (`juz`, `end`); aliases `to`/`end`. Definitions are top-level only and may follow their calls. A procedure may call itself; `stop` ends it, and the limit of 32 active frames stops runaway recursion while keeping what was drawn.
 
 ```logo
-; A square in either mode
-kolor "#16866a"
-grubosc 3
-powtorz 4 [np 100 pw 90]
+oto gałąź ma: dł
+  jeśli dł < 6 [stop]
+  np dł
+  lw 25 gałąź dł * 0.7
+  pw 50 gałąź dł * 0.7
+  lw 25 pod ws dł opu
+już
+
+pod ws 120 opu
+gałąź 90
 ```
 
-```logo
-; A staircase in 3D
-powtorz 6 [
-  np 35
-  gora 90
-  np 20
-  dol 90
-]
-```
+The turtle starts at the origin, facing +Y with the pen down. The XY plane is shared between modes; +Z points upward. Right turns clockwise when viewed from above. Spatial turns rotate the turtle's local frame: pitch around its right vector, roll around its heading. Flat programs generate identical coordinates in both modes; pitch and roll are rejected in 2D.
 
-The turtle starts at the origin, facing +Y with the pen down. The XY plane is shared between modes; +Z points upward. Right turns clockwise when viewed from above. Spatial turns rotate the turtle's local frame. Flat programs generate identical coordinates in both modes; pitch commands are rejected in 2D.
+Errors identify a line and column; an invalid argument is reported at the first token of that argument. Parse errors preserve the prior drawing. Runtime errors stop at the last valid state. Work is bounded to 50,000 source characters, 10,000 tokens, depth 32, repeat counts 0–10,000, 10,000 execution operations including loop and procedure bookkeeping, 10,000 segments, and coordinates within ±100,000.
 
-Errors identify a line and column. Parse errors preserve the prior drawing. Runtime errors stop at the last valid state. Work is bounded to 50,000 source characters, 10,000 tokens, depth 32, repeat counts 0–10,000, 10,000 execution operations including loop and procedure bookkeeping, 10,000 segments, and coordinates within ±100,000. Limits prevent nested empty loops from freezing the interface.
+The built-in examples are the standard programs of the current benchmark prompt, read from `bench/prompts/v2/programs/`.
 
 ## Local drafts
 
@@ -114,7 +125,7 @@ już
 kwadrat 80 90
 ```
 
-Calls still take positional values separated by whitespace. Parameters are local to the current procedure and can replace numbers in commands, repeat counts and helper calls. Names ignore case. Legacy headers such as `oto kwadrat :bok` and references such as `:bok` remain supported; plain references work in either header form. Recursion, arithmetic and globals are outside this grammar. Definitions are validated even when unused. Execution remains bounded and cancellable.
+Calls still take positional values separated by whitespace. Parameters are local to the current procedure and can replace numbers in commands, repeat counts and helper calls. Names ignore case. Legacy headers such as `oto kwadrat :bok` and references such as `:bok` remain supported; plain references work in either header form. Definitions are validated even when unused. Execution remains bounded and cancellable.
 
 Six original practice tasks take procedure-only submissions and test geometry against varied inputs. Checks compare unions of collinear segments, accepting reversed, subdivided and retraced strokes. Test cases are local practice checks, not protected competition infrastructure. Drafts and historical completion stay in this browser under separate storage from studio drafts; there are no accounts or leaderboard.
 

@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "id": "v1-e1-codex-gpt-6.1-terra-20261027-065748Z",
   "task": "app",
   "runner": "codex",
@@ -47,6 +47,7 @@
       "hook": true
     }
   },
+  "gallery": null,
   "humanScore": null,
   "notes": ""
 }

@@ -1,0 +1,1356 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 429,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: binary operators with no whitespace on either side",
+          "reason": "unexpected error: line 1: Nazwa „10-5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: binary minus followed by unary minus: 10--5 = 15",
+          "reason": "unexpected error: line 1: Nazwa „10--5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: binary times followed by unary minus: 2*-3 = -6",
+          "reason": "unexpected error: line 1: Nazwa „2*-3” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: comparisons are exempt from the whitespace rule",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: division by zero deep inside an argument is reported at its first token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: global read inside a procedure",
+          "reason": "unexpected error: line 3: Nazwa „d” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: global declared after the procedure that reads it",
+          "reason": "unexpected error: line 2: Nazwa „d” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: unassigned variable in a compound argument is reported at the first token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure defined later",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not be a command word",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: too few arguments",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a repeat body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a conditional body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: malformed expression: two operators",
+          "reason": "expected error at column 9, got 11"
+        },
+        {
+          "name": "claude-fable-5-1: roll, turn, roll back, pitch returns to the start orientation",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 10, 0), got (0, 0, 0)→(0, 0, -10)"
+        },
+        {
+          "name": "claude-fable-5-1: pitch, roll, pitch back, turn returns to the start orientation",
+          "reason": "segment 2: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(10, 10, -10)"
+        },
+        {
+          "name": "claude-fable-5-1: english 3d aliases",
+          "reason": "segment 2: expected (0, -10, 10)→(10, -10, 10), got (0, -10, 10)→(0, -20, 10)"
+        },
+        {
+          "name": "claude-fable-5-1: dom after a 3d rotation resets all three vectors",
+          "reason": "segment 4: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(20, 10, 0)"
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 364"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 398"
+        },
+        {
+          "name": "claude-fable-5-1: 10001 tokens rejected (parentheses count)",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: + binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10+5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: + rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: - binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10-5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: - rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: * binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10*5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: * rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: / binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10/5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: / rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: adjacent unary in compact subtraction",
+          "reason": "unexpected error: line 1: Nazwa „10--2” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: call signed arguments",
+          "reason": "unexpected error: line 4: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Nazwa „length” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra: variable procedure collision",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: command cannot be variable",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 3>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<>3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2=3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 3<=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>=3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: nested conditional branches",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: conditional repeat",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: stop exits procedure through nested bodies",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: top stop retains drawing",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: recursive countdown",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: mutual recursion forward definition",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 32 procedure frames accepted",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 33 procedure frames rejected retains prefix",
+          "reason": "expected error at column 15, got 8"
+        },
+        {
+          "name": "gpt-6-astra: conditional does not consume frame",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 31 calls plus repeat frame accepted",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 32 calls plus repeat frame rejected",
+          "reason": "expected error at column 9, got 8"
+        },
+        {
+          "name": "gpt-6-astra: operation limit reached inside recursive call",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: repcount outside even unreachable",
+          "reason": "expected error at column 12, got 8"
+        },
+        {
+          "name": "gpt-6-astra: rotation inverse sequence restores full basis",
+          "reason": "segment 2: expected (2, 3, 0)→(2, 3, 1), got (2, 3, 0)→(3, 3, 0)"
+        },
+        {
+          "name": "gpt-6-astra: noncommuting roll pitch yaw",
+          "reason": "segment 1: expected (9.2678, 3.5355, -1.2683)→(12.0299, 6.0126, -2.7632), got (9.2678, 3.5355, -1.2683)→(12.6098, 5.4149, -2.4079)"
+        },
+        {
+          "name": "gpt-6-astra: home resets all three axes",
+          "reason": "segment 3: expected (2, 0, 0)→(2, 0, 3), got (2, 0, 0)→(5, 0, 0)"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: Polish conditional aliases",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: dead literal width is validated",
+          "reason": "expected error at column 15, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: dead literal repeat is validated",
+          "reason": "expected error at column 16, got 8"
+        },
+        {
+          "name": "gpt-6-astra: malformed expression operand",
+          "reason": "expected error at column 9, got 1"
+        },
+        {
+          "name": "gpt-6-astra: definition in repeat",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: definition in conditional",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 331"
+        },
+        {
+          "name": "gpt-6-astra: 32 conditional nesting does not use frames",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid width",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid repeat",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: recursive parameters retained after return",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Nazwa „x” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing call argument reported at the command when the program ends there",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: legacy reference inside arithmetic and parentheses",
+          "reason": "unexpected error: line 1: Nazwa „x/:x” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comparisons with expressions on both sides and tight operators",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comparison operators with whitespace on one side only",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global declared inside a top-level repeat body is visible in a procedure",
+          "reason": "unexpected error: line 3: Nazwa „g” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch yaw inverse pitch inverse roll compose to the identity",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 10, 0), got (0, 0, 0)→(10, 0, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: full turns of roll pitch and yaw in 36 steps compose to the identity",
+          "reason": "segment 2: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(20, 10, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: non-commuting pitch and yaw",
+          "reason": "segment 2: expected (0, 0, 0)→(7.5, 4.3301, 5), got (0, 0, 0)→(8.6603, 4.3301, 2.5)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 430"
+        },
+        {
+          "name": "claude-fable-5-1-round2: tight operators around parentheses",
+          "reason": "unexpected error: line 1: Nieznane polecenie."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 24 steps of yaw and pitch in 3D",
+          "reason": "segment 1: expected (0, 5, 0)→(1.25, 9.6651, 1.2941), got (0, 5, 0)→(1.2941, 9.6651, 1.25)"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary +",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary -",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary *",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary /",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands >",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands =",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <=",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands >=",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <>",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: float inequality selects else with no epsilon",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: binary fractions are exact after reassignment",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: signed zero equality and zero moves",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: legacy operands adjacent to operators",
+          "reason": "unexpected error: line 1: Nazwa „x*-:x/--3” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra-round2: signed call boundary with tabs",
+          "reason": "unexpected error: line 4: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra-round2: call arguments can span lines",
+          "reason": "unexpected error: line 5: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token assignment",
+          "reason": "expected error at column 7, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token yaw",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token backward",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Nazwa „amount” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 3: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error on line 3, got line 2"
+        },
+        {
+          "name": "gpt-6-astra-round2: top declaration after stop allows skipped read",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: global assignment in branch visible after body",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error on line 3, got line 2"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: repcount after local repeat",
+          "reason": "expected error at column 12, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing comparison rhs at bracket",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: command alias forbidden as local",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: later procedure collides with local",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 32",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: long decimal roll inverse",
+          "reason": "segment 2: expected (5, 7, 0)→(5, 7, 3), got (5, 7, 0)→(8, 7, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: long mixed inverse",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 7, 0), got (0, 0, 0)→(0, 0, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: roll conjugates yaw to negative pitch",
+          "reason": "expected 3 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: pitch conjugates roll to negative yaw",
+          "reason": "expected 3 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: fractional rotations in alternate order",
+          "reason": "segment 3: expected (-2.7407, 4.797, 1.0635)→(-4.5832, 5.5552, 0.8887), got (-2.7407, 4.797, 1.0635)→(-4.5154, 5.7173, 1.1254)"
+        },
+        {
+          "name": "gpt-6-astra-round2: large signed angles compose",
+          "reason": "segment 3: expected (-2.8095, 1.9914, -0.0429)→(-2.8002, -1.0086, -0.0521), got (-2.8095, 1.9914, -0.0429)→(-4.9122, 2.0307, -2.1824)"
+        },
+        {
+          "name": "gpt-6-astra-round2: yaw after upside down pitch",
+          "reason": "segment 3: expected (2.8284, -4.8284, 0)→(3.8891, -3.7678, -2.5981), got (2.8284, -4.8284, 0)→(5.5576, -4.2205, -1.0871)"
+        },
+        {
+          "name": "gpt-6-astra-round2: roll after yaw after pitch",
+          "reason": "segment 3: expected (3.7821, 1.4992, 2.9423)→(4.2556, -1.463, 2.9083), got (3.7821, 1.4992, 2.9423)→(6.7351, 0.9834, 2.8255)"
+        },
+        {
+          "name": "gpt-6-astra-round2: clear preserves all three orientation axes",
+          "reason": "segment 1: expected (0, 3, 4)→(2, 3, 4), got (0, 3, 4)→(0, 5, 4)"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 429,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: binary operators with no whitespace on either side",
+          "reason": "unexpected error: line 1: Nazwa „10-5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: binary minus followed by unary minus: 10--5 = 15",
+          "reason": "unexpected error: line 1: Nazwa „10--5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: binary times followed by unary minus: 2*-3 = -6",
+          "reason": "unexpected error: line 1: Nazwa „2*-3” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its right is an error",
+          "reason": "expected error at column 17, got 19"
+        },
+        {
+          "name": "claude-fable-5-1: comparisons are exempt from the whitespace rule",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: division by zero deep inside an argument is reported at its first token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: global read inside a procedure",
+          "reason": "unexpected error: line 3: Nazwa „d” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: global declared after the procedure that reads it",
+          "reason": "unexpected error: line 2: Nazwa „d” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1: unassigned variable in a compound argument is reported at the first token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure defined later",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not be a command word",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: too few arguments",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a repeat body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a conditional body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: malformed expression: two operators",
+          "reason": "expected error at column 9, got 11"
+        },
+        {
+          "name": "claude-fable-5-1: roll, turn, roll back, pitch returns to the start orientation",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 10, 0), got (0, 0, 0)→(0, 0, -10)"
+        },
+        {
+          "name": "claude-fable-5-1: pitch, roll, pitch back, turn returns to the start orientation",
+          "reason": "segment 2: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(10, 10, -10)"
+        },
+        {
+          "name": "claude-fable-5-1: english 3d aliases",
+          "reason": "segment 2: expected (0, -10, 10)→(10, -10, 10), got (0, -10, 10)→(0, -20, 10)"
+        },
+        {
+          "name": "claude-fable-5-1: dom after a 3d rotation resets all three vectors",
+          "reason": "segment 4: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(20, 10, 0)"
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 364"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 398"
+        },
+        {
+          "name": "claude-fable-5-1: 10001 tokens rejected (parentheses count)",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: + binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10+5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: + rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: - binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10-5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: - rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: * binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10*5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: * rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: / binary compact",
+          "reason": "unexpected error: line 1: Nazwa „10/5” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: / rejects right space only",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra: adjacent unary in compact subtraction",
+          "reason": "unexpected error: line 1: Nazwa „10--2” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: call signed arguments",
+          "reason": "unexpected error: line 4: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global visible in procedure",
+          "reason": "unexpected error: line 2: Nazwa „length” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra: variable procedure collision",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: command cannot be variable",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 3>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<>3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2=3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 3<=2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2>=3",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: comparison 2<>2",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: nested conditional branches",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: conditional repeat",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: stop exits procedure through nested bodies",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: top stop retains drawing",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: recursive countdown",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: mutual recursion forward definition",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 32 procedure frames accepted",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 33 procedure frames rejected retains prefix",
+          "reason": "expected error at column 15, got 8"
+        },
+        {
+          "name": "gpt-6-astra: conditional does not consume frame",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 31 calls plus repeat frame accepted",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: 32 calls plus repeat frame rejected",
+          "reason": "expected error at column 9, got 8"
+        },
+        {
+          "name": "gpt-6-astra: operation limit reached inside recursive call",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: repcount outside even unreachable",
+          "reason": "expected error at column 12, got 8"
+        },
+        {
+          "name": "gpt-6-astra: rotation inverse sequence restores full basis",
+          "reason": "segment 2: expected (2, 3, 0)→(2, 3, 1), got (2, 3, 0)→(3, 3, 0)"
+        },
+        {
+          "name": "gpt-6-astra: noncommuting roll pitch yaw",
+          "reason": "segment 1: expected (9.2678, 3.5355, -1.2683)→(12.0299, 6.0126, -2.7632), got (9.2678, 3.5355, -1.2683)→(12.6098, 5.4149, -2.4079)"
+        },
+        {
+          "name": "gpt-6-astra: home resets all three axes",
+          "reason": "segment 3: expected (2, 0, 0)→(2, 0, 3), got (2, 0, 0)→(5, 0, 0)"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: Polish conditional aliases",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: dead literal width is validated",
+          "reason": "expected error at column 15, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: dead literal repeat is validated",
+          "reason": "expected error at column 16, got 8"
+        },
+        {
+          "name": "gpt-6-astra: malformed expression operand",
+          "reason": "expected error at column 9, got 1"
+        },
+        {
+          "name": "gpt-6-astra: definition in repeat",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: definition in conditional",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 331"
+        },
+        {
+          "name": "gpt-6-astra: 32 conditional nesting does not use frames",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid width",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: unexecuted name-dependent invalid repeat",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: recursive parameters retained after return",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra: caller local is not dynamic global",
+          "reason": "unexpected error: line 3: Nazwa „x” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing call argument reported at the command when the program ends there",
+          "reason": "expected error on line 4, got line 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: legacy reference inside arithmetic and parentheses",
+          "reason": "unexpected error: line 1: Nazwa „x/:x” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comparisons with expressions on both sides and tight operators",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1-round2: comparison operators with whitespace on one side only",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "claude-fable-5-1-round2: global declared inside a top-level repeat body is visible in a procedure",
+          "reason": "unexpected error: line 3: Nazwa „g” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch yaw inverse pitch inverse roll compose to the identity",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 10, 0), got (0, 0, 0)→(10, 0, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: full turns of roll pitch and yaw in 36 steps compose to the identity",
+          "reason": "segment 2: expected (10, 10, 0)→(10, 10, 10), got (10, 10, 0)→(20, 10, 0)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: non-commuting pitch and yaw",
+          "reason": "segment 2: expected (0, 0, 0)→(7.5, 4.3301, 5), got (0, 0, 0)→(8.6603, 4.3301, 2.5)"
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 430"
+        },
+        {
+          "name": "claude-fable-5-1-round2: tight operators around parentheses",
+          "reason": "unexpected error: line 1: Nieznane polecenie."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 24 steps of yaw and pitch in 3D",
+          "reason": "segment 1: expected (0, 5, 0)→(1.25, 9.6651, 1.2941), got (0, 5, 0)→(1.2941, 9.6651, 1.25)"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary +",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary -",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary *",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary /",
+          "reason": "expected error at column 6, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands >",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands =",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <=",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands >=",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: comparison with adjacent signed operands <>",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: float inequality selects else with no epsilon",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: binary fractions are exact after reassignment",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: signed zero equality and zero moves",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: legacy operands adjacent to operators",
+          "reason": "unexpected error: line 1: Nazwa „x*-:x/--3” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra-round2: signed call boundary with tabs",
+          "reason": "unexpected error: line 4: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra-round2: call arguments can span lines",
+          "reason": "unexpected error: line 5: Operator musi mieć po obu stronach taką samą ilość odstępów."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token assignment",
+          "reason": "expected error at column 7, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token yaw",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token backward",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: caller parameter cannot override callee global",
+          "reason": "unexpected error: line 3: Nazwa „amount” nie jest parametrem ani zadeklarowaną zmienną."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive locals survive stop and unwind",
+          "reason": "unexpected error: line 3: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 2: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error on line 3, got line 2"
+        },
+        {
+          "name": "gpt-6-astra-round2: top declaration after stop allows skipped read",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: global assignment in branch visible after body",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error on line 3, got line 2"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: repcount after local repeat",
+          "reason": "expected error at column 12, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error on line 2, got line 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing comparison rhs at bracket",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: command alias forbidden as local",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: later procedure collides with local",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 32",
+          "reason": "unexpected error: line 1: Oczekiwano operatora porównania."
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: long decimal roll inverse",
+          "reason": "segment 2: expected (5, 7, 0)→(5, 7, 3), got (5, 7, 0)→(8, 7, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: long mixed inverse",
+          "reason": "segment 0: expected (0, 0, 0)→(0, 7, 0), got (0, 0, 0)→(0, 0, 0)"
+        },
+        {
+          "name": "gpt-6-astra-round2: roll conjugates yaw to negative pitch",
+          "reason": "expected 3 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: pitch conjugates roll to negative yaw",
+          "reason": "expected 3 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: fractional rotations in alternate order",
+          "reason": "segment 3: expected (-2.7407, 4.797, 1.0635)→(-4.5832, 5.5552, 0.8887), got (-2.7407, 4.797, 1.0635)→(-4.5154, 5.7173, 1.1254)"
+        },
+        {
+          "name": "gpt-6-astra-round2: large signed angles compose",
+          "reason": "segment 3: expected (-2.8095, 1.9914, -0.0429)→(-2.8002, -1.0086, -0.0521), got (-2.8095, 1.9914, -0.0429)→(-4.9122, 2.0307, -2.1824)"
+        },
+        {
+          "name": "gpt-6-astra-round2: yaw after upside down pitch",
+          "reason": "segment 3: expected (2.8284, -4.8284, 0)→(3.8891, -3.7678, -2.5981), got (2.8284, -4.8284, 0)→(5.5576, -4.2205, -1.0871)"
+        },
+        {
+          "name": "gpt-6-astra-round2: roll after yaw after pitch",
+          "reason": "segment 3: expected (3.7821, 1.4992, 2.9423)→(4.2556, -1.463, 2.9083), got (3.7821, 1.4992, 2.9423)→(6.7351, 0.9834, 2.8255)"
+        },
+        {
+          "name": "gpt-6-astra-round2: clear preserves all three orientation axes",
+          "reason": "segment 1: expected (0, 3, 4)→(2, 3, 4), got (0, 3, 4)→(0, 5, 4)"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

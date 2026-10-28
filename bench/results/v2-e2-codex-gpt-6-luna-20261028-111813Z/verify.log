@@ -1,0 +1,49 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/react@18.3.31
++ @types/react-dom@18.3.7
++ @vitejs/plugin-react@4.7.0
++ typescript@5.9.3
++ vite@6.4.5
++ react@18.3.1
++ react-dom@18.3.1
+
+70 packages installed [54.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 29 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.70 kB │ gzip:  0.41 kB
+dist/assets/index-kiX0RQ3h.css   28.23 kB │ gzip:  6.39 kB
+dist/assets/index-ucSkMwMv.js   218.53 kB │ gzip: 70.47 kB
+✓ built in 435ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) interpretacja programu Logo > uruchamia wszystkie trzynaście programów wbudowanych [15.76ms]
+(pass) interpretacja programu Logo > zachowuje priorytet i lewostronność działań [0.62ms]
+(pass) interpretacja programu Logo > przed rysowaniem sprawdza składnię całego programu [0.06ms]
+(pass) interpretacja programu Logo > zachowuje rysunek po błędzie wykonania i wskazuje początek argumentu [0.07ms]
+(pass) interpretacja programu Logo > obsługuje zakres zmiennej globalnej, lokalne zmienne i parametry [0.11ms]
+(pass) interpretacja programu Logo > ogranicza nrpowt do leksykalnego ciała pętli [0.10ms]
+(pass) interpretacja programu Logo > wspiera stop, czyszczenie i 3D orientację [0.12ms]
+(pass) interpretacja programu Logo > sprawdza liczbę argumentów procedury [0.02ms]
+(pass) interpretacja programu Logo > krok zatrzymuje się na kolejnych poleceniach, nie na księgowaniu pętli [0.03ms]
+(pass) interpretacja programu Logo > odrzuca niepoprawny literał i zbyt duży wymiar przed rysowaniem [0.08ms]
+
+ 10 pass
+ 0 fail
+ 64 expect() calls
+Ran 10 tests across 1 file. [21.00ms]
+(exit 0)

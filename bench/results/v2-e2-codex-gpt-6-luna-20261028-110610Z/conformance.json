@@ -1,0 +1,444 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 543,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: bad repeat count inside a procedure reported at the name",
+          "reason": "expected 2 segments, got 0"
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 2: Procedura „g” wymaga 1 argumentów."
+        },
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: repcount alias ignoring case",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 364"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 398"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count computed as zero from nrpowt",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być całkowita od 0 do 10 000."
+        },
+        {
+          "name": "claude-fable-5-1: non-integer repeat count from nrpowt reported at the first token",
+          "reason": "expected 3 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra: innermost repcount restored",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 331"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error at column 1, got 8"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: czyść inside a repeat whose count is an expression of a global",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być całkowita od 0 do 10 000."
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count of zero inside a procedure skips a bad name-dependent width",
+          "reason": "unexpected error: line 2: Grubość musi być liczbą całkowitą od 1 do 12."
+        },
+        {
+          "name": "claude-fable-5-1-round2: bad name-dependent width inside a procedure reported inside the body",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: nested repeats drawing four squares with nrpowt widths",
+          "reason": "unexpected error: line 1: Grubość musi być liczbą całkowitą od 1 do 12."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 430"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token repeat with name",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 4: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 24"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error at column 1, got 3"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 493"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 543,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: bad repeat count inside a procedure reported at the name",
+          "reason": "expected 2 segments, got 0"
+        },
+        {
+          "name": "claude-fable-5-1: recursion with a parameter named like the procedure",
+          "reason": "unexpected error: line 2: Procedura „g” wymaga 1 argumentów."
+        },
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1: repcount alias ignoring case",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected error at column 363, got 364"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected error at column 397, got 398"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count computed as zero from nrpowt",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być całkowita od 0 do 10 000."
+        },
+        {
+          "name": "claude-fable-5-1: non-integer repeat count from nrpowt reported at the first token",
+          "reason": "expected 3 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: repeat conditional repcount",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra: innermost repcount restored",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead góra",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead dol",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead pp",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: 2D rejects dead rollleft",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: 33 bracket nesting rejected",
+          "reason": "expected error at column 330, got 331"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected error at column 1, got 8"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        },
+        {
+          "name": "claude-fable-5-1-round2: czyść inside a repeat whose count is an expression of a global",
+          "reason": "unexpected error: line 1: Liczba powtórzeń musi być całkowita od 0 do 10 000."
+        },
+        {
+          "name": "claude-fable-5-1-round2: repeat count of zero inside a procedure skips a bad name-dependent width",
+          "reason": "unexpected error: line 2: Grubość musi być liczbą całkowitą od 1 do 12."
+        },
+        {
+          "name": "claude-fable-5-1-round2: bad name-dependent width inside a procedure reported inside the body",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "claude-fable-5-1-round2: pitch in 2D mode inside a procedure called from a repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: roll in 2D mode in an ifelse second body",
+          "reason": "expected an error, got none"
+        },
+        {
+          "name": "claude-fable-5-1-round2: nested repeats drawing four squares with nrpowt widths",
+          "reason": "unexpected error: line 1: Grubość musi być liczbą całkowitą od 1 do 12."
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected error at column 429, got 430"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token repeat with name",
+          "reason": "expected 1 segments, got 0"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: recursive lexical repeat counter restored through conditional",
+          "reason": "unexpected error: line 2: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: callee stop restores caller repeat counter",
+          "reason": "unexpected error: line 4: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: zero inner repeat leaves outer counter intact",
+          "reason": "unexpected error: line 1: Niezadeklarowana nazwa „repcount”."
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 24"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected error at column 1, got 3"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected error at column 492, got 493"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

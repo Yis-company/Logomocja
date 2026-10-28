@@ -1,0 +1,7 @@
+; Sekret gwiazdy? Kąt 144 stopni.
+kolor "#c1763d"
+grubosc 3
+powtorz 5 [
+  np 180
+  pw 144
+]

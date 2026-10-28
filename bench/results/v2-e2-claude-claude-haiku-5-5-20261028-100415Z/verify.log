@@ -1,0 +1,84 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ bun-types@1.4.4
++ typescript@7.0.2
++ vite@8.3.5
+
+20 packages installed [33.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  1.18 kB │ gzip:  0.60 kB
+dist/assets/index-Cj7iYSoh.css   9.58 kB │ gzip:  2.96 kB
+dist/assets/index-BcdhN12l.js   53.18 kB │ gzip: 19.55 kB
+
+✓ built in 38ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) expressions > precedence and left association [1.17ms]
+(pass) expressions > binary operators need spaces on both sides or neither [0.16ms]
+(pass) expressions > stacked unary signs [0.08ms]
+(pass) expressions > division by zero is a run-time error at the argument [0.09ms]
+(pass) expressions > comparisons are exact [0.23ms]
+(pass) turtle geometry > flat commands are exact at right angles [0.17ms]
+(pass) turtle geometry > left turn and backward move [0.05ms]
+(pass) turtle geometry > pitch up after 90 degrees heads up [0.06ms]
+(pass) turtle geometry > roll right after 90 degrees makes up the former right [0.06ms]
+(pass) turtle geometry > pitch and roll are errors in 2D [0.03ms]
+(pass) turtle geometry > dom returns home with a segment and keeps the pen state [0.05ms]
+(pass) turtle geometry > cs forgets earlier segments only [0.04ms]
+(pass) turtle geometry > pen up and zero moves draw nothing; colour and width are applied [0.06ms]
+(pass) repeat, nrpowt and variables > repeat count 0 runs nothing and nrpowt counts from 1 [0.05ms]
+(pass) repeat, nrpowt and variables > nrpowt outside a repeat is a parse error [0.13ms]
+(pass) repeat, nrpowt and variables > repeat count range is checked when literal [0.05ms]
+(pass) repeat, nrpowt and variables > width range is checked [0.05ms]
+(pass) repeat, nrpowt and variables > variables assigned at top level are visible in procedures [0.11ms]
+(pass) repeat, nrpowt and variables > an unassigned variable is a run-time error at the argument [0.11ms]
+(pass) repeat, nrpowt and variables > locals shadow globals only inside the call [0.07ms]
+(pass) repeat, nrpowt and variables > legacy colon references [0.06ms]
+(pass) conditionals, procedures and stop > ifelse picks the right body [0.08ms]
+(pass) conditionals, procedures and stop > stop inside a repeat ends the procedure [0.06ms]
+(pass) conditionals, procedures and stop > stop at top level ends the program quietly [0.03ms]
+(pass) conditionals, procedures and stop > recursion works and calls may precede definitions [0.12ms]
+(pass) conditionals, procedures and stop > definitions inside a body are errors [0.03ms]
+(pass) conditionals, procedures and stop > a missing już is an error at the header [0.04ms]
+(pass) conditionals, procedures and stop > wrong argument count is reported at the call [0.02ms]
+(pass) conditionals, procedures and stop > the parameter may share the name of a procedure [0.03ms]
+(pass) conditionals, procedures and stop > infinite recursion hits the frame limit [0.19ms]
+(pass) conditionals, procedures and stop > the operations limit stops a long loop and keeps what was drawn [11.64ms]
+(pass) syntax and errors > names and commands ignore case, accents are optional [0.11ms]
+(pass) syntax and errors > comments run to the end of the line [0.02ms]
+(pass) syntax and errors > numbers are unsigned literals [0.04ms]
+(pass) syntax and errors > unknown commands and unbalanced brackets are reported in place [0.05ms]
+(pass) syntax and errors > colour literal must be quoted six digits [0.02ms]
+(pass) syntax and errors > parse errors draw nothing [0.02ms]
+(pass) syntax and errors > source length limit [0.05ms]
+
+tests/examples-challenges.test.ts:
+(pass) standard programs > there are thirteen of them and each runs without error [16.86ms]
+(pass) standard programs > the 3D examples only use commands that exist in 3D [4.68ms]
+(pass) standard programs > flat programs give the same drawing in 2D and 3D [0.90ms]
+(pass) challenges > each reference solution passes its own challenge [2.31ms]
+(pass) challenges > there are at least five challenges [0.01ms]
+(pass) challenges > a wrong drawing fails with a reason [0.08ms]
+(pass) challenges > a program with an error and an empty drawing fail [0.08ms]
+(pass) challenges > the requirement check is applied [0.08ms]
+
+ 46 pass
+ 0 fail
+ 111 expect() calls
+Ran 46 tests across 2 files. [44.00ms]
+(exit 0)
