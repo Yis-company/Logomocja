@@ -1,0 +1,19 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Logomocja – polska pracownia żółwia: rysowanie 2D i przestrzenne 3D",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
