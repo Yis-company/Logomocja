@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Logomocja — polskie studio grafiki żółwia: pisz programy w Logo i rysuj w 2D oraz w przestrzeni 3D." />
+    <meta name="theme-color" content="#f4efe4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101719" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Logomocja — studio grafiki żółwia</title>
+    <script>
+      // Motyw ustawiamy przed pierwszym malowaniem, żeby uniknąć mignięcia.
+      try {
+        var t = localStorage.getItem('logomocja.theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div id="app"></div>
+    <noscript>
+      <p class="noscript">Logomocja potrzebuje włączonego JavaScriptu.</p>
+    </noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
