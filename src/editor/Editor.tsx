@@ -1,6 +1,6 @@
-import { useEffect, useLayoutEffect, useMemo, useRef } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { SourceSpan } from '../lang/errors';
-import { highlight } from './highlight';
+import { highlight, type LineRange } from './highlight';
 
 export interface EditorError {
   message: string;
@@ -32,6 +32,9 @@ interface Props {
 }
 
 const INDENT = '  ';
+/** Long programs only get the lines around the visible part highlighted. */
+const WINDOWED_FROM = 300;
+const MARGIN = 80;
 
 function insertText(ta: HTMLTextAreaElement, text: string): void {
   ta.focus();
@@ -66,12 +69,17 @@ export function Editor(props: Props) {
 
   const { value, error, exec } = props;
   const errorOffset = error ? error.offset : null;
-  const html = useMemo(() => highlight(value, errorOffset), [value, errorOffset]);
   const lineCount = useMemo(() => {
     let n = 1;
     for (let i = 0; i < value.length; i++) if (value.charCodeAt(i) === 10) n++;
     return n;
   }, [value]);
+  const windowed = lineCount > WINDOWED_FROM;
+  const [win, setWin] = useState<LineRange>({ first: 1, last: 2 * MARGIN });
+  const html = useMemo(
+    () => highlight(value, errorOffset, windowed ? win : undefined),
+    [value, errorOffset, windowed, win.first, win.last],
+  );
   const numbers = useMemo(() => {
     let s = '';
     for (let i = 1; i <= lineCount; i++) s += i + '\n';
@@ -108,7 +116,10 @@ export function Editor(props: Props) {
   const scrollToOffset = (offset: number) => {
     const ta = taRef.current;
     if (!ta) return;
-    const line = value.slice(0, offset).split('\n').length;
+    // Read the live text: this runs from a handle created on mount.
+    const text = ta.value;
+    let line = 1;
+    for (let i = 0; i < offset && i < text.length; i++) if (text.charCodeAt(i) === 10) line++;
     const { lh, padTop } = metrics();
     const top = padTop + (line - 1) * lh;
     if (top < ta.scrollTop + lh || top + 2 * lh > ta.scrollTop + ta.clientHeight) {
@@ -121,7 +132,20 @@ export function Editor(props: Props) {
     if (!ta) return;
     if (layerRef.current) layerRef.current.style.transform = `translate(${-ta.scrollLeft}px, ${-ta.scrollTop}px)`;
     if (gutterRef.current) gutterRef.current.style.transform = `translateY(${-ta.scrollTop}px)`;
+    if (windowed) {
+      const { lh, padTop } = metrics();
+      const firstVisible = Math.max(1, Math.floor((ta.scrollTop - padTop) / lh) + 1);
+      const lastVisible = firstVisible + Math.ceil(ta.clientHeight / lh) + 1;
+      if (firstVisible < win.first || lastVisible > win.last) {
+        setWin({ first: Math.max(1, firstVisible - MARGIN), last: lastVisible + MARGIN });
+      }
+    }
   };
+
+  // Re-check the highlighted window when the text changes (e.g. a long paste).
+  useLayoutEffect(() => {
+    if (windowed) syncScroll();
+  }, [value, windowed]);
 
   const tokenEl = (offset: number): HTMLElement | null =>
     preRef.current?.querySelector<HTMLElement>(`[data-o="${offset}"]`) ?? null;
@@ -187,7 +211,11 @@ export function Editor(props: Props) {
     const maxLeft = ta.scrollLeft + ta.clientWidth - width - 8;
     const left = Math.max(minLeft, Math.min(anchor - 18, maxLeft));
     bubble.style.left = `${left}px`;
-    bubble.style.top = `${top + 2}px`;
+    // Flip above the line when there is no room below it.
+    const tokenTop = top - lh;
+    const below = top + 2 + bubble.offsetHeight <= ta.scrollTop + ta.clientHeight || tokenTop - bubble.offsetHeight - 8 < ta.scrollTop;
+    bubble.classList.toggle('error-bubble-above', !below);
+    bubble.style.top = below ? `${top + 2}px` : `${tokenTop - bubble.offsetHeight - 6}px`;
     bubble.style.setProperty('--arrow-x', `${Math.max(8, Math.min(width - 20, anchor - left - 6))}px`);
   }, [error, html, props.errorBubble]);
 

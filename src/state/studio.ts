@@ -12,7 +12,7 @@ import { EXAMPLES } from '../content/examples';
 import { findChallenge, type Challenge } from '../content/challenges';
 import { checkChallenge, targetOf, type CheckResult } from '../content/check';
 import { load, save } from './storage';
-import { announce, ask, toast } from './ui';
+import { announce, ask, dialog, shareOpen, shortcutsOpen, toast, toasts } from './ui';
 
 export type RunStatus = 'idle' | 'running' | 'paused' | 'done' | 'error' | 'interrupted';
 
@@ -604,8 +604,15 @@ export function checkActiveChallenge(): CheckResult | null {
 
 /** Loads a program as if pasted, runs it instantly and fits the view. */
 export async function openForTesting(code: string, m: Mode): Promise<PublicResult> {
+  // Nothing may cover the drawing: close dialogs and notifications first.
+  dialog.peek()?.resolve(null);
+  shortcutsOpen.value = false;
+  shareOpen.value = false;
+  toasts.value = [];
   if (activeChallenge.peek()) leaveChallenge(false);
   const v = await whenViewport();
+  const run_ = code;
+  code = code.replace(/\r\n?/g, '\n');
   player.clear();
   freeMode = m;
   save('mode', m);
@@ -620,7 +627,7 @@ export async function openForTesting(code: string, m: Mode): Promise<PublicResul
   run({ instant: true, fit: true, resetCamera: true });
   v.paintNow();
   await new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r())));
-  return runPublic(code, m);
+  return runPublic(run_, m);
 }
 
 window.addEventListener('pagehide', flushDrafts);

@@ -665,9 +665,10 @@ textarea {
   --ed-lh: 23px;
   --ed-pad: 12px;
   position: relative;
-  flex: 1;
+  flex: 1 1 0;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   min-height: 260px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -689,8 +690,12 @@ textarea {
   min-width: calc(var(--digits, 2) * 1ch + 26px);
 }
 
+/* Absolutely positioned so that long programs never stretch the editor. */
 .editor-gutter-inner {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .editor-numbers {
@@ -823,6 +828,17 @@ textarea {
   border: 6px solid transparent;
   border-top: 0;
   border-bottom-color: var(--danger);
+}
+
+.error-bubble-above::before {
+  top: auto;
+  bottom: -6px;
+  border-bottom: 0;
+  border-top: 6px solid var(--danger);
+}
+
+:root[data-theme='dark'] .error-bubble-above::before {
+  border-top-color: #8f2622;
 }
 
 :root[data-theme='dark'] .error-bubble::before {
