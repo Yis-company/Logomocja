@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Logomocja — polska pracownia żółwia Logo w 2D i 3D." />
+    <title>Logomocja</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316866a'/%3E%3Cpath d='M16 5 L25 25 L16 20 L7 25 Z' fill='%23fff'/%3E%3C/svg%3E" />
+    <script>
+      try {
+        var t = localStorage.getItem("logomocja:theme");
+        var dark = t === "dark" || ((!t || t === "system") && matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Przejdź do treści</a>
+    <header class="topbar">
+      <a class="brand" href="#/" aria-label="Logomocja — pracownia">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M16 5 L25 25 L16 20 L7 25 Z" fill="#fff"/></svg>
+        <span>Logomocja</span>
+      </a>
+      <nav class="mainnav" aria-label="Główne">
+        <a href="#/" data-route="studio">Pracownia</a>
+        <a href="#/wyzwania" data-route="wyzwania">Wyzwania</a>
+        <a href="#/pomoc" data-route="pomoc">Ściąga</a>
+      </nav>
+      <button type="button" class="btn icon ghost" id="theme-btn" aria-label="Motyw"><span aria-hidden="true" id="theme-icon">◐</span><span class="theme-label" id="theme-label">Systemowy</span></button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section id="page-studio" class="page" aria-label="Pracownia">
+        <div class="toolbar" role="toolbar" aria-label="Program">
+          <div class="seg" role="radiogroup" aria-label="Tryb">
+            <button type="button" role="radio" id="mode-2d" aria-checked="true">2D</button>
+            <button type="button" role="radio" id="mode-3d" aria-checked="false">3D</button>
+          </div>
+          <label class="sel">
+            <span class="sr-only">Przykład</span>
+            <select id="example-select" aria-label="Wczytaj przykład">
+              <option value="">Przykłady…</option>
+            </select>
+          </label>
+          <div class="tb-group">
+            <button type="button" class="btn ghost" id="new-btn">Nowy</button>
+            <button type="button" class="btn ghost" id="open-btn">Otwórz…</button>
+            <input type="file" id="file-input" accept=".logo,.txt,text/plain" hidden />
+            <button type="button" class="btn ghost" id="save-btn">Zapisz .logo</button>
+            <button type="button" class="btn ghost" id="link-btn">Link</button>
+            <button type="button" class="btn ghost" id="png-btn">PNG</button>
+          </div>
+        </div>
+
+        <div id="challenge-panel" class="challenge-panel" hidden>
+          <div class="cp-head">
+            <h2 id="cp-title"></h2>
+            <span class="tag" id="cp-mode"></span>
+            <span class="cp-status" id="cp-status"></span>
+          </div>
+          <p id="cp-task"></p>
+          <details><summary>Podpowiedź</summary><p id="cp-hint"></p></details>
+          <div class="cp-actions">
+            <button type="button" class="btn primary" id="cp-check">Sprawdź</button>
+            <label class="check"><input type="checkbox" id="cp-ghost" checked /> Pokaż wzór</label>
+            <a class="btn ghost" href="#/wyzwania">Wszystkie wyzwania</a>
+            <button type="button" class="btn ghost" id="cp-exit">Zakończ wyzwanie</button>
+          </div>
+          <p id="cp-result" class="cp-result" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="workspace">
+          <div class="panel editor-panel">
+            <div id="editor"></div>
+            <div id="error-box" class="error-box" role="alert" hidden></div>
+            <div class="runbar" role="toolbar" aria-label="Wykonanie">
+              <button type="button" class="btn primary" id="run-btn" aria-keyshortcuts="Control+Enter F8"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg> Uruchom</button>
+              <button type="button" class="btn" id="step-btn" aria-keyshortcuts="Control+Shift+Enter F10"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3v10l7-5z" fill="currentColor"/><rect x="11" y="3" width="2" height="10" fill="currentColor"/></svg> Krok</button>
+              <button type="button" class="btn" id="pause-btn" aria-keyshortcuts="Control+Shift+Space F9" disabled><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="3" width="3" height="10" fill="currentColor"/><rect x="9.5" y="3" width="3" height="10" fill="currentColor"/></svg> <span id="pause-label">Pauza</span></button>
+              <button type="button" class="btn" id="reset-btn" aria-keyshortcuts="Control+Shift+Backspace F7"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8a4.5 4.5 0 1 0 1.4-3.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M2.5 2.5v3.5h3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Reset</button>
+              <label class="speed">
+                <span>Tempo</span>
+                <input type="range" id="speed" min="1" max="10" value="7" aria-valuetext="" />
+                <output id="speed-out"></output>
+              </label>
+            </div>
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="panel view-panel">
+            <div class="view-stage">
+              <canvas id="c2d" tabindex="0" aria-label="Rysunek 2D. Przeciągnij, aby przesunąć; kółko lub szczypnięcie przybliża. Klawisze: strzałki, plus, minus, 0."></canvas>
+              <canvas id="c3d" tabindex="0" hidden aria-label="Rysunek 3D. Przeciągnij, aby obracać; prawy przycisk przesuwa; kółko przybliża. Klawisze: strzałki, A, D, plus, minus, 0."></canvas>
+              <div id="no3d" class="no3d" hidden role="note"></div>
+              <div class="view-tools" role="toolbar" aria-label="Widok">
+                <button type="button" class="btn icon" id="zoom-in" aria-label="Przybliż">+</button>
+                <button type="button" class="btn icon" id="zoom-out" aria-label="Oddal">−</button>
+                <button type="button" class="btn" id="fit-btn">Dopasuj</button>
+              </div>
+              <div class="view-info" id="view-info" aria-live="off"></div>
+            </div>
+          </div>
+        </div>
+
+        <details class="shortcuts-box">
+          <summary>Skróty klawiszowe</summary>
+          <dl class="keys" id="shortcut-list"></dl>
+        </details>
+      </section>
+
+      <section id="page-wyzwania" class="page" hidden aria-labelledby="ch-h"></section>
+      <section id="page-pomoc" class="page" hidden aria-label="Ściąga"></section>
+    </main>
+
+    <dialog id="confirm-dialog" aria-labelledby="cd-title">
+      <form method="dialog">
+        <h2 id="cd-title">Zastąpić program?</h2>
+        <p id="cd-text"></p>
+        <div class="dlg-actions">
+          <button value="cancel" class="btn">Anuluj</button>
+          <button value="ok" class="btn primary" id="cd-ok">Wczytaj</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
