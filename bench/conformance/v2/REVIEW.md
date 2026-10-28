@@ -21,3 +21,15 @@ Reference result: 220 of 220, nothing to adjudicate.
 ## Round 2: gpt-6-astra (79 new cases, run `v2-e2-codex-gpt-6-astra-20261027-205623Z`)
 
 `review.json`: no disputes against Fable's suite, no own mistakes. Reference result: 79 of 79. The file writes `error: null` on drawing cases; the case parser now treats that as no error required.
+
+## Round 2: claude-fable-5-1 (100 new cases, run `v2-e2-claude-claude-fable-5-1-20261027-205623Z`)
+
+`review.json`: no disputes against Astra's suite, no own mistakes. Reference result before review: 99 passed. Decision:
+
+- **Reference fixed, case kept (1):** `exactly ten thousand operations without a body` (10,000 top-level `pod`). The reference counted reaching the end of the program as a body-finishing operation, so 10,000 top-level commands exceeded the limit; v1 had dropped an Astra case over the same ambiguity. The dialect text now says the end of the program is not counted, and the reference follows (amended 2026-10-28 before any v2 app build).
+
+Reference result after review: 100 of 100.
+
+## Merged suite
+
+`combined.json` is the union of the four files (`bench/conformance/merge.ts`), 595 cases, no duplicates by mode and source; each case name is prefixed with the file it came from. The raw files stay untouched under each run's `results/<run-id>/cases.json`. The reference app passes 595 of 595.

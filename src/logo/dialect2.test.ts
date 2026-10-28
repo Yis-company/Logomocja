@@ -100,6 +100,15 @@ describe("conditionals, recursion and stop", () => {
   });
 });
 
+describe("operation limit", () => {
+  it("counts commands and body endings but not the end of the program", () => {
+    expect(run("pod ".repeat(10_000)).segments).toHaveLength(0);
+    expect(failure("pod ".repeat(10_001))).toMatchObject({ message: /operacji/ });
+    expect(failure("powtorz 5000 [pod]")).toMatchObject({ message: /operacji/ });
+    expect(run("powtorz 4999 [pod] pod").segments).toHaveLength(0);
+  });
+});
+
 describe("repeat counter", () => {
   it("counts from 1 in the innermost repeat", () => {
     expect(y("powtorz 4 [np nrpowt]")).toBe(10);

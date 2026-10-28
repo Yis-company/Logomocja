@@ -49,6 +49,11 @@ export class Executor {
     const frame = this.frames.at(-1);
     if (!frame) return "done";
     const node = frame.body[frame.index];
+    // Reaching the end of the program is not an operation; finishing any other body is.
+    if (!node && frame.kind === "top") {
+      this.pop();
+      return "done";
+    }
     if (++this.operations > LIMITS.operations)
       throw new LogoError(
         "Program osiągnął limit 10 000 operacji. Skróć liczbę powtórzeń.",
