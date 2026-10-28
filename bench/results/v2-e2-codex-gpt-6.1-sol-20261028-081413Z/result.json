@@ -45,6 +45,16 @@
       "passed": 23,
       "total": 23,
       "hook": true
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
     }
   },
   "gallery": {

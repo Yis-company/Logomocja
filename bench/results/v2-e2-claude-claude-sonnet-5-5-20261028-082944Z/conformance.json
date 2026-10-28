@@ -1,5 +1,6 @@
 {
   "hook": true,
+  "open": true,
   "suites": {
     "combined": {
       "passed": 595,
@@ -7,6 +8,16 @@
       "failures": []
     },
     "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "failures": []
+    },
+    "stress@open": {
       "passed": 23,
       "total": 23,
       "failures": []
