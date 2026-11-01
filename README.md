@@ -99,6 +99,8 @@ bun run test:e2e
 
 `bun run test` runs the existing Vitest suite.
 
+`bun install` installs a pre-push hook that runs lint, typecheck, and the Vitest suite. It checks the current working tree and requires Bun, Node.js, Git, and installed dependencies. If installation reports an existing pre-push hook or a configured `core.hooksPath`, resolve that conflict without overwriting your personal hook, then run `bun run prepare` again. Installs with lifecycle scripts disabled do not install the hook; Git's `--no-verify` also bypasses it. CI remains the authoritative check for pushed commits.
+
 Unit tests cover grammar, geometry, local 3D rotations, aliases, pen styles, bounds, all examples and draft recovery. Browser tests cover actual canvas output, spatial drawing, camera interaction, controls, cancellation, reload, denied storage, missing WebGL2, keyboard navigation and layouts at 1440px/390px. Screenshots go into ignored `output/playwright/`.
 
 Browser verification uses Chromium with software WebGL rendering. Physical GPU/other-browser coverage is separate. The production build warns about the main UI chunk (approximately 508 kB minified / 165 kB gzip) and the Three.js chunk (approximately 585 kB minified / 146 kB gzip). Three.js loads only in 3D mode.
