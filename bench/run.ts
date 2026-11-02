@@ -7,6 +7,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  renameSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -31,6 +32,7 @@ const { values } = parseArgs({
     "no-push": { type: "boolean", default: false },
     own: { type: "string" },
     other: { type: "string" },
+    "run-info": { type: "string" },
   },
 });
 const task = values.task as Task;
@@ -79,6 +81,11 @@ writeFileSync(envFile, token ? `CLAUDE_CODE_OAUTH_TOKEN=${token}\n` : "");
 const repoVersion = (JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { version: string }).version;
 const commit = git("rev-parse", "HEAD");
 log(`run ${id}: repo ${repoVersion} at ${commit.slice(0, 7)} (${git("branch", "--show-current") || "detached"})`);
+// The queue can inspect progress without reading or exposing the transcript.
+if (values["run-info"]) {
+  writeFileSync(`${values["run-info"]}.tmp`, JSON.stringify({ id, transcript: join(out, "transcript.jsonl") }));
+  renameSync(`${values["run-info"]}.tmp`, values["run-info"]);
+}
 
 const started = performance.now();
 const container = spawnSync(
