@@ -137,7 +137,7 @@ export function verifyFreshVersion(
     "Version tag already belongs to a different commit",
   );
 }
-async function api(
+export async function api(
   path: string,
   method = "GET",
   body?: unknown,
