@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T04:50:02.632255+00:00",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "primary",
+        "tonalRamp": [
+          "#0b4234",
+          "#13765e",
+          "#1cab87",
+          "#28dcaf",
+          "#5de4c3",
+          "#91edd6",
+          "#c6f6ea",
+          "#e9fbf7"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "primary-hover",
+        "tonalRamp": [
+          "#0a4233",
+          "#13775c",
+          "#1bac85",
+          "#27ddac",
+          "#5ce5c1",
+          "#91eed5",
+          "#c6f6e9",
+          "#e9fcf7"
+        ]
+      },
+      "shell": {
+        "role": "neutral",
+        "displayName": "shell",
+        "tonalRamp": [
+          "#202c20",
+          "#3a503a",
+          "#537353",
+          "#6e966e",
+          "#91b091",
+          "#b5cab5",
+          "#d9e3d9",
+          "#f0f4f0"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "surface",
+        "tonalRamp": [
+          "#262626",
+          "#454545",
+          "#636363",
+          "#828282",
+          "#a1a1a1",
+          "#bfbfbf",
+          "#dedede",
+          "#f2f2f2"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "subtle",
+        "tonalRamp": [
+          "#242d20",
+          "#415139",
+          "#5e7552",
+          "#7b986c",
+          "#9bb190",
+          "#bccab4",
+          "#dce4d8",
+          "#f2f4f0"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "tonalRamp": [
+          "#1d2f29",
+          "#35554a",
+          "#4c7b6b",
+          "#64a08b",
+          "#8ab7a7",
+          "#b0cec4",
+          "#d6e6e0",
+          "#eff5f3"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "muted",
+        "tonalRamp": [
+          "#232926",
+          "#3f4a44",
+          "#5b6c62",
+          "#788c80",
+          "#99a89f",
+          "#bac4be",
+          "#dbe1dd",
+          "#f1f3f2"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "line",
+        "tonalRamp": [
+          "#212b23",
+          "#3c4e3e",
+          "#57705a",
+          "#729276",
+          "#94ad98",
+          "#b7c7b9",
+          "#dae2db",
+          "#f1f4f1"
+        ]
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "selected",
+        "tonalRamp": [
+          "#1b3123",
+          "#31593e",
+          "#47805a",
+          "#5ea676",
+          "#86bc98",
+          "#add1b9",
+          "#d4e7db",
+          "#eff6f1"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "error",
+        "tonalRamp": [
+          "#3a1513",
+          "#682522",
+          "#963630",
+          "#c24842",
+          "#d17570",
+          "#e0a29f",
+          "#efcfcd",
+          "#f9ecec"
+        ]
+      },
+      "error-bg": {
+        "role": "neutral",
+        "displayName": "error-bg",
+        "tonalRamp": [
+          "#4c0d00",
+          "#8a1800",
+          "#c72300",
+          "#ff3105",
+          "#ff6442",
+          "#ff9680",
+          "#ffc8bd",
+          "#ffeae5"
+        ]
+      },
+      "dark-shell": {
+        "role": "neutral",
+        "displayName": "dark-shell",
+        "tonalRamp": [
+          "#1d3026",
+          "#345644",
+          "#4b7c62",
+          "#63a180",
+          "#89b89f",
+          "#b0cfbe",
+          "#d6e6dd",
+          "#eff5f2"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "dark-surface",
+        "tonalRamp": [
+          "#1d2f28",
+          "#355547",
+          "#4c7b67",
+          "#659f86",
+          "#8bb7a4",
+          "#b0cec1",
+          "#d6e6df",
+          "#eff5f3"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "dark-ink",
+        "tonalRamp": [
+          "#1d2f22",
+          "#34553d",
+          "#4c7b58",
+          "#64a073",
+          "#8ab795",
+          "#b0cfb8",
+          "#d6e6da",
+          "#eff5f1"
+        ]
+      },
+      "dark-primary": {
+        "role": "primary",
+        "displayName": "dark-primary",
+        "tonalRamp": [
+          "#133a2d",
+          "#216851",
+          "#309774",
+          "#42c297",
+          "#70d1b1",
+          "#9fe0ca",
+          "#cdefe4",
+          "#ecf9f4"
+        ]
+      }
+    },
+    "shadows": [
+      {
+        "name": "notification",
+        "value": "0 12px 35px #1f3a2e1a",
+        "purpose": "Powiadomienie nad obszarem pracy."
+      },
+      {
+        "name": "dialog",
+        "value": "0 25px 80px #102e2940",
+        "purpose": "Historia szkiców i awaryjne kopiowanie linku."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-feedback",
+        "value": "150ms",
+        "purpose": "Zmiana tła i koloru kontrolek."
+      },
+      {
+        "name": "active-execution",
+        "value": "1s ease-in-out infinite",
+        "purpose": "Kropka w trakcie wykonywania; wyłączona przez prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "740px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "900px"
+      },
+      {
+        "name": "medium-desktop",
+        "value": "1150px"
+      },
+      {
+        "name": "wide-desktop",
+        "value": "1550px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "description": "Główna akcja wykonania programu.",
+      "html": "<button class=\"ds-primary\">Uruchom</button>",
+      "css": ".ds-primary{font:650 12px \"Manrope Variable\",sans-serif;background:var(--green);color:#fff;height:36px;padding:0 14px;border:0;border-radius:6px;cursor:pointer;transition:background .15s}.ds-primary:hover{background:var(--green-dark)}.ds-primary:focus-visible{outline:2px solid var(--green);outline-offset:3px}.ds-primary:active{transform:translateY(1px)}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Pojedynczy krok i działania drugorzędne.",
+      "html": "<button class=\"ds-secondary\">Krok</button>",
+      "css": ".ds-secondary{font:650 12px \"Manrope Variable\",sans-serif;background:var(--surface);color:var(--ink);height:36px;padding:0 14px;border:1px solid var(--line);border-radius:6px;cursor:pointer}.ds-secondary:hover{background:var(--selected)}.ds-secondary:focus-visible{outline:2px solid var(--green);outline-offset:3px}.ds-secondary:active{transform:translateY(1px)}",
+      "refersTo": "button-secondary"
+    },
+    {
+      "name": "Search input",
+      "kind": "input",
+      "description": "Wyszukiwanie w poleceniach.",
+      "html": "<input class=\"ds-search\" placeholder=\"Szukaj polecenia…\" aria-label=\"Szukaj polecenia\">",
+      "css": ".ds-search{font:11px \"Manrope Variable\",sans-serif;background:var(--surface);color:var(--ink);padding:9px 12px;border:1px solid var(--line);border-radius:6px;caret-color:var(--green)}.ds-search:hover{border-color:var(--muted)}.ds-search:focus-visible{outline:2px solid var(--green);outline-offset:3px}",
+      "refersTo": "input-search"
+    },
+    {
+      "name": "Workspace navigation",
+      "kind": "nav",
+      "description": "Główna nawigacja z podkreśleniem aktywnej strony.",
+      "html": "<nav class=\"ds-nav\"><button aria-current=\"page\">Studio</button><button>Wyzwania</button><button>Przewodnik</button></nav>",
+      "css": ".ds-nav{display:flex;gap:28px;background:var(--surface)}.ds-nav button{font:650 12px \"Manrope Variable\",sans-serif;border:0;border-bottom:2px solid transparent;padding:16px 2px;background:transparent;color:var(--muted);cursor:pointer}.ds-nav button[aria-current=page]{color:var(--green);border-bottom-color:var(--green)}.ds-nav button:hover{color:var(--green)}.ds-nav button:focus-visible{outline:2px solid var(--green);outline-offset:3px}"
+    },
+    {
+      "name": "Mode switch",
+      "kind": "chip",
+      "description": "Wybór płaszczyzny lub przestrzeni.",
+      "html": "<div class=\"ds-modes\" role=\"group\" aria-label=\"Tryb\"><button aria-pressed=\"true\">2D</button><button aria-pressed=\"false\">3D</button></div>",
+      "css": ".ds-modes{display:inline-flex;background:var(--subtle);border:1px solid var(--line);padding:2px;border-radius:6px}.ds-modes button{font:650 10px \"Manrope Variable\",sans-serif;border:0;border-radius:4px;background:transparent;color:var(--muted);height:26px;padding:0 15px;cursor:pointer}.ds-modes button[aria-pressed=true]{background:var(--green);color:var(--surface)}.ds-modes button:hover{background:var(--selected);color:var(--ink)}.ds-modes button:focus-visible{outline:2px solid var(--green);outline-offset:3px}"
+    },
+    {
+      "name": "Example row",
+      "kind": "custom",
+      "description": "Wybrany przykład i jego nazwa; rzeczywistą miniaturę rysuje Canvas.",
+      "html": "<button class=\"ds-example\"><svg viewBox=\"0 0 40 40\" aria-hidden=\"true\"><path d=\"M8 8h24v24H8Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"/></svg><span>Kwadrat</span></button>",
+      "css": ".ds-example{display:flex;align-items:center;gap:11px;width:186px;height:53px;padding:5px 10px 5px 6px;background:var(--selected);color:var(--green-dark);border:1px solid var(--line);border-radius:7px;font:750 11px \"Manrope Variable\",sans-serif;cursor:pointer}.ds-example svg{height:38px;width:38px;background:var(--surface)}.ds-example:hover{background:var(--shell)}.ds-example:focus-visible{outline:2px solid var(--green);outline-offset:3px}.ds-example:active{transform:translateY(1px)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Pracownia odkrywców",
+    "overview": "System przywołuje muzealną pracownię edukacyjną: spokojne otoczenie, czytelne opisy i wolną przestrzeń do eksperymentowania. Zieleń wiąże działania z rysunkiem. Geometria jest prawdziwym rezultatem programu, a interfejs pomaga ją obejrzeć i zrozumieć.\n\nTo powierzchnia Operate. Znane przyciski, pola i nawigacja mają pierwszeństwo przed ozdobą. Charakter powstaje przez szałwiowe tło, precyzyjne wyrównanie, lokalne fonty i miniatury wykonywanych programów.",
+    "keyCharacteristics": [
+      "Jasne i ciemne powierzchnie o zielonym tonie.",
+      "Płaskie podziały i oszczędna hierarchia tekstu.",
+      "Autentyczne rysunki żółwia zamiast dekoracyjnych ilustracji.",
+      "Jawne stany wykonania, błędów i lokalnego zapisu."
+    ],
+    "rules": [
+      {
+        "name": "The Action Green Rule",
+        "body": "Akcent wskazuje działanie, wybór lub stan; kolory samego rysunku należą do programu użytkownika.",
+        "section": "colors"
+      },
+      {
+        "name": "The Code Is Code Rule",
+        "body": "Monospace służy kodowi i pomiarom, nie etykietom interfejsu.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Workspace Rule",
+        "body": "Głębię w stałym układzie tworzą odcienie i podziały; warstwa nad nim może użyć miękkiego cienia.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** pozostawiaj rysunkowi dużą, spokojną powierzchnię.",
+      "**Do** zachowuj wspólne wyrównania paneli i kontrolki przy ich zadaniu.",
+      "**Do** pokazuj stan słowem oraz znakiem, także w motywie ciemnym.",
+      "**Do** używaj prawdziwego interpretera do podglądów programów."
+    ],
+    "donts": [
+      "**Don't** dodawaj dekoracyjnych kart i cieni do stałego układu pracy.",
+      "**Don't** zastępuj geometrii ilustracją lub statyczną atrapą wyniku.",
+      "**Don't** używaj monospace jako ozdoby etykiet.",
+      "**Don't** polegaj wyłącznie na kolorze przy błędach i ukończeniu zadań."
+    ]
+  }
+}
