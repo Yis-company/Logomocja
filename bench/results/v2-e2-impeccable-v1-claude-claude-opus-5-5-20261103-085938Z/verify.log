@@ -1,0 +1,70 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.170.0
++ typescript@5.9.3
++ vite@6.4.5
++ three@0.170.0
+
+26 packages installed [39.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.10 kB │ gzip:   0.59 kB
+dist/assets/index-TipFKcpa.css   23.94 kB │ gzip:   5.92 kB
+dist/assets/index-C_2zE0So.js    92.42 kB │ gzip:  32.37 kB
+dist/assets/view3d-Cnz8SCU_.js  548.08 kB │ gzip: 140.51 kB
+✓ built in 792ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) wyrażenia > pierwszeństwo i łączność [2.03ms]
+(pass) wyrażenia > spacje wokół operatora [0.50ms]
+(pass) wyrażenia > znaki jednoargumentowe [0.16ms]
+(pass) wyrażenia > liczby [0.34ms]
+(pass) wyrażenia > porównania są dokładne [1.22ms]
+(pass) wyrażenia > dzielenie przez zero to błąd wykonania w miejscu argumentu [0.07ms]
+(pass) żółw > stan początkowy i 2D [0.16ms]
+(pass) żółw > góra, dół i przechył [0.17ms]
+(pass) żółw > ten sam rysunek w 2D i 3D [21.62ms]
+(pass) żółw > ruch o zero nie rysuje, pióro i kolor [0.13ms]
+(pass) żółw > dom i czyść [0.15ms]
+(pass) żółw > kąty ujemne i dziesiętne [0.09ms]
+(pass) powtórz, zmienne, warunki > nrpowt [0.95ms]
+(pass) powtórz, zmienne, warunki > zakres powtórzeń [0.21ms]
+(pass) powtórz, zmienne, warunki > grubość [0.09ms]
+(pass) powtórz, zmienne, warunki > zasięg nazw [0.24ms]
+(pass) powtórz, zmienne, warunki > zmienne lokalne zasłaniają globalne [0.07ms]
+(pass) powtórz, zmienne, warunki > zmienna nie może nazywać się jak procedura ani polecenie [0.03ms]
+(pass) procedury > wywołania i argumenty [0.27ms]
+(pass) procedury > parametr o nazwie procedury [0.07ms]
+(pass) procedury > stop [0.28ms]
+(pass) procedury > błędy definicji [0.06ms]
+(pass) procedury > rekurencja i limit ramek [0.56ms]
+(pass) błędy i limity > nawiasy [0.12ms]
+(pass) błędy i limity > kolory [0.09ms]
+(pass) błędy i limity > błąd składni niczego nie rysuje [0.06ms]
+(pass) błędy i limity > limit operacji [4.85ms]
+(pass) błędy i limity > limit znaków, elementów, zagnieżdżenia, współrzędnych i odcinków [6.01ms]
+(pass) błędy i limity > komentarze i wielkość liter [0.06ms]
+(pass) przykłady i wyzwania > wszystkie przykłady działają [9.03ms]
+(pass) przykłady i wyzwania > rozwiązania wzorcowe przechodzą, puste nie [5.93ms]
+(pass) pomoc > przykłady z dokumentacji działają [1.17ms]
+
+ 32 pass
+ 0 fail
+ 234 expect() calls
+Ran 32 tests across 1 file. [64.00ms]
+(exit 0)

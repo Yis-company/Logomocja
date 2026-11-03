@@ -1,0 +1,158 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.187.0
++ playwright-core@1.64.1
++ typescript@7.0.2
++ vite@8.3.5
++ @fontsource/jetbrains-mono@5.3.0
++ @fontsource/lato@5.3.0
++ three@0.187.0
+
+32 packages installed [48.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                      1.02 kB │ gzip:   0.56 kB
+dist/assets/jetbrains-mono-cyrillic-ext-700-normal-D6iG63UR.woff2    1.15 kB
+dist/assets/jetbrains-mono-cyrillic-ext-400-normal-C_uLvvQ5.woff2    1.16 kB
+dist/assets/jetbrains-mono-cyrillic-ext-700-normal-iEXTdOVf.woff     1.72 kB
+dist/assets/jetbrains-mono-cyrillic-ext-400-normal-Bh0R7Dhr.woff     1.74 kB
+dist/assets/lato-latin-ext-400-normal-NoO0okhb.woff                  3.82 kB
+dist/assets/lato-latin-ext-700-normal-oVW-9CSr.woff                  3.86 kB
+dist/assets/lato-latin-ext-900-normal-CjTVdnWO.woff                  3.87 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-ByoDsISC.woff2      3.92 kB
+dist/assets/jetbrains-mono-vietnamese-700-normal-k5PzE07T.woff2      3.99 kB
+dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2           4.22 kB
+dist/assets/jetbrains-mono-greek-700-normal-C6CZE3T8.woff2           4.30 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2        5.32 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-BWTpRfYl.woff2        5.33 kB
+dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff       5.37 kB
+dist/assets/jetbrains-mono-vietnamese-700-normal-BDLVIk2r.woff       5.45 kB
+dist/assets/lato-latin-ext-700-normal-C6gwlRgY.woff2                 5.55 kB
+dist/assets/lato-latin-ext-400-normal-CK4GAP86.woff2                 5.61 kB
+dist/assets/lato-latin-ext-900-normal-BhetttCG.woff2                 5.64 kB
+dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff            5.66 kB
+dist/assets/jetbrains-mono-greek-700-normal-DEigVDxa.woff            5.69 kB
+dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff         6.97 kB
+dist/assets/jetbrains-mono-cyrillic-700-normal-CEoEElIJ.woff         7.01 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2       7.33 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CZipNAKV.woff2       7.47 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff       10.12 kB
+dist/assets/jetbrains-mono-latin-ext-700-normal-CxPITLHs.woff       10.30 kB
+dist/assets/lato-latin-900-normal-CZBfLiEO.woff                     17.18 kB
+dist/assets/lato-latin-400-normal-B11PyLys.woff                     17.45 kB
+dist/assets/lato-latin-700-normal-DAdL7O4w.woff                     17.62 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2          21.16 kB
+dist/assets/jetbrains-mono-latin-700-normal-BYuf6tUa.woff2          21.90 kB
+dist/assets/lato-latin-900-normal-C3uaq3BA.woff2                    22.50 kB
+dist/assets/lato-latin-700-normal-BUGMgin4.woff2                    23.04 kB
+dist/assets/lato-latin-400-normal-BEhtfm5r.woff2                    23.58 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff           27.49 kB
+dist/assets/jetbrains-mono-latin-700-normal-D3wTyLJW.woff           28.20 kB
+dist/assets/index-Pm9v6sem.css                                      30.32 kB │ gzip:   6.54 kB
+dist/assets/index-BtA0-vJ0.js                                       95.06 kB │ gzip:  33.48 kB
+dist/assets/view3d-DKSOBNRV.js                                     587.60 kB │ gzip: 146.20 kB
+
+✓ built in 179ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests/
+
+tests/interpreter.test.ts:
+(pass) programy standardowe > kwadrat (2d) rysuje bez błędu [1.95ms]
+(pass) programy standardowe > gwiazda (2d) rysuje bez błędu [0.23ms]
+(pass) programy standardowe > rozeta (2d) rysuje bez błędu [0.49ms]
+(pass) programy standardowe > spirala (2d) rysuje bez błędu [0.96ms]
+(pass) programy standardowe > wielokaty (2d) rysuje bez błędu [0.47ms]
+(pass) programy standardowe > drzewo (2d) rysuje bez błędu [6.46ms]
+(pass) programy standardowe > sniezynka (2d) rysuje bez błędu [4.40ms]
+(pass) programy standardowe > schody (3d) rysuje bez błędu [0.15ms]
+(pass) programy standardowe > szescian (3d) rysuje bez błędu [0.10ms]
+(pass) programy standardowe > pierscien (3d) rysuje bez błędu [0.06ms]
+(pass) programy standardowe > kula (3d) rysuje bez błędu [0.57ms]
+(pass) programy standardowe > helisa (3d) rysuje bez błędu [0.34ms]
+(pass) programy standardowe > drzewo3d (3d) rysuje bez błędu [2.32ms]
+(pass) programy standardowe > są wszystkie trzynaście, z właściwymi trybami [0.19ms]
+(pass) programy standardowe > kwadrat ma dokładne współrzędne [0.11ms]
+(pass) programy standardowe > spirala zmienia kolory na przemian [0.26ms]
+(pass) programy standardowe > płaskie programy dają te same współrzędne w 2D i 3D [9.68ms]
+(pass) programy standardowe > schody wznoszą się w osi z [0.21ms]
+(pass) wyrażenia > pierwszeństwo i łączność w lewo [0.10ms]
+(pass) wyrażenia > spacje wokół operatora [0.28ms]
+(pass) wyrażenia > porównania nie podlegają regule spacji [0.03ms]
+(pass) wyrażenia > znaki jednoargumentowe [0.10ms]
+(pass) wyrażenia > liczby [0.10ms]
+(pass) wyrażenia > dzielenie przez zero i wynik nieskończony: błąd wykonania przy pierwszym tokenie argumentu [0.23ms]
+(pass) wyrażenia > wyrażenie nie jest operacją [0.04ms]
+(pass) wyrażenia > porównania są dokładne [0.07ms]
+(pass) słowa i składnia > wielkość liter, polskie znaki i angielskie aliasy [0.13ms]
+(pass) słowa i składnia > komentarze
+(pass) słowa i składnia > kolor [0.07ms]
+(pass) słowa i składnia > grubość [0.16ms]
+(pass) słowa i składnia > nawiasy [0.08ms]
+(pass) słowa i składnia > brakujący argument wskazuje token w jego miejscu albo polecenie na końcu programu [0.07ms]
+(pass) słowa i składnia > nieznane polecenia i wartości bez polecenia [0.07ms]
+(pass) słowa i składnia > błąd zapisu nic nie rysuje [0.02ms]
+(pass) słowa i składnia > kolumny liczone w znakach, także z polskimi literami [0.10ms]
+(pass) ruch i geometria > ruch o zero nic nie rysuje, podniesione pióro też nie [0.02ms]
+(pass) ruch i geometria > ws i skręty [0.05ms]
+(pass) ruch i geometria > dom wraca z linią i przywraca kierunek, nie zmienia pióra [0.10ms]
+(pass) ruch i geometria > czyść usuwa odcinki i nie zmienia stanu żółwia [0.02ms]
+(pass) ruch i geometria > gora 90: żółw leci wzdłuż dawnej góry, góra idzie do tyłu [0.03ms]
+(pass) ruch i geometria > pp 90: góra staje się dawnym prawem, prawo dawnym dołem [0.04ms]
+(pass) ruch i geometria > polecenia przestrzenne w trybie 2D to błąd zapisu [0.18ms]
+(pass) ruch i geometria > pierścień jest przechylony o 30 stopni [0.05ms]
+(pass) powtórzenia > liczba powtórzeń [0.12ms]
+(pass) powtórzenia > nrpowt w najbliższym powtórzeniu [0.06ms]
+(pass) powtórzenia > nrpowt poza powtórzeniem to błąd zapisu, także w procedurze [0.05ms]
+(pass) zmienne > globalne, także zadeklarowane później [0.06ms]
+(pass) zmienne > nieznana nazwa to błąd zapisu [0.04ms]
+(pass) zmienne > zmienne lokalne zasłaniają globalne do końca wywołania [0.04ms]
+(pass) zmienne > parametr można zmienić, a lokalne znikają po wywołaniu [0.08ms]
+(pass) zmienne > procedura nie widzi zmiennych lokalnych wywołującego [0.04ms]
+(pass) zmienne > nazwa zmiennej nie może być poleceniem ani procedurą [0.03ms]
+(pass) zmienne > niech w powtórzeniu na najwyższym poziomie jest globalna [0.02ms]
+(pass) warunki > jeśli i jeżeli [0.07ms]
+(pass) warunki > brak porównania albo bloku [0.04ms]
+(pass) warunki > stop w bloku warunku kończy procedurę [0.03ms]
+(pass) procedury > przykład z opisu języka [0.03ms]
+(pass) procedury > wywołanie przed definicją, argument jako wyrażenie [0.03ms]
+(pass) procedury > dawny nagłówek z dwukropkami i aliasy to/end [0.08ms]
+(pass) procedury > parametr o nazwie procedury [0.05ms]
+(pass) procedury > ujemny argument dzięki regule spacji [0.03ms]
+(pass) procedury > liczba argumentów [0.14ms]
+(pass) procedury > błędy definicji [0.13ms]
+(pass) procedury > stop kończy wywołanie także z wnętrza powtórzenia; na najwyższym poziomie kończy program [0.06ms]
+(pass) procedury > rekurencja i limit 32 ramek [2.97ms]
+(pass) procedury > definicje bez wywołań nic nie robią [0.06ms]
+(pass) limity > liczenie operacji [0.18ms]
+(pass) limity > 10 000 operacji wolno, 10 001 już nie [6.22ms]
+(pass) limity > nieskończona pętla zatrzymuje się na limicie i zostawia rysunek [0.26ms]
+(pass) limity > współrzędne w zakresie ±100 000 [0.09ms]
+(pass) limity > długość źródła i liczba tokenów [3617.03ms]
+(pass) limity > zagnieżdżenie nawiasów do 32 [1.21ms]
+(pass) limity > błąd wykonania zostawia rysunek po ostatnim czyść [0.15ms]
+(pass) wynik w formacie haczyka testowego > odcinki mają from, to, color, width [0.03ms]
+(pass) wynik w formacie haczyka testowego > błąd ma message, line, column [0.06ms]
+(pass) przykłady z pomocy > każdy działa bez błędu [2.50ms]
+(pass) zadania > co najmniej pięć, każde rozwiązanie wzorcowe przechodzi [2.39ms]
+(pass) zadania > kolejność, kierunek i podział odcinków nie mają znaczenia [0.15ms]
+(pass) zadania > zły rysunek dostaje powód [0.18ms]
+(pass) link do programu > zapis i odczyt zachowują tekst [1.68ms]
+
+ 80 pass
+ 0 fail
+ 6811 expect() calls
+Ran 80 tests across 1 file. [3.67s]
+(exit 0)
