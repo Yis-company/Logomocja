@@ -238,7 +238,7 @@ export class Studio {
     // file menu
     this.fileInput = h('input', { type: 'file', accept: '.logo,.txt,text/plain', class: 'visually-hidden', tabindex: '-1', 'aria-hidden': 'true' }) as HTMLInputElement;
     this.fileInput.addEventListener('change', () => this.openFile());
-    const fileBtn = h('button', { type: 'button', class: 'btn btn-quiet' }, icon('file'), h('span', { class: 'btn-label' }, 'Plik'), icon('chevronDown', 'icon-small'));
+    const fileBtn = h('button', { type: 'button', class: 'btn btn-quiet', 'aria-label': 'Plik', title: 'Plik: nowy, otwórz, pobierz, PNG' }, icon('file'), h('span', { class: 'btn-label' }, 'Plik'), icon('chevronDown', 'icon-small'));
     this.restoreItem = menuItem('Przywróć odłożony szkic', 'undo', () => this.restoreBackup());
     const fileMenu = h(
       'div',
@@ -253,7 +253,7 @@ export class Studio {
     popover(fileBtn, fileMenu, { role: 'menu', label: 'Plik', align: 'start', onOpen: () => this.refreshRestoreItem() });
 
     // share
-    const shareBtn = h('button', { type: 'button', class: 'btn btn-quiet' }, icon('link'), h('span', { class: 'btn-label' }, 'Udostępnij'));
+    const shareBtn = h('button', { type: 'button', class: 'btn btn-quiet', 'aria-label': 'Udostępnij', title: 'Udostępnij link do programu' }, icon('link'), h('span', { class: 'btn-label' }, 'Udostępnij'));
     const shareInput = h('input', { type: 'text', readonly: true, class: 'share-input', id: 'share-url', 'aria-label': 'Link do programu' }) as HTMLInputElement;
     const shareMsg = h('p', { class: 'share-msg', 'aria-live': 'polite' });
     const copyBtn = h('button', { type: 'button', class: 'btn btn-secondary' }, icon('link'), h('span', null, 'Kopiuj link'));
@@ -319,7 +319,17 @@ export class Studio {
       this.paneButtons[this.pane].focus();
     });
 
-    this.root = h('div', { class: 'studio', 'data-mode': this.mode, 'data-pane': this.pane }, toolbar, paneSwitch, code, status, tracePane, plate);
+    this.root = h(
+      'div',
+      { class: 'studio', 'data-mode': this.mode, 'data-pane': this.pane },
+      h('h1', { class: 'visually-hidden' }, 'Studio rysowania żółwiem'),
+      toolbar,
+      paneSwitch,
+      code,
+      status,
+      tracePane,
+      plate,
+    );
 
     window.addEventListener('dragover', (e) => {
       if (e.dataTransfer?.types.includes('Files')) e.preventDefault();
@@ -751,9 +761,9 @@ export class Studio {
         h(
           'div',
           { class: 'task-text' },
-          h('p', { class: 'task-crumbs' }, h('a', { href: '#/zadania' }, 'Zadania'), ` / ${idx + 1} z ${CHALLENGES.length} · ${ch.mode.toUpperCase()}`),
           h('h2', { class: 'task-title', id: 'task-title', tabindex: '-1' }, ch.title),
           h('p', { class: 'task-desc' }, ch.task),
+          h('p', { class: 'task-crumbs' }, `Zadanie ${idx + 1} z ${CHALLENGES.length} · ${ch.mode === '2d' ? 'Płaszczyzna 2D' : 'Przestrzeń 3D'} · `, h('a', { href: '#/zadania' }, 'wszystkie zadania')),
         ),
       ),
       h('div', { class: 'task-actions' }, checkBtn, hint, h('button', { type: 'button', class: 'link-btn task-leave', onclick: () => this.host.navigate('#/') }, icon('arrowLeft', 'icon-small'), 'Wróć do szkicu')),

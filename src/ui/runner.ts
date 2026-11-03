@@ -349,7 +349,7 @@ export class Runner {
     const ev = r.value;
     const pose = s.machine.turtle();
     const { label, color } = labelFor(ev);
-    const row: TraceRow = { n: s.rows.length + 1, line: ev.stmt.tok.line, col: ev.stmt.tok.col, label, color, pos: pose.pos, heading: headingDeg(pose), depth: s.machine.frames };
+    const row: TraceRow = { n: s.rows.length + 1, line: ev.stmt.tok.line, col: ev.stmt.tok.col, label, color, pos: pose.pos, heading: headingDeg(pose), depth: s.machine.frames - (ev.stmt.k === 'repeat' || ev.stmt.k === 'call' ? 1 : 0) };
     s.rows.push(row);
     this.newRows.push(row);
     this.lastEvent = ev;

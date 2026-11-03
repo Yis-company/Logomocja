@@ -29,7 +29,9 @@ export function popover(trigger: HTMLButtonElement, content: HTMLElement, opts: 
   trigger.setAttribute('aria-controls', id);
   trigger.setAttribute('aria-haspopup', opts.role === 'menu' ? 'menu' : 'dialog');
   let isOpen = false;
-  let closedAt = 0;
+  // A press on the trigger while open light-dismisses the popover; the click that
+  // follows must not reopen it.
+  let swallowClick = false;
 
   const place = () => {
     const r = trigger.getBoundingClientRect();
@@ -59,7 +61,6 @@ export function popover(trigger: HTMLButtonElement, content: HTMLElement, opts: 
   const setOpen = (v: boolean) => {
     if (v === isOpen) return;
     isOpen = v;
-    if (!v) closedAt = performance.now();
     openCount += v ? 1 : -1;
     trigger.setAttribute('aria-expanded', String(v));
     if (v) {
@@ -101,9 +102,15 @@ export function popover(trigger: HTMLButtonElement, content: HTMLElement, opts: 
     },
     isOpen: () => isOpen,
   };
+  trigger.addEventListener('pointerdown', () => {
+    swallowClick = isOpen;
+  });
   trigger.addEventListener('click', () => {
-    // a light-dismiss on this trigger's own pointerdown must not reopen it on click
-    if (!isOpen && performance.now() - closedAt < 350) return;
+    if (swallowClick) {
+      swallowClick = false;
+      handle.close();
+      return;
+    }
     handle.toggle();
   });
   window.addEventListener('resize', () => isOpen && place());

@@ -71,3 +71,15 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 ## Unresolved
 
 - None blocking. Challenge checker tolerance is an implementation decision (see README).
+
+## Finish record
+
+- Finish review: run in-thread (no subagents in this harness), code-led, no comp or QUALITY BAR
+  card. Round 1 disposition `fix` (dark popover ghost card, eyebrow-style task crumb, trace
+  ignoring call depth). Verdict pass: all three resolved, disposition `ship` for the scored fixes.
+- Detector: rendered routes clean via CDP; one static false positive (`.cm-cursor` 2px caret read
+  as a side-tab), not canonized.
+- DESIGN.md and `.impeccable/design.json` written from the built world (documenter run in-thread).
+- Shipping rasters: none (SVG favicon, woff2 fonts only); `embed-prompt --scan` reports 0.
+- Adaptation on record: the plate is charcoal in the dark theme (night use scene), colour
+  quarantine kept.

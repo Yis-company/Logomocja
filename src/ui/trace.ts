@@ -125,7 +125,12 @@ export class TraceView {
       const third = this.mode === '3d' ? num(r.pos[2]) : r.heading === null ? '–' : `${num(r.heading)}°`;
       const label = r.error
         ? h('span', { class: 'tc tc-2 trace-error-text' }, r.error)
-        : h('span', { class: 'tc tc-2' }, r.color ? h('i', { class: 'trace-swatch', style: { background: r.color } }) : null, r.label);
+        : h(
+            'span',
+            { class: 'tc tc-2', style: { paddingLeft: `${Math.min(r.depth, 6) * 10}px` } },
+            r.color ? h('i', { class: 'trace-swatch', style: { background: r.color } }) : null,
+            r.label,
+          );
       frag.push(
         h(
           'div',

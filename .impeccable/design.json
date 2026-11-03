@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T12:01:17+00:00",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "timetable-yellow": {
+        "role": "primary",
+        "displayName": "Timetable Yellow",
+        "canonical": "oklch(87.7% 0.180 93.1)",
+        "tonalRamp": [
+          "#100b00",
+          "#2e2402",
+          "#4f410a",
+          "#755f02",
+          "#9b8015",
+          "#c3a220",
+          "#eec520",
+          "#ffeeb8"
+        ]
+      },
+      "yellow-deep": {
+        "role": "primary",
+        "displayName": "Deep Yellow",
+        "canonical": "oklch(83.1% 0.170 91.4)",
+        "tonalRamp": [
+          "#100b00",
+          "#2e2401",
+          "#504006",
+          "#755f10",
+          "#9d7f0a",
+          "#c6a114",
+          "#f2c408",
+          "#ffeebb"
+        ]
+      },
+      "yellow-wash": {
+        "role": "primary",
+        "displayName": "Yellow Wash",
+        "canonical": "oklch(96.0% 0.076 98.0)",
+        "tonalRamp": [
+          "#0f0b00",
+          "#2c2500",
+          "#4d4203",
+          "#6d622a",
+          "#8e834c",
+          "#b2a66e",
+          "#d6ca91",
+          "#fcf0b5"
+        ]
+      },
+      "signal-red": {
+        "role": "secondary",
+        "displayName": "Signal Red",
+        "canonical": "oklch(52.4% 0.203 21.9)",
+        "tonalRamp": [
+          "#1e0002",
+          "#4c010b",
+          "#7e091b",
+          "#b3162c",
+          "#e23a47",
+          "#fe7273",
+          "#feb3af",
+          "#fee9e7"
+        ]
+      },
+      "red-wash": {
+        "role": "secondary",
+        "displayName": "Red Wash",
+        "canonical": "oklch(96.1% 0.016 8.2)",
+        "tonalRamp": [
+          "#11080a",
+          "#2c2223",
+          "#4a3f40",
+          "#6a5e5f",
+          "#8c7e80",
+          "#afa1a3",
+          "#d3c5c7",
+          "#f9eaec"
+        ]
+      },
+      "red-night": {
+        "role": "secondary",
+        "displayName": "Signal Red (night)",
+        "canonical": "oklch(72.4% 0.171 22.3)",
+        "tonalRamp": [
+          "#1e0102",
+          "#4c020b",
+          "#7d0a1a",
+          "#ad2531",
+          "#d54d51",
+          "#fe7272",
+          "#feb3af",
+          "#ffe8e7"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Warning Amber",
+        "canonical": "oklch(63.1% 0.149 59.4)",
+        "tonalRamp": [
+          "#160700",
+          "#3a1d02",
+          "#613509",
+          "#904e01",
+          "#bd6b14",
+          "#e88b34",
+          "#fdb881",
+          "#ffeadb"
+        ]
+      },
+      "amber-night": {
+        "role": "tertiary",
+        "displayName": "Warning Amber (night)",
+        "canonical": "oklch(80.9% 0.154 70.1)",
+        "tonalRamp": [
+          "#130800",
+          "#361f00",
+          "#5c3904",
+          "#85550d",
+          "#b37204",
+          "#e1910c",
+          "#ffb964",
+          "#feebd6"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Timetable Black",
+        "canonical": "oklch(19.1% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Pencil",
+        "canonical": "oklch(38.6% 0.008 97.5)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#262521",
+          "#43423d",
+          "#62615c",
+          "#83827d",
+          "#a6a59f",
+          "#cac9c3",
+          "#f0efe8"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Faint Pencil",
+        "canonical": "oklch(49.8% 0.011 100.2)",
+        "tonalRamp": [
+          "#0c0b06",
+          "#26251f",
+          "#43423c",
+          "#62615a",
+          "#84837b",
+          "#a6a59e",
+          "#cac9c1",
+          "#f0efe7"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Station White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "panel-2": {
+        "role": "neutral",
+        "displayName": "Toolbar Grey",
+        "canonical": "oklch(96.6% 0.005 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423f",
+          "#61615e",
+          "#82827f",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefeb"
+        ]
+      },
+      "panel-3": {
+        "role": "neutral",
+        "displayName": "Pressed Grey",
+        "canonical": "oklch(93.5% 0.008 106.6)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252521",
+          "#42423d",
+          "#62625c",
+          "#83837d",
+          "#a5a5a0",
+          "#c9c9c4",
+          "#efefe9"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(89.3% 0.010 100.0)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#262520",
+          "#43423c",
+          "#62615b",
+          "#83827c",
+          "#a6a59f",
+          "#cac9c2",
+          "#f0efe8"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Plate",
+        "canonical": "oklch(99.3% 0.003 106.4)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#252524",
+          "#424240",
+          "#616160",
+          "#828281",
+          "#a5a5a3",
+          "#c9c9c7",
+          "#eeeeec"
+        ]
+      },
+      "plate-minor": {
+        "role": "neutral",
+        "displayName": "Minor Grid",
+        "canonical": "oklch(95.4% 0.005 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423f",
+          "#61615e",
+          "#82827f",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefeb"
+        ]
+      },
+      "plate-major": {
+        "role": "neutral",
+        "displayName": "Major Grid",
+        "canonical": "oklch(90.2% 0.009 106.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#252520",
+          "#42423d",
+          "#62625c",
+          "#83837c",
+          "#a5a59f",
+          "#cacac3",
+          "#efefe8"
+        ]
+      },
+      "plate-axis": {
+        "role": "neutral",
+        "displayName": "Axis",
+        "canonical": "oklch(62.9% 0.010 100.1)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#262520",
+          "#43423c",
+          "#62615b",
+          "#84837c",
+          "#a6a59e",
+          "#cac9c2",
+          "#f0efe7"
+        ]
+      },
+      "plate-ghost": {
+        "role": "neutral",
+        "displayName": "Tracing Ghost",
+        "canonical": "oklch(91.5% 0.009 100.0)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#262520",
+          "#43423d",
+          "#62615b",
+          "#83827c",
+          "#a6a59f",
+          "#cac9c2",
+          "#f0efe8"
+        ]
+      },
+      "ground-night": {
+        "role": "neutral",
+        "displayName": "Night Platform",
+        "canonical": "oklch(18.6% 0.004 106.8)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252523",
+          "#424240",
+          "#61615f",
+          "#828280",
+          "#a5a5a2",
+          "#c9c9c6",
+          "#efefec"
+        ]
+      },
+      "panel-night": {
+        "role": "neutral",
+        "displayName": "Night Pane",
+        "canonical": "oklch(21.2% 0.006 106.9)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423f",
+          "#61615e",
+          "#82837f",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefea"
+        ]
+      },
+      "panel-2-night": {
+        "role": "neutral",
+        "displayName": "Night Toolbar",
+        "canonical": "oklch(24.6% 0.007 106.9)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#252521",
+          "#42423e",
+          "#61625d",
+          "#83837e",
+          "#a5a5a0",
+          "#c9c9c4",
+          "#efefe9"
+        ]
+      },
+      "line-night": {
+        "role": "neutral",
+        "displayName": "Night Hairline",
+        "canonical": "oklch(32.4% 0.009 97.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#262520",
+          "#43423d",
+          "#62615c",
+          "#84827d",
+          "#a6a59f",
+          "#cac9c3",
+          "#f0efe8"
+        ]
+      },
+      "ink-night": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "oklch(95.4% 0.011 95.2)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#27251f",
+          "#44423c",
+          "#63615a",
+          "#84827b",
+          "#a7a59e",
+          "#cbc9c1",
+          "#f1efe7"
+        ]
+      },
+      "ink-3-night": {
+        "role": "neutral",
+        "displayName": "Faint Pencil (night)",
+        "canonical": "oklch(69.8% 0.014 97.5)",
+        "tonalRamp": [
+          "#0d0b05",
+          "#27251d",
+          "#44423a",
+          "#636158",
+          "#848379",
+          "#a7a59b",
+          "#cbc9bf",
+          "#f1efe4"
+        ]
+      },
+      "plate-night": {
+        "role": "neutral",
+        "displayName": "Night Plate",
+        "canonical": "oklch(22.5% 0.006 106.8)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#252522",
+          "#42423f",
+          "#61615e",
+          "#82837f",
+          "#a5a5a1",
+          "#c9c9c5",
+          "#efefea"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Reference sections over a 2px ink rule."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Example, challenge and task titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "UI text."
+      },
+      "prose": {
+        "displayName": "Prose",
+        "purpose": "Reference and ledes, max 36–38em."
+      },
+      "label": {
+        "displayName": "Timetable Label",
+        "purpose": "Condensed uppercase pane titles, column heads, status keys."
+      },
+      "figure": {
+        "displayName": "Departure Figure",
+        "purpose": "Bold condensed tabular step numbers and the 2D/3D switch."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Program text, trace commands, identifiers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "popover-day",
+        "value": "0 2px 4px rgb(20 20 20 / 0.08), 0 12px 32px rgb(20 20 20 / 0.14)",
+        "purpose": "Light-theme menus and share/shortcut panels; no border."
+      },
+      {
+        "name": "toast",
+        "value": "0 8px 28px rgb(0 0 0 / 0.22)",
+        "purpose": "Toasts above the work."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions, 150–220ms."
+      },
+      {
+        "name": "fit-glide",
+        "value": "220–260ms cubic ease-out",
+        "purpose": "Plate and camera fitting."
+      },
+      {
+        "name": "turtle-tween",
+        "value": "1 step per 1/rate s, rate ≤ 20/s",
+        "purpose": "The authored motion: the turtle glides and turns at slow speeds; instant under higher speeds."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transitions and animations collapse to 1ms",
+        "purpose": "prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width: 759px"
+      },
+      {
+        "name": "compact-toolbar",
+        "value": "760px–1365px"
+      },
+      {
+        "name": "two-boards",
+        "value": "min-width: 1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one primary action per area: Uruchom, Sprawdź rozwiązanie, Rozwiąż.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 20 20\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M6 4.2v11.6a.6.6 0 0 0 .9.5l9.2-5.8a.6.6 0 0 0 0-1L6.9 3.7a.6.6 0 0 0-.9.5Z\" fill=\"currentColor\"/></svg>Uruchom</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #141414;border-radius:3px;background:var(--yellow,#ffd200);color:#141414;font:620 14px/1 'Archivo Variable', Archivo, system-ui, sans-serif;cursor:pointer;transition:background-color 150ms cubic-bezier(.16,1,.3,1),transform 120ms cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#f0c200}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #141414;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Krok, Pauza/Wznów, Od nowa, Otwórz: hairline-bordered controls.",
+      "html": "<button class=\"ds-btn-secondary\"><svg viewBox=\"0 0 20 20\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" d=\"M4.5 5v10\"/><path d=\"M8 5.2v9.6a.6.6 0 0 0 .9.5l7.2-4.8a.6.6 0 0 0 0-1L8.9 4.7a.6.6 0 0 0-.9.5Z\" fill=\"currentColor\"/></svg>Krok</button>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #dddcd5;border-radius:3px;background:#fff;color:#141414;font:620 14px/1 'Archivo Variable', Archivo, system-ui, sans-serif;cursor:pointer;transition:background-color 150ms,border-color 150ms}.ds-btn-secondary:hover{border-color:#64635c;background:#f4f4f0}.ds-btn-secondary:disabled{opacity:.42;cursor:not-allowed}.ds-btn-secondary:focus-visible{outline:2px solid #141414;outline-offset:2px}"
+    },
+    {
+      "name": "Top Bar Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link-active",
+      "description": "The yellow timetable header: wordmark, page links, current page inverse.",
+      "html": "<nav class=\"ds-topbar\"><strong class=\"ds-brand\">Logomocja</strong><a href=\"#\" aria-current=\"page\">Studio</a><a href=\"#\">Przykłady</a><a href=\"#\">Zadania</a><a href=\"#\">Polecenia</a></nav>",
+      "css": ".ds-topbar{display:flex;align-items:center;gap:2px;height:52px;padding:0 16px;background:#ffd200;border-bottom:2px solid #141414;font:650 14px/1 'Archivo Variable', Archivo, system-ui, sans-serif}.ds-brand{font-weight:800;font-stretch:88%;font-size:21px;margin-right:14px;letter-spacing:-.015em}.ds-topbar a{color:#141414;text-decoration:none;padding:9px 12px;border-radius:3px;transition:background-color 150ms}.ds-topbar a:hover{background:rgb(20 20 20/.09)}.ds-topbar a[aria-current=page]{background:#141414;color:#ffd200}.ds-topbar a:focus-visible{outline:2px solid #141414;outline-offset:2px}"
+    },
+    {
+      "name": "Mode Switch",
+      "kind": "custom",
+      "refersTo": "mode-switch-active",
+      "description": "2D | 3D segmented radio set like platform numbers.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Tryb\"><button role=\"radio\" aria-checked=\"true\"><b>2D</b> Płaszczyzna</button><button role=\"radio\" aria-checked=\"false\"><b>3D</b> Przestrzeń</button></div>",
+      "css": ".ds-seg{display:inline-flex;border:1px solid #141414;border-radius:3px;overflow:hidden;font:550 13px/1 'Archivo Variable', Archivo, system-ui, sans-serif}.ds-seg button{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:0;background:#fff;color:#141414;cursor:pointer}.ds-seg button+button{border-left:1px solid #141414}.ds-seg b{font-weight:800;font-stretch:85%;font-size:16px}.ds-seg button:hover{background:#eaeae4}.ds-seg [aria-checked=true]{background:#141414;color:#ffd200}.ds-seg button:focus-visible{outline:2px solid #141414;outline-offset:-4px}"
+    },
+    {
+      "name": "Przebieg Board",
+      "kind": "custom",
+      "refersTo": "trace-row-current",
+      "description": "Signature: the run as a departure board; current step on the yellow bar, error as a red footnote.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-head\"><span>Nr</span><span>Wiersz</span><span>Polecenie</span><span>x</span><span>y</span><span>kurs</span></div><div class=\"ds-row\"><span class=\"n\">6</span><span class=\"w\">5:3</span><span class=\"c\">np 180</span><span>105.8</span><span>34.38</span><span>144°</span></div><div class=\"ds-row is-current\"><span class=\"n\">7</span><span class=\"w\">6:3</span><span class=\"c\">pw 144</span><span>105.8</span><span>34.38</span><span>288°</span></div><div class=\"ds-row is-error\"><span class=\"n\">!</span><span class=\"w\">3:4</span><span class=\"c e\">Dzielenie przez zero.</span></div></div>",
+      "css": ".ds-board{font:400 13px/1 'Archivo Variable', Archivo, system-ui, sans-serif;font-variant-numeric:tabular-nums;color:#141414;background:#fff;width:520px}.ds-head,.ds-row{display:grid;grid-template-columns:54px 58px 1fr 62px 62px 62px;align-items:center;gap:6px;padding:0 12px 0 16px}.ds-head{height:28px;border-bottom:1px solid #dddcd5;border-top:2px solid #141414;font-size:11px;font-weight:750;font-stretch:82%;text-transform:uppercase;letter-spacing:.07em;color:#64635c}.ds-row{height:28px;border-bottom:1px solid #dddcd5}.ds-row span:nth-child(n+4),.ds-head span:nth-child(n+4){text-align:right}.ds-row .n{font-weight:800;font-stretch:78%;font-size:15px}.ds-row .w{color:#64635c;font-size:12px}.ds-row .c{font-family:'Atkinson Hyperlegible Mono', ui-monospace, monospace}.ds-row.is-current{background:#ffd200;border-bottom-color:#141414}.ds-row.is-error{background:#fdeef0;color:#c4122f}.ds-row .e{grid-column:3/-1;font-family:'Archivo Variable', Archivo, system-ui, sans-serif}"
+    },
+    {
+      "name": "Error Note",
+      "kind": "custom",
+      "refersTo": "trace-row-error",
+      "description": "Inline error under the offending line, caret at the column.",
+      "html": "<div class=\"ds-err\"><span class=\"ds-caret\"></span><b>Błąd · wiersz 5, kolumna 7</b><span>Nieoczekiwana wartość „-5”: tu powinno stać polecenie.</span></div>",
+      "css": ".ds-err{position:relative;max-width:520px;margin-top:8px;padding:8px 12px 9px;background:#fdeef0;border-radius:3px;font:400 14px/1.45 'Archivo Variable', Archivo, system-ui, sans-serif;color:#141414}.ds-err b{display:block;color:#c4122f;font-size:12px;font-weight:750;letter-spacing:.02em;margin-bottom:2px}.ds-err span:last-child{display:block}.ds-caret{position:absolute;top:-6px;left:58px;width:12px;height:12px;background:#fdeef0;transform:rotate(45deg)}"
+    },
+    {
+      "name": "Passed Stamp",
+      "kind": "chip",
+      "refersTo": "stamp-passed",
+      "description": "The only celebratory element: a yellow stamp with an ink check.",
+      "html": "<span class=\"ds-stamp\"><svg viewBox=\"0 0 20 20\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m4.5 10.5 3.6 3.5 7.4-8\"/></svg>Zaliczone</span>",
+      "css": ".ds-stamp{display:inline-flex;align-items:center;gap:4px;padding:2px 8px 2px 5px;background:#ffd200;color:#141414;border-radius:3px;font:750 14px/1.3 'Archivo Variable', Archivo, system-ui, sans-serif}"
+    },
+    {
+      "name": "Mode Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Hairline label for the mode of a program or task.",
+      "html": "<span class=\"ds-chip\">Płaszczyzna 2D</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;height:22px;padding:0 7px;border:1px solid #dddcd5;border-radius:3px;font:650 12px/1 'Archivo Variable', Archivo, system-ui, sans-serif;color:#45443f}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Departure Board",
+    "overview": "Logomocja is a working studio printed like a Polish railway timetable, the yellow *Rozkład jazdy: Odjazdy* poster on every station wall. The yellow belongs to the shell: the top bar, the primary action, the current step. Everything structural is set in timetable black: hairline rules between rows, a heavier rule under every column head, small condensed uppercase labels, and bold condensed figures that read like departure hours. The program's run is the schedule. Every executed statement takes a row, the row in progress rides the yellow bar, and a failure is a red footnote.\n\nThe drawing is the reward, so the turtle's ink is quarantined on the plate: an almost-white sheet by day, a charcoal sheet by night, ruled as a real coordinate field. The shell never borrows the turtle's colours, and the plate never borrows the shell's furniture beyond its view controls and a tabular status strip.\n\nDensity is a working tool's density, not a poster's. Controls are the standard web controls a learner already knows (buttons, a segmented switch, a range slider, tabs, menus), in a print vocabulary: flat, squared, bordered, never glossy.",
+    "keyCharacteristics": [
+      "Timetable yellow carries the shell; black ink and hairline rules carry structure.",
+      "Condensed uppercase labels and bold condensed tabular figures, Archivo throughout the UI.",
+      "Code in Atkinson Hyperlegible Mono, chosen for learners' legibility.",
+      "The run shown as a departure board: one row per step, current row on the yellow bar.",
+      "Turtle colours appear only on the drawing plate, thumbnails and colour swatches.",
+      "Flat print: borders instead of shadows, 3–5px corners."
+    ],
+    "rules": [
+      {
+        "name": "The Quarantine Rule",
+        "body": "Turtle ink (`#16866a` and every colour a program sets) lives only on the plate, in thumbnails and in colour swatches next to the literal that sets it. The shell is yellow, black, grey and red.",
+        "section": "colors"
+      },
+      {
+        "name": "The Footnote Rule",
+        "body": "Red is reserved for errors. A red element that does not report a problem is a bug.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink-On-Yellow Rule",
+        "body": "Yellow is a ground, never a text or line colour on white. On yellow, use ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Departure Hour Rule",
+        "body": "Every number that changes while a program runs is tabular. Step numbers are bold and condensed, so the board never jitters.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "UI, headings and data share Archivo; only program text is monospace. Never use mono to make something look technical.",
+        "section": "typography"
+      },
+      {
+        "name": "The Border-Or-Shadow Rule",
+        "body": "An element declares its elevation once: a border (view controls, notices, chips, buttons) or a shadow (light popovers, toasts), never both.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep yellow on the shell and on state (current row, executing token, primary action, passed stamp).",
+      "Do put a 2px ink rule under every column head, pane title and page head, and hairlines between rows.",
+      "Do set changing numbers in tabular figures and step numbers in bold condensed Archivo.",
+      "Do face lists of programs and tasks with thumbnails of their real drawings.",
+      "Do report errors in red with the line, the column and a fix in Polish, at the exact token.",
+      "Do keep copy gender-neutral in Polish: present tense, imperatives or impersonal forms, no gendered past tense."
+    ],
+    "donts": [
+      "Don't let turtle colours leak into the shell (no green buttons because the default pen is green).",
+      "Don't use red for anything that is not an error.",
+      "Don't set yellow text or yellow lines on white.",
+      "Don't round corners beyond 5px, or add shadows to panes, buttons or panels.",
+      "Don't use monospace outside program text, trace commands and identifiers.",
+      "Don't put a kicker or eyebrow line above a heading; metadata follows the title."
+    ]
+  }
+}

@@ -13,6 +13,7 @@ import {
   highlightActiveLineGutter,
   GutterMarker,
   gutterLineClass,
+  placeholder,
 } from '@codemirror/view';
 import { history, historyKeymap, defaultKeymap, insertNewlineAndIndent } from '@codemirror/commands';
 import { bracketMatching, indentService, indentOnInput, indentUnit } from '@codemirror/language';
@@ -237,13 +238,14 @@ export function editorExtensions(label: string, onChange: (doc: string) => void)
     logoLanguageData,
     indentOnInput(),
     keymap.of([{ key: 'Enter', run: insertNewlineAndIndent }, ...defaultKeymap, ...historyKeymap]),
+    placeholder('Napisz program, na przykład:  powtorz 4 [np 100 pw 90]\nPotem naciśnij Uruchom.'),
     highlighter,
     errorField,
     errorGutter,
     execField,
     baseTheme,
     EditorView.lineWrapping,
-    EditorView.contentAttributes.of({ 'aria-label': label, spellcheck: 'false', autocapitalize: 'off', autocorrect: 'off', translate: 'no' }),
+    EditorView.contentAttributes.of({ 'aria-label': label, tabindex: '0', spellcheck: 'false', autocapitalize: 'off', autocorrect: 'off', translate: 'no' }),
     EditorView.updateListener.of((u) => {
       if (u.docChanged) onChange(u.state.doc.toString());
     }),

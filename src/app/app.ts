@@ -217,10 +217,12 @@ export class App {
           this.show('tasks');
           return;
         }
-        case 'polecenia':
+        case 'polecenia': {
+          const inPage = this.current === 'reference';
           this.show('reference');
-          this.pages.reference.show(parts[1]);
+          this.pages.reference.show(parts[1], inPage);
           return;
+        }
         default:
           history.replaceState(null, '', '#/');
           this.studio.leaveTask();

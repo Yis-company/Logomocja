@@ -33,7 +33,7 @@ function thumb(cls: string, w: number, ht: number): HTMLCanvasElement {
 export interface Page {
   root: HTMLElement;
   heading: HTMLElement;
-  show(arg?: string): void;
+  show(arg?: string, inPage?: boolean): void;
   refresh(): void;
 }
 
@@ -122,7 +122,7 @@ export function tasksPage(progress: () => Record<string, TaskProgress>): Page {
           h(
             'div',
             { class: 'board-main' },
-            h('h3', { class: 'board-title' }, h('span', { class: 'visually-hidden' }, `Zadanie ${i + 1}: `), c.title),
+            h('h2', { class: 'board-title' }, h('span', { class: 'visually-hidden' }, `Zadanie ${i + 1}: `), c.title),
             h('p', { class: 'board-desc' }, c.task),
             h(
               'p',
@@ -260,12 +260,14 @@ export function referencePage(tryIt: (source: string, mode: Mode, what: string) 
   return {
     root,
     heading,
-    show(arg?: string) {
+    show(arg?: string, inPage = false) {
+      // jump straight to a deep-linked section; glide only for in-page navigation
+      const glide = inPage && !matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (!arg) return;
       const target = document.getElementById(`ref-${arg}`);
       if (target) {
         requestAnimationFrame(() => {
-          target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+          target.scrollIntoView({ block: 'start', behavior: glide ? 'smooth' : 'auto' });
           target.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
         });
       }
