@@ -1,0 +1,9 @@
+[
+  {
+    "antipattern": "overused-font",
+    "severity": "warning",
+    "file": "src/style.css",
+    "finding": "Inter is a commonly used font.",
+    "resolution": "Retained intentionally: this is an Operate surface. The applicable mode guidance permits familiar UI typography; local Inter and JetBrains Mono provide Polish glyphs and precise editor metrics. Brand is carried by geometry, palette and the authored turtle mark. No mechanical errors were reported."
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T04:30:00Z",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Bottle green ink"
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Cool workbook ground"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep green text"
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Studio headline",
+        "purpose": "Short workspace headings."
+      },
+      "code": {
+        "displayName": "Source code",
+        "purpose": "Aligned editor and gutter metrics."
+      }
+    },
+    "shadows": [
+      {
+        "name": "dialog",
+        "value": "0 12px 60px #142d2b26",
+        "purpose": "Protected overlay above the studio."
+      },
+      {
+        "name": "toast",
+        "value": "0 5px 25px #142b2525",
+        "purpose": "Temporary feedback."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "150ms ease",
+        "purpose": "Hover and state color transitions; removed under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "small-phone",
+        "value": "390px"
+      },
+      {
+        "name": "stacked-studio",
+        "value": "760px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "wide-desktop",
+        "value": "1500px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main execution or checking action.",
+      "html": "<button class=\"ds-button ds-primary\">Uruchom</button>",
+      "css": ".ds-button{font-family:inherit;font-size:12px;font-weight:550;border-radius:5px;height:36px;padding:0 14px;cursor:pointer;transition:background .15s ease;}.ds-button:focus-visible{outline:2px solid var(--green);outline-offset:4px}.ds-button:disabled{opacity:.38;cursor:default}.ds-primary{border:0;background:var(--green);color:var(--surface)}.ds-primary:hover{background:var(--green-hover)}.ds-primary:active{background:var(--green-hover)}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Supporting actions with a thin boundary.",
+      "html": "<button class=\"ds-button ds-secondary\">Rozwiąż w studiu</button>",
+      "css": ".ds-button{font-family:inherit;font-size:12px;font-weight:550;border-radius:5px;height:36px;padding:0 14px;cursor:pointer;transition:background .15s ease;}.ds-button:focus-visible{outline:2px solid var(--green);outline-offset:4px}.ds-button:disabled{opacity:.38;cursor:default}.ds-secondary{border:1px solid var(--border);background:var(--surface);color:var(--green)}.ds-secondary:hover,.ds-secondary:active{background:var(--green-light)}"
+    },
+    {
+      "name": "Share field",
+      "kind": "input",
+      "description": "Selectable text for clipboard fallback.",
+      "html": "<label class=\"ds-label\" for=\"ds-link\">Link do programu</label><textarea class=\"ds-field\" id=\"ds-link\">#p=program</textarea>",
+      "css": ".ds-label{display:block;font-family:inherit;font-size:12px;color:var(--muted);margin-bottom:7px}.ds-field{width:100%;padding:10px;background:var(--code-bg);color:var(--ink);border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:12px}.ds-field:focus-visible{outline:2px solid var(--green);outline-offset:4px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Persistent navigation with an active underline.",
+      "html": "<nav class=\"ds-nav\"><button aria-current=\"page\">Studio</button><button>Wyzwania</button><button>Słownik poleceń</button></nav>",
+      "css": ".ds-nav{display:flex;gap:6px;background:var(--tint)}.ds-nav button{position:relative;padding:15px 19px;border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:13px;cursor:pointer}.ds-nav button[aria-current]{color:var(--green);border-bottom:2px solid var(--green)}.ds-nav button:hover{background:var(--green-light)}.ds-nav button:focus-visible{outline:2px solid var(--green);outline-offset:2px}"
+    },
+    {
+      "name": "State tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Quiet progress or context label.",
+      "html": "<span class=\"ds-tag\">3 / 5 ukończonych</span>",
+      "css": ".ds-tag{display:inline-block;font-family:inherit;font-size:11px;color:var(--green);background:var(--green-light);padding:9px 12px;border-radius:5px}"
+    },
+    {
+      "name": "Challenge container",
+      "kind": "card",
+      "description": "A task container with drawing preview above its prose in the app.",
+      "html": "<article class=\"ds-card\"><h2>Pierwszy kwadrat</h2><p>Narysuj kwadrat o boku 100.</p></article>",
+      "css": ".ds-card{padding:22px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink)}.ds-card h2{font-family:inherit;font-weight:620;font-size:18px;letter-spacing:-.3px;margin:0 0 10px}.ds-card p{font-family:inherit;font-size:12px;line-height:1.8;color:var(--muted);margin:0}"
+    },
+    {
+      "name": "Executing source line",
+      "kind": "custom",
+      "description": "A full line field indicates the current executed command.",
+      "html": "<pre class=\"ds-line\">  np 100</pre>",
+      "css": ".ds-line{font:12px/26px \"JetBrains Mono Variable\",monospace;background:#b7d9c555;color:var(--green);padding:0 10px;margin:0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Współczesny zeszyt matematyczny",
+    "overview": "A precise, quiet tool for making geometry. The reference to school mathematics comes through restrained ink colors, legible code and the actual construction grid on the drawing canvas. Familiar web controls keep the learner's attention on their program. The geometric turtle mark and the live drawings provide the identity.",
+    "keyCharacteristics": [
+      "Real drawings carry visual interest.",
+      "Compact controls, generous drawing space.",
+      "Flat surfaces and fine structural rules.",
+      "Polish copy that explains the next action."
+    ],
+    "rules": [
+      {
+        "name": "The Ink Rule",
+        "body": "Interface color describes action or state; drawings own their own colors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Code Alignment Rule",
+        "body": "Highlight layer, textarea and line numbers must share font metrics; visual styling cannot move tokens away from editable text.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do give geometry the largest uninterrupted work area.",
+      "Do keep every syntax overlay aligned with its textarea.",
+      "Do preserve original drawing colors in every theme and export.",
+      "Do name actions and recovery steps in Polish."
+    ],
+    "donts": [
+      "Don't use a decorative construction grid outside a real drawing surface.",
+      "Don't turn command reference text into a display typography treatment.",
+      "Don't replace a learner’s program without preserving a recoverable version."
+    ]
+  }
+}
