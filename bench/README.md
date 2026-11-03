@@ -75,3 +75,22 @@ Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dia
 `costUsd` is the figure the Claude CLI reports (`costBasis: "cli"`) or, for Codex, an estimate from the token counts and the list prices in `prices.ts` (`costBasis: "list"`, shown with ≈). The runs go through subscriptions, so this is what the same work would have cost on the API, not what was paid. Update `prices.ts` when prices change; stored results keep the figure computed at run time.
 
 `results/<run-id>/result.json` has `humanScore` (null until set) and `notes`. Open the build from the page, judge it, edit the two fields, commit. The page and `SUMMARY` columns update on the next build.
+
+## Impeccable design layer
+
+The base benchmark remains the default. Opt into a separate, from-scratch app condition with `--layer impeccable-v1`; do not modify the frozen v2 brief or existing results. Both CLIs explicitly read the same frozen skill snapshot, even when user rules are disabled. The layer authorizes unattended design decisions and uses the container's existing tools, with the skill's degraded workflows for unavailable native image generation and delegated agents. It does not import this repository's product context or visual design.
+
+```sh
+bun run bench -- --model codex:gpt-6.1-sol --effort high --layer impeccable-v1 --no-push
+bun run bench:queue -- --matrix bench/layers/impeccable-v1/sol.json --layer impeccable-v1 --prompt v2 --no-push
+# After Claude quota resets, and once the Sol queue has finished:
+bun run bench:queue -- --matrix bench/layers/impeccable-v1/opus.json --layer impeccable-v1 --prompt v2 --no-push
+```
+
+The supplied matrices contain only Sol or Opus, each at low, medium, high and xhigh. Resume preserves the layer; a base result cannot satisfy a layered queue entry. Only app runs support design layers.
+
+`layers/impeccable-v1/` freezes the installed Impeccable v4.7.0 guidance, references and supporting files. Its plain manifest records origin and engine 0.1.16. Platform binaries are excluded from source. Before invoking a model, the host uses the shipped launcher in the unchanged e2 container to prepare and validate the pinned Linux engine, cached under ignored `output/bench-tools/`. Runs mount that cache read-only. Neither the base image nor CLI flags change; base runs never receive the layer instruction or engine-cache mount. To change the design treatment, create a new layer ID and snapshot.
+
+Layered run IDs include `impeccable-v1`; results additionally store `layer`, `baselineId`, the actual `prompt.md`, and `layer.json`. `baselineId` selects the latest successful base app matching prompt, environment, runner, model and effort. The page keeps base rankings first and renders the layer separately, with a link to the matched base row and effort labels on gallery rows.
+
+Use the standard desktop/mobile galleries to judge design, while retaining conformance, build/test results, time, tokens and estimated cost. Historical controls and single runs do not establish a causal effect: model-service changes and run variance remain possible. Optional native tools unavailable in the container are a limitation of this condition, not a reason to introduce another model. No automatic design score is added. Experimental `--no-push` source branches remain local until explicitly published.

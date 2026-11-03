@@ -11,7 +11,7 @@ import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { createQueue, parseMatrix, queueStatus, runQueue } from "./queue";
 
-function fixture(efforts = ["high", "low"]) {
+function fixture(efforts = ["high", "low"], layer?: string) {
   const root = mkdtempSync(join(tmpdir(), "logomocja-queue-"));
   const runner = join(root, "runner.mjs");
   writeFileSync(
@@ -20,7 +20,7 @@ function fixture(efforts = ["high", "low"]) {
     import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
     import { parseArgs } from 'node:util';
     const { values: v } = parseArgs({ options: {
-      model: { type: 'string' }, effort: { type: 'string' }, prompt: { type: 'string' },
+      model: { type: 'string' }, effort: { type: 'string' }, prompt: { type: 'string' }, layer: { type: 'string' },
       'run-info': { type: 'string' }, 'no-push': { type: 'boolean' }
     }});
     const calls = 'calls.txt';
@@ -30,7 +30,7 @@ function fixture(efforts = ["high", "low"]) {
     await new Promise(r => setTimeout(r, 10));
     mkdirSync('bench/results/' + id, { recursive: true });
     writeFileSync('bench/results/' + id + '/result.json', JSON.stringify({
-      id, task: 'app', prompt: v.prompt, runner: 'codex', model: 'fixture', effort: v.effort,
+      id, layer: v.layer ? { id: v.layer } : undefined, task: 'app', prompt: v.prompt, runner: 'codex', model: 'fixture', effort: v.effort,
       status: v.effort === 'partial' ? 'partial' : 'completed', verify: { built: true }
     }));
     appendFileSync(calls, 'end ' + v.effort + '\\n');
@@ -42,6 +42,7 @@ function fixture(efforts = ["high", "low"]) {
     "v2",
     true,
     root,
+    layer,
   );
   const options = {
     command: [process.execPath, runner],
@@ -82,6 +83,19 @@ describe("benchmark queue", () => {
     expect(
       readFileSync(join(f.root, "calls.txt"), "utf8").split("\n"),
     ).toHaveLength(5);
+  });
+  it("forwards and preserves the layer, and rejects a base result when resuming a layered queue", async () => {
+    const f = fixture(["high"], "impeccable-v1");
+    expect(await runQueue(f.dir, false, f.options)).toBe(true);
+    expect(f.state().layer).toBe("impeccable-v1");
+    expect(await runQueue(f.dir, false, f.options)).toBe(true);
+    const info = JSON.parse(readFileSync(join(f.dir, "1.run.json"), "utf8"));
+    const file = join(f.root, "bench/results", info.id, "result.json");
+    const saved = JSON.parse(readFileSync(file, "utf8"));
+    expect(saved.layer.id).toBe("impeccable-v1");
+    delete saved.layer;
+    writeFileSync(file, JSON.stringify(saved));
+    await expect(runQueue(f.dir, false, f.options)).rejects.toThrow(/missing or invalid/);
   });
   it("requires both a successful exit and a completed result; failures do not block later entries", async () => {
     const f = fixture(["partial", "crash", "high"]);

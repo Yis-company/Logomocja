@@ -17,6 +17,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { runConformance } from "./conformance/run";
 import { captureGallery } from "./gallery";
+import { findBaseline, layerPrompt, loadLayer, prepareLayer } from "./layers";
 import { programsDir } from "./programs";
 import { renderPrompt, type Task } from "./prompt";
 import type { RunResult } from "./result";
@@ -29,6 +30,7 @@ const { values } = parseArgs({
     task: { type: "string", default: "app" },
     prompt: { type: "string", default: "v2" },
     effort: { type: "string" },
+    layer: { type: "string" },
     "no-push": { type: "boolean", default: false },
     own: { type: "string" },
     other: { type: "string" },
@@ -38,13 +40,14 @@ const { values } = parseArgs({
 const task = values.task as Task;
 if (!values.model || !["app", "tests", "tests-round2"].includes(task) || (task === "tests-round2" && !(values.own && values.other))) {
   console.error(
-    "Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests|tests-round2] [--prompt v2] [--effort high] [--no-push]\n" +
+    "Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests|tests-round2] [--prompt v2] [--effort high] [--layer impeccable-v1] [--no-push]\n" +
       "       tests-round2 also needs --own <round-1 cases.json of this model> --other <the other author's>",
   );
   process.exit(2);
 }
 const { runner, model } = parseModelSpec(values.model);
 const effort = values.effort ?? null;
+const layer = loadLayer(values.layer, task);
 const git = (...args: string[]) => execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 const log = (line: string) => console.error(`[bench] ${line}`);
 
@@ -56,14 +59,15 @@ if (spawnSync("docker", ["image", "inspect", image], { stdio: "ignore" }).status
 }
 
 const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z").replace("T", "-");
-const id = `${values.prompt}-e${envVersion}-${runner.name}-${model.replace(/[^\w.-]+/g, "-")}-${stamp}`;
+const layerMounts = prepareLayer(layer, root, image);
+const id = `${values.prompt}-e${envVersion}-${layer ? `${layer.id}-` : ""}${runner.name}-${model.replace(/[^\w.-]+/g, "-")}-${stamp}`;
 const basePath = `/Logomocja/builds/${id}/`;
 const scratch = mkdtempSync(join(tmpdir(), "logomocja-bench-"));
 const out = join(scratch, "out");
 const auth = join(scratch, "codex");
 mkdirSync(out);
 mkdirSync(auth);
-writeFileSync(join(out, "prompt.md"), renderPrompt(values.prompt, task));
+writeFileSync(join(out, "prompt.md"), layerPrompt(renderPrompt(values.prompt, task), layer));
 if (task === "tests-round2") {
   mkdirSync(join(out, "round1"));
   cpSync(values.own as string, join(out, "round1/own.json"));
@@ -101,6 +105,7 @@ const container = spawnSync(
     "-v", `${join(root, "bench")}:/bench:ro`,
     "-v", `${out}:/out`,
     "-v", `${auth}:/home/agent/.codex`,
+    ...layerMounts,
     image,
     "bun", "/bench/agent.ts",
   ],
@@ -114,6 +119,10 @@ if (container.status !== 0 || !existsSync(join(out, "result.json")))
 const inner = JSON.parse(readFileSync(join(out, "result.json"), "utf8")) as Omit<RunResult, "schema" | "id" | "prompt" | "env" | "image" | "commit" | "repoVersion" | "totalMs" | "conformance" | "gallery" | "humanScore" | "notes"> & { hasCommit: boolean };
 const resultsDir = join(root, "bench/results", id);
 mkdirSync(resultsDir, { recursive: true });
+if (layer) {
+  cpSync(join(out, "prompt.md"), join(resultsDir, "prompt.md"));
+  cpSync(join(root, "bench/layers", layer.id, "manifest.json"), join(resultsDir, "layer.json"));
+}
 for (const name of ["transcript.jsonl", "agent.stderr.log", "verify.log"])
   if (existsSync(join(out, name))) cpSync(join(out, name), join(resultsDir, name));
 
@@ -163,6 +172,7 @@ const result: RunResult = {
   gallery,
   humanScore: null,
   notes: "",
+  ...(layer ? { layer, baselineId: findBaseline(root, { prompt: values.prompt, env: envVersion, runner: runner.name, model, effort }) } : {}),
 };
 writeFileSync(join(resultsDir, "result.json"), `${JSON.stringify(result, null, 2)}\n`);
 

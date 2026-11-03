@@ -29,17 +29,17 @@ const compareVersions = (a: string, b: string) => {
   return a.localeCompare(b);
 };
 
-export type VersionGroup = { version: string; runs: RunResult[] };
+export type VersionGroup = { version: string; layer: string; runs: RunResult[] };
 
-/** Groups runs of one task by benchmark version (prompt/env), newest first. "tests" includes its later rounds. */
+/** Groups runs by prompt/env and layer, newest version then base first. "tests" includes its later rounds. */
 export function groupByVersion(runs: readonly RunResult[], task: RunResult["task"]): VersionGroup[] {
   const groups = new Map<string, RunResult[]>();
   for (const run of runs) {
     if (!run.task.startsWith(task)) continue;
-    const key = benchmarkVersion(run);
+    const key = `${benchmarkVersion(run)}:${run.layer?.id ?? "base"}`;
     groups.set(key, [...(groups.get(key) ?? []), run]);
   }
-  return [...groups]
-    .sort(([a], [b]) => compareVersions(b, a))
-    .map(([version, list]) => ({ version, runs: list.sort(compareRuns) }));
+  return [...groups.values()]
+    .map((list) => ({ version: benchmarkVersion(list[0]), layer: list[0].layer?.id ?? "base", runs: list.sort(compareRuns) }))
+    .sort((a, b) => compareVersions(b.version, a.version) || Number(b.layer === "base") - Number(a.layer === "base") || a.layer.localeCompare(b.layer));
 }

@@ -51,6 +51,15 @@ describe("benchmark grouping", () => {
     expect(groups[1].runs.map((r) => r.model)).toEqual(["conformant", "fast", "slow", "broken"]);
   });
 
+  it("keeps layered runs out of base rankings, with the base group first", () => {
+    const layer = { id: "impeccable-v1", skillVersion: "4.7.0", engineVersion: "0.1.16" };
+    const groups = groupByVersion([run({ id: "layered", layer }), run({ id: "base" })], "app");
+    expect(groups.map((g) => [g.version, g.layer, g.runs.map((r) => r.id)])).toEqual([
+      ["v1/e1", "base", ["base"]],
+      ["v1/e1", "impeccable-v1", ["layered"]],
+    ]);
+  });
+
   it("computes the conformance rate across suites", () => {
     expect(conformanceRate(run({}))).toBeNull();
     expect(conformanceRate(run({ conformance: { a: { passed: 1, total: 4, hook: true }, b: { passed: 3, total: 4, hook: true } } }))).toBe(0.5);

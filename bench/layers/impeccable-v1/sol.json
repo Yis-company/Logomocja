@@ -1,0 +1,18 @@
+[
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "low"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "medium"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "high"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "xhigh"
+  }
+]

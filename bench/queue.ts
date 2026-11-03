@@ -16,6 +16,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { renderPrompt } from "./prompt";
+import { loadLayer } from "./layers";
 import type { RunResult } from "./result";
 import { parseModelSpec } from "./runners";
 
@@ -30,6 +31,7 @@ type Queue = {
   prompt: string;
   noPush: boolean;
   entries: Entry[];
+  layer?: string;
 };
 type RunInfo = { id: string; transcript: string };
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -73,15 +75,23 @@ export function createQueue(
   prompt: string,
   noPush: boolean,
   repoRoot = root,
+  layerId?: string,
 ) {
   const entries = parseMatrix(matrix);
+  const layer = loadLayer(layerId);
   renderPrompt(prompt, "app");
   const parent = join(repoRoot, "output/bench-queues");
   mkdirSync(parent, { recursive: true });
   const dir = mkdtempSync(
     join(parent, `${new Date().toISOString().replace(/[:.]/g, "-")}-`),
   );
-  save(dir, { root: repoRoot, prompt, noPush, entries });
+  save(dir, {
+    root: repoRoot,
+    prompt,
+    noPush,
+    entries,
+    ...(layer ? { layer: layer.id } : {}),
+  });
   return dir;
 }
 function info(dir: string, i: number) {
@@ -104,6 +114,7 @@ function completed(queue: Queue, entry: Entry, run: RunInfo | null) {
     saved.runner === model.runner.name &&
     saved.model === model.model &&
     saved.effort === entry.effort &&
+    (saved.layer?.id ?? "base") === (queue.layer ?? "base") &&
     saved.status === "completed" &&
     saved.verify?.built === true
   );
@@ -147,6 +158,7 @@ export async function runQueue(
   process.once("SIGTERM", stop);
   try {
     const queue = read<Queue>(stateFile(dir));
+    loadLayer(queue.layer);
     // Check every previous attempt before starting any additional work.
     for (const [i, entry] of queue.entries.entries()) {
       if (entry.status === "queued") continue;
@@ -189,6 +201,7 @@ export async function runQueue(
             queue.prompt,
             ...(entry.effort ? ["--effort", entry.effort] : []),
             ...(queue.noPush ? ["--no-push"] : []),
+            ...(queue.layer ? ["--layer", queue.layer] : []),
             "--run-info",
             runInfo,
           ],
@@ -257,6 +270,7 @@ if (import.meta.main) {
     args: process.argv.slice(3),
     options: {
       matrix: { type: "string" },
+      layer: { type: "string" },
       prompt: { type: "string" },
       resume: { type: "string" },
       retry: { type: "boolean", default: false },
@@ -270,10 +284,10 @@ if (import.meta.main) {
       (!values.matrix && !values.resume) ||
       (values.matrix && values.resume) ||
       (values.retry && !values.resume) ||
-      (values.resume && (values.prompt || values["no-push"]))
+      (values.resume && (values.prompt || values.layer || values["no-push"]))
     )
       throw Error(
-        "Use --matrix <file> [--prompt v2] [--no-push], or --resume <queue-dir> [--retry]",
+        "Use --matrix <file> [--prompt v2] [--layer impeccable-v1] [--no-push], or --resume <queue-dir> [--retry]",
       );
     const dir = values.resume
       ? resolve(values.resume)
@@ -281,6 +295,8 @@ if (import.meta.main) {
           read(values.matrix as string),
           values.prompt ?? "v2",
           values["no-push"],
+          root,
+          values.layer,
         );
     console.log(`Queue: ${dir}`);
     if (!(await runQueue(dir, values.retry))) process.exitCode = 1;
