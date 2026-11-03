@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T10:52:50.573952+00:00",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "chart-green": {
+        "role": "primary",
+        "displayName": "Chart Green",
+        "canonical": "#16866a",
+        "oklch": "oklch(55.4% 0.104 170.5)",
+        "tonalRamp": [
+          "#001b0c",
+          "#003622",
+          "#00533a",
+          "#00765b",
+          "#349a7d",
+          "#60c0a2",
+          "#94e4c9",
+          "#b9ffe7"
+        ],
+        "darkTheme": "#4cc59c"
+      },
+      "chart-green-band": {
+        "role": "primary",
+        "displayName": "Chart Green Band",
+        "canonical": "#137a60",
+        "oklch": "oklch(51.8% 0.097 170.3)",
+        "tonalRamp": [
+          "#001b0c",
+          "#003622",
+          "#00523b",
+          "#06755b",
+          "#3d997d",
+          "#66bfa2",
+          "#98e3c9",
+          "#bcffe7"
+        ],
+        "darkTheme": "#135f4b"
+      },
+      "ultramarine": {
+        "role": "secondary",
+        "displayName": "Ultramarine",
+        "canonical": "#2b6fb3",
+        "oklch": "oklch(53.3% 0.127 251.5)",
+        "tonalRamp": [
+          "#000e39",
+          "#00275c",
+          "#004281",
+          "#2065a8",
+          "#478ad0",
+          "#6faff4",
+          "#9ed6ff",
+          "#c2f3ff"
+        ],
+        "darkTheme": "#86b6ec"
+      },
+      "ultramarine-band": {
+        "role": "secondary",
+        "displayName": "Ultramarine Band",
+        "canonical": "#2b68a8",
+        "oklch": "oklch(51.0% 0.120 252.2)",
+        "tonalRamp": [
+          "#000e37",
+          "#00285a",
+          "#00427e",
+          "#2865a5",
+          "#4d89cc",
+          "#74aff1",
+          "#a2d6ff",
+          "#c5f3ff"
+        ],
+        "darkTheme": "#224f7f"
+      },
+      "ochre": {
+        "role": "tertiary",
+        "displayName": "Ochre",
+        "canonical": "#c1763d",
+        "oklch": "oklch(63.6% 0.119 55.7)",
+        "tonalRamp": [
+          "#2c0000",
+          "#4c1400",
+          "#6e2c00",
+          "#954e0a",
+          "#bc7138",
+          "#e29761",
+          "#ffc092",
+          "#ffe0b7"
+        ],
+        "darkTheme": "#e6a669"
+      },
+      "ochre-band": {
+        "role": "tertiary",
+        "displayName": "Ochre Band",
+        "canonical": "#96561f",
+        "oklch": "oklch(51.8% 0.108 57.1)",
+        "tonalRamp": [
+          "#2a0100",
+          "#4a1700",
+          "#6b2f00",
+          "#905118",
+          "#b77440",
+          "#dd9966",
+          "#ffc296",
+          "#ffe2ba"
+        ],
+        "darkTheme": "#7a4618"
+      },
+      "trunk-brown": {
+        "role": "tertiary",
+        "displayName": "Trunk Brown",
+        "canonical": "#6b4f2a",
+        "oklch": "oklch(44.9% 0.065 72.6)",
+        "tonalRamp": [
+          "#200b00",
+          "#3c2300",
+          "#573c17",
+          "#7a5d38",
+          "#9e805a",
+          "#c4a57e",
+          "#ebcba4",
+          "#ffe9c6"
+        ],
+        "darkTheme": "#d6b48a"
+      },
+      "trunk-brown-band": {
+        "role": "tertiary",
+        "displayName": "Trunk Brown Band",
+        "canonical": "#5d4325",
+        "oklch": "oklch(40.4% 0.057 69.0)",
+        "tonalRamp": [
+          "#200b00",
+          "#3b2303",
+          "#563d1f",
+          "#795d3f",
+          "#9d8061",
+          "#c3a584",
+          "#eacba9",
+          "#ffe9ca"
+        ],
+        "darkTheme": "#4a3520"
+      },
+      "vermilion": {
+        "role": "error",
+        "displayName": "Error Vermilion",
+        "canonical": "#b9341b",
+        "oklch": "oklch(52.5% 0.174 32.7)",
+        "tonalRamp": [
+          "#370000",
+          "#5c0000",
+          "#830000",
+          "#b02b11",
+          "#da543b",
+          "#fe8168",
+          "#ffaf98",
+          "#ffd2bc"
+        ],
+        "darkTheme": "#ff8a6e"
+      },
+      "vermilion-wash": {
+        "role": "error",
+        "displayName": "Vermilion Wash",
+        "canonical": "#fbe8e2",
+        "oklch": "oklch(94.5% 0.022 38.3)",
+        "tonalRamp": [
+          "#1a0e0a",
+          "#332521",
+          "#4d3e3a",
+          "#6f5f5a",
+          "#93827d",
+          "#b8a6a1",
+          "#dfccc7",
+          "#fdeae4"
+        ],
+        "darkTheme": "#3b1d15"
+      },
+      "printing-ink": {
+        "role": "neutral",
+        "displayName": "Printing Ink",
+        "canonical": "#15211d",
+        "oklch": "oklch(23.5% 0.019 172.0)",
+        "tonalRamp": [
+          "#091411",
+          "#202c28",
+          "#394641",
+          "#596762",
+          "#7b8a85",
+          "#a0afa9",
+          "#c6d5cf",
+          "#e3f3ed"
+        ],
+        "darkTheme": "#e3eae6"
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#44524d",
+        "oklch": "oklch(42.5% 0.019 171.7)",
+        "tonalRamp": [
+          "#081411",
+          "#1f2c28",
+          "#384641",
+          "#596762",
+          "#7b8a85",
+          "#9fafa9",
+          "#c5d5cf",
+          "#e2f3ed"
+        ]
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary",
+        "canonical": "#5c6a65",
+        "oklch": "oklch(51.1% 0.019 172.0)",
+        "tonalRamp": [
+          "#091411",
+          "#202c28",
+          "#394641",
+          "#596762",
+          "#7b8a85",
+          "#a0afa9",
+          "#c5d5cf",
+          "#e3f3ed"
+        ]
+      },
+      "header-ink": {
+        "role": "neutral",
+        "displayName": "Header Ink",
+        "canonical": "#14302a",
+        "oklch": "oklch(28.5% 0.036 177.8)",
+        "tonalRamp": [
+          "#001711",
+          "#132f29",
+          "#2d4942",
+          "#4d6a63",
+          "#6f8e86",
+          "#93b3ab",
+          "#b9d9d1",
+          "#d6f7ee"
+        ],
+        "darkTheme": "#0a1311"
+      },
+      "chart-paper": {
+        "role": "neutral",
+        "displayName": "Chart Paper",
+        "canonical": "#eef1ec",
+        "oklch": "oklch(95.4% 0.007 132.4)",
+        "tonalRamp": [
+          "#10120f",
+          "#272a26",
+          "#41433f",
+          "#626460",
+          "#848783",
+          "#a9aca7",
+          "#cfd2cd",
+          "#edf0eb"
+        ],
+        "darkTheme": "#101a17"
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet",
+        "canonical": "#fbfcfa",
+        "oklch": "oklch(99.0% 0.003 128.5)",
+        "tonalRamp": [
+          "#111210",
+          "#282928",
+          "#424341",
+          "#636362",
+          "#858685",
+          "#aaaba9",
+          "#d0d1cf",
+          "#eeefed"
+        ],
+        "darkTheme": "#16221e"
+      },
+      "sheet-2": {
+        "role": "neutral",
+        "displayName": "Sheet Raised",
+        "canonical": "#f5f7f3",
+        "oklch": "oklch(97.4% 0.006 128.5)",
+        "tonalRamp": [
+          "#11120f",
+          "#282926",
+          "#414340",
+          "#626460",
+          "#858783",
+          "#aaaba8",
+          "#d0d2ce",
+          "#edefeb"
+        ]
+      },
+      "canvas-paper": {
+        "role": "neutral",
+        "displayName": "Canvas Paper",
+        "canonical": "#fcfdfb",
+        "oklch": "oklch(99.3% 0.003 128.5)",
+        "tonalRamp": [
+          "#111210",
+          "#282928",
+          "#424341",
+          "#636362",
+          "#858685",
+          "#aaaba9",
+          "#d0d1cf",
+          "#eeefed"
+        ],
+        "darkTheme": "#15201c"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#d3dad4",
+        "oklch": "oklch(88.1% 0.011 149.8)",
+        "tonalRamp": [
+          "#0e130f",
+          "#252a26",
+          "#3e443f",
+          "#5f6560",
+          "#828883",
+          "#a6ada7",
+          "#ccd3cd",
+          "#eaf1eb"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "#aeb9b2",
+        "oklch": "oklch(77.5% 0.016 158.1)",
+        "tonalRamp": [
+          "#0c140f",
+          "#232b26",
+          "#3c453f",
+          "#5c6660",
+          "#7f8983",
+          "#a3aea7",
+          "#c9d4cd",
+          "#e6f2ea"
+        ]
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Grid Minor",
+        "canonical": "#e6ebe6",
+        "oklch": "oklch(93.5% 0.009 145.5)",
+        "tonalRamp": [
+          "#0f130f",
+          "#262a26",
+          "#404440",
+          "#606560",
+          "#838883",
+          "#a8aca8",
+          "#ced2ce",
+          "#ebf0eb"
+        ]
+      },
+      "grid-major": {
+        "role": "neutral",
+        "displayName": "Grid Major",
+        "canonical": "#d4dcd5",
+        "oklch": "oklch(88.6% 0.013 149.2)",
+        "tonalRamp": [
+          "#0e130f",
+          "#252b25",
+          "#3e443f",
+          "#5e655f",
+          "#818882",
+          "#a5ada6",
+          "#cbd3cc",
+          "#e9f1ea"
+        ]
+      },
+      "exec-yellow": {
+        "role": "state",
+        "displayName": "Exec Yellow",
+        "canonical": "#fff1c7",
+        "oklch": "oklch(95.9% 0.056 91.8)",
+        "tonalRamp": [
+          "#1a1000",
+          "#332801",
+          "#4d411c",
+          "#6f623d",
+          "#92855f",
+          "#b8aa82",
+          "#ded0a7",
+          "#fbeec8"
+        ],
+        "darkTheme": "#3d3416"
+      },
+      "focus-blue": {
+        "role": "state",
+        "displayName": "Focus Blue",
+        "canonical": "#1f5d9e",
+        "oklch": "oklch(47.4% 0.122 252.9)",
+        "tonalRamp": [
+          "#000e38",
+          "#00275b",
+          "#00427f",
+          "#2865a6",
+          "#4c89ce",
+          "#74aff3",
+          "#a2d5ff",
+          "#c5f3ff"
+        ],
+        "darkTheme": "#9cc8f5"
+      },
+      "on-band": {
+        "role": "neutral",
+        "displayName": "On Band",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#121212",
+          "#292929",
+          "#424242",
+          "#636363",
+          "#868686",
+          "#ababab",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "chart-title": {
+        "displayName": "Chart Title",
+        "purpose": "Program name in the studio's ink band; condensed caps, truncates."
+      },
+      "page-title": {
+        "displayName": "Page Title",
+        "purpose": "Band title on Przykłady, Zadania, Pomoc."
+      },
+      "section-title": {
+        "displayName": "Section Title",
+        "purpose": "Section heads with a 2px rule in the section ink."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs and descriptions; prose capped at 62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, nav, status line."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Editor text, 24px line grid."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "Turtle position and heading, tabular figures."
+      }
+    },
+    "shadows": [
+      {
+        "name": "pop",
+        "value": "0 8px 24px -6px rgb(20 48 42 / 0.28), 0 2px 6px rgb(20 48 42 / 0.12)",
+        "purpose": "Floating layers only: menu, popover, toasts, error bubble."
+      },
+      {
+        "name": "cell-hover",
+        "value": "0 4px 14px -6px rgb(20 48 42 / 0.25)",
+        "purpose": "Gallery and challenge cell under the pointer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All state transitions."
+      },
+      {
+        "name": "fast",
+        "value": "140ms",
+        "purpose": "Hover and press colour changes."
+      },
+      {
+        "name": "med",
+        "value": "220ms",
+        "purpose": "Band ink change on mode switch, toast entrance."
+      },
+      {
+        "name": "turtle",
+        "value": "tempo 1–10: distance/400 + turn/720 + 0.03 natural seconds per command, scaled and capped per tempo (12 s at the default)",
+        "purpose": "The signature motion: the stroke is drawn progressively behind the turtle."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "860px"
+      },
+      {
+        "name": "phone",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Run Button",
+      "kind": "button",
+      "refersTo": "button-run",
+      "description": "Primary action: runs the program from the start in the current mode's ink.",
+      "html": "<button class=\"ds-btn-run\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3l14 9-14 9z\"/></svg>Uruchom</button>",
+      "css": ":host{--ink:#15211d;--sheet:#fbfcfa;--sheet-2:#f5f7f3;--rule-strong:#aeb9b2;--band:#137a60;--on-band:#fff;--focus:#1f5d9e;font-family:'Archivo Variable',Archivo,system-ui,sans-serif}.ds-btn-run{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px;border:1px solid transparent;border-radius:5px;background:#137a60;color:#fff;font:650 13px 'Archivo Variable',Archivo,sans-serif;cursor:pointer;transition:background-color 140ms cubic-bezier(.16,1,.3,1)}.ds-btn-run:hover{background:color-mix(in oklab,#137a60 84%,#000)}.ds-btn-run:active{background:color-mix(in oklab,#137a60 72%,#000)}.ds-btn-run:focus-visible{outline:2px solid #1f5d9e;outline-offset:2px}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Step, Pause/Resume, Reset and the file menu.",
+      "html": "<button class=\"ds-btn-quiet\">Krok</button>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #aeb9b2;border-radius:5px;background:#fbfcfa;color:#15211d;font:650 13px 'Archivo Variable',Archivo,sans-serif;cursor:pointer;transition:background-color 140ms,border-color 140ms}.ds-btn-quiet:hover{background:#f5f7f3;border-color:#5c6a65}.ds-btn-quiet:focus-visible{outline:2px solid #1f5d9e;outline-offset:2px}.ds-btn-quiet:disabled{opacity:.42;cursor:not-allowed}"
+    },
+    {
+      "name": "Mode Switch",
+      "kind": "custom",
+      "refersTo": "segmented-mode-on",
+      "description": "2D/3D segmented switch; the pressed side fills with its own ink.",
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Tryb rysowania\"><button aria-pressed=\"true\">2D</button><button aria-pressed=\"false\">3D</button></div>",
+      "css": ".ds-seg{display:inline-flex;padding:2px;border:1px solid #aeb9b2;border-radius:7px;background:#f5f7f3}.ds-seg button{min-width:56px;height:30px;border:0;border-radius:5px;background:transparent;color:#44524d;font:750 13px 'Archivo Variable',Archivo,sans-serif;letter-spacing:.04em;cursor:pointer}.ds-seg button:hover{background:#d3dad4;color:#15211d}.ds-seg button[aria-pressed=true]:first-child{background:#137a60;color:#fff}.ds-seg button[aria-pressed=true]:last-child{background:#2b68a8;color:#fff}.ds-seg button:focus-visible{outline:2px solid #1f5d9e;outline-offset:2px}"
+    },
+    {
+      "name": "Chart Band",
+      "kind": "custom",
+      "refersTo": "chart-band",
+      "description": "Signature: the wall chart's ink title band with the program name in condensed caps and the mode chip.",
+      "html": "<div class=\"ds-band\"><h2>Drzewo</h2><span>2D</span></div>",
+      "css": ".ds-band{display:flex;align-items:center;gap:12px;height:56px;padding:0 24px;background:#137a60;color:#fff}.ds-band h2{margin:0;font:780 28px/1 'Archivo Variable',Archivo,sans-serif;font-stretch:68%;text-transform:uppercase;letter-spacing:.02em}.ds-band span{padding:3px 7px 2px;border:1.5px solid #fff;border-radius:3px;font:800 12px 'Archivo Variable',Archivo,sans-serif;letter-spacing:.08em}"
+    },
+    {
+      "name": "Key Band",
+      "kind": "custom",
+      "refersTo": "key-band",
+      "description": "Signature: numbered ink key under a 2px ink rule, with the live turtle readout.",
+      "html": "<div class=\"ds-key\"><span class=\"n\">1</span><span class=\"sw\" style=\"background:#6b4f2a\"></span><span><code>#6b4f2a</code> 15 odcinków, długość 639</span><span class=\"ro\">x 0 · y −120 · kierunek 0°</span></div>",
+      "css": ".ds-key{display:flex;align-items:center;gap:8px;min-height:44px;padding:9px 24px;border-top:2px solid #15211d;background:#fbfcfa;color:#15211d;font:400 12px 'Archivo Variable',Archivo,sans-serif}.ds-key .n{display:inline-grid;place-items:center;width:21px;height:21px;border:1.5px solid #15211d;border-radius:50%;font-weight:800;font-size:11px}.ds-key .sw{width:22px;height:10px;border-radius:2px}.ds-key code{font:11.5px 'JetBrains Mono Variable',ui-monospace,monospace;color:#44524d}.ds-key .ro{margin-left:auto;font:12px 'JetBrains Mono Variable',ui-monospace,monospace;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "app-header",
+      "description": "Header-ink bar; the current page is underlined in its section's ink.",
+      "html": "<nav class=\"ds-nav\"><a aria-current=\"page\" href=\"#\">Pracownia</a><a href=\"#\">Przykłady</a><a href=\"#\">Zadania</a><a href=\"#\">Pomoc</a></nav>",
+      "css": ".ds-nav{display:flex;height:52px;background:#14302a}.ds-nav a{display:flex;align-items:center;padding:3px 14px 0;border-bottom:3px solid transparent;color:#b5c8bf;font:600 13px 'Archivo Variable',Archivo,sans-serif;text-decoration:none}.ds-nav a:hover{color:#eef3ef}.ds-nav a[aria-current=page]{color:#eef3ef;border-bottom-color:#4cc59c}.ds-nav a:focus-visible{outline:2px solid #fff;outline-offset:-4px}"
+    },
+    {
+      "name": "Mode Tag",
+      "kind": "chip",
+      "refersTo": "tag-2d",
+      "description": "Mode tag on cells: the mode's band ink with white caps.",
+      "html": "<span class=\"ds-tag\">2D</span> <span class=\"ds-tag ds-tag-3d\">3D</span>",
+      "css": ".ds-tag{display:inline-block;padding:2px 6px 1px;border-radius:3px;background:#137a60;color:#fff;font:800 11.5px/1.35 'Archivo Variable',Archivo,sans-serif;letter-spacing:.06em}.ds-tag-3d{background:#2b68a8}"
+    },
+    {
+      "name": "Example Cell",
+      "kind": "card",
+      "refersTo": "cell",
+      "description": "Gallery/challenge cell: the program's own drawing as the thumbnail.",
+      "html": "<a class=\"ds-cell\" href=\"#\"><div class=\"fig\"><svg viewBox=\"0 0 100 70\" width=\"100%\"><rect x=\"32\" y=\"8\" width=\"36\" height=\"54\" fill=\"none\" stroke=\"#16866a\" stroke-width=\"2\"/></svg></div><div class=\"b\"><strong>Kwadrat</strong><p>Cztery kroki do pierwszego rysunku.</p></div></a>",
+      "css": ".ds-cell{display:flex;flex-direction:column;width:232px;background:#fbfcfa;border:1px solid #d3dad4;border-radius:4px;color:#15211d;text-decoration:none;transition:border-color 140ms,box-shadow 140ms;font-family:'Archivo Variable',Archivo,sans-serif}.ds-cell:hover{border-color:#5c6a65;box-shadow:0 4px 14px -6px rgb(20 48 42/.25)}.ds-cell:focus-visible{outline:2px solid #1f5d9e;outline-offset:2px}.ds-cell .fig{background:#fcfdfb;border-bottom:1px solid #d3dad4}.ds-cell .b{padding:12px 14px 14px}.ds-cell p{margin:4px 0 0;color:#44524d;font-size:13px}"
+    },
+    {
+      "name": "Error Bubble",
+      "kind": "custom",
+      "refersTo": "error-bubble",
+      "description": "Inline Polish error message under the offending column.",
+      "html": "<div class=\"ds-err\">Nieoczekiwana wartość „-5” — w tym miejscu powinno stać polecenie.</div>",
+      "css": ".ds-err{position:relative;max-width:46ch;padding:6px 10px 7px;border-radius:6px;background:#b9341b;color:#fff;font:13px/1.35 'Archivo Variable',Archivo,sans-serif;box-shadow:0 8px 24px -6px rgb(20 48 42/.28),0 2px 6px rgb(20 48 42/.12)}.ds-err::before{content:'';position:absolute;left:10px;top:-5px;border:5px solid transparent;border-top:0;border-bottom-color:#b9341b}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Classroom Wall Chart",
+    "overview": "Logomocja looks like the printed teaching charts (plansze dydaktyczne) that hung in Polish classrooms. The drawing area is the chart. It has a solid ink title band with the program's name in condensed capitals, a figure on gridded paper, and a key band that numbers each ink and says how much it drew. Everything else is a working editor and the controls people already know (buttons, a segmented switch, a slider, a disclosure menu), with no costume. The world contributes four things: type, palette, density and one signature move (the numbered callouts).\n\nColour is a set of flat spot inks taken from the language's own colours, and each ink belongs to one part of the app: chart green for 2D, ultramarine for 3D, ochre for challenges and trunk brown for the reference. The ground is cool, slightly green chart paper, never cream. The dark theme is the classroom blackboard, a green-black slate with the same inks lightened. Vermilion is used for errors only.",
+    "keyCharacteristics": [
+      "An ink title band on every chart and page, with condensed uppercase Archivo set at width 68%.",
+      "Numbered roundel callouts with leader lines, keyed to the key band below the figure.",
+      "Flat fills and 1px rules. Depth comes from popovers only.",
+      "Each section owns one ink. The ink of the current mode drives the primary button, the band and the turtle.",
+      "The figure gets the most room. The chrome sits at the edges."
+    ],
+    "rules": [
+      {
+        "name": "The Vermilion Is for Errors Rule",
+        "body": "Vermilion (#b9341b, washed #fbe8e2) appears only for errors: the editor's wavy underline, the error bubble, the error status and destructive buttons. The error marker stays until the code is edited. Never use it for emphasis or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ink per Section Rule",
+        "body": "Each section owns one ink: 2D green, 3D ultramarine, challenges ochre, reference brown. The current mode's ink drives the primary button, the band and the turtle, and nothing else picks it up.",
+        "section": "colors"
+      },
+      {
+        "name": "The Program Owns Its Colours Rule",
+        "body": "Strokes always render in the colour the program set, in both themes. The UI never retints a learner's drawing.",
+        "section": "colors"
+      },
+      {
+        "name": "The Chart Lettering Rule",
+        "body": "Condensed capitals are for chart and page titles and section heads only. Labels, buttons and data are never condensed or uppercase.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "No eyebrow or kicker labels above headings. The only thing beside a chart title is the bordered mode chip (\"2D\" or \"3D\"), placed inline after it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Printed Sheet Rule",
+        "body": "Surfaces at rest have no shadow and no gradient. A shadow means \"this is floating\" and nothing else.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do give every new surface an ink title band in its section's ink, with condensed caps at width 68% and weight 780.",
+      "Do keep strokes in the program's own colours. Show the challenge target as a dashed ochre line (6/5 dash, 75% opacity).",
+      "Do use standard controls: buttons, a segmented switch, a range slider, details/summary, a disclosure menu and native popovers.",
+      "Do keep prose at 62ch with `text-wrap: pretty`, and keep UI text at 11px or larger.",
+      "Do put state colour where state lives: exec yellow for the running line, vermilion for errors, green for done and passed."
+    ],
+    "donts": [
+      "Don't use vermilion for anything but errors and destructive actions.",
+      "Don't add eyebrows, kickers, gradient text, glass, colored side stripes or hard offset shadows.",
+      "Don't fake material, such as wooden chart rods, paper grain or chalk texture. The world comes through in type, ink, density and the callouts only.",
+      "Don't use violet or purple as a section ink. The reference moved to trunk brown for this reason.",
+      "Don't put a cream or warm ground under the chart. The paper is cool and slightly green (#eef1ec), and the dark ground is slate green (#101a17)."
+    ]
+  }
+}

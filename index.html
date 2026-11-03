@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja — pracownia żółwia</title>
+    <meta name="description" content="Logomocja: polska pracownia Logo. Pisz programy, patrz, jak żółw rysuje na płaszczyźnie i w przestrzeni, rozwiązuj zadania i dziel się rysunkami." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#14302a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      try {
+        var t = localStorage.getItem('logomocja:theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <noscript><p class="noscript">Logomocja potrzebuje JavaScriptu, żeby uruchamiać programy żółwia.</p></noscript>
+  </body>
+</html>

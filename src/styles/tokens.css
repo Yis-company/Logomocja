@@ -1,0 +1,164 @@
+/* Logomocja — classroom wall chart. Chart paper, green-black ink, spot inks per division. */
+
+:root {
+  color-scheme: light;
+
+  --font-ui: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-code: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  /* ground and ink */
+  --paper: #eef1ec;
+  --sheet: #fbfcfa;
+  --sheet-2: #f5f7f3;
+  --ink: #15211d;
+  --ink-2: #44524d;
+  --ink-3: #5c6a65;
+  --rule: #d3dad4;
+  --rule-strong: #aeb9b2;
+  --header: #14302a;
+  --on-header: #eef3ef;
+  --on-header-2: #b5c8bf;
+
+  /* spot inks: 2D, 3D, challenges, reference */
+  --ink-2d: #137a60;
+  --ink-3d: #2b68a8;
+  --ink-task: #96561f;
+  --ink-ref: #6b4f2a;
+  --fill-2d: #16866a;
+  --fill-3d: #2b6fb3;
+  --fill-task: #c1763d;
+  --fill-ref: #8a6a3f;
+  --band-2d: #137a60;
+  --band-3d: #2b68a8;
+  --band-task: #96561f;
+  --band-ref: #5d4325;
+  --on-band: #ffffff;
+  --on-band-2: #e3efe9;
+
+  /* state: vermilion is for errors only */
+  --error: #b9341b;
+  --error-bg: #fbe8e2;
+  --error-rule: #eab3a5;
+  --error-strong: #b9341b;
+  --on-error: #ffffff;
+  --band-neutral: #1f3a33;
+  --ok: #137a60;
+  --ok-bg: #e2f2eb;
+  --exec-bg: #fff1c7;
+  --exec-rule: #e0b33d;
+
+  /* drawing surface */
+  --canvas: #fcfdfb;
+  --grid: #e6ebe6;
+  --grid-major: #d4dcd5;
+  --axis: #a9b5ae;
+
+  /* code */
+  --code-bg: #fbfcfa;
+  --code-gutter: #f1f4f0;
+  --tok-cmd: #116b54;
+  --tok-ctl: #6e4789;
+  --tok-num: #8a4b17;
+  --tok-name: #15211d;
+  --tok-proc: #2b5f99;
+  --tok-str: #7c5a12;
+  --tok-comment: #5f6d68;
+  --tok-bracket: #44524d;
+  --tok-op: #44524d;
+
+  --focus: #1f5d9e;
+  --selection: #cfe3f7;
+
+  --shadow-pop: 0 8px 24px -6px rgb(20 48 42 / 0.28), 0 2px 6px rgb(20 48 42 / 0.12);
+
+  /* scale: 1.2 */
+  --t-xs: 0.75rem;
+  --t-sm: 0.8125rem;
+  --t-md: 0.9375rem;
+  --t-lg: 1.125rem;
+  --t-xl: 1.375rem;
+  --t-2xl: 1.75rem;
+  --t-3xl: 2.25rem;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  --r-ctl: 5px;
+  --header-h: 52px;
+  --band-h: 56px;
+  --key-h: 44px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 140ms;
+  --t-med: 220ms;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #101a17;
+  --sheet: #16221e;
+  --sheet-2: #1b2924;
+  --ink: #e3eae6;
+  --ink-2: #aebdb6;
+  --ink-3: #91a29a;
+  --rule: #2a3934;
+  --rule-strong: #3d4f48;
+  --header: #0a1311;
+  --on-header: #e3eae6;
+  --on-header-2: #9fb3aa;
+
+  --ink-2d: #4cc59c;
+  --ink-3d: #86b6ec;
+  --ink-task: #e6a669;
+  --ink-ref: #d6b48a;
+  --fill-2d: #4cc59c;
+  --fill-3d: #86b6ec;
+  --fill-task: #e6a669;
+  --fill-ref: #d6b48a;
+  --band-2d: #135f4b;
+  --band-3d: #224f7f;
+  --band-task: #7a4618;
+  --band-ref: #4a3520;
+  --on-band: #f1f6f3;
+  --on-band-2: #cfe0d8;
+
+  --error: #ff8a6e;
+  --error-bg: #3b1d15;
+  --error-rule: #7b3524;
+  --error-strong: #ff8a6e;
+  --on-error: #1a0b06;
+  --band-neutral: #183029;
+  --ok: #4cc59c;
+  --ok-bg: #133a2e;
+  --exec-bg: #3d3416;
+  --exec-rule: #a8862b;
+
+  --canvas: #15201c;
+  --grid: #1e2c27;
+  --grid-major: #283a33;
+  --axis: #4a5f57;
+
+  --code-bg: #16221e;
+  --code-gutter: #131d1a;
+  --tok-cmd: #5fd1a8;
+  --tok-ctl: #cfa9ec;
+  --tok-num: #efb27a;
+  --tok-name: #e3eae6;
+  --tok-proc: #8fc0f2;
+  --tok-str: #e8c872;
+  --tok-comment: #8a9b94;
+  --tok-bracket: #aebdb6;
+  --tok-op: #aebdb6;
+
+  --focus: #9cc8f5;
+  --selection: #2c4d6e;
+
+  --shadow-pop: 0 10px 28px -6px rgb(0 0 0 / 0.6), 0 2px 6px rgb(0 0 0 / 0.4);
+}
