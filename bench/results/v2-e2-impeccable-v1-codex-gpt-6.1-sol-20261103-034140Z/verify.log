@@ -1,0 +1,67 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/node@26.6.6
++ typescript@5.9.3
++ vite@6.4.5
+
+19 packages installed [8.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 7 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.61 kB │ gzip:  0.37 kB
+dist/assets/index-BI9heyml.css  17.52 kB │ gzip:  4.68 kB
+dist/assets/index-BeIgSDxO.js   42.67 kB │ gzip: 17.40 kB
+✓ built in 134ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) programy standardowe > Kwadrat [1.25ms]
+(pass) programy standardowe > Gwiazda [0.17ms]
+(pass) programy standardowe > Rozeta [0.38ms]
+(pass) programy standardowe > Spirala [0.60ms]
+(pass) programy standardowe > Wielokąty [0.45ms]
+(pass) programy standardowe > Drzewo [4.55ms]
+(pass) programy standardowe > Śnieżynka [2.83ms]
+(pass) programy standardowe > Schody [0.07ms]
+(pass) programy standardowe > Sześcian [0.07ms]
+(pass) programy standardowe > Pierścień [0.06ms]
+(pass) programy standardowe > Kula [0.52ms]
+(pass) programy standardowe > Helisa [0.26ms]
+(pass) programy standardowe > Drzewo 3D [3.14ms]
+(pass) wyrażenia i składnia > priorytet, łączność i znaki [0.19ms]
+(pass) wyrażenia i składnia > symetria spacji operatorów [0.15ms]
+(pass) wyrażenia i składnia > liczby tylko dziesiętne [0.08ms]
+(pass) wyrażenia i składnia > walidacja całego programu [0.07ms]
+(pass) wyrażenia i składnia > pozycje błędów argumentu [0.11ms]
+(pass) wyrażenia i składnia > aliasy i wielkość liter [0.19ms]
+(pass) wyrażenia i składnia > nrpowt jest leksykalny [0.08ms]
+(pass) wyrażenia i składnia > niedozwolone definicje wewnątrz ciała [0.03ms]
+(pass) wykonanie i geometria > błędy wykonania zachowują rysunek [0.10ms]
+(pass) wykonanie i geometria > czyść zachowuje stan [0.06ms]
+(pass) wykonanie i geometria > dom i pisak [0.04ms]
+(pass) wykonanie i geometria > orientacja 3D i przechył [0.04ms]
+(pass) wykonanie i geometria > płaskie programy są identyczne w obu trybach [6.64ms]
+(pass) wykonanie i geometria > warunki porównują dokładnie [0.11ms]
+(pass) wykonanie i geometria > lokalne zmienne, parametry i deklaracje w przód [0.22ms]
+(pass) wykonanie i geometria > rekurencja i stop kończą wywołanie [0.18ms]
+(pass) wykonanie i geometria > limity [3.03ms]
+(pass) wykonanie i geometria > krok wykonuje pojedynczą operację [0.04ms]
+
+ 31 pass
+ 0 fail
+ 186 expect() calls
+Ran 31 tests across 1 file. [28.00ms]
+(exit 0)

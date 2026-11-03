@@ -44,4 +44,7 @@ export type RunResult = {
   cases: number | null;
   humanScore: number | null;
   notes: string;
+  /** Missing on historical records and ordinary base runs. */
+  layer?: { id: string; skillVersion: string; engineVersion: string };
+  baselineId?: string | null;
 };

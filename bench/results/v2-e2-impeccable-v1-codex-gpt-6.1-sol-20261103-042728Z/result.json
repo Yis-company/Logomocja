@@ -1,0 +1,86 @@
+{
+  "schema": 4,
+  "id": "v2-e2-impeccable-v1-codex-gpt-6.1-sol-20261103-042728Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-sol",
+  "cliVersion": "0.164.0",
+  "effort": "high",
+  "startedAt": "2026-11-03T04:27:29.303Z",
+  "agentMs": 1449138,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 102618,
+    "cachedInput": 4808960,
+    "output": 67586,
+    "reasoning": 12132
+  },
+  "costUsd": 1.361992,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 48,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 15,
+    "distBytes": 266010
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "3bec1f5c151770e10274ee1913e76030047f74d1",
+  "repoVersion": "0.3.0",
+  "totalMs": 1469351,
+  "conformance": {
+    "combined": {
+      "passed": 593,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 593,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "impeccable-v1",
+    "skillVersion": "4.7.0",
+    "engineVersion": "0.1.16",
+    "source": "https://github.com/pbakaus/impeccable",
+    "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
+    "snapshotDate": "2026-11-03"
+  },
+  "baselineId": "v2-e2-codex-gpt-6.1-sol-20261028-075037Z"
+}

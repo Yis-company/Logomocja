@@ -1,0 +1,8 @@
+{
+  "id": "impeccable-v1",
+  "skillVersion": "4.7.0",
+  "engineVersion": "0.1.16",
+  "source": "https://github.com/pbakaus/impeccable",
+  "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
+  "snapshotDate": "2026-11-03"
+}

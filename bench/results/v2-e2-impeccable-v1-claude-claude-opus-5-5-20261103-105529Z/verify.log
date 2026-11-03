@@ -1,0 +1,205 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.187.0
++ typescript@7.0.2
++ vite@8.3.5
++ @codemirror/commands@6.11.1
++ @codemirror/language@6.13.1
++ @codemirror/state@6.7.6
++ @codemirror/view@6.43.15
++ @fontsource-variable/archivo@5.3.0
++ @fontsource/atkinson-hyperlegible-mono@5.3.0
++ @lezer/highlight@1.2.5
++ three@0.187.0
+
+43 packages installed [49.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 53 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                               1.55 kB │ gzip:   0.81 kB
+dist/assets/atkinson-hyperlegible-mono-latin-ext-400-normal-CpVFOiMk.woff2    6.52 kB
+dist/assets/atkinson-hyperlegible-mono-latin-ext-700-normal-Cb4hxZGu.woff2    6.57 kB
+dist/assets/atkinson-hyperlegible-mono-latin-ext-400-normal-ITMuFrSK.woff     8.38 kB
+dist/assets/atkinson-hyperlegible-mono-latin-ext-700-normal-Db6cZPB4.woff     8.39 kB
+dist/assets/atkinson-hyperlegible-mono-latin-700-normal-BhOtGXDr.woff2       10.04 kB
+dist/assets/atkinson-hyperlegible-mono-latin-400-normal-CmMGer93.woff2       10.05 kB
+dist/assets/atkinson-hyperlegible-mono-latin-400-normal-Cmjm2dBj.woff        12.76 kB
+dist/assets/atkinson-hyperlegible-mono-latin-700-normal-BQ8cw3oD.woff        12.76 kB
+dist/assets/archivo-vietnamese-wdth-normal-rJmnGBSt.woff2                    34.46 kB
+dist/assets/archivo-latin-ext-wdth-normal-7khWdh9v.woff2                     86.24 kB
+dist/assets/archivo-latin-wdth-normal-DY7AcnAa.woff2                         90.10 kB
+dist/assets/index-BPNImpLY.css                                               35.20 kB │ gzip:   8.18 kB
+dist/assets/index-Bs5Xlwxk.js                                               419.51 kB │ gzip: 138.79 kB
+dist/assets/view3d-D7LjGH5j.js                                              589.46 kB │ gzip: 146.92 kB
+
+✓ built in 175ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) standard programs > there are thirteen, with unique names [0.06ms]
+(pass) standard programs > kwadrat runs in 2d [2.64ms]
+(pass) standard programs > gwiazda runs in 2d [0.21ms]
+(pass) standard programs > rozeta runs in 2d [0.48ms]
+(pass) standard programs > spirala runs in 2d [0.88ms]
+(pass) standard programs > wielokaty runs in 2d [0.49ms]
+(pass) standard programs > drzewo runs in 2d [4.13ms]
+(pass) standard programs > sniezynka runs in 2d [3.04ms]
+(pass) standard programs > schody runs in 3d [0.22ms]
+(pass) standard programs > szescian runs in 3d [0.10ms]
+(pass) standard programs > pierscien runs in 3d [0.09ms]
+(pass) standard programs > kula runs in 3d [0.75ms]
+(pass) standard programs > helisa runs in 3d [0.36ms]
+(pass) standard programs > drzewo3d runs in 3d [2.68ms]
+(pass) standard programs > flat programs draw identical coordinates in 2D and 3D [22.43ms]
+(pass) standard programs > kwadrat closes exactly [0.15ms]
+(pass) standard programs > spirala alternates colours and grows [0.18ms]
+(pass) result shape > segments carry numbers and lowercase colours [0.03ms]
+(pass) result shape > defaults: pen down, #16866a, width 3 [0.01ms]
+(pass) result shape > empty program and comments only [0.02ms]
+(pass) lexical rules > case-insensitive keywords and names [0.12ms]
+(pass) lexical rules > accented and unaccented aliases [0.11ms]
+(pass) lexical rules > english aliases [0.06ms]
+(pass) lexical rules > english 3D aliases [0.02ms]
+(pass) lexical rules > comments run to the end of the line [0.02ms]
+(pass) lexical rules > number forms [0.03ms]
+(pass) lexical rules > not numbers [0.21ms]
+(pass) lexical rules > colour literal is case-insensitive hex [0.06ms]
+(pass) lexical rules > unknown characters [0.02ms]
+(pass) expressions > precedence and left associativity [0.07ms]
+(pass) expressions > operator whitespace rule [0.13ms]
+(pass) expressions > stray value is reported where it stands and nothing is drawn [0.02ms]
+(pass) expressions > comparisons ignore the whitespace rule [0.03ms]
+(pass) expressions > unary signs [0.06ms]
+(pass) expressions > procedure arguments split on the whitespace rule [0.09ms]
+(pass) expressions > exact comparisons [0.11ms]
+(pass) expressions > division by zero is a run-time error at the argument [0.11ms]
+(pass) expressions > non-finite results [0.77ms]
+(pass) expressions > deeply nested parentheses and signs do not overflow [7.77ms]
+(pass) expressions > missing operands and parentheses [0.13ms]
+(pass) missing arguments > reported at the found token [0.04ms]
+(pass) missing arguments > reported at the command when the program ends [0.11ms]
+(pass) missing arguments > repeat without a body [0.01ms]
+(pass) missing arguments > condition without a comparison [0.02ms]
+(pass) turtle geometry > turns [0.07ms]
+(pass) turtle geometry > pitch [0.05ms]
+(pass) turtle geometry > roll keeps the heading and turns the up vector towards the right [0.04ms]
+(pass) turtle geometry > right turn after a pitch rotates around the new up [0.01ms]
+(pass) turtle geometry > pitch and roll are errors in 2D [0.10ms]
+(pass) turtle geometry > dom returns, draws and resets orientation but not pen [0.09ms]
+(pass) turtle geometry > pen up moves without drawing [0.02ms]
+(pass) turtle geometry > a zero move draws nothing
+(pass) turtle geometry > czyść forgets segments only [0.04ms]
+(pass) turtle geometry > width bounds [0.13ms]
+(pass) repeat and nrpowt > counts [0.14ms]
+(pass) repeat and nrpowt > nrpowt reads the innermost repeat [0.04ms]
+(pass) repeat and nrpowt > nrpowt outside a repeat is a parse error [0.08ms]
+(pass) repeat and nrpowt > nrpowt as a command is a stray value [0.02ms]
+(pass) variables > assignment and reassignment [0.04ms]
+(pass) variables > legacy :name form [0.02ms]
+(pass) variables > globals may be declared after use [0.03ms]
+(pass) variables > reading before assignment is a run-time error at the argument [0.05ms]
+(pass) variables > locals shadow globals for the rest of the call [0.03ms]
+(pass) variables > a procedure local is not visible to callees [0.02ms]
+(pass) variables > an unassigned local is a run-time error [0.05ms]
+(pass) variables > parameters can be reassigned [0.02ms]
+(pass) variables > unknown names are parse errors [0.02ms]
+(pass) variables > variables cannot take command or procedure names [0.05ms]
+(pass) conditionals > jeśli and jeżeli [0.03ms]
+(pass) conditionals > bodies may hold anything a repeat body may hold [0.02ms]
+(pass) procedures > the documented example [3.04ms]
+(pass) procedures > arguments are expressions [0.08ms]
+(pass) procedures > legacy header and :name references [0.06ms]
+(pass) procedures > definitions may follow calls [0.02ms]
+(pass) procedures > a parameter may share its name with a procedure [0.05ms]
+(pass) procedures > recursion and stop [0.03ms]
+(pass) procedures > stop inside a repeat ends the call, not just the body [0.02ms]
+(pass) procedures > stop at top level ends the program [0.02ms]
+(pass) procedures > wrong argument counts [0.12ms]
+(pass) procedures > definition rules [0.16ms]
+(pass) procedures > unknown command [0.02ms]
+(pass) procedures > stray brackets [0.03ms]
+(pass) limits > source characters [1.47ms]
+(pass) limits > tokens [5.74ms]
+(pass) limits > bracket nesting depth [0.18ms]
+(pass) limits > active frames [0.92ms]
+(pass) limits > executed operations: commands, iterations [2.43ms]
+(pass) limits > executed operations: conditionals and their bodies [4.16ms]
+(pass) limits > executed operations: calls and niech [7.85ms]
+(pass) limits > reaching the end of the program is not counted [3.64ms]
+(pass) limits > the limit error keeps what was drawn [2.49ms]
+(pass) limits > coordinates stay within ±100 000 [0.09ms]
+(pass) error positions with lines and columns > multi-line positions are 1-based [0.03ms]
+(pass) error positions with lines and columns > parse errors draw nothing even after valid lines [0.03ms]
+(pass) error positions with lines and columns > run-time errors keep segments drawn after czyść [0.06ms]
+
+tests/challenges.test.ts:
+(pass) challenges > at least five, unique ids, every target draws [0.29ms]
+(pass) challenges > kwadrat-100: the reference solution passes [3.67ms]
+(pass) challenges > trojkat: the reference solution passes [1.43ms]
+(pass) challenges > schodki: the reference solution passes [3.15ms]
+(pass) challenges > szesciokat: the reference solution passes [1.86ms]
+(pass) challenges > domek: the reference solution passes [4.54ms]
+(pass) challenges > kwiat: the reference solution passes [10.75ms]
+(pass) challenges > prostokaty: the reference solution passes [1.74ms]
+(pass) challenges > spirala-kwadratowa: the reference solution passes [2.91ms]
+(pass) challenges > pionowy-kwadrat: the reference solution passes [1.12ms]
+(pass) challenges > osie: the reference solution passes [1.99ms]
+(pass) challenges > a different way to draw the same square passes [2.00ms]
+(pass) challenges > turning left (a mirror image) and starting elsewhere pass [1.83ms]
+(pass) challenges > a wrong size fails with a reason and the mismatched parts [0.68ms]
+(pass) challenges > a missing side fails [0.58ms]
+(pass) challenges > errors and empty drawings fail with a message [0.08ms]
+(pass) challenges > colour and width are checked when the task asks [2.47ms]
+(pass) challenges > requirements are enforced [5.35ms]
+(pass) challenges > 3D tasks [1.51ms]
+
+tests/content.test.ts:
+(pass) reference examples > start: ; Pierwszy rysunek: kwadrat. draws without a parse error [0.03ms]
+(pass) reference examples > polecenie np draws without a parse error
+(pass) reference examples > polecenie ws draws without a parse error
+(pass) reference examples > polecenie pw draws without a parse error [0.04ms]
+(pass) reference examples > polecenie lw draws without a parse error
+(pass) reference examples > polecenie dom draws without a parse error
+(pass) reference examples > polecenie pod draws without a parse error
+(pass) reference examples > polecenie opu draws without a parse error [0.01ms]
+(pass) reference examples > polecenie kolor draws without a parse error [0.01ms]
+(pass) reference examples > polecenie grubość draws without a parse error [0.02ms]
+(pass) reference examples > polecenie czyść draws without a parse error [0.02ms]
+(pass) reference examples > polecenie góra draws without a parse error [0.28ms]
+(pass) reference examples > polecenie dół draws without a parse error [0.02ms]
+(pass) reference examples > polecenie pp draws without a parse error [0.19ms]
+(pass) reference examples > polecenie pl draws without a parse error [0.01ms]
+(pass) reference examples > polecenie powtórz draws without a parse error
+(pass) reference examples > polecenie nrpowt draws without a parse error [0.04ms]
+(pass) reference examples > powtorz: powtorz 3 [ draws without a parse error [0.02ms]
+(pass) reference examples > wyrazenia: np 20 - 5 - 3   ; 12 draws without a parse error [0.01ms]
+(pass) reference examples > wyrazenia: oto dwa ma: a, b draws without a parse error [0.08ms]
+(pass) reference examples > polecenie niech draws without a parse error [0.02ms]
+(pass) reference examples > zmienne: niech krok 10 draws without a parse error [0.02ms]
+(pass) reference examples > polecenie jeśli draws without a parse error [0.02ms]
+(pass) reference examples > polecenie jeżeli draws without a parse error [2.13ms]
+(pass) reference examples > polecenie oto … już draws without a parse error [0.04ms]
+(pass) reference examples > polecenie stop draws without a parse error [0.04ms]
+(pass) reference examples > procedury: oto gałąź ma: dł draws without a parse error [0.27ms]
+(pass) reference examples > pisownia: ; To jest komentarz. draws without a parse error [0.02ms]
+(pass) reference examples > bledy: np 100 draws without a parse error [0.05ms]
+(pass) starter drafts > both run cleanly [0.19ms]
+
+ 144 pass
+ 0 fail
+ 725 expect() calls
+Ran 144 tests across 3 files. [143.00ms]
+(exit 0)

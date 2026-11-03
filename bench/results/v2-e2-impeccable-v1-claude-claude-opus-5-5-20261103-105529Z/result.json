@@ -1,0 +1,86 @@
+{
+  "schema": 4,
+  "id": "v2-e2-impeccable-v1-claude-claude-opus-5-5-20261103-105529Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-opus-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "xhigh",
+  "startedAt": "2026-11-03T10:55:29.821Z",
+  "agentMs": 4020802,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 272,
+    "cachedInput": 49003185,
+    "output": 395947,
+    "reasoning": 172782
+  },
+  "costUsd": 22.09765839999999,
+  "costBasis": "cli",
+  "turns": 169,
+  "toolCalls": 167,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 16,
+    "distBytes": 1332309
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "b73457a7de8d48ce9fa586d9c0b89fed344ea34e",
+  "repoVersion": "0.3.0",
+  "totalMs": 4063119,
+  "conformance": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "impeccable-v1",
+    "skillVersion": "4.7.0",
+    "engineVersion": "0.1.16",
+    "source": "https://github.com/pbakaus/impeccable",
+    "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
+    "snapshotDate": "2026-11-03"
+  },
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-131400Z"
+}

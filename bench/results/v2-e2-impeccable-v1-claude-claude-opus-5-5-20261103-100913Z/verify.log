@@ -1,0 +1,149 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.187.0
++ typescript@7.0.2
++ vite@8.3.5
++ @fontsource-variable/archivo@5.3.0
++ @fontsource-variable/jetbrains-mono@5.3.0
++ lucide@1.67.0
++ three@0.187.0
+
+32 packages installed [65.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 2073 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                       1.41 kB │ gzip:   0.71 kB
+dist/assets/jetbrains-mono-cyrillic-ext-wght-normal-EocZY2iu.woff2    2.02 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2      7.50 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2           9.00 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2       12.10 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2      15.19 kB
+dist/assets/archivo-vietnamese-wdth-normal-rJmnGBSt.woff2            34.46 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2          40.40 kB
+dist/assets/archivo-latin-ext-wdth-normal-7khWdh9v.woff2             86.24 kB
+dist/assets/archivo-latin-wdth-normal-DY7AcnAa.woff2                 90.10 kB
+dist/assets/index-C8gzGjdF.css                                       28.84 kB │ gzip:   7.29 kB
+dist/assets/index-Cc7OGVx5.js                                       113.52 kB │ gzip:  41.10 kB
+dist/assets/view3d-DGTrA3QF.js                                      589.17 kB │ gzip: 146.70 kB
+
+✓ built in 176ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) lexical rules > keywords and names ignore case; accented and unaccented aliases agree [2.37ms]
+(pass) lexical rules > every alias of every command is accepted [1.75ms]
+(pass) lexical rules > comments run to the end of the line [0.10ms]
+(pass) lexical rules > numbers: integers, decimals, leading dot [0.03ms]
+(pass) lexical rules > 1e3, 0x10, NaN and Infinity are not numbers [0.26ms]
+(pass) lexical rules > colour literals are case-insensitive six-digit hex; output is lowercase [0.08ms]
+(pass) expressions > precedence and left associativity [0.09ms]
+(pass) expressions > a binary operator needs spaces on both sides or neither [0.15ms]
+(pass) expressions > the spacing rule does not apply to comparisons [0.08ms]
+(pass) expressions > stacked unary signs anywhere an operand is expected [0.08ms]
+(pass) expressions > legacy :name references [0.05ms]
+(pass) expressions > division by zero is a run-time error at the argument and keeps the drawing [0.07ms]
+(pass) expressions > non-finite results are run-time errors [0.37ms]
+(pass) expressions > comparisons are exact [0.17ms]
+(pass) turtle geometry > initial state: origin, heading +Y, pen down, colour #16866a, width 3 [0.23ms]
+(pass) turtle geometry > pw turns clockwise seen from above, lw counter-clockwise [0.19ms]
+(pass) turtle geometry > a move of zero draws nothing; pen up draws nothing [0.03ms]
+(pass) turtle geometry > a square closes exactly [0.05ms]
+(pass) turtle geometry > gora: heading turns towards up; after gora 90 the turtle heads along its former up [0.08ms]
+(pass) turtle geometry > pp: up turns towards right around the heading; heading unchanged [0.05ms]
+(pass) turtle geometry > pitch and roll are errors in 2D mode [0.12ms]
+(pass) turtle geometry > dom draws back to the origin and resets orientation, not pen, colour or width [0.08ms]
+(pass) turtle geometry > czyść forgets segments and nothing else [0.03ms]
+(pass) turtle geometry > flat programs produce identical coordinates in 2D and 3D [0.11ms]
+(pass) turtle geometry > pen state, colour and width persist [0.03ms]
+(pass) repeat and nrpowt > repeat 0 runs nothing; nested repeats; nrpowt is the innermost iteration [0.06ms]
+(pass) repeat and nrpowt > repeat count must be an integer from 0 to 10000 [0.10ms]
+(pass) repeat and nrpowt > a repeat count computed from a name is checked when executed [0.03ms]
+(pass) repeat and nrpowt > nrpowt outside a repeat is a parse error, also in procedures called from a repeat [0.39ms]
+(pass) variables > assignment and reassignment [0.02ms]
+(pass) variables > top-level names may be used before their niech, but must be assigned at run time [0.10ms]
+(pass) variables > undeclared names are parse errors [0.04ms]
+(pass) variables > variable names may not be command words or procedure names [0.11ms]
+(pass) variables > niech in a procedure is local and shadows the global for the rest of the call [0.07ms]
+(pass) variables > a procedure cannot see names that belong to another procedure [0.04ms]
+(pass) variables > a local declared later in the procedure but unassigned on this path is a run-time error [0.04ms]
+(pass) variables > parameters can be reassigned and used as repeat counts and call arguments [0.11ms]
+(pass) conditionals > jeśli and jeżeli [0.03ms]
+(pass) conditionals > jeżeli needs two bodies [0.07ms]
+(pass) conditionals > missing comparison [0.02ms]
+(pass) procedures > the brief example [0.07ms]
+(pass) procedures > arguments are expressions: kwadrat 40 * 2 90 passes 80 and 90 [0.04ms]
+(pass) procedures > a call argument may start with a sign when the previous argument ends [0.03ms]
+(pass) procedures > legacy header and :param references [0.05ms]
+(pass) procedures > definitions may come after the calls; names ignore case [0.22ms]
+(pass) procedures > a parameter may share its name with a procedure [0.07ms]
+(pass) procedures > wrong number of arguments [0.08ms]
+(pass) procedures > definitions only at top level, once per name, ended by już alone on a line [0.13ms]
+(pass) procedures > recursion and stop [0.07ms]
+(pass) procedures > stop inside a repeat ends the enclosing call, not just the body [0.05ms]
+(pass) procedures > stop at top level ends the program [0.02ms]
+(pass) errors > unknown command [0.31ms]
+(pass) errors > a missing argument is reported at the token found there, or at the command at the end [0.11ms]
+(pass) errors > a stray value where a command is expected is reported at the value [0.04ms]
+(pass) errors > unbalanced brackets and parentheses [0.05ms]
+(pass) errors > width must be an integer 1–12: literal at parse time, computed at run time [0.09ms]
+(pass) errors > a parse error anywhere draws nothing [0.02ms]
+(pass) errors > messages are Polish [0.04ms]
+(pass) limits > source length [1.90ms]
+(pass) limits > token count [12.87ms]
+(pass) limits > bracket nesting depth 32 [0.25ms]
+(pass) limits > 32 active frames [0.57ms]
+(pass) limits > executed operations: each command plus one per finished iteration [26.93ms]
+(pass) limits > kept segments are counted after czyść (the operation limit is reached first in practice) [4.29ms]
+(pass) limits > coordinates stay within ±100000 [0.11ms]
+(pass) limits > a run-time error after czyść keeps only what was drawn after it [0.12ms]
+
+tests/examples.test.ts:
+(pass) standard programs > all thirteen ship under their names and modes [0.05ms]
+(pass) standard programs > kwadrat runs without errors [0.11ms]
+(pass) standard programs > gwiazda runs without errors [0.02ms]
+(pass) standard programs > rozeta runs without errors [0.10ms]
+(pass) standard programs > spirala runs without errors [0.30ms]
+(pass) standard programs > wielokaty runs without errors [0.19ms]
+(pass) standard programs > drzewo runs without errors [3.86ms]
+(pass) standard programs > sniezynka runs without errors [3.06ms]
+(pass) standard programs > schody runs without errors [0.05ms]
+(pass) standard programs > szescian runs without errors [0.04ms]
+(pass) standard programs > pierscien runs without errors [0.03ms]
+(pass) standard programs > kula runs without errors [0.35ms]
+(pass) standard programs > helisa runs without errors [0.20ms]
+(pass) standard programs > drzewo3d runs without errors [4.34ms]
+(pass) standard programs > flat examples draw the same in 2D and 3D [12.57ms]
+(pass) standard programs > 3D examples use pitch or roll and fail in 2D [0.28ms]
+(pass) standard programs > kwadrat closes, schody climbs, szescian is a cube [0.31ms]
+(pass) standard programs > unedited examples are disposable drafts; edited ones are not [0.03ms]
+(pass) challenges > at least five [0.03ms]
+(pass) challenges > trojkat: the reference solution passes and the starter does not [0.89ms]
+(pass) challenges > schodki: the reference solution passes and the starter does not [0.67ms]
+(pass) challenges > szesciokat: the reference solution passes and the starter does not [0.37ms]
+(pass) challenges > kwiat: the reference solution passes and the starter does not [3.15ms]
+(pass) challenges > spirala: the reference solution passes and the starter does not [1.62ms]
+(pass) challenges > gwiazda8: the reference solution passes and the starter does not [0.58ms]
+(pass) challenges > pionowy: the reference solution passes and the starter does not [0.13ms]
+(pass) challenges > wieza: the reference solution passes and the starter does not [0.62ms]
+(pass) challenges > position and mirror image do not matter; size and shape do [0.60ms]
+(pass) challenges > errors and empty drawings fail with a reason [0.06ms]
+(pass) challenges > requirements and colours are checked [1.53ms]
+
+ 96 pass
+ 0 fail
+ 365 expect() calls
+Ran 96 tests across 2 files. [101.00ms]
+(exit 0)

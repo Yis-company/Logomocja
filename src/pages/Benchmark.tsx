@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { Link, useSearchParams } from "react-router";
 import type { RunResult } from "../../bench/result";
 import { conformanceRate, groupByVersion } from "../benchmark";
 import { Frame, FramePanel } from "../components/reui/frame";
@@ -23,7 +25,7 @@ function galleryOf(runId: string): Record<string, string> {
 
 function Gallery({ version, runs }: { version: string; runs: RunResult[] }) {
   const reference = { id: `reference-${version.split("/")[0]}`, label: "wzorzec", gallery: null as RunResult["gallery"] };
-  const rows = [reference, ...runs.map((run) => ({ id: run.id, label: run.model, gallery: run.gallery }))]
+  const rows = [reference, ...runs.map((run) => ({ id: run.id, label: `${run.model} · ${run.effort ?? "domyślny"}`, gallery: run.gallery }))]
     .map((row) => ({ ...row, shots: galleryOf(row.id) }))
     .filter((row) => Object.keys(row.shots).length);
   const programs = [...new Set(rows.flatMap((row) => Object.keys(row.shots)))].sort(
@@ -88,7 +90,7 @@ function AppRows({ runs, suites }: { runs: RunResult[]; suites: string[] }) {
   return (
     <>
       {runs.map((run) => (
-        <tr key={run.id}>
+        <tr key={run.id} id={`run-${run.id}`}>
           <td>
             <code>{run.model}</code>
             {run.status !== "completed" ? <small> ({run.status})</small> : null}
@@ -123,6 +125,9 @@ function AppRows({ runs, suites }: { runs: RunResult[]; suites: string[] }) {
             <a className="text-link" href={`${repo}/tree/build/${run.id}`}>
               Kod
             </a>{" "}
+            {run.baselineId ? (
+              <Link className="text-link" to={`/benchmark?run=${run.baselineId}`}>Baza</Link>
+            ) : null}{" "}
             <a className="text-link" href={`${repo}/blob/main/bench/results/${run.id}/transcript.jsonl`}>
               Zapis
             </a>
@@ -134,6 +139,11 @@ function AppRows({ runs, suites }: { runs: RunResult[]; suites: string[] }) {
 }
 
 export function Benchmark() {
+  const [searchParams] = useSearchParams();
+  const selected = searchParams.get("run");
+  useEffect(() => {
+    if (selected) document.getElementById(`run-${selected}`)?.scrollIntoView({ block: "center" });
+  }, [selected]);
   const apps = groupByVersion(results, "app");
   const tests = groupByVersion(results, "tests");
   return (
@@ -151,12 +161,16 @@ export function Benchmark() {
           </FramePanel>
         </Frame>
       ) : null}
-      {apps.map(({ version, runs }) => {
+      {apps.map(({ version, layer, runs }) => {
         const suites = [...new Set(runs.flatMap((run) => Object.keys(run.conformance ?? {})))];
         return (
-          <Frame key={version} className="reference-block">
+          <Frame key={`${version}-${layer}`} className="reference-block">
             <FramePanel>
-              <h2>Wersja {version}</h2>
+              <h2>{layer === "base" ? `Wersja ${version}` : `Impeccable · ${version} · ${layer}`}</h2>
+              {layer !== "base" ? (
+                <p>Oddzielna warstwa projektowa: Impeccable {runs[0].layer?.skillVersion}. Ten sam opis produktu, nowe aplikacje od zera.
+                  Link „Baza” prowadzi do wyniku tego samego modelu i wysiłku. Historyczne wyniki mogą różnić się ze względu na zmiany modelu i losowość.</p>
+              ) : null}
               <div className="table-scroll">
                 <table className="command-table">
                   <thead>

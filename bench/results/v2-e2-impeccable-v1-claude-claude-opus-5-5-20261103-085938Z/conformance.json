@@ -1,0 +1,653 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów: limit to 32 poziomy."
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 442,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: 1e3 is not a number",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: NaN is not a number",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: Infinity is not a number",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its left is a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its left is a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its left is a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its left is a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: minus with whitespace only on its right is an error",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: plus with whitespace only on its right is an error",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: times with whitespace only on its right is an error",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: divide with whitespace only on its right is an error",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: operator after parenthesis with whitespace on one side",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: operator before parenthesis with whitespace on one side",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside a repeat body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: whitespace rule inside an indented procedure body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: width 4.35 * 100 / 100 is not an integer",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: local of a procedure is not visible at top level",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: name declared only in another procedure",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: parameter of another procedure is not visible",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not take the name of a procedure defined later",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: variable may not be a command word",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: conditional body must start with a bracket",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: ifelse needs a second body",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: condition needs a comparison",
+          "reason": "expected 0 segments, got 3"
+        },
+        {
+          "name": "claude-fable-5-1: call of a procedure without parameters followed by a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: too many arguments: the extra is a stray value",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: too few arguments",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: unknown command",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: unknown command inside a never-run body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: undeclared name inside a never-run body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: wrong argument count inside a never-called procedure",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: procedure defined twice",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a repeat body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside a conditional body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: definition inside another definition",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: oto not at the beginning of a line",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: już without a definition",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: undeclared name at top level",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: missing colour literal",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed expression: two operators",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed colour: five hex digits",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed colour: non-hex digit",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: malformed colour: missing quotes",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: stray closing bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: missing closing bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: stray closing parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: missing closing parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: stray number where a command is expected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: stray value after a complete procedure call inside a body",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: nrpowt at top level outside a repeat",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1: nrpowt in a procedure body that is only called from a repeat",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1: nrpowt in a conditional body outside a repeat",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1: nrpowt after the repeat has closed",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1: nrpowt in a never-run body is still a parse error",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1: roll right in 2d mode",
+          "reason": "expected 0 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: pitch up in 2d mode",
+          "reason": "expected 0 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: roll left in 2d mode inside a never-run body",
+          "reason": "expected 0 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected 0 segments, got 4"
+        },
+        {
+          "name": "claude-fable-5-1: 33 nested brackets rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: conditional bodies count towards bracket nesting",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: 10001 tokens rejected (parentheses count)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1: 50001 source characters rejected",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: + rejects left space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: + rejects right space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: - rejects left space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: - rejects right space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: * rejects left space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: * rejects right space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: / rejects left space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: / rejects right space only",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 1e3",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: invalid number 0x10",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: invalid number NaN",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: invalid number Infinity",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: other procedure declaration not visible",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: variable procedure collision",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: undeclared argument name",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: command cannot be variable",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: validation continues after stop",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: top level repcount lexical error",
+          "reason": "expected 0 segments, got 6"
+        },
+        {
+          "name": "gpt-6-astra: procedure cannot inherit caller repcount",
+          "reason": "expected 0 segments, got 6"
+        },
+        {
+          "name": "gpt-6-astra: repcount outside even unreachable",
+          "reason": "expected 0 segments, got 6"
+        },
+        {
+          "name": "gpt-6-astra: outermost repeat count outside body",
+          "reason": "expected 0 segments, got 6"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 0",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 13",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid 1.5",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "gpt-6-astra: dead literal width is validated",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid -1",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 10001",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid 2.5",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: dead literal repeat is validated",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: malformed color \"#12345\"",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: malformed color \"#1234567\"",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: malformed color \"#12345g\"",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: malformed color \"123456\"",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: unknown command whole validation",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: stray value whole validation",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: extra procedure argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: missing argument before bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: malformed expression operand",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: unmatched closing bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: unmatched opening bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: unmatched closing parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: unmatched opening parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: definition in repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: definition in conditional",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: definition in procedure",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: missing procedure ending",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: duplicate procedure case insensitive",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: missing call argument explicit closing bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: source character limit",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra: token limit",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with whitespace only on its left before a tab",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: operator with a tab only on its left is a stray value",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Za głębokie zagnieżdżenie nawiasów: limit to 32 poziomy."
+        },
+        {
+          "name": "claude-fable-5-1-round2: error column after an accented word on the same line",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at the command when the program ends there",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing call argument reported at the command when the program ends there",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: missing argument reported at a bracket on the next line",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: colour literal where an expression is expected",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: number where a colour literal is expected",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: variable name in command position",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: procedure name used as a value",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: parse error later in the source beats an earlier run-time error",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal width in a never-called procedure is checked at parse time",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal repeat count in a never-called procedure is checked at parse time",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: unknown command in a never-called procedure after drawing commands",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: call with too few arguments inside a repeat body before the bracket",
+          "reason": "expected 0 segments, got 2"
+        },
+        {
+          "name": "claude-fable-5-1-round2: 33 nested brackets inside a procedure body",
+          "reason": "expected 0 segments, got 7"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary +",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary +",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary -",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary -",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary *",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary *",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: newline only before binary /",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: tab only after binary /",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal width after procedure stop",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: repcount after local repeat",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing final command argument",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing comparison rhs at bracket",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: missing color at body end",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: call missing second argument at parenthesis",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: command alias forbidden as local",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: later procedure collides with local",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "gpt-6-astra-round2: else branch nesting 33",
+          "reason": "expected 0 segments, got 1"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 21,
+      "total": 23,
+      "failures": [
+        {
+          "name": "state must not leak: the global of the previous case is unknown",
+          "reason": "expected 0 segments, got 1"
+        },
+        {
+          "name": "state must not leak: the procedure of the previous case is unknown",
+          "reason": "expected 0 segments, got 1"
+        }
+      ]
+    }
+  }
+}
