@@ -3,6 +3,7 @@ import {
   cpSync,
   mkdtempSync,
   mkdirSync,
+  readFileSync,
   symlinkSync,
   writeFileSync,
 } from "node:fs";
@@ -11,7 +12,15 @@ import { join, resolve } from "node:path";
 import { expect, it } from "vitest";
 
 const source = resolve(".");
-function fixture() {
+function fixture(inheritedEnv: NodeJS.ProcessEnv = process.env) {
+  const env = { ...inheritedEnv };
+  // Push hooks export repository-local settings; fixtures own a different repo.
+  for (const key of execFileSync("git", ["rev-parse", "--local-env-vars"], {
+    encoding: "utf8",
+  })
+    .trim()
+    .split("\n"))
+    delete env[key];
   const dir = mkdtempSync(join(tmpdir(), "logomocja-pr-policy-"));
   for (const file of ["package.json", "bun.lock"])
     cpSync(join(source, file), join(dir, file));
@@ -26,6 +35,7 @@ function fixture() {
   const git = (...args: string[]) =>
     execFileSync("git", args, {
       cwd: dir,
+      env,
       encoding: "utf8",
       stdio: "pipe",
     }).trim();
@@ -40,6 +50,7 @@ function fixture() {
   git("commit", "-m", "baseline");
   const base = git("rev-parse", "HEAD");
   return {
+    dir,
     check(content?: string, fork = false) {
       if (content !== undefined)
         writeFileSync(join(dir, ".changeset/new.md"), content);
@@ -71,7 +82,7 @@ function fixture() {
         encoding: "utf8",
         stdio: "pipe",
         env: {
-          ...process.env,
+          ...env,
           GITHUB_EVENT_NAME: "pull_request",
           GITHUB_EVENT_PATH: event,
         },
@@ -94,4 +105,21 @@ it("malformed changesets fail through the actual CLI", () => {
   expect(() =>
     fixture().check('---\n"logomocja": wrong\n---\n\nInvalid.\n'),
   ).toThrow();
+});
+
+it("keeps fixture commits and configuration out of an inherited Git repository", () => {
+  const parent = fixture();
+  const files = ["config", "refs/heads/main"].map((file) =>
+    join(parent.dir, ".git", file),
+  );
+  const before = files.map((file) => readFileSync(file, "utf8"));
+  expect(() =>
+    fixture({
+      ...process.env,
+      GIT_DIR: join(parent.dir, ".git"),
+      GIT_WORK_TREE: parent.dir,
+      GIT_INDEX_FILE: join(parent.dir, ".git/index"),
+    }).check("---\n---\n\nMaintenance.\n"),
+  ).not.toThrow();
+  expect(files.map((file) => readFileSync(file, "utf8"))).toEqual(before);
 });
