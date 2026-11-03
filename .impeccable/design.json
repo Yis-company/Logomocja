@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T04:00:00Z",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "shadows": [
+      {"name":"canvas-controls","value":"0 3px 10px #243b2710","purpose":"Lift only the floating view toolbar."},
+      {"name":"toast","value":"0 6px 24px #172a2228","purpose":"Temporary status above the workspace."}
+    ],
+    "motion": [{"name":"state","value":"150–200ms ease","purpose":"Control state and toast feedback; disabled for reduced motion."}],
+    "breakpoints": [{"name":"phone","value":"720px"},{"name":"compact","value":"1100px"},{"name":"wide","value":"1450px"}]
+  },
+  "components": [
+    {"name":"Primary button","kind":"button","refersTo":"button-primary","description":"Inline primary action.","html":"<button class=\"ds-primary\">Sprawdź rysunek</button>","css":".ds-primary{font:600 12px Manrope,sans-serif;background:var(--accent,#187552);color:white;border:1px solid transparent;border-radius:6px;padding:8px 14px;min-height:38px;cursor:pointer}.ds-primary:hover{background:#226b4d}.ds-primary:focus-visible{outline:3px solid #c17a3d;outline-offset:4px}"},
+    {"name":"Secondary button","kind":"button","description":"Files and secondary actions.","html":"<button class=\"ds-secondary\">Udostępnij</button>","css":".ds-secondary{font:500 12px Manrope,sans-serif;background:var(--surface,#fcfcf8);color:var(--text,#283d36);border:1px solid var(--line,#dcdfd5);border-radius:6px;padding:8px 14px;min-height:38px;cursor:pointer}.ds-secondary:hover{background:var(--soft,#e8eee4)}.ds-secondary:focus-visible{outline:3px solid #c17a3d;outline-offset:4px}"},
+    {"name":"Run button","kind":"button","refersTo":"button-run","description":"Main execution action on pine editor.","html":"<button class=\"ds-run\">Uruchom</button>","css":".ds-run{font:650 12px Manrope,sans-serif;color:#243e30;background:#d7e7b7;border:0;border-radius:6px;padding:10px 16px;cursor:pointer}.ds-run:hover{background:#c9dca5}.ds-run:focus-visible{outline:3px solid #c17a3d;outline-offset:4px}"},
+    {"name":"Navigation","kind":"nav","description":"Active text tab and bottom rule.","html":"<nav class=\"ds-nav\"><button aria-current=\"page\">Pracownia</button><button>Przykłady</button></nav>","css":".ds-nav{display:flex;gap:24px}.ds-nav button{font:550 13px Manrope,sans-serif;background:none;color:var(--muted,#6c786e);border:0;border-bottom:3px solid transparent;padding:12px 0;cursor:pointer}.ds-nav button[aria-current]{border-color:var(--accent,#187552);color:var(--accent,#187552)}.ds-nav button:hover{color:var(--text,#283d36)}.ds-nav button:focus-visible{outline:3px solid #c17a3d;outline-offset:4px}"},
+    {"name":"Mode tag","kind":"chip","description":"Compact dimensional label.","html":"<span class=\"ds-tag\">3D</span>","css":".ds-tag{font:10px LogoMono,monospace;color:var(--muted,#6c786e);border:1px solid var(--line,#dcdfd5);border-radius:3px;padding:2px 4px}"},
+    {"name":"Code field","kind":"input","description":"Dark labelled program field.","html":"<label class=\"ds-code-label\">PROGRAM<textarea class=\"ds-code\" aria-label=\"Kod programu\">powtorz 4 [np 80 pw 90]</textarea></label>","css":".ds-code-label{display:block;background:#202c29;padding:16px;color:#a2afa1;font:10px Manrope,sans-serif}.ds-code{display:block;box-sizing:border-box;width:100%;min-height:120px;margin-top:12px;padding:8px;background:#202c29;border:0;color:#d5df96;font:12px/26px LogoMono,monospace;caret-color:#eaf3df}.ds-code:focus-visible{outline:2px solid #c17a3d;outline-offset:3px}"}
+  ],
+  "narrative": {
+    "northStar":"A living geometry index",
+    "overview":"A botanical learning index contributes pine ink, pale leaf, paper and compact specimen previews. Familiar application controls carry the task. The actual turtle geometry is the signature: previews are executed programs, and the primary canvas is always the work itself.",
+    "keyCharacteristics":["Code and geometric consequence share the workspace.","Pine and leaf carry navigation and execution state.","Linework is exact output, never illustrative decoration.","Flat surfaces, fine rules and compact controls."],
+    "rules":[{"name":"The True Geometry Rule","body":"Interface themes never recolor a user's drawing.","section":"colors"}],
+    "dos":["Do use actual interpreted geometry for previews.","Do keep errors positioned and written in Polish.","Do preserve independent drafts and make recovery visible.","Do retain the same navigation and controls across viewport sizes."],
+    "donts":["Don't recolor drawing segments to match a theme.","Don't simulate botanical materials or add decorative specimens.","Don't use monospace for general interface prose."]
+  }
+}
