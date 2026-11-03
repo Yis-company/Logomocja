@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T12:00:00Z",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "pen": { "role": "primary", "displayName": "Pen Green", "canonical": "#16866a", "tonalRamp": ["#06261e", "#0b3d31", "#0f5544", "#126d57", "#16866a", "#4fa88d", "#8fcab6", "#d3ece3"] },
+      "active": { "role": "secondary", "displayName": "Copying-Pencil Violet", "canonical": "#6a3fb5", "tonalRamp": ["#1d0f36", "#2f1957", "#432579", "#57319a", "#6a3fb5", "#9373cc", "#bca8e2", "#e7def5"] },
+      "rail": { "role": "neutral", "displayName": "Rail Green-Graphite", "canonical": "#123a31", "tonalRamp": ["#081a16", "#0d2a23", "#123a31", "#1b4b40", "#3a6a5e", "#6f978c", "#a9c4ba", "#e6f0eb"] },
+      "sheet": { "role": "neutral", "displayName": "Drafting Paper", "canonical": "#f6f8f2", "tonalRamp": ["#1b2422", "#4c5955", "#6c7873", "#9aa8a2", "#cfd8d3", "#e9eee9", "#f6f8f2", "#fbfcfa"] },
+      "error": { "role": "tertiary", "displayName": "Drafting Red", "canonical": "#b3372c" }
+    },
+    "shadows": [
+      { "name": "float", "value": "0 2px 8px rgba(18,40,33,0.12)", "purpose": "View tools floating on the sheet." },
+      { "name": "overlay", "value": "0 6px 24px rgba(18,40,33,0.16), 0 1px 3px rgba(18,40,33,0.12)", "purpose": "Popovers, toasts, error bubble." }
+    ],
+    "motion": [
+      { "name": "state", "value": "150ms ease-out", "purpose": "Button background and border changes." },
+      { "name": "toast-in", "value": "200ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Toast entrance." }
+    ],
+    "breakpoints": [
+      { "name": "compact", "value": "1100px" },
+      { "name": "stacked", "value": "860px" },
+      { "name": "narrow", "value": "420px" }
+    ]
+  },
+  "components": [
+    { "name": "Primary Button", "kind": "button", "refersTo": "button-primary", "description": "One per area: Uruchom, Sprawdź.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 20 20\" width=\"18\" height=\"18\"><path d=\"M6.5 4.5v11l9-5.5z\" fill=\"currentColor\"/></svg>Uruchom</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid #12765d;border-radius:6px;background:#12765d;color:#fff;font:600 15px ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 150ms ease-out}.ds-btn-primary:hover{background:#0f6650}.ds-btn-primary:focus-visible{outline:none;box-shadow:0 0 0 2px #f8faf7,0 0 0 4px #2b6fb3}" },
+    { "name": "Secondary Button", "kind": "button", "refersTo": "button-secondary", "description": "Krok, Pauza, Reset and other actions.",
+      "html": "<button class=\"ds-btn\">Krok</button>",
+      "css": ".ds-btn{height:36px;padding:0 12px;border:1px solid #aab7b1;border-radius:6px;background:#f8faf7;color:#1b2422;font:500 15px ui-sans-serif,system-ui,sans-serif;cursor:pointer}.ds-btn:hover{background:#eef2ee;border-color:#6c7873}.ds-btn:focus-visible{outline:none;box-shadow:0 0 0 2px #f8faf7,0 0 0 4px #2b6fb3}" },
+    { "name": "Mode Switch", "kind": "chip", "description": "2D/3D radiogroup; selected is ink on paper.",
+      "html": "<div class=\"ds-seg\"><button aria-checked=\"true\">2D</button><button>3D</button></div>",
+      "css": ".ds-seg{display:inline-flex;border:1px solid #aab7b1;border-radius:6px;overflow:hidden;height:36px}.ds-seg button{border:0;background:#f8faf7;padding:0 14px;font:600 15px ui-sans-serif,system-ui,sans-serif;color:#4c5955}.ds-seg button+button{border-left:1px solid #aab7b1}.ds-seg button[aria-checked=true]{background:#1b2422;color:#f8faf7}" },
+    { "name": "Header Rail", "kind": "nav", "refersTo": "rail", "description": "Committed green-graphite shell with route underline.",
+      "html": "<nav class=\"ds-rail\"><b>Logomocja</b><a aria-current=\"page\">Studio</a><a>Wyzwania</a><a>Pomoc</a></nav>",
+      "css": ".ds-rail{display:flex;align-items:center;gap:20px;height:52px;padding:0 16px;background:#123a31;color:#e6f0eb;font:15px ui-sans-serif,system-ui,sans-serif}.ds-rail a{color:#a9c4ba;padding:14px 4px;border-bottom:2px solid transparent}.ds-rail a[aria-current]{color:#e6f0eb;border-bottom-color:#3fbf98}" },
+    { "name": "Title Block", "kind": "custom", "refersTo": "title-block", "description": "Signature: live ruled readout on the drafting sheet.",
+      "html": "<dl class=\"ds-tb\"><div class=\"n\"><dt>Arkusz</dt><dd>Rozeta</dd></div><div><dt>Tryb</dt><dd>2D</dd></div><div><dt>Skala</dt><dd>100%</dd></div><div><dt>Odcinki</dt><dd>48</dd></div><div><dt>Kierunek</dt><dd>0°</dd></div></dl>",
+      "css": ".ds-tb{display:grid;grid-template-columns:repeat(4,auto);gap:1px;margin:0;background:#1b2422;border:1.5px solid #1b2422;font:12px/1.25 ui-sans-serif,system-ui,sans-serif;width:max-content}.ds-tb>div{background:#f6f8f2;padding:4px 8px 5px}.ds-tb .n{grid-column:1/-1;display:flex;gap:10px}.ds-tb dt{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#4c5955}.ds-tb dd{margin:0;font-weight:600}" },
+    { "name": "Error Bubble", "kind": "custom", "description": "Inline Polish error message under the offending line.",
+      "html": "<div class=\"ds-bubble\">Nieznane polecenie „kwadrat”.</div>",
+      "css": ".ds-bubble{display:inline-block;padding:6px 10px;border-radius:6px;background:#b3372c;color:#fff;font:600 12.5px/1.4 ui-sans-serif,system-ui,sans-serif;box-shadow:0 6px 24px rgba(18,40,33,.16)}" }
+  ],
+  "narrative": {
+    "northStar": "The Drafting Sheet",
+    "overview": "A standard editor-and-canvas tool whose drawing area is a technical-drawing sheet: cool paper, millimetre grid, rulers, frame line and a live title block. Pen green acts; copying-pencil violet marks only what executes now; red is reserved for errors.",
+    "keyCharacteristics": ["Live title block on the sheet", "Real grid and rulers on a canvas", "Violet only for execution state", "System sans UI, mono only for code"],
+    "rules": [
+      { "name": "The Copying-Pencil Rule", "body": "Violet marks the executing line, the turtle, the newest segment and the running title block, and nothing else.", "section": "colors" },
+      { "name": "Red Means Error", "body": "Drafting red appears only on errors.", "section": "colors" }
+    ],
+    "dos": ["Keep the drawing the largest element", "Name errors with line, column and a recovery"],
+    "donts": ["No kickers, gradient text or glass", "No coloured side stripes on list items or cards", "No mono outside code"]
+  }
+}
