@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-03T10:07:37.373541Z",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "spot-green": {
+        "role": "primary",
+        "displayName": "Textbook Spot Green",
+        "tonalRamp": [
+          "#052a21",
+          "#083f33",
+          "#0a5a47",
+          "#0d6b55",
+          "#2f8a72",
+          "#5fa894",
+          "#a3cdbf",
+          "#dcebe4"
+        ]
+      },
+      "highlighter": {
+        "role": "secondary",
+        "displayName": "Highlighter Yellow",
+        "tonalRamp": [
+          "#5c4a00",
+          "#8a6e00",
+          "#b89300",
+          "#f5c400",
+          "#f7d23e",
+          "#f9df77",
+          "#fbebb0",
+          "#fdf6dd"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Print Ink",
+        "tonalRamp": [
+          "#17201c",
+          "#2b3530",
+          "#4b5650",
+          "#5c6660",
+          "#87938c",
+          "#a3aca3",
+          "#d3d8d0",
+          "#eef0eb"
+        ]
+      },
+      "danger": {
+        "role": "state",
+        "displayName": "Danger Red"
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Help sections and task titles."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Editor, samples, key names."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "0 10px 28px rgb(23 32 28 / 0.16), 0 2px 6px rgb(23 32 28 / 0.08)",
+        "purpose": "Popovers, toasts, notices only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "150ms ease-out",
+        "purpose": "Hover and selection transitions."
+      },
+      {
+        "name": "toast-in",
+        "value": "200ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Toast entrance."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-toolbar",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "860px"
+      }
+    ],
+    "darkTheme": {
+      "paper": "#111613",
+      "sheet": "#161c19",
+      "panel": "#1e2622",
+      "ink": "#e4ebe6",
+      "spot-green": "#0d5a48",
+      "spot-ink": "#5fcca8",
+      "highlighter": "#f2c934",
+      "danger": "#ff8f84"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Run and other primary actions.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Uruchom</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border:1px solid #a3aca3;border-radius:6px;background:#fbfcfa;color:#17201c;font:700 14px/1 Lato,system-ui,sans-serif;cursor:pointer;transition:background-color 150ms ease-out}.ds-btn:hover{background:#e8ebe5}.ds-btn:focus-visible{outline:2px solid #0b5e4a;outline-offset:2px}.ds-btn-primary{background:#0d6b55;border-color:#0d6b55;color:#f3f7f4}.ds-btn-primary:hover{background:#0a5a47;border-color:#0a5a47}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Krok, Pauza, Reset.",
+      "html": "<button class=\"ds-btn2\">Krok</button>",
+      "css": ".ds-btn2{height:34px;padding:0 12px;border:1px solid #a3aca3;border-radius:6px;background:#fbfcfa;color:#17201c;font:700 14px/1 Lato,system-ui,sans-serif;cursor:pointer}.ds-btn2:hover{background:#e8ebe5}.ds-btn2:focus-visible{outline:2px solid #0b5e4a;outline-offset:2px}"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Sprawdź in tasks.",
+      "html": "<button class=\"ds-acc\">Sprawdź</button>",
+      "css": ".ds-acc{height:34px;padding:0 12px;border:1px solid #0b5e4a;border-radius:6px;background:#dcebe4;color:#0b5e4a;font:700 14px/1 Lato,system-ui,sans-serif;cursor:pointer}.ds-acc:focus-visible{outline:2px solid #0b5e4a;outline-offset:2px}"
+    },
+    {
+      "name": "Navigation Band",
+      "kind": "nav",
+      "description": "Spot-green header with tab links.",
+      "html": "<nav class=\"ds-band\"><a aria-current=\"page\">Pracownia</a><a>Przykłady</a><a>Zadania</a><a>Pomoc</a></nav>",
+      "css": ".ds-band{display:flex;height:52px;background:#0d6b55;padding:0 16px}.ds-band a{display:flex;align-items:center;padding:3px 12px 0;border-bottom:3px solid transparent;color:#dbe6e2;font:700 14.5px Lato,sans-serif;cursor:pointer}.ds-band a:hover{color:#f3f7f4}.ds-band a[aria-current]{color:#f3f7f4;border-bottom-color:#f3f7f4}"
+    },
+    {
+      "name": "Figure Caption",
+      "kind": "custom",
+      "description": "Signature: every drawing captioned as a textbook figure.",
+      "html": "<p class=\"ds-cap\"><b>Rys. 4.</b> <strong>Gwiazda</strong> <span>5 odcinków · łączna długość 900 · 11 operacji · 2D</span></p>",
+      "css": ".ds-cap{display:flex;gap:8px;align-items:baseline;padding:11px 16px;border-top:1px solid #d3d8d0;background:#fbfcfa;font:14px Lato,sans-serif;margin:0}.ds-cap b{color:#0b5e4a;font-weight:900}.ds-cap strong{font-weight:700;color:#17201c}.ds-cap span{color:#4b5650;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Exercise Number",
+      "kind": "chip",
+      "refersTo": "exercise-number",
+      "description": "Numbered task marker.",
+      "html": "<span class=\"ds-zad\">3</span>",
+      "css": ".ds-zad{display:inline-grid;place-items:center;min-width:26px;height:26px;padding:0 6px;border-radius:4px;background:#0d6b55;color:#f3f7f4;font:900 14px Lato,sans-serif}"
+    },
+    {
+      "name": "Segmented Mode Switch",
+      "kind": "custom",
+      "description": "2D / 3D radios.",
+      "html": "<div class=\"ds-seg\"><span class=\"on\">2D</span><span>3D</span></div>",
+      "css": ".ds-seg{display:inline-flex;padding:2px;border:1px solid #a3aca3;border-radius:8px;background:#fbfcfa}.ds-seg span{display:inline-flex;align-items:center;height:28px;padding:0 14px;border-radius:5px;font:900 13.5px Lato,sans-serif;color:#4b5650}.ds-seg span.on{background:#0d6b55;color:#f3f7f4}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Two-Colour Textbook",
+    "keyCharacteristics": [
+      "Spot green owns the header band, primary actions, figure and exercise numbers; nothing else is green but syntax and drawings.",
+      "Highlighter yellow means “now”: the executing line and the turtle.",
+      "The drawing sheet has a real measuring grid, origin, axes and a scale bar (podziałka).",
+      "Hairline rules divide everything; elevation is reserved for overlays."
+    ],
+    "rules": [
+      {
+        "name": "The One Spot Rule",
+        "section": "colors",
+        "body": "The shell is printed in ink plus one spot green. A new UI colour must carry state or data, never decoration."
+      },
+      {
+        "name": "The Highlighter Rule",
+        "section": "colors",
+        "body": "Yellow marks only what is happening now (the executing line and the turtle). Never brand, emphasis or hover."
+      },
+      {
+        "name": "The Weight-Not-Size Rule",
+        "section": "typography",
+        "body": "Rank with Lato's 700 and 900 inside a tight 12–30px range; do not add display sizes to working screens."
+      },
+      {
+        "name": "The Registration Rule",
+        "section": "layout",
+        "body": "Rows that face each other across panes share one height; a new bar takes 52px or 44px, nothing in between."
+      },
+      {
+        "name": "The Print Rule",
+        "section": "elevation",
+        "body": "Surfaces at rest have no shadow; one border or one shadow, never both on a resting element."
+      }
+    ],
+    "dos": [
+      "Do caption every drawing as a numbered figure and number every task like a textbook exercise.",
+      "Do keep the shell to ink plus spot green, with state colours only where they mean something.",
+      "Do keep facing bars at 52px and footers at 44px across panes.",
+      "Do use hairline rules (1px rule) to divide regions and packed whole-cell grids for catalogues."
+    ],
+    "donts": [
+      "Don't use highlighter yellow for anything except the executing line and the turtle.",
+      "Don't add shadows to resting surfaces or wrap content in cards.",
+      "Don't set UI labels in the mono face; mono is for code, keys and data.",
+      "Don't drift toward cream paper or a dark-IDE-with-neon look; both are refused by this world's thesis."
+    ]
+  }
+}
