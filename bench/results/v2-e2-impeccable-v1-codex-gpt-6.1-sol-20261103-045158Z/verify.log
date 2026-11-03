@@ -1,0 +1,88 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/node@26.6.6
++ typescript@5.9.3
++ vite@7.3.7
++ @fontsource-variable/jetbrains-mono@5.3.0
++ @fontsource-variable/manrope@5.3.0
+
+21 packages installed [12.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 12 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                    0.86 kB │ gzip:  0.50 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2   7.50 kB
+dist/assets/manrope-vietnamese-wght-normal-usUDDRr7.woff2          8.52 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2        9.00 kB
+dist/assets/manrope-greek-wght-normal-DL7QRZyv.woff2               9.44 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2    12.11 kB
+dist/assets/manrope-cyrillic-wght-normal-Dvxsihut.woff2           14.50 kB
+dist/assets/manrope-latin-ext-wght-normal-Ch3YOpNY.woff2          15.12 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2   15.20 kB
+dist/assets/manrope-latin-wght-normal-DHIcAJRg.woff2              24.84 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2       40.40 kB
+dist/assets/index-AlMKyYMA.css                                    39.87 kB │ gzip: 12.57 kB
+dist/assets/index-CeOBbXz3.js                                     70.43 kB │ gzip: 26.33 kB
+✓ built in 142ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) lexing and expressions > all standard programs run [21.10ms]
+(pass) lexing and expressions > precedence, associativity, signs, decimals [0.22ms]
+(pass) lexing and expressions > binary whitespace rule [0.12ms]
+(pass) lexing and expressions > invalid number forms [0.03ms]
+(pass) lexing and expressions > exact comparisons [0.10ms]
+(pass) lexing and expressions > comments and tokens [0.03ms]
+(pass) validation and positions > whole source validation leaves drawing empty [0.06ms]
+(pass) validation and positions > missing and stray arguments [0.09ms]
+(pass) validation and positions > runtime errors keep prior segments and argument location [0.10ms]
+(pass) validation and positions > unassigned vs undeclared [0.05ms]
+(pass) validation and positions > literal invalid widths/repeats even in skipped branches [0.11ms]
+(pass) validation and positions > malformed colors [0.04ms]
+(pass) validation and positions > 3D command in 2D validates even unreachable code [0.49ms]
+(pass) scope and control flow > nested lexical repeat counts [0.35ms]
+(pass) scope and control flow > zero repeats, stop, clear, home, pen [0.15ms]
+(pass) scope and control flow > procedure forward calls, legacy headers and argument expressions [0.05ms]
+(pass) scope and control flow > locals, parameters and global reassignment [0.06ms]
+(pass) scope and control flow > parameter can share procedure name [0.03ms]
+(pass) scope and control flow > recursive stop ends enclosing call [0.05ms]
+(pass) scope and control flow > definition errors [0.04ms]
+(pass) geometry and limits > flat identical in both modes [15.74ms]
+(pass) geometry and limits > right-handed pitch and roll [0.10ms]
+(pass) geometry and limits > home preserves style [0.04ms]
+(pass) geometry and limits > coordinate boundary [0.05ms]
+(pass) geometry and limits > source, tokens and bracket nesting limits [1.08ms]
+(pass) geometry and limits > active frames and executed operations [3.07ms]
+(pass) geometry and limits > conditional completion counts and conditions do not add frames [0.12ms]
+(pass) geometry and limits > step and run agree [15.49ms]
+(pass) long expressions use the published token limit, not the JavaScript call stack [4.25ms]
+(pass) command aliases are equivalent, including accented and uppercase words [0.24ms]
+(pass) legal names do not collide with JavaScript object properties [0.02ms]
+(pass) a stopped procedure still counts its completed call [0.03ms]
+
+tests/challenges.test.ts:
+(pass) challenge square accepts target and rejects wrong/empty drawing [0.85ms]
+(pass) challenge triangle accepts target and rejects wrong/empty drawing [0.19ms]
+(pass) challenge star accepts target and rejects wrong/empty drawing [0.36ms]
+(pass) challenge dashes accepts target and rejects wrong/empty drawing [0.09ms]
+(pass) challenge stairs accepts target and rejects wrong/empty drawing [0.21ms]
+(pass) square can be drawn with split segments and different style [0.18ms]
+
+ 38 pass
+ 0 fail
+ 318 expect() calls
+Ran 38 tests across 2 files. [74.00ms]
+(exit 0)

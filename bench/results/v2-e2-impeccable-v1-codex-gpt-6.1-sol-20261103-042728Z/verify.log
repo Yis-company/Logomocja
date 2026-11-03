@@ -1,0 +1,254 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ typescript@5.9.3
++ vite@7.3.7
++ @fontsource-variable/jetbrains-mono@5.3.0
++ @fontsource-variable/manrope@5.3.0
+
+19 packages installed [10.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 11 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                    0.60 kB │ gzip:  0.36 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2   7.50 kB
+dist/assets/manrope-vietnamese-wght-normal-usUDDRr7.woff2          8.52 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2        9.00 kB
+dist/assets/manrope-greek-wght-normal-DL7QRZyv.woff2               9.44 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2    12.11 kB
+dist/assets/manrope-cyrillic-wght-normal-Dvxsihut.woff2           14.50 kB
+dist/assets/manrope-latin-ext-wght-normal-Ch3YOpNY.woff2          15.12 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2   15.20 kB
+dist/assets/manrope-latin-wght-normal-DHIcAJRg.woff2              24.84 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2       40.40 kB
+dist/assets/index-D4lP6rw7.css                                    38.72 kB │ gzip: 12.25 kB
+dist/assets/index-BvqJSzMh.js                                     61.15 kB │ gzip: 22.81 kB
+✓ built in 128ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) przykłady > kwadrat [2.00ms]
+(pass) przykłady > gwiazda [0.25ms]
+(pass) przykłady > rozeta [0.51ms]
+(pass) przykłady > spirala [0.91ms]
+(pass) przykłady > wielokaty [0.46ms]
+(pass) przykłady > drzewo [3.46ms]
+(pass) przykłady > sniezynka [3.68ms]
+(pass) przykłady > schody [0.08ms]
+(pass) przykłady > szescian [0.45ms]
+(pass) przykłady > pierscien [1.38ms]
+(pass) przykłady > kula [0.61ms]
+(pass) przykłady > helisa [0.57ms]
+(pass) przykłady > drzewo3d [2.83ms]
+(pass) leksyka i wyrażenia > 20 - 5 - 3 [0.12ms]
+(pass) leksyka i wyrażenia > 2 + 3 * 4 [0.02ms]
+(pass) leksyka i wyrażenia > 10-5
+(pass) leksyka i wyrażenia > 10 - 5
+(pass) leksyka i wyrażenia > -(3 - 5) [0.02ms]
+(pass) leksyka i wyrażenia > - -2 [0.01ms]
+(pass) leksyka i wyrażenia > + - -2
+(pass) leksyka i wyrażenia > .5 [0.01ms]
+(pass) leksyka i wyrażenia > 12.5
+(pass) leksyka i wyrażenia > (2+3)*4 [0.01ms]
+(pass) leksyka i wyrażenia > 8 / 2 / 2 [0.05ms]
+(pass) leksyka i wyrażenia > 10+-5 [0.03ms]
+(pass) leksyka i wyrażenia > błędna liczba 1e3 [0.41ms]
+(pass) leksyka i wyrażenia > błędna liczba 0x10 [0.02ms]
+(pass) leksyka i wyrażenia > błędna liczba NaN [0.01ms]
+(pass) leksyka i wyrażenia > błędna liczba Infinity [0.01ms]
+(pass) leksyka i wyrażenia > błędna liczba 12.
+(pass) leksyka i wyrażenia > błędna liczba 1.2.3 [0.03ms]
+(pass) leksyka i wyrażenia > odstępy 10 -5 [0.02ms]
+(pass) leksyka i wyrażenia > odstępy 10- 5 [0.01ms]
+(pass) leksyka i wyrażenia > odstępy 10 +5 [0.10ms]
+(pass) leksyka i wyrażenia > odstępy 10 *5 [0.02ms]
+(pass) leksyka i wyrażenia > odstępy 10 /5 [0.02ms]
+(pass) leksyka i wyrażenia > komentarz i wielkość liter [0.41ms]
+(pass) leksyka i wyrażenia > unicode i legacy [0.04ms]
+(pass) leksyka i wyrażenia > dokładne porównanie [0.02ms]
+(pass) leksyka i wyrażenia > porównanie < [0.03ms]
+(pass) leksyka i wyrażenia > porównanie > [0.01ms]
+(pass) leksyka i wyrażenia > porównanie = [0.05ms]
+(pass) leksyka i wyrażenia > porównanie <= [0.02ms]
+(pass) leksyka i wyrażenia > porównanie >= [0.01ms]
+(pass) leksyka i wyrażenia > porównanie <> [0.01ms]
+(pass) geometria > początek i skręt w prawo [0.01ms]
+(pass) geometria > obrót w lewo [0.01ms]
+(pass) geometria > ruch wstecz i ujemny kąt
+(pass) geometria > pisak i ruch zerowy [0.03ms]
+(pass) geometria > dom rysuje i resetuje orientację [0.05ms]
+(pass) geometria > dom z podniesionym pisakiem [0.01ms]
+(pass) geometria > czyść zachowuje stan [2.08ms]
+(pass) geometria > płaszczyzna identyczna [0.14ms]
+(pass) geometria > pitch [0.02ms]
+(pass) geometria > pitchdown [0.01ms]
+(pass) geometria > rollright [0.01ms]
+(pass) geometria > rollleft [0.01ms]
+(pass) geometria > prawo po pochyleniu
+(pass) geometria > gora w 2D [0.02ms]
+(pass) geometria > góra w 2D [0.01ms]
+(pass) geometria > pitchup w 2D
+(pass) geometria > dol w 2D
+(pass) geometria > dół w 2D
+(pass) geometria > pitchdown w 2D
+(pass) geometria > pp w 2D
+(pass) geometria > rr w 2D
+(pass) geometria > rollright w 2D
+(pass) geometria > pl w 2D
+(pass) geometria > rl w 2D
+(pass) geometria > rollleft w 2D
+(pass) zmienne i sterowanie > pętla 0 [0.01ms]
+(pass) zmienne i sterowanie > licznik wewnętrzny [0.04ms]
+(pass) zmienne i sterowanie > licznik w warunku [0.02ms]
+(pass) zmienne i sterowanie > przypisanie i zmiana [0.03ms]
+(pass) zmienne i sterowanie > stop główny w pętli [0.03ms]
+(pass) zmienne i sterowanie > zmienna zadeklarowana później [0.05ms]
+(pass) zmienne i sterowanie > deklaracja w niewykonanym warunku [0.02ms]
+(pass) zmienne i sterowanie > nieznana zmienna [0.03ms]
+(pass) zmienne i sterowanie > licznik poza pętlą [0.01ms]
+(pass) zmienne i sterowanie > wartość zamiast polecenia
+(pass) zmienne i sterowanie > zmienna jak polecenie [0.05ms]
+(pass) zmienne i sterowanie > złe powtórzenie zależne od nazwy [0.05ms]
+(pass) procedury > wywołanie przed definicją [0.06ms]
+(pass) procedury > nagłówek legacy [0.02ms]
+(pass) procedury > parametr jak procedura [0.02ms]
+(pass) procedury > argumenty są wyrażeniami [0.03ms]
+(pass) procedury > lokalność i przesłanianie [0.03ms]
+(pass) procedury > parametr można zmieniać [0.02ms]
+(pass) procedury > lokalne nazwy nie wyciekają [0.02ms]
+(pass) procedury > stop kończy procedurę [0.02ms]
+(pass) procedury > rekurencja [0.02ms]
+(pass) procedury > wzajemna rekurencja [0.03ms]
+(pass) procedury > licznik nie jest dynamiczny [0.02ms]
+(pass) procedury > duplikat procedury [0.01ms]
+(pass) procedury > definicja w bloku [0.02ms]
+(pass) procedury > definicja w procedurze [0.01ms]
+(pass) procedury > brak końca [0.02ms]
+(pass) procedury > zły koniec [0.02ms]
+(pass) procedury > nagłówek nie na początku linii [0.02ms]
+(pass) procedury > za mało argumentów [0.05ms]
+(pass) procedury > za dużo argumentów [0.02ms]
+(pass) procedury > zmienna jak procedura [0.01ms]
+(pass) błędy i limity > walidacja całości [0.01ms]
+(pass) błędy i limity > zła stała grubość 0 [0.03ms]
+(pass) błędy i limity > zła stała grubość 13 [0.01ms]
+(pass) błędy i limity > zła stała grubość 1.5
+(pass) błędy i limity > zła stała grubość (3 * 5) [0.02ms]
+(pass) błędy i limity > zła stała grubość -1 [0.01ms]
+(pass) błędy i limity > zła stała liczba powtórzeń -1 [0.02ms]
+(pass) błędy i limity > zła stała liczba powtórzeń 10001 [0.01ms]
+(pass) błędy i limity > zła stała liczba powtórzeń .5
+(pass) błędy i limity > niewykonana błędna stała [0.02ms]
+(pass) błędy i limity > dzielenie przez zero podczas wykonania [0.02ms]
+(pass) błędy i limity > czyść przed błędem [0.02ms]
+(pass) błędy i limity > błąd grubości z nazwy [0.02ms]
+(pass) błędy i limity > błędny kolor [0.01ms]
+(pass) błędy i limity > brak argumentu
+(pass) błędy i limity > argument przy nawiasie [0.01ms]
+(pass) błędy i limity > argument przy nawiasie okrągłym
+(pass) błędy i limity > nadmiarowy nawias [0.01ms]
+(pass) błędy i limity > brak nawiasu [0.05ms]
+(pass) błędy i limity > głębokość nawiasów [0.06ms]
+(pass) błędy i limity > liczba ramek [0.10ms]
+(pass) błędy i limity > warunki nie liczą ramek [0.12ms]
+(pass) błędy i limity > limit operacji i częściowy wynik [2.00ms]
+(pass) błędy i limity > puste pętle liczą obiegi [0.56ms]
+(pass) błędy i limity > koszt wywołania i warunku [0.06ms]
+(pass) błędy i limity > limit współrzędnych [0.04ms]
+(pass) błędy i limity > limit znaków [0.03ms]
+(pass) błędy i limity > limit tokenów [0.73ms]
+(pass) błędy i limity > krokowe identyczne z pełnym [0.30ms]
+(pass) zadania > kwadrat100 [1.03ms]
+(pass) zadania > trojkat [0.93ms]
+(pass) zadania > gwiazda100 [0.60ms]
+(pass) zadania > okna [0.11ms]
+(pass) zadania > schody3d [0.32ms]
+(pass) zadania > szescian80 [1.90ms]
+(pass) zadania > podział krawędzi [0.32ms]
+(pass) wszystkie aliasy > np [0.02ms]
+(pass) wszystkie aliasy > naprzod
+(pass) wszystkie aliasy > naprzód [0.01ms]
+(pass) wszystkie aliasy > fd
+(pass) wszystkie aliasy > forward
+(pass) wszystkie aliasy > ws
+(pass) wszystkie aliasy > wstecz
+(pass) wszystkie aliasy > bk
+(pass) wszystkie aliasy > back
+(pass) wszystkie aliasy > pw
+(pass) wszystkie aliasy > prawo
+(pass) wszystkie aliasy > rt
+(pass) wszystkie aliasy > right
+(pass) wszystkie aliasy > lw
+(pass) wszystkie aliasy > lewo
+(pass) wszystkie aliasy > lt
+(pass) wszystkie aliasy > left
+(pass) wszystkie aliasy > pod
+(pass) wszystkie aliasy > podnies
+(pass) wszystkie aliasy > podnieś
+(pass) wszystkie aliasy > pu
+(pass) wszystkie aliasy > penup
+(pass) wszystkie aliasy > opu
+(pass) wszystkie aliasy > opusc
+(pass) wszystkie aliasy > opuść
+(pass) wszystkie aliasy > pd
+(pass) wszystkie aliasy > pendown
+(pass) wszystkie aliasy > kolor
+(pass) wszystkie aliasy > color
+(pass) wszystkie aliasy > grubosc
+(pass) wszystkie aliasy > grubość
+(pass) wszystkie aliasy > width
+(pass) wszystkie aliasy > powtorz
+(pass) wszystkie aliasy > powtórz
+(pass) wszystkie aliasy > repeat
+(pass) wszystkie aliasy > niech
+(pass) wszystkie aliasy > let
+(pass) wszystkie aliasy > jeśli
+(pass) wszystkie aliasy > jesli
+(pass) wszystkie aliasy > if
+(pass) wszystkie aliasy > jeżeli
+(pass) wszystkie aliasy > jezeli
+(pass) wszystkie aliasy > ifelse
+(pass) wszystkie aliasy > stop
+(pass) wszystkie aliasy > dom [0.01ms]
+(pass) wszystkie aliasy > home
+(pass) wszystkie aliasy > czyść
+(pass) wszystkie aliasy > czysc
+(pass) wszystkie aliasy > cs
+(pass) wszystkie aliasy > clearscreen
+(pass) wszystkie aliasy > gora
+(pass) wszystkie aliasy > góra
+(pass) wszystkie aliasy > pitchup
+(pass) wszystkie aliasy > dol
+(pass) wszystkie aliasy > dół
+(pass) wszystkie aliasy > pitchdown
+(pass) wszystkie aliasy > pp [0.01ms]
+(pass) wszystkie aliasy > przechylprawo
+(pass) wszystkie aliasy > rr
+(pass) wszystkie aliasy > rollright
+(pass) wszystkie aliasy > pl
+(pass) wszystkie aliasy > przechyllewo
+(pass) wszystkie aliasy > rl
+(pass) wszystkie aliasy > rollleft
+(pass) długie poprawne wyrażenia > nawiasy okrągłe bez dodatkowego limitu [1.79ms]
+(pass) długie poprawne wyrażenia > długi łańcuch sum [1.73ms]
+(pass) długie poprawne wyrażenia > znaki jednoargumentowe [0.72ms]
+(pass) długie poprawne wyrażenia > argumenty oddzielone odstępem [0.07ms]
+(pass) długie poprawne wyrażenia > bardzo mały ruch [0.02ms]
+
+ 207 pass
+ 0 fail
+ 4729 expect() calls
+Ran 207 tests across 1 file. [41.00ms]
+(exit 0)

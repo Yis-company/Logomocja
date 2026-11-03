@@ -1,0 +1,100 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ vite@6.4.5
++ @fontsource-variable/inter@5.3.0
++ @fontsource-variable/jetbrains-mono@5.3.0
+
+18 packages installed [5.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 10 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                    0.73 kB │ gzip:  0.42 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2   7.50 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2        9.00 kB
+dist/assets/inter-vietnamese-wght-normal-CBcvBZtf.woff2           10.25 kB
+dist/assets/inter-greek-ext-wght-normal-DlzME5K_.woff2            11.23 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2    12.11 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2   15.20 kB
+dist/assets/inter-cyrillic-wght-normal-DqGufNeO.woff2             18.75 kB
+dist/assets/inter-greek-wght-normal-CkhJZR-_.woff2                19.00 kB
+dist/assets/inter-cyrillic-ext-wght-normal-BOeWTOD4.woff2         25.96 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2       40.40 kB
+dist/assets/inter-latin-wght-normal-Dx4kXJAl.woff2                48.26 kB
+dist/assets/inter-latin-ext-wght-normal-DO1Apj_S.woff2            85.07 kB
+dist/assets/index-C42Ws0A6.css                                    30.40 kB │ gzip:  8.60 kB
+dist/assets/index-CSfzfbG2.js                                     58.10 kB │ gzip: 22.38 kB
+✓ built in 116ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) Standardowe programy > Kwadrat [2.17ms]
+(pass) Standardowe programy > Gwiazda [0.19ms]
+(pass) Standardowe programy > Rozeta [0.46ms]
+(pass) Standardowe programy > Spirala [0.84ms]
+(pass) Standardowe programy > Wielokąty [0.47ms]
+(pass) Standardowe programy > Drzewo [5.58ms]
+(pass) Standardowe programy > Śnieżynka [5.83ms]
+(pass) Standardowe programy > Schody [0.09ms]
+(pass) Standardowe programy > Sześcian [0.08ms]
+(pass) Standardowe programy > Pierścień [0.07ms]
+(pass) Standardowe programy > Kula [0.65ms]
+(pass) Standardowe programy > Helisa [0.36ms]
+(pass) Standardowe programy > Drzewo 3D [5.93ms]
+(pass) Leksyka i wyrażenia > wielkość liter, komentarze, liczby i aliasy [0.31ms]
+(pass) Leksyka i wyrażenia > precedencja, łączność i znaki [0.11ms]
+(pass) Leksyka i wyrażenia > odstępy wokół operatorów [0.23ms]
+(pass) Leksyka i wyrażenia > błędne liczby [0.06ms]
+(pass) Leksyka i wyrażenia > nawiasy, brakujące argumenty i zbędne wartości [0.09ms]
+(pass) Leksyka i wyrażenia > kolory [0.04ms]
+(pass) Leksyka i wyrażenia > pozycje argumentów przy błędach wykonania [0.10ms]
+(pass) Zmienne, zakresy i procedury > deklaracja w przód i brak wartości [0.05ms]
+(pass) Zmienne, zakresy i procedury > lokalne przypisania i parametry [0.10ms]
+(pass) Zmienne, zakresy i procedury > parametr może mieć nazwę procedury i można go zmienić [0.05ms]
+(pass) Zmienne, zakresy i procedury > lokalna zmienna nie wycieka [0.02ms]
+(pass) Zmienne, zakresy i procedury > procedury w przód i legacy [0.04ms]
+(pass) Zmienne, zakresy i procedury > rekurencja, warunki i stop [0.09ms]
+(pass) Zmienne, zakresy i procedury > brak i nadmiar argumentów [0.04ms]
+(pass) Zmienne, zakresy i procedury > błędne definicje [0.08ms]
+(pass) Zmienne, zakresy i procedury > nrpowt leksykalnie i wewnętrzna pętla [0.13ms]
+(pass) Zmienne, zakresy i procedury > warunki dokładne i obie gałęzie [0.06ms]
+(pass) Geometria > flat identyczny w obu trybach [0.35ms]
+(pass) Geometria > ruch zerowy i dom [0.06ms]
+(pass) Geometria > pitch i roll w osiach lokalnych [0.04ms]
+(pass) Geometria > 3D zakazane w 2D nawet w nieużywanej gałęzi [0.05ms]
+(pass) Geometria > czyść zachowuje stan i poprzedza błąd [0.04ms]
+(pass) Limity i walidacja > szerokość i repeat: stałe przed rysowaniem, zmienne w trakcie [0.17ms]
+(pass) Limity i walidacja > repeat 0 nic nie wykonuje [0.02ms]
+(pass) Limity i walidacja > współrzędne [0.02ms]
+(pass) Limity i walidacja > limit operacji i zachowanie rysunku [3.22ms]
+(pass) Limity i walidacja > precyzyjne liczenie operacji [0.16ms]
+(pass) Limity i walidacja > ramki rekurencji [0.12ms]
+(pass) Limity i walidacja > warunki nie tworzą ramek [0.12ms]
+(pass) Limity i walidacja > limit zagnieżdżenia [0.05ms]
+(pass) Limity i walidacja > źródło i tokeny [0.93ms]
+(pass) Pełny zestaw aliasów > ruch i skręty [0.12ms]
+(pass) Pełny zestaw aliasów > pisak, kolor i grubość [0.09ms]
+(pass) Pełny zestaw aliasów > kontrola przepływu [0.11ms]
+(pass) Pełny zestaw aliasów > dom i ekran [0.05ms]
+(pass) Pełny zestaw aliasów > obrót przestrzenny [0.17ms]
+(pass) Pełny zestaw aliasów > nazwy i zakończenia [0.07ms]
+(pass) Pełny zestaw aliasów > ogromny skończony kąt nie psuje orientacji [0.11ms]
+(pass) wyrażenia przy granicy tokenów nie zależą od stosu JavaScript [6.96ms]
+
+ 52 pass
+ 0 fail
+ 450 expect() calls
+Ran 52 tests across 1 file. [41.00ms]
+(exit 0)
