@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router";
 import type { RunResult } from "../../bench/result";
-import { conformanceRate, groupByVersion } from "../benchmark";
+import { conformanceRate, groupByVersion, layerName } from "../benchmark";
 import { Frame, FramePanel } from "../components/reui/frame";
 
 const results = Object.values(
@@ -166,9 +166,12 @@ export function Benchmark() {
         return (
           <Frame key={`${version}-${layer}`} className="reference-block">
             <FramePanel>
-              <h2>{layer === "base" ? `Wersja ${version}` : `Impeccable · ${version} · ${layer}`}</h2>
+              <h2>{layer === "base" ? `Wersja ${version}` : `${layerName(layer)} · ${version} · ${layer}`}</h2>
               {layer !== "base" ? (
-                <p>Oddzielna warstwa projektowa: Impeccable {runs[0].layer?.skillVersion}. Ten sam opis produktu, nowe aplikacje od zera.
+                <p>Oddzielna warstwa: {layerName(layer)}.
+                  {runs[0].layer?.skillVersion ? ` Impeccable ${runs[0].layer.skillVersion}.` : ""}
+                  {runs[0].layer?.tddSourceCommit ? ` TDD ${runs[0].layer.tddSourceCommit.slice(0, 7)}.` : ""}
+                  {" "}Ten sam opis produktu, nowe aplikacje od zera.
                   Link „Baza” prowadzi do wyniku tego samego modelu i wysiłku. Historyczne wyniki mogą różnić się ze względu na zmiany modelu i losowość.</p>
               ) : null}
               <div className="table-scroll">

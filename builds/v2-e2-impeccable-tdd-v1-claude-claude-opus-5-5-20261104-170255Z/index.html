@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Logomocja: polska pracownia żółwia Logo. Rysuj na płaszczyźnie i w przestrzeni, rozwiązuj zadania, udostępniaj rysunki." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0d0c" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>Logomocja — pracownia żółwia</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('logomocja.motyw');
+        var dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-170255Z/assets/index-VHK9Eibf.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-170255Z/assets/index-BPzjHedZ.css">
+  </head>
+  <body>
+    <div id="app">
+      <noscript>Logomocja potrzebuje JavaScriptu, aby rysować.</noscript>
+    </div>
+  </body>
+</html>

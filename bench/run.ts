@@ -40,7 +40,7 @@ const { values } = parseArgs({
 const task = values.task as Task;
 if (!values.model || !["app", "tests", "tests-round2"].includes(task) || (task === "tests-round2" && !(values.own && values.other))) {
   console.error(
-    "Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests|tests-round2] [--prompt v2] [--effort high] [--layer impeccable-v1] [--no-push]\n" +
+    "Usage: bun bench/run.ts --model <claude|codex>:<id> [--task app|tests|tests-round2] [--prompt v2] [--effort high] [--layer impeccable-v1|tdd-v1|impeccable-tdd-v1] [--no-push]\n" +
       "       tests-round2 also needs --own <round-1 cases.json of this model> --other <the other author's>",
   );
   process.exit(2);

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta name="logomocja-base" content="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-102546Z/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Logomocja: polskie studio rysowania żółwiem w 2D i 3D.">
+<title>Logomocja</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./app.css?v=1.0.0">
+</head>
+<body data-page="studio" data-mode="2d">
+<a class="skip" href="#main">Przejdź do treści</a>
+<header class="top">
+  <a class="brand" href="#/" aria-label="Logomocja, studio">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M16 3 27 27 16 21 5 27Z" fill="var(--accent)"/><path d="M16 3 16 21" stroke="var(--accent-ink)" stroke-width="2"/></svg>
+    <span>Logomocja</span>
+  </a>
+  <nav class="nav" aria-label="Główne">
+    <a href="#/" data-nav="studio">Studio</a>
+    <a href="#/przyklady" data-nav="przyklady">Przykłady</a>
+    <a href="#/wyzwania" data-nav="wyzwania">Wyzwania</a>
+    <a href="#/pomoc" data-nav="pomoc">Pomoc</a>
+  </nav>
+  <div class="top-right">
+    <div class="seg" role="group" aria-label="Tryb rysowania">
+      <button type="button" data-mode="2d" aria-pressed="true">2D</button>
+      <button type="button" data-mode="3d" aria-pressed="false">3D</button>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="Zmień motyw">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section id="page-studio" class="studio" aria-label="Studio">
+  <div class="pane code-pane">
+    <div id="challenge" class="challenge" hidden aria-labelledby="ch-title">
+      <div>
+        <h2 id="ch-title"></h2>
+        <p id="ch-task"></p>
+        <p class="hint"><span aria-hidden="true">💡</span> <span id="ch-hint"></span></p>
+      </div>
+      <div class="ch-actions">
+        <button type="button" class="btn primary" id="ch-check">Sprawdź</button>
+        <button type="button" class="btn" id="ch-ghost" aria-pressed="true">Pokaż wzór</button>
+        <button type="button" class="btn" id="ch-exit">Zakończ zadanie</button>
+      </div>
+      <p id="ch-result" role="status" aria-live="polite"></p>
+    </div>
+    <div class="toolbar" role="toolbar" aria-label="Wykonanie programu">
+      <button type="button" class="btn primary" id="btn-run" aria-label="Uruchom (Ctrl+Enter)" title="Ctrl+Enter">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg><span class="label">Uruchom</span></button>
+      <button type="button" class="btn" id="btn-step" aria-label="Krok (Ctrl+Shift+Enter)" title="Ctrl+Shift+Enter">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 4l10 8-10 8zM17 4h3v16h-3z" fill="currentColor"/></svg><span class="label">Krok</span></button>
+      <button type="button" class="btn" id="btn-pause" aria-label="Pauza (Ctrl+.)" title="Ctrl+." disabled>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/></svg><span class="label">Pauza</span></button>
+      <button type="button" class="btn" id="btn-reset" aria-label="Reset (Esc)" title="Esc">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5a7 7 0 1 1-7 7h2.5A4.5 4.5 0 1 0 12 7.5V11L7 6l5-5z" fill="currentColor"/></svg><span class="label">Reset</span></button>
+      <label class="speed">
+        <span>Tempo</span>
+        <input type="range" id="speed" min="1" max="10" step="1" value="6">
+        <output id="speed-out" for="speed"></output>
+      </label>
+    </div>
+    <div id="editor"></div>
+    <p id="status-msg" class="status" role="status" aria-live="polite"></p>
+    <div class="filebar" role="group" aria-label="Pliki i udostępnianie">
+      <button type="button" class="btn small" id="btn-share">Kopiuj link</button>
+      <button type="button" class="btn small" id="btn-png">Zapisz PNG</button>
+      <button type="button" class="btn small" id="btn-save">Pobierz .logo</button>
+      <button type="button" class="btn small" id="btn-open">Otwórz plik…</button>
+      <input type="file" id="file-input" accept=".logo,.txt,text/plain" hidden>
+      <button type="button" class="btn small" id="btn-restore" hidden>Przywróć poprzedni program</button>
+    </div>
+    <details class="shortcuts">
+      <summary>Skróty klawiszowe</summary>
+      <dl id="shortcuts-list">
+        <div><dt><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Enter</kbd></dt><dd>Uruchom (lub wznów)</dd></div>
+        <div><dt><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd></dt><dd>Jeden krok</dd></div>
+        <div><dt><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>.</kbd></dt><dd>Pauza / wznów</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Reset</dd></div>
+        <div><dt>Na rysunku: <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd></dt><dd>Przesuń (2D) / obróć (3D; z <kbd>Shift</kbd> przesuń)</dd></div>
+        <div><dt>Na rysunku: <kbd>+</kbd> <kbd>−</kbd> <kbd>0</kbd></dt><dd>Przybliż, oddal, dopasuj</dd></div>
+      </dl>
+    </details>
+  </div>
+  <div class="pane view-pane">
+    <canvas id="view" tabindex="0" role="img" aria-label="Rysunek"></canvas>
+    <p id="view-error" class="view-error" hidden></p>
+    <div class="viewbar" role="toolbar" aria-label="Widok">
+      <button type="button" class="icon-btn" id="btn-zoom-in" aria-label="Przybliż">+</button>
+      <button type="button" class="icon-btn" id="btn-zoom-out" aria-label="Oddal">−</button>
+      <button type="button" class="btn small" id="btn-fit">Dopasuj</button>
+      <button type="button" class="btn small" id="btn-view-reset">Reset widoku</button>
+    </div>
+    <p class="view-hint" aria-hidden="true"><span class="only-2d">Przeciągnij, by przesunąć · kółko przybliża</span><span class="only-3d">Przeciągnij, by obrócić · Shift/prawy przycisk przesuwa</span></p>
+  </div>
+</section>
+
+<section id="page-przyklady" class="page" hidden aria-labelledby="h-ex">
+  <h1 id="h-ex">Przykłady</h1>
+  <p class="lead">Trzynaście programów na start. Wczytanie przykładu nie kasuje Twojej pracy bez pytania, a poprzedni program można przywrócić.</p>
+  <ul id="examples-list" class="cards"></ul>
+</section>
+
+<section id="page-wyzwania" class="page" hidden aria-labelledby="h-ch">
+  <h1 id="h-ch">Wyzwania</h1>
+  <p class="lead">Narysuj to, co pokazuje wzór. Położenie, kierunek rysowania i odbicie lustrzane nie mają znaczenia; liczy się kształt i rozmiar (z dokładnością do 2 kroków).</p>
+  <p><span id="challenge-progress"></span> <meter id="challenge-meter" min="0" aria-label="Postęp wyzwań"></meter></p>
+  <ul id="challenges-list" class="cards"></ul>
+</section>
+
+<section id="page-pomoc" class="page docs" hidden aria-labelledby="h-help">
+  <h1 id="h-help">Pomoc: język Logomocji</h1>
+  <p class="lead">Wszystko, co potrafi żółw. Przycisk „Wypróbuj” wczytuje przykład do studia.</p>
+  <div id="docs-body"></div>
+</section>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script type="module" src="./app.js?v=1.0.0"></script>
+</body>
+</html>

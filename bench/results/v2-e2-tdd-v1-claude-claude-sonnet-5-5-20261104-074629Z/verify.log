@@ -1,0 +1,88 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Logomocja 1.0.0 built to dist/ (BASE_PATH=/Logomocja/builds/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-074629Z/)
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/interpreter.test.ts:
+(pass) a repeated forward-and-turn draws a square from the origin [1.64ms]
+(pass) aliases, accents, case and comments are interchangeable; pen, colour and width apply [0.94ms]
+(pass) expressions honour precedence, left associativity, grouping and stacked unary signs [0.21ms]
+(pass) a binary operator needs whitespace on both sides or neither [0.13ms]
+(pass) division by zero is a run-time error at the argument's first token and keeps earlier drawing [0.05ms]
+(pass) a bad literal width or repeat count is a parse-time error at the argument; nothing is drawn [0.12ms]
+(pass) syntax problems are reported at the offending token [0.21ms]
+(pass) variables, :name legacy form and nrpowt (innermost repeat) feed expressions [0.58ms]
+(pass) conditions compare exactly and choose a branch [0.66ms]
+(pass) name errors: unknown name and nrpowt outside a repeat are parse-time; unassigned is run-time [0.11ms]
+(pass) procedures take positional expression arguments, forward references work and :names are accepted [1.19ms]
+(pass) stop ends the enclosing call from inside nested bodies, or the whole program at top level [0.08ms]
+(pass) recursion works and locals shadow globals only for the call [0.12ms]
+(pass) procedure structure errors are parse-time with a position [0.11ms]
+(pass) pitch and roll rotate the turtle's frame as specified [0.15ms]
+(pass) pitch and roll are parse-time errors in 2D; flat programs are identical in both modes [0.69ms]
+(pass) dom returns to the origin (drawing if the pen is down) and czyść forgets segments [0.67ms]
+(pass) limits: source size, token count and bracket nesting are parse-time errors [3.27ms]
+(pass) limits: 10,000 operations (command, let, if, repeat, call, plus finishing each iteration/body/call) [6.87ms]
+(pass) limits: 32 active call/repeat frames; conditionals do not count [0.75ms]
+(pass) limits: coordinates stay within ±100000 and a run-time limit keeps earlier drawing [0.05ms]
+(pass) a literal too large to be finite is a run-time error at its argument; odd characters are reported whole [0.08ms]
+
+test/examples.test.ts:
+(pass) the thirteen standard programs are shipped under their ids and modes [0.09ms]
+(pass) every standard program runs without error and draws the expected number of segments [12.26ms]
+(pass) Spirala alternates colours and Szescian closes into a unit cube of edge 100 [0.61ms]
+
+test/controller.test.ts:
+(pass) stepping executes one command at a time and reports the executing line [0.24ms]
+(pass) run animates tick by tick; pause freezes it and resume continues to the end [0.12ms]
+(pass) maximum speed finishes the program within a single tick [0.18ms]
+(pass) step after pause continues the same execution; run after finishing starts over [0.09ms]
+(pass) a parse-time error draws nothing and exposes line and column [0.05ms]
+(pass) a run-time error stops the run and keeps what was drawn [0.04ms]
+(pass) reset returns to a blank idle state, also after a finished run [0.03ms]
+(pass) editing while running stops the run (no stale execution); editing when idle keeps the drawing [0.05ms]
+(pass) switching mode applies pitch rules of the new mode [0.05ms]
+(pass) runToEnd draws the whole program at once without the scheduler, keeping partial drawing on a run-time error [0.06ms]
+
+test/challenges.test.ts:
+(pass) at least five challenges, each with a Polish brief and a mode [0.03ms]
+(pass) a correct drawing passes however it is segmented or ordered [1.55ms]
+(pass) a wrong drawing fails and says what is wrong [0.32ms]
+(pass) an empty or failing program fails with the reason [0.03ms]
+(pass) every challenge is solved by its own reference solution and rejects an empty program [4.02ms]
+
+test/workspace.test.ts:
+(pass) the draft of each mode survives a reload, and so does the last mode [0.21ms]
+(pass) a fresh workspace starts with a runnable starter program in each mode [0.03ms]
+(pass) loading an example switches to its mode but never silently destroys an edited draft [0.13ms]
+(pass) an unedited-but-different draft in the other mode is protected too [0.03ms]
+(pass) a permalink round-trips program and mode (including Polish text) and opening it runs the program [0.37ms]
+(pass) a malformed permalink is rejected without touching the draft [0.04ms]
+(pass) opening a permalink over an edited draft keeps that draft recoverable [0.08ms]
+(pass) the program downloads as a .logo text file and a .logo file opens into the editor [0.09ms]
+(pass) a challenge has its own draft, is checked on submit, and progress persists [0.29ms]
+(pass) a 3D challenge opens in 3D and submitting does not need the UI [0.30ms]
+(pass) loading a reference snippet is protected like an example, and lands in the snippet's mode [0.03ms]
+
+test/docs.test.ts:
+(pass) every example in the command reference runs without error in its mode and draws something [0.21ms]
+(pass) every example in the guide sections runs without error [0.43ms]
+(pass) the reference documents every command alias of the dialect [0.06ms]
+
+ 54 pass
+ 0 fail
+ 409 expect() calls
+Ran 54 tests across 6 files. [50.00ms]
+(exit 0)

@@ -1,0 +1,183 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.187.0
++ happy-dom@21.0.4
++ typescript@5.9.3
++ vite@6.4.5
++ three@0.187.0
+
+33 packages installed [72.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.28 kB │ gzip:   0.67 kB
+dist/assets/index-C3k0g8hU.css   16.92 kB │ gzip:   4.66 kB
+dist/assets/index-CmcqZ5C7.js    79.40 kB │ gzip:  30.07 kB
+dist/assets/view3d-BOvytYvi.js  586.62 kB │ gzip: 147.06 kB
+✓ built in 766ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) interpreter: basic drawing > a square of four forward moves and right turns [1.64ms]
+(pass) interpreter: pen and movement > a raised pen moves without drawing and back moves against the heading [0.10ms]
+(pass) interpreter: pen style > colour literal and width apply to later segments, colour reported lowercase [0.16ms]
+(pass) interpreter: expressions > * and / bind tighter, equal precedence associates left [0.13ms]
+(pass) interpreter: operator spacing > an operator spaced on both sides or neither is binary [0.08ms]
+(pass) interpreter: operator spacing > an operator spaced only on its left starts a stray value, reported there [0.15ms]
+(pass) interpreter: variables > niech assigns and reassigns; names ignore case; :name is the legacy form [0.11ms]
+(pass) interpreter: variables > unary signs stack and apply to any operand [0.09ms]
+(pass) interpreter: variables > a top-level variable may be used before its niech in the text [0.30ms]
+(pass) interpreter: parse-time name rules > a name that is neither a parameter nor a declared variable is an error at the name [0.05ms]
+(pass) interpreter: parse-time name rules > nrpowt outside any repeat is a parse-time error [0.03ms]
+(pass) interpreter: parse-time name rules > nrpowt counts the innermost repeat from 1 [0.06ms]
+(pass) interpreter: procedures > a procedure with ma: parameters draws when called, arguments are expressions [0.19ms]
+(pass) interpreter: procedures > legacy :param header, call before the definition, :param use in the body [0.11ms]
+(pass) interpreter: brackets > an extra ] is reported where it stands [0.04ms]
+(pass) interpreter: brackets > an unclosed [ is reported at the bracket [0.03ms]
+(pass) interpreter: brackets > an unclosed ( is reported at the parenthesis, an extra ) where it stands [0.06ms]
+(pass) interpreter: brackets > an extra ] inside a procedure body is reported [0.03ms]
+(pass) interpreter: stop > stop inside a repeat and conditional ends the whole procedure call [0.11ms]
+(pass) interpreter: stop > stop at top level ends the program, even inside a repeat [0.04ms]
+(pass) interpreter: variable scope > niech in a procedure shadows the global for the rest of the call only [0.05ms]
+(pass) interpreter: variable scope > a parameter can be reassigned and does not leak to the caller's variable [0.07ms]
+(pass) interpreter: variable scope > a name assigned only inside another procedure is not visible [0.06ms]
+(pass) interpreter: run-time errors > reading a variable before it is assigned stops at the argument's first token, keeping the drawing [0.07ms]
+(pass) interpreter: run-time errors > division by zero is reported at the argument's first token [0.07ms]
+(pass) interpreter: run-time errors > a non-finite result is a run-time error [1.33ms]
+(pass) interpreter: width and repeat count validation > literal widths outside 1-12 or non-integer fail at parse time at the argument [0.19ms]
+(pass) interpreter: width and repeat count validation > literal repeat counts outside 0-10000 or non-integer fail at parse time [0.09ms]
+(pass) interpreter: width and repeat count validation > widths and counts computed from names fail when executed, keeping the drawing [0.07ms]
+(pass) interpreter: colour errors > a malformed colour is reported at the colour argument [0.05ms]
+(pass) interpreter: colour errors > a missing colour at the end of the program is reported at the command [0.02ms]
+(pass) interpreter: missing arguments and stray values > a missing argument is reported at the token found in its place [0.04ms]
+(pass) interpreter: missing arguments and stray values > a missing argument at the end of the program is reported at the command [0.03ms]
+(pass) interpreter: missing arguments and stray values > a missing operand after an operator is reported where the operand should be [0.02ms]
+(pass) interpreter: missing arguments and stray values > a stray value where a command is expected is reported at the value [0.04ms]
+(pass) interpreter: missing arguments and stray values > procedure calls need exactly as many arguments as parameters [0.10ms]
+(pass) interpreter: definition errors > a definition inside a repeat body is an error at oto [0.02ms]
+(pass) interpreter: definition errors > a definition inside another procedure is an error at the inner oto [0.01ms]
+(pass) interpreter: definition errors > a missing już is an error at the definition [0.02ms]
+(pass) interpreter: definition errors > a procedure name may be defined once [0.02ms]
+(pass) interpreter: definition errors > już must stand alone on its line [0.02ms]
+(pass) interpreter: definition errors > a variable may not take a procedure's or a command's name [0.04ms]
+(pass) interpreter: definition errors > a parameter may share its name with a procedure [0.07ms]
+(pass) interpreter: 3D orientation > gora 90 heads along the former up vector, dol the other way [0.07ms]
+(pass) interpreter: 3D orientation > after gora 90 the up vector is the former backward direction [0.04ms]
+(pass) interpreter: 3D orientation > pp 90 makes up the former right and right the former down [0.06ms]
+(pass) interpreter: 3D orientation > pitch and roll commands are parse-time errors in 2D, even in an uncalled procedure [0.04ms]
+(pass) interpreter: dom and czyść > dom draws back to the origin and restores the initial heading [0.06ms]
+(pass) interpreter: dom and czyść > dom with the pen up, or already at the origin, draws nothing [0.05ms]
+(pass) interpreter: dom and czyść > dom restores orientation in 3D too [0.04ms]
+(pass) interpreter: dom and czyść > czyść forgets segments drawn so far and keeps the turtle where it is [0.02ms]
+(pass) interpreter: limits > 10,000 operations are allowed, the next one is an error that keeps the drawing [6.58ms]
+(pass) interpreter: limits > conditionals, their bodies and calls count as operations [12.69ms]
+(pass) interpreter: limits > 32 active call and repeat frames are allowed, the 33rd is an error at the call [1.63ms]
+(pass) interpreter: limits > 32 nested repeats at top level are within the limits [2.71ms]
+(pass) interpreter: limits > coordinates must stay within ±100,000 [0.07ms]
+(pass) interpreter: limits > source length and token count limits [6.43ms]
+(pass) interpreter: lexical rules > only unsigned decimal literals are numbers [0.09ms]
+(pass) interpreter: lexical rules > comments run to the end of the line; keywords ignore case; aliases are equivalent [0.07ms]
+(pass) interpreter: lexical rules > accented and English spellings of every command work [0.12ms]
+(pass) interpreter: lexical rules > comparisons are exact [0.06ms]
+(pass) interpreter: lexical rules > negative angles turn the other way [0.03ms]
+(pass) interpreter: lexical rules > nrpowt in a procedure body outside a repeat is a parse error even if called from a repeat [0.03ms]
+(pass) interpreter: lexical rules > a colour literal must be closed [0.01ms]
+(pass) interpreter: lexical rules > an unknown command is reported where it stands [0.03ms]
+(pass) interpreter: more edge cases > a non-finite intermediate result is an error even if the final value would be finite [0.13ms]
+(pass) interpreter: more edge cases > ma: may touch the first parameter, and parameters may use the :name form [0.04ms]
+
+tests/examples.test.ts:
+(pass) standard programs > all thirteen ship under their names and modes [0.03ms]
+(pass) standard programs > kwadrat runs without error and draws 4 segments [0.08ms]
+(pass) standard programs > gwiazda runs without error and draws 5 segments [0.02ms]
+(pass) standard programs > rozeta runs without error and draws 48 segments [0.05ms]
+(pass) standard programs > spirala runs without error and draws 90 segments [0.12ms]
+(pass) standard programs > wielokaty runs without error and draws 42 segments [0.10ms]
+(pass) standard programs > drzewo runs without error and draws 255 segments [2.26ms]
+(pass) standard programs > sniezynka runs without error and draws 768 segments [1.76ms]
+(pass) standard programs > schody runs without error and draws 12 segments [0.04ms]
+(pass) standard programs > szescian runs without error and draws 17 segments [0.05ms]
+(pass) standard programs > pierscien runs without error and draws 36 segments [0.03ms]
+(pass) standard programs > kula runs without error and draws 432 segments [0.81ms]
+(pass) standard programs > helisa runs without error and draws 240 segments [0.18ms]
+(pass) standard programs > drzewo3d runs without error and draws 121 segments [1.34ms]
+(pass) standard programs > kwadrat source is shipped byte for byte [0.03ms]
+(pass) standard programs > flat programs draw identical coordinates in 2D and 3D [7.28ms]
+(pass) standard programs > spirala alternates green and orange [0.17ms]
+(pass) standard programs > szescian's corners are the eight vertices of a 100-unit cube [0.17ms]
+(pass) standard programs > pierscien lies in a plane tilted 30° about the X axis and closes [0.10ms]
+
+tests/controls.test.ts:
+(pass) execution controls: run > an animated run draws progressively and ends with the interpreter's drawing [0.83ms]
+(pass) execution controls: step > each step executes one command and highlights its line [0.11ms]
+(pass) execution controls: step > stepping a program with a parse error shows the error and draws nothing [0.07ms]
+(pass) execution controls: pause, resume, reset > pause freezes a running program; resume continues it to the same drawing [0.11ms]
+(pass) execution controls: pause, resume, reset > a step while running pauses after one more command [0.05ms]
+(pass) execution controls: pause, resume, reset > reset clears the drawing, the error and the highlight and returns the turtle home [0.09ms]
+(pass) execution controls: pause, resume, reset > a run-time error keeps the drawing made before it [0.04ms]
+(pass) execution controls: editing during a run > editing while running stops the program, keeps the drawing and says why [0.10ms]
+(pass) execution controls: editing during a run > editing while paused also stops; the next step starts the new program [0.04ms]
+
+tests/editor-integration.test.ts:
+(pass) editor integration: open > open loads the source into the editor in the given mode and runs it to the end at once [0.08ms]
+(pass) editor integration: open > open agrees with run for every standard program, repeatedly and after reset [27.94ms]
+(pass) editor integration: open > open reports parse and run-time errors exactly like run [0.34ms]
+(pass) editor integration: open > open while a program is animating replaces it [0.13ms]
+
+tests/product-flows.test.ts:
+(pass) product flows: drafts > each mode keeps its own draft, and both survive a reload [0.07ms]
+(pass) product flows: drafts > a first visit starts with a ready-to-run example in each mode [0.03ms]
+(pass) product flows: drafts > switching mode stops the program and clears the drawing [0.08ms]
+(pass) product flows: examples > an example loads by name into its own mode [0.07ms]
+(pass) product flows: examples > loading an example over unsaved work keeps that work recoverable, across a reload [0.07ms]
+(pass) product flows: examples > the draft of the example's mode is the one kept, even when switching modes [0.04ms]
+(pass) product flows: examples > replacing an untouched example stashes nothing [0.02ms]
+(pass) product flows: examples > an unknown example name is reported and changes nothing [0.01ms]
+(pass) product flows: sharing > a permalink carries the program and the mode; opening it loads and runs the program [0.75ms]
+(pass) product flows: sharing > opening a permalink keeps the visitor's own draft recoverable [0.07ms]
+(pass) product flows: sharing > a URL without a program, or a damaged one, changes nothing [0.02ms]
+(pass) product flows: .logo files > the downloaded file is the program text with a .logo name [0.04ms]
+(pass) product flows: .logo files > opening a file loads it, keeps the draft, and picks 3D for spatial programs [0.08ms]
+(pass) product flows: .logo files > opening a file over the draft of the same mode stashes the draft [0.02ms]
+(pass) product flows: .logo files > a flat program file opens in the current mode [0.02ms]
+(pass) product flows: .logo files > a downloaded file opens back to the same program [0.11ms]
+(pass) product flows: challenges > there are at least five challenges, each with a task, a mode and a target drawing [0.14ms]
+(pass) product flows: challenges > a different program that draws the same triangle passes [0.65ms]
+(pass) product flows: challenges > a wrong drawing fails with a reason [0.37ms]
+(pass) product flows: challenges > a program with an error or no drawing fails and says so [0.12ms]
+(pass) product flows: challenges > a challenge that requires repeat rejects a correct drawing written without it [0.43ms]
+(pass) product flows: challenges > every challenge accepts its own model solution [0.91ms]
+(pass) product flows: challenges > progress and attempts persist across a reload [0.23ms]
+(pass) product flows: challenges > a pass is not taken back by a later failed attempt [0.21ms]
+
+tests/ui.test.ts:
+(pass) UI: testing hook > window.logomocja exposes version, run and open [0.10ms]
+(pass) UI: testing hook > open puts the program in the editor and resolves to the interpreter's result [2.32ms]
+(pass) UI: testing hook > an error is marked inline at its line, with the Polish message [2.61ms]
+(pass) UI: testing hook > without WebGL a 3D program still runs and the app says why 3D is off [19.93ms]
+(pass) UI: controls and shortcuts > Alt+K steps one command and highlights its line; Alt+R resets [5.89ms]
+(pass) UI: controls and shortcuts > typing while paused stops the program and tells the user [1.04ms]
+(pass) UI: controls and shortcuts > every button has an accessible name [0.36ms]
+(pass) UI: pages > hash routes show the reference, the examples and a challenge [126.80ms]
+(pass) UI: pages > opening an example from the gallery loads it into the studio in its mode [85.43ms]
+(pass) UI: challenge flow > typing a correct program and pressing Sprawdź reports a pass and marks the task [45.32ms]
+(pass) UI: challenge flow > a wrong program reports a failure with a reason [1.24ms]
+
+ 134 pass
+ 0 fail
+ 493 expect() calls
+Ran 134 tests across 6 files. [491.00ms]
+(exit 0)

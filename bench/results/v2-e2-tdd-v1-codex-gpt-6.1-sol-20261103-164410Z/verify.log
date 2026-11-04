@@ -1,0 +1,54 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano dist/ · BASE_PATH=/Logomocja/builds/v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-164410Z/
+$ bun build.js
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) forward draws the specified initial green stroke; invalid source draws nothing [1.37ms]
+(pass) a repeated square has four ordered edges, pen styling and a closed endpoint [0.21ms]
+(pass) expressions obey precedence, unary signs and whitespace; runtime arithmetic retains earlier strokes [0.28ms]
+(pass) variables and lexical repeat counters drive exact conditionals and preserve unassigned errors [0.36ms]
+(pass) forward-declared recursive procedures have call-local assignments and stop exits the call [0.31ms]
+(pass) 3D pitch and roll use the local turtle frame; flat paths agree across modes [0.22ms]
+(pass) limits stop safely at public boundaries and validate literal arguments before drawing [4.46ms]
+(pass) a legal variable name such as constructor is unassigned until explicitly written [0.07ms]
+(pass) a procedure header with ma: must contain a parameter and malformed headers are parse errors [0.02ms]
+(pass) every finite angle remains a rotation even when converting directly to radians would overflow [0.45ms]
+
+tests/controller.test.js:
+(pass) execution can step, run, pause, resume and reset without duplicating strokes [0.15ms]
+(pass) stop is a separate step and does not execute the next top-level command in the same step [0.04ms]
+
+tests/examples.test.js:
+(pass) all thirteen shipped examples run in their specified mode, including recursive snowflake [17.74ms]
+
+tests/project.test.js:
+(pass) loading examples preserves the current draft, mode drafts survive reload, and sharing preserves Polish source [0.96ms]
+(pass) challenges accept equivalent split strokes, explain failure and persist success [0.84ms]
+(pass) when browser storage is unavailable the project remains editable and reports that persistence failed [0.01ms]
+
+tests/studio.test.js:
+(pass) editor open loads the correct mode, resets previous execution and agrees with the language contract [0.21ms]
+
+tests/v8.test.js:
+(pass) valid expressions near the token limit also run on the browser V8 engine without overflowing its stack [25.70ms]
+(pass) stacked unary signs near the token limit evaluate on V8 and retain their mathematical sign [25.41ms]
+(pass) literal width validation accepts a long valid expression within the same language limits [28.80ms]
+
+ 20 pass
+ 0 fail
+ 85 expect() calls
+Ran 20 tests across 6 files. [115.00ms]
+(exit 0)

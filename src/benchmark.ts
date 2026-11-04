@@ -2,6 +2,13 @@ import type { RunResult } from "../bench/result";
 
 export const benchmarkVersion = (run: RunResult) => `${run.prompt}/e${run.env}`;
 
+const layerNames: Record<string, string> = {
+  "impeccable-v1": "Impeccable",
+  "tdd-v1": "TDD",
+  "impeccable-tdd-v1": "Impeccable + TDD",
+};
+export const layerName = (id: string) => layerNames[id] ?? id;
+
 /** Share of conformance cases passed across suites, or null without suites. */
 export function conformanceRate(run: RunResult): number | null {
   const suites = Object.values(run.conformance ?? {});

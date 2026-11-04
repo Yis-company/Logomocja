@@ -5,24 +5,31 @@ import { fileURLToPath } from "node:url";
 import type { RunResult } from "./result";
 import type { Task } from "./prompt";
 
-export type Layer = { id: string; skillVersion: string; engineVersion: string };
+export type Layer = NonNullable<RunResult["layer"]>;
 const directory = fileURLToPath(new URL("./layers/", import.meta.url));
 
 export function loadLayer(id?: string, task: Task = "app"): Layer | null {
   if (!id || id === "base") return null;
-  if (id !== "impeccable-v1") throw Error(`Unknown benchmark layer: ${id}`);
+  if (!["impeccable-v1", "tdd-v1", "impeccable-tdd-v1"].includes(id))
+    throw Error(`Unknown benchmark layer: ${id}`);
   if (task !== "app")
-    throw Error("Design layers are only supported for app runs");
+    throw Error("Benchmark layers are only supported for app runs");
   return JSON.parse(readFileSync(join(directory, id, "manifest.json"), "utf8"));
 }
 
 export function layerPrompt(base: string, layer: Layer | null): string {
   if (!layer) return base;
+  const tdd = layer.tddSourceCommit
+    ? readFileSync(join(directory, "tdd-v1/instructions.md"), "utf8")
+    : "";
+  if (layer.id === "tdd-v1")
+    return `${base}\n## Benchmark layer: ${layer.id}\n\n${tdd}`;
   return (
     `${base}\n## Benchmark layer: ${layer.id}\n\n` +
-    `Use Impeccable ${layer.skillVersion} throughout building this app. First read /bench/layers/${layer.id}/skill/SKILL.md and follow its applicable references. Its base directory is /bench/layers/${layer.id}/skill. Run its context loader from /work.\n\n` +
+    `Use Impeccable ${layer.skillVersion} throughout building this app. First read /bench/layers/impeccable-v1/skill/SKILL.md and follow its applicable references. Its base directory is /bench/layers/impeccable-v1/skill. Run its context loader from /work.\n\n` +
     "This benchmark explicitly authorizes you to infer all audience, design and implementation decisions from the product brief and proceed without human interviews, approval pages or questions. Build an Operate surface. You have no incumbent design to preserve. Do not inspect other benchmark builds, results or source for inspiration.\n\n" +
-    "Use the same CLI tools available in this container. Native image generation, MCP browser controls and delegated agents are unavailable: use the skill's documented in-thread/degraded workflows where applicable, and report tool limitations honestly. Do not call another model or require external services. Do not update the frozen skill or engine; ignore update-offer directives. Keep all shipping assets local. Finish the app, perform the applicable finish review and document the resulting design. The product brief's language, features and delivery contract remain authoritative.\n"
+    "Use the same CLI tools available in this container. Native image generation, MCP browser controls and delegated agents are unavailable: use the skill's documented in-thread/degraded workflows where applicable, and report tool limitations honestly. Do not call another model or require external services. Do not update the frozen skill or engine; ignore update-offer directives. Keep all shipping assets local. Finish the app, perform the applicable finish review and document the resulting design. The product brief's language, features and delivery contract remain authoritative.\n" +
+    (tdd ? `\n${tdd}` : "")
   );
 }
 
@@ -32,10 +39,10 @@ export function prepareLayer(
   root: string,
   image: string,
 ): string[] {
-  if (!layer) return [];
-  const cache = join(root, "output/bench-tools", layer.id);
+  if (!layer?.engineVersion) return [];
+  const cache = join(root, "output/bench-tools/impeccable-v1");
   mkdirSync(cache, { recursive: true });
-  const skill = `/bench/layers/${layer.id}/skill`;
+  const skill = "/bench/layers/impeccable-v1/skill";
   const output = execFileSync(
     "docker",
     [

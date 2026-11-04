@@ -1,0 +1,10 @@
+{
+  "id": "tdd-v1",
+  "source": "https://github.com/mattpocock/skills",
+  "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+  "snapshotDate": "2026-11-03",
+  "snapshotSource": "Verbatim upstream skills/engineering/tdd, with codebase-design vocabulary available as a reference",
+  "skill": "tdd-v1/skill/SKILL.md",
+  "instructions": "tdd-v1/instructions.md",
+  "vocabulary": "tdd-v1/references/codebase-design/SKILL.md"
+}

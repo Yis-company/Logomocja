@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja — rysuj z żółwiem w 2D i 3D</title>
+    <meta name="description" content="Logomocja: polskie studio Logo. Pisz programy, patrz, jak żółw rysuje na płaszczyźnie i w przestrzeni, rozwiązuj wyzwania i dziel się rysunkami." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f1e6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101a17" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply a saved theme before the first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem("logomocja:theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-111054Z/assets/index-Buc_MDnB.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-111054Z/assets/index-D0zzZTlY.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#program" onclick="event.preventDefault(); document.getElementById('program') && document.getElementById('program').focus();">Przejdź do edytora</a>
+    <div id="app">
+      <noscript>Logomocja potrzebuje włączonej obsługi JavaScriptu.</noscript>
+    </div>
+  </body>
+</html>

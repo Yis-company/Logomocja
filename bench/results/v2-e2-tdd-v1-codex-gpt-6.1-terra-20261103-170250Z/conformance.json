@@ -1,0 +1,76 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 589,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 4: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1: a procedure may call another defined later",
+          "reason": "unexpected error: line 8: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected error on line 3, got line 4"
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 5: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal repeat count in a never-called procedure is checked at parse time",
+          "reason": "expected error on line 3, got line 4"
+        },
+        {
+          "name": "claude-fable-5-1-round2: unknown command in a never-called procedure after drawing commands",
+          "reason": "expected error on line 4, got line 5"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 589,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 4: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1: a procedure may call another defined later",
+          "reason": "unexpected error: line 8: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1: roll in 2d mode inside a never-called procedure",
+          "reason": "expected error on line 3, got line 4"
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 5: „Już” musi być samo w wierszu."
+        },
+        {
+          "name": "claude-fable-5-1-round2: literal repeat count in a never-called procedure is checked at parse time",
+          "reason": "expected error on line 3, got line 4"
+        },
+        {
+          "name": "claude-fable-5-1-round2: unknown command in a never-called procedure after drawing commands",
+          "reason": "expected error on line 4, got line 5"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

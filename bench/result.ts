@@ -45,6 +45,6 @@ export type RunResult = {
   humanScore: number | null;
   notes: string;
   /** Missing on historical records and ordinary base runs. */
-  layer?: { id: string; skillVersion: string; engineVersion: string };
+  layer?: { id: string; skillVersion?: string; engineVersion?: string; tddSourceCommit?: string };
   baselineId?: string | null;
 };

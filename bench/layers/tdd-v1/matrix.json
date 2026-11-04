@@ -1,0 +1,66 @@
+[
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "low"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "medium"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "high"
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  {
+    "model": "codex:gpt-6.1-terra",
+    "effort": "low"
+  },
+  {
+    "model": "codex:gpt-6.1-terra",
+    "effort": "medium"
+  },
+  {
+    "model": "codex:gpt-6.1-terra",
+    "effort": "high"
+  },
+  {
+    "model": "codex:gpt-6.1-terra",
+    "effort": "xhigh"
+  },
+  {
+    "model": "claude:claude-sonnet-5-5",
+    "effort": "low"
+  },
+  {
+    "model": "claude:claude-sonnet-5-5",
+    "effort": "medium"
+  },
+  {
+    "model": "claude:claude-sonnet-5-5",
+    "effort": "high"
+  },
+  {
+    "model": "claude:claude-sonnet-5-5",
+    "effort": "xhigh"
+  },
+  {
+    "model": "claude:claude-opus-5-5",
+    "effort": "low"
+  },
+  {
+    "model": "claude:claude-opus-5-5",
+    "effort": "medium"
+  },
+  {
+    "model": "claude:claude-opus-5-5",
+    "effort": "high"
+  },
+  {
+    "model": "claude:claude-opus-5-5",
+    "effort": "xhigh"
+  }
+]

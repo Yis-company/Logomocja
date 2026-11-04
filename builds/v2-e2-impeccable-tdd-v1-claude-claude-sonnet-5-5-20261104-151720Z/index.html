@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja – pracownia żółwia</title>
+    <meta name="description" content="Logomocja: polska pracownia żółwia. Pisz programy w Logo, rysuj na płaszczyźnie i w przestrzeni, rozwiązuj wyzwania i dziel się rysunkami." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#12468e" />
+    <link rel="icon" type="image/svg+xml" href="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-151720Z/favicon.svg" />
+    <script>
+      // Set the theme before first paint so there is no flash: stored choice, else the system's.
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem("logomocja:v1:theme"); } catch (e) {}
+        var dark = stored === "dark" || (stored !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      })();
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-151720Z/assets/index-DEJ5jyHW.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-151720Z/assets/index-uiJcodqX.css">
+  </head>
+  <body>
+    <div id="app">
+      <noscript>Logomocja potrzebuje JavaScriptu, aby uruchamiać programy w Logo.</noscript>
+    </div>
+  </body>
+</html>

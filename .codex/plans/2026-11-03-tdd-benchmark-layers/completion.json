@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "completedAt": "2026-11-04T20:21:08.105615+00:00",
+  "approvedAppComparisons": 32,
+  "completedAppComparisons": 32,
+  "authorizedAttempts": 48,
+  "preservedAuthenticationFailures": 16,
+  "fullyConformantApps": 11,
+  "humanScores": "unset",
+  "generatedAppFixes": 0,
+  "publication": "none",
+  "report": "output/bench-experiments/2026-11-03-tdd/results.html",
+  "metrics": "output/bench-experiments/2026-11-03-tdd/results.json",
+  "validation": "output/bench-experiments/2026-11-03-tdd/validation.json",
+  "checks": {
+    "lint": "pass with existing warnings",
+    "typecheck": "pass",
+    "unitTestsPassed": 292,
+    "pagesBuild": "pass with existing warnings",
+    "pagesBrowserTestsPassed": 3
+  },
+  "scheduledContinuation": "disabled after completion"
+}

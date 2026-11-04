@@ -1,0 +1,87 @@
+{
+  "schema": 4,
+  "id": "v2-e2-impeccable-tdd-v1-codex-gpt-6.1-sol-20261103-222821Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-sol",
+  "cliVersion": "0.164.0",
+  "effort": "xhigh",
+  "startedAt": "2026-11-03T22:28:22.255Z",
+  "agentMs": 2095542,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 125534,
+    "cachedInput": 7866240,
+    "output": 86539,
+    "reasoning": 21625
+  },
+  "costUsd": 1.903082,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 76,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 4,
+    "distBytes": 100540
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "6f088672cb06539ca5e7fb1f10205840a14845bc",
+  "repoVersion": "0.3.0",
+  "totalMs": 2129016,
+  "conformance": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "impeccable-tdd-v1",
+    "skillVersion": "4.7.0",
+    "engineVersion": "0.1.16",
+    "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "snapshotDate": "2026-11-03",
+    "impeccable": "impeccable-v1/manifest.json",
+    "tdd": "tdd-v1/manifest.json"
+  },
+  "baselineId": "v2-e2-codex-gpt-6.1-sol-20261028-081413Z"
+}

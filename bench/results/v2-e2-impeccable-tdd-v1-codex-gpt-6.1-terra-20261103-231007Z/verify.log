@@ -1,0 +1,33 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Bundled 3 modules in 2ms
+
+  app.js  27.28 KB  (entry point)
+
+$ bun build ./src/app.js --outdir ./dist --minify && cp index.html style.css dist/ && sed -i "s|__BASE_PATH__|${BASE_PATH:-/}|g" dist/index.html
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) żółw rysuje kwadrat [1.41ms]
+(pass) błąd składni nie pozostawia rysunku, a błąd wykonania go zachowuje [0.22ms]
+(pass) obrót w przestrzeni kieruje żółwia w górę [0.05ms]
+(pass) definicja wewnątrz powtórzenia jest błędem składni [0.03ms]
+(pass) błąd wyrażenia wskazuje początek argumentu [0.03ms]
+(pass) wszystkie standardowe programy wykonują się w swoich trybach [15.21ms]
+
+ 6 pass
+ 0 fail
+ 37 expect() calls
+Ran 6 tests across 1 file. [18.00ms]
+(exit 0)

@@ -1,0 +1,53 @@
+{
+  "schema": 4,
+  "id": "v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-073729Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-sonnet-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "medium",
+  "startedAt": "2026-11-04T07:37:29.761Z",
+  "agentMs": 3453,
+  "agentExit": 1,
+  "status": "failed",
+  "statusDetail": "success: Failed to authenticate. API Error: 401 Invalid bearer token",
+  "tokens": {
+    "input": 0,
+    "cachedInput": 0,
+    "output": 0,
+    "reasoning": 0
+  },
+  "costUsd": 0,
+  "costBasis": "cli",
+  "turns": 1,
+  "toolCalls": 0,
+  "verify": {
+    "installed": false,
+    "built": false,
+    "tests": "none",
+    "distFiles": 0,
+    "distBytes": 0
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "6f088672cb06539ca5e7fb1f10205840a14845bc",
+  "repoVersion": "0.3.0",
+  "totalMs": 3758,
+  "conformance": null,
+  "gallery": null,
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "tdd-v1",
+    "source": "https://github.com/mattpocock/skills",
+    "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "snapshotDate": "2026-11-03",
+    "snapshotSource": "Verbatim upstream skills/engineering/tdd, with codebase-design vocabulary available as a reference",
+    "skill": "tdd-v1/skill/SKILL.md",
+    "instructions": "tdd-v1/instructions.md",
+    "vocabulary": "tdd-v1/references/codebase-design/SKILL.md"
+  },
+  "baselineId": "v2-e2-claude-claude-sonnet-5-5-20261028-072501Z"
+}

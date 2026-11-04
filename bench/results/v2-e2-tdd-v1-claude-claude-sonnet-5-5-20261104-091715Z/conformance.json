@@ -1,0 +1,36 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Przekroczono limit zagnieżdżenia nawiasów okrągłych (32)."
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1-round2: 33 nested parentheses are not brackets",
+          "reason": "unexpected error: line 1: Przekroczono limit zagnieżdżenia nawiasów okrągłych (32)."
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}
