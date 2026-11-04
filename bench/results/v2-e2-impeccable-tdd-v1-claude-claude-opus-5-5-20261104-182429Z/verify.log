@@ -1,0 +1,173 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @happy-dom/global-registrator@21.0.4
++ @types/bun@1.4.4
++ @types/three@0.187.0
++ happy-dom@21.0.4
++ typescript@7.0.2
++ vite@8.3.5
++ @codemirror/commands@6.11.1
++ @codemirror/language@6.13.1
++ @codemirror/state@6.7.6
++ @codemirror/view@6.43.15
++ @fontsource-variable/archivo@5.3.0
++ @fontsource-variable/jetbrains-mono@5.3.0
++ three@0.187.0
+
+51 packages installed [70.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 63 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                     0.94 kB │ gzip:   0.51 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2    7.50 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2         9.00 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2     12.10 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2    15.19 kB
+dist/assets/archivo-vietnamese-wdth-normal-rJmnGBSt.woff2          34.46 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2        40.40 kB
+dist/assets/archivo-latin-ext-wdth-normal-7khWdh9v.woff2           86.24 kB
+dist/assets/archivo-latin-wdth-normal-DY7AcnAa.woff2               90.10 kB
+dist/assets/index-DwSEMKGj.css                                     35.44 kB │ gzip:   9.90 kB
+dist/assets/share-C7Fv1PoB.js                                       1.07 kB │ gzip:   0.55 kB
+dist/assets/index-9QeiFH90.js                                     384.98 kB │ gzip: 129.31 kB
+dist/assets/view3d-6W7myId7.js                                    589.83 kB │ gzip: 146.99 kB
+
+✓ built in 181ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) drawing in 2D > a repeated forward-and-turn draws a closed square [2.03ms]
+(pass) command aliases > Polish, accented and English spellings mean the same, in any case [0.80ms]
+(pass) pen > pen state, colour and width persist; pen-up and zero moves draw nothing [0.28ms]
+(pass) expressions > precedence, left associativity, decimals, grouping and unary signs [0.27ms]
+(pass) parse-time errors > an unknown command is reported at its position and nothing is drawn [0.16ms]
+(pass) stray values > an operator spaced on one side only ends the expression and leaves a stray value [0.14ms]
+(pass) stray values > a value where a command is expected is reported at that value [0.04ms]
+(pass) missing arguments > reported where the argument should start, or at the command at the end [0.15ms]
+(pass) brackets and parentheses > an unclosed bracket or parenthesis is reported at the opening one [0.06ms]
+(pass) brackets and parentheses > a closing bracket or parenthesis with no partner is reported where it stands [0.03ms]
+(pass) brackets and parentheses > a repeat needs its body in square brackets [0.03ms]
+(pass) lexical rules > only unsigned decimal literals are numbers [0.15ms]
+(pass) lexical rules > an unknown character is an error at that character [0.03ms]
+(pass) lexical rules > comments run from a semicolon to the end of the line [0.03ms]
+(pass) colour > a colour is a quoted six-digit hex string [0.12ms]
+(pass) literal width and repeat count are checked before drawing > width must be an integer from 1 to 12 [0.25ms]
+(pass) literal width and repeat count are checked before drawing > repeat count must be an integer from 0 to 10000 [0.11ms]
+(pass) run-time errors > division by zero stops the program and keeps what was drawn [0.06ms]
+(pass) run-time errors > a non-finite result is an error at the argument [0.11ms]
+(pass) variables > niech assigns and reassigns; a name reads plainly or as :name [0.07ms]
+(pass) variable errors > an undeclared name is a parse-time error at the name [0.02ms]
+(pass) variable errors > reading a declared but unassigned variable fails at run time at the argument's first token [0.05ms]
+(pass) variable errors > niech needs a name that is not a command word, then a value [0.07ms]
+(pass) conditionals > jeśli and jeżeli choose bodies by exact comparison [0.15ms]
+(pass) nrpowt > is the iteration number of the innermost enclosing repeat, from 1 [0.09ms]
+(pass) nrpowt > outside any repeat it is a parse-time error [0.05ms]
+(pass) computed width and repeat count are checked when executed > a bad width from a variable stops the run at the argument [0.03ms]
+(pass) computed width and repeat count are checked when executed > a bad repeat count from a variable or nrpowt stops the run at the argument [0.06ms]
+(pass) procedures > a procedure defined after its call runs with positional arguments [0.26ms]
+(pass) procedures > the legacy header and :param references work, names ignore case [0.05ms]
+(pass) procedure arguments > each argument is an expression; a one-sided sign starts the next argument [0.07ms]
+(pass) procedure arguments > parameters stand in for repeat counts and arguments of other calls; a parameter may share a procedure's name [0.08ms]
+(pass) stop and recursion > stop ends the current call; the caller continues [0.13ms]
+(pass) stop and recursion > stop inside a repeat or conditional ends the whole procedure call [0.19ms]
+(pass) stop and recursion > stop at top level ends the program without an error [0.02ms]
+(pass) variable scope > a local niech shadows a global for the rest of the call only [0.05ms]
+(pass) variable scope > parameters can be reassigned; another procedure's local is not visible [0.06ms]
+(pass) variable scope > a local declared later in the body is unassigned until its niech runs, when no global exists [0.03ms]
+(pass) procedure errors > a call with too few arguments points where the missing one should start [0.06ms]
+(pass) procedure errors > a call with too many arguments leaves a stray value [0.03ms]
+(pass) procedure errors > definitions only at top level [0.06ms]
+(pass) procedure errors > a definition needs już alone on its own line [0.07ms]
+(pass) procedure errors > oto must start a line; a name is defined once and is not a command word [0.09ms]
+(pass) procedure errors > a variable may not take a procedure's name [0.02ms]
+(pass) 3D orientation > gora turns the heading towards up; dol the other way [0.08ms]
+(pass) 3D orientation > pp rolls up towards right around the heading; pl the other way [0.06ms]
+(pass) 3D orientation > pitch and roll are errors in 2D mode, before anything is drawn [0.06ms]
+(pass) dom and czyść > dom draws back to the origin when the pen is down and restores the orientation, not the pen [0.13ms]
+(pass) dom and czyść > czyść forgets the segments drawn so far and nothing else [0.04ms]
+(pass) dom and czyść > coordinates are never negative zero [0.07ms]
+(pass) operation limit > 10,000 executed operations are allowed, the next one stops the run [5.84ms]
+(pass) operation limit > conditionals, their finished bodies, niech and calls all count [5.34ms]
+(pass) frame limit > 32 active procedure calls are allowed, the 33rd stops the run [0.35ms]
+(pass) frame limit > repeats count as frames, conditional bodies do not [0.94ms]
+(pass) frames are released > a stop that leaves a repeat early releases the repeat's frame [0.18ms]
+(pass) size limits > a program may have at most 50,000 characters [2.34ms]
+(pass) size limits > a program may have at most 10,000 tokens [4.85ms]
+(pass) size limits > brackets nest at most 32 deep [0.18ms]
+(pass) coordinate limit > every coordinate stays within ±100,000 [0.14ms]
+(pass) details from the brief > nrpowt in a procedure body outside its own repeat is a parse error, even if called from a repeat [0.06ms]
+(pass) details from the brief > conditional bodies count towards the bracket nesting limit [0.13ms]
+(pass) details from the brief > a run-time error keeps only what was drawn after the last czyść [0.03ms]
+(pass) details from the brief > a literal too large to represent is an error at the argument [0.16ms]
+
+tests/examples.test.ts:
+(pass) standard programs > all thirteen ship under their names and modes [0.07ms]
+(pass) standard programs > each runs without error and draws its known shape [16.23ms]
+(pass) standard programs > flat programs draw identical coordinates in 2D and 3D [16.20ms]
+
+tests/runner.test.ts:
+(pass) stepping > each step executes one command and reports it [0.21ms]
+(pass) running > run animates over time; pause holds; resume finishes; reset clears [0.44ms]
+(pass) running > at the fastest speed a run finishes within one frame [0.03ms]
+(pass) running > a parse error ends the run at once with nothing drawn; a run-time error keeps the drawing [0.08ms]
+(pass) halting and instant runs > halt stops a run, keeps the drawing, and cannot be resumed [0.09ms]
+(pass) halting and instant runs > runToEnd executes the whole program at once, whatever the speed [0.04ms]
+
+tests/app.test.ts:
+(pass) testing hook > open() loads the program into the editor in that mode and resolves with the run result [36.34ms]
+(pass) execution controls > Uruchom animates the run to the end at the chosen speed [19.43ms]
+(pass) execution controls > Krok runs one command at a time and highlights its line; Pauza and Wznów hold and continue [15.03ms]
+(pass) execution controls > Od nowa clears the sheet and the turtle goes home [7.39ms]
+(pass) editor and language agree > a parse error marks its line and token in the editor, with the Polish message inline [10.91ms]
+(pass) editor and language agree > a run-time error keeps what was drawn before it [9.80ms]
+(pass) editor and language agree > running the same program again, or after a reset, gives the same drawing [11.00ms]
+(pass) editor and language agree > editing while a program runs stops it and keeps the drawing [74.94ms]
+(pass) examples > the examples page lists all thirteen by name with their mode and description [36.14ms]
+(pass) examples > opening an example loads it verbatim into its mode and runs it [31.64ms]
+(pass) examples > loading an example over your own draft keeps the draft and offers to restore it [67.63ms]
+(pass) persistence > each mode's draft and the last mode survive a reload [72.59ms]
+(pass) persistence > the theme follows the system until chosen; the choice persists [4.76ms]
+(pass) sharing and files > a permalink carries program and mode; opening it loads and runs the program [52.50ms]
+(pass) sharing and files > a damaged permalink is reported, not silently ignored [2.96ms]
+(pass) sharing and files > the program downloads as a .logo text file [4.67ms]
+(pass) sharing and files > opening a .logo file loads it, in 3D when it uses 3D commands [43.23ms]
+(pass) challenges > the challenges page lists at least five tasks with their state [5.12ms]
+(pass) challenges > an attempt is checked against the target with a reason; a pass is remembered [196.16ms]
+(pass) command reference > documents every command with all its spellings and a working example [12.84ms]
+(pass) command reference > has sections on expressions, variables, conditionals, procedures and limits [11.39ms]
+(pass) command reference > Wypróbuj puts an example into the studio and runs it [34.81ms]
+(pass) keyboard and accessibility > shortcuts run, step, pause and reset, and are listed in the studio [9.91ms]
+(pass) keyboard and accessibility > without WebGL the 3D sheet says why, and still draws a flat projection [8.98ms]
+(pass) keyboard and accessibility > every control on every page has an accessible name [29.30ms]
+(pass) error marker after edits > an edit hides a stale error; running again with the same mistake shows it again [35.34ms]
+(pass) examples by name > #/przyklady/<name> loads that example into its mode and runs it [5.23ms]
+(pass) examples by name > an unknown example name says so and shows the list [27.13ms]
+
+tests/checker.test.ts:
+(pass) challenge checker > the same shape passes however it was drawn: order, direction, split strokes, position, mirror [0.57ms]
+(pass) challenge checker > small rounding differences are tolerated [0.07ms]
+(pass) challenge checker > a different size fails and says so [0.14ms]
+(pass) challenge checker > missing or extra lines fail with a count [0.36ms]
+(pass) challenge checker > an empty drawing or a program error fails with the reason [0.08ms]
+(pass) challenge checker > colour is checked only when the challenge asks for it [0.09ms]
+(pass) challenge checker > a required command must appear in the program [0.18ms]
+(pass) challenge checker > 3D drawings are compared in space [0.10ms]
+(pass) shipped challenges > every reference solution passes its own check, and the empty starter does not [1.10ms]
+
+ 109 pass
+ 0 fail
+ 859 expect() calls
+Ran 109 tests across 5 files. [1024.00ms]
+(exit 0)

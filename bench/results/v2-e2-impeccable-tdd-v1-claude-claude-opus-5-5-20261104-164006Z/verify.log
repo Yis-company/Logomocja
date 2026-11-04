@@ -1,0 +1,167 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/three@0.170.0
++ happy-dom@15.11.7
++ typescript@5.9.3
++ vite@6.4.5
++ three@0.170.0
+
+30 packages installed [59.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 26 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  12.47 kB │ gzip:   3.70 kB
+dist/assets/index-DZ2CxJhl.css   18.41 kB │ gzip:   5.20 kB
+dist/assets/index-zqa9_DDy.js    69.29 kB │ gzip:  25.02 kB
+dist/assets/view3d-Bj0SrX7S.js  517.35 kB │ gzip: 131.15 kB
+✓ built in 637ms
+$ tsc --noEmit && vite build
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) run: basic 2D drawing > kwadrat draws four 120-unit sides clockwise from origin heading +Y [1.63ms]
+(pass) run: expressions > precedence and left associativity [0.25ms]
+(pass) run: expressions > operator spacing: both sides or neither [0.16ms]
+(pass) run: expressions > stacked unary signs [0.06ms]
+(pass) run: expressions > numbers: decimals ok, exotic forms are errors [0.21ms]
+(pass) run: expressions > division by zero is a run-time error at the argument, keeping earlier strokes [0.06ms]
+(pass) run: pen state and turtle commands > pen up moves without drawing; Polish and English aliases are equivalent [0.85ms]
+(pass) run: pen state and turtle commands > colour literal is lower-cased; width applies to later strokes [0.10ms]
+(pass) run: pen state and turtle commands > malformed colour is a parse-time error at the colour [0.12ms]
+(pass) run: pen state and turtle commands > literal width out of range or fractional is a parse-time error at the argument [0.23ms]
+(pass) run: pen state and turtle commands > literal repeat count out of range is a parse-time error [0.06ms]
+(pass) run: pen state and turtle commands > dom returns to origin drawing a segment and resets orientation only [0.32ms]
+(pass) run: pen state and turtle commands > czyść forgets earlier segments but keeps the turtle [0.02ms]
+(pass) run: pen state and turtle commands > stop at top level ends the program [0.06ms]
+(pass) run: pen state and turtle commands > a zero move draws nothing [0.01ms]
+(pass) run: pen state and turtle commands > unknown command and missing argument positions [0.10ms]
+(pass) run: variables and nrpowt > niech assigns and reassigns; legacy :name works; names ignore case [0.07ms]
+(pass) run: variables and nrpowt > a top-level variable may be used before its niech appears in the text [0.08ms]
+(pass) run: variables and nrpowt > reading a declared but unassigned variable is a run-time error at the argument [0.04ms]
+(pass) run: variables and nrpowt > undeclared name is a parse-time error at the name [0.02ms]
+(pass) run: variables and nrpowt > variables cannot be named after commands [0.01ms]
+(pass) run: variables and nrpowt > nrpowt counts iterations of the innermost repeat from 1 [0.05ms]
+(pass) run: variables and nrpowt > width and repeat count computed from names are checked at run time [0.05ms]
+(pass) run: procedures > brief example: kwadrat 80 90 draws an 80-unit square [0.25ms]
+(pass) run: procedures > arguments are expressions; calls may precede the definition; legacy header [0.08ms]
+(pass) run: procedures > a parameter may share its name with a procedure [0.02ms]
+(pass) run: procedures > recursion with stop inside a conditional ends only the current call [0.22ms]
+(pass) run: procedures > niech in a procedure is local and shadows the global only after it runs [0.04ms]
+(pass) run: procedures > a procedure-local variable is not visible at top level [0.02ms]
+(pass) run: procedures > nrpowt in a procedure body outside a repeat is a parse-time error [0.02ms]
+(pass) run: procedures > wrong number of arguments [0.10ms]
+(pass) run: procedures > definition errors: inside a body, missing już, duplicate name [0.05ms]
+(pass) run: procedures > variables may not be named after a procedure [0.03ms]
+(pass) run: 3D orientation > gora 90 heads along the former up vector [0.06ms]
+(pass) run: 3D orientation > pp 90: up becomes former right, right becomes former down; heading unchanged [0.05ms]
+(pass) run: 3D orientation > pw turns about the turtle's own up vector after pitching [0.02ms]
+(pass) run: 3D orientation > dom resets the full orientation [0.02ms]
+(pass) run: 3D orientation > pitch and roll are errors in 2D mode, at the command [0.03ms]
+(pass) run: 3D orientation > flat programs draw identical coordinates in 2D and 3D [0.08ms]
+(pass) run: 3D orientation > schody ends 6×35 forward and 6×20 up [0.04ms]
+(pass) run: limits > operation budget: 10,000 executed operations are allowed, one more is an error [8.10ms]
+(pass) run: limits > conditionals and calls count themselves and their finishing [6.52ms]
+(pass) run: limits > runaway recursion hits the 32-frame limit at the call [0.23ms]
+(pass) run: limits > 32 nested repeats run, 33 are too deep [0.19ms]
+(pass) run: limits > czyść lets a long program keep drawing within the operation budget [0.88ms]
+(pass) run: limits > coordinates beyond ±100,000 are an error at the move [1.16ms]
+(pass) run: limits > source and token limits [5.78ms]
+
+tests/examples.test.ts:
+(pass) standard programs > all thirteen ship under their names and modes [0.08ms]
+(pass) standard programs > source text is verbatim (spot check)
+(pass) standard programs > kwadrat runs without error in its mode [0.12ms]
+(pass) standard programs > gwiazda runs without error in its mode [0.03ms]
+(pass) standard programs > rozeta runs without error in its mode [0.06ms]
+(pass) standard programs > spirala runs without error in its mode [0.18ms]
+(pass) standard programs > wielokaty runs without error in its mode [0.68ms]
+(pass) standard programs > drzewo runs without error in its mode [5.50ms]
+(pass) standard programs > sniezynka runs without error in its mode [3.17ms]
+(pass) standard programs > schody runs without error in its mode [0.02ms]
+(pass) standard programs > szescian runs without error in its mode [0.03ms]
+(pass) standard programs > pierscien runs without error in its mode [0.02ms]
+(pass) standard programs > kula runs without error in its mode [0.19ms]
+(pass) standard programs > helisa runs without error in its mode [0.37ms]
+(pass) standard programs > drzewo3d runs without error in its mode [1.93ms]
+(pass) standard programs > spirala alternates green and copper, first side 2.5 [0.14ms]
+(pass) standard programs > drzewo uses brown trunk then green twigs [2.16ms]
+(pass) standard programs > pierścień is tilted: it rises tan 30° for every unit it advances along Y [0.04ms]
+(pass) standard programs > drzewo3d trunk goes straight up [2.35ms]
+
+tests/runner.test.ts:
+(pass) Runner: stepping > loading highlights the first command; each step executes one command [0.24ms]
+(pass) Runner: stepping > a parse error draws nothing and reports the position [0.04ms]
+(pass) Runner: stepping > a run-time error while stepping keeps what was drawn [0.09ms]
+(pass) Runner: animated run > play advances on clock ticks, pause holds, resume finishes with run()'s result [0.08ms]
+(pass) Runner: animated run > reset forgets the drawing and returns the turtle home [0.04ms]
+(pass) Runner: animated run > finish runs to the end without animation and can be repeated [0.04ms]
+(pass) Runner: animated run > subscribers hear every change [0.03ms]
+(pass) Runner: editing while running > halt stops a running program, keeps its drawing and marks it stale [0.03ms]
+
+tests/workspace.test.ts:
+(pass) Workspace: drafts > each mode keeps its own draft across a reload [0.07ms]
+(pass) Workspace: drafts > a first visit starts from the Kwadrat example
+(pass) Workspace: loading examples > loads the example into its mode [0.03ms]
+(pass) Workspace: loading examples > the user's own draft is kept and can be restored, even after a reload [0.03ms]
+(pass) Workspace: loading examples > replacing an untouched example is not reported as losing work
+(pass) Workspace: opening programs from files and links > loadProgram switches mode and keeps the user's draft [0.03ms]
+(pass) Workspace: opening programs from files and links > opening the same text again is not reported as losing work
+
+tests/share.test.ts:
+(pass) permalinks > program and mode survive a round trip, Polish letters included [0.45ms]
+(pass) permalinks > other hashes and damaged links are not programs
+
+tests/challenges.test.ts:
+(pass) challenges: checking > at least five, each solvable by its own reference solution [4.01ms]
+(pass) challenges: checking > an equivalent program drawn another way also passes [0.25ms]
+(pass) challenges: checking > a missing side fails with a Polish reason [0.09ms]
+(pass) challenges: checking > extra lines fail [0.09ms]
+(pass) challenges: checking > a program with an error fails with the error's position [0.05ms]
+(pass) challenges: progress > solved tasks and last attempts persist across reloads [0.15ms]
+
+tests/dom/app.test.ts:
+(pass) app: testing hook > exposes version, run and open [0.05ms]
+(pass) app: testing hook > open loads the source into the editor, runs it to the end and reports the result [7.33ms]
+(pass) app: testing hook > open reports a parse error with nothing drawn and marks the editor [10.40ms]
+(pass) app: testing hook > open agrees with run for every mode and repeated calls [41.89ms]
+
+tests/dom/controls.test.ts:
+(pass) transport controls > Krok executes one command at a time and highlights the next line [164.81ms]
+(pass) transport controls > Uruchom animates; Pauza holds; Wznów finishes [215.40ms]
+(pass) transport controls > keyboard shortcuts drive the same controls [183.59ms]
+(pass) transport controls > editing during a run stops it and says the drawing is stale [109.24ms]
+(pass) transport controls > a run-time error is marked in the editor and keeps the drawing [76.20ms]
+
+tests/dom/flows.test.ts:
+(pass) product flows > the draft survives a reload [183.21ms]
+(pass) product flows > opening an example from Przykłady keeps the draft and offers to restore it [319.39ms]
+(pass) product flows > replacing a draft in the same mode shows a restore action that works [295.33ms]
+(pass) product flows > a permalink opens and runs the program in its mode [171.17ms]
+(pass) product flows > the link button produces a permalink for the current program under the base path [153.69ms]
+(pass) product flows > a challenge passes and the solved count persists [281.06ms]
+(pass) product flows > a wrong challenge answer fails with a reason [186.50ms]
+(pass) product flows > the reference page documents every command [67.49ms]
+(pass) product flows > theme toggle cycles and is remembered [122.27ms]
+
+ 107 pass
+ 0 fail
+ 303 expect() calls
+Ran 107 tests across 9 files. [2.82s]
+(exit 0)

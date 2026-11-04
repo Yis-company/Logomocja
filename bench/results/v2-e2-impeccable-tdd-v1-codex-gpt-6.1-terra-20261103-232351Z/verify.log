@@ -1,0 +1,41 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[2.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Static site built in dist/ (relative paths support BASE_PATH).
+$ node build.mjs
+(exit 0)
+
+$ bun run test
+✔ żółw rysuje odcinek w kierunku północnym (1.683771ms)
+✔ błąd składni zatrzymuje cały program przed rysowaniem (0.256795ms)
+✔ błąd wykonania zachowuje wcześniejszy rysunek (0.167919ms)
+✔ obrót w przestrzeni prowadzi w górę (0.161419ms)
+✔ definicja wewnątrz powtórzenia jest błędem składni (0.410255ms)
+✔ błąd wyrażenia w nawiasie wskazuje początek argumentu (0.10546ms)
+✔ liczba z kropką bez cyfr po niej jest niepoprawna (0.066876ms)
+✔ wyrażenia zachowują pierwszeństwo i łączność lewostronną (0.144918ms)
+✔ procedura może być zdefiniowana po wywołaniu i używa lokalnych parametrów (0.257795ms)
+✔ czyść usuwa poprzednie odcinki, a dom rysuje powrót (0.130085ms)
+✔ nrpowt jest związany leksykalnie z powtórzeniem (0.609216ms)
+✔ zmienna bez wartości zgłasza błąd podczas wykonania (0.110918ms)
+✔ trójwymiarowe polecenia są niedostępne w 2D (0.058835ms)
+✔ wszystkie przykłady wykonują się w swoich trybach (22.288654ms)
+✔ parametr nazwany tak jak procedura może być ponownie przypisany (0.093376ms)
+✔ głęboko nawiasowane wyrażenie mieści się w limicie tokenów (8.246395ms)
+✔ długie wyrażenie mieści się w limicie tokenów bez przepełnienia stosu (9.389201ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72.116152
+$ node --test tests/*.test.js
+(exit 0)

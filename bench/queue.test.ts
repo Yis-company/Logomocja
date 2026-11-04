@@ -31,7 +31,8 @@ function fixture(efforts = ["high", "low"], layer?: string) {
     mkdirSync('bench/results/' + id, { recursive: true });
     writeFileSync('bench/results/' + id + '/result.json', JSON.stringify({
       id, layer: v.layer ? { id: v.layer } : undefined, task: 'app', prompt: v.prompt, runner: 'codex', model: 'fixture', effort: v.effort,
-      status: v.effort === 'partial' ? 'partial' : 'completed', verify: { built: true }
+      status: v.effort === 'auth' ? 'failed' : v.effort === 'partial' ? 'partial' : 'completed', verify: { built: true },
+      statusDetail: v.effort === 'auth' ? 'success: Failed to authenticate. API Error: 401 Invalid bearer token' : v.effort === 'partial' ? 'quota limit reached' : 'success'
     }));
     appendFileSync(calls, 'end ' + v.effort + '\\n');
     if (v.effort === 'crash') process.exit(1);
@@ -84,15 +85,18 @@ describe("benchmark queue", () => {
       readFileSync(join(f.root, "calls.txt"), "utf8").split("\n"),
     ).toHaveLength(5);
   });
-  it("forwards and preserves the layer, and rejects a base result when resuming a layered queue", async () => {
-    const f = fixture(["high"], "impeccable-v1");
+  it.each(["impeccable-v1", "tdd-v1", "impeccable-tdd-v1"])("preserves %s and rejects results from another condition on resume", async (layer) => {
+    const f = fixture(["high"], layer);
     expect(await runQueue(f.dir, false, f.options)).toBe(true);
-    expect(f.state().layer).toBe("impeccable-v1");
+    expect(f.state().layer).toBe(layer);
     expect(await runQueue(f.dir, false, f.options)).toBe(true);
     const info = JSON.parse(readFileSync(join(f.dir, "1.run.json"), "utf8"));
     const file = join(f.root, "bench/results", info.id, "result.json");
     const saved = JSON.parse(readFileSync(file, "utf8"));
-    expect(saved.layer.id).toBe("impeccable-v1");
+    expect(saved.layer.id).toBe(layer);
+    saved.layer.id = "another-condition";
+    writeFileSync(file, JSON.stringify(saved));
+    await expect(runQueue(f.dir, false, f.options)).rejects.toThrow(/missing or invalid/);
     delete saved.layer;
     writeFileSync(file, JSON.stringify(saved));
     await expect(runQueue(f.dir, false, f.options)).rejects.toThrow(/missing or invalid/);
@@ -123,6 +127,16 @@ describe("benchmark queue", () => {
     expect(await runQueue(f.dir, false, f.options)).toBe(false);
     expect(f.state().entries[0].status).toBe("interrupted");
     expect(await runQueue(f.dir, true, f.options)).toBe(true);
+  });
+  it.each(["partial", "auth"])("leaves later entries queued after %s provider failures, resuming without retrying the failed attempt", async (failure) => {
+    const f = fixture([failure, "high"]);
+    expect(await runQueue(f.dir, false, { ...f.options, stopOnLimit: true })).toBe(false);
+    expect(f.state().entries.map((e: { status: string }) => e.status)).toEqual(["failed", "queued"]);
+    expect(await runQueue(f.dir, false, { ...f.options, stopOnLimit: true })).toBe(false);
+    expect(f.state().entries.map((e: { status: string }) => e.status)).toEqual(["failed", "completed"]);
+    expect(readFileSync(join(f.root, "calls.txt"), "utf8")).toBe(
+      `start ${failure} no-push=true\nend ${failure}\nstart high no-push=true\nend high\n`,
+    );
   });
   it("refuses a live queue or orphaned container instead of duplicating work", async () => {
     const f = fixture(["high"]);

@@ -1,0 +1,36 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Bundled 3 modules in 3ms
+
+  app.js  44.32 KB  (entry point)
+
+$ bun build ./src/app.js --outdir ./dist --target browser && cp index.html style.css dist/
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) żółw rysuje odcinek do przodu [1.39ms]
+(pass) błąd składni nie pozostawia wcześniejszego rysunku [0.06ms]
+(pass) błąd wykonania zachowuje wcześniejszy rysunek [0.15ms]
+(pass) powtórzenie i obrót tworzą kwadrat [0.17ms]
+(pass) obrót w przestrzeni kieruje żółwia w górę [0.03ms]
+(pass) procedura może zostać wywołana przed definicją [0.19ms]
+(pass) dzielenie przez zero w grubości jest błędem wykonania [0.04ms]
+(pass) polecenia przestrzenne w 2D są błędem przed rysowaniem [0.02ms]
+(pass) czyść usuwa wcześniejsze odcinki [0.04ms]
+
+ 9 pass
+ 0 fail
+ 17 expect() calls
+Ran 9 tests across 1 file. [4.00ms]
+(exit 0)

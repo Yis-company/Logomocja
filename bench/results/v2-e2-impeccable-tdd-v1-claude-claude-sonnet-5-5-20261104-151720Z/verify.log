@@ -1,0 +1,569 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @happy-dom/global-registrator@21.0.4
++ @types/bun@1.4.4
++ happy-dom@21.0.4
++ typescript@7.0.2
++ vite@8.3.5
+
+29 packages installed [46.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 48 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                          1.65 kB │ gzip:  0.82 kB
+dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2           7.33 kB
+dist/assets/jetbrains-mono-latin-ext-600-normal-BfB_LPfz.woff2           7.51 kB
+dist/assets/barlow-latin-ext-400-normal-HxX4XjxC.woff2                  14.26 kB
+dist/assets/barlow-latin-ext-500-normal-DOaysfXq.woff2                  14.41 kB
+dist/assets/barlow-semi-condensed-latin-ext-500-normal-BXdp1BvY.woff2   14.52 kB
+dist/assets/barlow-latin-ext-700-normal-BLuWmldJ.woff2                  14.83 kB
+dist/assets/barlow-semi-condensed-latin-ext-600-normal-BkQ9hN72.woff2   14.84 kB
+dist/assets/barlow-latin-ext-600-normal-B8NK_A3D.woff2                  14.96 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2              21.16 kB
+dist/assets/jetbrains-mono-latin-600-normal-C8RAYTDA.woff2              21.86 kB
+dist/assets/barlow-latin-500-normal-BPAOfeC8.woff2                      22.00 kB
+dist/assets/barlow-latin-400-normal-qiz4-Cze.woff2                      22.19 kB
+dist/assets/barlow-semi-condensed-latin-500-normal-G0uxJNrM.woff2       22.42 kB
+dist/assets/barlow-latin-600-normal-DILqtrty.woff2                      22.77 kB
+dist/assets/barlow-latin-700-normal-A9pxMQ4z.woff2                      22.78 kB
+dist/assets/barlow-semi-condensed-latin-600-normal-BkLiAYu4.woff2       22.98 kB
+dist/assets/index-uiJcodqX.css                                          38.03 kB │ gzip:  8.31 kB
+dist/assets/index-DEJ5jyHW.js                                          139.01 kB │ gzip: 47.04 kB
+
+✓ built in 71ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) interpreter: moving the turtle > np draws one segment forward along +Y from the origin with the default pen [1.22ms]
+(pass) interpreter: turning > pw turns the heading clockwise seen from above (+Y becomes +X) [0.11ms]
+(pass) interpreter: movement commands and their aliases > ws moves backward and lw turns left [0.06ms]
+(pass) interpreter: movement commands and their aliases > aliases and letter case do not matter: naprzod 10 prawo 90 naprzód 5 lewo 90 wstecz 2 [0.25ms]
+(pass) interpreter: movement commands and their aliases > aliases and letter case do not matter: fd 10 rt 90 forward 5 lt 90 bk 2 [0.13ms]
+(pass) interpreter: movement commands and their aliases > aliases and letter case do not matter: FORWARD 10 Right 90 NaPrZóD 5 LEFT 90 BACK 2 [0.09ms]
+(pass) interpreter: comments and layout > a semicolon starts a comment to the end of the line; newlines are plain whitespace [0.06ms]
+(pass) interpreter: parse-time errors > an unknown command is reported at its line and column in Polish, and nothing is drawn [0.09ms]
+(pass) interpreter: pen > pod lifts the pen so moves leave no trace; opu lowers it again from the new place [0.06ms]
+(pass) interpreter: pen > a move of zero draws nothing and pen aliases work [0.32ms]
+(pass) interpreter: colour and width > kolor and grubosc apply to later segments; hex digits are normalised to lowercase [0.21ms]
+(pass) interpreter: colour and width errors > "kolor \"#12345\"" is a parse-time error: nothing is drawn [0.03ms]
+(pass) interpreter: colour and width errors > "np 1\nkolor \"#12345g\"" is a parse-time error: nothing is drawn [0.01ms]
+(pass) interpreter: colour and width errors > "kolor 5" is a parse-time error: nothing is drawn
+(pass) interpreter: colour and width errors > "grubosc 0" is a parse-time error: nothing is drawn
+(pass) interpreter: colour and width errors > "np 1 grubosc 13" is a parse-time error: nothing is drawn
+(pass) interpreter: colour and width errors > "grubosc 2.5" is a parse-time error: nothing is drawn
+(pass) interpreter: expressions > * and / bind tighter than + and - [0.08ms]
+(pass) interpreter: expressions > operators of equal precedence associate to the left [0.04ms]
+(pass) interpreter: expressions > decimal literals: 12.5 and .5 [0.02ms]
+(pass) interpreter: unary signs and parentheses > parentheses group; unary + and - stack and apply to any operand [0.13ms]
+(pass) interpreter: the whitespace rule for binary operators > whitespace on both sides or on neither side makes the operator binary [0.06ms]
+(pass) interpreter: the whitespace rule for binary operators > "np 10 -5" leaves a stray operator at command position [0.05ms]
+(pass) interpreter: the whitespace rule for binary operators > "np 10- 5" leaves a stray operator at command position [0.06ms]
+(pass) interpreter: the whitespace rule for binary operators > "np 4 *2" leaves a stray operator at command position [0.02ms]
+(pass) interpreter: the whitespace rule for binary operators > "np 8 /2" leaves a stray operator at command position
+(pass) interpreter: the whitespace rule for binary operators > "np 1 +2" leaves a stray operator at command position
+(pass) interpreter: the whitespace rule for binary operators > "np 10 --2" leaves a stray operator at command position
+(pass) interpreter: the whitespace rule for binary operators > "np 3\n  -4" leaves a stray operator at command position
+(pass) interpreter: powtorz > runs its body that many times; the classic square closes on the origin [0.11ms]
+(pass) interpreter: powtorz > 0 repetitions run nothing; the count may be an expression; repeats nest [0.16ms]
+(pass) interpreter: powtorz > the body may span several lines and contain comments [0.05ms]
+(pass) interpreter: argument and bracket errors > "powtorz 3 [np 10" [0.03ms]
+(pass) interpreter: argument and bracket errors > "np 10 ]"
+(pass) interpreter: argument and bracket errors > "np (1 + 2" [0.01ms]
+(pass) interpreter: argument and bracket errors > "np 1)"
+(pass) interpreter: argument and bracket errors > "powtorz [np 1]"
+(pass) interpreter: argument and bracket errors > "np"
+(pass) interpreter: argument and bracket errors > "pw\n"
+(pass) interpreter: argument and bracket errors > "powtorz 3 [np ]"
+(pass) interpreter: argument and bracket errors > "np ("
+(pass) interpreter: argument and bracket errors > "np 1 +"
+(pass) interpreter: argument and bracket errors > "powtorz 3 np 1"
+(pass) interpreter: argument and bracket errors > "powtorz 10001 [np 1]"
+(pass) interpreter: argument and bracket errors > "powtorz -1 [np 1]"
+(pass) interpreter: argument and bracket errors > "np 1\npowtorz 2.5 [np 1]"
+(pass) interpreter: argument and bracket errors > "powtorz (3 + 0.5) [np 1]"
+(pass) interpreter: argument and bracket errors > a repeat count of 10000 is the largest that parses (it then runs into the operation limit) [3.33ms]
+(pass) interpreter: run-time errors > division by zero stops the program, keeps the drawing so far and names the argument [0.09ms]
+(pass) interpreter: run-time errors > the error is reported at the first token of the argument expression, on its own line [0.06ms]
+(pass) interpreter: variables > niech assigns and reassigns; names ignore case and may be written :name [0.11ms]
+(pass) interpreter: variables > a name that is never assigned anywhere is a parse-time error at that name [0.03ms]
+(pass) interpreter: variables > a variable assigned later at top level is declared, but reading it early is a run-time error [0.04ms]
+(pass) interpreter: variables > a command word cannot be used as a variable name or as a value [0.04ms]
+(pass) interpreter: nrpowt > is the 1-based number of the current iteration of the innermost enclosing repeat [0.08ms]
+(pass) interpreter: nrpowt > repcount is an alias, and the count of an inner repeat sees the enclosing repeat [0.02ms]
+(pass) interpreter: nrpowt > "np nrpowt" outside any repeat is a parse-time error [0.02ms]
+(pass) interpreter: nrpowt > "powtorz 2 [np 1]\nnp 1 + nrpowt" outside any repeat is a parse-time error [0.02ms]
+(pass) interpreter: nrpowt > "powtorz nrpowt [np 1]" outside any repeat is a parse-time error
+(pass) interpreter: conditionals > jeśli 1 < 2 runs its body: true [0.07ms]
+(pass) interpreter: conditionals > jeśli 2 < 1 runs its body: false [0.02ms]
+(pass) interpreter: conditionals > jeśli 2 > 1 runs its body: true [0.02ms]
+(pass) interpreter: conditionals > jeśli 1 > 2 runs its body: false
+(pass) interpreter: conditionals > jeśli 2 = 2 runs its body: true
+(pass) interpreter: conditionals > jeśli 2 = 3 runs its body: false
+(pass) interpreter: conditionals > jeśli 2 <> 3 runs its body: true
+(pass) interpreter: conditionals > jeśli 2 <> 2 runs its body: false
+(pass) interpreter: conditionals > jeśli 2 <= 2 runs its body: true
+(pass) interpreter: conditionals > jeśli 3 <= 2 runs its body: false
+(pass) interpreter: conditionals > jeśli 2 >= 2 runs its body: true
+(pass) interpreter: conditionals > jeśli 1 >= 2 runs its body: false
+(pass) interpreter: conditionals > jeśli 1+1 = 2 runs its body: true [0.02ms]
+(pass) interpreter: conditionals > jeśli (3) < -1 runs its body: false [0.01ms]
+(pass) interpreter: conditionals > comparisons are exact: 0.1 + 0.2 is not 0.3 [0.03ms]
+(pass) interpreter: conditionals > jeżeli picks the first body or the second; jesli/jezeli/if/ifelse are the same words [0.07ms]
+(pass) interpreter: conditionals > bodies may nest, hold anything, and see nrpowt of the enclosing repeat [0.04ms]
+(pass) interpreter: conditionals > "jeśli 1 [np 1]" is a parse-time error [0.02ms]
+(pass) interpreter: conditionals > "jeśli [np 1]" is a parse-time error [0.01ms]
+(pass) interpreter: conditionals > "jeśli 1 < 2 np 1" is a parse-time error
+(pass) interpreter: conditionals > "jeżeli 1 < 2 [np 1] np 2" is a parse-time error [0.01ms]
+(pass) interpreter: conditionals > "jeśli 1 < [np 1]" is a parse-time error [0.01ms]
+(pass) interpreter: procedures > a procedure takes positional arguments and draws with them [0.25ms]
+(pass) interpreter: procedures > arguments are expressions separated by whitespace [0.12ms]
+(pass) interpreter: procedures > a call may come before the definition [0.04ms]
+(pass) interpreter: procedures > legacy header with :params, to/end aliases and :name references work too [0.08ms]
+(pass) interpreter: procedures > a parameter may share its name with a procedure: call in command position, value in argument position [0.04ms]
+(pass) interpreter: stop, recursion and local variables > procedures may call themselves; stop ends the current call [0.12ms]
+(pass) interpreter: stop, recursion and local variables > at top level stop ends the program without an error [0.03ms]
+(pass) interpreter: stop, recursion and local variables > a stop inside a repeat or conditional ends the enclosing procedure, not the body [0.03ms]
+(pass) interpreter: stop, recursion and local variables > niech inside a procedure is local to the call and shadows a global from then on [0.04ms]
+(pass) interpreter: stop, recursion and local variables > a local created in a procedure is gone after the call, so using it outside is a parse error [0.04ms]
+(pass) interpreter: stop, recursion and local variables > a parameter can be reassigned; each recursive call has its own [0.08ms]
+(pass) interpreter: stop, recursion and local variables > reading a local before it is assigned, with no global to fall back on, is a run-time error [0.07ms]
+(pass) interpreter: stop, recursion and local variables > nrpowt belongs to the repeat inside the procedure, one counter per call [0.04ms]
+(pass) interpreter: procedure errors > too few arguments at the end of the program [0.04ms]
+(pass) interpreter: procedure errors > too few arguments before another command [0.02ms]
+(pass) interpreter: procedure errors > too many arguments leave a stray value [0.01ms]
+(pass) interpreter: procedure errors > a definition inside a repeat [0.01ms]
+(pass) interpreter: procedure errors > a definition inside a procedure [0.01ms]
+(pass) interpreter: procedure errors > a missing już [0.01ms]
+(pass) interpreter: procedure errors > a name defined twice [0.01ms]
+(pass) interpreter: procedure errors > a command word as a procedure name
+(pass) interpreter: procedure errors > nrpowt in a procedure body outside a repeat [0.02ms]
+(pass) interpreter: procedure errors > a variable named like a procedure [0.01ms]
+(pass) interpreter: procedure errors > a stray już [0.01ms]
+(pass) interpreter: procedure errors > oto in the middle of a line
+(pass) interpreter: procedure errors > już that is not alone on its line [0.01ms]
+(pass) interpreter: procedure errors > a parameter named like a command
+(pass) interpreter: procedure errors > a repeated parameter [0.02ms]
+(pass) interpreter: procedure errors > an undeclared name in a procedure [0.01ms]
+(pass) interpreter: procedure errors > a parameter used outside its procedure [0.01ms]
+(pass) interpreter: procedure errors > junk in the header
+(pass) interpreter: procedure errors > a trailing comma in the header
+(pass) interpreter: procedure errors > a missing procedure name [0.01ms]
+(pass) interpreter: 3D orientation > gora tilts the heading towards the up vector, dol the other way [0.09ms]
+(pass) interpreter: 3D orientation > the up vector follows a pitch: after gora 90 the turtle's up is the former back [0.03ms]
+(pass) interpreter: 3D orientation > pp rolls the up vector towards the right vector around the heading [0.05ms]
+(pass) interpreter: 3D orientation > all spellings of the 3D commands work [0.07ms]
+(pass) interpreter: 3D orientation > a circle drawn after gora 30 closes and lies in the tilted plane [4.04ms]
+(pass) interpreter: 3D orientation > "gora 10" is an error in 2D mode, found before anything is drawn [0.13ms]
+(pass) interpreter: 3D orientation > "dol 10" is an error in 2D mode, found before anything is drawn [0.01ms]
+(pass) interpreter: 3D orientation > "pp 10" is an error in 2D mode, found before anything is drawn
+(pass) interpreter: 3D orientation > "pl 10" is an error in 2D mode, found before anything is drawn
+(pass) interpreter: 3D orientation > "pitchup 1" is an error in 2D mode, found before anything is drawn
+(pass) interpreter: 3D orientation > "rollleft 1" is an error in 2D mode, found before anything is drawn [0.02ms]
+(pass) interpreter: 3D orientation > flat programs draw identical coordinates in 2D and 3D [0.16ms]
+(pass) interpreter: dom and czyść > dom returns to the origin drawing a segment, and restores heading and orientation [0.04ms]
+(pass) interpreter: dom and czyść > dom in 3D also resets pitch and roll [0.04ms]
+(pass) interpreter: dom and czyść > dom draws nothing with the pen up or when already at the origin, and keeps pen settings [0.05ms]
+(pass) interpreter: dom and czyść > a closed figure whose last point is only numerically at the origin gets no extra segment from dom [0.02ms]
+(pass) interpreter: dom and czyść > czyść forgets every segment so far and changes nothing else [0.03ms]
+(pass) interpreter: number literals > np 1e3 is a malformed number, reported at the literal [0.05ms]
+(pass) interpreter: number literals > np 1E3 is a malformed number, reported at the literal [0.01ms]
+(pass) interpreter: number literals > np 0x10 is a malformed number, reported at the literal
+(pass) interpreter: number literals > np 5. is a malformed number, reported at the literal
+(pass) interpreter: number literals > np 1.2.3 is a malformed number, reported at the literal
+(pass) interpreter: number literals > np 12abc is a malformed number, reported at the literal
+(pass) interpreter: number literals > np ..5 is a malformed number, reported at the literal
+(pass) interpreter: number literals > np 1_000 is a malformed number, reported at the literal
+(pass) interpreter: number literals > np ٣ is a malformed number, reported at the literal [0.05ms]
+(pass) interpreter: number literals > np NaN is an error: it is not a number [0.02ms]
+(pass) interpreter: number literals > np Infinity is an error: it is not a number
+(pass) interpreter: number literals > np -Infinity is an error: it is not a number
+(pass) interpreter: number literals > leading zeros and a bare leading dot are fine [0.02ms]
+(pass) interpreter: parse-time limits > 50,000 source characters are allowed, the 50,001st is an error reported at it [0.19ms]
+(pass) interpreter: parse-time limits > 10,000 tokens are allowed, the 10,001st is an error reported at it [5.17ms]
+(pass) interpreter: parse-time limits > operators, parentheses, brackets and commas count as tokens [3.08ms]
+(pass) interpreter: parse-time limits > brackets nest 32 deep, the 33rd [ is an error reported at it [0.20ms]
+(pass) interpreter: widths and repeat counts computed from names > are checked when executed: the error names the argument and keeps the drawing [0.14ms]
+(pass) interpreter: widths and repeat counts computed from names > a literal expression with a division by zero is a run-time error, not a parse-time one [0.04ms]
+(pass) interpreter: run-time limits > 10,000 operations are allowed; a repeat costs one plus one per finished iteration [2.31ms]
+(pass) interpreter: run-time limits > a conditional costs one, plus one for a body that ran to its end [3.96ms]
+(pass) interpreter: run-time limits > a procedure call costs one, plus one when the call finishes; niech costs one [7.53ms]
+(pass) interpreter: run-time limits > evaluating an expression is not an operation [1.26ms]
+(pass) interpreter: run-time limits > 32 active call and repeat frames are allowed, the 33rd is an error and keeps the drawing [0.57ms]
+(pass) interpreter: run-time limits > repeat frames and call frames share the limit; conditional bodies are not frames [2.33ms]
+(pass) interpreter: run-time limits > a coordinate may reach ±100000 but not beyond; the offending move is not drawn [0.17ms]
+(pass) interpreter: run-time limits > a result that is not finite is an error at the first token of the argument [0.08ms]
+(pass) interpreter: robustness on extreme but legal programs > thousands of stacked unary signs and a very long operator chain are evaluated [3.86ms]
+(pass) interpreter: robustness on extreme but legal programs > parentheses nest 32 deep, the 33rd ( is an error reported at it [0.08ms]
+(pass) interpreter: robustness on extreme but legal programs > whatever the program, run never throws [2.07ms]
+(pass) interpreter: header spelling > the space after ma: is optional and MA: ignores case [0.06ms]
+(pass) interpreter: header spelling > accented and decomposed spellings of keywords are the same word [0.04ms]
+(pass) interpreter: no negative zeros in the output > coordinates that are zero are +0, whichever way the turtle got there [0.07ms]
+(pass) interpreter: a missing value for niech > at the end of the program it is reported at the command itself [0.04ms]
+(pass) interpreter: a missing value for niech > before a closing bracket it is reported at that bracket [0.02ms]
+(pass) interpreter: a missing value for niech > a missing name is reported at the token found, or at the command at the end [0.04ms]
+
+tests/examples.test.ts:
+(pass) standard programs > thirteen programs ship, with the names and modes of the brief [0.02ms]
+(pass) standard programs > each is found by id or by its name, ignoring case and accents [0.14ms]
+(pass) standard programs > sources are shipped verbatim [0.04ms]
+(pass) standard programs > all thirteen run to the end without an error in their own mode [7.45ms]
+(pass) standard programs > kwadrat: a closed square of side 120 [0.09ms]
+(pass) standard programs > gwiazda: five strokes of 180 turning 144 degrees close on the start [0.03ms]
+(pass) standard programs > rozeta: twelve squares of 100 [0.06ms]
+(pass) standard programs > spirala: each of the 90 sides is 2.5 longer than the last, colours alternate [0.11ms]
+(pass) standard programs > wielokaty: polygons with 3 to 9 sides of 60 [0.09ms]
+(pass) standard programs > drzewo: 255 branches, thinner and greener as they shorten [1.15ms]
+(pass) standard programs > sniezynka: three sides of 256 strokes of 270/81 [1.96ms]
+(pass) standard programs > schody: six steps climbing 120 in z [0.07ms]
+(pass) standard programs > szescian: every vertex of the drawing is a corner of the 100-cube [0.16ms]
+(pass) standard programs > pierscien: a closed 36-gon of side 12 tilted by 30 degrees [0.05ms]
+(pass) standard programs > kula: twelve closed circles, each returning to the origin, inside a sphere of twice the radius [0.28ms]
+(pass) standard programs > helisa: 120 steps, five turns, rising 1.5 per step [0.11ms]
+(pass) standard programs > drzewo3d: 121 branches growing from a vertical trunk [1.60ms]
+
+tests/studio.test.ts:
+(pass) studio: stepping > step executes one command at a time and names the line being executed [0.26ms]
+(pass) studio: finishing > stepping past the last command finishes with exactly the drawing run() gives [0.10ms]
+(pass) studio: finishing > stepping again after the end starts over instead of doubling the drawing [0.04ms]
+(pass) studio: running > run animates: it keeps going frame by frame and ends with exactly the drawing run() gives [0.83ms]
+(pass) studio: running > a higher speed draws more in the same time [0.20ms]
+(pass) studio: running > the top speed has no animation: the whole program is drawn at once [0.10ms]
+(pass) studio: pause and resume > pause freezes the drawing and the animation loop; resume continues from the same place [0.73ms]
+(pass) studio: pause and resume > pressing run while paused resumes instead of starting over [0.46ms]
+(pass) studio: pause and resume > stepping while running pauses first, then takes exactly one step [0.12ms]
+(pass) studio: pause and resume > pause and resume without a program in flight do nothing [0.01ms]
+(pass) studio: reset and repeated runs > reset clears the drawing and returns to idle, keeping the program text [0.06ms]
+(pass) studio: reset and repeated runs > running again after a reset gives the same drawing, not a doubled one [0.06ms]
+(pass) studio: reset and repeated runs > reset in the middle of an animation stops it for good [0.13ms]
+(pass) studio: reset and repeated runs > reset while paused forgets the paused program [0.02ms]
+(pass) studio: errors > a parse-time error draws nothing, names the position, and a fix runs normally [0.11ms]
+(pass) studio: errors > a run-time error stops there and keeps what was drawn [0.06ms]
+(pass) studio: errors > the same error surfaces when stepping to it [0.03ms]
+(pass) studio: editing while a program is in flight > editing during a run stops it, keeps the drawing but marks it as stale [0.11ms]
+(pass) studio: editing while a program is in flight > editing while paused or after the end also makes the drawing stale [0.03ms]
+(pass) studio: editing while a program is in flight > running the edited program replaces the stale drawing and clears the flag [0.03ms]
+(pass) studio: editing while a program is in flight > setting the text it already has changes nothing, even mid-run [0.10ms]
+(pass) studio: editing while a program is in flight > an empty drawing is never stale [0.02ms]
+(pass) studio: diagnostics while typing > a parse-time error is marked as soon as the text has one, and clears when fixed; nothing is drawn [0.03ms]
+(pass) studio: diagnostics while typing > the live check follows the mode: 3D commands are errors in 2D only [0.04ms]
+(pass) studio: diagnostics while typing > an old drawing stays on screen while the new text has an error [0.03ms]
+(pass) studio: open > loads the program in the given mode and runs it to the end without animation [0.06ms]
+(pass) studio: open > opening again, with the same or another program, never accumulates segments [0.03ms]
+(pass) studio: open > open, reset, open gives the same result as the first open [0.02ms]
+(pass) studio: open > errors come back the same way run() reports them, with the editor showing them too [0.05ms]
+(pass) studio: open > a running animation is cancelled by open [0.10ms]
+(pass) studio: the route (call stack) while stepping > lists the procedure calls and repeat counters that are active, innermost last [0.09ms]
+(pass) studio: the route (call stack) while stepping > is empty at top level and when nothing runs [0.02ms]
+(pass) studio: the route (call stack) while stepping > a repeat at top level is listed too, and recursion shows every active call [0.09ms]
+(pass) studio: leftovers of an interrupted run > reset and edits leave no route or highlighted line behind [0.08ms]
+(pass) studio: leftovers of an interrupted run > the reset editor still shows a parse error the text has [0.04ms]
+(pass) studio: leftovers of an interrupted run > czyść while stepping removes the drawing so far, and later steps draw on a clean page [0.03ms]
+(pass) studio: subscribing > listeners hear about each change with the new state, until they unsubscribe [0.75ms]
+(pass) studio: subscribing > a no-op call does not notify [0.03ms]
+(pass) studio: the turtle > starts at the origin heading +Y with the pen down, and follows every step [0.06ms]
+(pass) studio: the turtle > keeps the final pose when the program ends, and resets with the drawing [0.03ms]
+(pass) studio: the turtle > a run-time error leaves the turtle where it stopped [0.04ms]
+(pass) studio: what kind of error > a parse-time error and a run-time error are told apart [0.06ms]
+(pass) studio: what kind of error > open() reports the kind too [0.03ms]
+(pass) studio: long programs do not animate forever at fast speeds > at the fast levels the whole run takes at most about three seconds, however long the program [2.64ms]
+(pass) studio: long programs do not animate forever at fast speeds > the slow levels are left alone: watching closely is the point [0.10ms]
+(pass) studio: long programs do not animate forever at fast speeds > short programs keep the speed the user chose [0.03ms]
+
+tests/permalink.test.ts:
+(pass) permalink > a program and its mode survive a round trip through the URL [0.37ms]
+(pass) permalink > the link uses only URL-safe characters, whatever the program contains [0.04ms]
+(pass) permalink > an empty program and a 50,000 character program both round trip [2.88ms]
+(pass) permalink > anything that is not a valid program link is rejected, never thrown [0.02ms]
+(pass) permalink > links built from a base that already has a hash or query keep working [0.02ms]
+
+tests/drafts.test.ts:
+(pass) drafts: surviving a reload > the draft of each mode comes back from a new store over the same storage [0.11ms]
+(pass) drafts: surviving a reload > a mode that was never saved has no draft; an empty draft is a draft [0.01ms]
+(pass) drafts: surviving a reload > unreadable or foreign data in storage is ignored [0.05ms]
+(pass) drafts: surviving a reload > when storage refuses writes the draft still works for the session and the store says so [0.03ms]
+(pass) drafts: surviving a reload > with no storage at all, drafts live in memory
+(pass) drafts: backups of replaced programs > stash keeps a replaced program, newest first, and survives a reload [0.06ms]
+(pass) drafts: backups of replaced programs > blank programs and exact repeats are not worth a backup; only the ten newest are kept [0.10ms]
+(pass) drafts: backups of replaced programs > a backup can be fetched by id and removed [0.06ms]
+
+tests/workspace.test.ts:
+(pass) workspace: first visit and drafts that survive a reload > a first visit starts with a small program in each mode, drawn straight away [0.20ms]
+(pass) workspace: first visit and drafts that survive a reload > edits are kept for each mode and come back after a reload, in the mode that was open [0.07ms]
+(pass) workspace: first visit and drafts that survive a reload > start draws what the restored draft says [0.05ms]
+(pass) workspace: first visit and drafts that survive a reload > switching mode never loses the text of the mode left behind [0.05ms]
+(pass) workspace: loading examples never silently destroys a draft > an untouched draft is replaced by the example without any question [0.09ms]
+(pass) workspace: loading examples never silently destroys a draft > a draft with unsaved changes is kept and the caller is asked to confirm [0.03ms]
+(pass) workspace: loading examples never silently destroys a draft > when confirmed the example loads and the replaced draft is recoverable [0.07ms]
+(pass) workspace: loading examples never silently destroys a draft > a 3D example opens in 3D and leaves the 2D draft alone [0.16ms]
+(pass) workspace: loading examples never silently destroys a draft > only the draft of the example's own mode is at risk [0.78ms]
+(pass) workspace: loading examples never silently destroys a draft > unknown examples are reported, not guessed [0.06ms]
+(pass) workspace: loading examples never silently destroys a draft > an empty editor holds nothing worth confirming [0.05ms]
+(pass) workspace: loading examples never silently destroys a draft > a loaded example that the user then edits is protected again [0.04ms]
+(pass) workspace: sharing links > opening a permalink loads the program in its mode and draws it [0.09ms]
+(pass) workspace: sharing links > a link replaces the draft of its mode but the old text is set aside, not lost [0.09ms]
+(pass) workspace: sharing links > a bad link changes nothing [0.04ms]
+(pass) workspace: sharing links > the link to share is built from the program in the editor and its mode [0.09ms]
+(pass) workspace: .logo files > the program downloads as plain text named after it [1.25ms]
+(pass) workspace: .logo files > an unnamed program downloads as szkic-2d.logo or szkic-3d.logo [0.05ms]
+(pass) workspace: .logo files > opening a file loads it; a program with pitch or roll lands in 3D, a flat one in the current mode [0.12ms]
+(pass) workspace: .logo files > opening a file over a draft with unsaved work asks first, and backs the draft up when confirmed [0.06ms]
+(pass) workspace: .logo files > a program that was just downloaded counts as saved: loading an example over it needs no question [0.05ms]
+(pass) workspace: challenge documents > a challenge opens in its own mode with its own starter and leaves the main drafts alone [0.08ms]
+(pass) workspace: challenge documents > work on a challenge is kept per challenge, across reloads, and never lands in the main draft [0.14ms]
+(pass) workspace: challenge documents > checking runs the program, reports pass or fail with a reason, and records the progress [0.90ms]
+(pass) workspace: challenge documents > the mode cannot be switched inside a challenge, and unknown challenges are refused [0.03ms]
+(pass) workspace: challenge documents > restarting a challenge brings back the starter text [0.05ms]
+(pass) workspace: challenge documents > checking with no challenge open is a mistake in the caller, not a crash [0.04ms]
+(pass) workspace: snippets from the documentation > open like an example: in their mode, asking first when they would replace unsaved work [0.09ms]
+(pass) workspace: snippets from the documentation > the loaded snippet is drawn and has no file name until the user chooses one [0.05ms]
+(pass) workspace: paste (what window.logomocja.open does) > puts the program in the editor of its mode as an edit and draws it at once [0.06ms]
+(pass) workspace: paste (what window.logomocja.open does) > works from any mode and from inside a challenge, and repeats cleanly [0.06ms]
+
+tests/challenges.test.ts:
+(pass) challenges: the catalogue > at least five practice tasks, each telling what to draw [0.05ms]
+(pass) challenges: the catalogue > the target drawing of every task is available to show [0.09ms]
+(pass) challenges: right answers pass, however they are written > kwadrat accepts "np 100 pw 90 np 100 pw 90 np 100 pw 90 np 100" [0.10ms]
+(pass) challenges: right answers pass, however they are written > kwadrat accepts "oto bok\n np 100\n pw 90\njuż\nbok bok bok bok" [0.11ms]
+(pass) challenges: right answers pass, however they are written > trojkat accepts "np 120 pw 120 np 120 pw 120 np 120" [0.07ms]
+(pass) challenges: right answers pass, however they are written > trojkat accepts "powtorz 3 [np 120 pw 120]" [0.07ms]
+(pass) challenges: right answers pass, however they are written > szesciokat accepts "kolor \"#c1763d\"\npowtorz 6 [np 70 pw 60]" [0.10ms]
+(pass) challenges: right answers pass, however they are written > gwiazda accepts "oto ramie ma: d\n np d\n pw 144\njuż\npowtorz 5 [ramie 150]" [0.14ms]
+(pass) challenges: right answers pass, however they are written > gwiazda accepts "niech k 0\npowtorz 5 [np 150 niech k k + 144 pw 144]" [0.13ms]
+(pass) challenges: right answers pass, however they are written > schodki accepts "powtorz 5 [np 30 pw 90 np 30 lw 90]" [0.09ms]
+(pass) challenges: right answers pass, however they are written > rozeta accepts "powtorz 8 [powtorz 4 [np 60 pw 90] pw 45]" [0.61ms]
+(pass) challenges: right answers pass, however they are written > kwadraty accepts "oto k\n powtorz 4 [np 50 pw 90]\njuż\nk pod pw 90 np 70 lw 90 opu k pod pw 90 np 70 lw 90 opu k" [0.15ms]
+(pass) challenges: right answers pass, however they are written > szkielet accepts "powtorz 4 [np 100 pw 90] gora 90 np 100 dol 90 powtorz 4 [np 100 pw 90]\npowtorz 4 [np 100 dol 90 np 100 pod ws 100 opu gora 90 pw 90]" [0.41ms]
+(pass) challenges: right answers pass, however they are written > szkielet accepts "powtorz 4 [gora 90 np 100 ws 100 dol 90 np 100 pw 90] gora 90 np 100 dol 90 powtorz 4 [np 100 pw 90]" [0.39ms]
+(pass) challenges: right answers pass, however they are written > okrag accepts "powtorz 36 [np 10 gora 10]" [0.25ms]
+(pass) challenges: right answers pass, however they are written > okrag accepts "oto krok ma: d\n  np d\n  gora 10\njuż\npowtorz 36 [krok 10]" [0.27ms]
+(pass) challenges: right answers pass, however they are written > okrag accepts "niech k 0\npowtorz 36 [np 10 niech k k + 10 gora 10]" [0.26ms]
+(pass) challenges: right answers pass, however they are written > a square drawn counter-clockwise, starting east is the same square [0.07ms]
+(pass) challenges: right answers pass, however they are written > a square drawn retracing sides that are already drawn is the same square [0.05ms]
+(pass) challenges: right answers pass, however they are written > a square drawn with pen-up moves to the other corner first is the same square [0.56ms]
+(pass) challenges: right answers pass, however they are written > a square drawn ending with dom at the start is the same square [0.08ms]
+(pass) challenges: right answers pass, however they are written > a square drawn with a different line width and colour is the same square [0.06ms]
+(pass) challenges: wrong answers fail, and say why > an empty program draws nothing [0.02ms]
+(pass) challenges: wrong answers fail, and say why > a program with an error fails with the position of the error [0.02ms]
+(pass) challenges: wrong answers fail, and say why > a run-time error fails even if the drawing so far looks right [0.07ms]
+(pass) challenges: wrong answers fail, and say why > an incomplete figure says how much is missing [0.10ms]
+(pass) challenges: wrong answers fail, and say why > a figure with extra lines says so [0.20ms]
+(pass) challenges: wrong answers fail, and say why > the right shape in the wrong size is called too small or too large [0.24ms]
+(pass) challenges: wrong answers fail, and say why > the right shape in the wrong place is recognised as such [0.12ms]
+(pass) challenges: wrong answers fail, and say why > a required colour is checked [0.06ms]
+(pass) challenges: wrong answers fail, and say why > a required technique is checked: a procedure here [0.14ms]
+(pass) challenges: wrong answers fail, and say why > a circle tipped the wrong way, or lying flat, is not the vertical circle [1.45ms]
+(pass) challenges: wrong answers fail, and say why > a 3D task checks all three coordinates [0.47ms]
+(pass) challenges: wrong answers fail, and say why > a task is not solved by drawing the whole plane [4.37ms]
+(pass) challenges: progress is persisted > a solved task stays solved after a reload, with the winning program [0.14ms]
+(pass) challenges: progress is persisted > failed attempts are counted but never mark a task solved, and a solved task stays solved [0.19ms]
+(pass) challenges: progress is persisted > each task keeps its own unfinished draft [0.02ms]
+(pass) challenges: progress is persisted > broken data in storage is ignored and progress can be reset [0.07ms]
+
+tests/view.test.ts:
+(pass) 2D camera > maps +X to the right and +Y up the screen, with the camera centre in the middle [0.03ms]
+(pass) 2D camera > fromScreen undoes toScreen [0.03ms]
+(pass) 2D camera > zooming around the cursor keeps the point under the cursor where it was [0.03ms]
+(pass) 2D camera > zoom stays within sensible limits [0.01ms]
+(pass) 2D camera > dragging moves the picture with the pointer [0.01ms]
+(pass) 2D camera > fit shows every point with room around, centred [0.06ms]
+(pass) 2D camera > fitting nothing, or a single point, still gives a usable view [0.01ms]
+(pass) 2D camera > grid lines are never packed tighter than 36px, in steps of 1, 2 or 5 [0.04ms]
+(pass) 3D camera > the point the camera looks at lands in the middle of the screen [0.07ms]
+(pass) 3D camera > from straight above, +X is right and +Y is up the screen, like the 2D plane [0.02ms]
+(pass) 3D camera > a flat drawing seen from above is the 2D drawing up to one uniform scale [0.03ms]
+(pass) 3D camera > orbiting turns the view; elevation never flips over the poles [0.02ms]
+(pass) 3D camera > dragging the picture right moves the scene right on screen [0.03ms]
+(pass) 3D camera > zooming in brings the scene closer, within limits [0.02ms]
+(pass) 3D camera > fit puts every point of the drawing on screen [0.07ms]
+(pass) 3D camera > fit keeps the viewing angle and works for empty or single-point drawings [0.02ms]
+(pass) 3D camera > points behind the camera are not projected [0.01ms]
+(pass) 3D camera > a segment that passes through the near plane is cut where it enters the view [0.04ms]
+(pass) colours on a dark canvas > light theme shows colours as chosen [0.03ms]
+(pass) colours on a dark canvas > dark theme lifts only colours that would vanish, and keeps their hue [0.08ms]
+
+tests/highlight.test.ts:
+(pass) editor: syntax highlighting > the spans always add up to the source, so the overlay lines up with the text [1.19ms]
+(pass) editor: syntax highlighting > commands, numbers, names, strings, comments and brackets each get their own kind [0.08ms]
+(pass) editor: syntax highlighting > aliases, accents and letter case are all commands [0.05ms]
+(pass) editor: syntax highlighting > operators, parentheses and comparisons are told apart from brackets [0.03ms]
+(pass) editor: syntax highlighting > procedure definitions: keywords, the procedure's name wherever it is used, parameters as names [0.06ms]
+(pass) editor: syntax highlighting > nrpowt is a keyword value; malformed numbers and unterminated strings are marked [0.03ms]
+(pass) editor: syntax highlighting > a colour literal carries its colour so the editor can show it [0.03ms]
+(pass) editor: syntax highlighting > a very long program is highlighted in one pass without trouble [21.41ms]
+
+tests/router.test.ts:
+(pass) router > "" is {
+  name: "workspace",
+} [0.06ms]
+(pass) router > "#" is {
+  name: "workspace",
+} [0.01ms]
+(pass) router > "#/" is {
+  name: "workspace",
+}
+(pass) router > "#/przyklady" is {
+  name: "examples",
+}
+(pass) router > "#/przyklady/" is {
+  name: "examples",
+}
+(pass) router > "#/wyzwania" is {
+  name: "challenges",
+} [0.01ms]
+(pass) router > "#/wyzwania/kwadrat" is {
+  name: "challenge",
+  id: "kwadrat",
+}
+(pass) router > "#/opis" is {
+  name: "reference",
+}
+(pass) router > "#/opis/powtorz" is {
+  name: "reference",
+  anchor: "powtorz",
+}
+(pass) router > "#/p/3d/YWJj" is {
+  name: "link",
+  hash: "#/p/3d/YWJj",
+}
+(pass) router > unknown places fall back to the workspace instead of a blank page [0.03ms]
+(pass) router > every route can be written down and read back [0.05ms]
+
+tests/theme.test.ts:
+(pass) theme > follows the system until the user chooses [0.14ms]
+(pass) theme > a manual choice wins over the system and survives a reload [0.04ms]
+(pass) theme > the toggle steps through automatic, light and dark [0.03ms]
+(pass) theme > subscribers hear about changes; junk in storage is ignored [0.03ms]
+
+tests/format.test.ts:
+(pass) format > Polish plurals [1.09ms]
+(pass) format > numbers are short but accurate [0.04ms]
+(pass) format > the heading is measured clockwise from straight up the page [0.02ms]
+
+tests/reference.test.ts:
+(pass) command reference > every spelling the interpreter accepts is documented [0.14ms]
+(pass) command reference > every example in the reference runs without an error in its own mode [0.41ms]
+(pass) command reference > the examples that are meant to fail show exactly the error they claim [0.08ms]
+(pass) command reference > every command has an example with something to see, and a one-line summary [0.17ms]
+(pass) command reference > the sections the brief asks for are all there, with unique anchors [0.03ms]
+(pass) command reference > the limits quoted in the text are the ones the interpreter enforces [0.03ms]
+
+tests/app.test.ts:
+(pass) app: boots and exposes the testing hook > the hook has a version, run and open [64.98ms]
+(pass) app: boots and exposes the testing hook > the page has a main landmark, one h1 per page, and a labelled toolbar [46.15ms]
+(pass) app: boots and exposes the testing hook > the first screen holds the Kwadrat example, already drawn [43.16ms]
+(pass) app: hook.run is the interpreter, without touching the UI > returns segments and a Polish error with line and column [33.63ms]
+(pass) app: hook.open puts the program in the editor and draws it > the editor shows the text, the drawing is the interpreter's, and the promise resolves with the same result [39.43ms]
+(pass) app: hook.open puts the program in the editor and draws it > a parse error draws nothing and marks the line and column in the editor [62.73ms]
+(pass) app: hook.open puts the program in the editor and draws it > repeated opens never accumulate, reset and open again gives the same drawing [36.62ms]
+(pass) app: hook.open puts the program in the editor and draws it > it works from any page and brings the workspace back [32.35ms]
+(pass) app: the draft survives a reload > after typing, a new app over the same storage shows the same text [62.34ms]
+
+tests/css-logic.test.ts:
+(pass) css: what is shown at which width > phone (390px): bottom navigation, one pane behind a switch, icon-only toolbar, no empty route [10.25ms]
+(pass) css: what is shown at which width > tablet (800px): top navigation, still one pane at a time [2.97ms]
+(pass) css: what is shown at which width > desktop (1440px): both panes side by side, no pane switch, labelled buttons [2.65ms]
+(pass) css: what is shown at which width > the menu button keeps its icon but drops its label on a phone [3.38ms]
+(pass) css: the [hidden] attribute always wins > elements whose class sets a display are still hidden [2.80ms]
+(pass) css: the editor overlay and the textarea share identical text metrics > at 1440px the layer and the textarea agree on font, size, line height, tabs and padding [2.24ms]
+(pass) css: the editor overlay and the textarea share identical text metrics > at 390px the layer and the textarea agree on font, size, line height, tabs and padding [2.07ms]
+(pass) css: the editor overlay and the textarea share identical text metrics > the line height is one fixed pixel value for text, layer and gutter, larger on a phone [2.85ms]
+(pass) css: the editor overlay and the textarea share identical text metrics > ligatures are switched off for the text and its layer, so tokens cannot change widths [0.05ms]
+(pass) css: the editor overlay and the textarea share identical text metrics > the textarea text is invisible while the caret stays visible [1.20ms]
+(pass) css: both themes define every colour the components use > each custom property used in the stylesheets is defined for light and dark [0.73ms]
+(pass) css: both themes define every colour the components use > the dark theme really changes the ground and the ink [1.71ms]
+(pass) css + app together, in the real DOM > on a phone only one pane shows, and the Kod/Rysunek switch swaps them [82.31ms]
+(pass) css + app together, in the real DOM > on a desktop both panes show and the switch is gone [71.54ms]
+(pass) css + app together, in the real DOM > inside a challenge the 2D/3D switch and the 3D tools are really hidden, and the brief really shows [72.57ms]
+(pass) css + app together, in the real DOM > the Trasa strip appears only when something is running (and always on a desktop) [153.77ms]
+(pass) css + app together, in the real DOM > pages other than the workspace hide it entirely [77.72ms]
+
+tests/ui.test.ts:
+(pass) ui: run, step, pause, reset through the buttons > Uruchom draws the program; Reset clears it [69.50ms]
+(pass) ui: run, step, pause, reset through the buttons > Krok executes one command and highlights its line; the console names the state [110.60ms]
+(pass) ui: run, step, pause, reset through the buttons > Pauza is available only while running and the animation really stops [148.83ms]
+(pass) ui: run, step, pause, reset through the buttons > a disabled-looking button does nothing when pressed (it stays focusable on purpose) [64.34ms]
+(pass) ui: run, step, pause, reset through the buttons > a parse error from Uruchom keeps the editor in front and shows the message with a way to jump to it [50.97ms]
+(pass) ui: run, step, pause, reset through the buttons > a run-time error says the drawing was kept [93.94ms]
+(pass) ui: keyboard shortcuts > Ctrl+Enter runs, F10 and Ctrl+. step, Esc pauses, Alt+R resets [64.85ms]
+(pass) ui: keyboard shortcuts > Ctrl+/ and ? open the list of shortcuts, which names every shortcut [51.44ms]
+(pass) ui: keyboard shortcuts > shortcuts do nothing while a dialog is open [55.85ms]
+(pass) ui: keyboard shortcuts > every control that has a shortcut announces it [49.89ms]
+(pass) ui: modes > the 2D/3D switch shows the other mode's draft, is a radiogroup, and is arrow-key operable [53.21ms]
+(pass) ui: examples never silently destroy a draft > the page lists thirteen examples with names, modes, thumbnails and code [78.09ms]
+(pass) ui: examples never silently destroy a draft > loading over an untouched draft just loads, goes to the workspace and says so [97.44ms]
+(pass) ui: examples never silently destroy a draft > loading over unsaved work asks first; cancelling changes nothing; confirming keeps a backup [129.00ms]
+(pass) ui: examples never silently destroy a draft > a 3D example opens in 3D [89.31ms]
+(pass) ui: examples never silently destroy a draft > the filter shows only 2D or only 3D [79.99ms]
+(pass) ui: sharing and files > the address (shown when the clipboard refuses) reopens the program in the same mode [118.47ms]
+(pass) ui: sharing and files > opening a permalink at load runs it, cleans the address and tells the user the old draft is kept [118.87ms]
+(pass) ui: sharing and files > a broken link changes nothing and says so [63.46ms]
+(pass) ui: sharing and files > the menu offers download, open, PNG and backups and opens with the keyboard [50.12ms]
+(pass) ui: sharing and files > opening a file over unsaved work asks first [54.57ms]
+(pass) ui: challenges > the list shows every challenge with its target and the progress [109.76ms]
+(pass) ui: challenges > a challenge shows what to draw, accepts a program and checks it, and progress persists [280.87ms]
+(pass) ui: challenges > leaving a challenge brings back the main workspace, drafts untouched [155.43ms]
+(pass) ui: challenges > an unknown challenge goes back to the list [163.02ms]
+(pass) ui: the route (call stack) strip > shows procedures and repeat counters while stepping, innermost highlighted [51.45ms]
+(pass) ui: the route (call stack) strip > explains itself when nothing runs [41.73ms]
+(pass) ui: themes > follows the system, then the manual toggle wins and is remembered [93.02ms]
+(pass) ui: reference page > documents every section with examples, and an example opens in the workspace [113.58ms]
+(pass) ui: accessibility sweep > every button, link, input and select has an accessible name [274.78ms]
+(pass) ui: accessibility sweep > canvases are labelled, dialogs are labelled, the document language is Polish, and there is exactly one h1 per page [331.76ms]
+(pass) ui: accessibility sweep > the editor is a labelled textarea described by the console [48.64ms]
+(pass) ui: accessibility sweep > icon-only buttons say what they do; the live regions exist [47.24ms]
+(pass) ui: accessibility sweep > the main navigation marks the current page [226.36ms]
+(pass) ui: ARIA patterns are complete, not half-built > the Kod/Rysunek switch is a labelled group of toggle buttons, not a tab strip without panels [50.90ms]
+(pass) ui: ARIA patterns are complete, not half-built > the drawing viewport is a labelled group, and roledescription is never used without a role [46.95ms]
+(pass) ui: ARIA patterns are complete, not half-built > the turtle readout is a labelled group of name/value cells [45.20ms]
+(pass) ui: the editor's keyboard behaviour > Enter keeps the indentation of the line, and adds two spaces after an opening bracket or a procedure header [51.53ms]
+(pass) ui: the editor's keyboard behaviour > Enter in the middle of a line splits it and keeps the rest [46.36ms]
+(pass) ui: the editor's keyboard behaviour > Tab inserts two spaces, Shift+Tab takes them back, a selection of several lines is indented together [50.17ms]
+(pass) ui: the editor's keyboard behaviour > Escape, then Tab, leaves the editor instead of indenting (so the keyboard is never trapped) [46.03ms]
+(pass) ui: the editor's keyboard behaviour > Enter with Ctrl runs the program instead of typing a newline; composition is left alone [47.18ms]
+(pass) ui: the editor's keyboard behaviour > every edit reaches the workspace, so the draft is saved [44.32ms]
+(pass) ui: being honest about whether the draft is saved > with working storage there is no warning [41.35ms]
+(pass) ui: being honest about whether the draft is saved > when the browser blocks storage, a caution plate says the draft will not survive closing the tab [50.74ms]
+(pass) ui: being honest about whether the draft is saved > a write that fails mid-session raises the warning too [55.75ms]
+(pass) ui: the console follows the stepping > while paused it names the line that was executed last, and updates on every step [61.99ms]
+(pass) ui: moving the executing-line band is cheap > changing the current line does not rebuild the coloured layer [176.57ms]
+(pass) ui: moving the executing-line band is cheap > typing still re-colours, and the band survives the re-colouring [137.23ms]
+(pass) ui: sharing is one click when the clipboard works > Udostępnij copies the link at once and says so, without opening a dialog [78.97ms]
+(pass) ui: sharing is one click when the clipboard works > the toast offers to show the address, and the dialog then holds the same link [67.34ms]
+(pass) ui: sharing is one click when the clipboard works > when the browser refuses the clipboard, the dialog opens so the address can be copied by hand [64.40ms]
+
+tests/viewport.test.ts:
+(pass) viewport 2D: pan, zoom and fit > fit frames the whole drawing inside the canvas with room around it [0.55ms]
+(pass) viewport 2D: pan, zoom and fit > dragging moves the picture with the pointer [0.52ms]
+(pass) viewport 2D: pan, zoom and fit > the wheel zooms around the cursor: the point under the pointer stays put [0.25ms]
+(pass) viewport 2D: pan, zoom and fit > two fingers pinch to zoom [0.20ms]
+(pass) viewport 2D: pan, zoom and fit > keys: + and - zoom, arrows pan, 0 fits again [0.26ms]
+(pass) viewport 2D: pan, zoom and fit > after navigating by hand the view stops following the drawing until Dopasuj [0.15ms]
+(pass) viewport 2D: pan, zoom and fit > while following, a drawing that grows past the edge widens the view by itself [0.08ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > fit shows the whole solid [0.31ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > dragging orbits: the same solid is projected differently, not just shifted [0.23ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > shift-drag pans without turning the solid [0.21ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > the wheel dollies: scrolling in makes the solid larger [0.15ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > the top preset shows a flat drawing exactly as 2D does, up to scale [0.12ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > the front and side presets look along the ground [0.10ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > reset brings back the standard viewpoint and a fitted solid [0.25ms]
+(pass) viewport 3D: orbit, pan, zoom, presets > 2D-only gestures do not exist in 3D: presets are ignored in 2D [0.09ms]
+(pass) viewport: export and availability > an empty drawing exports nothing [0.12ms]
+(pass) viewport: export and availability > without a 2D context the viewport says it is unavailable and does not throw [0.05ms]
+
+ 460 pass
+ 0 fail
+ 3104 expect() calls
+Ran 460 tests across 17 files. [5.91s]
+(exit 0)

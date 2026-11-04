@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Logomocja">
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="#12468e"/>
+  <rect x="3" y="3" width="26" height="26" rx="5" fill="none" stroke="#ffffff" stroke-width="1.4"/>
+  <path d="M16 6.5 12.6 13h6.8z" fill="#ffd21f"/>
+  <path d="M16 12.2c-3.4 0-5.6 2.4-5.6 5.3 0 3.1 2.4 5.6 5.6 5.6s5.6-2.5 5.6-5.6c0-2.9-2.2-5.3-5.6-5.3z" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+  <path d="M16 12.2v10.9M10.6 15.4l10.8 4.2M21.4 15.4l-10.8 4.2" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+</svg>

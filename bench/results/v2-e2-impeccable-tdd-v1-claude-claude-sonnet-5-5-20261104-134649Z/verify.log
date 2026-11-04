@@ -1,0 +1,225 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Built dist/ (app.js, app.css) with asset prefix "/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-134649Z/"
+$ bun run scripts/build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.ts:
+(pass) run: basic movement > np draws a segment from the origin along +Y with the default pen [1.25ms]
+(pass) run: turning and aliases > pw turns right (clockwise from above): heading +Y becomes +X [0.10ms]
+(pass) run: turning and aliases > lw turns left and ws moves backwards [0.16ms]
+(pass) run: turning and aliases > every Polish and English alias is equivalent, ignoring case and accents [0.29ms]
+(pass) run: turning and aliases > a square closes exactly (no floating drift on right angles) [0.08ms]
+(pass) run: turning and aliases > comments are ignored [0.05ms]
+(pass) run: pen, colour, width > pen up moves without drawing; pen down draws again [0.07ms]
+(pass) run: pen, colour, width > colour is lowercased and persists; width persists [0.10ms]
+(pass) run: pen, colour, width > a zero-length move draws nothing [0.02ms]
+(pass) run: pen, colour, width > a malformed colour is a parse-time error at the literal; nothing is drawn [0.09ms]
+(pass) run: pen, colour, width > kolor without a colour literal reports the token found instead [0.07ms]
+(pass) run: pen, colour, width > a literal width outside 1-12 or non-integer is a parse-time error at the argument [0.14ms]
+(pass) run: expressions > * and / bind tighter than + and - [0.12ms]
+(pass) run: expressions > equal precedence associates to the left [0.06ms]
+(pass) run: expressions > parentheses group [0.03ms]
+(pass) run: expressions > a binary operator needs whitespace on both sides or on neither [0.03ms]
+(pass) run: expressions > `np 10 -5` is np 10 followed by a stray token, reported at the minus [0.10ms]
+(pass) run: expressions > unary signs stack and apply to any operand [0.17ms]
+(pass) run: expressions > decimal literals: 12.5 and .5 [0.02ms]
+(pass) run: expressions > other number spellings are errors [0.13ms]
+(pass) run: expressions > missing argument is reported where it should have started [0.07ms]
+(pass) run: expressions > unbalanced parentheses are errors [0.03ms]
+(pass) run: expressions > division by zero is a run-time error at the argument; earlier drawing is kept [0.09ms]
+(pass) run: expressions > a non-finite result is a run-time error [0.12ms]
+(pass) run: repeat > powtorz runs the body n times, nested bodies allowed [0.36ms]
+(pass) run: repeat > a count of 0 runs nothing [0.02ms]
+(pass) run: repeat > nrpowt counts iterations from 1 and refers to the innermost repeat [0.09ms]
+(pass) run: repeat > the repeat count may use the enclosing counter [0.02ms]
+(pass) run: repeat > nrpowt outside a repeat is a parse-time error at the word [0.04ms]
+(pass) run: repeat > literal counts outside 0-10000 or non-integer are parse-time errors at the count [0.05ms]
+(pass) run: repeat > brackets must balance; errors point at the offending bracket [0.10ms]
+(pass) run: repeat > stop at top level ends the program [0.03ms]
+(pass) run: variables > niech assigns, names ignore case and accept the :name form [0.38ms]
+(pass) run: variables > a name used but never assigned anywhere is a parse-time error at the name [0.02ms]
+(pass) run: variables > a variable assigned later at top level may be named earlier; reading it unassigned is a run-time error at the argument start [0.03ms]
+(pass) run: variables > a variable may be read in a loop before a later assignment on the same path ends the error [0.02ms]
+(pass) run: variables > variable names may not be command words [0.03ms]
+(pass) run: variables > niech needs a name and a value [0.03ms]
+(pass) run: variables > an invalid assigned expression is reported at its first token [0.02ms]
+(pass) run: conditionals > all six comparisons [0.39ms]
+(pass) run: conditionals > comparisons are exact and need no spacing rule [0.04ms]
+(pass) run: conditionals > aliases: if/jesli and ifelse/jeżeli/jezeli [0.02ms]
+(pass) run: conditionals > jeżeli runs the first body when true, else the second [0.13ms]
+(pass) run: conditionals > conditions use variables and nrpowt; stop inside a body ends the program [0.03ms]
+(pass) run: conditionals > malformed conditionals report the token found [0.04ms]
+(pass) run: conditionals > an unassigned variable in a condition is reported at the start of its side [0.03ms]
+(pass) run: procedures > define with ma: and call with positional expression arguments [0.21ms]
+(pass) run: procedures > definitions may follow their calls; juz/end and to are aliases; case is ignored [0.07ms]
+(pass) run: procedures > legacy header and :name references [0.11ms]
+(pass) run: procedures > a procedure without parameters [0.04ms]
+(pass) run: procedures > recursion with stop ends the procedure, not just the repeat or conditional body [0.88ms]
+(pass) run: procedures > niech inside a procedure is local and shadows a global for the call [0.03ms]
+(pass) run: procedures > a procedure reads globals and parameters can be reassigned [0.03ms]
+(pass) run: procedures > locals are discarded between calls [0.10ms]
+(pass) run: procedures > a parameter may share its name with a procedure: call in command position, parameter in argument position [0.03ms]
+(pass) run: procedures > a variable may not be named like a procedure [0.03ms]
+(pass) run: procedures > nrpowt in a procedure body outside a repeat is a parse-time error even if called from a repeat [0.04ms]
+(pass) run: procedures > wrong argument counts [0.11ms]
+(pass) run: procedures > definitions are top-level only, once, and must end with już [0.14ms]
+(pass) run: procedures > header problems: command-word names, duplicate and keyword parameters [0.04ms]
+(pass) run: procedures > names from another procedure are not visible [0.04ms]
+(pass) run: 3D orientation > gora tips the nose towards up; dol the other way [0.05ms]
+(pass) run: 3D orientation > pp rolls: up becomes the former right, right the former down; heading is unchanged [0.24ms]
+(pass) run: 3D orientation > a tilted circle really leaves the plane (Pierścień: 30 degrees) [0.11ms]
+(pass) run: 3D orientation > pitch and roll are parse-time errors at the command in 2D, even if never executed [0.15ms]
+(pass) run: 3D orientation > flat programs give identical coordinates in both modes [0.31ms]
+(pass) run: dom and czyść > dom draws back to the origin when the pen is down, and resets orientation [0.04ms]
+(pass) run: dom and czyść > dom at the origin or with the pen up draws nothing and keeps pen state [0.04ms]
+(pass) run: dom and czyść > dom restores heading, right and up in 3D [0.05ms]
+(pass) run: dom and czyść > czyść forgets segments but not the turtle [0.06ms]
+(pass) run: dom and czyść > a run-time error after czyść keeps only what came after it [0.03ms]
+(pass) run: run-time validation of computed arguments > a computed width outside 1-12 stops the run, keeping earlier drawing [0.07ms]
+(pass) run: run-time validation of computed arguments > a computed width in range is applied [0.02ms]
+(pass) run: run-time validation of computed arguments > a computed repeat count that is not an integer in 0-10000 stops the run [0.08ms]
+(pass) run: run-time validation of computed arguments > procedure arguments are checked where they are passed [0.04ms]
+(pass) run: limits > source longer than 50,000 characters is an error and draws nothing [5.24ms]
+(pass) run: limits > 10,000 tokens are allowed, the 10,001st is an error at that token [15.16ms]
+(pass) run: limits > brackets nest 32 deep, not 33 (conditionals count too) [0.85ms]
+(pass) run: limits > 32 active frames: recursion deeper than 32 stops with the drawing kept [0.19ms]
+(pass) run: limits > repeat and call frames count together; conditional bodies do not [0.40ms]
+(pass) run: limits > 10,000 executed operations: repeat = 1 + 2 per iteration for one command [3.00ms]
+(pass) run: limits > each conditional, its body finish and each call count as operations [5.15ms]
+(pass) run: limits > reaching the end of the program is not an operation; evaluating expressions is free [11.89ms]
+(pass) run: limits > coordinates stay within ±100,000 [0.17ms]
+(pass) run: lexical robustness > a byte-order mark, no-break spaces and CRLF line endings are plain whitespace [0.04ms]
+(pass) run: lexical robustness > columns count characters, not UTF-16 units [0.04ms]
+(pass) run: lexical robustness > an unknown character is reported where it stands [0.08ms]
+
+tests/examples.test.ts:
+(pass) standard programs > thirteen programs with the specified ids and modes [0.03ms]
+(pass) standard programs > every program runs to the end without error in its mode with the expected stroke count [5.82ms]
+(pass) standard programs > the 2D programs are also valid flat drawings in 3D mode [6.36ms]
+(pass) standard programs > a square closes on the origin, a pentagram too; the ring leaves the plane [0.16ms]
+(pass) standard programs > programs keep their Polish source text [0.02ms]
+
+tests/controller.test.ts:
+(pass) controller: stepping and reset > step executes one command at a time, highlighting its line [0.17ms]
+(pass) controller: stepping and reset > reset forgets the drawing and puts the turtle home [0.03ms]
+(pass) controller: stepping and reset > stepping after done starts a fresh run [0.02ms]
+(pass) controller: stepping and reset > czyść during stepping empties the visible drawing [0.02ms]
+(pass) controller: run, pause, resume > run animates at the chosen speed: ops per second, only drawing commands cost time [0.07ms]
+(pass) controller: run, pause, resume > instant speed finishes the program in one frame with the same strokes as run() [0.11ms]
+(pass) controller: run, pause, resume > pause freezes the drawing; resume continues from the same place [0.03ms]
+(pass) controller: run, pause, resume > stepping while paused, then resuming, keeps one continuous run [0.02ms]
+(pass) controller: run, pause, resume > run restarts from scratch, also while running [0.02ms]
+(pass) controller: run, pause, resume > reset during a run stops the animation and clears the drawing [0.03ms]
+(pass) controller: run, pause, resume > a parse error draws nothing and reports line and column [0.06ms]
+(pass) controller: run, pause, resume > a run-time error keeps what was drawn and ends the run [0.06ms]
+(pass) controller: editing while a program runs > an edit stops a running animation, keeps the drawing, and flags it as outdated [0.03ms]
+(pass) controller: editing while a program runs > the next run uses the edited text and clears the outdated flag [0.03ms]
+(pass) controller: editing while a program runs > an edit before any run changes nothing
+(pass) controller: running to the end without animation > runToEnd draws everything at once, even from the middle of a stepped run [0.05ms]
+(pass) controller: running to the end without animation > runToEnd reports errors with the drawing kept [0.03ms]
+(pass) controller: running to the end without animation > runToEnd after an earlier finished run starts over [0.01ms]
+
+tests/workspace.test.ts:
+(pass) workspace: drafts and persistence > a fresh workspace starts in 2D with a starter program per mode [0.09ms]
+(pass) workspace: drafts and persistence > each mode keeps its own draft and both survive a reload [0.04ms]
+(pass) workspace: drafts and persistence > an empty draft is a real draft, not a reason to reload the starter [0.01ms]
+(pass) workspace: drafts and persistence > unusable storage never breaks the workspace [0.02ms]
+(pass) workspace: loading programs never silently destroys a draft > loading an example switches to its mode and replaces that mode's draft [0.06ms]
+(pass) workspace: loading programs never silently destroys a draft > a modified draft is kept as a backup and can be restored with undo [0.08ms]
+(pass) workspace: loading programs never silently destroys a draft > an untouched example or empty draft needs no backup [0.02ms]
+(pass) workspace: loading programs never silently destroys a draft > undo returns to the mode that was active before [0.04ms]
+(pass) workspace: loading programs never silently destroys a draft > backups survive a reload, are deduplicated and capped [0.14ms]
+(pass) workspace: loading programs never silently destroys a draft > restoring a backup is itself protected [0.05ms]
+(pass) workspace: loading programs never silently destroys a draft > loading shared or opened text follows the same protection [0.02ms]
+
+tests/share.test.ts:
+(pass) permalinks > the hash carries mode and program as base64url UTF-8 [0.17ms]
+(pass) permalinks > decoding gives back exactly what was encoded, including newlines and Polish letters [2.30ms]
+(pass) permalinks > an empty program is a valid permalink [0.02ms]
+(pass) permalinks > other routes, missing or damaged parameters are not permalinks [0.03ms]
+(pass) permalinks > the mode defaults to 2d when the parameter is absent
+(pass) files > downloads are .logo text named after the mode, with the program unchanged [0.02ms]
+(pass) files > opening normalises line endings and a byte-order mark [0.02ms]
+(pass) files > a file using pitch or roll commands opens in 3D, other files keep the current mode [0.04ms]
+
+tests/challenges.test.ts:
+(pass) challenges: catalogue > at least five tasks, each with text, a mode and a reference drawing that passes its own check [3.59ms]
+(pass) challenges: checker > a different program drawing the same square passes [0.26ms]
+(pass) challenges: checker > direction of travel and pen-up travel do not matter, only the ink [1.53ms]
+(pass) challenges: checker > a drawing within a few units still passes [0.27ms]
+(pass) challenges: checker > a square that is too small fails and says what is missing [0.36ms]
+(pass) challenges: checker > extra lines fail and say there is too much [0.32ms]
+(pass) challenges: checker > an empty drawing and a program with an error both fail with a reason [0.11ms]
+(pass) challenges: checker > a task that needs a colour checks it [0.37ms]
+(pass) challenges: checker > a 3D task compares in space, not only the shadow on the floor [1.11ms]
+(pass) challenges: checker > the circle task accepts 72 short steps as well as 36 [0.93ms]
+(pass) challenges: progress > a pass is remembered across reloads together with the solution [0.13ms]
+(pass) challenges: progress > a later failed attempt keeps the challenge solved but saves the new text as the working draft [0.04ms]
+(pass) challenges: progress > saving a draft without checking, and damaged storage, are harmless [0.04ms]
+
+tests/highlight.test.ts:
+(pass) highlighting classifies commands, numbers, colours, names, brackets and comments, keeping every character [0.32ms]
+(pass) procedure names come from oto lines; the error squiggle wraps the token at the column [0.20ms]
+
+tests/docs.test.ts:
+(pass) every documented example behaves as documented (runs, or fails on purpose) [0.51ms]
+(pass) every command word of the language is documented under its alias set [0.05ms]
+
+tests/app.dom.test.ts:
+(skip) app: hook and editor integration > window-level hook exposes version, run and open
+(skip) app: hook and editor integration > open() puts the program in the editor, draws it, and resolves with the result
+(skip) app: hook and editor integration > open() with a parse error draws nothing and marks the error in the editor
+(skip) app: hook and editor integration > open() in 3D works and repeated opens do not accumulate drawings
+(skip) app: hook and editor integration > without WebGL the 3D mode says why and still shows the program's result
+(skip) app: execution controls > step highlights the executed line, pause is only available while running, reset clears
+(skip) app: execution controls > editing while stepping flags the drawing as outdated
+(skip) app: execution controls > Ctrl+Enter runs the program; the shortcut list is reachable from the header
+(skip) app: examples, drafts, sharing > all thirteen examples are listed and load into the right mode
+(skip) app: examples, drafts, sharing > loading an example over a modified draft keeps the draft and offers undo
+(skip) app: examples, drafts, sharing > a permalink loads and runs the program, then clears itself from the address
+(skip) app: examples, drafts, sharing > the draft of each mode survives a reload
+(skip) app: examples, drafts, sharing > theme button cycles automatic, light, dark and remembers the choice
+(skip) app: challenges and reference > a challenge is checked automatically, the result is shown and progress survives a reload
+(skip) app: challenges and reference > the reference documents every command with an example and can open one in the studio
+
+tests/camera.test.ts:
+(pass) looking along +Y from the front: +X is to the right, +Z is up, the origin is centred [0.16ms]
+(pass) from above the sheet looks like the 2D plane: +Y points up the screen [0.03ms]
+(pass) points behind the camera are reported as not visible [0.03ms]
+(pass) orbiting by a positive yaw moves the camera towards +X
+
+15 tests skipped:
+(skip) app: hook and editor integration > window-level hook exposes version, run and open
+(skip) app: hook and editor integration > open() puts the program in the editor, draws it, and resolves with the result
+(skip) app: hook and editor integration > open() with a parse error draws nothing and marks the error in the editor
+(skip) app: hook and editor integration > open() in 3D works and repeated opens do not accumulate drawings
+(skip) app: hook and editor integration > without WebGL the 3D mode says why and still shows the program's result
+(skip) app: execution controls > step highlights the executed line, pause is only available while running, reset clears
+(skip) app: execution controls > editing while stepping flags the drawing as outdated
+(skip) app: execution controls > Ctrl+Enter runs the program; the shortcut list is reachable from the header
+(skip) app: examples, drafts, sharing > all thirteen examples are listed and load into the right mode
+(skip) app: examples, drafts, sharing > loading an example over a modified draft keeps the draft and offers undo
+(skip) app: examples, drafts, sharing > a permalink loads and runs the program, then clears itself from the address
+(skip) app: examples, drafts, sharing > the draft of each mode survives a reload
+(skip) app: examples, drafts, sharing > theme button cycles automatic, light, dark and remembers the choice
+(skip) app: challenges and reference > a challenge is checked automatically, the result is shown and progress survives a reload
+(skip) app: challenges and reference > the reference documents every command with an example and can open one in the studio
+
+ 150 pass
+ 15 skip
+ 0 fail
+ 615 expect() calls
+Ran 165 tests across 10 files. [84.00ms]
+(exit 0)

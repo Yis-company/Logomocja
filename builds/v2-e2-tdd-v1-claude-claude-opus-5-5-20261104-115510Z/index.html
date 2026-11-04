@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja — pracownia żółwia</title>
+    <meta name="description" content="Logomocja: polska pracownia Logo. Pisz programy dla żółwia, rysuj na płaszczyźnie i w przestrzeni, rozwiązuj wyzwania." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f4efe4" />
+    <link rel="icon" href="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-115510Z/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply the saved or system theme before the first paint.
+      (function () {
+        var choice = null;
+        try { choice = localStorage.getItem('logomocja:theme'); } catch (e) {}
+        var dark = choice === 'dark' || (choice !== 'light' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-115510Z/assets/index-NmRknS-l.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-115510Z/assets/index-Dtfnude5.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript><p class="noscript">Logomocja potrzebuje JavaScriptu, aby działać.</p></noscript>
+  </body>
+</html>

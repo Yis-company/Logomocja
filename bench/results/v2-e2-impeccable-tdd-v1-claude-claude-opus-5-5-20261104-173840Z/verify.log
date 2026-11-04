@@ -1,0 +1,198 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @happy-dom/global-registrator@21.0.4
++ @types/three@0.187.0
++ bun-types@1.4.4
++ happy-dom@21.0.4
++ typescript@7.0.2
++ vite@8.3.5
++ @fontsource/fira-mono@5.3.0
++ @fontsource/fira-sans@5.3.0
++ three@0.187.0
+
+38 packages installed [77.00ms]
+(exit 0)
+
+$ bun run build
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 45 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              1.48 kB │ gzip:   0.75 kB
+dist/assets/fira-mono-latin-ext-400-normal-CbD3vWRE.woff     9.88 kB
+dist/assets/fira-mono-latin-ext-400-normal-B2gPvaNr.woff2   11.93 kB
+dist/assets/fira-mono-latin-400-normal-C3FQ26ho.woff        13.96 kB
+dist/assets/fira-mono-latin-400-normal-DVTTRLHv.woff2       16.64 kB
+dist/assets/fira-sans-latin-400-normal-66xCkunx.woff        21.87 kB
+dist/assets/fira-sans-latin-600-normal-DtSgd811.woff        22.11 kB
+dist/assets/fira-sans-latin-500-normal-Bkfzcwmr.woff        22.12 kB
+dist/assets/fira-sans-latin-400-normal-a0AnQzuD.woff2       23.87 kB
+dist/assets/fira-sans-latin-500-normal-Bvbxc8ch.woff2       24.05 kB
+dist/assets/fira-sans-latin-600-normal-CXKlxLG9.woff2       24.84 kB
+dist/assets/fira-sans-latin-ext-400-normal-BCUwhuGB.woff    41.38 kB
+dist/assets/fira-sans-latin-ext-500-normal-CFRf4jcC.woff    42.06 kB
+dist/assets/fira-sans-latin-ext-600-normal-DLMQsaV4.woff    42.07 kB
+dist/assets/fira-sans-latin-ext-400-normal-BLG_mAEf.woff2   46.40 kB
+dist/assets/fira-sans-latin-ext-500-normal-OO1QnNpY.woff2   46.99 kB
+dist/assets/fira-sans-latin-ext-600-normal-DTQBTt1m.woff2   50.26 kB
+dist/assets/index-C2f2m_Zw.css                              28.63 kB │ gzip:   6.86 kB
+dist/assets/index-Df4y0TLb.js                               92.77 kB │ gzip:  33.63 kB
+dist/assets/view3d-GZ4SsJ1J.js                             587.67 kB │ gzip: 146.84 kB
+
+✓ built in 138ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/interpreter.test.ts:
+(pass) interpreter: strokes > np 100 draws one default-styled segment along +Y [1.05ms]
+(pass) interpreter: turning > pw turns clockwise seen from above, lw turns back [0.16ms]
+(pass) interpreter: standard programs > Kwadrat draws a closed 120-unit square clockwise, in its own colour and width [0.34ms]
+(pass) interpreter: parse-time errors > an unknown command is reported at its line and column, and nothing is drawn [0.39ms]
+(pass) interpreter: expressions > * and / bind tighter than + and -, equal precedence associates left [0.17ms]
+(pass) interpreter: operator spacing > an operator with space on both sides or neither is binary [0.06ms]
+(pass) interpreter: operator spacing > np 10 -5 leaves the stray value -5, reported at the sign [0.09ms]
+(pass) interpreter: operator spacing > the same rule applies to * and / [0.05ms]
+(pass) interpreter: operator spacing > unary signs stack and apply to any operand [0.06ms]
+(pass) interpreter: messages > a stray value is named in full and the spacing fix is suggested [0.02ms]
+(pass) interpreter: number literals > unsigned decimals with an optional fraction are numbers [0.04ms]
+(pass) interpreter: number literals > exponents, hex, NaN and Infinity are errors at the literal [0.08ms]
+(pass) interpreter: variables > niech assigns and reassigns; :name reads the same variable, case-insensitively [0.09ms]
+(pass) interpreter: variables > a name never assigned anywhere is a parse-time error at the name [0.03ms]
+(pass) interpreter: variables > reading a declared variable before it is assigned is a run-time error at the argument's first token [0.08ms]
+(pass) interpreter: repeat counter and conditionals > Spirala: 90 sides growing by 2.5, colours alternating from green [0.80ms]
+(pass) interpreter: repeat counter and conditionals > jeśli runs its body only when the comparison holds, and comparisons are exact [0.06ms]
+(pass) interpreter: procedures > a call passes each whitespace-separated expression positionally; definitions may follow the call [0.21ms]
+(pass) interpreter: procedures > the legacy header with :params is accepted and params may be read as :name [0.05ms]
+(pass) interpreter: procedures > Wielokąty: seven closed polygons from 3 to 9 sides [0.18ms]
+(pass) interpreter: recursion and stop > Drzewo: 255 branches, the 15 thickest brown, the trunk starting 120 below the origin [3.11ms]
+(pass) interpreter: recursion and stop > stop inside a repeat ends the whole procedure call, and at top level ends the program [0.06ms]
+(pass) interpreter: scoping > niech inside a call shadows the global for the rest of the call only [0.04ms]
+(pass) interpreter: scoping > a parameter can be reassigned without touching the caller's value [0.03ms]
+(pass) interpreter: scoping > a procedure cannot read another procedure's local or parameter [0.02ms]
+(pass) interpreter: scoping > nrpowt in a procedure body outside any repeat is a parse-time error even when called from a repeat [0.02ms]
+(pass) interpreter: scoping > nrpowt at top level outside a repeat is a parse-time error [0.01ms]
+(pass) interpreter: scoping > nrpowt follows the innermost lexical repeat [0.03ms]
+(pass) interpreter: missing and malformed arguments > a missing argument is reported at the token found instead, or at the command at the end of the program [0.08ms]
+(pass) interpreter: missing and malformed arguments > the missing-argument message names the command [0.01ms]
+(pass) interpreter: brackets and parentheses > an unclosed [ or ( is reported at the opening token [0.03ms]
+(pass) interpreter: brackets and parentheses > a stray ] or ) is reported at itself [0.02ms]
+(pass) interpreter: brackets and parentheses > a repeat without a bracketed body is reported where the [ should be [0.01ms]
+(pass) a stray ] says it has no matching [
+(pass) interpreter: colours > a colour literal is case-insensitive and reported in lowercase [0.01ms]
+(pass) interpreter: colours > malformed or missing colours are errors at the offending token [0.06ms]
+(pass) interpreter: width and repeat count > literal widths outside 1–12 or fractional are parse-time errors at the argument [0.08ms]
+(pass) interpreter: width and repeat count > width 12 and 3.0 are accepted [0.04ms]
+(pass) interpreter: width and repeat count > literal repeat counts outside 0–10000 or fractional are parse-time errors [0.05ms]
+(pass) interpreter: width and repeat count > a width or count computed from a name is checked when executed, keeping what was drawn [0.07ms]
+(pass) interpreter: run-time arithmetic errors > division by zero keeps what was drawn and points at the argument's first token [0.03ms]
+(pass) interpreter: run-time arithmetic errors > a literal division by zero is still a run-time error [0.01ms]
+(pass) interpreter: run-time arithmetic errors > a non-finite result is a run-time error [0.06ms]
+(pass) interpreter: run-time arithmetic errors > a condition that divides by zero is reported at the condition's first token [0.02ms]
+(pass) interpreter: definition placement > a definition inside a repeat or conditional body is an error at oto [0.03ms]
+(pass) interpreter: definition placement > a definition inside another procedure is an error at the inner oto [0.01ms]
+(pass) interpreter: definition placement > a missing już is reported at the definition [0.02ms]
+(pass) interpreter: definition placement > a name may be defined once [0.01ms]
+(pass) interpreter: definition placement > oto must start a line and już must stand alone [0.02ms]
+(pass) a definition inside a body explains that procedures are defined at top level [0.01ms]
+(pass) interpreter: calls > too few arguments are reported where the next argument should start, or at the call at the end [0.06ms]
+(pass) interpreter: calls > too many arguments leave a stray value, and the message says how many the procedure takes [0.03ms]
+(pass) interpreter: calls > a parameter may share its name with a procedure: a call in command position, the parameter in argument position [0.03ms]
+(pass) interpreter: calls > English aliases and accented and unaccented spellings are equivalent, in any case [0.05ms]
+(pass) interpreter: 3D turtle > gora 90 heads along the former up vector (+Z); dol pitches the other way [0.05ms]
+(pass) interpreter: 3D turtle > pp 90: up becomes the former right, right becomes the former down; heading unchanged [0.05ms]
+(pass) interpreter: 3D turtle > pitch and roll commands are parse-time errors in 2D mode [0.05ms]
+(pass) interpreter: 3D turtle > flat programs draw identical coordinates in 2D and 3D [9.53ms]
+(pass) interpreter: 3D turtle > dom draws back to the origin when the pen is down and resets orientation [0.14ms]
+(pass) interpreter: 3D standard programs > Schody: six steps climbing to (0, 210, 120) [0.04ms]
+(pass) interpreter: 3D standard programs > Sześcian: 17 strokes covering exactly the 12 edges of a 100-unit cube [0.17ms]
+(pass) interpreter: 3D standard programs > Pierścień: a closed ring of 36 strokes tilted 30° about the X axis [0.08ms]
+(pass) interpreter: 3D standard programs > Kula: twelve closed circles in alternating colours [0.43ms]
+(pass) interpreter: 3D standard programs > Helisa: one turn every 24 steps, rising 1.5 per step [0.22ms]
+(pass) interpreter: 3D standard programs > Drzewo 3D: 121 branches, the trunk straight up, the 4 thickest brown [1.98ms]
+(pass) interpreter: 3D standard programs > every standard program runs without error in its own mode [8.15ms]
+(pass) interpreter: czyść > forgets drawn segments and changes nothing else [0.09ms]
+(pass) interpreter: czyść > a run-time error after czyść keeps only what was drawn after it [0.09ms]
+(pass) interpreter: czyść > a move of zero draws nothing; a pen-up move draws nothing [0.02ms]
+(pass) interpreter: limits > 10,000 executed operations: each command plus one per finished iteration [2.65ms]
+(pass) interpreter: limits > calls and conditional bodies count one more when they finish [5.20ms]
+(pass) interpreter: limits > at most 32 active call and repeat frames; the 33rd is an error that keeps the drawing [0.21ms]
+(pass) interpreter: limits > bracket nesting deeper than 32 is a parse-time error at the 33rd [ [0.14ms]
+(pass) interpreter: limits > coordinates must stay within ±100,000 [0.03ms]
+(pass) interpreter: limits > a program longer than 50,000 characters is rejected [0.04ms]
+(pass) interpreter: limits > more than 10,000 tokens is rejected at the 10,001st [1.34ms]
+(pass) interpreter: names and messages > a variable may not be named like a command or a procedure [0.04ms]
+(pass) interpreter: names and messages > a variable written where a command is expected is a stray value [0.02ms]
+(pass) interpreter: names and messages > an unknown command close to a real one suggests it [0.08ms]
+(pass) interpreter: names and messages > the earliest problem in the source is the one reported [0.04ms]
+(pass) interpreter: names and messages > an unknown character is reported at itself [0.02ms]
+(pass) interpreter: names and messages > a condition missing its comparison is reported at the token found [0.01ms]
+(pass) a program ending inside parentheses reports the unclosed ( [0.03ms]
+(pass) a value inside parentheses where ) or an operator should be is reported at that value [0.04ms]
+
+test/controller.test.ts:
+(pass) controller: stepping > each step executes one command and reports where it was written [0.24ms]
+(pass) controller: running > at the slowest speed a run unfolds over frames and ends with the interpreter's result [0.19ms]
+(pass) controller: running > at the fastest speed a long program finishes within a few frames [2.71ms]
+(pass) controller: pause, resume, reset > pause freezes the drawing across frames; resume continues to the same end [0.36ms]
+(pass) controller: pause, resume, reset > step while running pauses and advances exactly one statement [0.05ms]
+(pass) controller: pause, resume, reset > reset clears the drawing and puts the turtle back at the start [0.06ms]
+(pass) controller: errors, edits, instant runs > a parse error draws nothing and reports its position [0.04ms]
+(pass) controller: errors, edits, instant runs > a run-time error keeps what was drawn and marks the failing statement [0.04ms]
+(pass) controller: errors, edits, instant runs > editing the program during a run stops it, keeps the drawing and drops the stale highlight [0.06ms]
+(pass) controller: errors, edits, instant runs > finish runs to the end at once and returns the interpreter's result [0.04ms]
+(pass) controller: errors, edits, instant runs > subscribers hear every change [0.05ms]
+(pass) the controller counts how many times each line ran [0.03ms]
+
+test/workspace.test.ts:
+(pass) workspace: drafts > each mode keeps its own draft across a reload [0.10ms]
+(pass) workspace: drafts > a first visit opens a starter program in 2D [0.02ms]
+(pass) workspace: loading without losing work > loading an example switches to its mode and keeps the replaced draft restorable [0.11ms]
+(pass) workspace: loading without losing work > replacing an untouched draft needs no stash [0.02ms]
+(pass) workspace: loading without losing work > the stash itself survives a reload [0.02ms]
+
+test/share.test.ts:
+(pass) sharing: permalinks > a link round-trips the program and mode, Polish letters included [0.43ms]
+(pass) sharing: permalinks > the link is URL-safe [0.04ms]
+(pass) sharing: permalinks > a damaged or foreign hash is not a program [0.01ms]
+
+test/files.test.ts:
+(pass) files: .logo programs > the download name says which mode the program is for [0.07ms]
+(pass) files: .logo programs > opening a file keeps its text exactly and takes the mode from its name [0.04ms]
+(pass) files: .logo programs > without a mode in the name, pitch or roll commands mean 3D, otherwise the current mode stays [0.03ms]
+
+test/challenges.test.ts:
+(pass) challenges > there are at least five, each with a statement, a mode and a target drawing [0.02ms]
+(pass) challenges > an independently written correct solution passes every challenge [2.35ms]
+(pass) challenges > a shape of the wrong size fails and says where the drawing falls short [0.07ms]
+(pass) challenges > extra lines fail and are pointed out [0.23ms]
+(pass) challenges > a program with an error fails with the error's message [0.02ms]
+(pass) challenges > when a challenge asks for colours, the right shape in the wrong colours fails [0.13ms]
+(pass) challenges > progress is remembered across reloads [0.12ms]
+
+test/app.test.ts:
+(pass) app: window.logomocja.open > loads the source into the editor in the given mode and resolves with the interpreter's result [34.88ms]
+(pass) app: running from the controls > Uruchom, Od nowa and Uruchom again agree with the language contract [16.31ms]
+(pass) app: running from the controls > Krok runs one statement at a time and marks its line in the gutter [6.02ms]
+(pass) app: running from the controls > a parse error from open() shows the Polish message inline at its line and column, and draws nothing [4.87ms]
+(pass) app: product flows > the draft typed in each mode survives a reload [12.54ms]
+(pass) app: product flows > an example loads by name into its mode, and the replaced draft can be restored [8.79ms]
+(pass) app: product flows > all thirteen examples are offered, each opening in its own mode [14.05ms]
+(pass) app: product flows > opening a permalink loads the program in its mode [5.06ms]
+(pass) app: product flows > a challenge checks the learner's program, explains a failure and remembers a pass [30.37ms]
+(pass) app: product flows > the reference page documents every command word [68.31ms]
+(pass) app: product flows > every example in the reference runs without error [0.64ms]
+(pass) app: editor overlay > the highlighted layer carries exactly the program text, so colours sit under the right characters [3.82ms]
+(pass) app: editor overlay > the gutter has one row per line [2.75ms]
+
+ 127 pass
+ 0 fail
+ 483 expect() calls
+Ran 127 tests across 7 files. [310.00ms]
+(exit 0)

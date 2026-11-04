@@ -1,0 +1,9 @@
+{
+  "id": "impeccable-tdd-v1",
+  "skillVersion": "4.7.0",
+  "engineVersion": "0.1.16",
+  "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+  "snapshotDate": "2026-11-03",
+  "impeccable": "impeccable-v1/manifest.json",
+  "tdd": "tdd-v1/manifest.json"
+}

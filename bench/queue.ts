@@ -138,6 +138,7 @@ export async function runQueue(
   options: {
     command?: string[];
     containerRunning?: (id: string) => boolean;
+    stopOnLimit?: boolean;
   } = {},
 ) {
   const lock = join(dir, "lock");
@@ -231,6 +232,13 @@ export async function runQueue(
         if (!interrupted) delete entry.pid;
         save(dir, queue);
       }
+      if (options.stopOnLimit && entry.status === "failed") {
+        const saved = result(queue, info(dir, i));
+        if (saved && /limit|quota|429|rate|401|403|authenticat|invalid (?:bearer )?token/i.test(saved.statusDetail)) {
+          console.error(`Provider unavailable at entry ${i + 1}; remaining entries stay queued. Resume after recovery without --retry.`);
+          break;
+        }
+      }
     }
     return (
       !interrupted &&
@@ -275,6 +283,7 @@ if (import.meta.main) {
       resume: { type: "string" },
       retry: { type: "boolean", default: false },
       "no-push": { type: "boolean", default: false },
+      "stop-on-limit": { type: "boolean", default: false },
       queue: { type: "string" },
       "stale-minutes": { type: "string", default: "15" },
     },
@@ -287,7 +296,7 @@ if (import.meta.main) {
       (values.resume && (values.prompt || values.layer || values["no-push"]))
     )
       throw Error(
-        "Use --matrix <file> [--prompt v2] [--layer impeccable-v1] [--no-push], or --resume <queue-dir> [--retry]",
+        "Use --matrix <file> [--prompt v2] [--layer impeccable-v1|tdd-v1|impeccable-tdd-v1] [--no-push], or --resume <queue-dir> [--retry]",
       );
     const dir = values.resume
       ? resolve(values.resume)
@@ -299,7 +308,7 @@ if (import.meta.main) {
           values.layer,
         );
     console.log(`Queue: ${dir}`);
-    if (!(await runQueue(dir, values.retry))) process.exitCode = 1;
+    if (!(await runQueue(dir, values.retry, { stopOnLimit: values["stop-on-limit"] }))) process.exitCode = 1;
   } else if (command === "status") {
     const minutes = Number(values["stale-minutes"]);
     if (!Number.isFinite(minutes) || minutes <= 0)

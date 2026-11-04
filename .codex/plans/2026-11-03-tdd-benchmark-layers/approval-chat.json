@@ -1,0 +1,6 @@
+{
+  "decision": "approved",
+  "source": "User message in this thread",
+  "message": "Approved",
+  "scope": "plan.md and plan.html; 32 new runs at low, medium, high, xhigh"
+}

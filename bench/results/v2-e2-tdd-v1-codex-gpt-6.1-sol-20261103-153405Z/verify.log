@@ -1,0 +1,55 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ vite@6.4.5
+
+13 packages installed [4.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 10 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.56 kB │ gzip:  0.37 kB
+dist/assets/index-Gq8IKbar.css  20.35 kB │ gzip:  5.25 kB
+dist/assets/index-BlfpfAni.js   47.92 kB │ gzip: 18.96 kB
+✓ built in 111ms
+$ vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+flows.test.js:
+(pass) shared Polish source and spatial mode round-trip without a server [0.11ms]
+(pass) challenge checker accepts the target geometry and explains a wrong drawing [2.88ms]
+
+interpreter.test.js:
+(pass) forward draws from the origin with the initial pen [0.04ms]
+(pass) repeat draws a square and validates the whole source before drawing [0.16ms]
+(pass) a local declared later shadows globals before assignment [0.24ms]
+(pass) definitions inside brackets are rejected before execution [0.04ms]
+(pass) all thirteen shipped programs draw successfully, including recursive and spatial examples [8.60ms]
+(pass) runtime errors preserve strokes and point at the start of a parenthesised argument [0.07ms]
+(pass) every nonzero move draws even at tiny decimal distances [0.02ms]
+(pass) a parameter sharing its procedure name can be reassigned locally [0.05ms]
+(pass) scientific and hexadecimal spellings are malformed numbers at their first character [0.03ms]
+(pass) ordinary names do not collide with JavaScript object properties [0.03ms]
+(pass) a trailing header comma is a parse error even if the procedure is never called [0.02ms]
+(pass) finite angles remain usable even when conversion to radians would overflow [0.13ms]
+
+studio.test.js:
+(pass) stepping, pausing, resuming and resetting use the same execution as run [0.13ms]
+(pass) loading examples preserves a recoverable draft and persists both modes [0.12ms]
+(pass) browsing several examples never loses the original draft [0.04ms]
+(pass) a deliberately empty saved draft stays empty when the app supplies starter programs [0.03ms]
+
+ 18 pass
+ 0 fail
+ 66 expect() calls
+Ran 18 tests across 3 files. [15.00ms]
+(exit 0)

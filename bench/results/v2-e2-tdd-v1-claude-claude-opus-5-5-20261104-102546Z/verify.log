@@ -1,0 +1,110 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano dist/ (wersja 1.0.0, BASE_PATH=/Logomocja/builds/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-102546Z/)
+$ bun run scripts/build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) kwadrat draws four segments forming a square [2.01ms]
+(pass) arithmetic follows precedence, left associativity and unary signs [0.27ms]
+(pass) an operator spaced only on its left is a stray token [0.11ms]
+(pass) non-decimal number forms are rejected [0.12ms]
+(pass) niech assigns and reassigns variables, legacy :name works, names ignore case [0.07ms]
+(pass) top-level variables may be declared after their use but must be assigned before reading [0.07ms]
+(pass) an undeclared name is a parse-time error [0.03ms]
+(pass) nrpowt counts iterations of the innermost repeat from 1 [0.13ms]
+(pass) nrpowt outside a repeat is a parse-time error [0.04ms]
+(pass) spirala alternates colours using a variable [0.97ms]
+(pass) wielokaty calls a procedure with computed arguments [0.35ms]
+(pass) procedures may be defined after use, with legacy headers and expression arguments [0.09ms]
+(pass) a parameter may share its name with a procedure [0.09ms]
+(pass) stop inside a repeat ends the whole procedure call [0.09ms]
+(pass) stop at top level ends the program [0.02ms]
+(pass) niech inside a procedure is local and shadows the global for the rest of the call [0.07ms]
+(pass) procedure-call errors are reported at parse time with positions [0.24ms]
+(pass) drzewo recursion draws a symmetric tree [4.93ms]
+(pass) gora 90 heads along the former up vector [0.12ms]
+(pass) pp 90 makes up the former right, so a right turn then heads down [0.05ms]
+(pass) schody climbs six steps [0.05ms]
+(pass) pitch and roll commands are parse-time errors in 2D [0.13ms]
+(pass) flat programs draw identically in 2D and 3D [0.09ms]
+(pass) dom draws back to the origin and resets orientation, keeping pen settings [0.07ms]
+(pass) czyść forgets earlier segments only [0.05ms]
+(pass) a run-time error after czyść keeps the segments drawn since [0.09ms]
+(pass) literal widths and repeat counts are validated before anything is drawn [0.21ms]
+(pass) computed widths and counts are checked at run time and keep the drawing [0.10ms]
+(pass) division by zero is reported at the first token of the argument [0.05ms]
+(pass) comparisons are exact [0.04ms]
+(pass) missing arguments are reported where the argument should start [0.07ms]
+(pass) unbalanced brackets and parentheses are errors [0.05ms]
+(pass) a stray value where a command is expected is reported at that value [0.03ms]
+(pass) the operation limit counts commands and finished iterations [6.47ms]
+(pass) at most 32 procedure and repeat frames may be active [0.28ms]
+(pass) coordinates must stay within 100000 [0.07ms]
+(pass) bracket nesting is limited to 32 [0.22ms]
+(pass) source size and token count are limited [12.58ms]
+(pass) huge expressions report errors instead of crashing [4.18ms]
+(pass) a sign spaced only on its left gets an explanatory message [0.05ms]
+
+tests/examples.test.ts:
+(pass) all thirteen standard programs ship in their modes [0.04ms]
+(pass) example kwadrat runs without error [0.06ms]
+(pass) example gwiazda runs without error [0.02ms]
+(pass) example rozeta runs without error [0.03ms]
+(pass) example spirala runs without error [0.11ms]
+(pass) example wielokaty runs without error [0.18ms]
+(pass) example drzewo runs without error [3.03ms]
+(pass) example sniezynka runs without error [4.42ms]
+(pass) example schody runs without error [0.04ms]
+(pass) example szescian runs without error [0.06ms]
+(pass) example pierscien runs without error [0.04ms]
+(pass) example kula runs without error [0.21ms]
+(pass) example helisa runs without error [0.13ms]
+(pass) example drzewo3d runs without error [2.81ms]
+(pass) the kwadrat example is shipped verbatim [0.04ms]
+(pass) the pierscien ring is tilted 30 degrees and closes [0.14ms]
+
+tests/challenges.test.ts:
+(pass) there are at least five challenges with 2D and 3D tasks [0.02ms]
+(pass) a square drawn another way still passes [0.78ms]
+(pass) a square of the wrong size fails with a reason [0.10ms]
+(pass) a program with an error fails and names the line [0.06ms]
+(pass) an incomplete drawing fails [0.30ms]
+(pass) an empty drawing fails [0.01ms]
+(pass) every challenge's own model solution passes [2.09ms]
+(pass) a cube challenge in 3D accepts a cube built differently [0.90ms]
+
+tests/workspace.test.ts:
+(pass) each mode's draft survives a reload [0.14ms]
+(pass) loading an example asks before replacing an unsaved draft and keeps a backup [0.10ms]
+(pass) loading an example over the same mode's draft can be undone [0.07ms]
+(pass) an example replaces another example without asking [0.04ms]
+(pass) solved challenges are remembered [0.05ms]
+(pass) a share link round-trips the program and mode, including Polish letters [0.50ms]
+(pass) .logo files keep the mode and open back [0.05ms]
+
+tests/controller.test.ts:
+(pass) running to the end produces the interpreter's drawing [0.28ms]
+(pass) stepping executes one command at a time and reports its line [0.08ms]
+(pass) pause halts an animated run and resume finishes it [0.09ms]
+(pass) reset forgets the drawing and returns the turtle home [0.06ms]
+(pass) a parse error draws nothing and a run-time error keeps the drawing [0.12ms]
+(pass) loading new source while running stops the old run [0.05ms]
+(pass) running again after finishing starts from scratch [0.11ms]
+
+ 78 pass
+ 0 fail
+ 200 expect() calls
+Ran 78 tests across 5 files. [59.00ms]
+(exit 0)

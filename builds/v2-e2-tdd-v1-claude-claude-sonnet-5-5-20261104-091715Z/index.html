@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Logomocja – pracownia żółwia</title>
+    <meta name="description" content="Logomocja: polska pracownia żółwia w stylu klasycznego Logo. Rysuj na płaszczyźnie (2D) i w przestrzeni (3D)." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12201f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z/assets/main-bnx7t0bw.css" />
+    <script>
+      // Motyw przed pierwszym malowaniem, by uniknąć błysku.
+      (function () {
+        try {
+          var t = localStorage.getItem("logomocja:v1:theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript><p style="padding:1rem;font-family:sans-serif">Logomocja wymaga włączonej obsługi JavaScript.</p></noscript>
+    <script type="module" src="/Logomocja/builds/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z/assets/main-dhrftp3w.js"></script>
+  </body>
+</html>

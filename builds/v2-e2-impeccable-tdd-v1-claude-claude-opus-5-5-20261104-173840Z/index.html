@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl" data-mode="2d">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Logomocja — polskie studio Logo: pisz program, a żółw rysuje na płaszczyźnie i w przestrzeni." />
+    <meta name="theme-color" content="#17223b" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Logomocja — studio żółwia</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script>
+      // Theme before first paint: the saved choice, else the system's.
+      try {
+        var t = localStorage.getItem("logomocja:theme");
+        if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = t;
+        if (localStorage.getItem("logomocja:mode") === "3d") document.documentElement.dataset.mode = "3d";
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-173840Z/assets/index-Df4y0TLb.js"></script>
+    <link rel="stylesheet" crossorigin href="/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-173840Z/assets/index-C2f2m_Zw.css">
+  </head>
+  <body>
+    <div id="app">
+      <noscript>Logomocja potrzebuje JavaScriptu, żeby żółw mógł rysować.</noscript>
+    </div>
+  </body>
+</html>

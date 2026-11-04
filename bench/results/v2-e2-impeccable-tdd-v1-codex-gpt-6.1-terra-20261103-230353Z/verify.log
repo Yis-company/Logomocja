@@ -1,0 +1,38 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[1.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Bundled 3 modules in 2ms
+
+  main.js  30.42 KB  (entry point)
+
+$ bun build ./src/main.js --outdir dist --minify && cp index.html style.css dist/
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+src/interpreter.test.js:
+(pass) żółw rysuje odcinek w kierunku północy [0.94ms]
+(pass) powtórzenie i obrót rysują kwadrat [0.19ms]
+(pass) błąd składni usuwa cały rysunek [0.04ms]
+(pass) błąd wykonania zachowuje wcześniejszy odcinek [0.05ms]
+(pass) procedura używa parametrów i zmiennych lokalnych [0.26ms]
+(pass) pochylenie zmienia współrzędną z [0.06ms]
+(pass) komenda przestrzenna jest błędem w 2D [0.02ms]
+(pass) czyść usuwa wcześniej narysowane odcinki [0.03ms]
+(pass) wszystkie programy standardowe wykonują się w swoich trybach [5.79ms]
+(pass) wyrażenia stosują kolejność działań [0.02ms]
+(pass) licznik powtórzeń poza pętlą jest błędem składni [0.02ms]
+
+ 11 pass
+ 0 fail
+ 45 expect() calls
+Ran 11 tests across 1 file. [9.00ms]
+(exit 0)

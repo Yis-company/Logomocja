@@ -1,0 +1,151 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[1.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+dist/ ready (BASE_PATH=/Logomocja/builds/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-130957Z/): app.jmzwy1rx.js, style.223bd89d.css
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/interpreter.test.ts:
+(pass) run: movement and turning > a square of 100 returns to the start, drawn in order [1.54ms]
+(pass) run: expressions > * and / bind tighter than + and - [0.07ms]
+(pass) run: expressions > equal precedence associates left [0.05ms]
+(pass) run: expressions > spacing symmetric on both sides or neither [0.06ms]
+(pass) run: expressions > np 10 -5 leaves a stray token reported at the minus [0.19ms]
+(pass) run: expressions > stacked unary signs and parentheses [0.11ms]
+(pass) run: expressions > literals: .5 and 12.5 [0.10ms]
+(pass) run: expressions > 1e3, 0x10 and NaN are errors [0.07ms]
+(pass) run: expressions > division by zero is a run-time error at the argument's first token, keeping earlier strokes [0.10ms]
+(pass) run: pen, colour, width, home, clear > defaults are #16866a, width 3; pen up draws nothing; zero moves draw nothing [0.33ms]
+(pass) run: pen, colour, width, home, clear > colour is lower-cased, width and aliases work (English, accented) [0.20ms]
+(pass) run: pen, colour, width, home, clear > malformed colour is a parse error at the literal and draws nothing [0.08ms]
+(pass) run: pen, colour, width, home, clear > literal width outside 1-12 or non-integer is a parse error at the argument [0.09ms]
+(pass) run: pen, colour, width, home, clear > dom draws back to the origin when the pen is down and restores orientation [0.08ms]
+(pass) run: pen, colour, width, home, clear > czyść forgets segments, later ones survive [0.08ms]
+(pass) run: pen, colour, width, home, clear > stop at top level ends the program [0.07ms]
+(pass) run: pen, colour, width, home, clear > exact turns: lw/pw 90 give integer coordinates [0.23ms]
+(pass) run: 3D > gora 90 heads along the former up (+Z); dol is the opposite [0.05ms]
+(pass) run: 3D > after pp 90 the up vector is the former right, so gora 90 then goes along +X [0.06ms]
+(pass) run: 3D > pitch and roll are errors in 2D at the command, nothing drawn [0.08ms]
+(pass) run: 3D > flat programs give identical coordinates in both modes [0.27ms]
+(pass) run: variables, nrpowt, conditionals > niech assigns and reassigns; names ignore case; :name legacy form works [0.08ms]
+(pass) run: variables, nrpowt, conditionals > nrpowt counts from 1 and refers to the innermost repeat [0.31ms]
+(pass) run: variables, nrpowt, conditionals > nrpowt outside any repeat is a parse error at the word [0.14ms]
+(pass) run: variables, nrpowt, conditionals > unknown name is a parse error at the name and draws nothing [0.03ms]
+(pass) run: variables, nrpowt, conditionals > variable declared later at top level parses, but reading it first is a run-time error that keeps strokes [0.05ms]
+(pass) run: variables, nrpowt, conditionals > variable names may not be command words [0.01ms]
+(pass) run: variables, nrpowt, conditionals > jeśli runs its body only when the condition holds; all six comparisons [0.08ms]
+(pass) run: variables, nrpowt, conditionals > comparisons are exact: 0.1 + 0.2 = 0.3 is false [0.05ms]
+(pass) run: variables, nrpowt, conditionals > jeżeli picks the first or the second body [0.03ms]
+(pass) run: variables, nrpowt, conditionals > stop inside a conditional inside a repeat ends the program [0.03ms]
+(pass) run: variables, nrpowt, conditionals > a condition without a comparison is an error at the token found [0.03ms]
+(pass) run: procedures > definition with ma: parameters, expression arguments, called before or after definition [0.32ms]
+(pass) run: procedures > legacy header and :param references [0.21ms]
+(pass) run: procedures > a parameter may share a procedure's name; in command position it is a call [0.05ms]
+(pass) run: procedures > recursion and stop end only the current call [0.08ms]
+(pass) run: procedures > stop inside a repeat inside a procedure ends the procedure [0.06ms]
+(pass) run: procedures > niech in a procedure is local, shadows a global, and is discarded [0.03ms]
+(pass) run: procedures > parameters can be reassigned and used as repeat counts and call arguments [0.03ms]
+(pass) run: procedures > nrpowt inside a procedure body not lexically in a repeat is a parse error [0.07ms]
+(pass) run: procedures > a name used in a procedure must be a parameter or assigned there or at top level [0.08ms]
+(pass) run: procedures > definitions: not inside a body, defined once, closed by już [0.04ms]
+(pass) run: procedures > wrong number of arguments is reported where the missing argument should start [0.05ms]
+(pass) run: procedures > the 32-frame limit stops infinite recursion at run time, keeping strokes [0.41ms]
+(pass) run: limits > operations: each command, repeat, iteration end are counted (10000 allowed, 10001 not) [6.06ms]
+(pass) run: limits > operations: conditionals count the test and the finished body [1.99ms]
+(pass) run: limits > operations: calls count the call and its finish [2.15ms]
+(pass) run: limits > exceeding the operation limit keeps what was drawn [1.93ms]
+(pass) run: limits > coordinates stay within ±100000, even with the pen up [0.08ms]
+(pass) run: limits > bracket nesting 32 allowed, 33 rejected at the 33rd bracket; nothing is drawn [0.21ms]
+(pass) run: limits > source length 50000 allowed, 50001 rejected [0.57ms]
+(pass) run: limits > token limit: 10000 tokens allowed, 10001 rejected at the last one [6.65ms]
+(pass) run: syntax errors > missing closing bracket is reported at the opening one [0.08ms]
+(pass) run: syntax errors > stray closing bracket and parenthesis [0.06ms]
+(pass) run: syntax errors > missing argument: at the token found, or at the command at end of program [0.04ms]
+(pass) run: syntax errors > unknown command is reported at the word; error messages are Polish [0.04ms]
+(pass) run: syntax errors > invalid run-time repeat count and width computed from names [0.09ms]
+(pass) run: frames are released > stop inside a repeat inside a procedure does not leak active frames [0.06ms]
+
+test/examples.test.ts:
+(pass) standard programs > thirteen examples with the specified ids and modes [0.05ms]
+(pass) standard programs > every example runs without error in its own mode and draws something [10.09ms]
+(pass) standard programs > known drawings: counts from hand calculation [4.75ms]
+(pass) standard programs > the 3D cube spans exactly 100 in x, y and z [0.35ms]
+(pass) standard programs > kwadrat source is shipped verbatim [0.01ms]
+
+test/session.test.ts:
+(pass) Session: stepping and reset > each step executes one command and highlights the next line [0.32ms]
+(pass) Session: stepping and reset > reset forgets the drawing and returns to idle; stepping starts over [0.04ms]
+(pass) Session: stepping and reset > a parse error draws nothing and puts the session in error with the Polish message [0.05ms]
+(pass) Session: stepping and reset > a run-time error keeps the drawing and reports the position [0.04ms]
+(pass) Session: run, pause, resume, speed > run animates at the chosen speed (statements per second) and finishes [0.78ms]
+(pass) Session: run, pause, resume, speed > pause stops progress, resume continues exactly where it stopped [0.13ms]
+(pass) Session: run, pause, resume, speed > step after pause continues the same run; run after finish starts over [0.04ms]
+(pass) Session: run, pause, resume, speed > reset during a run stops it and clears the drawing [0.03ms]
+(pass) Session: run, pause, resume, speed > runToEnd draws everything at once and notifies subscribers [0.08ms]
+(pass) Session: run, pause, resume, speed > an error mid-run stops the animation and keeps the drawing [0.03ms]
+
+test/workspace.test.ts:
+(pass) Workspace: drafts and persistence > a fresh workspace starts in 2D with the Kwadrat example and no pending load [0.13ms]
+(pass) Workspace: drafts and persistence > the draft of each mode survives a reload [0.06ms]
+(pass) Workspace: drafts and persistence > loading an example over an untouched draft replaces it at once and switches mode [0.09ms]
+(pass) Workspace: drafts and persistence > loading over a modified draft waits for confirmation and loses nothing [0.06ms]
+(pass) Workspace: drafts and persistence > confirming replaces the draft but keeps it restorable [0.07ms]
+(pass) Workspace: drafts and persistence > a modified draft in the other mode is protected when an example needs that mode [0.02ms]
+(pass) Workspace: drafts and persistence > an unmodified example draft (even after reload) is not treated as unsaved work [0.01ms]
+(pass) Workspace: drafts and persistence > every example can be loaded by id [0.38ms]
+(pass) Workspace: drafts and persistence > theme choice and speed persist; corrupt storage falls back to defaults [0.04ms]
+(pass) Workspace: drafts and persistence > storage that throws (private mode) does not break the workspace [0.04ms]
+
+test/share.test.ts:
+(pass) sharing and files > a permalink round-trips program and mode, including Polish letters and newlines [0.56ms]
+(pass) sharing and files > a replaced hash does not accumulate [0.04ms]
+(pass) sharing and files > a 50000-character program survives [7.63ms]
+(pass) sharing and files > garbage and unknown modes decode to null [0.08ms]
+(pass) sharing and files > .logo files: BOM and CRLF are normalised, names carry the mode [0.06ms]
+
+test/challenges.test.ts:
+(pass) challenges > at least five, each with a task text and a mode [0.06ms]
+(pass) challenges > a square drawn in the opposite direction still passes (shape, not command order) [0.55ms]
+(pass) challenges > colour and width do not matter [0.24ms]
+(pass) challenges > a square that is too small fails with a reason [0.17ms]
+(pass) challenges > extra strokes fail, and the reason says so [0.10ms]
+(pass) challenges > an empty drawing and a program with an error both fail with explanations [0.05ms]
+(pass) challenges > each challenge is solvable, with a check done in its own mode [0.76ms]
+(pass) challenges > a 3D challenge distinguishes planes: a flat square fails the vertical one [0.09ms]
+(pass) challenges > progress persists across reloads and a later failure does not undo a pass [0.10ms]
+
+test/studio.test.ts:
+(pass) Studio: the open/run hook contract > api exposes version, run and open [0.11ms]
+(pass) Studio: the open/run hook contract > api.run is the pure interpreter and does not touch the editor [0.09ms]
+(pass) Studio: the open/run hook contract > api.open loads into the editor in that mode, runs to the end and returns the result [0.15ms]
+(pass) Studio: the open/run hook contract > open never asks for confirmation, even over a modified draft, and can be repeated [0.13ms]
+(pass) Studio: the open/run hook contract > open with a parse error draws nothing but shows the error [0.08ms]
+(pass) Studio: the open/run hook contract > reset after open clears the drawing; running again repeats it identically [0.07ms]
+(pass) Studio: the open/run hook contract > permalinks load and run at once; a bad link is reported without touching the draft [0.27ms]
+(pass) Studio: editing while a program runs > editing is refused while running, resets a paused run, and leaves a finished drawing in place [0.19ms]
+(pass) Studio: editing while a program runs > a syntax error is shown while typing, without running anything [0.07ms]
+(pass) Studio: challenge flow > starting a challenge switches to its mode; checking uses the draft of that mode and persists a pass [0.26ms]
+(pass) Studio: challenge flow > closing a challenge removes the ghost; the verdict is cleared when the text changes [0.07ms]
+(pass) Studio: editing after an error > a stale error marker is dropped when the text changes, the drawing stays [0.09ms]
+(pass) Studio: editing after an error > after a parse error nothing is drawn and editing returns the session to idle [0.04ms]
+
+test/docs.test.ts:
+(pass) command reference > every documented example runs without error in its mode [0.43ms]
+(pass) command reference > all aliases from the brief are documented [0.06ms]
+(pass) command reference > every documented 3D-only command has a 3D example [0.02ms]
+
+ 113 pass
+ 0 fail
+ 453 expect() calls
+Ran 113 tests across 8 files. [71.00ms]
+(exit 0)

@@ -1,0 +1,88 @@
+{
+  "schema": 4,
+  "id": "v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-sonnet-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "xhigh",
+  "startedAt": "2026-11-04T09:17:16.108Z",
+  "agentMs": 4080309,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 492,
+    "cachedInput": 76611769,
+    "output": 524550,
+    "reasoning": 234228
+  },
+  "costUsd": 15.221179900000001,
+  "costBasis": "cli",
+  "turns": 255,
+  "toolCalls": 254,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 4,
+    "distBytes": 136115
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "6f088672cb06539ca5e7fb1f10205840a14845bc",
+  "repoVersion": "0.3.0",
+  "totalMs": 4109836,
+  "conformance": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "tdd-v1",
+    "source": "https://github.com/mattpocock/skills",
+    "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "snapshotDate": "2026-11-03",
+    "snapshotSource": "Verbatim upstream skills/engineering/tdd, with codebase-design vocabulary available as a reference",
+    "skill": "tdd-v1/skill/SKILL.md",
+    "instructions": "tdd-v1/instructions.md",
+    "vocabulary": "tdd-v1/references/codebase-design/SKILL.md"
+  },
+  "baselineId": "v2-e2-claude-claude-sonnet-5-5-20261028-082944Z"
+}

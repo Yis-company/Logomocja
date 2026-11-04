@@ -1,0 +1,88 @@
+{
+  "schema": 4,
+  "id": "v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-161459Z",
+  "task": "app",
+  "runner": "codex",
+  "model": "gpt-6.1-sol",
+  "cliVersion": "0.164.0",
+  "effort": "high",
+  "startedAt": "2026-11-03T16:14:59.887Z",
+  "agentMs": 1719776,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "turn.completed",
+  "tokens": {
+    "input": 38262,
+    "cachedInput": 2530432,
+    "output": 74387,
+    "reasoning": 20612
+  },
+  "costUsd": 1.073437,
+  "costBasis": "list",
+  "turns": 1,
+  "toolCalls": 78,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 4,
+    "distBytes": 103500
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "6f088672cb06539ca5e7fb1f10205840a14845bc",
+  "repoVersion": "0.3.0",
+  "totalMs": 1750337,
+  "conformance": {
+    "combined": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 595,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "tdd-v1",
+    "source": "https://github.com/mattpocock/skills",
+    "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "snapshotDate": "2026-11-03",
+    "snapshotSource": "Verbatim upstream skills/engineering/tdd, with codebase-design vocabulary available as a reference",
+    "skill": "tdd-v1/skill/SKILL.md",
+    "instructions": "tdd-v1/instructions.md",
+    "vocabulary": "tdd-v1/references/codebase-design/SKILL.md"
+  },
+  "baselineId": "v2-e2-codex-gpt-6.1-sol-20261028-075037Z"
+}

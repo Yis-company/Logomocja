@@ -1,0 +1,87 @@
+{
+  "schema": 4,
+  "id": "v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-182429Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-opus-5-5",
+  "cliVersion": "2.1.310",
+  "effort": "xhigh",
+  "startedAt": "2026-11-04T18:24:29.850Z",
+  "agentMs": 3425565,
+  "agentExit": 0,
+  "status": "completed",
+  "statusDetail": "success",
+  "tokens": {
+    "input": 342,
+    "cachedInput": 49835047,
+    "output": 375375,
+    "reasoning": 153474
+  },
+  "costUsd": 21.188630600000003,
+  "costBasis": "cli",
+  "turns": 181,
+  "toolCalls": 180,
+  "verify": {
+    "installed": true,
+    "built": true,
+    "tests": "pass",
+    "distFiles": 14,
+    "distBytes": 1307531
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "2",
+  "image": "logomocja-bench:env-2",
+  "commit": "6f088672cb06539ca5e7fb1f10205840a14845bc",
+  "repoVersion": "0.3.0",
+  "totalMs": 3451517,
+  "conformance": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "hook": true
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "hook": true
+    }
+  },
+  "gallery": {
+    "kwadrat": true,
+    "gwiazda": true,
+    "rozeta": true,
+    "spirala": true,
+    "wielokaty": true,
+    "drzewo": true,
+    "sniezynka": true,
+    "schody": true,
+    "szescian": true,
+    "pierscien": true,
+    "kula": true,
+    "helisa": true,
+    "drzewo3d": true
+  },
+  "humanScore": null,
+  "notes": "",
+  "layer": {
+    "id": "impeccable-tdd-v1",
+    "skillVersion": "4.7.0",
+    "engineVersion": "0.1.16",
+    "tddSourceCommit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+    "snapshotDate": "2026-11-03",
+    "impeccable": "impeccable-v1/manifest.json",
+    "tdd": "tdd-v1/manifest.json"
+  },
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-131400Z"
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { RunResult } from "../bench/result";
-import { conformanceRate, groupByVersion } from "./benchmark";
+import { conformanceRate, groupByVersion, layerName } from "./benchmark";
 
 const run = (overrides: Partial<RunResult>): RunResult => ({
   schema: 4,
@@ -63,5 +63,17 @@ describe("benchmark grouping", () => {
   it("computes the conformance rate across suites", () => {
     expect(conformanceRate(run({}))).toBeNull();
     expect(conformanceRate(run({ conformance: { a: { passed: 1, total: 4, hook: true }, b: { passed: 3, total: 4, hook: true } } }))).toBe(0.5);
+  });
+  it("keeps the TDD and combined conditions separate and labels them accurately", () => {
+    const groups = groupByVersion([
+      run({ id: "tdd", layer: { id: "tdd-v1", tddSourceCommit: "abc" } }),
+      run({ id: "both", layer: { id: "impeccable-tdd-v1", skillVersion: "4.7.0", tddSourceCommit: "abc" } }),
+      run({ id: "base" }),
+    ], "app");
+    expect(groups.map((g) => [layerName(g.layer), g.runs.map((r) => r.id)])).toEqual([
+      ["base", ["base"]],
+      ["Impeccable + TDD", ["both"]],
+      ["TDD", ["tdd"]],
+    ]);
   });
 });

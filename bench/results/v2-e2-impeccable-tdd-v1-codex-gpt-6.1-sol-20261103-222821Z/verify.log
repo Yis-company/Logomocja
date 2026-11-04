@@ -1,0 +1,56 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/node@26.6.6
++ typescript@5.9.3
++ vite@7.3.7
+
+19 packages installed [9.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 12 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.89 kB │ gzip:  0.54 kB
+dist/assets/index-B22J-VBo.css  28.29 kB │ gzip:  6.50 kB
+dist/assets/index-LqfeytjA.js   71.04 kB │ gzip: 25.87 kB
+✓ built in 143ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test tests
+
+tests/interpreter.test.ts:
+(pass) public run(source, mode) > forward draws the specified starting stroke [1.66ms]
+(pass) a repeated, styled square closes in either flat mode [0.47ms]
+(pass) expressions obey precedence, left association, unary signs and symmetric operator spacing [0.26ms]
+(pass) invalid constant arguments draw nothing; runtime arithmetic preserves earlier strokes and marks argument start [0.17ms]
+(pass) variables, lexical repeat counters and exact conditionals draw alternating steps [0.55ms]
+(pass) forward-defined recursive procedures support modern and legacy parameters, local scope and stop [0.33ms]
+(pass) 3D local pitch and roll move in space while home and clear preserve pen style [0.13ms]
+(pass) safety limits stop runaway programs at their source and preserve completed geometry [7.44ms]
+(pass) procedure headers stay on one line and missing final arguments point at their command [0.10ms]
+(pass) valid expressions below the token limit are independent of the JavaScript call stack [5.35ms]
+(pass) any finite angle is accepted without overflowing the orientation calculation [0.12ms]
+(pass) malformed numeric spellings are reported at the start of the offending argument [0.06ms]
+
+tests/controller.test.ts:
+(pass) the public controls step, pause, resume and reset the same program without duplicate strokes [0.18ms]
+
+tests/product.test.ts:
+(pass) all thirteen named standard examples run in their specified mode [19.41ms]
+(pass) mode drafts survive reload and example loading preserves the replaced draft [0.66ms]
+(pass) challenge checking accepts equivalent geometry, explains failure and persists progress [1.55ms]
+
+ 16 pass
+ 0 fail
+ 111 expect() calls
+Ran 16 tests across 3 files. [41.00ms]
+(exit 0)

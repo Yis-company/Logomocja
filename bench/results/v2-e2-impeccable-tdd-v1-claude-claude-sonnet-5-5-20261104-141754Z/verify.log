@@ -1,0 +1,299 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ happy-dom@21.0.4
++ typescript@5.9.3
++ vite@6.4.5
+
+25 packages installed [48.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.97 kB │ gzip:  0.54 kB
+dist/assets/index-Cs9eBQcq.css  20.76 kB │ gzip:  5.28 kB
+dist/assets/index-CjaVV9f8.js   99.84 kB │ gzip: 37.26 kB
+✓ built in 236ms
+$ tsc --noEmit -p tsconfig.build.json && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/interpreter.test.ts:
+(pass) ruch żółwia > np rysuje odcinek od początku wzdłuż +Y domyślnym kolorem i grubością [1.10ms]
+(pass) obroty, aliasy i pióro > kwadrat z czterech np i pw wraca dokładnie do początku [0.26ms]
+(pass) obroty, aliasy i pióro > polskie i angielskie aliasy są równoważne, wielkość liter nie ma znaczenia [0.17ms]
+(pass) obroty, aliasy i pióro > podniesione pióro przesuwa żółwia bez rysowania, opuszczone znowu rysuje [0.04ms]
+(pass) obroty, aliasy i pióro > ruch o zero niczego nie rysuje [0.02ms]
+(pass) wyrażenia > * i / wiążą mocniej niż + i - [0.05ms]
+(pass) wyrażenia > operatory o równym priorytecie łączą się od lewej [0.05ms]
+(pass) wyrażenia > nawiasy grupują, a liczby mogą zaczynać się od kropki [0.05ms]
+(pass) wyrażenia > znaki jednoargumentowe można piętrzyć wszędzie, gdzie oczekiwany jest operand [0.07ms]
+(pass) wyrażenia > operator binarny ma spacje po obu stronach albo po żadnej [0.06ms]
+(pass) wyrażenia > np 10 -5 to np 10 i zbłąkany token -5, zgłoszony na minusie [0.08ms]
+(pass) wyrażenia > spacja tylko po jednej stronie operatora też go unieważnia [0.06ms]
+(pass) wyrażenia > porównania nie podlegają regule spacji (patrz warunki) [0.04ms]
+(pass) wyrażenia > dzielenie przez zero to błąd wykonania na pierwszym tokenie argumentu, rysunek zostaje [0.08ms]
+(pass) powtórz i nrpowt > powtórz wykonuje ciało n razy; kwadrat zamyka się w początku [0.17ms]
+(pass) powtórz i nrpowt > powtórz 0 nic nie robi, a pętle można zagnieżdżać [0.10ms]
+(pass) powtórz i nrpowt > nrpowt to numer iteracji najbliższego powtórz, od 1 [0.09ms]
+(pass) powtórz i nrpowt > REPCOUNT to to samo co nrpowt [0.06ms]
+(pass) powtórz i nrpowt > nrpowt poza powtórz to błąd parsowania i nic się nie rysuje [0.03ms]
+(pass) powtórz i nrpowt > literalna liczba powtórzeń musi być całkowita z 0–10000: błąd parsowania na liczbie [1.88ms]
+(pass) powtórz i nrpowt > brak nawiasu otwierającego jest zgłaszany na znalezionym tokenie [0.06ms]
+(pass) powtórz i nrpowt > niedomknięty [ jest zgłaszany na nim samym, nadmiarowy ] na sobie [0.05ms]
+(pass) powtórz i nrpowt > brak argumentu na końcu programu jest zgłaszany na poleceniu [0.03ms]
+(pass) powtórz i nrpowt > zagnieżdżenie nawiasów głębsze niż 32 to błąd na 33. nawiasie [0.21ms]
+(pass) kolor, grubość, dom, czyść, stop > kolor i grubość działają od następnego odcinka i się utrzymują; kolor jest zapisany małymi literami [0.11ms]
+(pass) kolor, grubość, dom, czyść, stop > zły kolor to błąd parsowania na literale [0.08ms]
+(pass) kolor, grubość, dom, czyść, stop > literalna grubość musi być całkowita z 1–12: błąd parsowania na pierwszym tokenie argumentu [0.10ms]
+(pass) kolor, grubość, dom, czyść, stop > dom wraca do początku (rysując, gdy pióro opuszczone) i przywraca orientację [0.06ms]
+(pass) kolor, grubość, dom, czyść, stop > dom z podniesionym piórem nie rysuje, a w początku jest bezczynny [0.03ms]
+(pass) kolor, grubość, dom, czyść, stop > dom nie zmienia koloru, grubości ani stanu pióra [0.05ms]
+(pass) kolor, grubość, dom, czyść, stop > czyść usuwa wcześniejsze odcinki, nie zmieniając reszty stanu [0.02ms]
+(pass) kolor, grubość, dom, czyść, stop > stop na poziomie programu kończy program [0.03ms]
+(pass) obroty przestrzenne (3D) > gora 90 kieruje nos wzdłuż dawnego „góra”, dol 90 w przeciwną stronę [0.08ms]
+(pass) obroty przestrzenne (3D) > pp 90 obraca „górę” żółwia ku jego prawej; potem gora 90 prowadzi w stronę +X [0.04ms]
+(pass) obroty przestrzenne (3D) > po pp 90 prawa strona żółwia jest dawnym dołem, więc pw 90 prowadzi w dół [0.03ms]
+(pass) obroty przestrzenne (3D) > przechylenie nie zmienia kierunku ruchu [0.02ms]
+(pass) obroty przestrzenne (3D) > w trybie 2D gora, dol, pp i pl to błędy parsowania na poleceniu i nic się nie rysuje [0.07ms]
+(pass) obroty przestrzenne (3D) > program z samych płaskich poleceń daje te same współrzędne w 2D i 3D [0.08ms]
+(pass) obroty przestrzenne (3D) > okrąg przechylony o 30° zamyka się i wychodzi z płaszczyzny [0.10ms]
+(pass) zmienne > niech przypisuje, kolejne niech przypisuje ponownie; :nazwa to to samo co nazwa [0.09ms]
+(pass) zmienne > nazwa bez deklaracji to błąd parsowania na tej nazwie; nic się nie rysuje [0.02ms]
+(pass) zmienne > zmienna przypisana dopiero później na górze jest zadeklarowana, ale czytana za wcześnie to błąd wykonania [0.05ms]
+(pass) zmienne > niech nie przyjmuje słów-poleceń ani nrpowt jako nazw [0.06ms]
+(pass) zmienne > niech bez wartości: błąd na poleceniu, gdy program się kończy [0.02ms]
+(pass) warunki > jeśli wykonuje ciało, gdy warunek zachodzi [0.17ms]
+(pass) warunki > porównania są dokładne: 0.1 + 0.2 nie równa się 0.3 [0.03ms]
+(pass) warunki > jeżeli wybiera pierwsze albo drugie ciało [0.04ms]
+(pass) warunki > warunek korzysta ze zmiennych i nrpowt [0.04ms]
+(pass) warunki > brak operatora porównania: błąd na znalezionym tokenie [0.02ms]
+(pass) warunki > jeżeli bez drugiego ciała jest błędem [0.03ms]
+(pass) warunki > błąd obliczenia warunku wskazuje pierwszy token tej strony porównania [0.02ms]
+(pass) procedury > definicja i wywołanie z argumentami będącymi wyrażeniami [0.29ms]
+(pass) procedury > wywołanie może poprzedzać definicję; aliasy to/end, wielkość liter i nagłówek z :parametrami [0.08ms]
+(pass) procedury > parametr można zapisać też jako :nazwa, a parametr może mieć nazwę procedury [0.03ms]
+(pass) procedury > niech w procedurze jest lokalne, przesłania globalne i znika po wywołaniu [0.02ms]
+(pass) procedury > procedura czyta zmienną globalną, a parametr przesłania globalną o tej nazwie [0.05ms]
+(pass) procedury > rekurencja wraca po stop w najgłębszym wywołaniu i kontynuuje ciała nadrzędne [0.05ms]
+(pass) procedury > stop wewnątrz powtórz i jeśli kończy całe wywołanie procedury, nie tylko ciało [0.05ms]
+(pass) procedury > nrpowt w procedurze poza powtórz to błąd parsowania, nawet gdy wywołanie jest w powtórz [0.05ms]
+(pass) procedury > zła liczba argumentów: za mało na tokenie, który zastał, albo na wywołaniu przy końcu programu [0.09ms]
+(pass) procedury > definicja wewnątrz powtórz, warunku albo innej procedury to błąd na oto [0.03ms]
+(pass) procedury > brakujące już jest zgłaszane na nagłówku, a już musi stać samo w osobnej linii [0.04ms]
+(pass) procedury > nazwa może być zdefiniowana tylko raz i nie może być słowem-poleceniem ani zmienną [0.05ms]
+(pass) procedury > nazwa z innej procedury nie jest widoczna; zmienna z góry (także później) jest [0.06ms]
+(pass) procedury > czytanie lokalnej zmiennej przed przypisaniem to błąd wykonania [0.04ms]
+(pass) procedury > błędy nagłówka: brak nazwy, parametr będący słowem-poleceniem, powtórzony parametr [0.04ms]
+(pass) limity > 10 000 operacji: powtórz n [np 1] kosztuje 1 + 2n, więc 4999 mieści się, a 5000 nie [5.05ms]
+(pass) limity > pusty program o 10 000 poleceniach nie przekracza limitu, 10 001 tak (koniec programu nie jest liczony) [1.40ms]
+(pass) limity > nieskończona rekurencja zatrzymuje się na limicie ramek (32), rysunek zostaje [0.18ms]
+(pass) limity > 32 aktywne ramki są dozwolone, 33 nie; ciała warunków nie są ramkami [0.78ms]
+(pass) limity > ramki liczą razem wywołania i powtórzenia [0.43ms]
+(pass) limity > współrzędne w granicach ±100 000, także przy podniesionym piórze; przekroczenie nic nie rysuje [0.11ms]
+(pass) limity > program do 50 000 znaków przechodzi, 50 001 to błąd na pierwszym nadmiarowym znaku [0.79ms]
+(pass) limity > 10 000 tokenów przechodzi, 10 001. jest błędem na tym tokenie [7.80ms]
+(pass) limity > błąd wykonania po czyść zachowuje tylko to, co narysowano później [0.10ms]
+(pass) leksyka > liczby inne niż zwykłe dziesiętne to błędy: 1e3, 0x10, NaN, Infinity, 12., 1.2.3 [0.19ms]
+(pass) leksyka > komentarze średnikiem sięgają końca linii i nie wpływają na regułę spacji [0.04ms]
+(pass) leksyka > różne zakończenia linii i tabulatory: numery linii i kolumn są liczone od 1 [0.04ms]
+(pass) leksyka > polskie znaki w poleceniach: wielkie litery i formy bez ogonków są równoważne [0.05ms]
+(pass) leksyka > zbłąkane znaki i nieznane polecenia są błędami na tym tokenie [0.03ms]
+(pass) leksyka > nawiasy okrągłe: niezamknięty w wyrażeniu to błąd na (, nadmiarowy ) na sobie [0.03ms]
+(pass) leksyka > pusty program i same komentarze nic nie rysują i nie są błędem
+(pass) leksyka > odcinki mają kolor małymi literami, a wynik run jest czystymi danymi (JSON) [0.04ms]
+(pass) leksyka > kolejne wywołania run są od siebie niezależne [0.02ms]
+(pass) odporność na długie wyrażenia (limit 10 000 tokenów) > łańcuch 4990 dodawań liczy się bez przepełnienia stosu [9.70ms]
+(pass) odporność na długie wyrażenia (limit 10 000 tokenów) > tysiące znaków jednoargumentowych: parzysta liczba minusów to plus, nieparzysta to minus [2.54ms]
+(pass) odporność na długie wyrażenia (limit 10 000 tokenów) > długi łańcuch mieszanych działań i wywołanie z wieloma argumentami nie wywracają parsera [1.33ms]
+(pass) odporność na długie wyrażenia (limit 10 000 tokenów) > zagnieżdżenie nawiasów okrągłych głębsze niż 32 to błąd na 33. nawiasie [0.07ms]
+(pass) odporność na długie wyrażenia (limit 10 000 tokenów) > stałe wyrażenie w literalnej liczbie powtórzeń (4001 po zsumowaniu) jest poprawne i liczone bez rekursji [7.60ms]
+
+test/examples.test.ts:
+(pass) standardowe programy > jest trzynaście, w poprawnych trybach, pod właściwymi nazwami [0.04ms]
+(pass) standardowe programy > każdy zaczyna się komentarzem z opisu zadania (źródła nie zostały przepisane) [0.06ms]
+(pass) standardowe programy > kwadrat: cztery boki po 120, zamknięty [0.15ms]
+(pass) standardowe programy > gwiazda: pięć ramion po 180 wraca do początku [0.04ms]
+(pass) standardowe programy > rozeta: dwanaście kwadratów po 4 odcinki [0.06ms]
+(pass) standardowe programy > spirala: 90 boków rosnących o 2,5, kolory na przemian zaczynając od zielonego [0.22ms]
+(pass) standardowe programy > wielokąty: figury od trójkąta do dziewięciokąta, razem 42 boki po 60 [0.14ms]
+(pass) standardowe programy > drzewo: pień brązowy i grubszy, gałązki zielone i cienkie [6.07ms]
+(pass) standardowe programy > śnieżynka: trzy boki po 4^4 = 256 odcinków długości 270/81 [4.49ms]
+(pass) standardowe programy > schody: sześć stopni, każdy 35 do przodu i 20 w górę [0.09ms]
+(pass) standardowe programy > sześcian: bryła o krawędzi 100 we wszystkich trzech wymiarach [0.21ms]
+(pass) standardowe programy > pierścień: 36 odcinków po 12, zamknięty, wychodzi nad płaszczyznę [0.10ms]
+(pass) standardowe programy > kula: 12 okręgów po 36 odcinków w dwóch kolorach [0.33ms]
+(pass) standardowe programy > helisa: 120 zwojów, każdy 10 do przodu i 1,5 w górę; kończy na wysokości 180 [0.18ms]
+(pass) standardowe programy > drzewo 3D: rośnie w górę z pnia i mieści się w limitach [3.77ms]
+
+test/controller.test.ts:
+(pass) krok po kroku > step wykonuje jedno polecenie, podświetla jego linię i rysuje po trochu [0.26ms]
+(pass) uruchamianie z animacją > run niczego nie rysuje, dopóki zegar nie zadziała; po zakończeniu rysunek jest taki sam jak z run() [0.11ms]
+(pass) uruchamianie z animacją > pause zatrzymuje rysowanie, resume wznawia bez pomijania i powtarzania poleceń [0.06ms]
+(pass) uruchamianie z animacją > step w trakcie pauzy kontynuuje ten sam przebieg [0.08ms]
+(pass) uruchamianie z animacją > reset czyści rysunek i błąd, zachowuje kod, a kolejne run zaczyna od nowa [0.55ms]
+(pass) uruchamianie z animacją > run po zakończeniu rysuje od początku, a nie dokłada [0.04ms]
+(pass) uruchamianie z animacją > runInstant wykonuje program do końca od razu, bez zegara [0.03ms]
+(pass) błędy, edycja w trakcie i tryby > błąd parsowania: nic nie jest rysowane, stan to error z liniami i kolumną, zegar nie startuje [0.05ms]
+(pass) błędy, edycja w trakcie i tryby > błąd wykonania zostawia to, co narysowano, i wskazuje linię błędu [0.05ms]
+(pass) błędy, edycja w trakcie i tryby > błąd wykonania podczas kroków kończy się stanem error z zachowanym rysunkiem [0.03ms]
+(pass) błędy, edycja w trakcie i tryby > edycja kodu podczas animacji wstrzymuje ją i oznacza rysunek jako nieaktualny; run zaczyna od nowa z nowym kodem [0.05ms]
+(pass) błędy, edycja w trakcie i tryby > resume i step po edycji nie wznawiają starego programu, tylko zaczynają nowy [0.03ms]
+(pass) błędy, edycja w trakcie i tryby > edycja bezczynnego lub zakończonego programu nie zmienia rysunku, ale oznacza go jako nieaktualny [0.05ms]
+(pass) błędy, edycja w trakcie i tryby > zmiana trybu resetuje przebieg [0.02ms]
+(pass) błędy, edycja w trakcie i tryby > polecenia 3D w trybie 2D dają błąd, a w 3D działają [0.05ms]
+(pass) błędy, edycja w trakcie i tryby > subskrybenci są powiadamiani o zmianach; po wypisaniu cichną [0.04ms]
+(pass) nieaktualność wyniku po błędzie parsowania > po błędzie parsowania edycja kodu oznacza stary błąd jako nieaktualny, a reset go czyści [0.10ms]
+
+test/workspace.test.ts:
+(pass) szkic i tryb > nowy użytkownik dostaje działający program startowy w każdym trybie [0.16ms]
+(pass) szkic i tryb > szkic każdego trybu przetrwa przeładowanie strony, razem z wybranym trybem [0.11ms]
+(pass) przykłady i niezapisany szkic > wczytanie przykładu do nietkniętego szkicu zastępuje go od razu [0.10ms]
+(pass) przykłady i niezapisany szkic > wczytanie przykładu do zmienionego szkicu wymaga potwierdzenia i niczego nie rusza [0.09ms]
+(pass) przykłady i niezapisany szkic > po potwierdzeniu przykład wchodzi, a poprzedni szkic trafia do kopii i można go przywrócić [0.07ms]
+(pass) przykłady i niezapisany szkic > kopie przeżywają przeładowanie strony [0.04ms]
+(pass) przykłady i niezapisany szkic > przykład 3D otwarty w trybie 2D przełącza tryb i chroni szkic 3D, a nie 2D [0.03ms]
+(pass) przykłady i niezapisany szkic > ten sam, niezmieniony przykład lub pusty szkic nie jest „brudny” [0.02ms]
+(pass) przykłady i niezapisany szkic > edycja przykładu czyni szkic brudnym, a cofnięcie edycji znów czystym [0.02ms]
+(pass) przykłady i niezapisany szkic > wczytanie z zewnątrz (link, plik) zawsze odkłada brudny szkic do kopii [0.03ms]
+(pass) przykłady i niezapisany szkic > kopii jest co najwyżej 10, najnowsze pierwsze, identyczne nie dublują się [0.19ms]
+(pass) preferencje i odporność magazynu > preferencje (motyw, prędkość) przetrwają przeładowanie [0.04ms]
+(pass) preferencje i odporność magazynu > uszkodzony JSON w magazynie nie psuje aplikacji: wracają ustawienia domyślne [0.03ms]
+(pass) preferencje i odporność magazynu > magazyn, który rzuca wyjątkami (tryb prywatny, pełny dysk), nie przerywa pracy [0.03ms]
+(pass) preferencje i odporność magazynu > zmiany w polach o złym typie są ignorowane, reszta zostaje [0.03ms]
+(pass) kopie nie dublują tego samego tekstu > wczytanie tekstu identycznego z bieżącym szkicem nie tworzy kopii [0.03ms]
+(pass) zapis tekstu do kopii bez ruszania szkiców > addBackup odkłada tekst do kopii, nie zmieniając żadnego szkicu ani trybu; identyczne się nie dublują [0.10ms]
+
+test/share.test.ts:
+(pass) permalink > kod i tryb przechodzą tam i z powrotem bez zmian, także z polskimi znakami i emoji [0.51ms]
+(pass) permalink > adres nie zawiera znaków wymagających zakodowania [0.05ms]
+(pass) permalink > ewentualna stara zawartość adresu przed # jest zastępowana, a nie dołączana [0.02ms]
+(pass) permalink > nieprawidłowe lub obce hashe dają null [0.01ms]
+(pass) permalink > pusty program też można udostępnić [0.01ms]
+(pass) pliki .logo > plik to czysty tekst programu zakończony nową linią, z sensowną nazwą [0.03ms]
+(pass) pliki .logo > wczytanie usuwa BOM i ujednolica końce linii [0.02ms]
+(pass) pliki .logo > rozpoznaje programy używające poleceń przestrzennych (aby otworzyć je w 3D) [0.03ms]
+
+test/challenges.test.ts:
+(pass) wyzwania: sprawdzanie rysunku > jest co najmniej pięć wyzwań, każde z tytułem, opisem zadania i trybem [0.03ms]
+(pass) wyzwania: sprawdzanie rysunku > kwadrat 100: poprawne rozwiązania przechodzą, niezależnie od sposobu zapisu [1.10ms]
+(pass) wyzwania: sprawdzanie rysunku > zły rozmiar, kierunek lub nadmiar kończą się porażką z powodem po polsku [0.27ms]
+(pass) wyzwania: sprawdzanie rysunku > pusty rysunek i błąd w programie mają własne, zrozumiałe powody [0.04ms]
+(pass) wyzwania: sprawdzanie rysunku > trójkąt, sześciokąt, gwiazda i krzyż mają poprawne rozwiązania [1.27ms]
+(pass) wyzwania: sprawdzanie rysunku > schodki wymagają użycia powtórz [0.21ms]
+(pass) wyzwania: sprawdzanie rysunku > kolorowy kwadrat sprawdza też kolor i grubość [0.19ms]
+(pass) wyzwania: sprawdzanie rysunku > sześcian 3D: różne konstrukcje tej samej bryły przechodzą, płaski kwadrat nie [0.49ms]
+(pass) wyzwania: sprawdzanie rysunku > pionowy okrąg: 36 boków po 10 i 72 boki po 5 to ten sam okrąg, przechylenie o 80° już nie [0.54ms]
+(pass) wyzwania: sprawdzanie rysunku > rozwiązanie wzorcowe każdego wyzwania przechodzi własne sprawdzenie [1.32ms]
+(pass) wyzwania: postęp > rozwiązane wyzwanie jest zapamiętane po przeładowaniu, nierozwiązane nie [0.11ms]
+(pass) wyzwania: postęp > raz rozwiązane wyzwanie nie traci statusu po kolejnej nieudanej próbie [0.02ms]
+(pass) wyzwania: własny szkic > każde wyzwanie ma osobny, trwały szkic, niezależny od szkiców pracowni; domyślnie kod startowy [0.06ms]
+
+test/view.test.ts:
+(pass) kamera 2D > domyślny widok pokazuje początek układu pośrodku [0.07ms]
+(pass) kamera 2D > oś Y rośnie w górę ekranu, a X w prawo [0.01ms]
+(pass) kamera 2D > dopasowanie mieści cały rysunek z marginesem, także gdy leży daleko od początku [0.13ms]
+(pass) kamera 2D > dopasowanie pustego rysunku wraca do widoku domyślnego
+(pass) kamera 2D > dopasowanie pojedynczego punktu lub odcinka o zerowej szerokości nie daje nieskończonego powiększenia [0.02ms]
+(pass) kamera 3D > punkty przed kamerą są rzutowane, a za nią — nie [0.09ms]
+(pass) kamera 3D > z góry (+Z) widać „górę” ekranu: wyższy punkt leży wyżej na ekranie [0.01ms]
+(pass) kamera 3D > bliższe punkty rysowane są większe i mają mniejszą głębię [0.01ms]
+(pass) kamera 3D > dopasowanie mieści każdy z trzynastu standardowych rysunków 3D w kadrze [7.04ms]
+(pass) kamera 3D > granice rysunku obejmują oba końce każdego odcinka [0.09ms]
+
+test/docs.test.ts:
+(pass) dokumentacja poleceń > każdy przykład w dokumentacji działa w swoim trybie bez błędu i coś rysuje [0.64ms]
+(pass) dokumentacja poleceń > dokumentacja opisuje wszystkie polecenia języka, z ich aliasami polskimi i angielskimi [0.08ms]
+(pass) dokumentacja poleceń > polecenia tylko-3D są oznaczone jako takie, a ich przykłady w 2D dają błąd [0.11ms]
+
+test/app.test.ts:
+(pass) punkt zaczepienia window.logomocja > udostępnia version, run i open [124.13ms]
+(pass) punkt zaczepienia window.logomocja > run interpretuje bez ruszania interfejsu [78.59ms]
+(pass) open: edytor zgodny z kontraktem języka > wczytuje kod do edytora, ustawia tryb, uruchamia do końca i zwraca wynik run [173.69ms]
+(pass) open: edytor zgodny z kontraktem języka > po open rysunek jest na płótnie: w miejscu odcinka są piksele w kolorze pisaka [161.25ms]
+(pass) open: edytor zgodny z kontraktem języka > przełącza tryb przy kolejnych wywołaniach i zwraca wyniki 3D [2093.58ms]
+(pass) open: edytor zgodny z kontraktem języka > błąd parsowania: nic nie jest rysowane, jest znacznik w linii i kolumnie oraz komunikat po polsku [156.44ms]
+(pass) open: edytor zgodny z kontraktem języka > błąd wykonania zachowuje rysunek i też jest oznaczony [179.40ms]
+(pass) open: edytor zgodny z kontraktem języka > powtórne open nie kumuluje rysunku, a poprawny program usuwa stary znacznik błędu [304.08ms]
+(pass) open: edytor zgodny z kontraktem języka > edycja w polu tekstowym unieważnia wynik: błąd jest odświeżany po uruchomieniu przyciskiem [185.33ms]
+(pass) open: edytor zgodny z kontraktem języka > open nie niszczy niezapisanego szkicu: poprzedni kod trafia do kopii roboczych [210.63ms]
+(pass) open: edytor zgodny z kontraktem języka > szkic przetrwa przeładowanie: nowa instancja aplikacji na tym samym storage ma ten sam kod [181.04ms]
+
+test/flows.test.ts:
+(pass) pierwsze uruchomienie > po wejściu rysunek początkowego programu jest już narysowany, a arkusz nie jest pusty [80.46ms]
+(pass) sterowanie przyciskami > Uruchom animuje, Pauza zatrzymuje, Wznów kontynuuje, Krok wykonuje jedno polecenie, Reset czyści [207.07ms]
+(pass) sterowanie przyciskami > skróty klawiszowe: Ctrl+Enter uruchamia, Alt+Enter robi krok, Alt+P wstrzymuje, Alt+R resetuje [243.68ms]
+(pass) sterowanie przyciskami > prędkość jest zapamiętywana i opisana słownie [202.04ms]
+(pass) sterowanie przyciskami > edycja w czasie animacji wstrzymuje ją i oznacza rysunek jako nieaktualny [120.52ms]
+(pass) tryb 2D/3D > przełączenie trybu zmienia edytor na szkic tego trybu i jest zapamiętywane [3449.55ms]
+(pass) tryb 2D/3D > bez płótna 2D aplikacja mówi, dlaczego 3D jest wyłączone, a edytor i interpreter działają dalej [12.50ms]
+(pass) przykłady > strona przykładów pokazuje wszystkie trzynaście, a wczytanie czystego szkicu jest od razu [222.68ms]
+(pass) przykłady > każdy przykład ładuje się pod swoją nazwą we właściwym trybie i rysuje bez błędu [7747.15ms]
+(pass) przykłady > własny, zmieniony szkic wymaga potwierdzenia; Anuluj go zostawia, a zastąpienie zachowuje kopię [299.61ms]
+(pass) udostępnianie > link w adresie wczytuje program i tryb oraz od razu go uruchamia, a stary szkic idzie do kopii [2000.37ms]
+(pass) udostępnianie > uszkodzony link nie psuje szkicu i informuje o błędzie [91.30ms]
+(pass) udostępnianie > przycisk Link pokazuje adres, który po otwarciu odtwarza ten sam program [275.94ms]
+(pass) wyzwania w interfejsie > lista pokazuje postęp; rozwiązanie zalicza zadanie i zostaje po przeładowaniu [359.70ms]
+(pass) wyzwania w interfejsie > szkic wyzwania jest osobny od szkicu pracowni i wraca po powrocie [305.59ms]
+(pass) motyw i dokumentacja > przełącznik motywu przechodzi auto → jasny → ciemny i jest zapamiętywany [162.82ms]
+(pass) motyw i dokumentacja > dokumentacja ma spis treści, wszystkie polecenia, a „Wypróbuj” otwiera przykład w pracowni [204.77ms]
+(pass) motyw i dokumentacja > lista skrótów klawiszowych jest dostępna z paska [93.73ms]
+(pass) pliki i eksport > Pobierz zapisuje program jako plik .logo z samym tekstem programu [89.95ms]
+(pass) pliki i eksport > Otwórz plik .logo wczytuje program do edytora, a polecenia 3D przełączają tryb na 3D [1474.82ms]
+(pass) pliki i eksport > zbyt duży plik jest odrzucany z komunikatem, a szkic zostaje [105.50ms]
+(pass) pliki i eksport > eksport PNG pobiera obraz z rysunkiem pod nazwą z trybem [189.08ms]
+(pass) nawigacja > zmiana trasy w trakcie otwartego okna zgody nie jest gubiona: strona wyświetla ostatnio wybraną trasę [199.50ms]
+(pass) rozwiązanie wzorcowe > wstawienie rozwiązania do wyzwania zachowuje własny tekst w kopiach i nie rusza szkicu pracowni [232.74ms]
+
+test/viewport.test.ts:
+(pass) widok 2D > po open rysunek jest dopasowany i w całości widoczny w kadrze [174.88ms]
+(pass) widok 2D > klawisz + przybliża, − oddala, 0 dopasowuje, Home wraca do widoku początkowego [341.05ms]
+(pass) widok 2D > strzałki przesuwają widok, kółko myszy zmienia skalę [300.89ms]
+(pass) widok 2D > początek układu jest zawsze zaznaczony: w domyślnym widoku w środku arkusza leży pierścień [190.00ms]
+(pass) widok 3D > strzałki obracają kamerę, więc obraz sześcianu się zmienia, a Home przywraca widok [1315.61ms]
+(pass) widok 3D > 0 dopasowuje 3D: cały rysunek mieści się w kadrze po oddaleniu kamery [1131.54ms]
+
+test/bundle.test.ts:
+(pass) pakiet produkcyjny > zbundlowany main.ts w czystym oknie tworzy window.logomocja z version, run i open [20.19ms]
+(pass) pakiet produkcyjny > indeks HTML i zasoby są lokalne: brak adresów zewnętrznych w źródłach aplikacji [0.14ms]
+
+test/highlight.test.ts:
+(pass) kolorowanie składni > po usunięciu znaczników zostaje dokładnie ten sam tekst (nic nie ginie, nic nie dochodzi) [0.53ms]
+(pass) kolorowanie składni > rozróżnia polecenia, słowa sterujące, liczby, napisy-kolory, nawiasy, komentarze i nazwy [0.10ms]
+(pass) kolorowanie składni > aliasy angielskie i wielkie litery są kolorowane jak polskie polecenia [0.05ms]
+(pass) kolorowanie składni > błędne liczby (1e3) i niezamknięty napis są oznaczone jako błędne, a kolor „#16866a” zachowuje własny kolor podkreślenia [0.07ms]
+
+test/a11y.test.ts:
+(pass) dostępność: struktura DOM na każdej trasie > #/pracownia: każdy element sterujący ma nazwę, identyfikatory są unikalne, aria-controls wskazuje istniejące elementy [120.72ms]
+(pass) dostępność: struktura DOM na każdej trasie > #/przyklady: każdy element sterujący ma nazwę, identyfikatory są unikalne, aria-controls wskazuje istniejące elementy [101.59ms]
+(pass) dostępność: struktura DOM na każdej trasie > #/wyzwania: każdy element sterujący ma nazwę, identyfikatory są unikalne, aria-controls wskazuje istniejące elementy [79.80ms]
+(pass) dostępność: struktura DOM na każdej trasie > #/wyzwania/trojkat: każdy element sterujący ma nazwę, identyfikatory są unikalne, aria-controls wskazuje istniejące elementy [135.82ms]
+(pass) dostępność: struktura DOM na każdej trasie > #/polecenia: każdy element sterujący ma nazwę, identyfikatory są unikalne, aria-controls wskazuje istniejące elementy [92.15ms]
+(pass) dostępność: struktura DOM na każdej trasie > strony pomocnicze mają dokładnie jeden nagłówek h1, a nagłówki nie przeskakują poziomów [257.88ms]
+(pass) dostępność: struktura DOM na każdej trasie > są landmarki: nawigacja z etykietą, główna treść oraz link pomijający nawigację [82.38ms]
+(pass) dostępność: struktura DOM na każdej trasie > grupa trybu to radiogroup z dokładnie jednym zaznaczonym i jednym tabindex=0 (roving) [74.97ms]
+(pass) dostępność: struktura DOM na każdej trasie > przyciski sterujące mają aria-keyshortcuts zgodne z listą skrótów [73.94ms]
+
+test/contrast.test.ts:
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > motyw jasny: tekst ≥ 4.5:1 na swoich tłach [0.18ms]
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > motyw jasny: pierścień ostrości i obrysy kontrolek ≥ 3:1 [0.02ms]
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > motyw ciemny: tekst ≥ 4.5:1 na swoich tłach [0.07ms]
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > motyw ciemny: pierścień ostrości i obrysy kontrolek ≥ 3:1
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > na pasku górnym pierścień ostrości jest kremowy (≥ 3:1 względem zieleni) [0.04ms]
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > arkusz rysunku: tekst pomocniczy i etykiety osi czytelne na papierze [0.02ms]
+(pass) kontrast tekstu i elementów interfejsu (WCAG AA) > ciemny motyw „auto” (prefers-color-scheme) ma te same wartości co ręczny [0.03ms]
+
+ 235 pass
+ 0 fail
+ 9899 expect() calls
+Ran 235 tests across 15 files. [26.88s]
+(exit 0)

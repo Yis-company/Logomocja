@@ -1,0 +1,44 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 593,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 593,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: missing argument: command word where an expression is expected",
+          "reason": "expected error at column 4, got 7"
+        },
+        {
+          "name": "claude-fable-5-1-round2: command word inside an expression",
+          "reason": "expected error at column 9, got 12"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

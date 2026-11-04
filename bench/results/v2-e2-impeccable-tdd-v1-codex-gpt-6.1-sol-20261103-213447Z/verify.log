@@ -1,0 +1,62 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ three@0.180.0
++ vite@6.4.5
+
+17 packages installed [14.00ms]
+(exit 0)
+
+$ bun run build
+vite v6.4.5 building for production...
+transforming...
+✓ 12 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.74 kB │ gzip:   0.48 kB
+dist/assets/index-DhDeUoZm.css   17.44 kB │ gzip:   4.53 kB
+dist/assets/index-Dj-92dPI.js   545.34 kB │ gzip: 144.08 kB
+✓ built in 599ms
+$ vite build --base ${BASE_PATH:-/}
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interpreter.test.js:
+(pass) forward draws from origin with default pen [1.20ms]
+(pass) whole-program validation and arithmetic precedence [0.37ms]
+(pass) procedures use forward definitions, local variables, recursion and stop [0.60ms]
+(pass) runtime errors retain strokes and report argument start [0.14ms]
+(pass) spatial pitch and roll preserve the specified turtle frame [0.06ms]
+(pass) lexical repeat counter and finishing operations are bounded [1.92ms]
+(pass) clear keeps turtle state and controller can restart and step [0.11ms]
+(pass) all thirteen supplied examples execute in their assigned mode [10.45ms]
+(pass) controller steps, pauses, resumes and resets without accumulating strokes [0.10ms]
+(pass) invalid procedure names never accept legacy parameter punctuation [0.03ms]
+(pass) small nonzero distances still draw a segment [0.03ms]
+(pass) all syntactically valid variable names can store values [0.03ms]
+(pass) assignment names follow procedure-name rules [0.01ms]
+(pass) long expressions within the token budget execute without a JS stack failure [2.91ms]
+(pass) parentheses do not consume the bracket or call-frame budget [0.63ms]
+(pass) ma: requires a parameter list when it appears in a header [0.03ms]
+
+tests/workspace.test.js:
+(pass) loading examples preserves per-mode drafts and can restore them [0.06ms]
+(pass) sharing round-trips Polish source and spatial mode [0.52ms]
+(pass) challenges accept an equivalent trace and explain a wrong shape [1.10ms]
+(pass) maximum-size Unicode programs can be shared [6.45ms]
+
+ 20 pass
+ 0 fail
+ 60 expect() calls
+Ran 20 tests across 2 files. [29.00ms]
+(exit 0)

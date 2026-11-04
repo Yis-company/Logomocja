@@ -1,0 +1,52 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 592,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 4: „już” musi stać samo w osobnej linii."
+        },
+        {
+          "name": "claude-fable-5-1: a procedure may call another defined later",
+          "reason": "unexpected error: line 8: „już” musi stać samo w osobnej linii."
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 5: „już” musi stać samo w osobnej linii."
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 592,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: definition after use with legacy header",
+          "reason": "unexpected error: line 4: „już” musi stać samo w osobnej linii."
+        },
+        {
+          "name": "claude-fable-5-1: a procedure may call another defined later",
+          "reason": "unexpected error: line 8: „już” musi stać samo w osobnej linii."
+        },
+        {
+          "name": "gpt-6-astra: legacy definition after call and comments",
+          "reason": "unexpected error: line 5: „już” musi stać samo w osobnej linii."
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

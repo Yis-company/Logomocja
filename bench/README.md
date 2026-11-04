@@ -120,3 +120,75 @@ Visual assessment from the saved 1280×800 desktop and 390×844 phone captures:
 Correctness limits: Sol low loses six language cases per path and high loses two. Opus medium retains its historical error-column failure. Opus low has one isolated language failure and a substantial `open` regression: 152 combined cases and both failed stress cases return leftover segments after errors; another case incorrectly rejects deeply nested parentheses. Its saved `src/ui/studio.ts` clears the view on compile failure without resetting `this.machine`, while `result()` still reads that machine’s segments. The defect is preserved as benchmark evidence. Opus high and xhigh pass every suite.
 
 All thirteen standard drawings match for every pair; that and the generated apps’ own tests do not establish complete product correctness or usability. No automatic design score was assigned. The historical controls ran on 28 October and the layer ran on 3 November, once per model/effort/condition. Run variance and service-side model changes prevent a causal claim or a general design-quality ranking.
+
+## TDD and Impeccable + TDD conditions
+
+`--layer tdd-v1` uses Matt Pocock's TDD skill alone. `--layer impeccable-tdd-v1` adds the existing frozen Impeccable treatment to exactly the same TDD instructions. Both build new apps from prompt v2 in environment e2. The base and `impeccable-v1` prompts remain unchanged.
+
+The TDD snapshot comes from `mattpocock/skills` commit `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`. Its testing references are preserved verbatim; codebase-design is available only as its vocabulary reference. The shared instruction adapter records the user-approved public testing boundaries: interpreter, editor integration, execution controls and product flows. Agents proceed without interviews and derive test expectations from the brief. Evaluation cases and historical defects are excluded from their guidance. No separate architecture or delegated review workflow is added.
+
+The supplied matrix has Sonnet, Opus, Sol and Terra, each at low, medium, high and xhigh: sixteen entries per condition, thirty-two new runs. Run these queues sequentially; do not run them together in this checkout:
+
+```sh
+bun run bench:queue -- --matrix bench/layers/tdd-v1/matrix.json --layer tdd-v1 --prompt v2 --no-push
+# After the first queue finishes:
+bun run bench:queue -- --matrix bench/layers/tdd-v1/matrix.json --layer impeccable-tdd-v1 --prompt v2 --no-push
+```
+
+TDD alone prepares no Impeccable engine. The combined condition reuses the pinned snapshot and engine cache from `impeccable-v1`. Each new run saves its actual prompt and layer manifest, TDD source revision, transcript, independent conformance, gallery, time, tokens and estimated cost. Queue resume validates the condition as well as the model and effort. For unattended runs, add `--stop-on-limit` to leave later entries queued after a reported provider quota/rate limit or authentication failure. Resume after recovery with the same flag and without `--retry`; the failed attempt remains evidence.
+
+Compare the new conditions at matching model/effort and use historical controls as context. There is one attempt per condition, with no new baseline or Impeccable-only runs. Sonnet and Terra have no historical Impeccable-only condition. Run variance, service drift and incomplete controls limit causal conclusions. Generated tests passing and evidence of a red-to-green loop are distinct from independent conformance and human usability assessment.
+
+### Initial TDD experiment outcomes — 4 November 2026
+
+All 32 planned initial attempts are recorded. The sixteen OpenAI attempts completed, built and passed their generated tests. Seven pass every independent conformance suite. All sixteen pass 23/23 stress cases through both `run` and `open`; all 208 standard-drawing checks match. Human scores remain unset.
+
+The sixteen Claude attempts were rejected before app generation with `401 Invalid bearer token`; they produced no apps and provide no evidence about Sonnet or Opus quality. Authentication failures are preserved as operational failures, excluded from quality comparisons. No retries were performed. Representative saved failures: [Sonnet TDD](results/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-073724Z/result.json) and [Opus combined](results/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-073815Z/result.json).
+
+Language counts below are out of 595 and match on both `run` and editor `open`. Minutes are agent time; USD figures are stored API-list equivalents. Each new condition has one attempt per model/effort; historical base controls were collected earlier.
+
+| Model / effort | Historical base language | TDD language | Both language | Minutes TDD / both | USD TDD / both | Saved results |
+| --- | --- | --- | --- | --- | --- | --- |
+| Sol / low | 595 | 594 | 592 | 11.8 / 25.4 | 0.801 / 1.493 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-153405Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-sol-20261103-210853Z/result.json) |
+| Sol / medium | 595 | 595 | 595 | 28.1 / 24.3 | 1.718 / 1.652 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-154622Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-sol-20261103-213447Z/result.json) |
+| Sol / high | 595 | 595 | 595 | 28.7 / 28.4 | 1.073 / 1.738 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-161459Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-sol-20261103-215928Z/result.json) |
+| Sol / xhigh | 595 | 595 | 595 | 14.7 / 34.9 | 1.009 / 1.903 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-164410Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-sol-20261103-222821Z/result.json) |
+| Terra / low | 588 | 570 | 593 | 3.2 / 5.9 | 0.123 / 0.154 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-terra-20261103-165922Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-terra-20261103-230353Z/result.json) |
+| Terra / medium | 595 | 589 | 595 | 3.7 / 6.1 | 0.166 / 0.140 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-terra-20261103-170250Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-terra-20261103-231007Z/result.json) |
+| Terra / high | 594 | 576 | 594 | 3.8 / 7.2 | 0.139 / 0.164 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-terra-20261103-170652Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-terra-20261103-231620Z/result.json) |
+| Terra / xhigh | 595 | 587 | 593 | 5.8 / 10.7 | 0.245 / 0.342 | [TDD](results/v2-e2-tdd-v1-codex-gpt-6.1-terra-20261103-171056Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-codex-gpt-6.1-terra-20261103-232351Z/result.json) |
+
+The TDD-only condition tied its historical base in three matched efforts and scored lower in five. Sol low encoded a mistaken pre-assignment local-shadowing expectation in its own passing test. Terra failures mostly involve precise error locations; its medium TDD parser also rejects a procedure ending at EOF without a trailing newline. These defects remain untouched as benchmark evidence. The paired combined condition scored higher than TDD alone at every Terra effort, while only Terra medium was fully conformant. Single runs, sequential condition order and service drift prevent attributing those differences confidently to the skills.
+
+Transcript command screening referenced TDD in all sixteen successful attempts and Impeccable in all eight combined attempts, with no evaluation-path command candidates. This limited screening does not establish full TDD adherence or rule out every evaluation-access route. Drawing agreement and generated tests do not establish full product usability.
+
+The initial queue guard stopped on reported quota limits but did not recognize authentication failures, so it advanced through all sixteen rejected Claude entries. The optional guard now also stops after the first authentication failure, leaving subsequent entries queued. Completing the Claude comparison requires a valid subscription OAuth token and explicit authorization to retry the failed entries.
+
+### Completed TDD comparison and authorized Claude retry — 4 November 2026
+
+The initial outcome section above is retained as the pre-retry history. Yi subsequently authorized **Retry the 16 Claude entries** and provided a replacement private credential. All sixteen new Claude attempts completed; the original sixteen HTTP 401 failures remain preserved and excluded from quality comparisons. There are now **48 authorized attempt records and 32 completed apps**, with no further repetitions. All runs used the same frozen prompt/environment and sequential no-push execution.
+
+**32/32 apps built and passed their own tests. 11/32 passed every independent suite: 5/16 TDD and 6/16 combined.** All 32 passed 23/23 stress cases through both `run` and editor `open`; language counts agree at both entry points. All 416/416 standard-drawing checks matched. Human scores remain unset.
+
+The table below completes the earlier OpenAI table. Scores are language cases /595; minutes are agent time; Claude USD values are CLI-reported list equivalents, not subscription charges. Historical controls were not rerun.
+
+| Model / effort | Base | Impeccable | TDD | Both | Minutes TDD / both | USD TDD / both | Saved results |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Sonnet / low | 593 | — | 595 | 595 | 19.1 / 36.4 | 3.067 / 5.073 | [base](results/v2-e2-claude-claude-sonnet-5-5-20261028-045442Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-074629Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-130957Z/result.json) |
+| Sonnet / medium | 593 | — | 595 | 577 | 24.7 / 30.4 | 3.921 / 5.013 | [base](results/v2-e2-claude-claude-sonnet-5-5-20261028-072501Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-080628Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-134649Z/result.json) |
+| Sonnet / high | 595 | — | 592 | 594 | 44.7 / 58.5 | 8.696 / 9.980 | [base](results/v2-e2-claude-claude-sonnet-5-5-20261028-074837Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-083151Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-141754Z/result.json) |
+| Sonnet / xhigh | 595 | — | 594 | 594 | 68.0 / 82.2 | 15.221 / 20.938 | [base](results/v2-e2-claude-claude-sonnet-5-5-20261028-082944Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-sonnet-5-5-20261104-151720Z/result.json) |
+| Opus / low | 593 | 594 | 594 | 594 | 16.2 / 22.1 | 4.018 / 6.528 | [base](results/v2-e2-claude-claude-opus-5-5-20261028-113509Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-102546Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-164006Z/result.json) |
+| Opus / medium | 594 | 594 | 594 | 595 | 27.8 / 35.1 | 7.698 / 11.359 | [base](results/v2-e2-claude-claude-opus-5-5-20261028-115143Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-104227Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-170255Z/result.json) |
+| Opus / high | 592 | 595 | 594 | 593 | 43.6 / 45.3 | 13.998 / 15.265 | [base](results/v2-e2-claude-claude-opus-5-5-20261028-122444Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-111054Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-173840Z/result.json) |
+| Opus / xhigh | 595 | 595 | 594 | 594 | 74.4 / 57.1 | 31.060 / 21.189 | [base](results/v2-e2-claude-claude-opus-5-5-20261028-131400Z/result.json) · [TDD](results/v2-e2-tdd-v1-claude-claude-opus-5-5-20261104-115510Z/result.json) · [both](results/v2-e2-impeccable-tdd-v1-claude-claude-opus-5-5-20261104-182429Z/result.json) |
+
+Across matching efforts, combined scored higher than TDD in six, tied in seven and lower in three. TDD versus historical base had four higher, four tied and eight lower results; combined versus base had five higher, five tied and six lower results. One app per condition and historical service drift prevent causal conclusions. Sonnet and Terra still have no Impeccable-only control.
+
+Claude failures included valid procedure endings rejected at EOF (Sonnet high TDD), a parentheses limit incorrectly applying the bracket-only depth rule (several Sonnet runs and Opus high combined), and condition-RHS error-column mismatches (all Opus TDD runs and most Opus combined runs). Sonnet medium combined missed eighteen cases, chiefly diagnostic columns. Opus medium combined was fully conformant; Opus xhigh combined retained one column mismatch. Generated apps were left untouched.
+
+All 32 successful transcripts referenced TDD and all sixteen combined transcripts referenced Impeccable. Repeated test-command candidates were present in all 32; limited path/tool-input screening found no evaluation-path candidates. Error-then-later-success command candidates were found in eighteen runs, but can include infrastructure failures; this does not verify complete red/green/refactor adherence or exclude every contamination route. Passing self-authored tests can preserve mistaken expectations, as in Sol low.
+
+The final local evidence bundle is [comparison and metrics](../output/bench-experiments/2026-11-03-tdd/results.html), [exact run metrics](../output/bench-experiments/2026-11-03-tdd/results.json), [all independent failures](../output/bench-experiments/2026-11-03-tdd/failures.json), [desktop/phone screenshots](../output/bench-experiments/2026-11-03-tdd/screenshots.html), [transcript audit](../output/bench-experiments/2026-11-03-tdd/transcript-audit.json), and [attempt accounting](../output/bench-experiments/2026-11-03-tdd/attempt-status.json). These ignored operational artifacts are local-only; durable run evidence remains in `bench/results/`. Token totals retain provider categories; reasoning is not added to output a second time. The experiment did not publish a Pages release.
+
+Final local validation: lint and typecheck passed; all **292 unit tests** and **3 Pages browser tests** passed; Pages rebuilt with the completed records and builds. Existing Biome configuration and bundle-size warnings remain. Charts and the 64-image desktop/phone gallery were previewed at desktop/narrow widths and shown inline; all effort/screen pairs and image enlargement controls passed assertions. The full shared chart exceeds the inline preview size limit, so compact native charts show the same reviewed values; full interactive chart files remain local. Validation evidence: [validation.json](../output/bench-experiments/2026-11-03-tdd/validation.json).

@@ -1,0 +1,28 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+$ bun build.js
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+test/interpreter.test.js:
+(pass) żółw rysuje odcinek od początku w kierunku północy [1.27ms]
+(pass) błąd w późniejszym wyrażeniu zachowuje wcześniejszy rysunek [0.08ms]
+(pass) procedura może używać parametru i powtórzeń [0.47ms]
+(pass) definicja wewnątrz powtórzenia jest błędem przed rysowaniem [0.03ms]
+(pass) obrót w górę prowadzi żółwia wzdłuż osi Z [0.06ms]
+
+ 5 pass
+ 0 fail
+ 9 expect() calls
+Ran 5 tests across 1 file. [3.00ms]
+(exit 0)

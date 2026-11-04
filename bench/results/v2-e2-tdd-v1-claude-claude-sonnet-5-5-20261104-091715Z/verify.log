@@ -1,0 +1,510 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[0.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano do dist/ (BASE_PATH=/Logomocja/builds/v2-e2-tdd-v1-claude-claude-sonnet-5-5-20261104-091715Z/)
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/lang.test.ts:
+(pass) ruch i rysowanie > np rysuje odcinek w górę od początku układu domyślnym kolorem i grubością [1.19ms]
+(pass) obroty > pw 90 obraca żółwia w prawo, więc np idzie wzdłuż +X [0.08ms]
+(pass) aliasy i wielkość liter > np to ruch naprzód [0.02ms]
+(pass) aliasy i wielkość liter > naprzod to ruch naprzód [0.02ms]
+(pass) aliasy i wielkość liter > naprzód to ruch naprzód [0.05ms]
+(pass) aliasy i wielkość liter > fd to ruch naprzód [0.01ms]
+(pass) aliasy i wielkość liter > forward to ruch naprzód [0.01ms]
+(pass) aliasy i wielkość liter > NP to ruch naprzód [0.05ms]
+(pass) aliasy i wielkość liter > NaPrZóD to ruch naprzód [0.01ms]
+(pass) aliasy i wielkość liter > Forward to ruch naprzód [0.02ms]
+(pass) aliasy i wielkość liter > ws cofa, a lw obraca w lewo [0.11ms]
+(pass) pióro > pod podnosi pióro (ruch bez rysowania), opu opuszcza je [0.04ms]
+(pass) kolor i grubość > kolor "#C1763D" zmienia kolor kreski i zapisuje go małymi literami [0.07ms]
+(pass) kolor i grubość > grubosc 5 zmienia grubość kreski [0.06ms]
+(pass) komentarze > średnik zaczyna komentarz do końca wiersza, a kolejne wiersze działają [0.25ms]
+(pass) powtorz > program Kwadrat rysuje cztery boki kwadratu o boku 120 [0.14ms]
+(pass) wyrażenia > mnożenie wiąże mocniej niż dodawanie: np 2 + 3 * 4 idzie o 14 [0.05ms]
+(pass) wyrażenia: łączność i nawiasy > operatory równego priorytetu łączą w lewo: np 20 - 5 - 3 idzie o 12, np 100 / 5 / 2 o 10 [0.04ms]
+(pass) wyrażenia: łączność i nawiasy > nawiasy grupują wyrażenia: np (2 + 3) * 4 idzie o 20 [0.03ms]
+(pass) wyrażenia: znaki jednoargumentowe > np -(3 - 5) idzie o 2, np - -2 o 2, np +7 o 7, a ws -4 idzie naprzód o 4 [0.06ms]
+(pass) wyrażenia: znaki jednoargumentowe > pw z ujemnym kątem skręca w lewo [0.02ms]
+(pass) reguła białych znaków wokół operatorów > np 10-5 i np 10 - 5 poruszają o 5 [0.03ms]
+(pass) reguła białych znaków wokół operatorów > np 10 -5 to np 10 i zbłąkany token -5: błąd na znaku minus (wiersz 1, kolumna 7) [0.09ms]
+(pass) reguła białych znaków wokół operatorów > ta sama reguła dotyczy * i /: np 10 *2 jest błędem w kolumnie 7 [0.07ms]
+(pass) zmienne > niech przypisuje wartość wyrażenia, a nazwa działa w wyrażeniach [0.06ms]
+(pass) zmienne > kolejne niech przypisuje na nowo, nazwy ignorują wielkość liter, :nazwa to ta sama zmienna [0.08ms]
+(pass) nrpowt > nrpowt to numer bieżącego obiegu od 1; w zagnieżdżeniu liczy najbliższe powtórz [0.10ms]
+(pass) nrpowt > repcount to alias nrpowt [0.12ms]
+(pass) warunki > jeśli wykonuje treść tylko gdy warunek zachodzi (wszystkie sześć porównań) [0.24ms]
+(pass) warunki > porównania są dokładne: 0.1 + 0.2 = 0.3 nie zachodzi [0.04ms]
+(pass) jeżeli (z gałęzią w przeciwnym razie) > jeżeli wykonuje pierwszą treść, gdy warunek zachodzi, a drugą w przeciwnym razie [0.17ms]
+(pass) dom > dom wraca do początku z rysowaniem i przywraca kierunek +Y; pióro i kolor bez zmian [0.05ms]
+(pass) dom > dom z podniesionym piórem nie rysuje, a w początku układu nie rysuje zera [0.03ms]
+(pass) czyść > czyść usuwa dotychczasowe odcinki, ale zostawia pozycję, kolor i pióro [0.02ms]
+(pass) czyść > czyść jest aliasem [0.02ms]
+(pass) czyść > czysc jest aliasem
+(pass) czyść > cs jest aliasem
+(pass) czyść > clearscreen jest aliasem
+(pass) 3D: nachylenie (gora, dol) > gora 90 kieruje nos wzdłuż dawnej góry (+Z) [0.04ms]
+(pass) 3D: nachylenie (gora, dol) > dol 90 kieruje nos w dół, a gora 90 po dol 90 wraca do poziomu [0.17ms]
+(pass) 3D: nachylenie (gora, dol) > po gora 90 żółw patrzy w +Z, jego góra to -Y, prawa strona to +X, więc pw 90 kieruje nos na +X [0.03ms]
+(pass) 3D: nachylenie (gora, dol) > gora 30 pod kątem: np 10 daje (0, 10cos30, 10sin30) [0.03ms]
+(pass) 3D: przechył (pp, pl) > pp nie zmienia kierunku ruchu [0.03ms]
+(pass) 3D: przechył (pp, pl) > po pp 90 góra żółwia to dawna prawa strona, więc gora 90 kieruje nos na +X [0.02ms]
+(pass) 3D: przechył (pp, pl) > po pp 90 prawa strona to dawny dół, więc pw 90 kieruje nos na dół (-Z) [0.01ms]
+(pass) 3D: przechył (pp, pl) > pl obraca w przeciwną stronę: po pl 90 gora 90 kieruje nos na -X [0.02ms]
+(pass) 3D: przechył (pp, pl) > aliasy: przechylprawo, rr, rollright, przechyllewo, rl, rollleft [0.20ms]
+(pass) tryb 2D a polecenia przestrzenne > gora 10 w 2D to błąd parsowania przy poleceniu i nic nie jest rysowane [0.04ms]
+(pass) tryb 2D a polecenia przestrzenne > dol 10 w 2D to błąd parsowania przy poleceniu i nic nie jest rysowane [0.02ms]
+(pass) tryb 2D a polecenia przestrzenne > pp 10 w 2D to błąd parsowania przy poleceniu i nic nie jest rysowane [0.01ms]
+(pass) tryb 2D a polecenia przestrzenne > pl 10 w 2D to błąd parsowania przy poleceniu i nic nie jest rysowane
+(pass) tryb 2D a polecenia przestrzenne > program płaski rysuje te same współrzędne w 2D i w 3D [0.27ms]
+(pass) procedury > oto … ma: parametry … już definiuje procedurę wywoływaną z argumentami pozycyjnymi [0.26ms]
+(pass) procedury: kolejność definicji > wywołanie może poprzedzać definicję [0.03ms]
+(pass) procedury: kolejność definicji > procedury mogą wywoływać się nawzajem w dowolnej kolejności [0.03ms]
+(pass) procedury: nagłówek w starej formie > oto kwadrat :bok :kąt, parametr odczytywany jako :bok i jako bok; to/end jako aliasy [0.04ms]
+(pass) procedury: nagłówek w starej formie > nazwy procedur i parametrów ignorują wielkość liter i akceptują odpowiedniki bez ogonków [0.03ms]
+(pass) rekurencja i stop > procedura może wywoływać samą siebie, a stop w warunku kończy rekurencję [0.42ms]
+(pass) rekurencja i stop > stop wewnątrz powtórz i jeśli kończy całą procedurę, nie tylko treść [0.03ms]
+(pass) rekurencja i stop > stop na najwyższym poziomie kończy program [0.02ms]
+(pass) procedury: argumenty jako wyrażenia > kwadrat 40 * 2 90 przekazuje 80 i 90 [0.04ms]
+(pass) procedury: argumenty jako wyrażenia > argument zaczynający się od znaku po spacji to osobny argument: f 10 -5 przekazuje 10 i -5 [0.03ms]
+(pass) procedury: argumenty jako wyrażenia > parametry mogą być licznikami powtórzeń i argumentami innych wywołań [0.04ms]
+(pass) procedury: argumenty jako wyrażenia > parametr może mieć nazwę procedury: w pozycji polecenia to wywołanie, w argumencie to parametr [0.02ms]
+(pass) zmienne globalne i lokalne > procedura odczytuje zmienną globalną przypisaną na najwyższym poziomie (także po wywołaniu) [0.03ms]
+(pass) zmienne globalne i lokalne > niech wewnątrz procedury jest lokalne: zasłania globalną do końca wywołania i znika po nim [0.02ms]
+(pass) zmienne globalne i lokalne > parametr można przypisać na nowo przez niech, bez wpływu na wywołującego [0.03ms]
+(pass) zmienne globalne i lokalne > niech w treści powtórz na najwyższym poziomie zmienia zmienną globalną [0.02ms]
+(pass) błędy: nieznane polecenie i zbłąkane wartości > nieznane polecenie jest zgłaszane w swoim wierszu i kolumnie, a nic nie jest rysowane [0.03ms]
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkana liczba tam, gdzie oczekiwane jest polecenie, jest zgłaszana na tej liczbie [0.03ms]
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkany token w "np 10 ]" jest zgłaszany w 1:7 i nie udaje nieznanego polecenia [0.03ms]
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkany token w "np 10 [" jest zgłaszany w 1:7 i nie udaje nieznanego polecenia
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkany token w "np 10 )" jest zgłaszany w 1:7 i nie udaje nieznanego polecenia
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkany token w "np 10 ," jest zgłaszany w 1:7 i nie udaje nieznanego polecenia
+(pass) błędy: nieznane polecenie i zbłąkane wartości > zbłąkany token w "np 10 \"#16866a\"" jest zgłaszany w 1:7 i nie udaje nieznanego polecenia
+(pass) błędy: brakujący argument > "np": błąd w 1:1 [0.03ms]
+(pass) błędy: brakujący argument > "np 10\n  pw": błąd w 2:3 [0.01ms]
+(pass) błędy: brakujący argument > "powtorz 2 [np]": błąd w 1:14 [0.02ms]
+(pass) błędy: brakujący argument > "np pw 90": błąd w 1:4
+(pass) błędy: brakujący argument > "np (": błąd w 1:4
+(pass) błędy: brakujący argument > "np (1 + )": błąd w 1:9
+(pass) błędy: brakujący argument > "np 1 +": błąd w 1:6
+(pass) błędy: brakujący argument > "kolor": błąd w 1:1
+(pass) błędy: brakujący argument > "niech x": błąd w 1:1
+(pass) błędy: brakujący argument > "jeśli 1 < ": błąd w 1:1
+(pass) błędy: kolor > "kolor \"red\"" to błąd w 1:7 i nic nie jest rysowane [0.02ms]
+(pass) błędy: kolor > "kolor \"#12345\"" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor \"#1234567\"" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor \"#12345g\"" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor \"16866a\"" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor \"\"" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "np 5\nkolor \"#16866a" to błąd w 2:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor 5" to błąd w 1:7 i nic nie jest rysowane
+(pass) błędy: kolor > "kolor #16866a" to błąd w 1:7 i nic nie jest rysowane [0.02ms]
+(pass) błędy: kolor > "kolor \"#16866a\" \"#16866a\"" to błąd w 1:17 i nic nie jest rysowane
+(pass) błędy: kolor > kolor "#AbCdEf" akceptuje wielkie litery szesnastkowe [0.01ms]
+(pass) liczby > .5 i 12.5 są poprawnymi liczbami bez znaku [0.02ms]
+(pass) liczby > np 1e3 jest błędem w kolumnie 4: to nie jest liczba dziesiętna [0.02ms]
+(pass) liczby > np 0x10 jest błędem w kolumnie 4: to nie jest liczba dziesiętna [0.01ms]
+(pass) liczby > np 5. jest błędem w kolumnie 4: to nie jest liczba dziesiętna
+(pass) liczby > np 1.2.3 jest błędem w kolumnie 4: to nie jest liczba dziesiętna
+(pass) liczby > np 12abc jest błędem w kolumnie 4: to nie jest liczba dziesiętna [0.01ms]
+(pass) liczby > np 1_000 jest błędem w kolumnie 4: to nie jest liczba dziesiętna
+(pass) liczby > np . jest błędem w kolumnie 4: to nie jest liczba dziesiętna
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "grubosc 0": błąd w 1:9, nic nie jest rysowane [0.02ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "grubosc 13": błąd w 1:9, nic nie jest rysowane [0.01ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "grubosc 2.5": błąd w 1:9, nic nie jest rysowane [0.02ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "grubosc -1": błąd w 1:9, nic nie jest rysowane [0.01ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "grubosc 6 + 7": błąd w 1:9, nic nie jest rysowane
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "np 50\n  width (3 * 5)": błąd w 2:9, nic nie jest rysowane [0.01ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > grubosc 1 jest dozwolone [0.02ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > grubosc 12 jest dozwolone
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "powtorz 10001 [np 1]": błąd parsowania w 1:9, nic nie jest rysowane [0.02ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "powtorz 2.5 [np 1]": błąd parsowania w 1:9, nic nie jest rysowane [0.01ms]
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "powtorz -1 [np 1]": błąd parsowania w 1:9, nic nie jest rysowane
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > "np 5 powtorz 5000 * 3 [np 1]": błąd parsowania w 1:14, nic nie jest rysowane
+(pass) błędy: grubość i liczba powtórzeń zapisane literalnie (czas parsowania) > powtorz 0 nie wykonuje niczego [0.02ms]
+(pass) błędy czasu wykonania: dzielenie przez zero i wartości nieskończone > dzielenie przez zero zatrzymuje program, zachowuje wcześniejszy rysunek i wskazuje początek argumentu [0.04ms]
+(pass) błędy czasu wykonania: dzielenie przez zero i wartości nieskończone > dzielenie przez zero ukryte w zmiennej i 0 / 0 też są błędami [0.03ms]
+(pass) błędy czasu wykonania: dzielenie przez zero i wartości nieskończone > wynik nieskończony jest błędem w pierwszym tokenie argumentu [0.05ms]
+(pass) błędy czasu wykonania: grubość i liczba powtórzeń zależne od nazw > zła grubość obliczona ze zmiennej zatrzymuje program po zachowaniu rysunku [0.04ms]
+(pass) błędy czasu wykonania: grubość i liczba powtórzeń zależne od nazw > zła liczba powtórzeń ze zmiennej jest błędem na początku argumentu [0.04ms]
+(pass) błędy czasu wykonania: grubość i liczba powtórzeń zależne od nazw > błąd w parametrze procedury wskazuje argument w treści procedury [0.05ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "np 10\nnp foo": błąd w 2:4, nic nie jest rysowane [0.02ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "np NaN": błąd w 1:4, nic nie jest rysowane
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "np Infinity": błąd w 1:4, nic nie jest rysowane
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "niech a 1\nnp a + b": błąd w 2:8, nic nie jest rysowane
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "oto f ma: a\n  np b\njuz\nf 1": błąd w 2:6, nic nie jest rysowane [0.01ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "oto a\n  niech k 1\njuz\noto b\n  np k\njuz\nb": błąd w 5:6, nic nie jest rysowane [0.01ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "oto f\n  np bok\njuz\noto g ma: bok\n  np bok\njuz\nf": błąd w 2:6, nic nie jest rysowane [0.01ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > "np kwadrat\noto kwadrat\n np 1\njuz": błąd w 1:4, nic nie jest rysowane
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > zmienna przypisana na najwyższym poziomie przed lub po użyciu jest zadeklarowana, także w procedurach [0.04ms]
+(pass) błędy: nazwy niebędące parametrem ani zadeklarowaną zmienną (czas parsowania) > zmienna przypisana gdziekolwiek w treści procedury (np. w powtórz) jest tam zadeklarowana [0.02ms]
+(pass) błędy czasu wykonania: zmienna nieprzypisana > odczyt zmiennej zadeklarowanej dalej w programie jest błędem w tokenie argumentu, z zachowaniem rysunku [0.02ms]
+(pass) błędy czasu wykonania: zmienna nieprzypisana > zmienna przypisana tylko na nieodwiedzonej ścieżce jest nieprzypisana [0.02ms]
+(pass) błędy czasu wykonania: zmienna nieprzypisana > zmienna lokalna procedury przed przypisaniem jest nieprzypisana, o ile nie ma globalnej [0.02ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > "np 5\nnp nrpowt": błąd w 2:4, nic nie jest rysowane [0.02ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > "jeśli 1 = 1 [np repcount]": błąd w 1:17, nic nie jest rysowane [0.01ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > "oto f\n  np nrpowt\njuz\npowtorz 2 [f]": błąd w 2:6, nic nie jest rysowane [0.01ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > "powtorz nrpowt [np 1]": błąd w 1:9, nic nie jest rysowane
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > "powtorz 2 [np 1]\nnp nrpowt": błąd w 2:4, nic nie jest rysowane [0.02ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > nrpowt wewnątrz jeśli / jeżeli w treści powtórz oraz w repeat w procedurze jest poprawne [0.07ms]
+(pass) błędy: nrpowt poza powtórz (czas parsowania, zasięg leksykalny) > w zagnieżdżonej procedurze wywołanej z powtórz nrpowt liczy własny powtórz, nie zewnętrzny [0.04ms]
+(pass) błędy: nawiasy > "powtorz 2 [np 1": błąd w 1:11, nic nie jest rysowane [0.02ms]
+(pass) błędy: nawiasy > "powtorz 2 [np 1\npw 90": błąd w 1:11, nic nie jest rysowane [0.01ms]
+(pass) błędy: nawiasy > "np (1 + 2": błąd w 1:4, nic nie jest rysowane [0.01ms]
+(pass) błędy: nawiasy > "np ((1 + 2)": błąd w 1:4, nic nie jest rysowane
+(pass) błędy: nawiasy > "np 1 + 2)": błąd w 1:9, nic nie jest rysowane
+(pass) błędy: nawiasy > "np 1 ]": błąd w 1:6, nic nie jest rysowane [0.02ms]
+(pass) błędy: nawiasy > "[np 1]": błąd w 1:1, nic nie jest rysowane
+(pass) błędy: nawiasy > "jeśli 1 < 2 [np 1] [np 2]": błąd na [ (wystąpienie 2) [0.06ms]
+(pass) błędy: nawiasy > "jeżeli 1 < 2 [np 1": błąd na [ (wystąpienie 1) [0.01ms]
+(pass) błędy: nawiasy > "powtorz 2 np 1": błąd na np (wystąpienie 1)
+(pass) błędy: nawiasy > 32 zagnieżdżone nawiasy [ ] są dozwolone, 33 to błąd na 33. nawiasie otwierającym [0.17ms]
+(pass) błędy: nawiasy > zagnieżdżone nawiasy okrągłe też mają limit 32 (bez przepełnienia stosu) [0.81ms]
+(pass) błędy: liczba argumentów wywołania procedury > za mało argumentów (0): błąd w znalezionym tokenie lub przy wywołaniu [0.16ms]
+(pass) błędy: liczba argumentów wywołania procedury > za mało argumentów (1): błąd w znalezionym tokenie lub przy wywołaniu [0.04ms]
+(pass) błędy: liczba argumentów wywołania procedury > za mało argumentów (2): błąd w znalezionym tokenie lub przy wywołaniu [0.02ms]
+(pass) błędy: liczba argumentów wywołania procedury > za mało argumentów (3): błąd w znalezionym tokenie lub przy wywołaniu [0.03ms]
+(pass) błędy: liczba argumentów wywołania procedury > za dużo argumentów: nadmiarowa wartość jest zbłąkana i zgłaszana na sobie [0.03ms]
+(pass) błędy: liczba argumentów wywołania procedury > procedura bez parametrów nie przyjmuje argumentu [0.02ms]
+(pass) błędy: definicje procedur > definicja wewnątrz treści (0) jest błędem na słowie oto, bez rysowania [0.04ms]
+(pass) błędy: definicje procedur > definicja wewnątrz treści (1) jest błędem na słowie oto, bez rysowania [0.01ms]
+(pass) błędy: definicje procedur > definicja wewnątrz treści (2) jest błędem na słowie oto, bez rysowania [0.01ms]
+(pass) błędy: definicje procedur > definicja wewnątrz treści (3) jest błędem na słowie oto, bez rysowania [0.02ms]
+(pass) błędy: definicje procedur > oto musi stać na początku wiersza [0.02ms]
+(pass) błędy: definicje procedur > brak już: błąd na słowie oto niezamkniętej definicji [0.04ms]
+(pass) błędy: definicje procedur > zbędne już na najwyższym poziomie jest błędem [0.02ms]
+(pass) błędy: definicje procedur > już musi stać samo w wierszu [0.05ms]
+(pass) błędy: definicje procedur > już w treści nawiasów [ ] procedury to błąd, a nie cichy koniec [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto ¤np\n  np 1\njuż" [0.05ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto ¤powtórz\n  np 1\njuż" [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto ¤nrpowt\n  np 1\njuż" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f\n  np 1\njuż\noto ¤f\n  np 1\njuż" [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto F\n  np 1\njuż\noto ¤f\n  np 1\njuż" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto\n  ¤np 1\njuż"
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto ¤5\n  np 1\njuż"
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f ma:\n  ¤np 1\njuż" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f ma: a, ¤a\n  np 1\njuż" [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f ma: ¤np\n  np 1\njuż"
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f ma: a,\n  ¤np 1\njuż" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f ma: a ¤b\n  np 1\njuż" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f :a ¤:a\n  np 1\njuż" [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "niech ¤np 5" [0.02ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "niech ¤nrpowt 5" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "niech ¤5 6"
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "oto f\n  np 1\njuż\nniech ¤f 3" [0.01ms]
+(pass) błędy: nazwy procedur, parametrów i zmiennych > "niech ¤f 3\noto f\n  np 1\njuż"
+(pass) limity: długość źródła i liczba tokenów > 50 000 znaków jest dozwolone, 50 001 to błąd na pierwszym nadmiarowym znaku [0.31ms]
+(pass) limity: długość źródła i liczba tokenów > 10 000 tokenów jest dozwolone, 10 001. token to błąd [8.15ms]
+(pass) limity: długość źródła i liczba tokenów > operatory, nawiasy i przecinki też są tokenami [3.67ms]
+(pass) limity: operacje > powtorz 4999 [np 1] to 9999 operacji (repeat + 4999 × (np + koniec obiegu)) i przechodzi [1.68ms]
+(pass) limity: operacje > dokładnie 10000 operacji jest dozwolone, 10001. jest błędem na tej operacji [3.82ms]
+(pass) limity: operacje > powtorz 5000 [np 1] przekracza limit przy kończeniu 5000. obiegu; rysunek zostaje [1.07ms]
+(pass) limity: operacje > wyrażenia nie są operacjami: powtorz 3000 [np 1 + 1 + 1 + 1] to tylko 1 + 3000 × 2 operacji [1.45ms]
+(pass) limity: operacje > jeśli kosztuje 1, a za wykonaną treść jeszcze 1; fałszywy warunek tylko 1 [4.83ms]
+(pass) limity: operacje > wywołanie procedury kosztuje 1 + 1 za zakończenie [2.97ms]
+(pass) limity: ramki wywołań i powtórzeń > nieskończona rekurencja zatrzymuje się na 33. aktywnym wywołaniu; wcześniejszy rysunek zostaje [0.12ms]
+(pass) limity: ramki wywołań i powtórzeń > ramki liczą też powtórz: 31 wywołań i 1 powtórz to 32 ramki (ok), 2 powtórz to 33 (błąd) [0.58ms]
+(pass) limity: ramki wywołań i powtórzeń > treści jeśli / jeżeli nie są ramkami: głęboko zagnieżdżone warunki w 32 wywołaniach są dozwolone [0.18ms]
+(pass) stop nie przecieka ramek > stop wewnątrz powtórz w procedurze zwalnia ramki: 100 wywołań z rzędu nie przekracza limitu 32 [0.21ms]
+(pass) limity: współrzędne > współrzędna 100000 jest dozwolona, a 100001 to błąd w poleceniu, z zachowaniem wcześniejszego rysunku [0.07ms]
+(pass) limity: współrzędne > limit dotyczy każdej osi i ruchu z podniesionym piórem [0.09ms]
+(pass) limity: liczba odcinków > czwarty odcinek przy limicie 3 jest błędem w poleceniu, a trzy pierwsze zostają [0.04ms]
+(pass) limity: liczba odcinków > limit liczy odcinki aktualnie przechowywane: czyść go zwalnia, a ruchy z podniesionym piórem go nie zużywają [0.02ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > końce wierszy CRLF działają także w definicjach procedur [0.10ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > polskie wielkie litery w słowach kluczowych i nazwach [0.04ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > rozłożone znaki diakrytyczne (a + U+0328) są równoważne złożonym (U+0105) [0.02ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > odstępy wokół operatorów porównania nie mają znaczenia [0.03ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > w warunku obowiązuje reguła odstępów dla + i -: jeśli 1 -1 = 0 to błąd na minusie [0.02ms]
+(pass) zapis: końce wierszy, wielkie litery, normalizacja Unicode, porównania > zagnieżdżone nawiasy [] z wieloma wierszami i komentarzami wewnątrz [0.36ms]
+(pass) tryb podany wielkimi literami > „2D” i „3D” działają jak „2d” i „3d” (polecenia przestrzenne tylko w 3D) [0.04ms]
+(pass) dzielenie przez zero w grubości lub liczbie powtórzeń zapisanej wprost > grubosc 1 / 0 i powtorz 1 / 0 to błędy czasu parsowania na początku argumentu (nic nie jest rysowane) [0.08ms]
+(pass) końce wierszy samym CR i stray już > plik z końcami wierszy zapisanymi samym znakiem CR (stary Mac) działa, także w definicjach [0.04ms]
+(pass) końce wierszy samym CR i stray już > numery wierszy w błędach liczą wiersze zakończone samym CR [0.02ms]
+(pass) końce wierszy samym CR i stray już > zbędne już ma czytelny komunikat o niezamkniętej definicji, a niezamknięty nawias w procedurze podpowiada brak ] [1.72ms]
+(pass) komentarze w plikach z końcami wierszy samym CR > komentarz kończy się na CR i nie połyka reszty pliku [0.08ms]
+(pass) odcinki są niezależnymi obiektami > koniec jednego odcinka i początek następnego to osobne tablice (zmiana jednego nie psuje drugiego) [0.02ms]
+
+tests/session.test.ts:
+(pass) sesja krokowa > każdy krok wykonuje jedno polecenie i zgłasza jego wiersz i kolumnę [0.06ms]
+(pass) sesja krokowa > powtorz, jeśli i wywołanie to osobne kroki, a koniec obiegu nie jest krokiem [0.02ms]
+(pass) sesja krokowa > błąd czasu wykonania kończy sesję, zachowuje rysunek i jest dostępny w error [0.04ms]
+(pass) sesja krokowa > błąd parsowania nie tworzy sesji [0.02ms]
+(pass) sesja krokowa > czyść zwiększa epokę, by widok wiedział, że trzeba przerysować całość [0.02ms]
+(pass) sesja krokowa > zakończenie sesji krok po kroku daje to samo co run [0.09ms]
+
+tests/examples.test.ts:
+(pass) standardowe programy > trzynaście programów w kolejności, z nazwami i trybami z opisu produktu [0.02ms]
+(pass) standardowe programy > opisy z opisu produktu [0.04ms]
+(pass) standardowe programy > źródła są zachowane co do znaku (pierwszy wiersz, polskie znaki, układ wcięć) [0.02ms]
+(pass) standardowe programy > kwadrat działa bez błędu w swoim trybie [0.05ms]
+(pass) standardowe programy > gwiazda działa bez błędu w swoim trybie [0.02ms]
+(pass) standardowe programy > rozeta działa bez błędu w swoim trybie [0.04ms]
+(pass) standardowe programy > spirala działa bez błędu w swoim trybie [0.17ms]
+(pass) standardowe programy > wielokaty działa bez błędu w swoim trybie [0.07ms]
+(pass) standardowe programy > drzewo działa bez błędu w swoim trybie [1.22ms]
+(pass) standardowe programy > sniezynka działa bez błędu w swoim trybie [1.70ms]
+(pass) standardowe programy > schody działa bez błędu w swoim trybie [0.04ms]
+(pass) standardowe programy > szescian działa bez błędu w swoim trybie [0.05ms]
+(pass) standardowe programy > pierscien działa bez błędu w swoim trybie [0.03ms]
+(pass) standardowe programy > kula działa bez błędu w swoim trybie [0.29ms]
+(pass) standardowe programy > helisa działa bez błędu w swoim trybie [0.13ms]
+(pass) standardowe programy > drzewo3d działa bez błędu w swoim trybie [1.66ms]
+(pass) standardowe programy > płaskie programy dają te same współrzędne w 2D i w 3D [6.68ms]
+(pass) standardowe programy > kwadrat rysuje 4 odcinków [0.06ms]
+(pass) standardowe programy > gwiazda rysuje 5 odcinków [0.01ms]
+(pass) standardowe programy > rozeta rysuje 48 odcinków [0.04ms]
+(pass) standardowe programy > spirala rysuje 90 odcinków [0.11ms]
+(pass) standardowe programy > wielokaty rysuje 42 odcinków [0.08ms]
+(pass) standardowe programy > drzewo rysuje 255 odcinków [1.11ms]
+(pass) standardowe programy > sniezynka rysuje 768 odcinków [2.41ms]
+(pass) standardowe programy > schody rysuje 12 odcinków [0.05ms]
+(pass) standardowe programy > szescian rysuje 17 odcinków [0.05ms]
+(pass) standardowe programy > pierscien rysuje 36 odcinków [0.04ms]
+(pass) standardowe programy > kula rysuje 432 odcinków [0.32ms]
+(pass) standardowe programy > helisa rysuje 240 odcinków [0.17ms]
+(pass) standardowe programy > drzewo3d rysuje 121 odcinków [1.70ms]
+(pass) standardowe programy: geometria > Kwadrat: kwadrat o boku 120 zaczynający się w górę od początku [0.05ms]
+(pass) standardowe programy: geometria > Gwiazda: pięcioramienna gwiazda zamyka się w początku, pierwszy bok ma 180 [0.08ms]
+(pass) standardowe programy: geometria > Spirala: kolory na zmianę, boki 2.5 · numer [0.14ms]
+(pass) standardowe programy: geometria > Wielokąty: pierwszy trójkąt o boku 60 zamyka się w początku [0.07ms]
+(pass) standardowe programy: geometria > Drzewo: pień brązowy i gruby, liście zielone i cienkie [1.16ms]
+(pass) standardowe programy: geometria > Śnieżynka: cienkie niebieskie kreski o długości 270/3^4 · … [3.76ms]
+(pass) standardowe programy: geometria > Schody: schodkowa ścieżka wznosi się o 20 na stopień [0.06ms]
+(pass) standardowe programy: geometria > Sześcian: dokładnie 12 różnych krawędzi między 8 narożnikami sześcianu o boku 100 [0.16ms]
+(pass) standardowe programy: geometria > Pierścień: okrąg o promieniu ≈ 68.8 zamyka się w początku, pierwszy bok wznosi się pod 30° [0.06ms]
+(pass) standardowe programy: geometria > Kula: dwanaście okręgów na przemian zielonych i niebieskich, wszystkie w kuli o średnicy ≈ 115 [0.35ms]
+(pass) standardowe programy: geometria > Helisa: wznosi się o 1.5 na obrót do wysokości 180 [0.19ms]
+(pass) standardowe programy: geometria > Drzewo 3D: pień o długości 70 skierowany w górę (+Z) [1.00ms]
+
+tests/fuzz.test.ts:
+(pass) odporność parsera i interpretera > losowe programy nigdy nie zrywają działania: wynik to rysunek lub błąd z pozycją i polskim opisem [50.35ms]
+(pass) odporność parsera i interpretera > błąd parsowania zawsze daje pusty rysunek, a błąd wykonania tylko to, co narysowano przed nim [9.60ms]
+
+tests/highlight.test.ts:
+(pass) podświetlanie składni > polecenia, liczby, napisy, komentarze, nawiasy i operatory dostają osobne klasy [0.15ms]
+(pass) podświetlanie składni > nazwy zmiennych i parametrów różnią się od poleceń, a nazwy procedur mają własną klasę [0.04ms]
+(pass) podświetlanie składni > operatory porównania, nrpowt i nawiasy okrągłe [0.04ms]
+(pass) podświetlanie składni > zepsute fragmenty (zła liczba, nieznany znak) są oznaczone jako invalid, a średnik w napisie nie zaczyna komentarza [0.02ms]
+(pass) podświetlanie składni > zakresy są uporządkowane i nie nakładają się, także dla polskich znaków [0.03ms]
+
+tests/controller.test.ts:
+(pass) kontroler wykonania: krok > nowy kontroler jest bezczynny, z żółwiem w domu i bez rysunku [0.14ms]
+(pass) kontroler wykonania: krok > krok z bezczynności wykonuje pierwsze polecenie i wstrzymuje; kolejne kroki idą po jednym poleceniu [0.12ms]
+(pass) kontroler wykonania: uruchom, pauza, wznów > run animuje według szybkości: tick(dt) wykonuje dt·szybkość operacji, resztę zapamiętuje [0.07ms]
+(pass) kontroler wykonania: uruchom, pauza, wznów > pauza zatrzymuje animację, wznów ją kontynuuje od miejsca przerwania [0.05ms]
+(pass) kontroler wykonania: uruchom, pauza, wznów > run podczas pauzy działa jak wznów, a krok podczas pauzy robi dokładnie jeden krok [0.05ms]
+(pass) kontroler wykonania: uruchom, pauza, wznów > pauza i wznów poza wykonywaniem nic nie robią [0.01ms]
+(pass) kontroler wykonania: uruchom, pauza, wznów > nieskończona szybkość wykonuje cały program w jednym ticku [0.02ms]
+(pass) kontroler wykonania: reset i ponowne uruchomienie > reset przerywa wykonanie, czyści rysunek i przywraca żółwia do domu [0.04ms]
+(pass) kontroler wykonania: reset i ponowne uruchomienie > po reset kolejny krok zaczyna program od nowa, a tick po reset nic nie robi [0.02ms]
+(pass) kontroler wykonania: reset i ponowne uruchomienie > run po zakończeniu rysuje od nowa zamiast dokładać do starego rysunku [0.03ms]
+(pass) kontroler wykonania: reset i ponowne uruchomienie > reset w pauzie w środku powtórz, a potem run daje pełny, pierwotny rysunek [0.04ms]
+(pass) kontroler wykonania: błędy > błąd parsowania: run kończy się niepowodzeniem, nic nie jest rysowane, błąd ma pozycję [0.03ms]
+(pass) kontroler wykonania: błędy > błąd parsowania przy kroku też nic nie rysuje (ani pierwszego poprawnego polecenia) [0.02ms]
+(pass) kontroler wykonania: błędy > błąd czasu wykonania zatrzymuje program, ale zachowuje narysowane odcinki [0.06ms]
+(pass) kontroler wykonania: błędy > po błędzie reset czyści błąd i rysunek, a poprawiony program działa [0.02ms]
+(pass) kontroler wykonania: błędy > polecenia 3D w trybie 2D to błąd parsowania zgłoszony przez kontroler [0.03ms]
+(pass) kontroler wykonania: edycja w trakcie > zmiana programu podczas animacji przerywa ją, zostawia dotychczasowy rysunek jako nieaktualny i nie wykonuje już starych poleceń [0.02ms]
+(pass) kontroler wykonania: edycja w trakcie > po edycji run zaczyna nowy program od zera [0.04ms]
+(pass) kontroler wykonania: edycja w trakcie > ponowne ustawienie tego samego programu nie przerywa wykonania [0.01ms]
+(pass) kontroler wykonania: edycja w trakcie > edycja po błędzie czasu wykonania usuwa stary błąd, a zmiana trybu w pauzie przerywa wykonanie [0.04ms]
+(pass) kontroler wykonania: powiadomienia i bieg do końca > subskrybent dostaje nowy stan po każdej zmianie, ale nie po bezczynnym ticku; można się wypisać [0.05ms]
+(pass) kontroler wykonania: powiadomienia i bieg do końca > runToEnd wykonuje cały program niezależnie od szybkości i zwraca ten sam wynik co run z języka [0.02ms]
+(pass) kontroler wykonania: powiadomienia i bieg do końca > runToEnd po błędzie czasu wykonania zachowuje rysunek i błąd [0.02ms]
+(pass) kontroler wykonania: powiadomienia i bieg do końca > czyść w trakcie programu zwiększa epokę, by widok przerysował rysunek od zera [0.03ms]
+
+tests/workspace.test.ts:
+(pass) pracownia: szkice i trwałość > nowa pracownia startuje w 2D z przykładem Kwadrat, a szkic 3D to Schody [0.10ms]
+(pass) pracownia: szkice i trwałość > szkic każdego trybu przeżywa przeładowanie (nowa pracownia na tym samym magazynie) [0.05ms]
+(pass) pracownia: szkice i trwałość > zepsuty lub niedostępny magazyn nie psuje startu [0.05ms]
+(pass) pracownia: przykłady a niezapisany szkic > przykład wczytuje się od razu, gdy szkic jest nietknięty (to inny przykład lub pusty) [0.06ms]
+(pass) pracownia: przykłady a niezapisany szkic > wczytanie przykładu przełącza tryb na tryb przykładu [0.02ms]
+(pass) pracownia: przykłady a niezapisany szkic > własny szkic nie ginie po cichu: najpierw potrzebne jest potwierdzenie i nic się nie zmienia [0.01ms]
+(pass) pracownia: przykłady a niezapisany szkic > po potwierdzeniu przykład zastępuje szkic, a stary szkic można przywrócić (także po przeładowaniu) [0.07ms]
+(pass) pracownia: przykłady a niezapisany szkic > szkic drugiego trybu nie jest naruszany przez przykład z innego trybu [0.04ms]
+(pass) pracownia: przykłady a niezapisany szkic > brak kopii zapasowej: restoreBackup zwraca false [0.02ms]
+(pass) pracownia: udostępnianie linkiem > shareLink podmienia fragment adresu na link kodujący program i tryb [0.21ms]
+(pass) pracownia: udostępnianie linkiem > otwarcie linku ładuje program i tryb, a cenny szkic trafia do kopii zapasowej [0.24ms]
+(pass) pracownia: udostępnianie linkiem > cenny szkic tego samego trybu jest zabezpieczony kopią przy otwarciu linku [0.06ms]
+(pass) pracownia: udostępnianie linkiem > niepoprawny link nie zmienia niczego [0.01ms]
+(pass) pracownia: pliki .logo > eksport daje zwykły tekst programu w pliku .logo nazwanym od trybu [0.02ms]
+(pass) pracownia: pliki .logo > import ładuje tekst do aktualnego trybu, usuwa BOM i normalizuje końce wierszy [0.07ms]
+(pass) pracownia: pliki .logo > plik z poleceniami przestrzennymi otwarty w 2D przełącza na 3D [0.03ms]
+(pass) pracownia: pliki .logo > pliki binarne i zbyt duże są odrzucane bez zmiany szkicu [0.01ms]
+(pass) pracownia: pliki .logo > eksport i import tworzą pełny obieg [0.02ms]
+(pass) pracownia: dowolny program z dokumentacji lub linku też nie niszczy szkicu > loadProgram wymaga potwierdzenia nad cennym szkicem i wczytuje od razu nad nietkniętym [0.03ms]
+(pass) pracownia: dowolny program z dokumentacji lub linku też nie niszczy szkicu > ponowne wczytanie identycznego programu niczego nie zastępuje
+(pass) pracownia: eksport szkicu wybranego trybu > exportFile(tryb) zwraca szkic tego trybu, niezależnie od bieżącego [0.02ms]
+
+tests/share.test.ts:
+(pass) link do udostępniania > kodowanie i dekodowanie zachowuje program i tryb (polskie znaki, emoji, nowe wiersze) [0.09ms]
+(pass) link do udostępniania > hash jest bezpieczny w adresie: bez +, / ani = w ładunku [0.08ms]
+(pass) link do udostępniania > program o maksymalnej długości (50 000 znaków) przechodzi tam i z powrotem [3.82ms]
+(pass) link do udostępniania > śmieci, brak kodu i nieznany tryb dają null zamiast wyjątku [0.04ms]
+(pass) link do udostępniania > pusty program też można udostępnić [0.02ms]
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "" [0.06ms]
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/pracownia"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/przyklady"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/wyzwania"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/wyzwania/kwadrat-100" [0.02ms]
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/dokumentacja"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/dokumentacja/powtorz"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > "#/nie-ma-takiej"
+(pass) trasy (hash routing, działa pod dowolną ścieżką bazową) > formatRoute jest odwrotnością parseRoute [0.04ms]
+
+tests/shortcuts.test.ts:
+(pass) skróty klawiaturowe > {"key":"Enter","ctrlKey":true,"metaKey":false,"shiftKey":false,"altKey":false} → run [0.03ms]
+(pass) skróty klawiaturowe > {"key":"Enter","ctrlKey":false,"metaKey":true,"shiftKey":false,"altKey":false} → run
+(pass) skróty klawiaturowe > {"key":"F10","ctrlKey":false,"metaKey":false,"shiftKey":false,"altKey":false} → step
+(pass) skróty klawiaturowe > {"key":".","ctrlKey":true,"metaKey":false,"shiftKey":false,"altKey":false} → step
+(pass) skróty klawiaturowe > {"key":"F9","ctrlKey":false,"metaKey":false,"shiftKey":false,"altKey":false} → pause-resume
+(pass) skróty klawiaturowe > {"key":"Enter","ctrlKey":true,"metaKey":false,"shiftKey":true,"altKey":false} → pause-resume
+(pass) skróty klawiaturowe > {"key":"F8","ctrlKey":false,"metaKey":false,"shiftKey":false,"altKey":false} → reset
+(pass) skróty klawiaturowe > {"key":".","ctrlKey":true,"metaKey":false,"shiftKey":true,"altKey":false} → reset
+(pass) skróty klawiaturowe > {"key":">","ctrlKey":true,"metaKey":false,"shiftKey":true,"altKey":false} → reset
+(pass) skróty klawiaturowe > zwykłe klawisze i inne kombinacje nie uruchamiają akcji (nie przechwytujemy pisania) [0.03ms]
+(pass) skróty klawiaturowe > lista skrótów do wyświetlenia opisuje wszystkie cztery akcje po polsku [0.03ms]
+
+tests/studio.test.ts:
+(pass) window.logomocja: run > version jest niepustym tekstem [0.13ms]
+(pass) window.logomocja: run > run zwraca wynik interpretera i nie dotyka interfejsu ani szkicu [0.13ms]
+(pass) window.logomocja: run > run zgłasza błędy po polsku z pozycją [0.06ms]
+(pass) window.logomocja: open > open(kwadrat) wczytuje do edytora i zwraca to samo co run [0.27ms]
+(pass) window.logomocja: open > open(gwiazda) wczytuje do edytora i zwraca to samo co run [0.06ms]
+(pass) window.logomocja: open > open(rozeta) wczytuje do edytora i zwraca to samo co run [0.15ms]
+(pass) window.logomocja: open > open(spirala) wczytuje do edytora i zwraca to samo co run [0.32ms]
+(pass) window.logomocja: open > open(wielokaty) wczytuje do edytora i zwraca to samo co run [0.13ms]
+(pass) window.logomocja: open > open(drzewo) wczytuje do edytora i zwraca to samo co run [4.47ms]
+(pass) window.logomocja: open > open(sniezynka) wczytuje do edytora i zwraca to samo co run [3.22ms]
+(pass) window.logomocja: open > open(schody) wczytuje do edytora i zwraca to samo co run [0.09ms]
+(pass) window.logomocja: open > open(szescian) wczytuje do edytora i zwraca to samo co run [0.08ms]
+(pass) window.logomocja: open > open(pierscien) wczytuje do edytora i zwraca to samo co run [0.08ms]
+(pass) window.logomocja: open > open(kula) wczytuje do edytora i zwraca to samo co run [0.60ms]
+(pass) window.logomocja: open > open(helisa) wczytuje do edytora i zwraca to samo co run [1.12ms]
+(pass) window.logomocja: open > open(drzewo3d) wczytuje do edytora i zwraca to samo co run [1.99ms]
+(pass) window.logomocja: open > open czeka na narysowanie: widok dostaje gotowy, zakończony rysunek, a obietnica rozwiązuje się po nim [0.11ms]
+(pass) window.logomocja: open > kolejne open nie dokładają do poprzedniego rysunku, a zwrócone segmenty nie znikają po reset [0.09ms]
+(pass) window.logomocja: open > open z błędem składni nic nie rysuje, a z błędem wykonania zachowuje narysowane [0.16ms]
+(pass) window.logomocja: open > open w trybie 3D przełącza tryb pracowni, a draft innego trybu zostaje nietknięty [0.05ms]
+(pass) window.logomocja: open > open wklejony nad cennym szkicem zachowuje go w kopii zapasowej [0.05ms]
+(pass) window.logomocja: open > powtarzane run/open na tym samym studiu są niezależne (brak stanu przeciekającego między przebiegami) [0.07ms]
+(pass) window.logomocja: tryb zapisany wielkimi literami > open(…, "3D") przełącza pracownię na tryb "3d", a run(…, "2D") odrzuca polecenia 3D [0.07ms]
+
+tests/camera2d.test.ts:
+(pass) granice rysunku > obejmują oba końce każdego odcinka i (domyślnie) początek układu [0.07ms]
+(pass) granice rysunku > pusty rysunek: bez początku brak granic, z początkiem punkt (0,0,0) [0.02ms]
+(pass) kamera 2D > oś Y rośnie w górę ekranu, a środek kamery leży w środku widoku [0.03ms]
+(pass) kamera 2D > toWorld jest odwrotnością toScreen [0.03ms]
+(pass) kamera 2D > dopasowanie mieści rysunek z marginesem i wyśrodkowuje go [0.06ms]
+(pass) kamera 2D > dopasowanie pustych granic daje widok domyślny, a punktowych granic nie dzieli przez zero [0.02ms]
+(pass) kamera 2D > przybliżanie wokół kursora zachowuje punkt świata pod kursorem [0.03ms]
+(pass) kamera 2D > skala jest ograniczona od dołu i od góry [0.02ms]
+(pass) kamera 2D > przesunięcie o piksele przesuwa rysunek razem z kursorem [0.03ms]
+(pass) kamera 2D > krok siatki to 1, 2 lub 5 razy potęga dziesięciu i daje czytelny odstęp w pikselach [0.06ms]
+
+tests/camera3d.test.ts:
+(pass) kamera 3D > cel kamery rzutuje się na środek widoku w odległości równej distance [0.08ms]
+(pass) kamera 3D > oś Z rośnie w górę ekranu przy każdym obrocie i nachyleniu poniżej 90° [0.12ms]
+(pass) kamera 3D > widok z góry ma tę samą orientację co widok 2D: +X w prawo, +Y w górę ekranu [0.04ms]
+(pass) kamera 3D > perspektywa: bliższy odcinek tej samej długości wygląda na dłuższy [0.03ms]
+(pass) kamera 3D > punkt za kamerą nie jest rzutowany, a odcinek przecinający płaszczyznę bliską jest przycinany [0.08ms]
+(pass) kamera 3D > obrót o pełny okrąg wraca do tego samego rzutu, a nachylenie jest ograniczone do ±90° [0.05ms]
+(pass) kamera 3D > przeciągnięcie w prawo obraca scenę zgodnie z ruchem wskazówek zegara widzianym z góry [0.02ms]
+(pass) kamera 3D > przesunięcie o piksele przesuwa stary cel dokładnie o tyle pikseli [0.03ms]
+(pass) kamera 3D > przybliżanie zmienia odległość i jest ograniczone [0.02ms]
+(pass) kamera 3D > dopasowanie mieści w widoku wszystkie narożniki granic, także dla smukłych i dużych rysunków [0.19ms]
+(pass) kamera 3D > dopasowanie pustych granic daje widok domyślny [0.01ms]
+
+tests/docs.test.ts:
+(pass) dokumentacja > każdy przykład w dokumentacji działa tak, jak opisano (bez błędu albo z udokumentowanym błędem) [1.84ms]
+(pass) dokumentacja > każde słowo języka (polskie i angielskie, z ogonkami i bez) jest opisane w dokumentacji [0.10ms]
+(pass) dokumentacja > każde polecenie ma opis, składnię i własny działający przykład [0.18ms]
+(pass) dokumentacja > polecenia przestrzenne mają przykłady w 3D, a pozostałe działają w obu trybach [0.22ms]
+(pass) dokumentacja > sekcje mają unikalne identyfikatory i obejmują wszystkie tematy z opisu produktu [0.03ms]
+(pass) dokumentacja > limity w dokumentacji zgadzają się z opisem języka [1.47ms]
+
+tests/editing.test.ts:
+(pass) edycja: wcięcia > Tab bez zaznaczenia wstawia dwie spacje w miejscu kursora [0.07ms]
+(pass) edycja: wcięcia > Tab z zaznaczeniem kilku wierszy wcina każdy z nich i rozszerza zaznaczenie [0.05ms]
+(pass) edycja: wcięcia > Tab z zaznaczeniem kończącym się na początku wiersza nie wcina tego ostatniego wiersza [0.02ms]
+(pass) edycja: wcięcia > Shift+Tab zdejmuje do dwóch spacji z początku każdego wiersza, a bez wcięcia nic nie robi [0.03ms]
+(pass) edycja: wcięcia > Shift+Tab bez zaznaczenia zdejmuje wcięcie bieżącego wiersza i cofa kursor [0.01ms]
+(pass) edycja: nowy wiersz z automatycznym wcięciem > zachowuje wcięcie bieżącego wiersza [0.07ms]
+(pass) edycja: nowy wiersz z automatycznym wcięciem > po otwierającym [ dodaje jedno wcięcie więcej, a po nagłówku oto też [0.02ms]
+(pass) edycja: nowy wiersz z automatycznym wcięciem > w środku wiersza przenosi resztę tekstu z wcięciem; zaznaczenie jest zastępowane [0.01ms]
+(pass) edycja: nowy wiersz z automatycznym wcięciem > wcięcie nie jest dłuższe niż część wiersza przed kursorem
+(pass) edycja: pozycje > wiersz i kolumna zamieniają się na przesunięcie i z powrotem [0.05ms]
+
+tests/challenges.test.ts:
+(pass) wyzwania: zestaw > jest co najmniej pięć wyzwań z unikalnymi identyfikatorami, opisem zadania i wzorcowym rozwiązaniem [0.04ms]
+(pass) wyzwania: zestaw > wzorcowe rozwiązanie każdego wyzwania je zalicza [5.12ms]
+(pass) wyzwania: zestaw > wzorce odpowiadają opisom zadań (współrzędne wprost z treści) [0.10ms]
+(pass) wyzwania: sprawdzanie rysunku > ten sam rysunek innym programem zalicza zadanie: inny kierunek obiegu, ruchy dzielone na części, powtórzony bok [0.98ms]
+(pass) wyzwania: sprawdzanie rysunku > kwadrat o tym samym rozmiarze w innym miejscu (po lewej stronie) nie zalicza zadania [0.71ms]
+(pass) wyzwania: sprawdzanie rysunku > zbyt duże, zbyt małe lub inne kształty nie zaliczają, a powód opisuje różnicę [2.59ms]
+(pass) wyzwania: sprawdzanie rysunku > tolerancja: bok 101 zalicza (błąd ok. 1%), a rozmiar o 10% większy już nie [1.80ms]
+(pass) wyzwania: sprawdzanie rysunku > pusty program, błąd składni i błąd wykonania mają jasne powody [0.11ms]
+(pass) wyzwania: sprawdzanie rysunku > tryb 3D: schody w złej płaszczyźnie nie zaliczają, właściwe tak [0.61ms]
+(pass) wyzwania: sprawdzanie rysunku > wymaganie użycia procedury: dobry rysunek bez procedury nie zalicza, z procedurą tak [1.18ms]
+(pass) wyzwania: postępy > zaliczenie zapisuje się trwale i przeżywa przeładowanie; niezaliczenie niczego nie psuje [0.12ms]
+(pass) wyzwania: postępy > uszkodzone dane postępu są ignorowane, a reset je czyści [0.05ms]
+(pass) wyzwania: szkice rozwiązań > każde wyzwanie ma własny szkic, zapamiętany między przeładowaniami, z podpowiedzią na start [0.04ms]
+(pass) wyzwania: szkice rozwiązań > szkic wyzwania nie miesza się ze szkicami swobodnych trybów [0.01ms]
+
+tests/plural.test.ts:
+(pass) polska odmiana liczebników > 0 → 0 odcinków [0.03ms]
+(pass) polska odmiana liczebników > 1 → 1 odcinek
+(pass) polska odmiana liczebników > 2 → 2 odcinki
+(pass) polska odmiana liczebników > 4 → 4 odcinki
+(pass) polska odmiana liczebników > 5 → 5 odcinków
+(pass) polska odmiana liczebników > 11 → 11 odcinków
+(pass) polska odmiana liczebników > 12 → 12 odcinków
+(pass) polska odmiana liczebników > 14 → 14 odcinków
+(pass) polska odmiana liczebników > 21 → 21 odcinków
+(pass) polska odmiana liczebników > 22 → 22 odcinki
+(pass) polska odmiana liczebników > 112 → 112 odcinków
+(pass) polska odmiana liczebników > 122 → 122 odcinki
+(pass) polska odmiana liczebników > 1000 → 1000 odcinków
+(pass) polska odmiana liczebników > operacje: 1 operacja, 3 operacje, 5 operacji [0.02ms]
+(pass) polska odmiana liczebników > pluralize przyjmuje trzy formy
+
+tests/editor-html.test.ts:
+(pass) HTML warstwy podświetlenia edytora > zwykłe podświetlenie: polecenia i liczby w osobnych spanach, tekst jest ucieczkowany [0.16ms]
+(pass) HTML warstwy podświetlenia edytora > zakres błędu dostaje klasę tok-error i dzieli token, jeśli obejmuje jego część [0.04ms]
+(pass) HTML warstwy podświetlenia edytora > komunikat błędu pojawia się w tym samym wierszu, na jego końcu, przed znakiem nowego wiersza [0.11ms]
+(pass) HTML warstwy podświetlenia edytora > komunikat jest ucieczkowany i działa także w ostatnim wierszu bez znaku nowego wiersza oraz w pustym wierszu [0.06ms]
+(pass) zakres błędu w edytorze > błąd na tokenie podkreśla cały token, a na końcu wiersza ostatni znak [0.05ms]
+
+tests/properties.test.ts:
+(pass) własności języka na losowych, poprawnych programach > generator tworzy programy, które się wykonują bez błędu (w 2D i w 3D) [25.33ms]
+(pass) własności języka na losowych, poprawnych programach > zapis słów (polskie/angielskie, ogonki, wielkie litery) nie zmienia wyniku [23.01ms]
+(pass) własności języka na losowych, poprawnych programach > wykonanie krok po kroku daje to samo co run [19.62ms]
+(pass) własności języka na losowych, poprawnych programach > program płaski rysuje to samo w 2D i w 3D [18.70ms]
+(pass) własności języka na losowych, poprawnych programach > odcinki spełniają niezmienniki: skończone współrzędne w granicach, kolor i grubość w dozwolonym zakresie [25.66ms]
+(pass) własności języka na losowych, poprawnych programach > powtórne wykonanie tego samego programu daje identyczny wynik (brak stanu między przebiegami) [6.49ms]
+(pass) własności języka na losowych, poprawnych programach > dołożenie komentarzy i dodatkowych odstępów w miejscach, gdzie dozwolone, nie zmienia wyniku [9.62ms]
+
+tests/storage.test.ts:
+(pass) magazyn lokalny > pamięciowy magazyn zachowuje się jak localStorage (null dla brakującego klucza) [0.05ms]
+(pass) magazyn lokalny > gdy localStorage jest zablokowany (wyjątek przy dostępie), aplikacja dostaje działający magazyn w pamięci [0.07ms]
+(pass) magazyn lokalny > gdy zapis do localStorage się nie udaje (np. brak miejsca), magazyn przechodzi na pamięć [0.03ms]
+(pass) magazyn lokalny > safeGet i safeSet nie rzucają wyjątków i zgłaszają niepowodzenie zapisu [0.04ms]
+
+ 450 pass
+ 0 fail
+ 90436 expect() calls
+Ran 450 tests across 19 files. [314.00ms]
+(exit 0)

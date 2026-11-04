@@ -1,0 +1,36 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 594,
+      "total": 595,
+      "failures": [
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 4"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

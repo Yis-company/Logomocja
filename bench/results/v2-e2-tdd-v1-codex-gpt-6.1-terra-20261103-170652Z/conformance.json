@@ -1,0 +1,180 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 576,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: definition in procedure",
+          "reason": "expected error on line 2, got line 4"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 24"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 576,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: repeat count (0.1 + 0.2) * 10 is not an integer",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "claude-fable-5-1: literal width in parentheses reported at the parenthesis",
+          "reason": "expected error at column 14, got 15"
+        },
+        {
+          "name": "gpt-6-astra: literal division retains drawing",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: division in call argument",
+          "reason": "expected error at column 3, got 4"
+        },
+        {
+          "name": "gpt-6-astra: nonfinite multiplication first token",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: literal width invalid (2 - 3)",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: computed width invalid",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra: literal repeat invalid (2 - 3)",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: computed repeat invalid",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra: definition in procedure",
+          "reason": "expected error on line 2, got line 4"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token width with name",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime width after clear in procedure",
+          "reason": "expected error at column 15, got 16"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime count after clear and local assignment",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: literal repeat in unused else",
+          "reason": "expected error at column 23, got 24"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

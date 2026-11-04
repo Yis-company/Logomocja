@@ -1,0 +1,61 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @playwright/test@1.64.1
++ @types/node@26.6.6
++ prettier@3.9.10
++ typescript@5.9.3
++ vite@7.3.7
+
+20 packages installed [11.00ms]
+(exit 0)
+
+$ bun run build
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 12 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.86 kB │ gzip:  0.49 kB
+dist/assets/index-TKBYo2vm.css  24.99 kB │ gzip:  5.94 kB
+dist/assets/index-FOJOiw_N.js   63.62 kB │ gzip: 23.42 kB
+✓ built in 137ms
+$ tsc --noEmit && vite build
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/controller.test.ts:
+(pass) stepping, pause, resume and reset share the same execution state [2.19ms]
+(pass) procedure completion counts as an operation even when stop ends the call [0.23ms]
+
+tests/product.test.ts:
+(pass) exploring examples preserves drafts and mode drafts survive a new session [0.50ms]
+(pass) challenge checking accepts an equivalent split square and explains failed geometry [1.47ms]
+(pass) renamed or corrupt local drafts recover without losing the usable editor [0.04ms]
+(pass) opening a spatial Logo file chooses 3D while comments do not change a flat file mode [0.13ms]
+
+tests/interpreter.test.ts:
+(pass) forward draws from the origin with the specified default pen [0.05ms]
+(pass) a repeat executes a square with clockwise turns and decimal expressions [0.74ms]
+(pass) variables, lexical repcount and exact conditionals control drawing [0.67ms]
+(pass) forward-defined recursive procedures get call-local variables and stop ends the call [0.98ms]
+(pass) pitch and roll preserve the specified right handed orientation in 3D [0.12ms]
+(pass) whole source validation draws nothing, runtime faults retain prior strokes and clears [3.36ms]
+(pass) all thirteen canonical programs finish successfully in their declared modes [16.81ms]
+(pass) a parameter may share a procedure name and may be reassigned [0.10ms]
+(pass) errors point to first argument tokens and declared-but-unassigned values fail at runtime [0.14ms]
+(pass) valid deeply parenthesised expressions below the token limit execute without a host stack error [3.10ms]
+(pass) flat aliases, pen state, home and clear have identical coordinates in both modes [0.18ms]
+(pass) very large finite angles still yield a valid orientation [0.14ms]
+(pass) source limit is reported before interpreting text beyond the allowed source [0.07ms]
+(pass) an argument missing at end of source is reported at its command [0.05ms]
+
+ 20 pass
+ 0 fail
+ 95 expect() calls
+Ran 20 tests across 3 files. [37.00ms]
+(exit 0)
