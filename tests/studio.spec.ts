@@ -100,16 +100,41 @@ test("executes actual 3D paths, orbit controls and camera presets", async ({
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/");
-  await mode3D(page).click();
-  await expect(page.locator(".three-host canvas")).toBeVisible();
-  await complete(page);
-  await expect(stage(page)).toHaveAttribute("data-segments", "12");
-  await expect(stage(page)).toHaveAttribute("data-z", "120");
-  await page.screenshot({
+  await page.addInitScript(() => {
+    const frames = new Set<number>();
+    const request = window.requestAnimationFrame.bind(window);
+    const cancel = window.cancelAnimationFrame.bind(window);
+    window.requestAnimationFrame = (callback) => {
+      const id = request((time) => {
+        frames.delete(id);
+        callback.call(window, time);
+      });
+      frames.add(id);
+      return id;
+    };
+    window.cancelAnimationFrame = (id) => {
+      frames.delete(id);
+      cancel(id);
+    };
+    Object.assign(window, { pendingFrames: () => frames.size });
+  });
+  await test.step("Load an idle 3D view", async () => {
+    await page.goto("/");
+    await mode3D(page).click();
+    await expect(page.locator(".three-host canvas")).toBeVisible();
+    await expect.poll(() => page.evaluate(() =>
+      (window as unknown as { pendingFrames: () => number }).pendingFrames(),
+    )).toBe(0);
+  });
+  await test.step("Draw the default spatial path", async () => {
+    await complete(page);
+    await expect(stage(page)).toHaveAttribute("data-segments", "12");
+    await expect(stage(page)).toHaveAttribute("data-z", "120");
+  });
+  await test.step("Capture the full page", () => page.screenshot({
     path: "output/playwright/studio-3d.png",
     fullPage: true,
-  });
+  }));
   const canvas = page.locator(".three-host canvas");
   const before = await canvas.screenshot();
   const box = await canvas.boundingBox();

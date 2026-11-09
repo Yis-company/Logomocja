@@ -42,7 +42,8 @@ test("navigation pauses runtime, source and output survive return", async ({
     )
     .toBeGreaterThan(0);
   await page.getByRole("link", { name: "Polecenia", exact: true }).click();
-  await page.waitForTimeout(300);
+  await expect(page).toHaveURL(/\/commands$/);
+  await expect(page.getByRole("heading", { name: "Polecenia", exact: true })).toBeFocused();
   await page.getByRole("link", { name: "Pracownia", exact: true }).click();
   const count = await page.locator(".stage").getAttribute("data-segments");
   await expect(editor(page)).toHaveValue("repeat 1000 [fd 2]");
@@ -146,6 +147,8 @@ test("mode tabs use manual activation and theme changes retain running 3D canvas
   await editor(page).fill("repeat 100 [gora 90 fd 1 dol 90]");
   await expect(page.locator(".three-host canvas")).toBeVisible();
   const canvas = await page.locator(".three-host canvas").elementHandle();
+  await page.getByRole("slider").focus();
+  await page.keyboard.press("Home");
   await page.getByRole("button", { name: "Uruchom", exact: true }).click();
   await expect
     .poll(async () =>
@@ -189,6 +192,12 @@ test("benchmark page is reachable and exposes the testing hook", async ({ page }
   await expect(
     page.getByRole("heading", { name: "Benchmark", exact: true }),
   ).toBeFocused();
+  await expect(page.getByRole("heading", { name: "Wersja v2/e2", exact: true })).toBeVisible();
+  const reference = page.getByRole("img", { name: /^wzorzec:/ }).first();
+  await reference.scrollIntoViewIfNeeded();
+  await expect.poll(() => reference.evaluate((image) =>
+    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
+  )).toBe(true);
   const outcome = await page.evaluate(() =>
     window.logomocja?.run("powtorz 4 [np 100 pw 90]", "2d"),
   );

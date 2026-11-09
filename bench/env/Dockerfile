@@ -1,6 +1,6 @@
 # Agent environment. Any change here, to the CLI flags in bench/runners.ts, to
 # bench/agent.ts or to the verification steps must bump bench/env/VERSION.
-# Image tag: logomocja-bench:env-<VERSION>. The repo is mounted at run time.
+# Image tag: logomocja-bench:env-<VERSION>. Only staged inputs mount at run time.
 FROM node:26.13.0-bookworm-slim
 
 RUN apt-get update \

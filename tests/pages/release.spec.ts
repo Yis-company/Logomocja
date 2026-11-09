@@ -28,6 +28,12 @@ test("static Pages assets, navigation, history, refresh and legacy links", async
   await expect(
     page.getByRole("heading", { name: "Benchmark", exact: true }),
   ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Wersja v2/e2", exact: true })).toBeVisible();
+  const reference = page.getByRole("img", { name: /^wzorzec:/ }).first();
+  await reference.scrollIntoViewIfNeeded();
+  await expect.poll(() => reference.evaluate((image) =>
+    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
+  )).toBe(true);
   await page.goto("./#/missing");
   await expect(
     page.getByRole("heading", { name: "Nie znaleziono strony" }),
