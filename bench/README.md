@@ -17,6 +17,8 @@ bun bench/gallery.ts --dist builds/<run-id> --base /Logomocja/builds/<run-id>/ -
 
 Authentication: `CLAUDE_CODE_OAUTH_TOKEN` (or `CLAUDE_CODE_OAUTH_TOKEN_FILE`) from `claude setup-token` for Claude; `~/.codex/auth.json` (ChatGPT login) is copied into a temporary `CODEX_HOME` for the run and deleted afterwards.
 
+Check only these authorized sources when diagnosing authentication. Report a source as available, rejected by the provider, or not observable from the current sandbox. Not observable means unknown; it does not establish that the credential is missing. Never print credential values. With `--stop-on-limit`, the existing queue guard stops on the first reported authentication failure; recover access before an explicitly authorized retry. Keep the failed attempt as evidence.
+
 ## Queue and status
 
 Write an explicit JSON array of `{ "model": "codex:gpt-6-astra", "effort": "high" }` entries (effort is optional). `matrix.example.json` is a small example, not a default matrix. Choose model-supported efforts before running it. Entries run sequentially; a failure is recorded and the queue continues, returning a nonzero exit code if any entry did not complete and build successfully.
@@ -40,7 +42,7 @@ Like a single run, the queue **pushes each source branch unless `--no-push` is s
 ## What one run does
 
 1. Builds `logomocja-bench:env-<VERSION>` from `env/Dockerfile` if missing: Node, Bun, pinned Claude Code and Codex, git, a non-root `agent` user, an empty `/work`.
-2. Renders the brief (`prompts/<version>/spec.md`, `tests.md` or `tests-round2.md`, with `dialect.md` and the standard programs filled in) and starts the container with `bench/` mounted read-only and an output directory mounted at `/out`.
+2. Renders the brief (`prompts/<version>/spec.md`, `tests.md` or `tests-round2.md`, with `dialect.md` and the standard programs filled in). Stages only `agent.ts`, `prices.ts`, `runners.ts`, `result.ts`, and the selected condition's frozen skill/reference directories at read-only `/bench`. Engine preparation mounts only the frozen Impeccable skill. Evaluations, results, runner manifests, matrices and other conditions stay outside these mounts. `/out` remains a read-write mount; round-2 test authors receive the explicit own/other pair there. The network remains open: published results can still be fetched, so this is filesystem isolation, not a guarantee against all contamination.
 3. Inside, `agent.ts` launches the CLI with the brief on stdin, fully autonomous (`--dangerously-skip-permissions` for Claude, `--dangerously-bypass-approvals-and-sandbox` for Codex; the container is the sandbox), and streams the CLI's events to `transcript.jsonl`. Host configuration is excluded: fresh home, `--setting-sources ""`, `--ignore-user-config --ignore-rules`. The CLIs keep their own default system prompts; they are part of what is measured and are pinned by version.
 4. When the agent stops, the harness commits whatever is in `/work`, bundles it, and for the `app` task verifies it in a clean shell: `bun install`, `BASE_PATH=/Logomocja/builds/<run-id>/ bun run build`, and `bun run test` if the project defines one.
 5. Back on the host: the source becomes branch `build/<run-id>` (pushed unless `--no-push`), the verified `dist/` is copied to `builds/<run-id>/`, the conformance suites in `conformance/<prompt version>/` are run against it headlessly, the standard programs are captured through `open` into `results/<run-id>/gallery/` (WebP when `cwebp` is installed, PNG otherwise; `brew install webp`), and `results/<run-id>/` receives `result.json`, `transcript.jsonl`, `verify.log`, `conformance.json` and `gallery.json`. For the test-author tasks the agent's `cases.json` (and `review.json` in round 2) is copied to `conformance/<prompt version>/<model>[-round2].json` for review.
@@ -70,11 +72,30 @@ When a suite or the runner changes, `bun bench/rescore.ts --prompt <version>` re
 
 Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dialect with expressions, variables, conditionals, recursion, roll, home and clear; a fixed feature list and the standard programs in the brief; gallery capture). A run's benchmark version is the pair `v2/e2`. The repo's own package version is recorded too, since every merged PR is a new version of the project. To re-run the same models after a change, bump the version that changed and run again; the page groups runs by benchmark version.
 
+Environment `e4` restricts mounted inputs. Layered e4 runs have a null baseline until fresh matching e4 base controls exist; historical e2/e3 controls remain context and are not rewritten or silently matched across environments.
+
 ## Scoring by hand
 
 `costUsd` is the figure the Claude CLI reports (`costBasis: "cli"`) or, for Codex, an estimate from the token counts and the list prices in `prices.ts` (`costBasis: "list"`, shown with ≈). The runs go through subscriptions, so this is what the same work would have cost on the API, not what was paid. Update `prices.ts` when prices change; stored results keep the figure computed at run time.
 
 `results/<run-id>/result.json` has `humanScore` (null until set) and `notes`. Open the build from the page, judge it, edit the two fields, commit. The page and `SUMMARY` columns update on the next build.
+
+### Review transitions and evidence
+
+Generated tests, independent conformance scores and human review answer different questions. Passing generated tests can preserve an author's mistaken expectation; conformance scores cover their declared cases. Neither establishes complete usability. Benchmark scores do not gate PR CI. The reference app's existing E2E suite runs in `Validation` alongside lint, typecheck and unit tests.
+
+Reference-app E2E checks build the app before starting the browser and serve that fresh bundle. Headless checks use SwiftShader for WebGL with ordinary software page compositing (`--use-angle=swiftshader-webgl`). This avoids emulating a GPU for the whole page. The checks retain actual spatial drawing, orbit/image comparisons and the WebGL-unavailable fallback. Benchmark generation and scoring keep their separate versioned browser settings.
+
+For human review, exercise these transitions and record the starting state, actions, result and recovery:
+
+- Invalid run → visible error → correction → successful run, with stale output and diagnostics checked.
+- Permalink → New → import → edit → reload, checking each draft and saved state.
+- Failed backup → replacement, checking that failure cannot discard the recoverable draft.
+- Keyboard entry into an interactive surface → keyboard exit, checking focus and controls.
+
+Label each conclusion **source inference**, **browser reproduction**, or **untested flow**. Name the build, environment and evidence location. An untested or non-reproduced flow remains unknown. Validation against seeded transition defects is deferred; this checklist alone does not prove review effectiveness. Preserve historical apps and scores.
+
+Load each skill/reference once; reread only changed or specifically relevant sections. When a reporting tool accepts saved HTML paths, pass the path. If only inline HTML is accepted, use a small summary; for a large report, provide its file link and summary instead of pasting the complete HTML.
 
 ## Impeccable design layer
 

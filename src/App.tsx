@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
 import { AppSidebar } from "./components/AppSidebar";
 import { ConfirmDialog } from "./components/ConfirmDialog";
@@ -16,11 +16,11 @@ import { parse } from "./logo/parser";
 import { Executor } from "./logo/runtime";
 import { emptyDrawing, LogoError, type Mode } from "./logo/types";
 import { Examples } from "./pages/Examples";
-import { Benchmark } from "./pages/Benchmark";
 import { Commands } from "./pages/Commands";
 import { ChallengeCatalog, ChallengePage } from "./pages/Challenges";
 import { readDrafts, writeDrafts } from "./persistence";
 import { useTheme } from "./theme";
+const Benchmark = lazy(() => import("./pages/Benchmark").then((module) => ({ default: module.Benchmark })));
 type Status = "idle" | "running" | "paused" | "done" | "error";
 const labels: Record<Status, string> = {
   idle: "Gotowy do rysowania",
@@ -425,7 +425,19 @@ export default function App() {
             element={<Examples onChoose={chooseExample} />}
           />
           <Route path="/commands" element={<Commands />} />
-          <Route path="/benchmark" element={<Benchmark />} />
+          <Route path="/benchmark" element={
+            <>
+              <div className="workspace-heading">
+                <div>
+                  <h1 tabIndex={-1}>Benchmark</h1>
+                  <p>Każdy agent buduje całą Logomocję od zera na podstawie tego samego opisu.</p>
+                </div>
+              </div>
+              <Suspense fallback={<p role="status">Ładujemy wyniki benchmarku…</p>}>
+                <Benchmark />
+              </Suspense>
+            </>
+          } />
           <Route path="/challenges" element={<ChallengeCatalog />} />
           <Route
             path="/challenges/:slug"

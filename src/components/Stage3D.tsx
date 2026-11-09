@@ -15,6 +15,7 @@ type SceneState = {
   controls: OrbitControls;
   lines: THREE.Group;
   turtle: THREE.Group;
+  requestRender: () => void;
 };
 function disposeGroup(group: THREE.Object3D) {
   const geometries = new Set<THREE.BufferGeometry>();
@@ -112,29 +113,45 @@ export default function Stage3D({
       limb.position.set(x, y, 0);
       turtle.add(limb);
     }
-    state.current = { scene, grid, camera, renderer, controls, lines, turtle };
+    let frame: number | null = null;
+    let active = true;
+    const render = () => {
+      frame = null;
+      controls.update();
+      renderer.render(scene, camera);
+    };
+    const requestRender = () => {
+      if (active && frame === null) frame = requestAnimationFrame(render);
+    };
+    const stopRendering = () => {
+      active = false;
+      if (frame !== null) cancelAnimationFrame(frame);
+      frame = null;
+    };
+    // Damping requests more frames through change events, then leaves idle views alone.
+    controls.addEventListener("change", requestRender);
+    state.current = { scene, grid, camera, renderer, controls, lines, turtle, requestRender };
     const resize = new ResizeObserver(() => {
       const { width, height } = element.getBoundingClientRect();
       if (!width || !height) return;
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      requestRender();
     });
     resize.observe(element);
-    renderer.setAnimationLoop(() => {
-      controls.update();
-      renderer.render(scene, camera);
-    });
+    requestRender();
     const lost = (event: Event) => {
       event.preventDefault();
-      renderer.setAnimationLoop(null);
+      stopRendering();
       setError(true);
     };
     renderer.domElement.addEventListener("webglcontextlost", lost);
     return () => {
       state.current = null;
-      renderer.setAnimationLoop(null);
+      stopRendering();
       resize.disconnect();
+      controls.removeEventListener("change", requestRender);
       controls.dispose();
       renderer.domElement.removeEventListener("webglcontextlost", lost);
       disposeGroup(scene);
@@ -177,6 +194,7 @@ export default function Stage3D({
         new THREE.Vector3(...up),
       ),
     );
+    context.requestRender();
   }, [drawing]);
   useEffect(() => {
     const context = state.current;
@@ -191,6 +209,7 @@ export default function Stage3D({
     context.grid.geometry.dispose();
     context.grid.geometry = replacement.geometry;
     replacement.material.dispose();
+    context.requestRender();
   }, [theme]);
   const fitted = useRef(0);
   useEffect(() => {

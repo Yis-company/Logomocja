@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { RunResult } from "./result";
 import type { Task } from "./prompt";
+import { readOnlyMount } from "./inputs";
 
 export type Layer = NonNullable<RunResult["layer"]>;
 const directory = fileURLToPath(new URL("./layers/", import.meta.url));
@@ -48,8 +49,7 @@ export function prepareLayer(
     [
       "run",
       "--rm",
-      "-v",
-      `${join(root, "bench")}:/bench:ro`,
+      ...readOnlyMount(join(root, "bench/layers/impeccable-v1/skill"), skill),
       "-v",
       `${cache}:/home/agent/.impeccable`,
       image,

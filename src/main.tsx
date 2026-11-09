@@ -22,7 +22,8 @@ if (import.meta.env.VITE_PAGES) {
 }
 createRoot(root).render(
   <StrictMode>
-    <Router>
+    {/* Navigation must commit before playback's urgent drawing updates. */}
+    <Router useTransitions={false}>
       <App />
     </Router>
   </StrictMode>,

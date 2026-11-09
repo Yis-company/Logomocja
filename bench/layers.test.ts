@@ -57,8 +57,11 @@ describe("benchmark layers", () => {
     expect(combined).toEqual(base);
     expect(combined).toEqual(["-v", `${root}/output/bench-tools/impeccable-v1:/home/agent/.impeccable:ro`]);
     expect(execFileSync).toHaveBeenLastCalledWith("docker", expect.arrayContaining([
+      `${root}/bench/layers/impeccable-v1/skill:/bench/layers/impeccable-v1/skill:ro`,
       "/bench/layers/impeccable-v1/skill/scripts/impeccable", "engine-probe",
     ]), expect.any(Object));
+    for (const [, args] of vi.mocked(execFileSync).mock.calls)
+      expect(args).not.toContain(`${root}/bench:/bench:ro`);
   });
   it("matches the historical control by model, effort, prompt and environment", () => {
     const match = { prompt: "v2", env: "2", runner: "codex" as const, model: "gpt-6.1-sol", effort: "high" };

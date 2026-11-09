@@ -17,6 +17,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { runConformance } from "./conformance/run";
 import { captureGallery } from "./gallery";
+import { prepareInputs, readOnlyMount } from "./inputs";
 import { findBaseline, layerPrompt, loadLayer, prepareLayer } from "./layers";
 import { programsDir } from "./programs";
 import { renderPrompt, type Task } from "./prompt";
@@ -63,6 +64,7 @@ const layerMounts = prepareLayer(layer, root, image);
 const id = `${values.prompt}-e${envVersion}-${layer ? `${layer.id}-` : ""}${runner.name}-${model.replace(/[^\w.-]+/g, "-")}-${stamp}`;
 const basePath = `/Logomocja/builds/${id}/`;
 const scratch = mkdtempSync(join(tmpdir(), "logomocja-bench-"));
+const inputs = prepareInputs(root, scratch, layer);
 const out = join(scratch, "out");
 const auth = join(scratch, "codex");
 mkdirSync(out);
@@ -102,7 +104,7 @@ const container = spawnSync(
     "-e", `BENCH_EFFORT=${effort ?? ""}`,
     "-e", `BENCH_RUN_ID=${id}`,
     "-e", `BENCH_BASE_PATH=${basePath}`,
-    "-v", `${join(root, "bench")}:/bench:ro`,
+    ...readOnlyMount(inputs),
     "-v", `${out}:/out`,
     "-v", `${auth}:/home/agent/.codex`,
     ...layerMounts,
