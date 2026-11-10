@@ -1,0 +1,14 @@
+{
+  "name": "logomocja",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Logomocja — polskie studio grafiki żółwia w 2D i 3D",
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun run build.ts && bun run serve.ts",
+    "serve": "bun run serve.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {}
+}
