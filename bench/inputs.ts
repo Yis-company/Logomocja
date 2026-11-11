@@ -1,9 +1,18 @@
-import { cpSync, lstatSync, mkdirSync, readdirSync } from "node:fs";
+import { chmodSync, cpSync, lstatSync, mkdirSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import type { Layer } from "./layers";
 
 export function readOnlyMount(source: string, target = "/bench"): string[] {
   return ["-v", `${source}:${target}:ro`];
+}
+
+/** Give the container access to a host-owned output directory without opening it to everyone. */
+export function writableMount(source: string, target: string): string[] {
+  const stat = lstatSync(source);
+  if (!stat.isDirectory() || stat.uid !== process.getuid?.() || stat.gid === 0)
+    throw Error(`Writable benchmark mount requires a host-owned directory with a non-root group: ${source}`);
+  chmodSync(source, 0o770);
+  return ["--group-add", String(stat.gid), "-v", `${source}:${target}`];
 }
 
 // Frozen skills may contain directories, but never links to host-side evidence.

@@ -1,0 +1,21 @@
+{
+  "id": "v2-e5-claude-claude-fable-5-2-20261110-222058Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-fable-5-2",
+  "effort": "medium",
+  "prompt": "v2",
+  "env": "5",
+  "outcome": "interrupted_unfinalized",
+  "scoringEligible": false,
+  "reason": "No live driver or container remained. The harness did not finalize a result record, verification, scores, or imported source in the repository. The termination cause is unconfirmed.",
+  "cliTerminalEvent": {
+    "subtype": "success",
+    "is_error": false,
+    "duration_ms": 1742741
+  },
+  "recoveredFiles": [
+    "transcript.jsonl",
+    "agent.stderr.log"
+  ]
+}

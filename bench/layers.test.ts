@@ -55,7 +55,7 @@ describe("benchmark layers", () => {
     const base = prepareLayer(loadLayer("impeccable-v1"), root, "image");
     const combined = prepareLayer(loadLayer("impeccable-tdd-v1"), root, "image");
     expect(combined).toEqual(base);
-    expect(combined).toEqual(["-v", `${root}/output/bench-tools/impeccable-v1:/home/agent/.impeccable:ro`]);
+    expect(combined).toEqual(["--group-add", String(process.getgid?.()), "-v", `${root}/output/bench-tools/impeccable-v1:/home/agent/.impeccable:ro`]);
     expect(execFileSync).toHaveBeenLastCalledWith("docker", expect.arrayContaining([
       `${root}/bench/layers/impeccable-v1/skill:/bench/layers/impeccable-v1/skill:ro`,
       "/bench/layers/impeccable-v1/skill/scripts/impeccable", "engine-probe",

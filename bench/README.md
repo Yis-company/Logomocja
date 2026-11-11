@@ -74,6 +74,8 @@ Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dia
 
 Environment `e4` restricts mounted inputs. Layered e4 runs have a null baseline until fresh matching e4 base controls exist; historical e2/e3 controls remain context and are not rewritten or silently matched across environments.
 
+Environment `e5` adds explicit group access to host-owned output and engine-cache directories for the container's non-root user. Runtime inputs and the prepared engine cache remain read-only. Its pinned CLI versions and prompt v2 remain unchanged. Post-run cleanup of container-owned nested output directories still fails on the tested Linux host; see the Fable 5.2 evidence below.
+
 ## Scoring by hand
 
 `costUsd` is the figure the Claude CLI reports (`costBasis: "cli"`) or, for Codex, an estimate from the token counts and the list prices in `prices.ts` (`costBasis: "list"`, shown with ≈). The runs go through subscriptions, so this is what the same work would have cost on the API, not what was paid. Update `prices.ts` when prices change; stored results keep the figure computed at run time.
@@ -213,3 +215,33 @@ All 32 successful transcripts referenced TDD and all sixteen combined transcript
 The final local evidence bundle is [comparison and metrics](../output/bench-experiments/2026-11-03-tdd/results.html), [exact run metrics](../output/bench-experiments/2026-11-03-tdd/results.json), [all independent failures](../output/bench-experiments/2026-11-03-tdd/failures.json), [desktop/phone screenshots](../output/bench-experiments/2026-11-03-tdd/screenshots.html), [transcript audit](../output/bench-experiments/2026-11-03-tdd/transcript-audit.json), and [attempt accounting](../output/bench-experiments/2026-11-03-tdd/attempt-status.json). These ignored operational artifacts are local-only; durable run evidence remains in `bench/results/`. Token totals retain provider categories; reasoning is not added to output a second time. The experiment did not publish a Pages release.
 
 Final local validation: lint and typecheck passed; all **292 unit tests** and **3 Pages browser tests** passed; Pages rebuilt with the completed records and builds. Existing Biome configuration and bundle-size warnings remain. Charts and the 64-image desktop/phone gallery were previewed at desktop/narrow widths and shown inline; all effort/screen pairs and image enlargement controls passed assertions. The full shared chart exceeds the inline preview size limit, so compact native charts show the same reviewed values; full interactive chart files remain local. Validation evidence: [validation.json](../output/bench-experiments/2026-11-03-tdd/validation.json).
+
+## Fable 5.2 low-effort comparison — 11 November 2026
+
+The matched pair uses prompt v2, environment e5, Claude Code 2.1.318 and low effort. The Impeccable condition retains the frozen skill 4.7.0 and engine 0.1.16; its saved `baselineId` identifies the base row below. Each condition has one completed app. Human scores remain unset.
+
+| Condition | Language run/open | Stress run/open | Standard drawings | Agent minutes | CLI list-equivalent USD | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| Base | 594/595 on each path | 23/23 on each path | 13/13 | 30.3 | 3.16 | [result](results/v2-e5-claude-claude-fable-5-2-20261110-215004Z/result.json) |
+| Impeccable | 593/595 on each path | 23/23 on each path | 13/13 | 43.3 | 4.70 | [result](results/v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z/result.json) |
+
+Both apps built and passed their own tests. Both miss the same diagnostic-column case, reporting column 4 instead of 8 for a condition RHS. Impeccable also reports a missing argument on line 1 instead of line 2. Its agent time was 42.9% higher and reported cost 48.8% higher in this pair. Single trials, execution order and service drift prevent attributing these differences confidently to the skill. Generated tests and drawing agreement do not establish complete usability. Costs are API-list equivalents, not subscription charges.
+
+Historical Fable 5.1 used v1/e1, Claude Code 2.1.310 and unrecorded effort: 29.5 minutes, $11.84, and separate v1 suite scores of 153/153 and 117/118. Its brief and case populations differ, so these records are context rather than a matched model ranking. The v2 Fable 5.1 records are test-author tasks and are excluded from the app comparison.
+
+### Screenshots
+
+The Fable 5.1 captures were taken from its archived deployed app on 11 November. Desktop images show each build's star example; v1 and v2 example programs differ. Phone images show the v1 star and the v2 tree.
+
+| Fable 5.1, historical | Fable 5.2 base, low | Fable 5.2 Impeccable, low |
+| --- | --- | --- |
+| ![5.1 desktop](comparisons/2026-11-11-fable-5-2-low/fable-5-1-desktop.png) | ![5.2 base desktop](results/v2-e5-claude-claude-fable-5-2-20261110-215004Z/gallery/gwiazda.png) | ![5.2 Impeccable desktop](results/v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z/gallery/gwiazda.png) |
+| ![5.1 phone](comparisons/2026-11-11-fable-5-2-low/fable-5-1-phone.png) | ![5.2 base phone](results/v2-e5-claude-claude-fable-5-2-20261110-215004Z/gallery/mobile-drzewo.png) | ![5.2 Impeccable phone](results/v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z/gallery/mobile-drzewo.png) |
+
+### Attempt accounting and known limits
+
+[Comparison CSV](comparisons/2026-11-11-fable-5-2-low/comparison.csv), [exact metrics and failures](comparisons/2026-11-11-fable-5-2-low/comparison.json), and [seven-attempt ledger](comparisons/2026-11-11-fable-5-2-low/attempts.csv) are retained with the results.
+
+Four original base attempts failed: low/medium on rejected credentials, high/xhigh on the pinned CLI's 32,000-token response ceiling. Those records remain unchanged. The low retry and focused low Impeccable run completed. The medium retry has an agent success event but no finalized harness result, verification, scores or imported source; its transcript and [interruption receipt](results/v2-e5-claude-claude-fable-5-2-20261110-222058Z/interrupted.json) are preserved and excluded from scoring. Its termination cause remains unconfirmed. The remaining matrix is incomplete.
+
+Both completed e5 apps saved their build, scores, screenshots and source branch before host scratch cleanup failed with `EACCES`. Their app result records are completed; their queue/service exits remain failed. The nested-output cleanup issue is unresolved. Generated apps and failed attempts have not been repaired, output-token settings have not changed, and creating the PR does not publish a Pages release.

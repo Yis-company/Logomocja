@@ -1,0 +1,87 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ typescript@5.9.3
+
+5 packages installed [30.00ms]
+(exit 0)
+
+$ bun run build
+dist/ gotowy (BASE_PATH=/Logomocja/builds/v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z/): index.html, app.3dad820353.js 92 kB, styles.543a3b3ab4.css 27 kB
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interp.test.ts:
+(pass) ruch i geometria > stan początkowy i np [3.30ms]
+(pass) ruch i geometria > aliasy poleceń są równoważne [1.10ms]
+(pass) ruch i geometria > pw obraca zgodnie z ruchem wskazówek zegara [0.70ms]
+(pass) ruch i geometria > ruch o zero nic nie rysuje, pisak w górze też [0.16ms]
+(pass) ruch i geometria > dom rysuje odcinek i przywraca orientację [0.27ms]
+(pass) ruch i geometria > czyść usuwa odcinki, reszta bez zmian [0.23ms]
+(pass) ruch i geometria > 3D: gora, dol, pp, pl [0.65ms]
+(pass) ruch i geometria > polecenia płaskie dają to samo w 2D i 3D [30.66ms]
+(pass) ruch i geometria > polecenia 3D są błędem w 2D [0.79ms]
+(pass) ruch i geometria > sześcian zamyka się dokładnie [0.50ms]
+(pass) wyrażenia > priorytety i łączność [0.38ms]
+(pass) wyrażenia > odstępy wokół operatorów [0.37ms]
+(pass) wyrażenia > znaki jednoargumentowe [0.23ms]
+(pass) wyrażenia > argumenty wywołania rozdziela odstęp [0.14ms]
+(pass) wyrażenia > to nie są liczby [0.33ms]
+(pass) wyrażenia > dzielenie przez zero to błąd wykonania przy początku argumentu [0.28ms]
+(pass) wyrażenia > warunki są dokładne [0.36ms]
+(pass) wyrażenia > głębokie nawiasy i długie łańcuchy znaków nie przepełniają stosu [6.04ms]
+(pass) powtórzenia, zmienne, warunki, procedury > nrpowt liczy od 1 w najbliższym powtórzeniu [0.31ms]
+(pass) powtórzenia, zmienne, warunki, procedury > nrpowt poza powtórzeniem to błąd składni [0.33ms]
+(pass) powtórzenia, zmienne, warunki, procedury > powtorz 0 i granice [0.58ms]
+(pass) powtórzenia, zmienne, warunki, procedury > grubość [0.30ms]
+(pass) powtórzenia, zmienne, warunki, procedury > kolor [0.25ms]
+(pass) powtórzenia, zmienne, warunki, procedury > zmienne globalne i lokalne [0.43ms]
+(pass) powtórzenia, zmienne, warunki, procedury > nieznana nazwa to błąd składni [0.21ms]
+(pass) powtórzenia, zmienne, warunki, procedury > nazwa zmiennej nie może być poleceniem ani procedurą [0.12ms]
+(pass) powtórzenia, zmienne, warunki, procedury > procedury: nagłówki, stare i nowe [0.33ms]
+(pass) powtórzenia, zmienne, warunki, procedury > parametr o nazwie procedury [0.07ms]
+(pass) powtórzenia, zmienne, warunki, procedury > stop kończy procedurę, a na poziomie głównym program [0.17ms]
+(pass) powtórzenia, zmienne, warunki, procedury > rekurencja wzajemna [0.15ms]
+(pass) powtórzenia, zmienne, warunki, procedury > błędy definicji [0.37ms]
+(pass) powtórzenia, zmienne, warunki, procedury > zła liczba argumentów [0.31ms]
+(pass) powtórzenia, zmienne, warunki, procedury > pozycje błędów składni [0.58ms]
+(pass) powtórzenia, zmienne, warunki, procedury > komentarze i wielkość liter [0.09ms]
+(pass) limity > liczba operacji [12.26ms]
+(pass) limity > ramki: 32 aktywne wywołania i powtórzenia [2.41ms]
+(pass) limity > odcinki, współrzędne, rozmiar [20.88ms]
+(pass) limity > nieznany tryb [0.05ms]
+(pass) programy wzorcowe > jest ich trzynaście [0.03ms]
+(pass) programy wzorcowe > Kwadrat działa w trybie 2d [0.25ms]
+(pass) programy wzorcowe > Gwiazda działa w trybie 2d [0.06ms]
+(pass) programy wzorcowe > Rozeta działa w trybie 2d [0.14ms]
+(pass) programy wzorcowe > Spirala działa w trybie 2d [0.38ms]
+(pass) programy wzorcowe > Wielokąty działa w trybie 2d [0.32ms]
+(pass) programy wzorcowe > Drzewo działa w trybie 2d [3.54ms]
+(pass) programy wzorcowe > Śnieżynka działa w trybie 2d [4.76ms]
+(pass) programy wzorcowe > Schody działa w trybie 3d [0.16ms]
+(pass) programy wzorcowe > Sześcian działa w trybie 3d [0.24ms]
+(pass) programy wzorcowe > Pierścień działa w trybie 3d [0.11ms]
+(pass) programy wzorcowe > Kula działa w trybie 3d [0.65ms]
+(pass) programy wzorcowe > Helisa działa w trybie 3d [0.41ms]
+(pass) programy wzorcowe > Drzewo 3D działa w trybie 3d [2.17ms]
+(pass) programy wzorcowe > programy 3D są błędem w 2D [0.68ms]
+(pass) programy wzorcowe > śnieżynka wraca do punktu wyjścia [2.54ms]
+(pass) brak argumentu na końcu wiersza wskazuje polecenie, nie następny wiersz [0.17ms]
+
+tests/challenges.test.ts:
+(pass) jest co najmniej pięć zadań, a rozwiązania wzorcowe przechodzą [6.39ms]
+(pass) inna kolejność, kierunek i podział odcinków też przechodzą [0.65ms]
+(pass) powody niepowodzenia [0.47ms]
+(pass) zadania 3D porównują się w przestrzeni [0.63ms]
+
+ 59 pass
+ 0 fail
+ 4596 expect() calls
+Ran 59 tests across 2 files. [121.00ms]
+(exit 0)

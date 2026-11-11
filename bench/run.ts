@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { runConformance } from "./conformance/run";
 import { captureGallery } from "./gallery";
-import { prepareInputs, readOnlyMount } from "./inputs";
+import { prepareInputs, readOnlyMount, writableMount } from "./inputs";
 import { findBaseline, layerPrompt, loadLayer, prepareLayer } from "./layers";
 import { programsDir } from "./programs";
 import { renderPrompt, type Task } from "./prompt";
@@ -105,7 +105,7 @@ const container = spawnSync(
     "-e", `BENCH_RUN_ID=${id}`,
     "-e", `BENCH_BASE_PATH=${basePath}`,
     ...readOnlyMount(inputs),
-    "-v", `${out}:/out`,
+    ...writableMount(out, "/out"),
     "-v", `${auth}:/home/agent/.codex`,
     ...layerMounts,
     image,
