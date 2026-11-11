@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T12:00:00Z",
+  "title": "Design System: Logomocja",
+  "extensions": {
+    "colorMeta": {
+      "ozalid-blue": {
+        "role": "primary",
+        "displayName": "Błękit ozalidu",
+        "canonical": "#1d3f8a",
+        "tonalRamp": [
+          "oklch(15% 0.13 264)",
+          "oklch(27% 0.13 264)",
+          "oklch(39% 0.13 264)",
+          "oklch(51% 0.13 264)",
+          "oklch(63% 0.13 264)",
+          "oklch(75% 0.13 264)",
+          "oklch(87% 0.13 264)",
+          "oklch(95% 0.13 264)"
+        ]
+      },
+      "turtle-green": {
+        "role": "secondary",
+        "displayName": "Zieleń żółwia",
+        "canonical": "#0f7a5f",
+        "tonalRamp": [
+          "oklch(15% 0.1 170)",
+          "oklch(27% 0.1 170)",
+          "oklch(39% 0.1 170)",
+          "oklch(51% 0.1 170)",
+          "oklch(63% 0.1 170)",
+          "oklch(75% 0.1 170)",
+          "oklch(87% 0.1 170)",
+          "oklch(95% 0.1 170)"
+        ]
+      },
+      "correction-red": {
+        "role": "tertiary",
+        "displayName": "Czerwień korektorska",
+        "canonical": "#b3261e",
+        "tonalRamp": [
+          "oklch(15% 0.17 28)",
+          "oklch(27% 0.17 28)",
+          "oklch(39% 0.17 28)",
+          "oklch(51% 0.17 28)",
+          "oklch(63% 0.17 28)",
+          "oklch(75% 0.17 28)",
+          "oklch(87% 0.17 28)",
+          "oklch(95% 0.17 28)"
+        ]
+      },
+      "drawing-ink": {
+        "role": "neutral",
+        "displayName": "Tusz kreślarski",
+        "canonical": "#14213d",
+        "tonalRamp": [
+          "oklch(15% 0.05 265)",
+          "oklch(27% 0.05 265)",
+          "oklch(39% 0.05 265)",
+          "oklch(51% 0.05 265)",
+          "oklch(63% 0.05 265)",
+          "oklch(75% 0.05 265)",
+          "oklch(87% 0.05 265)",
+          "oklch(95% 0.05 265)"
+        ]
+      },
+      "bristol-sheet": {
+        "role": "neutral",
+        "displayName": "Brystol",
+        "canonical": "#fdfdfb",
+        "tonalRamp": [
+          "oklch(15% 0.004 100)",
+          "oklch(27% 0.004 100)",
+          "oklch(39% 0.004 100)",
+          "oklch(51% 0.004 100)",
+          "oklch(63% 0.004 100)",
+          "oklch(75% 0.004 100)",
+          "oklch(87% 0.004 100)",
+          "oklch(95% 0.004 100)"
+        ]
+      },
+      "night-sheet": {
+        "role": "neutral",
+        "displayName": "Nocna odbitka",
+        "canonical": "#0c1320",
+        "tonalRamp": [
+          "oklch(15% 0.03 262)",
+          "oklch(27% 0.03 262)",
+          "oklch(39% 0.03 262)",
+          "oklch(51% 0.03 262)",
+          "oklch(63% 0.03 262)",
+          "oklch(75% 0.03 262)",
+          "oklch(87% 0.03 262)",
+          "oklch(95% 0.03 262)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Pismo techniczne, tytuł",
+        "purpose": "Tytuły stron."
+      },
+      "headline": {
+        "displayName": "Pismo techniczne, nagłówek",
+        "purpose": "Nazwa dokumentu, tytuł zadania, nagłówki sekcji."
+      },
+      "title": {
+        "displayName": "Pismo techniczne, nazwa",
+        "purpose": "Kafle, tabelka, znak słowny."
+      },
+      "body": {
+        "displayName": "Treść",
+        "purpose": "Opisy i treść zadań."
+      },
+      "label": {
+        "displayName": "Etykieta",
+        "purpose": "Przyciski, stan, wartości tabelki."
+      },
+      "code": {
+        "displayName": "Kod",
+        "purpose": "Edytor i przykłady kodu."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "tint",
+        "value": "background-color 150ms",
+        "purpose": "Jedyna animacja interfejsu: zmiana tła przy najechaniu; wyłączona przy prefers-reduced-motion."
+      },
+      {
+        "name": "turtle-step",
+        "value": "skokowo, 2–1200 kroków/s",
+        "purpose": "Żółw porusza się krok po kroku bez wygładzania."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "860px"
+      },
+      {
+        "name": "compact",
+        "value": "1180px"
+      },
+      {
+        "name": "kbd-hints",
+        "value": "1720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Uruchom: jedyna zielona czynność na ekranie.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M6 4l10 6-10 6z\" fill=\"currentColor\"/></svg>Uruchom</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.375rem;height:2.25rem;padding:0 .75rem;border:1px solid #14213d;border-radius:2px;background:#fdfdfb;color:#14213d;font:600 .875rem 'Public Sans',system-ui,sans-serif;cursor:pointer}.ds-btn:hover{background:#e2e8f1}.ds-btn:active{background:#14213d;color:#fdfdfb}.ds-btn:focus-visible{outline:2px solid #1d3f8a;outline-offset:2px}.ds-btn-primary{background:#0f7a5f;border-color:#0f7a5f;color:#fff}.ds-btn-primary:hover{background:#0b6650;border-color:#0b6650}"
+    },
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Krok, Pauza, Reset i powiększenie: brystol z ramką tuszem.",
+      "html": "<button class=\"ds-btn2\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M5 4l8 6-8 6z\" fill=\"currentColor\"/><path d=\"M15.5 4v12\"/></svg>Krok</button>",
+      "css": ".ds-btn2{display:inline-flex;align-items:center;gap:.375rem;height:2.25rem;padding:0 .75rem;border:1px solid #14213d;border-radius:2px;background:#fdfdfb;color:#14213d;font:600 .875rem 'Public Sans',system-ui,sans-serif;cursor:pointer}.ds-btn2:hover{background:#e2e8f1}.ds-btn2:active{background:#14213d;color:#fdfdfb}.ds-btn2:focus-visible{outline:2px solid #1d3f8a;outline-offset:2px}"
+    },
+    {
+      "name": "Check Button",
+      "kind": "button",
+      "refersTo": "button-check",
+      "description": "Sprawdź rysunek: odwrócony przycisk w panelu zadania.",
+      "html": "<button class=\"ds-btn-check\">Sprawdź rysunek</button>",
+      "css": ".ds-btn-check{height:2.25rem;padding:0 .75rem;border:1px solid #14213d;border-radius:2px;background:#14213d;color:#fdfdfb;font:600 .875rem 'Public Sans',system-ui,sans-serif;cursor:pointer}.ds-btn-check:hover{background:#4d5b78;border-color:#4d5b78}.ds-btn-check:focus-visible{outline:2px solid #1d3f8a;outline-offset:2px}"
+    },
+    {
+      "name": "Mode Switch",
+      "kind": "custom",
+      "refersTo": "mode-switch-active",
+      "description": "Przełącznik 2D/3D pismem technicznym; wybrana pozycja odwrócona.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\" aria-label=\"Tryb\"><label><input type=\"radio\" name=\"ds-m\" checked><span>2D</span></label><label><input type=\"radio\" name=\"ds-m\"><span>3D</span></label></div>",
+      "css": ".ds-seg{display:inline-flex;border:1px solid #14213d;border-radius:2px;background:#fdfdfb}.ds-seg label{position:relative;cursor:pointer}.ds-seg input{position:absolute;inset:0;opacity:0;margin:0}.ds-seg span{display:grid;place-items:center;height:calc(2.25rem - 2px);min-width:3rem;padding:0 .75rem;font:400 1.0625rem osifont,'Public Sans',sans-serif;letter-spacing:.04em;color:#14213d}.ds-seg input:checked+span{background:#14213d;color:#fdfdfb}.ds-seg input:not(:checked)+span:hover{background:#e2e8f1}.ds-seg input:focus-visible+span{outline:2px solid #1d3f8a;outline-offset:2px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "top-bar",
+      "description": "Belka w błękicie ozalidu z białym podkreśleniem bieżącej pozycji.",
+      "html": "<nav class=\"ds-nav\"><b>Logomocja</b><a href=\"#\" aria-current=\"page\">Pracownia</a><a href=\"#\">Przykłady</a><a href=\"#\">Zadania</a><a href=\"#\">Polecenia</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:stretch;height:3rem;padding:0 1rem;background:#1d3f8a;color:#fff}.ds-nav b{display:flex;align-items:center;margin-right:1.5rem;font:400 1.5rem osifont,'Public Sans',sans-serif;letter-spacing:.03em}.ds-nav a{display:flex;align-items:center;padding:0 .875rem;border-bottom:3px solid transparent;border-top:3px solid transparent;color:#d3ddf5;font:500 .9375rem 'Public Sans',system-ui,sans-serif;text-decoration:none}.ds-nav a:hover{color:#fff;background:rgba(255,255,255,.08)}.ds-nav a[aria-current]{color:#fff;border-bottom-color:#fff}.ds-nav a:focus-visible{outline:2px solid #fff;outline-offset:-3px}"
+    },
+    {
+      "name": "Mode Tag",
+      "kind": "chip",
+      "refersTo": "tile",
+      "description": "Znacznik trybu w cienkiej ramce, bez tła.",
+      "html": "<span class=\"ds-tag\">2D</span> <span class=\"ds-tag\">3D</span>",
+      "css": ".ds-tag{display:inline-block;padding:0 .3125rem;border:1px solid currentColor;color:#4d5b78;font:400 .8125rem/1.35 osifont,'Public Sans',sans-serif;letter-spacing:.04em}"
+    },
+    {
+      "name": "Example Tile",
+      "kind": "card",
+      "refersTo": "tile",
+      "description": "Kafel przykładu: miniatura, nazwa pismem technicznym, opis, tryb i liczba odcinków.",
+      "html": "<button class=\"ds-tile\"><svg viewBox=\"0 0 160 110\" aria-hidden=\"true\"><rect x=\"40\" y=\"15\" width=\"80\" height=\"80\" fill=\"none\" stroke=\"#16866a\" stroke-width=\"2\"/></svg><span class=\"ds-tile-name\">Kwadrat</span><span class=\"ds-tile-text\">Cztery kroki do pierwszego rysunku.</span><span class=\"ds-tile-meta\"><i>2D</i>4 odcinki</span></button>",
+      "css": ".ds-tile{display:flex;flex-direction:column;width:13.5rem;padding:0;border:1px solid #14213d;border-radius:0;background:#fdfdfb;color:#14213d;text-align:left;cursor:pointer;font-family:'Public Sans',system-ui,sans-serif}.ds-tile:hover{background:#e2e8f1;outline:1px solid #14213d}.ds-tile:focus-visible{outline:2px solid #1d3f8a;outline-offset:2px}.ds-tile svg{display:block;width:100%;background:#fdfdfb;border-bottom:1px solid #14213d}.ds-tile-name{padding:.625rem .75rem 0;font:400 1.25rem/1.2 osifont,'Public Sans',sans-serif;letter-spacing:.02em}.ds-tile-text{padding:.25rem .75rem 0;font-size:.8125rem;color:#4d5b78}.ds-tile-meta{display:flex;gap:.5rem;align-items:center;padding:.625rem .75rem .75rem;font-size:.8125rem;color:#4d5b78;font-variant-numeric:tabular-nums}.ds-tile-meta i{font:400 .8125rem/1.35 osifont,sans-serif;padding:0 .3125rem;border:1px solid currentColor;letter-spacing:.04em}"
+    },
+    {
+      "name": "Title Block",
+      "kind": "custom",
+      "refersTo": "title-block",
+      "description": "Tabelka rysunkowa: żywy stan żółwia i rysunku w rogu arkusza.",
+      "html": "<table class=\"ds-tb\"><tr><th>Rysunek</th><td colspan=\"3\" class=\"ds-tb-name\">Szkic 2D</td></tr><tr><th>Żółw</th><td>x 0  y 100</td><th>Kurs</th><td>90°</td></tr><tr><th>Odcinki</th><td>6 / 10 000</td><th>Operacje</th><td>19 / 10 000</td></tr><tr><th>Pisak</th><td>opuszczony, #16866a, 3</td><th>Skala</th><td>3:1</td></tr></table>",
+      "css": ".ds-tb{border-collapse:collapse;background:#fdfdfb;color:#14213d;font:.8125rem/1.25 'Public Sans',system-ui,sans-serif;border:2px solid #14213d}.ds-tb th,.ds-tb td{padding:.3125rem .5rem;border:1px solid #14213d;text-align:left;white-space:pre}.ds-tb th{font:400 .8125rem osifont,'Public Sans',sans-serif;letter-spacing:.04em;color:#4d5b78}.ds-tb td{min-width:8rem;font-weight:550;font-variant-numeric:tabular-nums}.ds-tb .ds-tb-name{font:400 1.25rem osifont,'Public Sans',sans-serif;letter-spacing:.02em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Arkusz rysunku technicznego",
+    "overview": "Logomocja wygląda jak stanowisko kreślarskie. Program to instrukcja wykonania rysunku, a wynik leży na arkuszu: biały brystol w ramce, siatka pomocnicza, osie kreską-kropką i tabelka rysunkowa w prawym dolnym rogu, która na żywo podaje położenie żółwia, kurs, liczbę odcinków, stan pisaka i skalę. Wszystko, co nie jest rysunkiem ucznia, jest narysowane tuszem jednej barwy w trzech grubościach linii.\n\nSystem służy pracy, nie prezentacji. Pierwszy ekran to od razu pracownia: edytor po lewej, arkusz po prawej, uruchamianie pod ręką. Kolor jest oszczędny i ma znaczenie: błękit ozalidu trzyma powłokę, zieleń żółwia oznacza jedyną główną czynność (Uruchom) i samego żółwia, czerwień korektorska oznacza wyłącznie błąd. Rysunek ucznia jest zawsze najbarwniejszą rzeczą na ekranie.\n\nPismo techniczne (osifont, ISO 3098) pojawia się tam, gdzie na prawdziwym arkuszu pisze się szablonem: w tytułach, nazwie dokumentu, tabelce, przełączniku 2D/3D i znacznikach trybu. Interfejs mówi krojem Public Sans, kod krojem Red Hat Mono. Motyw ciemny to nocna odbitka: granatowa powłoka, prawie czarny arkusz, jasne linie; te same reguły, odwrócone wartości.",
+    "keyCharacteristics": [
+      "Arkusz z ramką i żywą tabelką rysunkową jako znak rozpoznawczy.",
+      "Trzy grubości linii (1, 2, 3 px) zamiast cieni i wypełnień.",
+      "Jedna zielona czynność na ekranie; czerwień tylko dla błędu.",
+      "Wzór zadania kreską przerywaną, osie kreską-kropką, rysunek ucznia linią ciągłą.",
+      "Żółw porusza się skokowo, krok po kroku, bez wygładzania.",
+      "Narożniki 2 px na kontrolkach, 0 na arkuszach i kaflach."
+    ],
+    "rules": [
+      {
+        "name": "The One Green Rule",
+        "body": "Na każdym ekranie zielone wypełnienie ma tylko jedna czynność: Uruchom. Drugi zielony przycisk odbiera żółwiowi znaczenie.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Means Error Rule",
+        "body": "Czerwieni nie używa się do ozdoby, ostrzeżeń ani czynności niszczących. Czerwone jest to, co trzeba poprawić w programie.",
+        "section": "colors"
+      },
+      {
+        "name": "The Loudest Line Rule",
+        "body": "Interfejs nie konkuruje z rysunkiem: poza belką, zielonym przyciskiem i błędem wszystko jest tuszem na papierze.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stencil Rule",
+        "body": "Pismo techniczne tylko tam, gdzie na arkuszu pisze się szablonem: tytuły, nazwy, tabelka, znaczniki 2D/3D. Nigdy w zdaniach, przyciskach ani komunikatach błędów.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Każda liczba, która zmienia się w czasie pracy (położenie, kurs, liczniki, tempo), ma cyfry tabelaryczne, żeby nic nie skakało.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sheet Is Sacred Rule",
+        "body": "Na arkuszu leżą tylko: rysunek, siatka, osie, żółw i tabelka. Żadnych pływających paneli, podpowiedzi ani przycisków na rysunku.",
+        "section": "layout"
+      },
+      {
+        "name": "The Three Pens Rule",
+        "body": "Tylko trzy grubości: 1, 2 i 3 px. Jeśli coś ma się wyróżniać, dostaje grubszą linię albo odwrócenie (tusz jako tło), nigdy cień.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** rozdzielaj obszary linią 1, 2 lub 3 px w kolorze tuszu (#14213d); to jedyne narzędzie hierarchii poza wielkością pisma.",
+      "**Do** zostaw zieleń żółwia (#0f7a5f) dla Uruchom, żółwia, tempa i stanu „zaliczone”.",
+      "**Do** pisz komunikaty po polsku, pełnym zdaniem, z wierszem i kolumną oraz wskazówką, co poprawić.",
+      "**Do** pokazuj wzór zadania kreską przerywaną, a osie kreską-kropką, w motywie jasnym i ciemnym.",
+      "**Do** dawaj każdej kontrolce etykietę, widoczny fokus 2 px i cel dotyku 44 px na telefonie.",
+      "**Do** utrzymuj kontrast tekstu co najmniej 4.5:1 w obu motywach, także w kolorowaniu składni."
+    ],
+    "donts": [
+      "**Don't** dodawaj cieni, rozmyć, gradientów ani szklanych paneli; system jest płaski.",
+      "**Don't** używaj czerwieni (#b3261e) do niczego poza błędem programu i niezaliczonym sprawdzeniem.",
+      "**Don't** składaj zdań, przycisków ani komunikatów pismem technicznym; osifont jest do tytułów, nazw i tabelki.",
+      "**Don't** kładź na arkuszu niczego poza rysunkiem, siatką, osiami, żółwiem i tabelką.",
+      "**Don't** wygładzaj ruchu żółwia ani nie animuj układu; przejścia dotyczą tylko koloru tła (150 ms) i znikają przy `prefers-reduced-motion`.",
+      "**Don't** zaokrąglaj narożników ponad 2 px i nie zagnieżdżaj ramek w ramkach.",
+      "**Don't** używaj emoji, gotowych zestawów ikon ani kolorowych pasków przy krawędzi jako akcentu."
+    ]
+  }
+}

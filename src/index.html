@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Logomocja: pracownia</title>
+<meta name="description" content="Logomocja: pracownia grafiki żółwia. Pisz programy w polskim Logo i rysuj na płaszczyźnie albo w przestrzeni.">
+<meta name="theme-color" content="#1d3f8a">
+<meta name="color-scheme" content="light dark">
+<script>
+(function () {
+  // Adres katalogu bez końcowego ukośnika: dopisz go, żeby ścieżki względne trafiały we właściwe pliki.
+  var base = "__BASE_PATH__";
+  var p = location.pathname;
+  if (base.length > 1 && p + "/" === base) { location.replace(p + "/" + location.search + location.hash); return; }
+  var t = "auto";
+  try { t = JSON.parse(localStorage.getItem("logomocja:motyw") || '"auto"'); } catch (e) {}
+  if (t !== "light" && t !== "dark") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.dataset.theme = t;
+})();
+</script>
+<link rel="icon" href="./__ICON__" type="image/svg+xml">
+<link rel="stylesheet" href="./__CSS__">
+<script defer src="./__JS__"></script>
+</head>
+<body>
+<noscript><p style="padding:2rem;font-family:sans-serif">Logomocja potrzebuje JavaScriptu: interpreter Logo działa w całości w przeglądarce.</p></noscript>
+</body>
+</html>
