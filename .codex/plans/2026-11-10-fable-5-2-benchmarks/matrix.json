@@ -1,0 +1,18 @@
+[
+  {
+    "model": "claude:claude-fable-5-2",
+    "effort": "low"
+  },
+  {
+    "model": "claude:claude-fable-5-2",
+    "effort": "medium"
+  },
+  {
+    "model": "claude:claude-fable-5-2",
+    "effort": "high"
+  },
+  {
+    "model": "claude:claude-fable-5-2",
+    "effort": "xhigh"
+  }
+]

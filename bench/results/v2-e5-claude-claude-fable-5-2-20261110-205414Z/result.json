@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "id": "v2-e5-claude-claude-fable-5-2-20261110-205414Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-fable-5-2",
+  "cliVersion": "2.1.318",
+  "effort": "medium",
+  "startedAt": "2026-11-10T20:54:14.576Z",
+  "agentMs": 3888,
+  "agentExit": 1,
+  "status": "failed",
+  "statusDetail": "success: Failed to authenticate. API Error: 401 Invalid bearer token",
+  "tokens": {
+    "input": 0,
+    "cachedInput": 0,
+    "output": 0,
+    "reasoning": 0
+  },
+  "costUsd": 0,
+  "costBasis": "cli",
+  "turns": 1,
+  "toolCalls": 0,
+  "verify": {
+    "installed": false,
+    "built": false,
+    "tests": "none",
+    "distFiles": 0,
+    "distBytes": 0
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "5",
+  "image": "logomocja-bench:env-5",
+  "commit": "cb9b8888b956729bedd7e9d71a5ca23f29a6caa9",
+  "repoVersion": "0.3.0",
+  "totalMs": 4447,
+  "conformance": null,
+  "gallery": null,
+  "humanScore": null,
+  "notes": ""
+}

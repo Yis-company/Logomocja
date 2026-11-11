@@ -1,9 +1,9 @@
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, describe, expect, it } from "vitest";
-import { prepareInputs, readOnlyMount } from "./inputs";
+import { prepareInputs, readOnlyMount, writableMount } from "./inputs";
 import { layerPrompt, loadLayer } from "./layers";
 import { renderPrompt, type Task } from "./prompt";
 
@@ -19,6 +19,25 @@ afterEach(() => {
 });
 
 describe("benchmark input boundary", () => {
+  it("opens restrictive output directories to their group without granting world access", () => {
+    const directory = scratch();
+    chmodSync(directory, 0o700);
+    const mount = writableMount(directory, "/out");
+    expect(statSync(directory).mode & 0o777).toBe(0o770);
+    expect(mount).toEqual(["--group-add", String(statSync(directory).gid), "-v", `${directory}:/out`]);
+  });
+
+  it("refuses files and symlinks as writable benchmark directories", () => {
+    const directory = scratch();
+    const file = join(directory, "file");
+    writeFileSync(file, "evidence");
+    const link = join(directory, "link");
+    symlinkSync(directory, link);
+    for (const path of [file, link])
+      expect(() => writableMount(path, "/out")).toThrow(/host-owned directory/);
+    expect(statSync(file).mode & 0o777).not.toBe(0o770);
+  });
+
   it.each(["base", "impeccable-v1", "tdd-v1", "impeccable-tdd-v1"])(
     "%s exposes its runtime and prompt references, excluding evaluations and other conditions",
     (id) => {

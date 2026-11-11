@@ -1,0 +1,188 @@
+{
+  "capturedAt": "2026-11-11T08:07:49.640266+00:00",
+  "rows": [
+    {
+      "label": "Fable 5.1 (historical)",
+      "id": "v1-e1-claude-claude-fable-5-1-20261027-070726Z",
+      "task": "app",
+      "model": "claude-fable-5-1",
+      "effort": null,
+      "prompt": "v1",
+      "environment": "1",
+      "cliVersion": "2.1.310",
+      "status": "completed",
+      "agentMinutes": 29.530833333333334,
+      "costUsd": 11.842673749999998,
+      "costBasis": "cli",
+      "built": true,
+      "ownTests": "pass",
+      "conformance": {
+        "claude-fable-5-1": {
+          "passed": 153,
+          "total": 153,
+          "hook": true
+        },
+        "gpt-6-astra": {
+          "passed": 117,
+          "total": 118,
+          "hook": true
+        }
+      },
+      "standardDrawingsPassed": null,
+      "standardDrawingsTotal": null,
+      "failures": {
+        "gpt-6-astra": [
+          {
+            "name": "procedure call requires numeric arguments",
+            "reason": "expected error at column 3, got 1"
+          }
+        ]
+      },
+      "source": "bench/results/v1-e1-claude-claude-fable-5-1-20261027-070726Z/result.json"
+    },
+    {
+      "label": "Fable 5.2 base",
+      "id": "v2-e5-claude-claude-fable-5-2-20261110-215004Z",
+      "task": "app",
+      "model": "claude-fable-5-2",
+      "effort": "low",
+      "prompt": "v2",
+      "environment": "5",
+      "cliVersion": "2.1.318",
+      "status": "completed",
+      "agentMinutes": 30.286766666666665,
+      "costUsd": 3.1563046999999997,
+      "costBasis": "cli",
+      "built": true,
+      "ownTests": "pass",
+      "conformance": {
+        "combined": {
+          "passed": 594,
+          "total": 595,
+          "hook": true
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23,
+          "hook": true
+        },
+        "combined@open": {
+          "passed": 594,
+          "total": 595,
+          "hook": true
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23,
+          "hook": true
+        }
+      },
+      "standardDrawingsPassed": 13,
+      "standardDrawingsTotal": 13,
+      "failures": {
+        "combined": [
+          {
+            "name": "gpt-6-astra-round2: runtime start token condition rhs",
+            "reason": "expected error at column 8, got 4"
+          }
+        ],
+        "combined@open": [
+          {
+            "name": "gpt-6-astra-round2: runtime start token condition rhs",
+            "reason": "expected error at column 8, got 4"
+          }
+        ]
+      },
+      "source": "bench/results/v2-e5-claude-claude-fable-5-2-20261110-215004Z/result.json"
+    },
+    {
+      "label": "Fable 5.2 + Impeccable",
+      "id": "v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z",
+      "task": "app",
+      "model": "claude-fable-5-2",
+      "effort": "low",
+      "prompt": "v2",
+      "environment": "5",
+      "cliVersion": "2.1.318",
+      "status": "completed",
+      "agentMinutes": 43.26606666666667,
+      "costUsd": 4.695096899999999,
+      "costBasis": "cli",
+      "built": true,
+      "ownTests": "pass",
+      "conformance": {
+        "combined": {
+          "passed": 593,
+          "total": 595,
+          "hook": true
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23,
+          "hook": true
+        },
+        "combined@open": {
+          "passed": 593,
+          "total": 595,
+          "hook": true
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23,
+          "hook": true
+        }
+      },
+      "standardDrawingsPassed": 13,
+      "standardDrawingsTotal": 13,
+      "failures": {
+        "combined": [
+          {
+            "name": "claude-fable-5-1-round2: missing argument reported at a bracket on the next line",
+            "reason": "expected error on line 2, got line 1"
+          },
+          {
+            "name": "gpt-6-astra-round2: runtime start token condition rhs",
+            "reason": "expected error at column 8, got 4"
+          }
+        ],
+        "combined@open": [
+          {
+            "name": "claude-fable-5-1-round2: missing argument reported at a bracket on the next line",
+            "reason": "expected error on line 2, got line 1"
+          },
+          {
+            "name": "gpt-6-astra-round2: runtime start token condition rhs",
+            "reason": "expected error at column 8, got 4"
+          }
+        ]
+      },
+      "source": "bench/results/v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z/result.json"
+    }
+  ],
+  "pairedDelta": {
+    "agentMinutes": 12.979300000000002,
+    "agentTimePercent": 42.854690112183214,
+    "costUsd": 1.5387921999999996,
+    "costPercent": 48.75296735451427
+  },
+  "historicalScreenshot": {
+    "url": "https://yis-company.github.io/Logomocja/builds/v1-e1-claude-claude-fable-5-1-20261027-070726Z/",
+    "desktopCssViewport": [
+      1280,
+      800
+    ],
+    "phoneCssViewport": [
+      390,
+      844
+    ],
+    "sample": "built-in Gwiazda",
+    "capture": "new screenshots of the archived deployed app; phone loaded fresh at mobile viewport"
+  },
+  "limits": [
+    "Fable 5.1 used prompt v1, environment e1, Claude Code 2.1.310 and unrecorded effort; the 5.2 pair uses v2/e5, Claude Code 2.1.318 and low effort.",
+    "Fable 5.1 has separate v1 suite counts; no v2 stress, editor-open, or gallery measurements are inferred.",
+    "Costs are CLI-reported API-list equivalents, not subscription charges.",
+    "Both 5.2 apps finished build, self-tests, conformance and screenshots before host scratch cleanup failed with EACCES.",
+    "Desktop captures show each build's star example; v1/v2 example programs differ. Phone captures show v1 star and v2 tree."
+  ]
+}

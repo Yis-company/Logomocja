@@ -1,10 +1,10 @@
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, readdirSync, existsSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { RunResult } from "./result";
 import type { Task } from "./prompt";
-import { readOnlyMount } from "./inputs";
+import { readOnlyMount, writableMount } from "./inputs";
 
 export type Layer = NonNullable<RunResult["layer"]>;
 const directory = fileURLToPath(new URL("./layers/", import.meta.url));
@@ -50,8 +50,7 @@ export function prepareLayer(
       "run",
       "--rm",
       ...readOnlyMount(join(root, "bench/layers/impeccable-v1/skill"), skill),
-      "-v",
-      `${cache}:/home/agent/.impeccable`,
+      ...writableMount(cache, "/home/agent/.impeccable"),
       image,
       `${skill}/scripts/impeccable`,
       "engine-probe",
@@ -60,7 +59,7 @@ export function prepareLayer(
   );
   if (output.trim() !== `impeccable-engine ${layer.engineVersion}`)
     throw Error(`Unexpected Impeccable engine: ${output.trim()}`);
-  return ["-v", `${cache}:/home/agent/.impeccable:ro`];
+  return ["--group-add", String(statSync(cache).gid), ...readOnlyMount(cache, "/home/agent/.impeccable")];
 }
 
 /** Match historical controls without modifying or rescoring them. */

@@ -1,0 +1,42 @@
+{
+  "schema": 4,
+  "id": "v2-e5-claude-claude-fable-5-2-20261110-212655Z",
+  "task": "app",
+  "runner": "claude",
+  "model": "claude-fable-5-2",
+  "cliVersion": "2.1.318",
+  "effort": "xhigh",
+  "startedAt": "2026-11-10T21:26:55.521Z",
+  "agentMs": 1386338,
+  "agentExit": 1,
+  "status": "failed",
+  "statusDetail": "success: API Error: Claude's response exceeded the 32000 output token maximum. To configure this behavior, set the CLAUDE_CODE_MAX_OUTPUT_TOKENS environment variable.",
+  "tokens": {
+    "input": 18,
+    "cachedInput": 155408,
+    "output": 128545,
+    "reasoning": 128121
+  },
+  "costUsd": 1.3191189,
+  "costBasis": "cli",
+  "turns": 6,
+  "toolCalls": 2,
+  "verify": {
+    "installed": false,
+    "built": false,
+    "tests": "none",
+    "distFiles": 0,
+    "distBytes": 0
+  },
+  "cases": null,
+  "prompt": "v2",
+  "env": "5",
+  "image": "logomocja-bench:env-5",
+  "commit": "cb9b8888b956729bedd7e9d71a5ca23f29a6caa9",
+  "repoVersion": "0.3.0",
+  "totalMs": 1387001,
+  "conformance": null,
+  "gallery": null,
+  "humanScore": null,
+  "notes": ""
+}

@@ -1,0 +1,3 @@
+osifont: GNU GPL 3 z wyjatkiem dla czcionek (font exception), https://github.com/hikikomori82/osifont
+Public Sans: SIL Open Font License 1.1, https://github.com/uswds/public-sans
+Red Hat Mono: SIL Open Font License 1.1, https://github.com/RedHatOfficial/RedHatFont

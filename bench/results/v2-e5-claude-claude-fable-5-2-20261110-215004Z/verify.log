@@ -1,0 +1,73 @@
+
+$ bun install
+bun install v1.4.4 (38afee6c8)
+
+[1.00ms] done
+No packages! Deleted empty lockfile
+(exit 0)
+
+$ bun run build
+Zbudowano dist/ (BASE_PATH=/Logomocja/builds/v2-e5-claude-claude-fable-5-2-20261110-215004Z/, app.js 74.2 kB)
+$ bun run build.ts
+(exit 0)
+
+$ bun run test
+bun test v1.4.4 (38afee6c8)
+$ bun test
+
+tests/interp.test.ts:
+(pass) podstawy > stan początkowy i odcinek [3.22ms]
+(pass) podstawy > aliasy i wielkość liter [1.03ms]
+(pass) podstawy > pióro, kolor, grubość [0.83ms]
+(pass) podstawy > ruch zerowy nic nie rysuje [0.34ms]
+(pass) podstawy > komentarze i puste programy [0.14ms]
+(pass) podstawy > kwadrat ma dokładne współrzędne [0.34ms]
+(pass) podstawy > dom i czyść [0.61ms]
+(pass) wyrażenia > priorytety i łączność [0.43ms]
+(pass) wyrażenia > odstępy przy operatorach [0.72ms]
+(pass) wyrażenia > znaki jednoargumentowe [1.01ms]
+(pass) wyrażenia > złe liczby [0.49ms]
+(pass) wyrażenia > dzielenie przez zero jest błędem wykonania przy początku argumentu [0.33ms]
+(pass) wyrażenia > porównania są dokładne [0.60ms]
+(pass) powtórz i nrpowt > nrpowt liczy od 1, wewnętrzna pętla [0.32ms]
+(pass) powtórz i nrpowt > nrpowt poza pętlą [0.48ms]
+(pass) powtórz i nrpowt > liczba powtórzeń [0.43ms]
+(pass) zmienne > globalne i lokalne [0.61ms]
+(pass) zmienne > nazwa niezadeklarowana to błąd analizy [0.27ms]
+(pass) zmienne > zmienna bez wartości to błąd wykonania [0.25ms]
+(pass) zmienne > zakazane nazwy [0.16ms]
+(pass) procedury > definicja, wywołanie, argumenty-wyrażenia [0.25ms]
+(pass) procedury > stary nagłówek, :nazwy, wywołanie przed definicją, aliasy [0.18ms]
+(pass) procedury > argumenty rozdzielane odstępem; minus przyklejony to nowy argument [0.39ms]
+(pass) procedury > parametr o nazwie procedury [0.09ms]
+(pass) procedury > stop [0.24ms]
+(pass) procedury > rekurencja [0.29ms]
+(pass) procedury > błędy definicji i wywołań [0.92ms]
+(pass) błędy składni > pozycje [1.10ms]
+(pass) błędy składni > błąd analizy nic nie rysuje, błąd wykonania zachowuje rysunek [0.46ms]
+(pass) błędy składni > 3D w trybie 2D [0.27ms]
+(pass) limity > znaki i tokeny [20.97ms]
+(pass) limity > zagnieżdżenie nawiasów [0.60ms]
+(pass) limity > ramki [0.85ms]
+(pass) limity > operacje [12.68ms]
+(pass) limity > odcinki i współrzędne [0.37ms]
+(pass) 3D > gora / dol [0.32ms]
+(pass) 3D > pp / pl [0.14ms]
+(pass) 3D > dom przywraca orientację [0.16ms]
+(pass) 3D > płaskie programy dają to samo w 2D i 3D [23.84ms]
+(pass) programy wzorcowe > jest ich trzynaście i działają bez błędów [10.38ms]
+(pass) programy wzorcowe > sześcian ma wierzchołki sześcianu [0.50ms]
+(pass) programy wzorcowe > śnieżynka się zamyka [2.56ms]
+(pass) praca krokowa > krok po kroku [0.20ms]
+
+tests/challenges.test.ts:
+(pass) jest co najmniej pięć wyzwań, a każde wzorcowe rozwiązanie przechodzi [5.20ms]
+(pass) pusty program i cudze rozwiązanie nie przechodzą [23.75ms]
+(pass) trójkąt: obrót i odbicie zaliczają, zła wielkość, nadmiar i błąd nie [2.35ms]
+(pass) programy wzorcowe: 13 sztuk, wszystkie wykonują się bez błędu [13.56ms]
+
+ 47 pass
+ 0 fail
+ 515 expect() calls
+Ran 47 tests across 2 files. [145.00ms]
+(exit 0)
