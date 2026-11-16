@@ -13,6 +13,7 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import type { Verify } from "./result";
+import { shareExport } from "./export";
 import { cost } from "./prices";
 import { parseModelSpec } from "./runners";
 
@@ -125,6 +126,8 @@ if (task === "app") {
   log(`cases: ${cases}`);
 }
 
+// Finalize the export before result.json, which marks the run complete.
+shareExport(OUT);
 const versionOutput = sh([runner.name, "--version"]).stdout ?? "";
 writeFileSync(
   join(OUT, "result.json"),

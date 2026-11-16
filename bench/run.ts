@@ -7,7 +7,6 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
-  renameSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -21,6 +20,7 @@ import { prepareInputs, readOnlyMount, writableMount } from "./inputs";
 import { findBaseline, layerPrompt, loadLayer, prepareLayer } from "./layers";
 import { programsDir } from "./programs";
 import { renderPrompt, type Task } from "./prompt";
+import { record, type Receipt } from "./receipt";
 import type { RunResult } from "./result";
 import { parseModelSpec } from "./runners";
 
@@ -87,11 +87,11 @@ writeFileSync(envFile, token ? `CLAUDE_CODE_OAUTH_TOKEN=${token}\n` : "");
 const repoVersion = (JSON.parse(readFileSync(join(root, "package.json"), "utf8")) as { version: string }).version;
 const commit = git("rev-parse", "HEAD");
 log(`run ${id}: repo ${repoVersion} at ${commit.slice(0, 7)} (${git("branch", "--show-current") || "detached"})`);
-// The queue can inspect progress without reading or exposing the transcript.
-if (values["run-info"]) {
-  writeFileSync(`${values["run-info"]}.tmp`, JSON.stringify({ id, transcript: join(out, "transcript.jsonl") }));
-  renameSync(`${values["run-info"]}.tmp`, values["run-info"]);
-}
+// The queue reads this receipt, never the transcript, to learn how far the run got.
+const receipt = (change: Partial<Receipt>) => {
+  if (values["run-info"]) record(values["run-info"], change);
+};
+receipt({ id, transcript: join(out, "transcript.jsonl"), phase: "container" });
 
 const started = performance.now();
 const container = spawnSync(
@@ -117,6 +117,7 @@ rmSync(envFile, { force: true });
 rmSync(auth, { recursive: true, force: true });
 if (container.status !== 0 || !existsSync(join(out, "result.json")))
   throw new Error(`container exited with ${container.status} and no result.json`);
+receipt({ phase: "import" });
 
 const inner = JSON.parse(readFileSync(join(out, "result.json"), "utf8")) as Omit<RunResult, "schema" | "id" | "prompt" | "env" | "image" | "commit" | "repoVersion" | "totalMs" | "conformance" | "gallery" | "humanScore" | "notes"> & { hasCommit: boolean };
 const resultsDir = join(root, "bench/results", id);
@@ -184,7 +185,24 @@ if (hasCommit && existsSync(join(out, "source.bundle"))) {
   if (!values["no-push"]) git("push", "-q", "-u", "origin", `build/${id}`);
   log(`source on branch build/${id}${values["no-push"] ? " (not pushed)" : ""}`);
 }
-rmSync(scratch, { recursive: true, force: true });
+receipt({
+  phase: "finalized",
+  outcome: result.status,
+  artifacts: {
+    result: join(resultsDir, "result.json"),
+    ...(task === "app" && inner.verify?.built ? { build: join(root, "builds", id) } : {}),
+    ...(hasCommit ? { branch: `build/${id}` } : {}),
+  },
+});
+// A cleanup failure never changes the finalized outcome.
+try {
+  rmSync(scratch, { recursive: true, force: true });
+  receipt({ phase: "done", cleanup: "ok" });
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  log(`cleanup failed, scratch kept at ${scratch}: ${message}`);
+  receipt({ phase: "done", cleanup: { error: message } });
+}
 log(
   `${result.status} in ${(result.agentMs / 60_000).toFixed(1)} min, ${result.tokens.input + result.tokens.cachedInput} in / ${result.tokens.output} out tokens, ${result.toolCalls} tool calls` +
     (result.verify ? `, built=${result.verify.built} tests=${result.verify.tests}` : "") +

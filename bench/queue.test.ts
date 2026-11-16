@@ -1,6 +1,7 @@
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import {
   chmodSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -10,6 +11,10 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { createQueue, parseMatrix, queueStatus, runQueue } from "./queue";
+
+// Recorded verbatim in a failed Fable 5.2 attempt.
+const CEILING =
+  "success: API Error: Claude's response exceeded the 32000 output token maximum. To configure this behavior, set the CLAUDE_CODE_MAX_OUTPUT_TOKENS environment variable.";
 
 function fixture(efforts = ["high", "low"], layer?: string) {
   const root = mkdtempSync(join(tmpdir(), "logomocja-queue-"));
@@ -31,8 +36,8 @@ function fixture(efforts = ["high", "low"], layer?: string) {
     mkdirSync('bench/results/' + id, { recursive: true });
     writeFileSync('bench/results/' + id + '/result.json', JSON.stringify({
       id, layer: v.layer ? { id: v.layer } : undefined, task: 'app', prompt: v.prompt, runner: 'codex', model: 'fixture', effort: v.effort,
-      status: v.effort === 'auth' ? 'failed' : v.effort === 'partial' ? 'partial' : 'completed', verify: { built: true },
-      statusDetail: v.effort === 'auth' ? 'success: Failed to authenticate. API Error: 401 Invalid bearer token' : v.effort === 'partial' ? 'quota limit reached' : 'success'
+      status: v.effort === 'auth' || v.effort === 'ceiling' ? 'failed' : v.effort === 'partial' ? 'partial' : 'completed', verify: { built: true },
+      statusDetail: { auth: 'success: Failed to authenticate. API Error: 401 Invalid bearer token', ceiling: ${JSON.stringify(CEILING)}, partial: 'quota limit reached' }[v.effort] ?? 'success'
     }));
     appendFileSync(calls, 'end ' + v.effort + '\\n');
     if (v.effort === 'crash') process.exit(1);
@@ -128,7 +133,7 @@ describe("benchmark queue", () => {
     expect(f.state().entries[0].status).toBe("interrupted");
     expect(await runQueue(f.dir, true, f.options)).toBe(true);
   });
-  it.each(["partial", "auth"])("leaves later entries queued after %s provider failures, resuming without retrying the failed attempt", async (failure) => {
+  it.each(["partial", "auth", "ceiling"])("leaves later entries queued after %s provider failures, resuming without retrying the failed attempt", async (failure) => {
     const f = fixture([failure, "high"]);
     expect(await runQueue(f.dir, false, { ...f.options, stopOnLimit: true })).toBe(false);
     expect(f.state().entries.map((e: { status: string }) => e.status)).toEqual(["failed", "queued"]);
@@ -137,6 +142,33 @@ describe("benchmark queue", () => {
     expect(readFileSync(join(f.root, "calls.txt"), "utf8")).toBe(
       `start ${failure} no-push=true\nend ${failure}\nstart high no-push=true\nend high\n`,
     );
+  });
+  it("continues past a response-ceiling failure unless asked to stop, and retries it only on request", async () => {
+    const f = fixture(["ceiling", "high"]);
+    expect(await runQueue(f.dir, false, f.options)).toBe(false);
+    expect(f.state().entries.map((e: { status: string }) => e.status)).toEqual(["failed", "completed"]);
+    await runQueue(f.dir, false, f.options);
+    expect(readFileSync(join(f.root, "calls.txt"), "utf8").match(/start ceiling/g)).toHaveLength(1);
+    await runQueue(f.dir, true, f.options);
+    expect(readFileSync(join(f.root, "calls.txt"), "utf8").match(/start ceiling/g)).toHaveLength(2);
+  });
+  it("completes a dead driver only when it finalized a valid result", async () => {
+    const f = fixture(["high"]);
+    expect(await runQueue(f.dir, false, f.options)).toBe(true);
+    const run = JSON.parse(readFileSync(join(f.dir, "1.run.json"), "utf8"));
+    const markRunning = (phase?: string) => {
+      const state = f.state();
+      state.entries[0].status = "running";
+      writeFileSync(join(f.dir, "state.json"), JSON.stringify(state));
+      writeFileSync(join(f.dir, "1.run.json"), JSON.stringify({ ...run, phase }));
+    };
+    markRunning("import");
+    expect(await runQueue(f.dir, false, f.options)).toBe(false);
+    expect(f.state().entries[0].status).toBe("interrupted");
+    markRunning("finalized");
+    expect(await runQueue(f.dir, false, f.options)).toBe(true);
+    expect(f.state().entries[0].status).toBe("completed");
+    expect(readFileSync(join(f.root, "calls.txt"), "utf8").match(/start/g)).toHaveLength(1);
   });
   it("refuses a live queue or orphaned container instead of duplicating work", async () => {
     const f = fixture(["high"]);
@@ -182,39 +214,46 @@ describe("benchmark queue", () => {
     expect(rows[1]).toContain("interrupted");
     expect(readFileSync(join(f.dir, "state.json"), "utf8")).toBe(before);
   });
-  it.each(["Darwin", "Linux"])(
-    "wraps the queue with caffeinate only on %s",
-    (platform) => {
-      const dir = mkdtempSync(join(tmpdir(), "logomocja-awake-"));
-      const bin = join(dir, "bin");
-      mkdirSync(bin);
-      for (const [name, script] of Object.entries({
-        uname: `echo ${platform}`,
-        caffeinate: 'echo "awake $*" >> "$CALLS"; shift; exec "$@"',
-        bun: 'echo "bun $*" >> "$CALLS"',
-      })) {
-        writeFileSync(join(bin, name), `#!/bin/sh\n${script}\n`);
-        chmodSync(join(bin, name), 0o755);
-      }
-      const calls = join(dir, "calls");
-      execFileSync(
-        "bash",
-        [resolve("bench/queue.sh"), "--matrix", "example.json", "--no-push"],
-        {
-          env: {
-            ...process.env,
-            PATH: `${bin}:${process.env.PATH}`,
-            CALLS: calls,
-          },
-        },
-      );
-      const text = readFileSync(calls, "utf8");
-      expect(text.includes("awake -i bun bench/queue.ts run")).toBe(
-        platform === "Darwin",
-      );
-      expect(text).toContain(
-        "bun bench/queue.ts run --matrix example.json --no-push",
-      );
-    },
-  );
+  const launch = (platform: string, systemd: boolean) => {
+    const dir = mkdtempSync(join(tmpdir(), "logomocja-awake-"));
+    const bin = join(dir, "bin");
+    mkdirSync(bin);
+    for (const [name, script] of Object.entries({
+      uname: `echo ${platform}`,
+      caffeinate: 'echo "awake $*" >> "$CALLS"; shift; exec "$@"',
+      bun: 'echo "bun $*" >> "$CALLS"',
+      "systemd-run": 'echo "systemd-run $*" >> "$CALLS"',
+      systemctl: systemd ? "exit 0" : "exit 1",
+    })) {
+      writeFileSync(join(bin, name), `#!/bin/sh\n${script}\n`);
+      chmodSync(join(bin, name), 0o755);
+    }
+    const calls = join(dir, "calls");
+    const run = spawnSync(
+      "bash",
+      [resolve("bench/queue.sh"), "--matrix", "example.json", "--no-push"],
+      {
+        encoding: "utf8",
+        env: { ...process.env, PATH: `${bin}:${process.env.PATH}`, CALLS: calls },
+      },
+    );
+    return { run, calls: existsSync(calls) ? readFileSync(calls, "utf8") : "" };
+  };
+  it("keeps the Mac awake with caffeinate", () => {
+    const { calls } = launch("Darwin", false);
+    expect(calls).toContain("awake -i bun bench/queue.ts run --matrix example.json --no-push");
+    expect(calls).not.toContain("systemd-run");
+  });
+  it("starts the Linux queue as a transient user service", () => {
+    const { run, calls } = launch("Linux", true);
+    expect(run.status).toBe(0);
+    expect(calls).toMatch(/systemd-run --user .*--working-directory .*bun bench\/queue\.ts run --matrix example\.json --no-push/);
+    expect(calls).not.toContain("awake");
+  });
+  it("fails before launching when Linux has no user manager", () => {
+    const { run, calls } = launch("Linux", false);
+    expect(run.status).not.toBe(0);
+    expect(run.stderr).toMatch(/Nothing was started/);
+    expect(calls).toBe("");
+  });
 });
