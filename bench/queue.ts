@@ -17,6 +17,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { renderPrompt } from "./prompt";
 import { loadLayer } from "./layers";
+import type { Receipt } from "./receipt";
 import type { RunResult } from "./result";
 import { parseModelSpec } from "./runners";
 
@@ -33,7 +34,10 @@ type Queue = {
   entries: Entry[];
   layer?: string;
 };
-type RunInfo = { id: string; transcript: string };
+type RunInfo = Receipt;
+// Provider failures that make further entries pointless until access is restored.
+// The last alternative is the pinned CLI's fixed response ceiling.
+const providerStop = /limit|quota|429|rate|401|403|authenticat|invalid (?:bearer )?token|output token maximum/i;
 const root = fileURLToPath(new URL("..", import.meta.url));
 const read = <T>(file: string): T => JSON.parse(readFileSync(file, "utf8"));
 const stateFile = (dir: string) => join(dir, "state.json");
@@ -170,7 +174,12 @@ export async function runQueue(
           (run && (options.containerRunning ?? containerRunning)(run.id)))
       )
         throw Error(`Entry ${i + 1} is still running; do not retry it`);
-      if (entry.status === "running") entry.status = "interrupted";
+      // A dead driver finished only if it finalized the run and left a valid result; a CLI success event alone never counts.
+      if (entry.status === "running")
+        entry.status =
+          (run?.phase === "finalized" || run?.phase === "done") && completed(queue, entry, run)
+            ? "completed"
+            : "interrupted";
       if (entry.status === "completed" && !completed(queue, entry, run))
         throw Error(
           `Entry ${i + 1} completed but its saved result is missing or invalid`,
@@ -234,7 +243,7 @@ export async function runQueue(
       }
       if (options.stopOnLimit && entry.status === "failed") {
         const saved = result(queue, info(dir, i));
-        if (saved && /limit|quota|429|rate|401|403|authenticat|invalid (?:bearer )?token/i.test(saved.statusDetail)) {
+        if (saved && providerStop.test(saved.statusDetail)) {
           console.error(`Provider unavailable at entry ${i + 1}; remaining entries stay queued. Resume after recovery without --retry.`);
           break;
         }
@@ -268,7 +277,7 @@ export function queueStatus(dir: string, staleMinutes = 15, now = Date.now()) {
           status = "running (possibly stalled: no recent log activity)";
       }
     }
-    return `${i + 1}. ${status} | ${entry.model} | ${entry.effort ?? "default"}${run ? ` | ${run.id}` : ""}`;
+    return `${i + 1}. ${status} | ${entry.model} | ${entry.effort ?? "default"}${run ? ` | ${run.id}${run.phase ? ` | ${run.phase}` : ""}` : ""}`;
   });
 }
 

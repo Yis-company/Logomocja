@@ -27,7 +27,7 @@ function rejectLinks(path: string): void {
 export function prepareInputs(root: string, scratch: string, layer: Layer | null): string {
   const destination = join(scratch, "bench");
   mkdirSync(destination);
-  const paths = ["agent.ts", "prices.ts", "runners.ts", "result.ts"];
+  const paths = ["agent.ts", "export.ts", "prices.ts", "runners.ts", "result.ts"];
   if (layer?.engineVersion) paths.push("layers/impeccable-v1/skill");
   if (layer?.tddSourceCommit) paths.push("layers/tdd-v1/skill", "layers/tdd-v1/references");
   for (const path of paths) {

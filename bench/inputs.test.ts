@@ -43,7 +43,7 @@ describe("benchmark input boundary", () => {
     (id) => {
       const layer = loadLayer(id);
       const directory = prepareInputs(root, scratch(), layer);
-      for (const file of ["agent.ts", "prices.ts", "runners.ts", "result.ts"])
+      for (const file of ["agent.ts", "export.ts", "prices.ts", "runners.ts", "result.ts"])
         expect(readFileSync(join(directory, file))).toEqual(readFileSync(join(root, "bench", file)));
       const impeccable = id === "impeccable-v1" || id === "impeccable-tdd-v1";
       const tdd = id === "tdd-v1" || id === "impeccable-tdd-v1";
