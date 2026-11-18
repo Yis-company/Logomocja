@@ -6,7 +6,7 @@ import { Editor } from "../components/Editor";
 import { Icon } from "../components/Icon";
 import { Frame, FramePanel } from "../components/reui/frame";
 import { Button } from "../components/ui/button";
-import { emptyDrawing, type Segment } from "../logo/types";
+import { type Drawing, emptyDrawing, type Segment } from "../logo/types";
 import type { Theme } from "../theme";
 import { runChallenge, type JudgeResult } from "../challenges/judge";
 import {
@@ -191,7 +191,7 @@ function ChallengeWorkspace({
   const [records, setRecords] = useState<ChallengeRecords>(load);
   const [source, setSource] = useState(() => recordFor(records, task).draft);
   const [sampleIndex, setSampleIndex] = useState(0);
-  const [drawing, setDrawing] = useState(emptyDrawing);
+  const [drawing, setDrawing] = useState<Drawing>(emptyDrawing);
   const [viewVersion, setViewVersion] = useState(0);
   const [result, setResult] = useState<JudgeResult | null>(null);
   const [busy, setBusy] = useState(false);

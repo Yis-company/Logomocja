@@ -28,6 +28,7 @@ const normalize = (v: Vec3): Vec3 => {
 const radians = (degrees: number) => ((degrees % 360) * Math.PI) / 180;
 export class Executor {
   drawing = emptyDrawing();
+  private segmentsPublished = false;
   private frames: Frame[];
   private operations = 0;
   private active = 0;
@@ -172,10 +173,11 @@ export class Executor {
     }
   }
   snapshot(): Drawing {
+    // Share the segment list until the next pen stroke or clear.
+    this.segmentsPublished = true;
     return {
       ...this.drawing,
       turtle: { ...this.drawing.turtle },
-      segments: [...this.drawing.segments],
     };
   }
   private move(next: Vec3, span: Span) {
@@ -185,6 +187,10 @@ export class Executor {
     if (turtle.penDown && next.some((n, i) => n !== turtle.position[i])) {
       if (this.drawing.segments.length >= LIMITS.segments)
         throw new LogoError("Rysunek osiągnął limit 10 000 odcinków.", span);
+      if (this.segmentsPublished) {
+        this.drawing.segments = this.drawing.segments.slice();
+        this.segmentsPublished = false;
+      }
       this.drawing.segments.push({ from: turtle.position, to: next, color: turtle.color, width: turtle.width });
     }
     turtle.position = next;
@@ -231,6 +237,7 @@ export class Executor {
         break;
       case "clear":
         this.drawing.segments = [];
+        this.segmentsPublished = false;
         break;
       case "penup":
         turtle.penDown = false;

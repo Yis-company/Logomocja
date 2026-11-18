@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
 import { AppSidebar } from "./components/AppSidebar";
-import { ConfirmDialog } from "./components/ConfirmDialog";
 import { DrawingStage } from "./components/DrawingStage";
 import { Editor } from "./components/Editor";
 import { Icon } from "./components/Icon";
@@ -14,7 +13,7 @@ import { defaults, type Example } from "./examples";
 import type { HookOutcome, OpenRequest } from "./hook";
 import { parse } from "./logo/parser";
 import { Executor } from "./logo/runtime";
-import { emptyDrawing, LogoError, type Mode } from "./logo/types";
+import { type Drawing, emptyDrawing, LogoError, type Mode } from "./logo/types";
 import { Examples } from "./pages/Examples";
 import { Commands } from "./pages/Commands";
 import { ChallengeCatalog, ChallengePage } from "./pages/Challenges";
@@ -39,7 +38,7 @@ export default function App() {
   );
   const mode = drafts.mode;
   const source = drafts.sources[mode];
-  const [drawing, setDrawing] = useState(emptyDrawing);
+  const [drawing, setDrawing] = useState<Drawing>(emptyDrawing);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<LogoError | null>(null);
   const [saved, setSaved] = useState(true);
@@ -47,7 +46,6 @@ export default function App() {
   const speedRef = useRef(speed);
   const [viewVersion, setViewVersion] = useState(0);
   const [fitVersion, setFitVersion] = useState(0);
-  const [pendingExample, setPendingExample] = useState<Example | null>(null);
   const cleanSources = useRef<Record<Mode, string>>({ ...defaults });
   const executor = useRef<Executor | null>(null);
   const frame = useRef<number | null>(null);
@@ -107,17 +105,14 @@ export default function App() {
       mode: example.mode,
       sources: { ...d.sources, [example.mode]: example.source },
     }));
-    setPendingExample(null);
     navigate("/");
   }
-  function chooseExample(example: Example) {
+  function needsExampleConfirmation(example: Example) {
     const destination = drafts.sources[example.mode];
-    if (
+    return (
       destination !== cleanSources.current[example.mode] &&
-      destination.trim()
-    )
-      setPendingExample(example);
-    else loadExample(example);
+      Boolean(destination.trim())
+    );
   }
   function start(single = false) {
     stop();
@@ -197,19 +192,23 @@ export default function App() {
       setDrafts((d) => ({ ...d, mode: detail.mode, sources: { ...d.sources, [detail.mode]: detail.source } }));
       navigate("/");
       const runtime = new Executor(parse(detail.source, detail.mode));
-      let outcome: HookOutcome;
+      let runError: HookOutcome["error"] = null;
       try {
         while (!runtime.done) runtime.tick();
         setError(null);
         setStatus("done");
-        outcome = { segments: runtime.snapshot().segments, error: null };
       } catch (cause) {
         const error = cause instanceof LogoError ? cause : new LogoError("Nie udało się wykonać programu.");
         setError(error);
         setStatus("error");
-        outcome = { segments: runtime.snapshot().segments, error: { message: error.message, ...error.span } };
+        runError = { message: error.message, ...error.span };
       }
-      setDrawing(runtime.snapshot());
+      const drawing = runtime.snapshot();
+      const outcome: HookOutcome = {
+        segments: [...drawing.segments],
+        error: runError,
+      };
+      setDrawing(drawing);
       setFitVersion((v) => v + 1);
       const started = performance.now();
       const settle = () => {
@@ -339,6 +338,7 @@ export default function App() {
                 className="run-button"
                 onClick={() => start()}
                 disabled={status === "running"}
+                focusableWhenDisabled
               >
                 <Icon name="play" size={17} />
                 {status === "paused" ? "Wznów" : "Uruchom"}
@@ -347,6 +347,7 @@ export default function App() {
                 variant="outline"
                 onClick={pause}
                 disabled={status !== "running"}
+                focusableWhenDisabled
               >
                 <Icon name="pause" size={16} />
                 Pauza
@@ -355,6 +356,7 @@ export default function App() {
                 variant="outline"
                 onClick={() => start(true)}
                 disabled={status === "running"}
+                focusableWhenDisabled
               >
                 <Icon name="step" size={17} />
                 Krok
@@ -422,7 +424,12 @@ export default function App() {
           <Route path="/" element={studio} />
           <Route
             path="/examples"
-            element={<Examples onChoose={chooseExample} />}
+            element={
+              <Examples
+                onChoose={loadExample}
+                needsConfirmation={needsExampleConfirmation}
+              />
+            }
           />
           <Route path="/commands" element={<Commands />} />
           <Route path="/benchmark" element={
@@ -456,16 +463,6 @@ export default function App() {
           />
         </Routes>
       </main>
-      <ConfirmDialog
-        open={pendingExample !== null}
-        title="Wczytać nowy przykład?"
-        description={`Zastąpi on szkic w trybie ${pendingExample?.mode.toUpperCase() ?? ""}. Drugi szkic pozostanie zapisany.`}
-        action="Wczytaj przykład"
-        onCancel={() => setPendingExample(null)}
-        onConfirm={() => {
-          if (pendingExample) loadExample(pendingExample);
-        }}
-      />
     </SidebarProvider>
   );
 }

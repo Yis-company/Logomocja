@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ConfirmDialog } from "../components/ConfirmDialog";
 import { ExampleArt } from "../components/ExampleArt";
 import { Icon } from "../components/Icon";
 import { Frame, FramePanel } from "../components/reui/frame";
@@ -6,10 +7,19 @@ import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { examples, type Example } from "../examples";
 export function Examples({
   onChoose,
+  needsConfirmation,
 }: {
   onChoose: (example: Example) => void;
+  needsConfirmation: (example: Example) => boolean;
 }) {
   const [filter, setFilter] = useState("all");
+  const [pendingExample, setPendingExample] = useState<Example | null>(null);
+
+  function chooseExample(example: Example) {
+    if (needsConfirmation(example)) setPendingExample(example);
+    else onChoose(example);
+  }
+
   return (
     <>
       <div className="workspace-heading">
@@ -47,7 +57,7 @@ export function Examples({
                   <button
                     type="button"
                     className="library-open"
-                    onClick={() => onChoose(example)}
+                    onClick={() => chooseExample(example)}
                   >
                     Otwórz w pracowni <Icon name="arrow" size={16} />
                   </button>
@@ -56,6 +66,18 @@ export function Examples({
             </Frame>
           ))}
       </div>
+      <ConfirmDialog
+        open={pendingExample !== null}
+        title="Wczytać nowy przykład?"
+        description={`Zastąpi on szkic w trybie ${pendingExample?.mode.toUpperCase() ?? ""}. Drugi szkic pozostanie zapisany.`}
+        action="Wczytaj przykład"
+        onCancel={() => setPendingExample(null)}
+        onConfirm={() => {
+          if (!pendingExample) return;
+          setPendingExample(null);
+          onChoose(pendingExample);
+        }}
+      />
     </>
   );
 }

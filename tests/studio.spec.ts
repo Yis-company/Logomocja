@@ -80,6 +80,38 @@ test("pause, single step, resume and reset preserve their contracts", async ({
   await expect(editor(page)).toHaveValue("repeat 6 [fd 10]");
 });
 
+test("playback availability changes preserve keyboard focus", async ({ page }) => {
+  await page.goto("/");
+  await editor(page).fill("powtorz 1000 [np 1]");
+  const start = run(page);
+  const pause = page.getByRole("button", { name: "Pauza", exact: true });
+  await start.focus();
+  await page.keyboard.press("Enter");
+  await expect(start).toBeDisabled();
+  await expect(start).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(pause).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(pause).toBeDisabled();
+  await expect(pause).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.getByText("Program wstrzymany", { exact: true })).toBeVisible();
+  await page.keyboard.press("Shift+Tab");
+  const resume = page.getByRole("button", { name: "Wznów", exact: true });
+  await expect(resume).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(start).toBeFocused();
+  await expect(page.getByText("Żółw rysuje…", { exact: true })).toBeVisible();
+});
+
+test("editor keyboard focus stays visible in forced colors", async ({ page }) => {
+  await page.emulateMedia({ forcedColors: "active" });
+  await page.goto("/");
+  await editor(page).focus();
+  await expect(editor(page)).toHaveCSS("outline-style", "solid");
+  await expect(editor(page)).toHaveCSS("outline-width", "2px");
+});
+
 test("invalid source preserves prior drawing and gives line and column", async ({
   page,
 }) => {
@@ -170,6 +202,23 @@ test("executes actual 3D paths, orbit controls and camera presets", async ({
   expect(errors).toEqual([]);
 });
 
+for (const [action, key] of [["pans", "ArrowRight"], ["orbits", "Shift+ArrowUp"]]) {
+  test(`3D canvas ${action} with the keyboard`, async ({ page }) => {
+    await page.goto("/");
+    await mode3D(page).click();
+    const canvas = page.getByLabel("Rysunek żółwia w 3D");
+    const top = page.getByRole("button", { name: "Z góry", exact: true });
+    await top.focus();
+    await page.keyboard.press("Shift+Tab");
+    await expect(canvas).toBeFocused();
+    const before = await canvas.screenshot();
+    await page.keyboard.press(key);
+    await expect.poll(async () => before.equals(await canvas.screenshot())).toBe(false);
+    await page.keyboard.press("Tab");
+    await expect(top).toBeFocused();
+  });
+}
+
 test("restores separate mode drafts without executing on reload", async ({
   page,
 }) => {
@@ -222,6 +271,30 @@ test("protects modified code when loading an example", async ({ page }) => {
     .click();
   await complete(page);
   await expect(stage(page)).toHaveAttribute("data-segments", "4");
+});
+
+test("leaving examples dismisses pending draft replacement", async ({ page }) => {
+  await page.goto("/");
+  await editor(page).fill("fd 73");
+  const examples = page.getByRole("link", { name: "Przykłady", exact: true });
+  await examples.click();
+  const trigger = page.locator("[data-slot=frame]")
+    .filter({ has: page.getByRole("heading", { name: "Kwadrat", exact: true }) })
+    .getByRole("button", { name: "Otwórz w pracowni" });
+  const dialog = page.getByRole("alertdialog");
+  await trigger.focus();
+  await page.keyboard.press("Enter");
+  await expect(dialog.getByRole("button", { name: "Anuluj" })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(trigger).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(dialog).toBeVisible();
+  await page.goBack();
+  await expect(dialog).toHaveCount(0);
+  await expect(editor(page)).toHaveValue("fd 73");
+  await examples.click();
+  await expect(trigger).toBeVisible();
+  await expect(dialog).toHaveCount(0);
 });
 
 test("storage failures leave the editor usable and show unsaved state", async ({
