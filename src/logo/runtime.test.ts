@@ -65,15 +65,25 @@ describe("Logo drawing behavior", () => {
     if (example.mode === "3d")
       expect(drawing.segments.some((s) => Math.abs(s.to[2]) > 1)).toBe(true);
   });
-  it("snapshots retain prior output after further execution", () => {
-    const runtime = new Executor(parse("fd 10 fd 10 rt 90", "2d"));
+  it("snapshots reuse unchanged ink and retain prior output after changes", () => {
+    const runtime = new Executor(parse("fd 10 rt 90 cs fd 20 fd 5", "2d"));
     runtime.tick();
     const before = runtime.snapshot();
     runtime.tick();
+    expect(runtime.snapshot().segments).toBe(before.segments);
     runtime.tick();
+    const cleared = runtime.snapshot();
+    runtime.tick();
+    const redrawn = runtime.snapshot();
+    runtime.tick();
+
     expect(before.turtle.position).toEqual([0, 10, 0]);
     expect(before.turtle.forward).toEqual([0, 1, 0]);
-    expect(before.segments).toHaveLength(1);
+    expect(before.segments.map((segment) => segment.to)).toEqual([[0, 10, 0]]);
+    expect(cleared.segments).toHaveLength(0);
+    expect(redrawn.segments).toHaveLength(1);
+    expect(redrawn.segments[0].to[0]).toBeCloseTo(20);
+    expect(runtime.snapshot().segments).toHaveLength(2);
   });
 });
 describe("finite execution and source errors", () => {

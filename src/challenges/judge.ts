@@ -253,7 +253,7 @@ export async function runChallenge(
         failure = `Wiersz ${cause.span.line}, kolumna ${cause.span.column}: ${cause.message}`;
       else failure = "Nie udało się wykonać programu.";
     }
-    const actual = runtime.snapshot().segments;
+    const actual = runtime.drawing.segments;
     options.onSample?.(actual);
     if (!failure) {
       const comparison = new GeometryComparison(expected, actual);

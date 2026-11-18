@@ -15,13 +15,13 @@ export function run(source: string, mode: Mode): HookOutcome {
   try {
     executor = new Executor(parse(source, mode));
     while (!executor.done) executor.tick();
-    return { segments: executor.snapshot().segments, error: null };
+    return { segments: executor.drawing.segments, error: null };
   } catch (cause) {
     const error =
       cause instanceof LogoError
         ? { message: cause.message, line: cause.span.line, column: cause.span.column }
         : { message: String(cause), line: 1, column: 1 };
-    return { segments: executor ? executor.snapshot().segments : [], error };
+    return { segments: executor?.drawing.segments ?? [], error };
   }
 }
 

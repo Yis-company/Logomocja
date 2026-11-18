@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { LineSegments2 } from "three/addons/lines/LineSegments2.js";
@@ -45,6 +45,8 @@ export default function Stage3D({
   const host = useRef<HTMLDivElement>(null);
   const state = useRef<SceneState | null>(null);
   const [error, setError] = useState(false);
+  const keyboardInstructions = useId();
+  const { segments, turtle: pose } = drawing;
   useEffect(() => {
     const element = host.current;
     if (!element) return;
@@ -57,12 +59,15 @@ export default function Stage3D({
     }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     element.appendChild(renderer.domElement);
+    renderer.domElement.tabIndex = 0;
     renderer.domElement.setAttribute("aria-label", "Rysunek żółwia w 3D");
+    renderer.domElement.setAttribute("aria-describedby", keyboardInstructions);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 2_000_000);
     camera.up.set(0, 0, 1);
     camera.position.set(300, -380, 320);
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.listenToKeyEvents(renderer.domElement);
     controls.target.set(0, 30, 20);
     controls.enableDamping = true;
     controls.minDistance = 30;
@@ -144,6 +149,8 @@ export default function Stage3D({
     const lost = (event: Event) => {
       event.preventDefault();
       stopRendering();
+      controls.enabled = false;
+      renderer.domElement.removeAttribute("tabindex");
       setError(true);
     };
     renderer.domElement.addEventListener("webglcontextlost", lost);
@@ -159,13 +166,13 @@ export default function Stage3D({
       renderer.forceContextLoss();
       renderer.domElement.remove();
     };
-  }, []);
+  }, [keyboardInstructions]);
   useEffect(() => {
     const context = state.current;
     if (!context) return;
     disposeGroup(context.lines);
     const groups = new Map<number, { positions: number[]; colors: number[] }>();
-    for (const segment of drawing.segments) {
+    for (const segment of segments) {
       let group = groups.get(segment.width);
       if (!group) {
         group = { positions: [], colors: [] };
@@ -185,7 +192,12 @@ export default function Stage3D({
       });
       context.lines.add(new LineSegments2(geometry, material));
     }
-    const { position, right, forward, up } = drawing.turtle;
+    context.requestRender();
+  }, [segments]);
+  useEffect(() => {
+    const context = state.current;
+    if (!context) return;
+    const { position, right, forward, up } = pose;
     context.turtle.position.fromArray(position);
     context.turtle.quaternion.setFromRotationMatrix(
       new THREE.Matrix4().makeBasis(
@@ -195,7 +207,7 @@ export default function Stage3D({
       ),
     );
     context.requestRender();
-  }, [drawing]);
+  }, [pose]);
   useEffect(() => {
     const context = state.current;
     if (!context) return;
@@ -269,6 +281,9 @@ export default function Stage3D({
         </div>
       ) : (
         <>
+          <p id={keyboardInstructions} className="sr-only">
+            Strzałki przesuwają widok. Shift i strzałki obracają widok.
+          </p>
           <div className="camera-presets">
             <button type="button" onClick={() => view("top")}>
               Z góry

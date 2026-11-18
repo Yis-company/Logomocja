@@ -56,7 +56,7 @@ export type Turtle = {
 export type Segment = { from: Vec3; to: Vec3; color: string; width: number };
 export type Drawing = {
   turtle: Turtle;
-  segments: Segment[];
+  segments: readonly Segment[];
   commands: number;
   activeLine: number | null;
 };
@@ -88,7 +88,7 @@ export const initialTurtle = (): Turtle => ({
   color: "#16866a",
   width: 3,
 });
-export const emptyDrawing = (): Drawing => ({
+export const emptyDrawing = (): Drawing & { segments: Segment[] } => ({
   turtle: initialTurtle(),
   segments: [],
   commands: 0,
