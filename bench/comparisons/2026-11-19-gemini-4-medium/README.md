@@ -11,6 +11,12 @@ Four scored Logomocja app runs on 19 November 2026 used the frozen v2 task. Both
 
 All four apps installed and built. Each score includes 595 language cases and 23 stress cases. Every app passed the stress cases through both paths.
 
+The [benchmark explorer](https://yis-company.github.io/Logomocja/) links to playable
+copies rebuilt from the archived sources in env-7 with Bun 1.4.4 and Node 26.13.1.
+The rebuilds use the archived lockfiles where the app has dependencies, with a
+Pages base path for each run. The scores and screenshots come from the original
+verification.
+
 The Impeccable runs took 28.0% longer for Neon and 28.5% longer for Hydrogen. Neon stayed at full conformance. Hydrogen passed 13 cases it previously missed and missed 12 cases it previously passed. In the layered Hydrogen build, 13 failures report an incorrect error column, one reports an unexpected variable error, and two empty-repeat cases throw a `TypeError`.
 
 ## Screenshots

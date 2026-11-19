@@ -87,6 +87,12 @@ function dockerEvidence(id: string) {
   };
 }
 
+function hostedBuild(id: string) {
+  return buildFiles.has(`../builds/${id}/index.html`)
+    ? `${import.meta.env.BASE_URL}builds/${id}/`
+    : undefined;
+}
+
 function dockerAttempt(run: RunResult): Attempt {
   const { directory, transcriptUrl } = dockerEvidence(run.id);
   const built = run.verify?.built ?? false;
@@ -114,12 +120,12 @@ function dockerAttempt(run: RunResult): Attempt {
     cases: run.cases ?? undefined,
     humanScore: run.humanScore ?? undefined,
     notes: run.notes || undefined,
-    statusDetail: run.statusDetail === "success" ? undefined : run.statusDetail || undefined,
+    statusDetail:
+      run.statusDetail === "success"
+        ? undefined
+        : run.statusDetail || undefined,
     baselineId: run.baselineId ?? undefined,
-    buildUrl:
-      built && buildFiles.has(`../builds/${run.id}/index.html`)
-        ? `${import.meta.env.BASE_URL}builds/${run.id}/`
-        : undefined,
+    buildUrl: built ? hostedBuild(run.id) : undefined,
     sourceUrl: publishedSourceIds.has(run.id)
       ? `${repository}/tree/build/${run.id}`
       : undefined,
@@ -188,6 +194,7 @@ function pilotAttempt(attempt: (typeof pilot.attempts)[number]): Attempt {
     conformance: run?.conformance,
     generatedTestsPassed: run?.generatedTestsPassed,
     statusDetail: attempt.reason,
+    buildUrl: run ? hostedBuild(`gemini-4-medium-${run.id}`) : undefined,
     sourceUrl: run ? `${files}/${directory}/source.tar.gz` : undefined,
     evidenceUrl: run
       ? `${files}/${directory}/conformance.json`

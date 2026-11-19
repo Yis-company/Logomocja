@@ -1,8 +1,9 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { conformance } from "../benchmark";
 import type { Attempt } from "../benchmark-attempts";
 import type { BenchmarkCopy, BenchmarkLanguage } from "../benchmark-copy";
-import { Button } from "../components/ui/button";
+import { Button, buttonVariants } from "../components/ui/button";
 
 const Gallery = lazy(() => import("./BenchmarkGallery"));
 
@@ -48,6 +49,23 @@ type Props = {
   format: ReturnType<typeof benchmarkFormats>;
 };
 
+export function TryApp({ run, copy }: { run: Attempt; copy: BenchmarkCopy }) {
+  return run.buildUrl ? (
+    <a
+      className={buttonVariants({ size: "sm" })}
+      href={run.buildUrl}
+      target="_blank"
+      rel="noopener"
+      title={copy.newTab}
+    >
+      {copy.build}
+      <ExternalLink aria-hidden size={14} />
+    </a>
+  ) : (
+    <span className="benchmark-no-build">{copy.noBuild}</span>
+  );
+}
+
 export function RunDetails({
   run,
   id,
@@ -62,7 +80,6 @@ export function RunDetails({
   onClose: () => void;
 }) {
   const title = useRef<HTMLHeadingElement>(null);
-  const [showGallery, setShowGallery] = useState(false);
   useEffect(() => {
     title.current?.focus();
   }, []);
@@ -70,19 +87,35 @@ export function RunDetails({
   return (
     <section className="benchmark-evidence" aria-labelledby="run-details">
       <div className="benchmark-section-header">
-        <h2 ref={title} id="run-details" tabIndex={-1}>
-          {copy.details}
-        </h2>
-        <Button type="button" variant="outline" onClick={onClose}>
-          {copy.close}
-        </Button>
+        <div>
+          <h2 ref={title} id="run-details" tabIndex={-1}>
+            {run?.model ?? copy.details}
+          </h2>
+          {run && (
+            <p>
+              {copy.values[run.condition] ?? run.condition} ·{" "}
+              {copy.values[run.effort ?? "default"] ?? run.effort} ·{" "}
+              {copy.values[run.source]} · {run.protocol}
+            </p>
+          )}
+        </div>
+        <div className="benchmark-links">
+          {run && <TryApp run={run} copy={copy} />}
+          <Button type="button" variant="outline" onClick={onClose}>
+            {copy.close}
+          </Button>
+        </div>
       </div>
       {run ? (
         <>
-          <p>
-            <strong>{run.model}</strong> ·{" "}
-            {copy.values[run.condition] ?? run.condition}
-          </p>
+          {run.gallery ? (
+            <Suspense fallback={<p role="status">{copy.loading}</p>}>
+              <Gallery gallery={run.gallery} prompt={run.prompt} copy={copy} />
+            </Suspense>
+          ) : (
+            <p>{copy.galleryEmpty}</p>
+          )}
+          <h3>{copy.details}</h3>
           <p>
             <code>{id}</code>
           </p>
@@ -106,6 +139,14 @@ export function RunDetails({
             <div>
               <dt>{copy.status}</dt>
               <dd>{copy.values[run.status]}</dd>
+            </div>
+            <div>
+              <dt>{copy.conformance}</dt>
+              <dd>{format.score(run, "interpreter")}</dd>
+            </div>
+            <div>
+              <dt>{copy.editor}</dt>
+              <dd>{format.score(run, "editor")}</dd>
             </div>
             <div>
               <dt>{copy.time}</dt>
@@ -169,11 +210,6 @@ export function RunDetails({
           {run.statusDetail && <p lang="en">{run.statusDetail}</p>}
           {run.notes && <p>{run.notes}</p>}
           <div className="benchmark-links">
-            {run.buildUrl && (
-              <a className="text-link" href={run.buildUrl}>
-                {copy.build}
-              </a>
-            )}
             {run.sourceUrl && (
               <a className="text-link" href={run.sourceUrl}>
                 {copy.code}
@@ -214,23 +250,6 @@ export function RunDetails({
                 ))}
               </dl>
             </details>
-          )}
-          {run.gallery && (
-            <div className="benchmark-suites">
-              {showGallery ? (
-                <Suspense fallback={<p role="status">{copy.loading}</p>}>
-                  <Gallery run={run} copy={copy} />
-                </Suspense>
-              ) : (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowGallery(true)}
-                >
-                  {copy.viewGallery}
-                </Button>
-              )}
-            </div>
           )}
         </>
       ) : (

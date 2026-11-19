@@ -416,22 +416,38 @@ export default function App() {
       </footer>
     </>
   );
+  if (isBenchmark) {
+    return (
+      <main>
+        <Suspense
+          fallback={
+            <div className="benchmark-page">
+              <h1>Benchmark</h1>
+              <p role="status">{benchmarkCopy[language].loading}</p>
+            </div>
+          }
+        >
+          <Benchmark theme={theme} toggleTheme={toggle} />
+        </Suspense>
+      </main>
+    );
+  }
+  if (import.meta.env.VITE_PAGES && pathname === "/") {
+    return <Navigate to={{ pathname: benchmarkPath, search }} replace />;
+  }
   return (
     <SidebarProvider
       open={true}
       onOpenChange={() => {}}
       style={{ "--sidebar-width": "208px" } as React.CSSProperties}
     >
-      <AppSidebar theme={theme} toggleTheme={toggle} language={language} isBenchmark={isBenchmark} />
+      <AppSidebar theme={theme} toggleTheme={toggle} />
       <main className="workspace">
         <div className="mobile-navigation">
-          <SidebarTrigger aria-label={language === "en" ? "Open navigation" : "Otwórz nawigację"} />
+          <SidebarTrigger aria-label="Otwórz nawigację" />
           <span>logomocja.</span>
         </div>
         <Routes>
-          {import.meta.env.VITE_PAGES && (
-            <Route path="/" element={<Navigate to={{ pathname: benchmarkPath, search }} replace />} />
-          )}
           <Route path={studioPath} element={studio} />
           <Route
             path="/examples"
@@ -443,23 +459,6 @@ export default function App() {
             }
           />
           <Route path="/commands" element={<Commands />} />
-          <Route
-            path={benchmarkPath}
-            element={
-              <Suspense
-                fallback={
-                  <header className="benchmark-header">
-                    <div>
-                      <h1 tabIndex={-1}>Benchmark</h1>
-                      <p role="status">{benchmarkCopy[language].loading}</p>
-                    </div>
-                  </header>
-                }
-              >
-                <Benchmark />
-              </Suspense>
-            }
-          />
           <Route path="/challenges" element={<ChallengeCatalog />} />
           <Route
             path="/challenges/:slug"
