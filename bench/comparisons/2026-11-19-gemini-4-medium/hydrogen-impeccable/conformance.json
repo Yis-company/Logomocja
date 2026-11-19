@@ -1,0 +1,156 @@
+{
+  "hook": true,
+  "open": true,
+  "suites": {
+    "combined": {
+      "passed": 579,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: division by zero deep inside an argument is reported at its first token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "claude-fable-5-1: unassigned variable in a compound argument is reported at the first token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 8"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna lokalna „x” nie ma jeszcze przypisanej wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token yaw",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token backward",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: empty inner repeats leave outer counter intact",
+          "reason": "run() threw: evaluate: TypeError: Cannot read properties of undefined (reading 'line')\n    at ZE.step (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/assets/index-BV2pQNMy.js:53:18771)\n    at ZE.runToEnd (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/as"
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: empty body bookkeeping exceeds operation limit",
+          "reason": "run() threw: evaluate: TypeError: Cannot read properties of undefined (reading 'line')\n    at ZE.step (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/assets/index-BV2pQNMy.js:53:18771)\n    at ZE.runToEnd (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/as"
+        }
+      ]
+    },
+    "stress": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    },
+    "combined@open": {
+      "passed": 579,
+      "total": 595,
+      "failures": [
+        {
+          "name": "claude-fable-5-1: division by zero deep inside an argument is reported at its first token",
+          "reason": "expected error at column 4, got 13"
+        },
+        {
+          "name": "claude-fable-5-1: unassigned variable in a compound argument is reported at the first token",
+          "reason": "expected error at column 4, got 9"
+        },
+        {
+          "name": "gpt-6-astra: name division first argument token",
+          "reason": "expected error at column 4, got 8"
+        },
+        {
+          "name": "gpt-6-astra: global declared after read",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra: conditional declaration unassigned",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "claude-fable-5-1-round2: global is read inside a procedure until the local niech shadows it",
+          "reason": "unexpected error: line 3: Zmienna lokalna „x” nie ma jeszcze przypisanej wartości."
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token assignment",
+          "reason": "expected error at column 7, got 8"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token condition rhs",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token yaw",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: runtime start token backward",
+          "reason": "expected error at column 4, got 6"
+        },
+        {
+          "name": "gpt-6-astra-round2: second call argument fails before body",
+          "reason": "expected error at column 8, got 9"
+        },
+        {
+          "name": "gpt-6-astra-round2: unassigned legacy reference inside assignment",
+          "reason": "expected error at column 7, got 12"
+        },
+        {
+          "name": "gpt-6-astra-round2: empty inner repeats leave outer counter intact",
+          "reason": "open() threw: evaluate: TypeError: Cannot read properties of undefined (reading 'line')\n    at ZE.step (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/assets/index-BV2pQNMy.js:53:18771)\n    at ZE.runToEnd (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/a"
+        },
+        {
+          "name": "gpt-6-astra-round2: local declaration in skipped nested repeat is runtime",
+          "reason": "expected error at column 9, got 10"
+        },
+        {
+          "name": "gpt-6-astra-round2: sequential calls do not retain conditional local",
+          "reason": "expected error at column 4, got 5"
+        },
+        {
+          "name": "gpt-6-astra-round2: empty body bookkeeping exceeds operation limit",
+          "reason": "open() threw: evaluate: TypeError: Cannot read properties of undefined (reading 'line')\n    at ZE.step (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/assets/index-BV2pQNMy.js:53:18771)\n    at ZE.runToEnd (http://localhost/Logomocja/builds/gemini-impeccable-v1-hydrogen/a"
+        }
+      ]
+    },
+    "stress@open": {
+      "passed": 23,
+      "total": 23,
+      "failures": []
+    }
+  }
+}

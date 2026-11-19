@@ -249,3 +249,7 @@ The Fable 5.1 captures were taken from its archived deployed app on 11 November.
 Four original base attempts failed: low/medium on rejected credentials, high/xhigh on the pinned CLI's 32,000-token response ceiling. Those records remain unchanged. The low retry and focused low Impeccable run completed. The medium retry has an agent success event but no finalized harness result, verification, scores or imported source; its transcript and [interruption receipt](results/v2-e5-claude-claude-fable-5-2-20261110-222058Z/interrupted.json) are preserved and excluded from scoring. Its termination cause remains unconfirmed. The remaining matrix is incomplete.
 
 Both completed e5 apps saved their build, scores, screenshots and source branch before host scratch cleanup failed with `EACCES`. Their app result records are completed; their queue/service exits remain failed. The nested-output cleanup issue is fixed from environment e6 onward; these e5 records are not rewritten. Generated apps and failed attempts have not been repaired, output-token settings have not changed, and creating the PR does not publish a Pages release.
+
+## Gemini 4 Medium comparison — 19 November 2026
+
+Gemini 4 Neon and Hydrogen each built Logomocja from the frozen v2 brief with and without Impeccable. Antigravity generated these apps on macOS. The standalone comparison records the exact CLI versions, independent checks, seven-attempt ledger, generated source, and paired screenshots. [Gemini 4 Medium comparison](comparisons/2026-11-19-gemini-4-medium/README.md)
