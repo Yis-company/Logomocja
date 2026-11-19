@@ -1,6 +1,8 @@
-import { ArrowDown, ArrowDownUp, ArrowUp } from "lucide-react";
+// biome-ignore-all lint/a11y/noRedundantRoles: Explicit table roles retain semantics when CSS stacks rows.
+import { ArrowDown, ArrowDownUp, ArrowUp, Moon, Sun } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router";
+import { version } from "../../package.json";
 import {
   canCompare,
   filterAttempts,
@@ -11,15 +13,23 @@ import {
   type FilterKey,
   type SortKey,
 } from "../benchmark";
-import { attempts, methodology, pilotReport } from "../benchmark-attempts";
+import {
+  attempts,
+  methodology,
+  pilotReport,
+  repository,
+} from "../benchmark-attempts";
 import { benchmarkCopy } from "../benchmark-copy";
+import { TurtleMark } from "../components/Icon";
 import { Button, buttonVariants } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { studioPath } from "../routes";
+import { benchmarkPath, studioPath } from "../routes";
+import type { Theme } from "../theme";
 import {
   benchmarkFormats,
   RunComparison,
   RunDetails,
+  TryApp,
 } from "./BenchmarkEvidence";
 
 const pageSize = 25;
@@ -37,12 +47,20 @@ const additionalFilters = filterKeys.filter(
   (key) => !primaryFilters.includes(key),
 );
 
-export function Benchmark() {
+export function Benchmark({
+  theme,
+  toggleTheme,
+}: {
+  theme: Theme;
+  toggleTheme: () => void;
+}) {
   const [params, setParams] = useSearchParams();
   const title = useRef<HTMLHeadingElement>(null);
+  const returningToRow = useRef(false);
   const detailsOpen = params.has("run");
   useEffect(() => {
-    if (!detailsOpen) title.current?.focus({ preventScroll: true });
+    if (!detailsOpen && !returningToRow.current)
+      title.current?.focus({ preventScroll: true });
   }, [detailsOpen]);
   const language = params.get("lang") === "pl" ? "pl" : "en";
   const copy = benchmarkCopy[language];
@@ -78,6 +96,13 @@ export function Benchmark() {
   );
   const hasFilters =
     params.has("q") || filterKeys.some((key) => params.has(key));
+  const sortOptions: [SortKey, string][] = [
+    ["date", copy.date],
+    ["model", copy.model],
+    ["conformance", copy.conformance],
+    ["time", copy.time],
+    ["cost", copy.cost],
+  ];
 
   function update(values: Record<string, string | null>, replace = false) {
     const next = new URLSearchParams(params);
@@ -101,12 +126,11 @@ export function Benchmark() {
   }
 
   function closeDetails() {
+    returningToRow.current = true;
     update({ run: null });
     requestAnimationFrame(() => {
-      const trigger = document
-        .getElementById(`run-${id}`)
-        ?.querySelector("button");
-      (trigger ?? document.getElementById("benchmark-title"))?.focus();
+      (document.getElementById(`evidence-${id}`) ?? title.current)?.focus();
+      returningToRow.current = false;
     });
   }
 
@@ -136,6 +160,18 @@ export function Benchmark() {
     );
   }
 
+  function changeSort(key: SortKey) {
+    const direction =
+      sort.key === key
+        ? sort.direction === "asc"
+          ? "desc"
+          : "asc"
+        : key === "conformance" || key === "date"
+          ? "desc"
+          : "asc";
+    update({ sort: key, order: direction, page: null });
+  }
+
   function sortHeader(key: SortKey, label: string) {
     const active = sort.key === key;
     const Glyph = active
@@ -146,6 +182,7 @@ export function Benchmark() {
     return (
       <th
         scope="col"
+        role="columnheader"
         aria-sort={
           active
             ? sort.direction === "asc"
@@ -157,19 +194,7 @@ export function Benchmark() {
         <button
           type="button"
           disabled={isMetric(key) && !oneProtocol}
-          onClick={() =>
-            update({
-              sort: key,
-              order: active
-                ? sort.direction === "asc"
-                  ? "desc"
-                  : "asc"
-                : key === "conformance"
-                  ? "desc"
-                  : "asc",
-              page: null,
-            })
-          }
+          onClick={() => changeSort(key)}
         >
           {label}
           <Glyph aria-hidden size={13} />
@@ -181,17 +206,20 @@ export function Benchmark() {
   return (
     <div className="benchmark-page">
       <header className="benchmark-header">
-        <div>
-          <h1 id="benchmark-title" ref={title} tabIndex={-1}>
-            Benchmark
-          </h1>
-          <p>{copy.intro}</p>
-        </div>
+        <Link
+          className="brand benchmark-brand"
+          to={{
+            pathname: benchmarkPath,
+            search: language === "pl" ? "?lang=pl" : "",
+          }}
+        >
+          <TurtleMark size={28} />
+          logomocja<span className="brand-dot">.</span>
+        </Link>
         <div className="benchmark-header-actions">
           <fieldset className="benchmark-language">
             <legend className="sr-only">{copy.language}</legend>
             <Button
-              size="lg"
               variant={language === "en" ? "secondary" : "ghost"}
               type="button"
               lang="en"
@@ -202,7 +230,6 @@ export function Benchmark() {
               EN
             </Button>
             <Button
-              size="lg"
               variant={language === "pl" ? "secondary" : "ghost"}
               type="button"
               lang="pl"
@@ -213,11 +240,52 @@ export function Benchmark() {
               PL
             </Button>
           </fieldset>
-          <Link className={buttonVariants({ size: "lg" })} to={studioPath}>
+          <Button
+            type="button"
+            size="icon"
+            variant="ghost"
+            aria-label={theme === "dark" ? copy.lightTheme : copy.darkTheme}
+            onClick={toggleTheme}
+          >
+            {theme === "dark" ? <Sun aria-hidden /> : <Moon aria-hidden />}
+          </Button>
+          <Link
+            className={buttonVariants({ variant: "outline" })}
+            to={studioPath}
+          >
             {copy.studio}
           </Link>
         </div>
       </header>
+      <div className="benchmark-intro">
+        <h1 id="benchmark-title" ref={title} tabIndex={-1}>
+          Benchmark
+        </h1>
+        <p>{copy.intro}</p>
+        <div className="benchmark-links">
+          <a className="text-link" href={methodology}>
+            {copy.method}
+          </a>
+          <a className="text-link" href={pilotReport}>
+            {copy.pilot}
+          </a>
+          <a className="text-link" href={repository}>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      {id && (
+        <RunDetails
+          key={id}
+          id={id}
+          run={run}
+          copy={copy}
+          format={format}
+          onOpen={(next) => update({ run: next })}
+          onClose={closeDetails}
+        />
+      )}
 
       <div className="benchmark-filters">
         <div className="benchmark-filter-grid">
@@ -234,25 +302,15 @@ export function Benchmark() {
           </label>
           {primaryFilters.map(filter)}
         </div>
-        <details
-          open={additionalFilters.some((key) => params.has(key)) || undefined}
-        >
-          <summary>{copy.more}</summary>
-          <div className="benchmark-filter-grid">
-            {additionalFilters.map(filter)}
-          </div>
-        </details>
-      </div>
-
-      <div className="benchmark-result-tools">
-        <span role="status">
-          {copy.results(
-            format.count(ordered.length ? offset + 1 : 0),
-            format.count(offset + visible.length),
-            format.count(ordered.length),
-          )}
-        </span>
-        <div className="benchmark-links">
+        <div className="benchmark-filter-options">
+          <details
+            open={additionalFilters.some((key) => params.has(key)) || undefined}
+          >
+            <summary>{copy.more}</summary>
+            <div className="benchmark-filter-grid">
+              {additionalFilters.map(filter)}
+            </div>
+          </details>
           {hasFilters && (
             <button
               type="button"
@@ -268,48 +326,123 @@ export function Benchmark() {
               {copy.clear}
             </button>
           )}
-          {selected.length > 0 && (
-            <button
-              type="button"
-              className="text-link"
-              onClick={() => document.getElementById("run-comparison")?.focus()}
-            >
-              {copy.comparison} ({selected.length}/2)
-            </button>
-          )}
-          <a className="text-link" href={methodology}>
-            {copy.method}
-          </a>
-          <a className="text-link" href={pilotReport}>
-            {copy.pilot}
-          </a>
         </div>
       </div>
 
-      {!oneProtocol && <p className="benchmark-sort-scope">{copy.sortScope}</p>}
-      {/* biome-ignore lint/a11y/noNoninteractiveTabindex: Make the horizontal scrolling region keyboard-accessible. */}
-      <section id="benchmark-results" className="table-scroll benchmark-scroll" aria-label={copy.attempts} tabIndex={0}>
-        <table className="benchmark-table" aria-label={copy.attempts}>
-          <thead>
-            <tr>
-              <th scope="col">
+      <div className="benchmark-result-tools">
+        <span role="status">
+          {copy.results(
+            format.count(ordered.length ? offset + 1 : 0),
+            format.count(offset + visible.length),
+            format.count(ordered.length),
+          )}
+        </span>
+        <label className="benchmark-mobile-sort">
+          <span className="benchmark-mobile-sort-label">{copy.sort}</span>
+          <select
+            value={`${sort.key}:${sort.direction}`}
+            onChange={(event) => {
+              const [key, direction] = event.target.value.split(":");
+              update({ sort: key, order: direction, page: null });
+            }}
+          >
+            {sortOptions.flatMap(([key, label]) =>
+              [
+                ["desc", copy.descending],
+                ["asc", copy.ascending],
+              ].map(([direction, order]) => (
+                <option
+                  key={`${key}:${direction}`}
+                  value={`${key}:${direction}`}
+                  disabled={isMetric(key) && !oneProtocol}
+                >
+                  {label} · {order}
+                </option>
+              )),
+            )}
+          </select>
+        </label>
+        {!oneProtocol && (
+          <p className="benchmark-sort-scope">{copy.sortScope}</p>
+        )}
+      </div>
+
+      {selected.length > 0 && (
+        <div className="benchmark-selection">
+          <div>
+            <strong>
+              {copy.comparison} ({selected.length}/2)
+            </strong>
+            <p>
+              {selected
+                .map(
+                  (attempt) =>
+                    `${attempt.model} · ${copy.values[attempt.condition] ?? attempt.condition}`,
+                )
+                .join(" / ")}
+            </p>
+          </div>
+          <div className="benchmark-links">
+            {eligibleSecond && (
+              <Button
+                type="button"
+                onClick={() =>
+                  document.getElementById("run-comparison")?.focus()
+                }
+              >
+                {copy.compare}
+              </Button>
+            )}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => update({ compare: null })}
+            >
+              {copy.clearComparison}
+            </Button>
+          </div>
+        </div>
+      )}
+
+      <section
+        id="benchmark-results"
+        className="benchmark-results"
+        aria-label={copy.attempts}
+        tabIndex={-1}
+      >
+        {/* Explicit roles preserve table navigation when rows stack at narrow widths. */}
+        <table
+          className="benchmark-table"
+          aria-label={copy.attempts}
+          role="table"
+        >
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">
                 <span className="sr-only">{copy.compare}</span>
               </th>
               {sortHeader("model", copy.model)}
-              <th scope="col">{copy.source} / {copy.protocol}</th>
-              <th scope="col">{copy.task}</th>
-              <th scope="col">{copy.status}</th>
+              <th scope="col" role="columnheader">
+                {copy.source} / {copy.protocol}
+              </th>
+              <th scope="col" role="columnheader">
+                {copy.status}
+              </th>
               {sortHeader("conformance", copy.conformance)}
               {sortHeader("time", copy.time)}
               {sortHeader("cost", copy.cost)}
               {sortHeader("date", copy.date)}
-              <th scope="col">{copy.evidence}</th>
+              <th scope="col" role="columnheader">
+                {copy.actions}
+              </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             {visible.length === 0 && (
-              <tr>
-                <td colSpan={10}>{copy.none}</td>
+              <tr role="row">
+                <td className="benchmark-empty" colSpan={9} role="cell">
+                  {copy.none}
+                </td>
               </tr>
             )}
             {visible.map((attempt) => {
@@ -320,10 +453,10 @@ export function Benchmark() {
               return (
                 <tr
                   key={attempt.id}
-                  id={`run-${attempt.id}`}
+                  role="row"
                   data-selected={checked || undefined}
                 >
-                  <td>
+                  <td className="benchmark-compare-cell" role="cell">
                     {canCompare(attempt) && (
                       <label className="benchmark-checkbox">
                         <input
@@ -338,48 +471,62 @@ export function Benchmark() {
                       </label>
                     )}
                   </td>
-                  <th scope="row">
-                    <button
-                      type="button"
-                      className="text-link"
-                      aria-label={copy.viewRun(attempt.model, attempt.id)}
-                      onClick={() => update({ run: attempt.id })}
-                    >
-                      {attempt.model}
-                    </button>
-                    <span>
+                  <th scope="row" role="rowheader" className="benchmark-model">
+                    {attempt.model}
+                    <span className="benchmark-cell-meta">
                       {copy.values[attempt.condition] ?? attempt.condition} ·{" "}
                       {copy.values[attempt.effort ?? "default"] ??
                         attempt.effort}
                     </span>
                   </th>
-                  <td>
+                  <td className="benchmark-protocol" role="cell">
                     {copy.values[attempt.source]}
-                    <span>{attempt.protocol}</span>
+                    <span className="benchmark-cell-meta">
+                      {attempt.protocol}
+                    </span>
                   </td>
-                  <td>{copy.values[attempt.task]}</td>
-                  <td>
+                  <td className="benchmark-status-cell" role="cell">
                     <span
                       className="benchmark-status"
                       data-status={attempt.status}
                     >
                       {copy.values[attempt.status]}
                     </span>
+                    <span className="benchmark-cell-meta">
+                      {copy.values[attempt.task]}
+                    </span>
                   </td>
-                  <td className="benchmark-number">
+                  <td className="benchmark-score" role="cell">
+                    <span className="benchmark-cell-label">{copy.score}</span>
                     {format.score(attempt, "interpreter")}
                   </td>
-                  <td className="benchmark-number">{format.time(attempt)}</td>
-                  <td className="benchmark-number">{format.cost(attempt)}</td>
-                  <td>
+                  <td className="benchmark-time" role="cell">
+                    <span className="benchmark-cell-label">{copy.time}</span>
+                    {format.time(attempt)}
+                  </td>
+                  <td className="benchmark-cost" role="cell">
+                    <span className="benchmark-cell-label">{copy.cost}</span>
+                    {format.cost(attempt)}
+                  </td>
+                  <td className="benchmark-date" role="cell">
                     <time dateTime={attempt.startedAt}>
                       {format.date(attempt.startedAt)}
                     </time>
                   </td>
-                  <td>
-                    <a className="text-link" href={attempt.evidenceUrl}>
-                      {copy.evidence}
-                    </a>
+                  <td className="benchmark-action-cell" role="cell">
+                    <div className="benchmark-row-actions">
+                      <Button
+                        type="button"
+                        id={`evidence-${attempt.id}`}
+                        size="sm"
+                        variant="outline"
+                        aria-label={`${copy.viewEvidence}: ${attempt.model}, ${attempt.id}`}
+                        onClick={() => update({ run: attempt.id })}
+                      >
+                        {copy.viewEvidence}
+                      </Button>
+                      <TryApp run={attempt} copy={copy} />
+                    </div>
                   </td>
                 </tr>
               );
@@ -411,18 +558,6 @@ export function Benchmark() {
           </nav>
         )}
       </div>
-
-      {id && (
-        <RunDetails
-          key={id}
-          id={id}
-          run={run}
-          copy={copy}
-          format={format}
-          onOpen={(next) => update({ run: next })}
-          onClose={closeDetails}
-        />
-      )}
 
       {compareIds.length > 0 && (
         <section
@@ -458,6 +593,20 @@ export function Benchmark() {
         </section>
       )}
       <p className="benchmark-method-note">{copy.pilotNote}</p>
+      <footer className="benchmark-footer">
+        <nav className="benchmark-links" aria-label={copy.studioResources}>
+          <Link className="text-link" to="/examples">
+            {copy.examples}
+          </Link>
+          <Link className="text-link" to="/commands">
+            {copy.commands}
+          </Link>
+          <Link className="text-link" to="/challenges">
+            {copy.challenges}
+          </Link>
+        </nav>
+        <span className="app-version">v{version}</span>
+      </footer>
     </div>
   );
 }

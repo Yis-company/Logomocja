@@ -15,29 +15,24 @@ import {
   useSidebar,
 } from "./ui/sidebar";
 const studioDestinations = [
-  [studioPath, "Pracownia", "Studio", "code"],
-  ["/examples", "Przykłady", "Examples", "grid"],
-  ["/commands", "Polecenia", "Commands", "book"],
-  ["/challenges", "Wyzwania", "Challenges", "trophy"],
+  [studioPath, "Pracownia", "code"],
+  ["/examples", "Przykłady", "grid"],
+  ["/commands", "Polecenia", "book"],
+  ["/challenges", "Wyzwania", "trophy"],
 ] as const;
-const benchmarkDestination = [benchmarkPath, "Benchmark", "Benchmark", "spark"] as const;
+const benchmarkDestination = [benchmarkPath, "Benchmark", "spark"] as const;
 const destinations = import.meta.env.VITE_PAGES
   ? [benchmarkDestination, ...studioDestinations]
   : [...studioDestinations, benchmarkDestination];
 export function AppSidebar({
   theme,
   toggleTheme,
-  language,
-  isBenchmark,
 }: {
   theme: Theme;
   toggleTheme: () => void;
-  language: "en" | "pl";
-  isBenchmark: boolean;
 }) {
   const { setOpenMobile } = useSidebar();
-  const english = language === "en";
-  const themeLabel = theme === "dark" ? (english ? "Light theme" : "Jasny motyw") : (english ? "Dark theme" : "Ciemny motyw");
+  const themeLabel = theme === "dark" ? "Jasny motyw" : "Ciemny motyw";
   return (
     <Sidebar className="app-sidebar">
       <SidebarHeader className="px-5 pt-7 pb-9">
@@ -45,17 +40,17 @@ export function AppSidebar({
           className="brand"
           to="/"
           onClick={() => setOpenMobile(false)}
-          aria-label={english ? "Logomocja home" : "Logomocja — strona główna"}
+          aria-label="Logomocja — strona główna"
         >
           <TurtleMark size={34} />
           logomocja<span className="brand-dot">.</span>
         </Link>
       </SidebarHeader>
       <SidebarContent className="px-3">
-        {!isBenchmark && <p className="nav-caption">PRACOWNIA LOGO</p>}
-        <nav aria-label={english ? "Main navigation" : "Nawigacja główna"}>
+        <p className="nav-caption">PRACOWNIA LOGO</p>
+        <nav aria-label="Nawigacja główna">
           <SidebarMenu>
-            {destinations.map(([path, polish, englishLabel, icon]) => (
+            {destinations.map(([path, label, icon]) => (
               <SidebarMenuItem key={path}>
                 <NavLink
                   to={path}
@@ -69,7 +64,7 @@ export function AppSidebar({
                       className="h-11 px-3 text-xs"
                     >
                       <Icon name={icon} size={18} />
-                      <span>{english ? englishLabel : polish}</span>
+                      <span>{label}</span>
                     </SidebarMenuButton>
                   )}
                 </NavLink>
@@ -79,18 +74,16 @@ export function AppSidebar({
         </nav>
       </SidebarContent>
       <SidebarFooter className="p-6 gap-3">
-        {!isBenchmark && <p>Szkice zapisane lokalnie</p>}
+        <p>Szkice zapisane lokalnie</p>
         <Button
           variant="ghost"
           onClick={toggleTheme}
-          aria-label={
-            english ? `Enable ${themeLabel.toLowerCase()}` : theme === "dark" ? "Włącz jasny motyw" : "Włącz ciemny motyw"
-          }
+          aria-label={theme === "dark" ? "Włącz jasny motyw" : "Włącz ciemny motyw"}
         >
           <Icon name={theme === "dark" ? "sun" : "moon"} />
           {themeLabel}
         </Button>
-        <span className="app-version" title={`${english ? "Version" : "Wersja"} ${version}`}>
+        <span className="app-version" title={`Wersja ${version}`}>
           v{version}
         </span>
       </SidebarFooter>

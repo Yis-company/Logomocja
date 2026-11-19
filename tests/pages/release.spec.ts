@@ -39,7 +39,7 @@ test("production 2D procedures, stepping, persistence and dark theme", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("./");
-  await page.getByRole("link", { name: "Try the studio", exact: true }).click();
+  await page.getByRole("link", { name: "Reference studio", exact: true }).click();
   await editor(page).fill(
     "oto kwadrat :bok\npowtorz 4 [np :bok pw 90]\njuż\nkwadrat 60",
   );
