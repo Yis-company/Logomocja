@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logomocja benchmark homepage plan</title>
+<style>
+html { color-scheme: light dark; }
+body { margin: 0; }
+main { max-width: 75ch; margin: 0 auto; color: var(--foreground, CanvasText); font-family: var(--font-sans, system-ui); font-size: 15px; line-height: 1.55; }
+h1, h2, p, ol { margin: 0; }
+h1 { font-size: clamp(1.55rem, 5vw, 2.05rem); line-height: 1.15; letter-spacing: -.035em; }
+h2 { margin: 22px 0 7px; font-size: 1.1rem; letter-spacing: -.012em; }
+h1 + p { margin-top: 9px; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: .92em; }
+th, td { padding: 6px 9px 6px 0; border-bottom: 1px solid var(--border, color-mix(in srgb, CanvasText 24%, transparent)); }
+td:last-child, th:last-child { text-align: right; white-space: nowrap; padding-right: 0; font-variant-numeric: tabular-nums; }
+ol { padding-inline-start: 1.4em; }
+li { padding-inline-start: .2em; }
+li + li { margin-top: 6px; }
+@media (max-width: 450px) {
+  main { font-size: 14px; }
+  th, td { padding-right: 6px; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Logomocja benchmark homepage</h1>
+<p>Make GitHub Pages and the README benchmark-first. Open on one results table, with every source visible by default. Use English by default with an EN/PL switch. Keep the Polish studio one click away.</p>
+<h2>One table · sample rows</h2>
+<div class="table-scroll"><table aria-label="Example rows from the unified results table"><thead><tr><th scope="col">Model</th><th scope="col">Source</th><th scope="col">Protocol</th><th scope="col">Condition</th><th scope="col">Interpreter</th></tr></thead><tbody><tr><td>Gemini 4 Neon</td><td>Antigravity</td><td>v2 · macOS</td><td>Base</td><td>618/618</td></tr><tr><td>Claude Fable 5.2</td><td>Docker</td><td>v2/e5</td><td>Base</td><td>617/618</td></tr></tbody></table></div>
+<h2>Scale bound</h2>
+<p>One static metadata transfer, one pass per filter, zero API calls. Docker records are 9.7 KB gzip today. At 10×, expect about 97 KB and render 25 rows per page. At 100×, roughly 1 MB compressed makes transfer and parsing the first limits. Load galleries on demand.</p>
+<h2>Implementation</h2>
+<ol><li><strong>Route.</strong> Open the hosted root on Benchmark. Keep existing benchmark and run links, legacy examples links, generated builds, and local studio entry. Link Studio directly from Pages and the README. Keep the README English and lead with results and methodology.</li><li><strong>Unify.</strong> Read existing checked-in evidence into one table. Include 103 finalized Docker records, one interrupted attempt, and seven Gemini pilot attempts, including three setup blockers. Keep task, source, protocol, condition, status, and evidence visible. Display missing metrics as unavailable. Label API-equivalent prices.</li><li><strong>Explore.</strong> Search model and run ID. Filter source, protocol, model, runner, effort, condition, task, and status. Sort by date or model across sources, and by metrics within a protocol. Preserve filters, language, selected run, and comparison in shareable URLs. Show build, source, and evidence links where available.</li><li><strong>Compare.</strong> Select two built app runs under the same protocol. Show observed conformance, time, cost where available, and CLI versions. Keep protocol and pilot caveats visible.</li><li><strong>Verify.</strong> Run lint, typecheck, unit tests, Pages build, and Pages browser tests. Check row coverage, filtering, share links, compare eligibility, keyboard access, EN/PL at 390px and 1440px, and studio navigation and draft recovery.</li></ol>
+<h2>Approval</h2>
+<p>Approve this plan before implementation.</p>
+</main>
+</body>
+</html>

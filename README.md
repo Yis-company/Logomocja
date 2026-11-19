@@ -1,6 +1,14 @@
-# Logomocja
+# Logomocja benchmark
 
-A Polish-language, Logo-inspired web studio with **2D turtle drawing** and **real 3D spatial drawing**. Write commands, run or step through them, and explore the result. The interface works on desktop and mobile.
+Logomocja benchmarks AI coding agents on a complete app build. Each agent gets a versioned brief for a Polish-language Logo studio with 2D turtle drawing and 3D spatial drawing. The benchmark records build outcomes, independent language conformance, and available time and token metrics.
+
+[Browse benchmark results](https://yis-company.github.io/Logomocja/) · [Read the methodology](bench/README.md) · [Try the reference studio](https://yis-company.github.io/Logomocja/#/studio)
+
+The English and Polish results explorer includes Docker runs and the Gemini macOS pilot. Filter by source, protocol, model, and condition, then open a run for evidence or compare two built apps under the same protocol. Pilot timings reflect the Antigravity generation setup. Reported prices are API equivalents.
+
+## Reference studio
+
+Write Logo commands, run or step through them, and inspect the result in the Polish-language reference app on desktop or mobile.
 
 ## Run locally
 
@@ -105,17 +113,13 @@ Unit tests cover grammar, geometry, local 3D rotations, aliases, pen styles, bou
 
 Browser verification uses Chromium with software WebGL rendering. Physical GPU/other-browser coverage is separate. The production build warns about the main UI chunk (approximately 508 kB minified / 165 kB gzip) and the Three.js chunk (approximately 585 kB minified / 146 kB gzip). Three.js loads only in 3D mode.
 
-## AI benchmark
-
-`bench/` benchmarks AI coding agents by having each build the whole app from a product brief inside a versioned Docker container, then verifying the build, running language conformance suites against it through the `window.logomocja.run` hook, and publishing the built app on Pages. See [bench/README.md](bench/README.md).
-
 ## Structure
 
 `src/logo/` owns parsing and a lazy, finite executor independent of React/Three.js. React schedules cancellable animation frames and owns the controls. Segment records feed Canvas2D or batched Three.js thick-line geometry. Renderer teardown disposes GPU resources, controls, observers and the WebGL context. UI styling combines semantic CSS with scoped Tailwind utilities and the existing font stack.
 
 ## Navigation and local practice
 
-The app has real routes: `/` (studio), `/examples`, `/commands`, `/challenges`, `/challenges/:slug` and `/benchmark` (agent benchmark results, bundled from `bench/results/` at build time; the agents' built apps are served under `/builds/<run-id>/`). The ordinary build uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. The Pages build uses hash routes such as `/Logomocja/#/challenges`, so deep links and refresh work without server rewrites. `/#examples` redirects to the examples page. Leaving the studio pauses playback and retains its runtime/drawing while navigating; reloading restores sources only.
+The ordinary build opens the studio at `/` and serves the explorer at `/benchmark`. It uses BrowserRouter and needs a static host that serves `index.html` for unknown paths. GitHub Pages opens the explorer at the hosted root and serves the studio at `#/studio`. Hash routes such as `#/benchmark?run=<run-id>` and `#/challenges` support deep links and refresh. The legacy `/#examples` link redirects to the examples page. Verified generated builds are served under `/builds/<run-id>/`. Leaving the studio pauses playback and retains its runtime and drawing while navigating. Reloading restores sources only.
 
 Named Logo procedures list parameters after `ma:`, separated by commas. The name and complete parameter list stay on the same header line; the body follows on later lines and ends with a standalone `już` (also `juz`, or `to`/`end`). Use `oto name` without `ma:` for a procedure with no parameters.
 
@@ -147,7 +151,7 @@ The sidebar displays the version imported from `package.json`. Run `bun run chan
 - **Version PR validation status**: a separate trusted `workflow_run` reporter attaches the dispatched result as a `Validation` commit status on the version PR's head, linked to the original run. It checks the workflow, repository, bot-owned PR and current SHA, and grants status-write access only to the reporter on the default branch. Skipped, cancelled or timed-out validation never reports success. This reporter becomes active after its workflow is merged into the default branch.
 - **Release**: merging the automation version PR automatically dispatches a second Release run on `main`, where the `github-pages` environment permits deployment. The merge run only dispatches; the main run verifies the merged PR, runs checks, builds Pages and runs Chromium acceptance against the static output. Successful Pages deployment is followed by `v<version>`, a GitHub Release with changelog notes and a ZIP of that same build. Ordinary PR merges do not deploy. No npm publication or extra secret is needed.
 
-Pages uses GitHub Actions as its source. The published URL is [Logomocja](https://yis-company.github.io/Logomocja/). The version displayed in the sidebar comes from the released package version. Browser drafts stay on their own origin; localhost drafts are separate from published-site drafts.
+Pages uses GitHub Actions as its source. The published homepage is the [Logomocja benchmark](https://yis-company.github.io/Logomocja/). The version displayed in the sidebar comes from the released package version. Browser drafts stay on their own origin, so localhost and the published studio have separate drafts.
 
 To verify the Pages build locally:
 

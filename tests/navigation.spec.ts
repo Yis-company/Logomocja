@@ -189,15 +189,13 @@ test("benchmark page is reachable and exposes the testing hook", async ({ page }
   await page.goto("/");
   await page.getByRole("link", { name: "Benchmark", exact: true }).click();
   await expect(page).toHaveURL(/\/benchmark$/);
+  const results = page.getByRole("table", { name: "Benchmark attempts" });
+  await expect(results).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "Benchmark", exact: true }),
   ).toBeFocused();
-  await expect(page.getByRole("heading", { name: "Wersja v2/e2", exact: true })).toBeVisible();
-  const reference = page.getByRole("img", { name: /^wzorzec:/ }).first();
-  await reference.scrollIntoViewIfNeeded();
-  await expect.poll(() => reference.evaluate((image) =>
-    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
-  )).toBe(true);
+  await page.getByRole("combobox", { name: "Protocol" }).selectOption("v2/e2");
+  await expect(results).toContainText("v2/e2");
   const outcome = await page.evaluate(() =>
     window.logomocja?.run("powtorz 4 [np 100 pw 90]", "2d"),
   );

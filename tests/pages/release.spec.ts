@@ -11,7 +11,7 @@ test("static Pages assets, navigation, history, refresh and legacy links", async
   expect((await request.get("challenges")).status()).toBe(404);
   await page.goto("./");
   await expect(page.getByText(`v${version}`, { exact: true })).toBeVisible();
-  await page.getByRole("link", { name: "Przykłady", exact: true }).click();
+  await page.getByRole("link", { name: "Examples", exact: true }).click();
   await expect(page).toHaveURL(/\/Logomocja\/#\/examples$/);
   await page.getByRole("link", { name: "Wyzwania", exact: true }).click();
   await page.goBack();
@@ -28,12 +28,6 @@ test("static Pages assets, navigation, history, refresh and legacy links", async
   await expect(
     page.getByRole("heading", { name: "Benchmark", exact: true }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Wersja v2/e2", exact: true })).toBeVisible();
-  const reference = page.getByRole("img", { name: /^wzorzec:/ }).first();
-  await reference.scrollIntoViewIfNeeded();
-  await expect.poll(() => reference.evaluate((image) =>
-    image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
-  )).toBe(true);
   await page.goto("./#/missing");
   await expect(
     page.getByRole("heading", { name: "Nie znaleziono strony" }),
@@ -45,6 +39,7 @@ test("production 2D procedures, stepping, persistence and dark theme", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("./");
+  await page.getByRole("link", { name: "Try the studio", exact: true }).click();
   await editor(page).fill(
     "oto kwadrat :bok\npowtorz 4 [np :bok pw 90]\njuż\nkwadrat 60",
   );
@@ -65,7 +60,7 @@ test("production lazy WebGL, spatial drawing and deep-linked challenge", async (
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("./");
+  await page.goto("./#/studio");
   await page.getByRole("tab", { name: /3D Przestrzeń/ }).click();
   await expect(page.locator(".three-host canvas")).toBeVisible();
   await editor(page).fill("gora 90 np 40");

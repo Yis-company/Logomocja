@@ -1,79 +1,109 @@
 import { describe, expect, it } from "vitest";
-import type { RunResult } from "../bench/result";
-import { conformanceRate, groupByVersion, layerName } from "./benchmark";
+import { attempts } from "./benchmark-attempts";
+import {
+  canCompare,
+  conformance,
+  filterAttempts,
+  readSort,
+  sortAttempts,
+} from "./benchmark";
 
-const run = (overrides: Partial<RunResult>): RunResult => ({
-  schema: 4,
-  id: "x",
-  task: "app",
-  prompt: "v1",
-  env: "1",
-  image: "logomocja-bench:env-1",
-  commit: "abc",
-  repoVersion: "0.2.0",
-  runner: "claude",
-  model: "m",
-  cliVersion: "2",
-  effort: null,
-  startedAt: "2026-10-27T00:00:00.000Z",
-  agentMs: 60_000,
-  totalMs: 70_000,
-  status: "completed",
-  statusDetail: "success",
-  tokens: { input: 1, cachedInput: 2, output: 3, reasoning: 4 },
-  costUsd: null,
-  costBasis: null,
-  turns: 1,
-  toolCalls: 0,
-  verify: { installed: true, built: true, tests: "none", distFiles: 1, distBytes: 1 },
-  conformance: null,
-  gallery: null,
-  cases: null,
-  humanScore: null,
-  notes: "",
-  ...overrides,
-});
+const fableId = "v2-e5-claude-claude-fable-5-2-20261110-215004Z";
+const layeredId =
+  "v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z";
+function recorded(id: string) {
+  const attempt = attempts.find((run) => run.id === id);
+  if (!attempt) throw new Error(`Missing benchmark attempt ${id}`);
+  return attempt;
+}
+const fable = recorded(fableId);
+const layered = recorded(layeredId);
+const neon = recorded("gemini-4-medium/neon-base");
 
-describe("benchmark grouping", () => {
-  it("groups one task by prompt/env, newest version first, best run first", () => {
-    const groups = groupByVersion(
-      [
-        run({ model: "old", prompt: "v1", env: "2" }),
-        run({ model: "tests-only", task: "tests" }),
-        run({ model: "broken", verify: { installed: true, built: false, tests: "none", distFiles: 0, distBytes: 0 } }),
-        run({ model: "conformant", conformance: { a: { passed: 9, total: 10, hook: true } } }),
-        run({ model: "slow", agentMs: 120_000 }),
-        run({ model: "fast", agentMs: 30_000 }),
-      ],
-      "app",
+describe("benchmark explorer", () => {
+  it("retains distinct finalized, interrupted, test-author, and pilot attempts", () => {
+    const finalized = Object.values(
+      import.meta.glob<{ id: string }>("../bench/results/*/result.json", {
+        eager: true,
+        import: "default",
+      }),
     );
-    expect(groups.map((g) => g.version)).toEqual(["v1/e2", "v1/e1"]);
-    expect(groups[1].runs.map((r) => r.model)).toEqual(["conformant", "fast", "slow", "broken"]);
+    expect(new Set(attempts.map(({ id }) => id)).size).toBe(attempts.length);
+    expect(attempts.map(({ id }) => id)).toEqual(
+      expect.arrayContaining(finalized.map(({ id }) => id)),
+    );
+    expect(attempts).toContainEqual(
+      expect.objectContaining({ status: "interrupted", built: false }),
+    );
+    expect(attempts).toContainEqual(
+      expect.objectContaining({ task: "tests-round2", built: false }),
+    );
+    const pilot = filterAttempts(
+      attempts,
+      new URLSearchParams("source=antigravity"),
+    );
+    expect(pilot.filter(({ status }) => status === "scored")).toHaveLength(4);
+    expect(
+      pilot.filter(({ status }) => status === "setup-blocked"),
+    ).toHaveLength(3);
+    expect(pilot.every(({ costUsd }) => costUsd === undefined)).toBe(true);
   });
 
-  it("keeps layered runs out of base rankings, with the base group first", () => {
-    const layer = { id: "impeccable-v1", skillVersion: "4.7.0", engineVersion: "0.1.16" };
-    const groups = groupByVersion([run({ id: "layered", layer }), run({ id: "base" })], "app");
-    expect(groups.map((g) => [g.version, g.layer, g.runs.map((r) => r.id)])).toEqual([
-      ["v1/e1", "base", ["base"]],
-      ["v1/e1", "impeccable-v1", ["layered"]],
-    ]);
+  it("filters source, protocol, and effort with case-insensitive model or ID search", () => {
+    expect(
+      filterAttempts(
+        attempts,
+        new URLSearchParams(
+          "source=docker&protocol=v2%2Fe5&effort=low&q=impeccable",
+        ),
+      ),
+    ).toEqual([layered]);
+    expect(
+      filterAttempts(
+        attempts,
+        new URLSearchParams("q=GEMINI-4-NEON&status=scored&condition=base"),
+      ),
+    ).toEqual([neon]);
   });
 
-  it("computes the conformance rate across suites", () => {
-    expect(conformanceRate(run({}))).toBeNull();
-    expect(conformanceRate(run({ conformance: { a: { passed: 1, total: 4, hook: true }, b: { passed: 3, total: 4, hook: true } } }))).toBe(0.5);
+  it("keeps interpreter and editor conformance distinct and preserves missing scores", () => {
+    expect(conformance(fable, "interpreter")).toEqual({
+      passed: 617,
+      total: 618,
+    });
+    expect(conformance(fable, "editor")).toEqual({ passed: 617, total: 618 });
+    const early = recorded("v1-e1-claude-claude-fable-5-1-20261027-070726Z");
+    expect(conformance(early, "editor")).toBeNull();
+    expect(conformance(neon, "editor")).toEqual({ passed: 618, total: 618 });
   });
-  it("keeps the TDD and combined conditions separate and labels them accurately", () => {
-    const groups = groupByVersion([
-      run({ id: "tdd", layer: { id: "tdd-v1", tddSourceCommit: "abc" } }),
-      run({ id: "both", layer: { id: "impeccable-tdd-v1", skillVersion: "4.7.0", tddSourceCommit: "abc" } }),
-      run({ id: "base" }),
-    ], "app");
-    expect(groups.map((g) => [layerName(g.layer), g.runs.map((r) => r.id)])).toEqual([
-      ["base", ["base"]],
-      ["Impeccable + TDD", ["both"]],
-      ["TDD", ["tdd"]],
+
+  it("scopes metric ordering and puts unavailable measurements after scored runs", () => {
+    const params = new URLSearchParams(
+      "protocol=v2%2Fe5&sort=conformance&order=desc",
+    );
+    expect(readSort(params, false).key).toBe("date");
+    const results = sortAttempts(
+      filterAttempts(attempts, params),
+      readSort(params, true),
+    );
+    expect(results.slice(0, 2).map(({ id }) => id)).toEqual([
+      fableId,
+      layeredId,
     ]);
+    expect(
+      results.slice(2).every((run) => conformance(run, "interpreter") === null),
+    ).toBe(true);
+    expect(
+      sortAttempts([fable, neon], readSort(new URLSearchParams(), false)),
+    ).toEqual([neon, fable]);
+  });
+
+  it("limits comparisons to distinct built apps in one protocol", () => {
+    expect(canCompare(fable, layered)).toBe(true);
+    expect(canCompare(fable, neon)).toBe(false);
+    expect(canCompare(fable, fable)).toBe(false);
+    expect(canCompare(fable, { ...layered, protocol: "v2/e2" })).toBe(false);
+    expect(canCompare(fable, { ...layered, built: false })).toBe(false);
+    expect(canCompare({ ...fable, task: "tests" })).toBe(false);
   });
 });
