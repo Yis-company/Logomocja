@@ -1,0 +1,65 @@
+bun install v1.4.4 (38afee6c8)
+No packages! Deleted empty lockfile
+
+[5.00ms] done
+$ bun run scripts/build.ts
+Built Logomocja into dist/ (BASE_PATH=/Logomocja/builds/gemini-pilot-neon/)
+$ bun test
+bun test v1.4.4 (38afee6c8)
+
+tests/challenges.test.ts:
+(pass) Challenges checker > reference solution passes "kwadrat-100" [3.82ms]
+(pass) Challenges checker > reference solution passes "trojkat-120" [0.70ms]
+(pass) Challenges checker > reference solution passes "szesciokat-80" [0.36ms]
+(pass) Challenges checker > reference solution passes "dwa-kwadraty" [0.51ms]
+(pass) Challenges checker > reference solution passes "schodki-3d" [0.30ms]
+(pass) Challenges checker > reference solution passes "szescian-80" [0.58ms]
+(pass) Challenges checker > left-turning square passes mirrored check [0.18ms]
+(pass) Challenges checker > incomplete square fails with missing-part reason [0.14ms]
+(pass) Challenges checker > connecting line in two-squares fails with extra-line reason [0.72ms]
+(pass) Challenges checker > empty drawing fails [0.05ms]
+
+tests/interpreter.test.ts:
+(pass) Standard programs > standard example "kwadrat" (2d) runs without errors [0.25ms]
+(pass) Standard programs > standard example "gwiazda" (2d) runs without errors [0.10ms]
+(pass) Standard programs > standard example "rozeta" (2d) runs without errors [0.13ms]
+(pass) Standard programs > standard example "spirala" (2d) runs without errors [0.53ms]
+(pass) Standard programs > standard example "wielokaty" (2d) runs without errors [0.26ms]
+(pass) Standard programs > standard example "drzewo" (2d) runs without errors [1.63ms]
+(pass) Standard programs > standard example "sniezynka" (2d) runs without errors [2.20ms]
+(pass) Standard programs > standard example "schody" (3d) runs without errors [0.08ms]
+(pass) Standard programs > standard example "szescian" (3d) runs without errors [0.08ms]
+(pass) Standard programs > standard example "pierscien" (3d) runs without errors [0.08ms]
+(pass) Standard programs > standard example "kula" (3d) runs without errors [0.99ms]
+(pass) Standard programs > standard example "helisa" (3d) runs without errors [0.45ms]
+(pass) Standard programs > standard example "drzewo3d" (3d) runs without errors [1.39ms]
+(pass) Standard programs > flat 2D programs produce identical coordinates in 2D and 3D modes [10.24ms]
+(pass) Lexical rules & expressions > case insensitivity and Polish/English aliases [2.32ms]
+(pass) Lexical rules & expressions > decimal literals: 80, 12.5, .5 and invalid literals [0.56ms]
+(pass) Lexical rules & expressions > operator precedence and left associativity [0.06ms]
+(pass) Lexical rules & expressions > binary operator whitespace rule [0.18ms]
+(pass) Lexical rules & expressions > unary operators stacked and on expressions [0.06ms]
+(pass) Lexical rules & expressions > exact floating-point comparisons [0.12ms]
+(pass) Turtle & 3D geometry > zero move draws nothing, dom draws back and resets orientation [0.12ms]
+(pass) Turtle & 3D geometry > czyść clears previous segments and resets segment count [0.06ms]
+(pass) Turtle & 3D geometry > 3D pitch and roll exact right-handed basis [0.21ms]
+(pass) Repeat, variables & procedures > nrpowt lexical scoping [0.10ms]
+(pass) Repeat, variables & procedures > variables: globals, locals, shadowing, forward declaration & unassigned runtime error [0.26ms]
+(pass) Repeat, variables & procedures > legacy procedure syntax, procedure defined after call, parameter sharing proc name [0.24ms]
+(pass) Repeat, variables & procedures > stop inside repeat/if exits enclosing procedure, or program at top level [0.21ms]
+(pass) Error locations & limits > parse-time validation of literal width & repeat reports at first token of arg [0.09ms]
+(pass) Error locations & limits > runtime error keeps drawn segments and reports at first token of arg [0.12ms]
+(pass) Error locations & limits > missing argument reports at offending token or command on EOF [0.05ms]
+(pass) Error locations & limits > bracket nesting limit (32) [0.08ms]
+(pass) Error locations & limits > active frame limit (32) with recursion [0.04ms]
+(pass) Error locations & limits > operation limit (10,000) [4.07ms]
+(pass) Error locations & limits > coordinate limit (±100,000) [0.47ms]
+(pass) Error locations & limits > source length limit (50,000 chars) [0.19ms]
+(pass) Error locations & limits > VM step-by-step produces identical result to runProgram [0.62ms]
+(pass) Error locations & limits > token limit (10,000), dynamic width/repeat runtime errors, and deferred div-by-zero [1.94ms]
+
+ 47 pass
+ 0 fail
+ 6426 expect() calls
+Ran 47 tests across 2 files. [51.00ms]
+BENCHMARK_EXIT_CODES install=0 build=0 test=0

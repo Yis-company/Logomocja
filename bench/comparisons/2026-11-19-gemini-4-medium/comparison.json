@@ -1,0 +1,236 @@
+{
+  "sourceRevision": "30044e472a3e68d0d1ee6808c29c1251511021a9",
+  "prompt": "v2",
+  "generationPlatform": "macOS arm64",
+  "verificationImage": "logomocja-bench:env-7",
+  "runs": [
+    {
+      "id": "neon-base",
+      "model": "gemini-4-neon-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:43:08Z",
+      "agentSeconds": 789.61717,
+      "cliUsage": {
+        "input_tokens": 143022,
+        "output_tokens": 104959,
+        "thinking_tokens": 24221,
+        "cache_read_tokens": 1720167,
+        "total_tokens": 247981
+      },
+      "generatedTestsPassed": 47,
+      "conformance": {
+        "combined": {
+          "passed": 595,
+          "total": 595
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23
+        },
+        "combined@open": {
+          "passed": 595,
+          "total": 595
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23
+        }
+      },
+      "gallery": {
+        "passed": 13,
+        "total": 13
+      }
+    },
+    {
+      "id": "hydrogen-base",
+      "model": "gemini-4-hydrogen-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:56:42Z",
+      "agentSeconds": 416.356491,
+      "cliUsage": {
+        "input_tokens": 137056,
+        "output_tokens": 77697,
+        "thinking_tokens": 18461,
+        "cache_read_tokens": 2015421,
+        "total_tokens": 214753
+      },
+      "generatedTestsPassed": 34,
+      "conformance": {
+        "combined": {
+          "passed": 578,
+          "total": 595
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23
+        },
+        "combined@open": {
+          "passed": 578,
+          "total": 595
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23
+        }
+      },
+      "gallery": {
+        "passed": 13,
+        "total": 13
+      }
+    },
+    {
+      "id": "neon-impeccable",
+      "model": "gemini-4-neon-medium",
+      "condition": "impeccable",
+      "cliVersion": "1.5.12",
+      "startedAt": "2026-11-19T08:31:07Z",
+      "agentSeconds": 1010.814691,
+      "cliUsage": {
+        "input_tokens": 191474,
+        "output_tokens": 106702,
+        "thinking_tokens": 17499,
+        "cache_read_tokens": 2832794,
+        "total_tokens": 298176
+      },
+      "generatedTestsPassed": 45,
+      "conformance": {
+        "combined": {
+          "passed": 595,
+          "total": 595
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23
+        },
+        "combined@open": {
+          "passed": 595,
+          "total": 595
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23
+        }
+      },
+      "gallery": {
+        "passed": 13,
+        "total": 13
+      }
+    },
+    {
+      "id": "hydrogen-impeccable",
+      "model": "gemini-4-hydrogen-medium",
+      "condition": "impeccable",
+      "cliVersion": "1.5.12",
+      "startedAt": "2026-11-19T08:48:22Z",
+      "agentSeconds": 535.146622,
+      "cliUsage": {
+        "input_tokens": 182021,
+        "output_tokens": 92469,
+        "thinking_tokens": 19726,
+        "cache_read_tokens": 3174138,
+        "total_tokens": 274490
+      },
+      "generatedTestsPassed": 34,
+      "conformance": {
+        "combined": {
+          "passed": 579,
+          "total": 595
+        },
+        "stress": {
+          "passed": 23,
+          "total": 23
+        },
+        "combined@open": {
+          "passed": 579,
+          "total": 595
+        },
+        "stress@open": {
+          "passed": 23,
+          "total": 23
+        }
+      },
+      "gallery": {
+        "passed": 13,
+        "total": 13
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "model": "gemini-4-neon-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:36:55Z",
+      "outcome": "setup-blocked",
+      "deniedActions": [
+        {
+          "action": "command",
+          "display_name": "Bash"
+        }
+      ],
+      "reason": "The shell sandbox denied a write to the shared Bun cache."
+    },
+    {
+      "model": "gemini-4-hydrogen-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:40:17Z",
+      "outcome": "setup-blocked",
+      "deniedActions": [
+        {
+          "action": "read_file",
+          "display_name": "ReadFile"
+        }
+      ],
+      "reason": "The CLI denied a plugin temporary-file read outside the workspace."
+    },
+    {
+      "model": "gemini-4-neon-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:43:08Z",
+      "outcome": "scored",
+      "evidence": "neon-base"
+    },
+    {
+      "model": "gemini-4-hydrogen-medium",
+      "condition": "base",
+      "cliVersion": "1.5.0",
+      "startedAt": "2026-11-19T06:56:42Z",
+      "outcome": "scored",
+      "evidence": "hydrogen-base"
+    },
+    {
+      "model": "gemini-4-neon-medium",
+      "condition": "impeccable",
+      "cliVersion": "1.5.12",
+      "startedAt": "2026-11-19T07:23:32Z",
+      "outcome": "setup-blocked",
+      "deniedActions": [
+        {
+          "action": "write_file",
+          "display_name": "Edit"
+        }
+      ],
+      "reason": "The CLI denied a scratch brief write outside the workspace."
+    },
+    {
+      "model": "gemini-4-neon-medium",
+      "condition": "impeccable",
+      "cliVersion": "1.5.12",
+      "startedAt": "2026-11-19T08:31:07Z",
+      "outcome": "scored",
+      "evidence": "neon-impeccable"
+    },
+    {
+      "model": "gemini-4-hydrogen-medium",
+      "condition": "impeccable",
+      "cliVersion": "1.5.12",
+      "startedAt": "2026-11-19T08:48:22Z",
+      "outcome": "scored",
+      "evidence": "hydrogen-impeccable"
+    }
+  ]
+}

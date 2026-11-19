@@ -1,0 +1,57 @@
+{
+  "hook": true,
+  "programs": {
+    "kwadrat": {
+      "matches": true,
+      "reason": null
+    },
+    "gwiazda": {
+      "matches": true,
+      "reason": null
+    },
+    "rozeta": {
+      "matches": true,
+      "reason": null
+    },
+    "spirala": {
+      "matches": true,
+      "reason": null
+    },
+    "wielokaty": {
+      "matches": true,
+      "reason": null
+    },
+    "drzewo": {
+      "matches": true,
+      "reason": null
+    },
+    "sniezynka": {
+      "matches": true,
+      "reason": null
+    },
+    "schody": {
+      "matches": true,
+      "reason": null
+    },
+    "szescian": {
+      "matches": true,
+      "reason": null
+    },
+    "pierscien": {
+      "matches": true,
+      "reason": null
+    },
+    "kula": {
+      "matches": true,
+      "reason": null
+    },
+    "helisa": {
+      "matches": true,
+      "reason": null
+    },
+    "drzewo3d": {
+      "matches": true,
+      "reason": null
+    }
+  }
+}

@@ -1,0 +1,74 @@
+bun install v1.4.4 (38afee6c8)
+
++ @types/bun@1.4.4
++ @types/react@19.3.0
++ @types/react-dom@19.3.0
++ @types/three@0.173.0
++ @vitejs/plugin-react@4.7.0
++ typescript@5.9.3
++ vite@6.4.6
++ lucide-react@0.475.0
++ react@19.3.1
++ react-dom@19.3.1
++ three@0.173.0
+
+81 packages installed [2.10s]
+$ vite build
+[36mvite v6.4.6 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 1612 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  0.82 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-C5EIfyK5.css  [39m[1m[2m 12.28 kB[22m[1m[22m[2m │ gzip:   3.19 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-CSzYxVG9.js   [39m[1m[33m826.00 kB[39m[22m[2m │ gzip: 226.01 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 1.38s[39m
+$ bun test
+bun test v1.4.4 (38afee6c8)
+
+src/lang/__tests__/interpreter.test.ts:
+(pass) Standard programs > runs kwadrat (2d) without error [2.38ms]
+(pass) Standard programs > runs gwiazda (2d) without error [0.23ms]
+(pass) Standard programs > runs rozeta (2d) without error [0.56ms]
+(pass) Standard programs > runs spirala (2d) without error [0.77ms]
+(pass) Standard programs > runs wielokaty (2d) without error [0.63ms]
+(pass) Standard programs > runs drzewo (2d) without error [1.13ms]
+(pass) Standard programs > runs sniezynka (2d) without error [1.88ms]
+(pass) Standard programs > runs schody (3d) without error [0.07ms]
+(pass) Standard programs > runs szescian (3d) without error [0.07ms]
+(pass) Standard programs > runs pierscien (3d) without error [0.03ms]
+(pass) Standard programs > runs kula (3d) without error [0.26ms]
+(pass) Standard programs > runs helisa (3d) without error [0.16ms]
+(pass) Standard programs > runs drzewo3d (3d) without error [1.01ms]
+(pass) Standard programs > kwadrat draws 4 segments of length 120 and closes at origin [0.18ms]
+(pass) Standard programs > sniezynka draws 768 segments [1.12ms]
+(pass) Standard programs > schody climbs in +Z [0.06ms]
+(pass) Standard programs > flat 2D programs produce identical coordinates in 2D and 3D [3.52ms]
+(pass) Lexical rules and expressions > case-insensitive keywords and Polish/English aliases [0.05ms]
+(pass) Lexical rules and expressions > number literals: 80, 12.5, .5 valid; 1e3, 0x10, 12. invalid [0.16ms]
+(pass) Lexical rules and expressions > operator precedence and associativity [0.04ms]
+(pass) Lexical rules and expressions > binary operator whitespace rule [0.06ms]
+(pass) Lexical rules and expressions > unary signs and stacking [0.04ms]
+(pass) Lexical rules and expressions > exact comparisons [0.03ms]
+(pass) 3D turtle geometry > pitchup, pitchdown, rollright, rollleft [0.02ms]
+(pass) 3D turtle geometry > 3D commands rejected at parse time in 2D mode [0.02ms]
+(pass) Procedures, variables, repeat, and czyść > legacy procedure syntax and forward calls [0.03ms]
+(pass) Procedures, variables, repeat, and czyść > parameter sharing name with procedure [0.03ms]
+(pass) Procedures, variables, repeat, and czyść > stop inside repeat exits procedure, at top level exits program [0.04ms]
+(pass) Procedures, variables, repeat, and czyść > nrpowt outside lexical repeat is parse-time error [0.02ms]
+(pass) Procedures, variables, repeat, and czyść > czyść clears segments and resets kept segment count [0.02ms]
+(pass) Errors and limits > runtime error keeps segments drawn so far and reports at first token of bad arg [0.07ms]
+(pass) Errors and limits > division by zero at runtime keeps segments drawn before it [0.03ms]
+(pass) Errors and limits > missing argument reported at ] or command at EOF [0.02ms]
+(pass) Errors and limits > limits: bracket depth, frames, ops, coords [3.63ms]
+
+ 34 pass
+ 0 fail
+ 131 expect() calls
+Ran 34 tests across 1 file. [26.00ms]
+BENCHMARK_EXIT_CODES install=0 build=0 test=0

@@ -1,0 +1,85 @@
+bun install v1.4.4 (38afee6c8)
+
++ @types/react@19.3.0
++ @types/react-dom@19.3.0
++ @types/three@0.175.0
++ @vitejs/plugin-react@4.7.0
++ typescript@5.9.3
++ vite@6.4.6
++ react@19.3.1
++ react-dom@19.3.1
++ three@0.175.0
+
+76 packages installed [2.55s]
+$ tsc --noEmit && vite build
+[36mvite v6.4.6 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 55 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  1.06 kB[22m[1m[22m[2m │ gzip:   0.63 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-Bjnlb_DL.css  [39m[1m[2m 20.02 kB[22m[1m[22m[2m │ gzip:   4.60 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-DuR4HOyE.js   [39m[1m[33m816.61 kB[39m[22m[2m │ gzip: 224.54 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 977ms[39m
+$ bun test
+bun test v1.4.4 (38afee6c8)
+
+tests/challenges.test.ts:
+(pass) Challenges & geometric checker > reference solution passes "Kwadrat o boku 100" (2d) [2.45ms]
+(pass) Challenges & geometric checker > reference solution passes "Trójkąt równoboczny" (2d) [0.19ms]
+(pass) Challenges & geometric checker > reference solution passes "Dwa osobne kwadraty" (2d) [0.63ms]
+(pass) Challenges & geometric checker > reference solution passes "Sześciokąt foremny" (2d) [0.22ms]
+(pass) Challenges & geometric checker > reference solution passes "Pionowa bramka 3D" (3d) [0.20ms]
+(pass) Challenges & geometric checker > reference solution passes "Dwa piętra w przestrzeni" (3d) [0.26ms]
+(pass) Challenges & geometric checker > empty drawing fails with clear Polish reason [0.02ms]
+(pass) Challenges & geometric checker > incomplete drawing fails [0.15ms]
+(pass) Permalink & hash routing > round-trips Polish source with diacritics [0.45ms]
+
+tests/interpreter.test.ts:
+(pass) Interpreter — basic drawing & geometry > empty program draws nothing without error [0.12ms]
+(pass) Interpreter — basic drawing & geometry > initial state: origin, +Y heading, #16866a, width 3, pen down [0.07ms]
+(pass) Interpreter — basic drawing & geometry > zero move draws nothing [0.03ms]
+(pass) Interpreter — basic drawing & geometry > pw rotates clockwise around +Z (from +Y to +X) [0.04ms]
+(pass) Interpreter — basic drawing & geometry > lw rotates counter-clockwise around +Z (from +Y to -X) [0.02ms]
+(pass) Interpreter — basic drawing & geometry > pod / opu controls pen state [0.03ms]
+(pass) Interpreter — basic drawing & geometry > dom returns to origin, draws if pen down and not at origin, resets orientation only [0.08ms]
+(pass) Interpreter — basic drawing & geometry > czyść clears previously drawn segments only [0.04ms]
+(pass) Interpreter — basic drawing & geometry > 3D rotations: gora, dol, pp, pl [0.09ms]
+(pass) Interpreter — basic drawing & geometry > 3D commands are parse-time errors in 2D mode [0.24ms]
+(pass) Interpreter — basic drawing & geometry > flat programs produce identical coordinates in 2D and 3D mode [7.29ms]
+(pass) Interpreter — expressions, precedence & whitespace rules > precedence and left associativity [0.06ms]
+(pass) Interpreter — expressions, precedence & whitespace rules > binary operator whitespace rule [0.08ms]
+(pass) Interpreter — expressions, precedence & whitespace rules > stacked unary signs and parenthesized expressions [0.07ms]
+(pass) Interpreter — expressions, precedence & whitespace rules > invalid number literals are errors [0.07ms]
+(pass) Interpreter — expressions, precedence & whitespace rules > exact floating-point comparisons [0.05ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > nrpowt works lexically inside repeat and fails outside or inside called proc [0.06ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > variable scoping: global, local shadowing, forward declaration, unassigned runtime error [0.08ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > legacy procedure syntax :param and parameter sharing name with procedure [0.04ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > stop inside nested repeat ends enclosing procedure, not just repeat [0.04ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > literal vs dynamic width/repeat validation [0.07ms]
+(pass) Interpreter — variables, repeat, conditionals & procedures > limits: operations, frames, coords [2.76ms]
+(pass) Standard programs (all 13 verbatim) > runs "Kwadrat" (kwadrat, 2d) cleanly [0.04ms]
+(pass) Standard programs (all 13 verbatim) > runs "Gwiazda" (gwiazda, 2d) cleanly [0.02ms]
+(pass) Standard programs (all 13 verbatim) > runs "Rozeta" (rozeta, 2d) cleanly [0.03ms]
+(pass) Standard programs (all 13 verbatim) > runs "Spirala" (spirala, 2d) cleanly [0.08ms]
+(pass) Standard programs (all 13 verbatim) > runs "Wielokąty" (wielokaty, 2d) cleanly [0.08ms]
+(pass) Standard programs (all 13 verbatim) > runs "Drzewo" (drzewo, 2d) cleanly [0.52ms]
+(pass) Standard programs (all 13 verbatim) > runs "Śnieżynka" (sniezynka, 2d) cleanly [0.57ms]
+(pass) Standard programs (all 13 verbatim) > runs "Schody" (schody, 3d) cleanly [0.03ms]
+(pass) Standard programs (all 13 verbatim) > runs "Sześcian" (szescian, 3d) cleanly [0.04ms]
+(pass) Standard programs (all 13 verbatim) > runs "Pierścień" (pierscien, 3d) cleanly [0.02ms]
+(pass) Standard programs (all 13 verbatim) > runs "Kula" (kula, 3d) cleanly [0.15ms]
+(pass) Standard programs (all 13 verbatim) > runs "Helisa" (helisa, 3d) cleanly [0.09ms]
+(pass) Standard programs (all 13 verbatim) > runs "Drzewo 3D" (drzewo3d, 3d) cleanly [0.40ms]
+(pass) Standard programs (all 13 verbatim) > stepper produces identical result to runProgram [6.85ms]
+
+ 45 pass
+ 0 fail
+ 213 expect() calls
+Ran 45 tests across 2 files. [33.00ms]
+BENCHMARK_EXIT_CODES install=0 build=0 test=0

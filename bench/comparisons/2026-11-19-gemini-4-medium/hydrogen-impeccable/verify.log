@@ -1,0 +1,72 @@
+bun install v1.4.4 (38afee6c8)
+
++ @types/react@19.3.0
++ @types/react-dom@19.3.0
++ @types/three@0.174.0
++ @vitejs/plugin-react@4.7.0
++ typescript@5.9.3
++ vite@6.4.6
++ react@19.3.1
++ react-dom@19.3.1
++ three@0.174.0
+
+76 packages installed [1373.00ms]
+$ tsc --noEmit && vite build
+[36mvite v6.4.6 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 53 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  0.82 kB[22m[1m[22m[2m │ gzip:   0.51 kB[22m
+[2mdist/[22m[2massets/[22m[35mindex-B8rt_sTP.css  [39m[1m[2m 16.87 kB[22m[1m[22m[2m │ gzip:   3.86 kB[22m
+[2mdist/[22m[2massets/[22m[36mindex-BV2pQNMy.js   [39m[1m[33m804.80 kB[39m[22m[2m │ gzip: 221.04 kB[22m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[32m✓ built in 1.05s[39m
+$ bun test
+bun test v1.4.4 (38afee6c8)
+
+tests/interpreter.test.ts:
+(pass) Logomocja interpreter — standard programs > runs standard program "kwadrat" (2d) without error [1.63ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "gwiazda" (2d) without error [0.20ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "rozeta" (2d) without error [0.34ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "spirala" (2d) without error [0.67ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "wielokaty" (2d) without error [0.27ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "drzewo" (2d) without error [1.44ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "sniezynka" (2d) without error [2.20ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "schody" (3d) without error [0.20ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "szescian" (3d) without error [0.16ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "pierscien" (3d) without error [0.05ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "kula" (3d) without error [0.63ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "helisa" (3d) without error [0.21ms]
+(pass) Logomocja interpreter — standard programs > runs standard program "drzewo3d" (3d) without error [0.95ms]
+(pass) Logomocja interpreter — standard programs > 2D flat programs produce identical coordinates in 2D and 3D [4.91ms]
+(pass) Logomocja interpreter — lexical & expression rules > case-insensitive Polish and English aliases [0.07ms]
+(pass) Logomocja interpreter — lexical & expression rules > binary operator whitespace rule [0.12ms]
+(pass) Logomocja interpreter — lexical & expression rules > precedence, associativity, and stacked unary signs [0.04ms]
+(pass) Logomocja interpreter — lexical & expression rules > rejects invalid numbers like 1e3, 0x10, NaN, Infinity [0.04ms]
+(pass) Logomocja interpreter — lexical & expression rules > exact floating-point comparisons [0.02ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > 3D commands fail at parse time in 2D mode [0.09ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > 3D pitch and roll geometry [0.05ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > nrpowt is lexically scoped to repeat [0.04ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > unassigned variable fails at runtime and keeps drawn segments [0.06ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > legacy procedure header and :param syntax [0.03ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > czyść clears kept segments and dom returns to origin [0.04ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > literal width check is parse-time; variable width check is run-time [0.04ms]
+(pass) Logomocja interpreter — 3D, procedures, variables, and errors > operation limit (10,000) stops at runtime and keeps drawn segments [1.62ms]
+(pass) Logomocja challenges > reference solution passes "ch-kwadrat" [0.53ms]
+(pass) Logomocja challenges > reference solution passes "ch-trojkat" [0.14ms]
+(pass) Logomocja challenges > reference solution passes "ch-szesciokat" [0.22ms]
+(pass) Logomocja challenges > reference solution passes "ch-dwa-kwadraty" [0.31ms]
+(pass) Logomocja challenges > reference solution passes "ch-gwiazda" [0.26ms]
+(pass) Logomocja challenges > reference solution passes "ch-schody-3d" [0.08ms]
+(pass) Logomocja challenges > wrong drawing fails with Polish reason [0.05ms]
+
+ 34 pass
+ 0 fail
+ 104 expect() calls
+Ran 34 tests across 1 file. [27.00ms]
+BENCHMARK_EXIT_CODES install=0 build=0 test=0
