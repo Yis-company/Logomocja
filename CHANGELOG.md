@@ -1,5 +1,11 @@
 # logomocja
 
+## 0.5.0
+
+### Minor Changes
+
+- 3b0a57d: Make the benchmark the GitHub Pages homepage, with one bilingual results explorer, shareable filters and comparisons, and direct access to the drawing studio.
+
 ## 0.4.0
 
 ### Minor Changes
