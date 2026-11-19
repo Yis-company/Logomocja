@@ -1,8 +1,8 @@
 # Agent benchmark
 
-Each AI coding agent builds the whole Logomocja app from the same product brief, alone, inside a versioned Docker container, with no time cap. We record how long it took, what it used in tokens and what that costs at API list prices, whether the result installs and builds, how it scores on the language conformance suites, and a human quality score. Every attempt's source is on its own branch and its built app is published on the Pages site, listed by benchmark version and model.
+Each AI coding agent builds the whole Logomocja app from a versioned product brief. The Docker benchmark runs in a versioned container with no time cap. It records build outcomes, language conformance, agent time, tokens, API-equivalent cost, and any human review score. The [results explorer](https://yis-company.github.io/Logomocja/) lists attempts and links to evidence, available builds, and published source branches. The Gemini pilot shares the table and records a separate generation protocol.
 
-Models run through the Claude Code and Codex CLIs under the existing subscriptions. No API keys.
+Docker models run through the Claude Code and Codex CLIs under the existing subscriptions. No API keys are required for these runs.
 
 ## Run
 
@@ -65,14 +65,14 @@ When a suite or the runner changes, `bun bench/rescore.ts --prompt <version>` re
 
 ## Standard programs and gallery
 
-`prompts/<version>/programs/` holds the programs every build must ship as examples (`index.json` lists id, mode, name) and `expected.json`, their outcomes on the reference app. They are also the reference app's own examples. After a build is verified the harness calls `window.logomocja.open(source, mode)` for each program in Chromium, screenshots the page, and records whether the returned segments match `expected.json`. The benchmark page shows the screenshots as a grid, with the reference app as the row `wzorzec` (`results/reference-<version>/gallery/`, captured with `bun bench/gallery.ts --dist dist --out bench/results/reference-<version>/gallery` after `bun run build`).
+`prompts/<version>/programs/` holds the programs every build must ship as examples (`index.json` lists id, mode, name) and `expected.json`, their outcomes on the reference app. They are also the reference app's own examples. After a build is verified the harness calls `window.logomocja.open(source, mode)` for each program in Chromium, screenshots the page, and records whether the returned segments match `expected.json`. Open a run's details to load its screenshots alongside the available reference images (`results/reference-<version>/gallery/`, captured with `bun bench/gallery.ts --dist dist --out bench/results/reference-<version>/gallery` after `bun run build`).
 
 ## Versioning
 
 - **Prompt.** `prompts/<version>/` is immutable once a result references it; change anything, including the standard programs, by copying to the next version. Conformance suites belong to the prompt version they were authored from.
 - **Environment.** `env/VERSION` bumps whenever a change could alter an outcome: the Dockerfile and pinned CLI versions, the CLI flags in `runners.ts`, `agent.ts`, the verification steps, the conformance runner or its tolerance, the gallery capture.
 
-Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dialect with expressions, variables, conditionals, recursion, roll, home and clear; a fixed feature list and the standard programs in the brief; gallery capture). A run's benchmark version is the pair `v2/e2`. The repo's own package version is recorded too, since every merged PR is a new version of the project. To re-run the same models after a change, bump the version that changed and run again; the page groups runs by benchmark version.
+Versions so far: `v1/e1` (2026-10-27, the first round), `v2/e2` (2026-10-27, dialect with expressions, variables, conditionals, recursion, roll, home and clear; a fixed feature list and the standard programs in the brief; gallery capture). A run's benchmark version is the pair `v2/e2`. The repo's own package version is recorded too, since every merged PR is a new version of the project. To re-run the same models after a change, bump the version that changed and run again; the explorer can filter runs by protocol.
 
 Environment `e4` restricts mounted inputs. Layered e4 runs have a null baseline until fresh matching e4 base controls exist; historical e2/e3 controls remain context and are not rewritten or silently matched across environments.
 
@@ -84,7 +84,7 @@ Environment `e6` fixes that. After verification and before writing `result.json`
 
 `costUsd` is the figure the Claude CLI reports (`costBasis: "cli"`) or, for Codex, an estimate from the token counts and the list prices in `prices.ts` (`costBasis: "list"`, shown with ≈). The runs go through subscriptions, so this is what the same work would have cost on the API, not what was paid. Update `prices.ts` when prices change; stored results keep the figure computed at run time.
 
-`results/<run-id>/result.json` has `humanScore` (null until set) and `notes`. Open the build from the page, judge it, edit the two fields, commit. The page and `SUMMARY` columns update on the next build.
+`results/<run-id>/result.json` has `humanScore` (null until set) and `notes`. Open the build from the page, judge it, edit the two fields, commit. The run details and `SUMMARY` update on the next build.
 
 ### Review transitions and evidence
 

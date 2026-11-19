@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { Link, Route, Routes, useLocation, useNavigate } from "react-router";
+import { Link, Navigate, Route, Routes, useLocation, useMatch, useNavigate } from "react-router";
+import { benchmarkCopy } from "./benchmark-copy";
 import { AppSidebar } from "./components/AppSidebar";
 import { DrawingStage } from "./components/DrawingStage";
 import { Editor } from "./components/Editor";
@@ -18,6 +19,7 @@ import { Examples } from "./pages/Examples";
 import { Commands } from "./pages/Commands";
 import { ChallengeCatalog, ChallengePage } from "./pages/Challenges";
 import { readDrafts, writeDrafts } from "./persistence";
+import { benchmarkPath, studioPath } from "./routes";
 import { useTheme } from "./theme";
 const Benchmark = lazy(() => import("./pages/Benchmark").then((module) => ({ default: module.Benchmark })));
 type Status = "idle" | "running" | "paused" | "done" | "error";
@@ -30,7 +32,9 @@ const labels: Record<Status, string> = {
 };
 export default function App() {
   const navigate = useNavigate();
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, search } = useLocation();
+  const isBenchmark = useMatch(benchmarkPath) !== null;
+  const language = isBenchmark && new URLSearchParams(search).get("lang") !== "pl" ? "en" : "pl";
   const previousPath = useRef(pathname);
   const { theme, toggle } = useTheme();
   const [drafts, setDrafts] = useState(() =>
@@ -105,7 +109,7 @@ export default function App() {
       mode: example.mode,
       sources: { ...d.sources, [example.mode]: example.source },
     }));
-    navigate("/");
+    navigate(studioPath);
   }
   function needsExampleConfirmation(example: Example) {
     const destination = drafts.sources[example.mode];
@@ -190,7 +194,7 @@ export default function App() {
       executor.current = null;
       cleanSources.current[detail.mode] = detail.source;
       setDrafts((d) => ({ ...d, mode: detail.mode, sources: { ...d.sources, [detail.mode]: detail.source } }));
-      navigate("/");
+      navigate(studioPath);
       const runtime = new Executor(parse(detail.source, detail.mode));
       let runError: HookOutcome["error"] = null;
       try {
@@ -236,6 +240,10 @@ export default function App() {
   }, [navigate]);
 
   useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  useEffect(() => {
     if (pathname === "/" && hash === "#examples") {
       navigate("/examples", { replace: true });
       return;
@@ -251,9 +259,9 @@ export default function App() {
         ?.focus({ preventScroll: true });
       previousPath.current = pathname;
     }
-    const title = document.querySelector("main h1")?.textContent ?? "Logomocja";
+    const title = isBenchmark ? "Benchmark" : document.querySelector("main h1")?.textContent ?? "Logomocja";
     document.title = `${title} · Logomocja`;
-  }, [pathname, hash, navigate]);
+  }, [pathname, hash, navigate, isBenchmark]);
   const coordinates = drawing.turtle.position.map((n) =>
     Math.abs(n) < 0.005 ? "0" : Number(n.toFixed(1)).toString(),
   );
@@ -414,14 +422,17 @@ export default function App() {
       onOpenChange={() => {}}
       style={{ "--sidebar-width": "208px" } as React.CSSProperties}
     >
-      <AppSidebar theme={theme} toggleTheme={toggle} />
+      <AppSidebar theme={theme} toggleTheme={toggle} language={language} isBenchmark={isBenchmark} />
       <main className="workspace">
         <div className="mobile-navigation">
-          <SidebarTrigger aria-label="Otwórz nawigację" />
+          <SidebarTrigger aria-label={language === "en" ? "Open navigation" : "Otwórz nawigację"} />
           <span>logomocja.</span>
         </div>
         <Routes>
-          <Route path="/" element={studio} />
+          {import.meta.env.VITE_PAGES && (
+            <Route path="/" element={<Navigate to={{ pathname: benchmarkPath, search }} replace />} />
+          )}
+          <Route path={studioPath} element={studio} />
           <Route
             path="/examples"
             element={
@@ -432,19 +443,23 @@ export default function App() {
             }
           />
           <Route path="/commands" element={<Commands />} />
-          <Route path="/benchmark" element={
-            <>
-              <div className="workspace-heading">
-                <div>
-                  <h1 tabIndex={-1}>Benchmark</h1>
-                  <p>Każdy agent buduje całą Logomocję od zera na podstawie tego samego opisu.</p>
-                </div>
-              </div>
-              <Suspense fallback={<p role="status">Ładujemy wyniki benchmarku…</p>}>
+          <Route
+            path={benchmarkPath}
+            element={
+              <Suspense
+                fallback={
+                  <header className="benchmark-header">
+                    <div>
+                      <h1 tabIndex={-1}>Benchmark</h1>
+                      <p role="status">{benchmarkCopy[language].loading}</p>
+                    </div>
+                  </header>
+                }
+              >
                 <Benchmark />
               </Suspense>
-            </>
-          } />
+            }
+          />
           <Route path="/challenges" element={<ChallengeCatalog />} />
           <Route
             path="/challenges/:slug"
@@ -455,7 +470,7 @@ export default function App() {
             element={
               <>
                 <h1 tabIndex={-1}>Nie znaleziono strony</h1>
-                <Link className="text-link" to="/">
+                <Link className="text-link" to={studioPath}>
                   Wróć do pracowni
                 </Link>
               </>
