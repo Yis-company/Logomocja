@@ -77,11 +77,11 @@
   "quality": {
     "version": "q1",
     "q": 34,
-    "types": 195,
+    "types": 196,
     "families": {
       "complexity": 34,
       "defects": 0,
-      "types": 195
+      "types": 196
     },
     "rules": {
       "anti-slop(no-chained-type-assertions)": 2,
@@ -92,9 +92,10 @@
       "anti-slop(require-safety-comment-for-type-assertion)": 13,
       "eslint(max-depth)": 21,
       "eslint(no-nested-ternary)": 13,
+      "typescript(no-explicit-any)": 1,
       "typescript(no-non-null-assertion)": 154
     },
-    "loc": 6916,
+    "loc": 6915,
     "language": "ts",
     "files": [
       "src/data/challenges.ts",

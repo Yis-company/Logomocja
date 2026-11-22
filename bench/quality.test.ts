@@ -1,11 +1,30 @@
-import { mkdtempSync, rmSync } from "node:fs";
+import {
+  mkdirSync,
+  mkdtempSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { scoreRun, scoreSource } from "./quality";
+import { productFiles, scoreRun, scoreSource } from "./quality";
 
 const fixtures = fileURLToPath(new URL("fixtures/quality/", import.meta.url));
+
+function withTree(files: Record<string, string>, check: (dir: string) => void) {
+  const dir = mkdtempSync(join(tmpdir(), "quality-tree-"));
+  try {
+    for (const [path, text] of Object.entries(files)) {
+      mkdirSync(join(dir, path, ".."), { recursive: true });
+      writeFileSync(join(dir, path), text);
+    }
+    check(dir);
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
+}
 
 describe("q1 code-quality score", () => {
   it("counts complexity and defects in Q and TypeScript-only findings separately", () => {
@@ -58,5 +77,49 @@ describe("q1 code-quality score", () => {
       q: null,
       reason: "not an app task",
     });
+  });
+
+  it("scans app code by its place in the project, not by folder name alone", () => {
+    withTree(
+      {
+        "src/scripts/runner.ts": "export {};\n",
+        "src/build.ts": "export {};\n",
+        "src/worker.mts": "export {};\n",
+        "build.ts": "export {};\n",
+        "scripts/release.ts": "export {};\n",
+        "tests/helper.ts": "export {};\n",
+        "src/main.test.ts": "export {};\n",
+        "src/vendor.js/readme.txt": "export {};\n",
+      },
+      (dir) => {
+        symlinkSync("../missing.ts", join(dir, "src/link.ts"));
+        expect(productFiles(dir)).toEqual([
+          "src/build.ts",
+          "src/scripts/runner.ts",
+          "src/worker.mts",
+        ]);
+        expect(scoreSource(dir)).toMatchObject({ q: 0, language: "ts" });
+      },
+    );
+  });
+
+  it("counts findings that generated code tries to disable", () => {
+    withTree(
+      {
+        "src/main.js":
+          "/* eslint-disable */\ndebugger; // oxlint-disable-line no-debugger\n",
+      },
+      (dir) => expect(scoreSource(dir)).toMatchObject({ q: 1 }),
+    );
+  });
+
+  it("reports a file oxlint cannot parse as a failed scan", () => {
+    withTree({ "src/main.ts": "const a = (;\n" }, (dir) =>
+      expect(scoreSource(dir)).toEqual({
+        version: "q1",
+        q: null,
+        reason: "scan failed",
+      }),
+    );
   });
 });

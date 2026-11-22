@@ -76,11 +76,11 @@
   "notes": "",
   "quality": {
     "version": "q1",
-    "q": 90,
+    "q": 94,
     "types": 33,
     "families": {
       "complexity": 58,
-      "defects": 32,
+      "defects": 36,
       "types": 33
     },
     "rules": {
@@ -94,12 +94,14 @@
       "eslint(no-unused-vars)": 1,
       "jsx-a11y(no-static-element-interactions)": 1,
       "jsx-a11y(prefer-tag-over-role)": 7,
-      "react-hooks(exhaustive-deps)": 8,
+      "react-hooks(exhaustive-deps)": 9,
       "react(only-export-components)": 8,
-      "react(refs)": 3,
+      "react(refs)": 4,
+      "react(set-state-in-effect)": 1,
+      "react(use-memo)": 1,
       "typescript(no-non-null-assertion)": 14
     },
-    "loc": 1536,
+    "loc": 1535,
     "language": "ts",
     "files": [
       "src/DrawingCanvas.tsx",
