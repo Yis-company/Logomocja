@@ -73,5 +73,45 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 9,
+    "types": 52,
+    "families": {
+      "complexity": 9,
+      "defects": 0,
+      "types": 52
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 5,
+      "anti-slop(require-safety-comment-for-type-assertion)": 13,
+      "eslint(max-depth)": 8,
+      "eslint(no-nested-ternary)": 1,
+      "typescript(no-explicit-any)": 1,
+      "typescript(no-non-null-assertion)": 33
+    },
+    "loc": 2618,
+    "language": "ts",
+    "files": [
+      "src/logo/challenges.ts",
+      "src/logo/errors.ts",
+      "src/logo/examples.ts",
+      "src/logo/index.ts",
+      "src/logo/lexer.ts",
+      "src/logo/machine.ts",
+      "src/logo/parser.ts",
+      "src/logo/vocab.ts",
+      "src/main.ts",
+      "src/ui/app.ts",
+      "src/ui/challenges-page.ts",
+      "src/ui/editor-page.ts",
+      "src/ui/editor.ts",
+      "src/ui/highlight.ts",
+      "src/ui/reference.ts",
+      "src/ui/share.ts",
+      "src/ui/storage.ts",
+      "src/ui/views.ts"
+    ]
+  }
 }

@@ -73,5 +73,55 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 21,
+    "types": 43,
+    "families": {
+      "complexity": 21,
+      "defects": 0,
+      "types": 43
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 4,
+      "anti-slop(no-runtime-typeof)": 2,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(no-unsafe-dictionary-type)": 2,
+      "anti-slop(require-safety-comment-for-type-assertion)": 17,
+      "eslint(max-depth)": 17,
+      "eslint(no-nested-ternary)": 4,
+      "typescript(no-non-null-assertion)": 16
+    },
+    "loc": 5191,
+    "language": "ts",
+    "files": [
+      "src/content/challenges.ts",
+      "src/content/examples.ts",
+      "src/content/reference.ts",
+      "src/lang/ast.ts",
+      "src/lang/compare.ts",
+      "src/lang/errors.ts",
+      "src/lang/evaluate.ts",
+      "src/lang/index.ts",
+      "src/lang/interpreter.ts",
+      "src/lang/keywords.ts",
+      "src/lang/lexer.ts",
+      "src/lang/parser.ts",
+      "src/main.ts",
+      "src/ui/dialogs.ts",
+      "src/ui/dom.ts",
+      "src/ui/editor.ts",
+      "src/ui/highlight.ts",
+      "src/ui/icons.ts",
+      "src/ui/pages.ts",
+      "src/ui/paint.ts",
+      "src/ui/share.ts",
+      "src/ui/storage.ts",
+      "src/ui/studio.ts",
+      "src/ui/theme.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts"
+    ]
+  }
 }

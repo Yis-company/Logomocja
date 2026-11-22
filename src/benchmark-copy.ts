@@ -64,6 +64,10 @@ const en = {
   generatedTests: "Generated tests",
   toolCalls: "Tool calls",
   cases: "Test cases authored",
+  quality: "Lint findings, q1 ruleset the agents did not see (lower is better)",
+  qualityTypes: "TypeScript-only lint findings",
+  complexity: "complexity",
+  defects: "defects",
   humanScore: "Human score",
   input: "Input tokens (including cached)",
   output: "Output tokens",
@@ -135,6 +139,9 @@ const en = {
     medium: "Medium",
     high: "High",
     xhigh: "Extra high",
+    "no source": "No source code",
+    "not an app task": "Not an app build",
+    "scan failed": "Scan failed",
   } as Record<string, string>,
 };
 
@@ -205,6 +212,10 @@ const pl: typeof en = {
   generatedTests: "Testy wygenerowane przez agenta",
   toolCalls: "Wywołania narzędzi",
   cases: "Liczba utworzonych testów",
+  quality: "Uwagi lintera, reguły q1 nieznane agentom (mniej = lepiej)",
+  qualityTypes: "Uwagi lintera tylko dla TypeScript",
+  complexity: "złożoność",
+  defects: "usterki",
   humanScore: "Ocena człowieka",
   input: "Tokeny wejścia (w tym z pamięci podręcznej)",
   output: "Tokeny wyjścia",
@@ -270,6 +281,9 @@ const pl: typeof en = {
     medium: "Średni",
     high: "Wysoki",
     xhigh: "Bardzo wysoki",
+    "no source": "Brak kodu źródłowego",
+    "not an app task": "To nie jest budowa aplikacji",
+    "scan failed": "Skan nieudany",
   },
 };
 

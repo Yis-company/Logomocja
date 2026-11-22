@@ -276,3 +276,19 @@ for (const [run, build] of [
     await app.close();
   });
 }
+
+test("run details show the lint score or why it is missing", async ({
+  page,
+}) => {
+  await page.goto(`./#/benchmark?run=${fable}`);
+  const scored = page.getByRole("region", { name: "claude-fable-5-2" });
+  await expect(
+    scored.getByText(/^\d+ \(complexity \d+, defects \d+\)$/),
+  ).toBeVisible();
+
+  await page.goto(
+    "./#/benchmark?run=v2-e2-tdd-v1-codex-gpt-6.1-sol-20261103-153405Z",
+  );
+  const missing = page.getByRole("region", { name: "gpt-6.1-sol" });
+  await expect(missing.getByText("No source code")).toBeVisible();
+});

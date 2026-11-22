@@ -8,7 +8,9 @@
       "bench/**",
       "!bench/conformance/**/*.json",
       "!bench/results",
-      "!bench/layers/**/skill"
+      "!bench/layers/**/skill",
+      "!bench/quality/q1/anti-slop",
+      "!bench/fixtures/quality"
     ]
   },
   "linter": {

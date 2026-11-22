@@ -73,5 +73,61 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 28,
+    "types": 82,
+    "families": {
+      "complexity": 19,
+      "defects": 9,
+      "types": 82
+    },
+    "rules": {
+      "anti-slop(no-array-filter-map)": 1,
+      "anti-slop(no-chained-type-assertions)": 1,
+      "anti-slop(no-known-value-widening)": 6,
+      "anti-slop(no-runtime-typeof)": 2,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(no-unsafe-dictionary-type)": 3,
+      "anti-slop(require-safety-comment-for-type-assertion)": 22,
+      "eslint(max-depth)": 12,
+      "eslint(no-nested-ternary)": 7,
+      "eslint(no-unused-expressions)": 5,
+      "typescript(no-non-null-assertion)": 46,
+      "unicorn(no-useless-spread)": 3
+    },
+    "loc": 4037,
+    "language": "ts",
+    "files": [
+      "src/data/challenges.ts",
+      "src/data/examples.ts",
+      "src/data/reference.ts",
+      "src/lang/check.ts",
+      "src/lang/index.ts",
+      "src/lang/interpreter.ts",
+      "src/lang/keywords.ts",
+      "src/lang/lexer.ts",
+      "src/lang/parser.ts",
+      "src/lang/types.ts",
+      "src/main.ts",
+      "src/ui/app.ts",
+      "src/ui/challenges.ts",
+      "src/ui/dialogs.ts",
+      "src/ui/dom.ts",
+      "src/ui/editor.ts",
+      "src/ui/gallery.ts",
+      "src/ui/geom.ts",
+      "src/ui/reference.ts",
+      "src/ui/router.ts",
+      "src/ui/runner.ts",
+      "src/ui/share.ts",
+      "src/ui/storage.ts",
+      "src/ui/theme.ts",
+      "src/ui/view.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts",
+      "src/ui/workspace.ts"
+    ]
+  }
 }

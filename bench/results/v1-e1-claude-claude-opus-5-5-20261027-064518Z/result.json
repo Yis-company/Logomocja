@@ -49,5 +49,43 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 20,
+    "types": 67,
+    "families": {
+      "complexity": 20,
+      "defects": 0,
+      "types": 67
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 2,
+      "anti-slop(no-runtime-typeof)": 4,
+      "anti-slop(require-safety-comment-for-type-assertion)": 9,
+      "eslint(max-depth)": 19,
+      "eslint(no-nested-ternary)": 1,
+      "typescript(no-non-null-assertion)": 52
+    },
+    "loc": 2960,
+    "language": "ts",
+    "files": [
+      "src/lang/errors.ts",
+      "src/lang/index.ts",
+      "src/lang/interpreter.ts",
+      "src/lang/lexer.ts",
+      "src/lang/names.ts",
+      "src/lang/parser.ts",
+      "src/main.ts",
+      "src/render/view.ts",
+      "src/render/view2d.ts",
+      "src/render/view3d.ts",
+      "src/ui/app.ts",
+      "src/ui/editor.ts",
+      "src/ui/examples.ts",
+      "src/ui/highlight.ts",
+      "src/ui/player.ts",
+      "src/ui/storage.ts"
+    ]
+  }
 }

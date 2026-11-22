@@ -73,5 +73,58 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 5,
+    "types": 57,
+    "families": {
+      "complexity": 2,
+      "defects": 3,
+      "types": 57
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 1,
+      "anti-slop(no-runtime-typeof)": 2,
+      "anti-slop(no-unknown-parameters)": 1,
+      "anti-slop(no-unsafe-dictionary-type)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 18,
+      "eslint(max-depth)": 1,
+      "eslint(no-nested-ternary)": 1,
+      "typescript(no-non-null-assertion)": 34,
+      "unicorn(no-new-array)": 1,
+      "unicorn(no-useless-spread)": 2
+    },
+    "loc": 3994,
+    "language": "ts",
+    "files": [
+      "src/content/challenges.ts",
+      "src/content/examples.ts",
+      "src/content/reference.ts",
+      "src/lang/ast.ts",
+      "src/lang/commands.ts",
+      "src/lang/errors.ts",
+      "src/lang/highlight.ts",
+      "src/lang/index.ts",
+      "src/lang/interpreter.ts",
+      "src/lang/lexer.ts",
+      "src/lang/limits.ts",
+      "src/lang/parser.ts",
+      "src/lang/turtle.ts",
+      "src/main.ts",
+      "src/ui/challenges-page.ts",
+      "src/ui/dialogs.ts",
+      "src/ui/dom.ts",
+      "src/ui/editor.ts",
+      "src/ui/reference-page.ts",
+      "src/ui/share.ts",
+      "src/ui/storage.ts",
+      "src/ui/theme.ts",
+      "src/ui/toast.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts",
+      "src/ui/webgl.ts",
+      "src/ui/workspace.ts"
+    ]
+  }
 }

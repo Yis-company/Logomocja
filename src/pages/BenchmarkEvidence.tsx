@@ -194,6 +194,26 @@ export function RunDetails({
                 <dd>{format.count(run.toolCalls)}</dd>
               </div>
             )}
+            {run.quality && (
+              <div>
+                <dt>{copy.quality}</dt>
+                <dd>
+                  {run.quality.q === null
+                    ? copy.values[run.quality.reason]
+                    : `${format.count(run.quality.q)} (${copy.complexity} ${format.count(run.quality.families.complexity)}, ${copy.defects} ${format.count(run.quality.families.defects)})`}
+                </dd>
+              </div>
+            )}
+            {run.quality?.q != null && (
+              <div>
+                <dt>{copy.qualityTypes}</dt>
+                <dd>
+                  {run.quality.types === null
+                    ? "—"
+                    : format.count(run.quality.types)}
+                </dd>
+              </div>
+            )}
             {run.cases !== undefined && (
               <div>
                 <dt>{copy.cases}</dt>

@@ -32,5 +32,10 @@
   "conformance": null,
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": null,
+    "reason": "not an app task"
+  }
 }

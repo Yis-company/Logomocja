@@ -73,5 +73,29 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 27,
+    "types": null,
+    "families": {
+      "complexity": 27,
+      "defects": 0,
+      "types": 1
+    },
+    "rules": {
+      "anti-slop(no-runtime-typeof)": 1,
+      "eslint(max-depth)": 17,
+      "eslint(no-nested-ternary)": 10
+    },
+    "loc": 1862,
+    "language": "js",
+    "files": [
+      "src/content.js",
+      "src/examples.js",
+      "src/interpreter.js",
+      "src/main.js",
+      "src/view.js"
+    ]
+  }
 }

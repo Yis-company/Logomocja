@@ -19,6 +19,7 @@ import { captureGallery } from "./gallery";
 import { prepareInputs, readOnlyMount, writableMount } from "./inputs";
 import { findBaseline, layerPrompt, loadLayer, prepareLayer } from "./layers";
 import { programsDir } from "./programs";
+import { scoreRun } from "./quality";
 import { renderPrompt, type Task } from "./prompt";
 import { record, type Receipt } from "./receipt";
 import type { RunResult } from "./result";
@@ -185,6 +186,8 @@ if (hasCommit && existsSync(join(out, "source.bundle"))) {
   if (!values["no-push"]) git("push", "-q", "-u", "origin", `build/${id}`);
   log(`source on branch build/${id}${values["no-push"] ? " (not pushed)" : ""}`);
 }
+result.quality = scoreRun(result);
+writeFileSync(join(resultsDir, "result.json"), `${JSON.stringify(result, null, 2)}\n`);
 receipt({
   phase: "finalized",
   outcome: result.status,

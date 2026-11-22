@@ -82,5 +82,57 @@
     "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
     "snapshotDate": "2026-11-03"
   },
-  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-131400Z"
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-131400Z",
+  "quality": {
+    "version": "q1",
+    "q": 31,
+    "types": 220,
+    "families": {
+      "complexity": 29,
+      "defects": 2,
+      "types": 220
+    },
+    "rules": {
+      "anti-slop(no-chained-type-assertions)": 1,
+      "anti-slop(no-known-value-widening)": 9,
+      "anti-slop(no-runtime-typeof)": 3,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(require-safety-comment-for-type-assertion)": 37,
+      "eslint(max-depth)": 20,
+      "eslint(no-nested-ternary)": 9,
+      "eslint(no-unused-expressions)": 1,
+      "typescript(no-non-null-assertion)": 168,
+      "unicorn(no-useless-spread)": 1
+    },
+    "loc": 6131,
+    "language": "ts",
+    "files": [
+      "src/app/app.ts",
+      "src/app/permalink.ts",
+      "src/app/starters.ts",
+      "src/app/storage.ts",
+      "src/challenges.ts",
+      "src/content/reference.ts",
+      "src/examples.ts",
+      "src/lang/interpreter.ts",
+      "src/lang/keywords.ts",
+      "src/lang/lexer.ts",
+      "src/lang/parser.ts",
+      "src/lang/types.ts",
+      "src/main.ts",
+      "src/ui/dom.ts",
+      "src/ui/editor.ts",
+      "src/ui/fallback3d.ts",
+      "src/ui/highlight.ts",
+      "src/ui/overlay.ts",
+      "src/ui/pages.ts",
+      "src/ui/runner.ts",
+      "src/ui/studio.ts",
+      "src/ui/surface.ts",
+      "src/ui/thumbs.ts",
+      "src/ui/trace.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts"
+    ]
+  }
 }

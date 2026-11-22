@@ -49,5 +49,34 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 8,
+    "types": 25,
+    "families": {
+      "complexity": 6,
+      "defects": 2,
+      "types": 25
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 2,
+      "anti-slop(no-runtime-typeof)": 1,
+      "anti-slop(no-unknown-parameters)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 3,
+      "eslint(max-depth)": 4,
+      "eslint(no-empty)": 2,
+      "eslint(no-nested-ternary)": 2,
+      "typescript(no-explicit-any)": 1,
+      "typescript(no-non-null-assertion)": 17
+    },
+    "loc": 1287,
+    "language": "ts",
+    "files": [
+      "src/examples.ts",
+      "src/lang.ts",
+      "src/main.ts",
+      "src/render.ts"
+    ]
+  }
 }

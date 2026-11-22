@@ -1,0 +1,1939 @@
+{
+ "apps": [
+  {
+   "app": "gemini-4-medium-hydrogen-base",
+   "lang": "ts",
+   "loc": 4452,
+   "files": [
+    "./src/App.tsx",
+    "./src/components/ChallengesPanel.tsx",
+    "./src/components/Editor.tsx",
+    "./src/components/ExamplesModal.tsx",
+    "./src/components/HelpModal.tsx",
+    "./src/components/ReferencePanel.tsx",
+    "./src/components/Viewport2D.tsx",
+    "./src/components/Viewport3D.tsx",
+    "./src/data/challenges.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/types.ts",
+    "./src/main.tsx",
+    "./src/utils/exportPng.ts",
+    "./src/utils/permalink.ts",
+    "./src/utils/storage.ts"
+   ],
+   "Q": 54,
+   "types": 20,
+   "families": {
+    "defects": 7,
+    "types": 20,
+    "complexity": 47
+   },
+   "rules": {
+    "react(immutability)": 1,
+    "jsx-a11y(prefer-tag-over-role)": 6,
+    "typescript(no-non-null-assertion)": 5,
+    "eslint(max-depth)": 47,
+    "anti-slop(no-known-value-widening)": 4,
+    "anti-slop(require-safety-comment-for-type-assertion)": 7,
+    "anti-slop(no-unknown-parameters)": 1,
+    "anti-slop(no-runtime-typeof)": 3
+   },
+   "conformancePct": null
+  },
+  {
+   "app": "gemini-4-medium-hydrogen-impeccable",
+   "lang": "ts",
+   "loc": 5056,
+   "files": [
+    "./src/App.tsx",
+    "./src/components/ChallengesView.tsx",
+    "./src/components/ExamplesView.tsx",
+    "./src/components/Icons.tsx",
+    "./src/components/LogoEditor.tsx",
+    "./src/components/MiniPreview.tsx",
+    "./src/components/ReferenceView.tsx",
+    "./src/components/Viewport2D.tsx",
+    "./src/components/Viewport3D.tsx",
+    "./src/data/challenges.ts",
+    "./src/data/reference.ts",
+    "./src/data/standardPrograms.ts",
+    "./src/logo/keywords.ts",
+    "./src/logo/lexer.ts",
+    "./src/logo/parser.ts",
+    "./src/logo/types.ts",
+    "./src/logo/vm.ts",
+    "./src/main.tsx",
+    "./src/utils/storage.ts"
+   ],
+   "Q": 37,
+   "types": 26,
+   "families": {
+    "defects": 5,
+    "types": 26,
+    "complexity": 32
+   },
+   "rules": {
+    "jsx-a11y(prefer-tag-over-role)": 3,
+    "react(immutability)": 1,
+    "anti-slop(no-known-value-widening)": 4,
+    "typescript(no-non-null-assertion)": 7,
+    "eslint(max-depth)": 27,
+    "anti-slop(require-safety-comment-for-type-assertion)": 14,
+    "react(set-state-in-effect)": 1,
+    "sonarjs(no-nested-conditional)": 5,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": null
+  },
+  {
+   "app": "gemini-4-medium-neon-base",
+   "lang": "ts",
+   "loc": 5274,
+   "files": [
+    "./src/data/challenges.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/engine/index.ts",
+    "./src/engine/lexer.ts",
+    "./src/engine/parser.ts",
+    "./src/engine/types.ts",
+    "./src/engine/vm.ts",
+    "./src/main.ts",
+    "./src/render/renderer2d.ts",
+    "./src/render/renderer3d.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/modal.ts",
+    "./src/ui/permalink.ts",
+    "./src/ui/preview.ts",
+    "./src/ui/storage.ts"
+   ],
+   "Q": 56,
+   "types": 78,
+   "families": {
+    "types": 78,
+    "defects": 1,
+    "complexity": 55
+   },
+   "rules": {
+    "anti-slop(no-known-value-widening)": 6,
+    "oxc(erasing-op)": 1,
+    "typescript(no-non-null-assertion)": 61,
+    "anti-slop(require-safety-comment-for-type-assertion)": 11,
+    "eslint(max-depth)": 48,
+    "sonarjs(no-nested-conditional)": 7
+   },
+   "conformancePct": null
+  },
+  {
+   "app": "gemini-4-medium-neon-impeccable",
+   "lang": "ts",
+   "loc": 5428,
+   "files": [
+    "./src/App.tsx",
+    "./src/components/Canvas2D.tsx",
+    "./src/components/Canvas3D.tsx",
+    "./src/components/ChallengesView.tsx",
+    "./src/components/CodeEditor.tsx",
+    "./src/components/ConfirmDialog.tsx",
+    "./src/components/ExamplesView.tsx",
+    "./src/components/Icons.tsx",
+    "./src/components/ReferenceView.tsx",
+    "./src/components/SegmentPreviewSvg.tsx",
+    "./src/components/TelemetryStrip.tsx",
+    "./src/components/TopBar.tsx",
+    "./src/data/challenges.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/interpreter/evaluator.ts",
+    "./src/interpreter/index.ts",
+    "./src/interpreter/lexer.ts",
+    "./src/interpreter/parser.ts",
+    "./src/interpreter/types.ts",
+    "./src/main.tsx",
+    "./src/utils/challengeChecker.ts",
+    "./src/utils/storage.ts",
+    "./src/utils/urlState.ts"
+   ],
+   "Q": 53,
+   "types": 25,
+   "families": {
+    "defects": 10,
+    "complexity": 43,
+    "types": 25
+   },
+   "rules": {
+    "react(immutability)": 1,
+    "eslint(max-depth)": 32,
+    "sonarjs(no-nested-conditional)": 11,
+    "typescript(no-non-null-assertion)": 10,
+    "anti-slop(no-known-value-widening)": 8,
+    "jsx-a11y(prefer-tag-over-role)": 7,
+    "jsx-a11y(control-has-associated-label)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 6,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": null
+  },
+  {
+   "app": "v1-e1-claude-claude-fable-5-1-20261027-070726Z",
+   "lang": "ts",
+   "loc": 2836,
+   "files": [
+    "./src/logo/ast.ts",
+    "./src/logo/commands.ts",
+    "./src/logo/errors.ts",
+    "./src/logo/index.ts",
+    "./src/logo/lexer.ts",
+    "./src/logo/parser.ts",
+    "./src/logo/runner.ts",
+    "./src/logo/turtle.ts",
+    "./src/main.ts",
+    "./src/ui/app.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/examples.ts",
+    "./src/ui/help.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/stage.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 9,
+   "types": 75,
+   "families": {
+    "types": 75,
+    "complexity": 9
+   },
+   "rules": {
+    "anti-slop(require-safety-comment-for-type-assertion)": 9,
+    "typescript(no-non-null-assertion)": 61,
+    "eslint(max-depth)": 6,
+    "sonarjs(no-nested-conditional)": 3,
+    "anti-slop(no-unknown-parameters)": 2,
+    "anti-slop(no-runtime-typeof)": 3
+   },
+   "conformancePct": 99.6
+  },
+  {
+   "app": "v1-e1-claude-claude-haiku-5-5-20261027-063441Z",
+   "lang": "ts",
+   "loc": 1562,
+   "files": [
+    "./src/logo/commands.ts",
+    "./src/logo/errors.ts",
+    "./src/logo/examples.ts",
+    "./src/logo/lexer.ts",
+    "./src/logo/limits.ts",
+    "./src/logo/machine.ts",
+    "./src/logo/parser.ts",
+    "./src/logo/run.ts",
+    "./src/logo/types.ts",
+    "./src/main.ts",
+    "./src/render/plane.ts",
+    "./src/render/space.ts",
+    "./src/render/view.ts",
+    "./src/render/webgl.ts",
+    "./src/ui/app.ts",
+    "./src/ui/storage.ts",
+    "./src/version.ts"
+   ],
+   "Q": 2,
+   "types": 29,
+   "families": {
+    "types": 29,
+    "complexity": 2
+   },
+   "rules": {
+    "anti-slop(require-safety-comment-for-type-assertion)": 25,
+    "anti-slop(no-unknown-parameters)": 1,
+    "eslint(max-depth)": 1,
+    "anti-slop(no-known-value-widening)": 1,
+    "typescript(no-non-null-assertion)": 2,
+    "sonarjs(no-nested-conditional)": 1
+   },
+   "conformancePct": 99.6
+  },
+  {
+   "app": "v1-e1-claude-claude-opus-5-5-20261027-064518Z",
+   "lang": "ts",
+   "loc": 2962,
+   "files": [
+    "./src/lang/errors.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/names.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/render/view.ts",
+    "./src/render/view2d.ts",
+    "./src/render/view3d.ts",
+    "./src/ui/app.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/examples.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/player.ts",
+    "./src/ui/storage.ts"
+   ],
+   "Q": 22,
+   "types": 67,
+   "families": {
+    "types": 67,
+    "complexity": 22
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 52,
+    "anti-slop(no-runtime-typeof)": 4,
+    "eslint(max-depth)": 19,
+    "anti-slop(no-known-value-widening)": 2,
+    "sonarjs(no-nested-conditional)": 3,
+    "anti-slop(require-safety-comment-for-type-assertion)": 9
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v1-e1-claude-claude-sonnet-5-5-20261027-062629Z",
+   "lang": "ts",
+   "loc": 1287,
+   "files": [
+    "./src/examples.ts",
+    "./src/lang.ts",
+    "./src/main.ts",
+    "./src/render.ts"
+   ],
+   "Q": 8,
+   "types": 25,
+   "families": {
+    "types": 25,
+    "complexity": 6,
+    "defects": 2
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 17,
+    "eslint(max-depth)": 4,
+    "anti-slop(no-unknown-parameters)": 1,
+    "sonarjs(no-nested-conditional)": 2,
+    "anti-slop(no-known-value-widening)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 3,
+    "typescript(no-explicit-any)": 1,
+    "eslint(no-empty)": 2,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 99.6
+  },
+  {
+   "app": "v1-e1-codex-gpt-6-astra-20261027-064006Z",
+   "lang": "ts",
+   "loc": 1275,
+   "files": [
+    "./src/drawing.ts",
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts"
+   ],
+   "Q": 20,
+   "types": 29,
+   "families": {
+    "complexity": 17,
+    "types": 29,
+    "defects": 3
+   },
+   "rules": {
+    "eslint(max-depth)": 12,
+    "typescript(no-non-null-assertion)": 19,
+    "eslint(no-empty)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 5,
+    "anti-slop(no-unknown-parameters)": 1,
+    "anti-slop(no-known-value-widening)": 3,
+    "unicorn(no-useless-spread)": 1,
+    "anti-slop(no-runtime-typeof)": 1,
+    "sonarjs(no-nested-conditional)": 5
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v1-e1-codex-gpt-6.1-sol-20261027-063441Z",
+   "lang": "js",
+   "loc": 57,
+   "files": [
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 14,
+   "types": null,
+   "families": {
+    "defects": 2,
+    "complexity": 12
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 1,
+    "eslint(max-depth)": 11,
+    "eslint(no-empty)": 1,
+    "sonarjs(no-nested-conditional)": 1
+   },
+   "conformancePct": 98.5
+  },
+  {
+   "app": "v1-e1-codex-gpt-6.1-terra-20261027-065748Z",
+   "lang": "js",
+   "loc": 71,
+   "files": [
+    "./src/logo.js",
+    "./src/main.js"
+   ],
+   "Q": 21,
+   "types": null,
+   "families": {
+    "defects": 4,
+    "complexity": 17
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 3,
+    "eslint(max-depth)": 17,
+    "eslint(no-empty)": 1
+   },
+   "conformancePct": 98.5
+  },
+  {
+   "app": "v2-e2-claude-claude-haiku-5-5-20261028-100415Z",
+   "lang": "ts",
+   "loc": 2618,
+   "files": [
+    "./src/logo/challenges.ts",
+    "./src/logo/errors.ts",
+    "./src/logo/examples.ts",
+    "./src/logo/index.ts",
+    "./src/logo/lexer.ts",
+    "./src/logo/machine.ts",
+    "./src/logo/parser.ts",
+    "./src/logo/vocab.ts",
+    "./src/main.ts",
+    "./src/ui/app.ts",
+    "./src/ui/challenges-page.ts",
+    "./src/ui/editor-page.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/reference.ts",
+    "./src/ui/share.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/views.ts"
+   ],
+   "Q": 9,
+   "types": 52,
+   "families": {
+    "complexity": 9,
+    "types": 52
+   },
+   "rules": {
+    "eslint(max-depth)": 8,
+    "anti-slop(require-safety-comment-for-type-assertion)": 13,
+    "anti-slop(no-known-value-widening)": 5,
+    "typescript(no-non-null-assertion)": 33,
+    "typescript(no-explicit-any)": 1,
+    "sonarjs(no-nested-conditional)": 1
+   },
+   "conformancePct": 98.4
+  },
+  {
+   "app": "v2-e2-claude-claude-haiku-5-5-20261028-101757Z",
+   "lang": "ts",
+   "loc": 3278,
+   "files": [
+    "./src/logo/ast.ts",
+    "./src/logo/challenges.ts",
+    "./src/logo/check.ts",
+    "./src/logo/evaluate.ts",
+    "./src/logo/examples.ts",
+    "./src/logo/index.ts",
+    "./src/logo/keywords.ts",
+    "./src/logo/lexer.ts",
+    "./src/logo/machine.ts",
+    "./src/logo/parser.ts",
+    "./src/logo/reference.ts",
+    "./src/main.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/progress.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/util.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 4,
+   "types": 39,
+   "families": {
+    "complexity": 4,
+    "types": 39
+   },
+   "rules": {
+    "eslint(max-depth)": 1,
+    "typescript(no-non-null-assertion)": 25,
+    "anti-slop(no-known-value-widening)": 3,
+    "sonarjs(no-nested-conditional)": 3,
+    "anti-slop(require-safety-comment-for-type-assertion)": 11
+   },
+   "conformancePct": 99.0
+  },
+  {
+   "app": "v2-e2-claude-claude-haiku-5-5-20261028-103310Z",
+   "lang": "ts",
+   "loc": 3994,
+   "files": [
+    "./src/content/challenges.ts",
+    "./src/content/examples.ts",
+    "./src/content/reference.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/commands.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/highlight.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/limits.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/turtle.ts",
+    "./src/main.ts",
+    "./src/ui/challenges-page.ts",
+    "./src/ui/dialogs.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/reference-page.ts",
+    "./src/ui/share.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts",
+    "./src/ui/webgl.ts",
+    "./src/ui/workspace.ts"
+   ],
+   "Q": 5,
+   "types": 57,
+   "families": {
+    "types": 57,
+    "defects": 3,
+    "complexity": 2
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 34,
+    "anti-slop(require-safety-comment-for-type-assertion)": 18,
+    "anti-slop(no-unknown-parameters)": 1,
+    "unicorn(no-new-array)": 1,
+    "unicorn(no-useless-spread)": 2,
+    "anti-slop(no-unsafe-dictionary-type)": 1,
+    "anti-slop(no-runtime-typeof)": 2,
+    "anti-slop(no-known-value-widening)": 1,
+    "eslint(max-depth)": 1,
+    "sonarjs(no-nested-conditional)": 1
+   },
+   "conformancePct": 94.2
+  },
+  {
+   "app": "v2-e2-claude-claude-haiku-5-5-20261028-110234Z",
+   "lang": "ts",
+   "loc": 4374,
+   "files": [
+    "./src/challenges/challenges.ts",
+    "./src/challenges/checker.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/geometry.ts",
+    "./src/lang/index.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/machine.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/spec.ts",
+    "./src/main.ts",
+    "./src/ui/dialog.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/permalink.ts",
+    "./src/ui/reference.ts",
+    "./src/ui/router.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts",
+    "./src/ui/workspace.ts"
+   ],
+   "Q": 6,
+   "types": 41,
+   "families": {
+    "complexity": 5,
+    "types": 41,
+    "defects": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 3,
+    "typescript(no-non-null-assertion)": 18,
+    "anti-slop(require-safety-comment-for-type-assertion)": 18,
+    "anti-slop(no-known-value-widening)": 2,
+    "sonarjs(no-nested-conditional)": 2,
+    "anti-slop(no-chained-type-assertions)": 1,
+    "anti-slop(no-runtime-typeof)": 1,
+    "anti-slop(no-unknown-parameters)": 1,
+    "unicorn(no-useless-spread)": 1
+   },
+   "conformancePct": 94.7
+  },
+  {
+   "app": "v2-e2-claude-claude-opus-5-5-20261028-113509Z",
+   "lang": "ts",
+   "loc": 2879,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/lang/interp.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/share.ts",
+    "./src/shortcuts.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 23,
+   "types": 119,
+   "families": {
+    "defects": 8,
+    "types": 119,
+    "complexity": 15
+   },
+   "rules": {
+    "eslint(no-empty)": 5,
+    "typescript(no-non-null-assertion)": 88,
+    "anti-slop(no-known-value-widening)": 5,
+    "eslint(max-depth)": 12,
+    "unicorn(no-useless-spread)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 24,
+    "anti-slop(no-chained-type-assertions)": 2,
+    "eslint(no-unused-vars)": 1,
+    "sonarjs(no-nested-conditional)": 3
+   },
+   "conformancePct": 99.7
+  },
+  {
+   "app": "v2-e2-claude-claude-opus-5-5-20261028-115143Z",
+   "lang": "ts",
+   "loc": 5191,
+   "files": [
+    "./src/content/challenges.ts",
+    "./src/content/examples.ts",
+    "./src/content/reference.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/compare.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/evaluate.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/ui/dialogs.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/paint.ts",
+    "./src/ui/share.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 21,
+   "types": 43,
+   "families": {
+    "complexity": 21,
+    "types": 43
+   },
+   "rules": {
+    "sonarjs(no-nested-conditional)": 4,
+    "eslint(max-depth)": 17,
+    "typescript(no-non-null-assertion)": 16,
+    "anti-slop(no-known-value-widening)": 4,
+    "anti-slop(require-safety-comment-for-type-assertion)": 17,
+    "anti-slop(no-runtime-typeof)": 2,
+    "anti-slop(no-unknown-parameters)": 2,
+    "anti-slop(no-unsafe-dictionary-type)": 2
+   },
+   "conformancePct": 99.8
+  },
+  {
+   "app": "v2-e2-claude-claude-opus-5-5-20261028-122444Z",
+   "lang": "ts",
+   "loc": 5367,
+   "files": [
+    "./src/content/challenges.ts",
+    "./src/content/checker.ts",
+    "./src/content/examples.ts",
+    "./src/content/reference.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/geometry.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/ui/app.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/overlay.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/paint.ts",
+    "./src/ui/player.ts",
+    "./src/ui/share.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts",
+    "./src/ui/webgl.ts"
+   ],
+   "Q": 15,
+   "types": 148,
+   "families": {
+    "types": 148,
+    "complexity": 12,
+    "defects": 3
+   },
+   "rules": {
+    "anti-slop(no-runtime-typeof)": 6,
+    "typescript(no-non-null-assertion)": 110,
+    "anti-slop(require-safety-comment-for-type-assertion)": 29,
+    "sonarjs(no-nested-conditional)": 7,
+    "eslint(max-depth)": 5,
+    "anti-slop(no-known-value-widening)": 2,
+    "anti-slop(no-unknown-parameters)": 1,
+    "unicorn(no-useless-spread)": 3
+   },
+   "conformancePct": 99.5
+  },
+  {
+   "app": "v2-e2-claude-claude-opus-5-5-20261028-131400Z",
+   "lang": "ts",
+   "loc": 6595,
+   "files": [
+    "./src/content/challenges.ts",
+    "./src/content/check.ts",
+    "./src/content/examples.ts",
+    "./src/editor/Editor.tsx",
+    "./src/editor/highlight.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/geometry.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.tsx",
+    "./src/render/marker.ts",
+    "./src/render/scene.ts",
+    "./src/render/view2d.ts",
+    "./src/render/view3d.ts",
+    "./src/render/viewport.ts",
+    "./src/run/player.ts",
+    "./src/state/permalink.ts",
+    "./src/state/router.ts",
+    "./src/state/storage.ts",
+    "./src/state/studio.ts",
+    "./src/state/theme.ts",
+    "./src/state/ui.ts",
+    "./src/ui/App.tsx",
+    "./src/ui/ChallengesPage.tsx",
+    "./src/ui/Dialogs.tsx",
+    "./src/ui/DrawingView.tsx",
+    "./src/ui/ExamplesPage.tsx",
+    "./src/ui/Header.tsx",
+    "./src/ui/ReferencePage.tsx",
+    "./src/ui/Studio.tsx",
+    "./src/ui/Thumbnail.tsx",
+    "./src/ui/Toasts.tsx",
+    "./src/ui/files.ts",
+    "./src/ui/icons.tsx",
+    "./src/ui/shortcuts.ts"
+   ],
+   "Q": 67,
+   "types": 90,
+   "families": {
+    "complexity": 37,
+    "types": 90,
+    "defects": 30
+   },
+   "rules": {
+    "sonarjs(no-nested-conditional)": 16,
+    "anti-slop(no-known-value-widening)": 15,
+    "typescript(no-non-null-assertion)": 54,
+    "jsx-a11y(prefer-tag-over-role)": 6,
+    "anti-slop(no-runtime-typeof)": 2,
+    "eslint(max-depth)": 21,
+    "oxc(erasing-op)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 17,
+    "anti-slop(no-unknown-parameters)": 2,
+    "unicorn(no-new-array)": 1,
+    "react-hooks(exhaustive-deps)": 6,
+    "jsx-a11y(click-events-have-key-events)": 2,
+    "jsx-a11y(no-noninteractive-element-interactions)": 3,
+    "react(immutability)": 9,
+    "react(only-export-components)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-claude-claude-sonnet-5-5-20261028-045442Z",
+   "lang": "ts",
+   "loc": 3347,
+   "files": [
+    "./src/data/challenges.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interp.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/lib/check.ts",
+    "./src/lib/share.ts",
+    "./src/lib/storage.ts",
+    "./src/main.ts",
+    "./src/ui/dialog.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/draw.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/reference.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/thumb.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts",
+    "./src/ui/webgl.ts"
+   ],
+   "Q": 10,
+   "types": 56,
+   "families": {
+    "types": 56,
+    "complexity": 10
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 31,
+    "eslint(max-depth)": 4,
+    "anti-slop(require-safety-comment-for-type-assertion)": 18,
+    "sonarjs(no-nested-conditional)": 6,
+    "anti-slop(no-unsafe-dictionary-type)": 2,
+    "anti-slop(no-runtime-typeof)": 1,
+    "anti-slop(no-unknown-parameters)": 2,
+    "anti-slop(no-known-value-widening)": 1,
+    "anti-slop(no-chained-type-assertions)": 1
+   },
+   "conformancePct": 99.7
+  },
+  {
+   "app": "v2-e2-claude-claude-sonnet-5-5-20261028-072501Z",
+   "lang": "ts",
+   "loc": 4037,
+   "files": [
+    "./src/data/challenges.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/lang/check.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/types.ts",
+    "./src/main.ts",
+    "./src/ui/app.ts",
+    "./src/ui/challenges.ts",
+    "./src/ui/dialogs.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/gallery.ts",
+    "./src/ui/geom.ts",
+    "./src/ui/reference.ts",
+    "./src/ui/router.ts",
+    "./src/ui/runner.ts",
+    "./src/ui/share.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/view.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts",
+    "./src/ui/workspace.ts"
+   ],
+   "Q": 28,
+   "types": 82,
+   "families": {
+    "types": 82,
+    "complexity": 19,
+    "anti-slop": 1,
+    "defects": 8
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 46,
+    "eslint(max-depth)": 12,
+    "anti-slop(require-safety-comment-for-type-assertion)": 22,
+    "anti-slop(no-unknown-parameters)": 2,
+    "sonarjs(no-nested-conditional)": 7,
+    "anti-slop(no-known-value-widening)": 6,
+    "anti-slop(no-unsafe-dictionary-type)": 3,
+    "anti-slop(no-runtime-typeof)": 2,
+    "anti-slop(no-chained-type-assertions)": 1,
+    "anti-slop(no-array-filter-map)": 1,
+    "eslint(no-unused-expressions)": 5,
+    "unicorn(no-useless-spread)": 3
+   },
+   "conformancePct": 99.7
+  },
+  {
+   "app": "v2-e2-claude-claude-sonnet-5-5-20261028-074837Z",
+   "lang": "ts",
+   "loc": 5666,
+   "files": [
+    "./src/app/dom.ts",
+    "./src/app/editor.ts",
+    "./src/app/files.ts",
+    "./src/app/highlight.ts",
+    "./src/app/index.ts",
+    "./src/app/main.ts",
+    "./src/app/pages.ts",
+    "./src/app/runner.ts",
+    "./src/app/share.ts",
+    "./src/app/state.ts",
+    "./src/app/storage.ts",
+    "./src/app/theme.ts",
+    "./src/app/ui.ts",
+    "./src/app/view.ts",
+    "./src/app/view2d.ts",
+    "./src/app/view3d.ts",
+    "./src/app/workspace.ts",
+    "./src/data/challenges.ts",
+    "./src/data/check.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/data/shortcuts.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/expr.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interp.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts"
+   ],
+   "Q": 16,
+   "types": 72,
+   "families": {
+    "types": 72,
+    "complexity": 15,
+    "defects": 1
+   },
+   "rules": {
+    "anti-slop(no-unknown-parameters)": 3,
+    "eslint(max-depth)": 7,
+    "sonarjs(no-nested-conditional)": 8,
+    "anti-slop(no-known-value-widening)": 3,
+    "typescript(no-non-null-assertion)": 20,
+    "anti-slop(require-safety-comment-for-type-assertion)": 37,
+    "eslint(no-unused-vars)": 1,
+    "anti-slop(no-unsafe-dictionary-type)": 3,
+    "anti-slop(no-runtime-typeof)": 4,
+    "anti-slop(no-chained-type-assertions)": 2
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-claude-claude-sonnet-5-5-20261028-082944Z",
+   "lang": "ts",
+   "loc": 6916,
+   "files": [
+    "./src/data/challenges.ts",
+    "./src/data/check.ts",
+    "./src/data/examples.ts",
+    "./src/data/reference.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/eval.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/limits.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/turtle.ts",
+    "./src/main.ts",
+    "./src/ui/app.ts",
+    "./src/ui/dialog.ts",
+    "./src/ui/dialogs.ts",
+    "./src/ui/dirty.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/files.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/pages/challenges.ts",
+    "./src/ui/pages/examples.ts",
+    "./src/ui/pages/reference.ts",
+    "./src/ui/router.ts",
+    "./src/ui/runner.ts",
+    "./src/ui/share.ts",
+    "./src/ui/shortcuts.ts",
+    "./src/ui/store.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view/common.ts",
+    "./src/ui/view/view2d.ts",
+    "./src/ui/view/view3d.ts",
+    "./src/ui/workspace.ts",
+    "./src/version.ts"
+   ],
+   "Q": 36,
+   "types": 195,
+   "families": {
+    "complexity": 36,
+    "types": 195
+   },
+   "rules": {
+    "sonarjs(no-nested-conditional)": 15,
+    "anti-slop(require-safety-comment-for-type-assertion)": 13,
+    "typescript(no-non-null-assertion)": 154,
+    "anti-slop(no-unknown-parameters)": 4,
+    "anti-slop(no-runtime-typeof)": 14,
+    "anti-slop(no-known-value-widening)": 7,
+    "eslint(max-depth)": 21,
+    "anti-slop(no-unsafe-dictionary-type)": 1,
+    "anti-slop(no-chained-type-assertions)": 2
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-astra-20261028-085031Z",
+   "lang": "js",
+   "loc": 1579,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js",
+    "./src/view.js"
+   ],
+   "Q": 32,
+   "types": null,
+   "families": {
+    "complexity": 30,
+    "defects": 2,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 13,
+    "eslint(no-empty)": 2,
+    "sonarjs(no-nested-conditional)": 17,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-astra-20261028-091017Z",
+   "lang": "js",
+   "loc": 1862,
+   "files": [
+    "./src/content.js",
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js",
+    "./src/view.js"
+   ],
+   "Q": 27,
+   "types": null,
+   "families": {
+    "complexity": 27,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 17,
+    "sonarjs(no-nested-conditional)": 10,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-astra-20261028-093720Z",
+   "lang": "js",
+   "loc": 569,
+   "files": [
+    "./src/challenges.js",
+    "./src/examples.js",
+    "./src/icons.js",
+    "./src/interpreter.js",
+    "./src/main.js",
+    "./src/reference.js",
+    "./src/view.js"
+   ],
+   "Q": 45,
+   "types": null,
+   "families": {
+    "complexity": 41,
+    "defects": 4,
+    "types": 2
+   },
+   "rules": {
+    "eslint(max-depth)": 17,
+    "eslint(no-empty)": 1,
+    "eslint(require-yield)": 1,
+    "sonarjs(no-nested-conditional)": 24,
+    "eslint(no-unused-vars)": 2,
+    "anti-slop(no-runtime-typeof)": 2
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-astra-20261028-101609Z",
+   "lang": "ts",
+   "loc": 1218,
+   "files": [
+    "./src/challenges.ts",
+    "./src/editor.ts",
+    "./src/examples.ts",
+    "./src/icons.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/renderer.ts"
+   ],
+   "Q": 41,
+   "types": 72,
+   "families": {
+    "types": 72,
+    "complexity": 41
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 45,
+    "eslint(max-depth)": 19,
+    "typescript(no-this-alias)": 1,
+    "anti-slop(no-known-value-widening)": 10,
+    "sonarjs(no-nested-conditional)": 22,
+    "anti-slop(require-safety-comment-for-type-assertion)": 10,
+    "anti-slop(no-unknown-parameters)": 1,
+    "anti-slop(no-runtime-typeof)": 5
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-luna-20261028-105848Z",
+   "lang": "js",
+   "loc": 100,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 13,
+   "types": null,
+   "families": {
+    "defects": 5,
+    "complexity": 8
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 5,
+    "eslint(max-depth)": 8
+   },
+   "conformancePct": 71.8
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-luna-20261028-110223Z",
+   "lang": "ts",
+   "loc": 60,
+   "files": [
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts"
+   ],
+   "Q": 23,
+   "types": 57,
+   "families": {
+    "defects": 7,
+    "types": 57,
+    "complexity": 16
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 4,
+    "typescript(no-explicit-any)": 17,
+    "eslint(max-depth)": 5,
+    "typescript(no-non-null-assertion)": 14,
+    "eslint(no-empty)": 2,
+    "unicorn(prefer-string-starts-ends-with)": 1,
+    "anti-slop(no-known-value-widening)": 1,
+    "anti-slop(require-safety-comment-for-type-assertion)": 25,
+    "sonarjs(no-nested-conditional)": 11
+   },
+   "conformancePct": 73.1
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-luna-20261028-110610Z",
+   "lang": "js",
+   "loc": 101,
+   "files": [
+    "./app.js",
+    "./examples.js",
+    "./interpreter.js"
+   ],
+   "Q": 44,
+   "types": null,
+   "families": {
+    "defects": 6,
+    "complexity": 38
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 2,
+    "eslint(max-depth)": 10,
+    "eslint(no-empty)": 3,
+    "sonarjs(no-nested-conditional)": 28,
+    "oxc(erasing-op)": 1
+   },
+   "conformancePct": 91.6
+  },
+  {
+   "app": "v2-e2-codex-gpt-6-luna-20261028-111813Z",
+   "lang": "ts",
+   "loc": 1536,
+   "files": [
+    "./src/DrawingCanvas.tsx",
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.tsx"
+   ],
+   "Q": 91,
+   "types": 33,
+   "families": {
+    "defects": 32,
+    "types": 33,
+    "complexity": 59
+   },
+   "rules": {
+    "react-hooks(exhaustive-deps)": 8,
+    "eslint(no-unused-expressions)": 4,
+    "jsx-a11y(prefer-tag-over-role)": 7,
+    "anti-slop(require-safety-comment-for-type-assertion)": 14,
+    "sonarjs(no-nested-conditional)": 30,
+    "eslint(no-unused-vars)": 1,
+    "typescript(no-non-null-assertion)": 14,
+    "eslint(max-depth)": 29,
+    "anti-slop(no-unknown-parameters)": 2,
+    "anti-slop(no-known-value-widening)": 2,
+    "react(only-export-components)": 8,
+    "react(refs)": 3,
+    "jsx-a11y(no-static-element-interactions)": 1,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 98.2
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-sol-20261028-072527Z",
+   "lang": "js",
+   "loc": 2145,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js",
+    "./src/reference.js",
+    "./src/view.js"
+   ],
+   "Q": 31,
+   "types": null,
+   "families": {
+    "complexity": 27,
+    "defects": 4,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 6,
+    "eslint(no-empty)": 2,
+    "sonarjs(no-nested-conditional)": 21,
+    "react-hooks(rules-of-hooks)": 1,
+    "anti-slop(no-runtime-typeof)": 1,
+    "eslint(no-unused-vars)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-sol-20261028-075037Z",
+   "lang": "ts",
+   "loc": 2795,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/view.ts"
+   ],
+   "Q": 23,
+   "types": 84,
+   "families": {
+    "types": 84,
+    "complexity": 19,
+    "defects": 4
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 56,
+    "eslint(max-depth)": 12,
+    "anti-slop(no-known-value-widening)": 10,
+    "anti-slop(require-safety-comment-for-type-assertion)": 15,
+    "sonarjs(no-nested-conditional)": 7,
+    "anti-slop(no-unknown-parameters)": 2,
+    "eslint(no-unused-vars)": 3,
+    "anti-slop(no-runtime-typeof)": 1,
+    "eslint(no-unused-expressions)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-sol-20261028-081413Z",
+   "lang": "ts",
+   "loc": 918,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/icons.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/view.ts"
+   ],
+   "Q": 31,
+   "types": 89,
+   "families": {
+    "types": 89,
+    "complexity": 31
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 62,
+    "eslint(max-depth)": 14,
+    "sonarjs(no-nested-conditional)": 17,
+    "anti-slop(no-unknown-parameters)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 17,
+    "anti-slop(no-known-value-widening)": 6,
+    "anti-slop(no-runtime-typeof)": 2
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-sol-20261028-114651Z",
+   "lang": "js",
+   "loc": 1855,
+   "files": [
+    "./src/app.js",
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/reference.js",
+    "./src/view.js"
+   ],
+   "Q": 31,
+   "types": null,
+   "families": {
+    "complexity": 29,
+    "defects": 2,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 14,
+    "eslint(no-empty)": 1,
+    "sonarjs(no-nested-conditional)": 15,
+    "eslint(no-unused-vars)": 1,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-terra-20261028-045442Z",
+   "lang": "js",
+   "loc": 173,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 22,
+   "types": null,
+   "families": {
+    "complexity": 22
+   },
+   "rules": {
+    "eslint(max-depth)": 13,
+    "sonarjs(no-nested-conditional)": 9
+   },
+   "conformancePct": 98.9
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-terra-20261028-045726Z",
+   "lang": "js",
+   "loc": 285,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 25,
+   "types": null,
+   "families": {
+    "defects": 4,
+    "complexity": 21
+   },
+   "rules": {
+    "eslint(no-unused-vars)": 2,
+    "eslint(max-depth)": 13,
+    "sonarjs(no-nested-conditional)": 8,
+    "eslint(no-empty)": 2
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-terra-20261028-050055Z",
+   "lang": "js",
+   "loc": 257,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 25,
+   "types": null,
+   "families": {
+    "complexity": 22,
+    "defects": 3,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 16,
+    "sonarjs(no-nested-conditional)": 6,
+    "eslint(no-unused-vars)": 3,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 99.8
+  },
+  {
+   "app": "v2-e2-codex-gpt-6.1-terra-20261028-050408Z",
+   "lang": "js",
+   "loc": 281,
+   "files": [
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/main.js"
+   ],
+   "Q": 25,
+   "types": null,
+   "families": {
+    "complexity": 22,
+    "defects": 3,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 11,
+    "eslint(no-empty)": 3,
+    "sonarjs(no-nested-conditional)": 11,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-impeccable-v1-claude-claude-opus-5-5-20261103-085938Z",
+   "lang": "ts",
+   "loc": 3281,
+   "files": [
+    "./src/content/challenges.ts",
+    "./src/content/examples.ts",
+    "./src/content/reference.ts",
+    "./src/lang/interp.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/preview.ts",
+    "./src/ui/store.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d-check.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 12,
+   "types": 75,
+   "families": {
+    "types": 75,
+    "complexity": 11,
+    "defects": 1
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 32,
+    "anti-slop(require-safety-comment-for-type-assertion)": 34,
+    "anti-slop(no-unknown-parameters)": 1,
+    "anti-slop(no-known-value-widening)": 7,
+    "eslint(max-depth)": 3,
+    "sonarjs(no-nested-conditional)": 8,
+    "anti-slop(no-chained-type-assertions)": 1,
+    "eslint(no-unused-vars)": 1
+   },
+   "conformancePct": 87.4
+  },
+  {
+   "app": "v2-e2-impeccable-v1-claude-claude-opus-5-5-20261103-093344Z",
+   "lang": "ts",
+   "loc": 3975,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/interp.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/help.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/runner.ts",
+    "./src/ui/scene.ts",
+    "./src/ui/share.ts",
+    "./src/ui/shortcuts.ts",
+    "./src/ui/store.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/thumb.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 14,
+   "types": 161,
+   "families": {
+    "types": 161,
+    "complexity": 14
+   },
+   "rules": {
+    "anti-slop(require-safety-comment-for-type-assertion)": 40,
+    "eslint(max-depth)": 9,
+    "typescript(no-non-null-assertion)": 117,
+    "anti-slop(no-known-value-widening)": 3,
+    "sonarjs(no-nested-conditional)": 5,
+    "anti-slop(no-unknown-parameters)": 1
+   },
+   "conformancePct": 99.8
+  },
+  {
+   "app": "v2-e2-impeccable-v1-claude-claude-opus-5-5-20261103-100913Z",
+   "lang": "ts",
+   "loc": 5262,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/lang/ast.ts",
+    "./src/lang/errors.ts",
+    "./src/lang/evaluate.ts",
+    "./src/lang/index.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/main.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/drafts.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/gl.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/player.ts",
+    "./src/ui/progress.ts",
+    "./src/ui/reference-content.ts",
+    "./src/ui/share.ts",
+    "./src/ui/shortcuts.ts",
+    "./src/ui/storage.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/theme.ts",
+    "./src/ui/thumbs.ts",
+    "./src/ui/toast.ts",
+    "./src/ui/view.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 16,
+   "types": 113,
+   "families": {
+    "complexity": 14,
+    "types": 113,
+    "defects": 2
+   },
+   "rules": {
+    "eslint(max-depth)": 7,
+    "typescript(no-non-null-assertion)": 42,
+    "anti-slop(require-safety-comment-for-type-assertion)": 59,
+    "sonarjs(no-nested-conditional)": 7,
+    "anti-slop(no-known-value-widening)": 7,
+    "anti-slop(no-unknown-parameters)": 2,
+    "eslint(no-unused-expressions)": 1,
+    "anti-slop(no-runtime-typeof)": 2,
+    "anti-slop(no-chained-type-assertions)": 1,
+    "unicorn(no-useless-spread)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-impeccable-v1-claude-claude-opus-5-5-20261103-105529Z",
+   "lang": "ts",
+   "loc": 6131,
+   "files": [
+    "./src/app/app.ts",
+    "./src/app/permalink.ts",
+    "./src/app/starters.ts",
+    "./src/app/storage.ts",
+    "./src/challenges.ts",
+    "./src/content/reference.ts",
+    "./src/examples.ts",
+    "./src/lang/interpreter.ts",
+    "./src/lang/keywords.ts",
+    "./src/lang/lexer.ts",
+    "./src/lang/parser.ts",
+    "./src/lang/types.ts",
+    "./src/main.ts",
+    "./src/ui/dom.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/fallback3d.ts",
+    "./src/ui/highlight.ts",
+    "./src/ui/overlay.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/runner.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/surface.ts",
+    "./src/ui/thumbs.ts",
+    "./src/ui/trace.ts",
+    "./src/ui/view2d.ts",
+    "./src/ui/view3d.ts"
+   ],
+   "Q": 34,
+   "types": 220,
+   "families": {
+    "complexity": 32,
+    "types": 220,
+    "defects": 2
+   },
+   "rules": {
+    "eslint(max-depth)": 20,
+    "typescript(no-non-null-assertion)": 168,
+    "anti-slop(require-safety-comment-for-type-assertion)": 37,
+    "anti-slop(no-known-value-widening)": 9,
+    "anti-slop(no-runtime-typeof)": 3,
+    "sonarjs(no-nested-conditional)": 12,
+    "anti-slop(no-unknown-parameters)": 2,
+    "eslint(no-unused-expressions)": 1,
+    "unicorn(no-useless-spread)": 1,
+    "anti-slop(no-chained-type-assertions)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-impeccable-v1-codex-gpt-6.1-sol-20261103-034140Z",
+   "lang": "ts",
+   "loc": 1706,
+   "files": [
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/view.ts"
+   ],
+   "Q": 30,
+   "types": 63,
+   "families": {
+    "types": 63,
+    "complexity": 27,
+    "defects": 2,
+    "anti-slop": 1
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 23,
+    "typescript(no-explicit-any)": 14,
+    "eslint(max-depth)": 10,
+    "eslint(no-empty)": 2,
+    "anti-slop(no-known-value-widening)": 2,
+    "anti-slop(no-array-filter-map)": 1,
+    "sonarjs(no-nested-conditional)": 17,
+    "anti-slop(require-safety-comment-for-type-assertion)": 23,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 99.0
+  },
+  {
+   "app": "v2-e2-impeccable-v1-codex-gpt-6.1-sol-20261103-040149Z",
+   "lang": "js",
+   "loc": 2222,
+   "files": [
+    "./src/app.js",
+    "./src/examples.js",
+    "./src/interpreter.js",
+    "./src/reference.js",
+    "./src/view.js"
+   ],
+   "Q": 33,
+   "types": null,
+   "families": {
+    "complexity": 29,
+    "defects": 4,
+    "types": 1
+   },
+   "rules": {
+    "eslint(max-depth)": 12,
+    "eslint(no-empty)": 3,
+    "sonarjs(no-nested-conditional)": 17,
+    "eslint(no-unused-vars)": 1,
+    "anti-slop(no-runtime-typeof)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e2-impeccable-v1-codex-gpt-6.1-sol-20261103-042728Z",
+   "lang": "ts",
+   "loc": 2441,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/view.ts"
+   ],
+   "Q": 42,
+   "types": 71,
+   "families": {
+    "types": 71,
+    "complexity": 39,
+    "defects": 3
+   },
+   "rules": {
+    "typescript(no-non-null-assertion)": 44,
+    "eslint(max-depth)": 18,
+    "typescript(no-explicit-any)": 3,
+    "anti-slop(no-known-value-widening)": 2,
+    "anti-slop(require-safety-comment-for-type-assertion)": 21,
+    "sonarjs(no-nested-conditional)": 21,
+    "anti-slop(no-unknown-parameters)": 1,
+    "eslint(no-empty)": 3
+   },
+   "conformancePct": 99.7
+  },
+  {
+   "app": "v2-e2-impeccable-v1-codex-gpt-6.1-sol-20261103-045158Z",
+   "lang": "ts",
+   "loc": 646,
+   "files": [
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/icons.ts",
+    "./src/interpreter.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/renderer.ts"
+   ],
+   "Q": 38,
+   "types": 73,
+   "families": {
+    "types": 73,
+    "complexity": 38
+   },
+   "rules": {
+    "anti-slop(no-known-value-widening)": 9,
+    "typescript(no-non-null-assertion)": 41,
+    "eslint(max-depth)": 13,
+    "sonarjs(no-nested-conditional)": 25,
+    "anti-slop(require-safety-comment-for-type-assertion)": 15,
+    "anti-slop(no-runtime-typeof)": 7,
+    "anti-slop(no-unknown-parameters)": 1
+   },
+   "conformancePct": 100.0
+  },
+  {
+   "app": "v2-e5-claude-claude-fable-5-2-20261110-215004Z",
+   "lang": "ts",
+   "loc": 2887,
+   "files": [
+    "./serve.ts",
+    "./src/challenges.ts",
+    "./src/examples.ts",
+    "./src/interp/lexer.ts",
+    "./src/interp/machine.ts",
+    "./src/interp/parser.ts",
+    "./src/main.ts",
+    "./src/reference.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/support.ts",
+    "./src/ui/view.ts"
+   ],
+   "Q": 23,
+   "types": 43,
+   "families": {
+    "complexity": 20,
+    "types": 43,
+    "defects": 3
+   },
+   "rules": {
+    "eslint(max-depth)": 16,
+    "anti-slop(require-safety-comment-for-type-assertion)": 11,
+    "anti-slop(no-runtime-typeof)": 4,
+    "typescript(no-non-null-assertion)": 26,
+    "sonarjs(no-nested-conditional)": 4,
+    "anti-slop(no-known-value-widening)": 1,
+    "unicorn(no-new-array)": 1,
+    "eslint(no-unused-vars)": 1,
+    "anti-slop(no-chained-type-assertions)": 1,
+    "eslint(no-console)": 1
+   },
+   "conformancePct": 99.8
+  },
+  {
+   "app": "v2-e5-impeccable-v1-claude-claude-fable-5-2-20261111-061434Z",
+   "lang": "ts",
+   "loc": 3635,
+   "files": [
+    "./serve.ts",
+    "./src/core/challenges.ts",
+    "./src/core/check.ts",
+    "./src/core/examples.ts",
+    "./src/core/highlight.ts",
+    "./src/core/interp.ts",
+    "./src/ui/app.ts",
+    "./src/ui/editor.ts",
+    "./src/ui/icons.ts",
+    "./src/ui/pages.ts",
+    "./src/ui/share.ts",
+    "./src/ui/store.ts",
+    "./src/ui/studio.ts",
+    "./src/ui/thumbs.ts",
+    "./src/ui/view.ts"
+   ],
+   "Q": 28,
+   "types": 56,
+   "families": {
+    "complexity": 25,
+    "defects": 3,
+    "types": 56
+   },
+   "rules": {
+    "eslint(max-depth)": 18,
+    "sonarjs(no-nested-conditional)": 7,
+    "eslint(no-unused-vars)": 1,
+    "typescript(no-non-null-assertion)": 33,
+    "anti-slop(require-safety-comment-for-type-assertion)": 17,
+    "anti-slop(no-known-value-widening)": 3,
+    "eslint(no-unused-expressions)": 1,
+    "anti-slop(no-runtime-typeof)": 2,
+    "anti-slop(no-unknown-parameters)": 1,
+    "eslint(no-console)": 1
+   },
+   "conformancePct": 99.7
+  }
+ ],
+ "groups": [
+  {
+   "group": "claude-fable-5-1",
+   "n": 1,
+   "medianQ": 9,
+   "minQ": 9,
+   "maxQ": 9,
+   "medianLoc": 2836
+  },
+  {
+   "group": "claude-fable-5-2",
+   "n": 2,
+   "medianQ": 25.5,
+   "minQ": 23,
+   "maxQ": 28,
+   "medianLoc": 3261.0
+  },
+  {
+   "group": "claude-haiku-5-5",
+   "n": 5,
+   "medianQ": 5,
+   "minQ": 2,
+   "maxQ": 9,
+   "medianLoc": 3278
+  },
+  {
+   "group": "claude-opus-5-5",
+   "n": 9,
+   "medianQ": 21,
+   "minQ": 12,
+   "maxQ": 67,
+   "medianLoc": 5191
+  },
+  {
+   "group": "claude-sonnet-5-5",
+   "n": 5,
+   "medianQ": 16,
+   "minQ": 8,
+   "maxQ": 36,
+   "medianLoc": 4037
+  },
+  {
+   "group": "gemini-4-medium-hydrogen",
+   "n": 2,
+   "medianQ": 45.5,
+   "minQ": 37,
+   "maxQ": 54,
+   "medianLoc": 4754.0
+  },
+  {
+   "group": "gemini-4-medium-neon",
+   "n": 2,
+   "medianQ": 54.5,
+   "minQ": 53,
+   "maxQ": 56,
+   "medianLoc": 5351.0
+  },
+  {
+   "group": "gpt-6-astra",
+   "n": 5,
+   "medianQ": 32,
+   "minQ": 20,
+   "maxQ": 45,
+   "medianLoc": 1275
+  },
+  {
+   "group": "gpt-6-luna",
+   "n": 4,
+   "medianQ": 33.5,
+   "minQ": 13,
+   "maxQ": 91,
+   "medianLoc": 100.5
+  },
+  {
+   "group": "gpt-6.1-sol",
+   "n": 9,
+   "medianQ": 31,
+   "minQ": 14,
+   "maxQ": 42,
+   "medianLoc": 1855
+  },
+  {
+   "group": "gpt-6.1-terra",
+   "n": 5,
+   "medianQ": 25,
+   "minQ": 21,
+   "maxQ": 25,
+   "medianLoc": 257
+  }
+ ]
+}

@@ -82,5 +82,34 @@
     "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
     "snapshotDate": "2026-11-03"
   },
-  "baselineId": "v2-e2-codex-gpt-6.1-sol-20261028-114651Z"
+  "baselineId": "v2-e2-codex-gpt-6.1-sol-20261028-114651Z",
+  "quality": {
+    "version": "q1",
+    "q": 30,
+    "types": 63,
+    "families": {
+      "complexity": 27,
+      "defects": 3,
+      "types": 63
+    },
+    "rules": {
+      "anti-slop(no-array-filter-map)": 1,
+      "anti-slop(no-known-value-widening)": 2,
+      "anti-slop(no-runtime-typeof)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 23,
+      "eslint(max-depth)": 10,
+      "eslint(no-empty)": 2,
+      "eslint(no-nested-ternary)": 17,
+      "typescript(no-explicit-any)": 14,
+      "typescript(no-non-null-assertion)": 23
+    },
+    "loc": 1706,
+    "language": "ts",
+    "files": [
+      "src/examples.ts",
+      "src/interpreter.ts",
+      "src/main.ts",
+      "src/view.ts"
+    ]
+  }
 }

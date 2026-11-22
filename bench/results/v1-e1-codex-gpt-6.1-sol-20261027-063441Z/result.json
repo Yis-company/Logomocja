@@ -49,5 +49,27 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 14,
+    "types": null,
+    "families": {
+      "complexity": 12,
+      "defects": 2,
+      "types": 0
+    },
+    "rules": {
+      "eslint(max-depth)": 11,
+      "eslint(no-empty)": 1,
+      "eslint(no-nested-ternary)": 1,
+      "eslint(no-unused-vars)": 1
+    },
+    "loc": 57,
+    "language": "js",
+    "files": [
+      "src/interpreter.js",
+      "src/main.js"
+    ]
+  }
 }

@@ -50,6 +50,7 @@ export type Attempt = {
   evidenceUrl: string;
   transcriptUrl?: string;
   gallery?: { directory: string; matches: Record<string, boolean> };
+  quality?: RunResult["quality"];
 };
 
 const finalized = Object.values(
@@ -118,6 +119,7 @@ function dockerAttempt(run: RunResult): Attempt {
     generatedTests: run.verify?.tests,
     toolCalls: run.toolCalls,
     cases: run.cases ?? undefined,
+    quality: run.quality,
     humanScore: run.humanScore ?? undefined,
     notes: run.notes || undefined,
     statusDetail:
