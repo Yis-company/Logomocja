@@ -63,6 +63,12 @@ When a suite or the runner changes, `bun bench/rescore.ts --prompt <version>` re
 
 `bun run test` checks that each stored, successfully built app has every suite and the current case totals for its prompt version, including UI-path and stress scores for v2. Historical v1 retains its original run-only scores. Zero scores are valid; missing scoring passes are not. Test-author results and failed builds are excluded.
 
+## Code quality
+
+After the source import, `quality.ts` lints the run's product source (no tests, configs or build scripts) from `build/<run-id>`, or `origin/build/<run-id>` when only the remote branch exists, with the frozen ruleset in `quality/q1/`. `result.json` gains `quality`: **Q**, the count of complexity and defect findings (lower is better), the TypeScript-only `types` count (null for JavaScript apps), per-rule counts, lines and the scanned file paths. Runs without source record `reason: "no source"`, test-author runs `"not an app task"`, and a scan that cannot run `"scan failed"`; none count as zero. `bun bench/quality.ts [--only <run-id>]` is idempotent and is also the backfill (about 20 s for every stored run).
+
+Q measures fit to a ruleset the agents never saw, and an app that implements less has fewer chances to break rules. Read it next to conformance; it is shown only in run details and is never part of a ranking.
+
 ## Standard programs and gallery
 
 `prompts/<version>/programs/` holds the programs every build must ship as examples (`index.json` lists id, mode, name) and `expected.json`, their outcomes on the reference app. They are also the reference app's own examples. After a build is verified the harness calls `window.logomocja.open(source, mode)` for each program in Chromium, screenshots the page, and records whether the returned segments match `expected.json`. Open a run's details to load its screenshots alongside the available reference images (`results/reference-<version>/gallery/`, captured with `bun bench/gallery.ts --dist dist --out bench/results/reference-<version>/gallery` after `bun run build`).

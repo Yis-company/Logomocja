@@ -73,5 +73,34 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 45,
+    "types": null,
+    "families": {
+      "complexity": 41,
+      "defects": 4,
+      "types": 2
+    },
+    "rules": {
+      "anti-slop(no-runtime-typeof)": 2,
+      "eslint(max-depth)": 17,
+      "eslint(no-empty)": 1,
+      "eslint(no-nested-ternary)": 24,
+      "eslint(no-unused-vars)": 2,
+      "eslint(require-yield)": 1
+    },
+    "loc": 569,
+    "language": "js",
+    "files": [
+      "src/challenges.js",
+      "src/examples.js",
+      "src/icons.js",
+      "src/interpreter.js",
+      "src/main.js",
+      "src/reference.js",
+      "src/view.js"
+    ]
+  }
 }

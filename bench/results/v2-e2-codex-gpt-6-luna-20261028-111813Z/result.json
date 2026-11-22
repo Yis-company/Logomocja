@@ -73,5 +73,41 @@
     "drzewo3d": false
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 94,
+    "types": 33,
+    "families": {
+      "complexity": 58,
+      "defects": 36,
+      "types": 33
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 2,
+      "anti-slop(no-runtime-typeof)": 1,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(require-safety-comment-for-type-assertion)": 14,
+      "eslint(max-depth)": 29,
+      "eslint(no-nested-ternary)": 29,
+      "eslint(no-unused-expressions)": 4,
+      "eslint(no-unused-vars)": 1,
+      "jsx-a11y(no-static-element-interactions)": 1,
+      "jsx-a11y(prefer-tag-over-role)": 7,
+      "react-hooks(exhaustive-deps)": 9,
+      "react(only-export-components)": 8,
+      "react(refs)": 4,
+      "react(set-state-in-effect)": 1,
+      "react(use-memo)": 1,
+      "typescript(no-non-null-assertion)": 14
+    },
+    "loc": 1535,
+    "language": "ts",
+    "files": [
+      "src/DrawingCanvas.tsx",
+      "src/examples.ts",
+      "src/interpreter.ts",
+      "src/main.tsx"
+    ]
+  }
 }

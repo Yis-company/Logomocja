@@ -83,5 +83,10 @@
     "impeccable": "impeccable-v1/manifest.json",
     "tdd": "tdd-v1/manifest.json"
   },
-  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z"
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z",
+  "quality": {
+    "version": "q1",
+    "q": null,
+    "reason": "no source"
+  }
 }

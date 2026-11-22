@@ -73,5 +73,32 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 31,
+    "types": null,
+    "families": {
+      "complexity": 27,
+      "defects": 4,
+      "types": 1
+    },
+    "rules": {
+      "anti-slop(no-runtime-typeof)": 1,
+      "eslint(max-depth)": 6,
+      "eslint(no-empty)": 2,
+      "eslint(no-nested-ternary)": 21,
+      "eslint(no-unused-vars)": 1,
+      "react-hooks(rules-of-hooks)": 1
+    },
+    "loc": 2145,
+    "language": "js",
+    "files": [
+      "src/examples.js",
+      "src/interpreter.js",
+      "src/main.js",
+      "src/reference.js",
+      "src/view.js"
+    ]
+  }
 }

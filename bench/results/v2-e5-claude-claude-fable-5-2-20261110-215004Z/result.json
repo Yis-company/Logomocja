@@ -73,5 +73,42 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 23,
+    "types": 43,
+    "families": {
+      "complexity": 20,
+      "defects": 3,
+      "types": 43
+    },
+    "rules": {
+      "anti-slop(no-chained-type-assertions)": 1,
+      "anti-slop(no-known-value-widening)": 1,
+      "anti-slop(no-runtime-typeof)": 4,
+      "anti-slop(require-safety-comment-for-type-assertion)": 11,
+      "eslint(max-depth)": 16,
+      "eslint(no-console)": 1,
+      "eslint(no-nested-ternary)": 4,
+      "eslint(no-unused-vars)": 1,
+      "typescript(no-non-null-assertion)": 26,
+      "unicorn(no-new-array)": 1
+    },
+    "loc": 2887,
+    "language": "ts",
+    "files": [
+      "serve.ts",
+      "src/challenges.ts",
+      "src/examples.ts",
+      "src/interp/lexer.ts",
+      "src/interp/machine.ts",
+      "src/interp/parser.ts",
+      "src/main.ts",
+      "src/reference.ts",
+      "src/ui/editor.ts",
+      "src/ui/support.ts",
+      "src/ui/view.ts"
+    ]
+  }
 }

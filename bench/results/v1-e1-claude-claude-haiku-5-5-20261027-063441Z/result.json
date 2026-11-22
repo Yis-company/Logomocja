@@ -49,5 +49,44 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 2,
+    "types": 29,
+    "families": {
+      "complexity": 2,
+      "defects": 0,
+      "types": 29
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 1,
+      "anti-slop(no-unknown-parameters)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 25,
+      "eslint(max-depth)": 1,
+      "eslint(no-nested-ternary)": 1,
+      "typescript(no-non-null-assertion)": 2
+    },
+    "loc": 1562,
+    "language": "ts",
+    "files": [
+      "src/logo/commands.ts",
+      "src/logo/errors.ts",
+      "src/logo/examples.ts",
+      "src/logo/lexer.ts",
+      "src/logo/limits.ts",
+      "src/logo/machine.ts",
+      "src/logo/parser.ts",
+      "src/logo/run.ts",
+      "src/logo/types.ts",
+      "src/main.ts",
+      "src/render/plane.ts",
+      "src/render/space.ts",
+      "src/render/view.ts",
+      "src/render/webgl.ts",
+      "src/ui/app.ts",
+      "src/ui/storage.ts",
+      "src/version.ts"
+    ]
+  }
 }

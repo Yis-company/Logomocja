@@ -73,5 +73,35 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 31,
+    "types": 89,
+    "families": {
+      "complexity": 31,
+      "defects": 0,
+      "types": 89
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 6,
+      "anti-slop(no-runtime-typeof)": 2,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(require-safety-comment-for-type-assertion)": 17,
+      "eslint(max-depth)": 14,
+      "eslint(no-nested-ternary)": 17,
+      "typescript(no-non-null-assertion)": 62
+    },
+    "loc": 918,
+    "language": "ts",
+    "files": [
+      "src/challenges.ts",
+      "src/examples.ts",
+      "src/icons.ts",
+      "src/interpreter.ts",
+      "src/main.ts",
+      "src/reference.ts",
+      "src/view.ts"
+    ]
+  }
 }

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code-quality lint score</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1c1a;--muted:#6b675f;--line:#e2ded5;--card:#fff;--accent:#2f5d8a;--warn:#9a5b12;--bar1:#c9c3b6;--bar2:#2f5d8a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ecebe7;--muted:#a19d94;--line:#34322e;--card:#1e1e1c;--accent:#8db7e0;--warn:#e0a85c;--bar1:#4a4741;--bar2:#8db7e0}}
+:root[data-theme="dark"]{--bg:#161615;--fg:#ecebe7;--muted:#a19d94;--line:#34322e;--card:#1e1e1c;--accent:#8db7e0;--warn:#e0a85c;--bar1:#4a4741;--bar2:#8db7e0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background,var(--bg));color:var(--foreground,var(--fg));font:16px/1.55 var(--font-sans,system-ui,-apple-system,"Segoe UI",sans-serif)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.5rem;margin:0 0 4px}
+h2{font-size:1.1rem;margin:30px 0 10px;padding-top:12px;border-top:1px solid var(--border,var(--line))}
+.meta{color:var(--muted-foreground,var(--muted));font-size:.9rem;margin:0 0 20px}
+.lead{background:var(--card);border:1px solid var(--border,var(--line));padding:14px 16px;border-radius:var(--radius,6px)}
+.lead p{margin:0 0 8px}.lead p:last-child{margin:0}
+code{font:.88em var(--font-mono,ui-monospace,Menlo,monospace);background:var(--code-background,rgba(127,127,127,.15));padding:1px 4px;border-radius:3px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border,var(--line));vertical-align:middle}
+th{color:var(--muted-foreground,var(--muted));font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.range{position:relative;height:12px;min-width:120px}
+.range .r{position:absolute;top:4px;height:4px;border-radius:2px;background:var(--muted-foreground,var(--bar1));opacity:.45}
+.range .m{position:absolute;top:0;width:3px;height:12px;border-radius:1px;background:var(--chart-1,var(--bar2))}
+ol.steps{padding-left:22px}ol.steps li{margin:0 0 10px}
+.warn{color:var(--warning,var(--warn))}
+.gate{background:var(--card);border:1px dashed var(--border,var(--line));padding:12px 16px;border-radius:var(--radius,6px);color:var(--muted-foreground,var(--muted))}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Code-quality lint score</h1>
+<p class="meta">Logomocja benchmark · plan rev 4 · 2026-11-22 · council: round 1 6/10, 6/10 · round 2 7/10, 7/10 · round 3 8/10, 8/10 · round 4 9/10, 10/10 approve (Opus, Astra)</p>
+</header>
+
+<section class="lead" aria-label="Outcome">
+<p>Add <strong>quality</strong> as a separate benchmark score. It is never combined into a single rank with other scores, and it always appears next to conformance.</p>
+<p>The headline number is <strong>Q</strong>, the number of <code>q1</code> lint findings in an app's product source. Each finding counts 1, and lower is better. Every app builds the same frozen brief, so the score counts findings per app; per-KLOC rates mostly measure app size. Q has two parts that apply to every language: complexity and defects.</p>
+<p>TypeScript apps also get a separate types count. It covers the TypeScript rules plus the anti-slop rules that depend on TypeScript, including <code>no-runtime-typeof</code>, whose type-guard exemption works only in TypeScript. JavaScript apps show "—" for types and take no penalty, because the brief lets each agent choose its stack.</p>
+<p>Q measures how well an app fits Yi's lint standard. The agents never saw that standard. Label the score that way.</p>
+</section>
+
+<h2>Ruleset q1</h2>
+<p>Rules come from Yi's 7 linted T3 projects. The ruleset keeps:</p>
+<ul>
+<li>correctness rules</li>
+<li>complexity rules: <code>max-depth</code> 3 and <code>sonarjs/no-nested-conditional</code></li>
+<li>React and <code>jsx-a11y</code> rules</li>
+<li>Yi's anti-slop plugin, which feeds the types count</li>
+</ul>
+<p>These are removed:</p>
+<ul>
+<li>autofixable style rules: <code>require-readable-spacing</code>, <code>prefer-const</code>, <code>no-useless-escape</code>, <code>consistent-type-imports</code>, <code>import/no-duplicates</code>, <code>no-inferrable-types</code></li>
+<li>the duplicate React Compiler plugin</li>
+<li>3 rules that flagged correct code: <code>no-thenable</code> (the Logo <code>if</code> node), <code>no-fallthrough</code> (code after functions that return <code>never</code>), and <code>no-shape-in-symbol-names</code> (three.js <code>Shape</code>)</li>
+</ul>
+
+<h2>Prototype result</h2>
+<p>The prototype scored 49 apps: 45 runs and 4 Gemini apps. The lint pass took 3 s.</p>
+<div class="tbl">
+<table>
+<thead><tr><th scope="col">Group (n)</th><th scope="col">Median Q</th><th scope="col">Range</th><th scope="col" style="width:40%">Q range, 0–91 <span aria-hidden="true">(bar = range, mark = median)</span></th><th scope="col">Median LOC</th></tr></thead>
+<tbody>
+<tr><td>Fable 5.1 (1)</td><td class="n">9</td><td class="n">9</td><td><div class="range"><div class="r" style="left:9.9%;width:0.7%"></div><div class="m" style="left:9.9%"></div></div></td><td class="n">2,836</td></tr>
+<tr><td>Fable 5.2 (2)</td><td class="n">25.5</td><td class="n">23–28</td><td><div class="range"><div class="r" style="left:25.3%;width:5.5%"></div><div class="m" style="left:28.0%"></div></div></td><td class="n">3,261</td></tr>
+<tr><td>Haiku 5.5 (5)</td><td class="n">5</td><td class="n">2–9</td><td><div class="range"><div class="r" style="left:2.2%;width:7.7%"></div><div class="m" style="left:5.5%"></div></div></td><td class="n">3,278</td></tr>
+<tr><td>Opus 5.5 (9)</td><td class="n">21</td><td class="n">12–67</td><td><div class="range"><div class="r" style="left:13.2%;width:60.4%"></div><div class="m" style="left:23.1%"></div></div></td><td class="n">5,191</td></tr>
+<tr><td>Sonnet 5.5 (5)</td><td class="n">16</td><td class="n">8–36</td><td><div class="range"><div class="r" style="left:8.8%;width:30.8%"></div><div class="m" style="left:17.6%"></div></div></td><td class="n">4,037</td></tr>
+<tr><td>Astra 6 (5)</td><td class="n">32</td><td class="n">20–45</td><td><div class="range"><div class="r" style="left:22.0%;width:27.5%"></div><div class="m" style="left:35.2%"></div></div></td><td class="n">1,275</td></tr>
+<tr><td>Luna 6 (4)</td><td class="n">33.5</td><td class="n">13–91</td><td><div class="range"><div class="r" style="left:14.3%;width:85.7%"></div><div class="m" style="left:36.8%"></div></div></td><td class="n">100.5</td></tr>
+<tr><td>Sol 6.1 (9)</td><td class="n">31</td><td class="n">14–42</td><td><div class="range"><div class="r" style="left:15.4%;width:30.8%"></div><div class="m" style="left:34.1%"></div></div></td><td class="n">1,855</td></tr>
+<tr><td>Terra 6.1 (5)</td><td class="n">25</td><td class="n">21–25</td><td><div class="range"><div class="r" style="left:23.1%;width:4.4%"></div><div class="m" style="left:27.5%"></div></div></td><td class="n">257</td></tr>
+<tr><td>Gemini 4 (4)</td><td class="n">53.5</td><td class="n">37–56</td><td><div class="range"><div class="r" style="left:40.7%;width:20.9%"></div><div class="m" style="left:58.8%"></div></div></td><td class="n">5,165</td></tr>
+</tbody>
+</table>
+</div>
+<p class="meta" style="margin-top:8px">LOC is context only. Codex apps pack up to 600 characters on a line, so their LOC understates their size. Spearman ρ between Q and non-whitespace characters is 0.03 across the 45 runs and 0.13 across all 49 apps (average ranks for ties). Both are weak, so Q is not a proxy for app size.</p>
+<h3 style="font-size:1rem;margin:14px 0 6px">What the data shows</h3>
+<ul>
+<li>Complexity rules produce 86% of Q.</li>
+<li>Anti-slop contributes 2 findings to Q. Its value is in the types count.</li>
+<li>Groups have 1 to 9 runs each, which is too few to rank them.</li>
+<li>Conformance has too little spread to validate Q: 39 of 45 runs score at least 98%.</li>
+</ul>
+
+<h2>Steps</h2>
+<ol class="steps">
+<li>Freeze <code>bench/quality/q1/</code>. It holds the oxlint config with every rule named and no categories, a manifest that maps each rule to its family, and the anti-slop snapshot. Pin oxlint, <code>@oxlint/plugins</code> and sonarjs.</li>
+<li>Sample the hits for every rule that has any, and disable false positives before freezing.</li>
+<li>Write <code>bench/quality.ts [--only &lt;id&gt;]</code>:
+<ul>
+<li>For a run whose task is not <code>app</code>, write <code>quality: null, reason: "not an app task"</code> and stop. Otherwise lint it.</li>
+<li>Read source from the local <code>build/&lt;id&gt;</code>; if that doesn't exist, use <code>origin/build/&lt;id&gt;</code>.</li>
+<li>Lint the original files.</li>
+<li>Write <code>result.quality</code>: per-rule counts, families, LOC, language and the staged file paths.</li>
+<li>Write <code>quality: null, reason: "no source"</code> when there is no branch or no eligible file.</li>
+<li>It is idempotent, so the same command is the backfill. <code>run.ts</code> calls it after the source import.</li>
+</ul></li>
+<li>Show Q, its families and the types count in one place: the run details in <code>src/pages/BenchmarkEvidence.tsx</code>. Add no table column.</li>
+<li>Tests:
+<ul>
+<li>a JavaScript fixture and a TypeScript fixture with known counts</li>
+<li>build scripts are excluded</li>
+<li>an empty source gives null, not 0</li>
+<li>a failed scan is unavailable</li>
+<li>a repeat run gives the same output</li>
+</ul></li>
+</ol>
+
+<h2>Decisions</h2>
+<ul>
+<li>58 runs get <code>quality: null</code>. 52 have reason "no source": 48 TDD-layer runs and 4 <code>v2-e5</code> runs with no branch. 6 test-authoring runs have reason "not an app task". None are rerun.</li>
+<li>The 4 Gemini apps stay in the Gemini comparison folder only.</li>
+<li><code>tsgolint</code> (type-aware rules) and Biome-formatted LOC are deferred.</li>
+</ul>
+
+<h2>Risks</h2>
+<ul>
+<li class="warn">An app that implements less has fewer chances to break rules, so Q is always shown with conformance.</li>
+<li>Oxlint JS plugins are experimental. Pin the versions.</li>
+<li>The rules for picking product files are heuristic. The stored paths make that choice auditable.</li>
+</ul>
+
+<h2>Acceptance</h2>
+<ul>
+<li>Lint, typecheck and unit tests pass.</li>
+<li>In under 30 s, the backfill writes <code>quality</code> for the 45 runs with source, and a null reason for the other 58: 52 "no source" and 6 "not an app task".</li>
+<li>The run details show Q for a scored run and the null reason for a null run.</li>
+<li>Existing scores don't change.</li>
+</ul>
+
+<p class="gate">Approval gate: no production change until Yi approves this plan. Prototype: <code>prototype/</code> holds the config, <code>stage.sh</code>, <code>aggregate.py</code> and <code>scores.json</code>.</p>
+</main>
+</body>
+</html>

@@ -41,6 +41,18 @@ describe("stored benchmark scores", () => {
     const result = JSON.parse(readFileSync(file, "utf8")) as RunResult;
     return result.task === "app" && result.verify?.built ? [result] : [];
   });
+  it("every stored result has a q1 quality record or a reason it has none", () => {
+    const missing = readdirSync(join(bench, "results")).filter((id) => {
+      const file = join(bench, "results", id, "result.json");
+      if (!existsSync(file)) return false;
+      const { quality } = JSON.parse(readFileSync(file, "utf8")) as RunResult;
+      return (
+        quality?.version !== "q1" || (quality.q === null && !quality.reason)
+      );
+    });
+    expect(missing).toEqual([]);
+  });
+
   it.each(eligible)("$id has all scoring passes for its prompt", (result) => {
     const dir = join(bench, "conformance", result.prompt);
     const suites = Object.fromEntries(

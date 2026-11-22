@@ -12,6 +12,21 @@ export type Verify = {
   distBytes: number;
 };
 export type SuiteScore = { passed: number; total: number; hook: boolean };
+export type QualityFamily = "complexity" | "defects" | "types";
+/** Lint findings under the frozen q1 ruleset (bench/quality.ts). Q = complexity + defects. */
+export type Quality =
+  | {
+      version: "q1";
+      q: number;
+      /** TypeScript-only findings; null for JavaScript apps. */
+      types: number | null;
+      families: Record<QualityFamily, number>;
+      rules: Record<string, number>;
+      loc: number;
+      language: "ts" | "js";
+      files: string[];
+    }
+  | { version: "q1"; q: null; reason: "no source" | "not an app task" | "scan failed" };
 export type RunStatus = "completed" | "partial" | "failed";
 export type RunResult = {
   schema: 4;
@@ -47,4 +62,6 @@ export type RunResult = {
   /** Missing on historical records and ordinary base runs. */
   layer?: { id: string; skillVersion?: string; engineVersion?: string; tddSourceCommit?: string };
   baselineId?: string | null;
+  /** Set after the source import; missing only while a run is being finalized. */
+  quality?: Quality;
 };

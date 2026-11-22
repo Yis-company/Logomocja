@@ -82,5 +82,50 @@
     "snapshotSource": "Installed shared Impeccable skill, copied verbatim except platform binaries",
     "snapshotDate": "2026-11-03"
   },
-  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z"
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z",
+  "quality": {
+    "version": "q1",
+    "q": 14,
+    "types": 161,
+    "families": {
+      "complexity": 14,
+      "defects": 0,
+      "types": 161
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 3,
+      "anti-slop(no-unknown-parameters)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 40,
+      "eslint(max-depth)": 9,
+      "eslint(no-nested-ternary)": 5,
+      "typescript(no-non-null-assertion)": 117
+    },
+    "loc": 3975,
+    "language": "ts",
+    "files": [
+      "src/challenges.ts",
+      "src/examples.ts",
+      "src/lang/errors.ts",
+      "src/lang/interp.ts",
+      "src/lang/keywords.ts",
+      "src/lang/lexer.ts",
+      "src/lang/parser.ts",
+      "src/main.ts",
+      "src/ui/editor.ts",
+      "src/ui/help.ts",
+      "src/ui/highlight.ts",
+      "src/ui/icons.ts",
+      "src/ui/pages.ts",
+      "src/ui/runner.ts",
+      "src/ui/scene.ts",
+      "src/ui/share.ts",
+      "src/ui/shortcuts.ts",
+      "src/ui/store.ts",
+      "src/ui/studio.ts",
+      "src/ui/thumb.ts",
+      "src/ui/toast.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts"
+    ]
+  }
 }

@@ -73,5 +73,60 @@
     "drzewo3d": true
   },
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 14,
+    "types": 72,
+    "families": {
+      "complexity": 13,
+      "defects": 1,
+      "types": 72
+    },
+    "rules": {
+      "anti-slop(no-chained-type-assertions)": 2,
+      "anti-slop(no-known-value-widening)": 3,
+      "anti-slop(no-runtime-typeof)": 4,
+      "anti-slop(no-unknown-parameters)": 3,
+      "anti-slop(no-unsafe-dictionary-type)": 3,
+      "anti-slop(require-safety-comment-for-type-assertion)": 37,
+      "eslint(max-depth)": 7,
+      "eslint(no-nested-ternary)": 6,
+      "eslint(no-unused-vars)": 1,
+      "typescript(no-non-null-assertion)": 20
+    },
+    "loc": 5666,
+    "language": "ts",
+    "files": [
+      "src/app/dom.ts",
+      "src/app/editor.ts",
+      "src/app/files.ts",
+      "src/app/highlight.ts",
+      "src/app/index.ts",
+      "src/app/main.ts",
+      "src/app/pages.ts",
+      "src/app/runner.ts",
+      "src/app/share.ts",
+      "src/app/state.ts",
+      "src/app/storage.ts",
+      "src/app/theme.ts",
+      "src/app/ui.ts",
+      "src/app/view.ts",
+      "src/app/view2d.ts",
+      "src/app/view3d.ts",
+      "src/app/workspace.ts",
+      "src/data/challenges.ts",
+      "src/data/check.ts",
+      "src/data/examples.ts",
+      "src/data/reference.ts",
+      "src/data/shortcuts.ts",
+      "src/lang/ast.ts",
+      "src/lang/expr.ts",
+      "src/lang/index.ts",
+      "src/lang/interp.ts",
+      "src/lang/keywords.ts",
+      "src/lang/lexer.ts",
+      "src/lang/parser.ts"
+    ]
+  }
 }

@@ -49,5 +49,45 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 9,
+    "types": 75,
+    "families": {
+      "complexity": 9,
+      "defects": 0,
+      "types": 75
+    },
+    "rules": {
+      "anti-slop(no-runtime-typeof)": 3,
+      "anti-slop(no-unknown-parameters)": 2,
+      "anti-slop(require-safety-comment-for-type-assertion)": 9,
+      "eslint(max-depth)": 6,
+      "eslint(no-nested-ternary)": 3,
+      "typescript(no-non-null-assertion)": 61
+    },
+    "loc": 2836,
+    "language": "ts",
+    "files": [
+      "src/logo/ast.ts",
+      "src/logo/commands.ts",
+      "src/logo/errors.ts",
+      "src/logo/index.ts",
+      "src/logo/lexer.ts",
+      "src/logo/parser.ts",
+      "src/logo/runner.ts",
+      "src/logo/turtle.ts",
+      "src/main.ts",
+      "src/ui/app.ts",
+      "src/ui/editor.ts",
+      "src/ui/examples.ts",
+      "src/ui/help.ts",
+      "src/ui/highlight.ts",
+      "src/ui/stage.ts",
+      "src/ui/storage.ts",
+      "src/ui/view2d.ts",
+      "src/ui/view3d.ts"
+    ]
+  }
 }

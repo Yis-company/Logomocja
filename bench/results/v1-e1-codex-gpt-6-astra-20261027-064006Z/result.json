@@ -49,5 +49,34 @@
   },
   "gallery": null,
   "humanScore": null,
-  "notes": ""
+  "notes": "",
+  "quality": {
+    "version": "q1",
+    "q": 20,
+    "types": 29,
+    "families": {
+      "complexity": 17,
+      "defects": 3,
+      "types": 29
+    },
+    "rules": {
+      "anti-slop(no-known-value-widening)": 3,
+      "anti-slop(no-runtime-typeof)": 1,
+      "anti-slop(no-unknown-parameters)": 1,
+      "anti-slop(require-safety-comment-for-type-assertion)": 5,
+      "eslint(max-depth)": 12,
+      "eslint(no-empty)": 2,
+      "eslint(no-nested-ternary)": 5,
+      "typescript(no-non-null-assertion)": 19,
+      "unicorn(no-useless-spread)": 1
+    },
+    "loc": 1275,
+    "language": "ts",
+    "files": [
+      "src/drawing.ts",
+      "src/examples.ts",
+      "src/interpreter.ts",
+      "src/main.ts"
+    ]
+  }
 }

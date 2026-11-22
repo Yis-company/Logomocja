@@ -35,5 +35,9 @@
     "vite.config.ts",
     "playwright.config.ts",
     "playwright.pages.config.ts"
+  ],
+  "exclude": [
+    "bench/quality/q1/anti-slop",
+    "bench/fixtures/quality"
   ]
 }

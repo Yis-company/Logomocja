@@ -84,5 +84,10 @@
     "instructions": "tdd-v1/instructions.md",
     "vocabulary": "tdd-v1/references/codebase-design/SKILL.md"
   },
-  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z"
+  "baselineId": "v2-e2-claude-claude-opus-5-5-20261028-115143Z",
+  "quality": {
+    "version": "q1",
+    "q": null,
+    "reason": "no source"
+  }
 }
