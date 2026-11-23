@@ -67,6 +67,15 @@ When a suite or the runner changes, `bun bench/rescore.ts --prompt <version>` re
 
 After the source import, `quality.ts` lints the run's product source (no tests, configs or build scripts) from `build/<run-id>`, or `origin/build/<run-id>` when only the remote branch exists, with the frozen ruleset in `quality/q1/`. `result.json` gains `quality`: **Q**, the count of complexity and defect findings (lower is better), the TypeScript-only `types` count (null for JavaScript apps), per-rule counts, lines and the scanned file paths. Runs without source record `reason: "no source"`, test-author runs `"not an app task"`, and a scan that cannot run `"scan failed"`; none count as zero. `bun bench/quality.ts [--only <run-id>]` is idempotent and is also the backfill (about 20 s for every stored run).
 
+Before proposing a rerun for a missing source, inventory `refs/heads/build/` and
+`refs/remotes/origin/build/` once per authorized repository copy. Join by run ID.
+If there is a historical commit prefix, resolve it uniquely to a commit, look
+up the matching ref in the inventory, and inspect the historical tree for
+product source. Record moved refs, missing objects, ambiguous prefixes and
+inaccessible copies separately. A missing branch can still have a retained
+commit. Keep original results until a source transfer or scoring backfill is
+approved.
+
 Q measures fit to a ruleset the agents never saw, and an app that implements less has fewer chances to break rules. Read it next to conformance; it is shown only in run details and is never part of a ranking.
 
 ## Standard programs and gallery

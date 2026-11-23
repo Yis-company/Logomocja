@@ -21,14 +21,15 @@ The Impeccable runs took 28.0% longer for Neon and 28.5% longer for Hydrogen. Ne
 
 ## Screenshots
 
-The desktop and mobile captures show the same standard 2D tree.
+The desktop and base mobile captures show the standard 2D tree. The Impeccable
+mobile captures show the editor with the drawing out of view.
 
 | Model and viewport | Base | Impeccable |
 | --- | --- | --- |
 | Neon desktop | ![Neon base desktop](neon-base/gallery/drzewo.webp) | ![Neon Impeccable desktop](neon-impeccable/gallery/drzewo.webp) |
-| Neon mobile | ![Neon base mobile](neon-base/gallery/mobile-drzewo.webp) | ![Neon Impeccable mobile](neon-impeccable/gallery/mobile-drzewo.webp) |
+| Neon mobile | ![Neon base mobile drawing](neon-base/gallery/mobile-drzewo.webp) | ![Neon Impeccable mobile editor view](neon-impeccable/gallery/mobile-drzewo.webp) |
 | Hydrogen desktop | ![Hydrogen base desktop](hydrogen-base/gallery/drzewo.webp) | ![Hydrogen Impeccable desktop](hydrogen-impeccable/gallery/drzewo.webp) |
-| Hydrogen mobile | ![Hydrogen base mobile](hydrogen-base/gallery/mobile-drzewo.webp) | ![Hydrogen Impeccable mobile](hydrogen-impeccable/gallery/mobile-drzewo.webp) |
+| Hydrogen mobile | ![Hydrogen base mobile drawing](hydrogen-base/gallery/mobile-drzewo.webp) | ![Hydrogen Impeccable mobile editor view](hydrogen-impeccable/gallery/mobile-drzewo.webp) |
 
 ## Method and limits
 
