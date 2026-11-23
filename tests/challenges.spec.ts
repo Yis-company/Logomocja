@@ -148,53 +148,45 @@ test("3D stairs solve at mobile size in dark theme with renamed parameters", asy
   ).toBe(true);
 });
 
-test("editing or leaving a task cancels an active multi-case check", async ({
-  page,
-}) => {
-  await page.goto("/challenges/kwadrat");
-  const slowSolution =
-    "oto kwadrat :bok\npowtorz 4500 [pw 0]\npowtorz 4 [np :bok pw 90]\njuż";
-  await editor(page).fill(slowSolution);
-  await page.getByRole("button", { name: "Sprawdź rozwiązanie" }).click();
-  await expect(
-    page.getByRole("button", { name: "Anuluj sprawdzanie" }),
-  ).toBeVisible();
-  await editor(page).fill("oto kwadrat :bok\nnp :bok\njuż");
-  await page.waitForTimeout(300);
-  await expect(
-    page.getByRole("heading", { name: "Wyniki sprawdzania" }),
-  ).toHaveCount(0);
-  await expect(page.getByText("Ukończono wcześniej")).toHaveCount(0);
-  await editor(page).fill(slowSolution);
-  await page.getByRole("button", { name: "Sprawdź rozwiązanie" }).click();
-  await expect(
-    page.getByRole("button", { name: "Anuluj sprawdzanie" }),
-  ).toBeVisible();
-  await page.getByRole("link", { name: "Wszystkie wyzwania" }).click();
-  await page
-    .locator("[data-slot=frame]")
-    .filter({
-      has: page.getByRole("heading", { name: "Gwiazda", exact: true }),
-    })
-    .getByRole("link", { name: "Otwórz wyzwanie" })
-    .click();
-  await page.waitForTimeout(300);
-  await expect(
-    page.getByRole("heading", { name: "Wyniki sprawdzania" }),
-  ).toHaveCount(0);
-  await page.getByRole("link", { name: "Wszystkie wyzwania" }).click();
-  await page
-    .locator("[data-slot=frame]")
-    .filter({
-      has: page.getByRole("heading", { name: "Kwadrat", exact: true }),
-    })
-    .getByRole("link", { name: "Otwórz wyzwanie" })
-    .click();
-  await expect(page.getByText("Ukończono wcześniej")).toHaveCount(0);
-  await expect(
-    page.getByRole("heading", { name: "Wyniki sprawdzania" }),
-  ).toHaveCount(0);
-});
+for (const action of ["edit", "navigate"] as const) {
+  test(`${action} cancels a passing check before it saves completion`, async ({
+    page,
+  }) => {
+    const start = new Date("2026-01-01T00:00:00Z");
+    await page.clock.install({ time: start });
+    await page.clock.pauseAt(start.getTime() + 60_000);
+    await page.goto("/challenges/kwadrat");
+    await editor(page).fill(
+      "oto kwadrat :bok\npowtorz 4 [np :bok pw 90]\njuż",
+    );
+    await page.getByRole("button", { name: "Sprawdź rozwiązanie" }).press("Enter");
+
+    // The paused clock gives each case a single frame yield without a time slice.
+    const progress = page.getByRole("status").filter({ hasText: "Sprawdzanie" });
+    for (let complete = 1; complete <= 6; complete++) {
+      await expect(progress).toHaveText(`Sprawdzanie: ${complete}/6`);
+      if (complete < 6) await page.clock.runFor(16);
+    }
+
+    if (action === "edit") {
+      await editor(page).fill("oto kwadrat :bok\nnp :bok\njuż");
+      await expect(progress).toHaveCount(0);
+    } else {
+      await page.getByRole("link", { name: "Wszystkie wyzwania" }).press("Enter");
+      await expect(page).toHaveURL(/\/challenges$/);
+    }
+
+    // Release the final frame and let the judge's continuation settle.
+    await page.clock.runFor(16);
+    const results = page.getByRole("heading", { name: "Wyniki sprawdzania" });
+    const completed = page.getByText("Ukończono wcześniej");
+    await expect(results).toHaveCount(0);
+    await expect(completed).toHaveCount(0);
+    await page.goto("/challenges/kwadrat");
+    await expect(editor(page)).toBeVisible();
+    await expect(completed).toHaveCount(0);
+  });
+}
 
 test("denied challenge storage leaves editing and sample run usable", async ({
   page,
